@@ -1,0 +1,28 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=harbour-shakkikello
+Exec=harbour-shakkikello
+Name=harbour-shakkikello
+# Tanskaksi (da)
+Name[da]=Chess ur
+# Saksaksi (de)
+Name[de]=Schachuhr
+# Englanniksi (en)
+Name[en]=Chess clock
+# Espanjaksi (es)
+Name[es]=Reloj de ajedrez
+# Ranskaksi (fr)
+Name[fr]=Pendule d&apos;échecs
+# Italiaksi (it)
+Name[it]=Orologio Scacchi
+# Norjaksi (no)
+Name[no]=Sjakklokke
+# Puolaksi (pl)
+Name[pl]=Zegar szachowy
+# Portugaliksi (pt)
+Name[pt]=Relógio de xadrez
+# Venäjäksi (ru)
+Name[ru]=Шахматные часы
+# Ruotsiksi (sv)
+Name[sv]=Schackklocka
