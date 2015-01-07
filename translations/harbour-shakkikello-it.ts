@@ -78,12 +78,12 @@
         <translation>              Controlli</translation>
     </message>
     <message>
-        <source>min:s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nollaa</source>
         <translation>Reset</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

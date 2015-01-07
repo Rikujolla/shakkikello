@@ -8,8 +8,8 @@ CoverBackground {
         text: qsTr("Shakkikello")
     }
 
-//    CoverActionList {
-//        id: coverAction
+    CoverActionList {
+        id: coverAction
 //
 //        CoverAction {
 //            iconSource: "image://theme/icon-cover-next"
@@ -18,6 +18,6 @@ CoverBackground {
 //        CoverAction {
 //            iconSource: "image://theme/icon-cover-pause"
 //        }
-//    }
+    }
 }
 

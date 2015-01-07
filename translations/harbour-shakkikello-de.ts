@@ -5,11 +5,11 @@
     <name>Asetukset</name>
     <message>
         <source>Palaa peliin</source>
-        <translation>Back to game</translation>
+        <translation>zurück zum Spiel</translation>
     </message>
     <message>
         <source>Asetussivu</source>
-        <translation>Settings page</translation>
+        <translation>Einstellung Seite</translation>
     </message>
     <message>
         <source> min</source>
@@ -17,11 +17,11 @@
     </message>
     <message>
         <source>Valkoinen </source>
-        <translation>White </translation>
+        <translation>Weiss </translation>
     </message>
     <message>
         <source>Musta </source>
-        <translation>Black </translation>
+        <translation>Schwarz </translation>
     </message>
     <message>
         <source>- 1 min</source>
@@ -36,38 +36,38 @@
     <name>CoverPage</name>
     <message>
         <source>Shakkikello</source>
-        <translation>Chess clock</translation>
+        <translation>Schachuhr</translation>
     </message>
 </context>
 <context>
     <name>Pelisivu</name>
     <message>
         <source>Shakkikello</source>
-        <translation>Chess clock</translation>
+        <translation>Schachuhr</translation>
     </message>
     <message>
         <source>Mustan vuoro</source>
-        <translation>Black&apos;s turn</translation>
+        <translation>Schwarzes Inning</translation>
     </message>
     <message>
         <source>Valkoisen vuoro</source>
-        <translation>White&apos;s turn</translation>
+        <translation>Weißes Inning</translation>
     </message>
     <message>
         <source>Valkoisen kello</source>
-        <translation>White&apos;s clock</translation>
+        <translation>Weißes Uhr</translation>
     </message>
     <message>
         <source>Mustan kello</source>
-        <translation>Black&apos;s clock</translation>
+        <translation>Schwarzes Uhr</translation>
     </message>
     <message>
         <source>Jatka</source>
-        <translation>Continue</translation>
+        <translation>Weiter</translation>
     </message>
     <message>
         <source>Asetukset</source>
-        <translation>Settings</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Keskeytä</source>
@@ -78,12 +78,12 @@
         <translation>              Controls</translation>
     </message>
     <message>
-        <source>min:s</source>
-        <translation type="unfinished"></translation>
+        <source>Nollaa</source>
+        <translation>neu stellen</translation>
     </message>
     <message>
-        <source>Nollaa</source>
-        <translation>Reset</translation>
+        <source>min:s</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -94,7 +94,7 @@
     </message>
     <message>
         <source>Asetukset</source>
-        <translation>Settings</translation>
+        <translation>Einstellungen</translation>
     </message>
 </context>
 </TS>

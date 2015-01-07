@@ -35,7 +35,6 @@ Page {
                 title: qsTr("Shakkikello")
             }
 
-
             Item {
                 id : vuoro
                 function vaihdaMustalle() {
@@ -68,6 +67,7 @@ Page {
                 property bool valko
                 property bool juoksee
                 property bool pelialkoi : false
+                property bool peliloppui : false
                 function asetaTilat() {
                     musta = false
                     valko = true
@@ -79,7 +79,13 @@ Page {
                     }
                 }
                 function aloitaPeli() {
-                    pelialkoi = true
+                    if (!pelialkoi) {
+                        asetaTilat();
+                        pelialkoi = true}
+                    else {pelialkoi = true}
+                }
+                function peliLoppui() {
+                    peliloppui= true; tilat.musta = false; tilat.valko = false
                 }
             }
 
@@ -87,12 +93,18 @@ Page {
                 id : muttakello
                 property int sekuntitm0: 0
                 property int sekuntitm : 0
+                property int rogres_sekuntitm : mustamax
                 property int label_sekuntitm
                 property int label_minuutitm : mustamax/60
                 function timeMutta() {sekuntitm0 = sekuntitm0 + sekuntitm}
-                function updateMutta() {sekuntitm = kello.sekuntit;
-                    label_sekuntitm = (mustamax - (sekuntitm0 + sekuntitm))%60;
-                    label_minuutitm = ((mustamax - (sekuntitm0 + sekuntitm))-label_sekuntitm)/60
+                function updateMutta() {
+                    kello.timeChanged();
+                    if (rogres_sekuntitm <= 0) {tilat.peliloppui = true} else {
+                        sekuntitm = kello.sekuntit;
+                        label_sekuntitm = (mustamax - (sekuntitm0 + sekuntitm))%60;
+                        label_minuutitm = ((mustamax - (sekuntitm0 + sekuntitm))-label_sekuntitm)/60;
+                        rogres_sekuntitm = mustamax - (sekuntitm0 + sekuntitm)
+                    }
                 }
             }
 
@@ -100,12 +112,18 @@ Page {
                 id : valkokello
                 property int sekuntitv: 0
                 property int sekuntitv0: 0
+                property int rogres_sekuntitv : valkomax
                 property int label_sekuntitv
                 property int label_minuutitv : valkomax/60
                 function timeValko() {sekuntitv0 = sekuntitv0 + sekuntitv}
-                function updateValko() {sekuntitv = kello.sekuntit;
-                    label_sekuntitv = (valkomax - (sekuntitv0 + sekuntitv))%60;
-                    label_minuutitv = ((valkomax - (sekuntitv0 + sekuntitv))-label_sekuntitv)/60
+                function updateValko() {
+                    kello.timeChanged();
+                    if (rogres_sekuntitv <= 0) {tilat.peliloppui = true} else {
+                        sekuntitv = kello.sekuntit;
+                        label_sekuntitv = (valkomax - (sekuntitv0 + sekuntitv))%60;
+                        label_minuutitv = ((valkomax - (sekuntitv0 + sekuntitv))-label_sekuntitv)/60;
+                        rogres_sekuntitv = valkomax - (sekuntitv0 + sekuntitv)
+                    }
                 }
             }
 
@@ -130,6 +148,8 @@ Page {
                         tilat.asetaTilat();
                         valkomax = 300;
                         mustamax = 300;
+                        valkokello.rogres_sekuntitv = valkomax;
+                        muttakello.rogres_sekuntitm = mustamax;
                         valkokello.sekuntitv0 = 0;
                         valkokello.sekuntitv = 0;
                         muttakello.sekuntitm0 = 0;
@@ -156,42 +176,33 @@ Page {
                }
            }
 
-
-
-            Timer {
-                interval: 50; running: true; repeat: false
-                onTriggered: {startti.timeAsetus();valkokello.timeValko();muttakello.timeMutta();tilat.asetaTilat()}
-            }
-
-            Timer {
-                interval: 100; running: tilat.juoksee; repeat: true
-                onTriggered: {kello.timeChanged()}
-            }
-
-
-            Row {
-                Image {
-                    source: "vaihtoValkoinen.png"
-                }
-                Text {
-                    text: qsTr("Valkoisen kello")
-                    color: Theme.highlightColor
-                }
-            }
-
             ProgressBar {
                 id: progressBar2
                 width: parent.width
                 maximumValue: valkomax
                 valueText: valkokello.label_minuutitv + ":" + valkokello.label_sekuntitv
                 label: qsTr("min:s")
-                value: valkomax - (valkokello.sekuntitv0 + valkokello.sekuntitv)
+                value: valkokello.rogres_sekuntitv
+                rotation: 180
                 Timer {
-                    interval: 100; running: tilat.valko; repeat: true
+                    interval: 100
+                    running: tilat.juoksee && tilat.valko && Qt.ApplicationActive
+                    repeat: true
                     onTriggered: valkokello.updateValko()
                 }
             }
 
+            Row {
+                Image {
+                    source: "vaihtoValkoinen.png"
+                    rotation: 180
+                }
+                Text {
+                    text: qsTr("Valkoisen kello")
+                    color: Theme.highlightColor
+                    rotation: 180
+                }
+            }
             Text {
                 text: qsTr("              Ohjaukset")
                 color: Theme.highlightColor
@@ -202,8 +213,10 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Button {
                     text: aloitapause
-                    onClicked: {tilat.juoksee = !tilat.juoksee;startti.timeAsetus()
+                    onClicked: {
                         tilat.aloitaPeli();
+                        tilat.juoksee = !tilat.juoksee;
+                        startti.timeAsetus();
                         kello.sekuntit = 0;
                         valkokello.timeValko();
                         valkokello.sekuntitv = 0;
@@ -237,14 +250,14 @@ Page {
                 maximumValue: mustamax
                 valueText: muttakello.label_minuutitm + ":" + muttakello.label_sekuntitm
                 label: qsTr("min:s")
-                value: mustamax - (muttakello.sekuntitm0 + muttakello.sekuntitm)
-                Timer {interval: 100; running: tilat.musta; repeat: true
+                value: muttakello.rogres_sekuntitm
+                Timer {interval: 100
+                    running: tilat.juoksee && tilat.musta && Qt.ApplicationActive
+                    repeat: true
                     onTriggered: muttakello.updateMutta()}
             }
 
-
-
-
+// loppusulkeet
         }
     }
 }
