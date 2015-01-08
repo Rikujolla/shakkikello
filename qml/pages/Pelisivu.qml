@@ -85,7 +85,18 @@ Page {
                     else {pelialkoi = true}
                 }
                 function peliLoppui() {
-                    peliloppui= true; tilat.musta = false; tilat.valko = false
+                    peliloppui= true;
+                    tilat.aloitaPeli();
+                    tilat.juoksee = !tilat.juoksee;
+                    startti.timeAsetus();
+                    kello.sekuntit = 0;
+                    valkokello.sekuntitv = 0;
+                    valkokello.timeValko();
+                    muttakello.sekuntitm=0;
+                    muttakello.timeMutta();
+                    tilat.vaihdaTila();
+                    maharollisuuret = qsTr("Nollaa")
+
                 }
             }
 
@@ -99,7 +110,11 @@ Page {
                 function timeMutta() {sekuntitm0 = sekuntitm0 + sekuntitm}
                 function updateMutta() {
                     kello.timeChanged();
-                    if (rogres_sekuntitm <= 0) {tilat.peliloppui = true} else {
+                    if (rogres_sekuntitm <= 0) {
+                        tilat.peliloppui = true;
+                        tilat.peliLoppui()
+                    }
+                    else {
                         sekuntitm = kello.sekuntit;
                         label_sekuntitm = (mustamax - (sekuntitm0 + sekuntitm))%60;
                         label_minuutitm = ((mustamax - (sekuntitm0 + sekuntitm))-label_sekuntitm)/60;
@@ -118,7 +133,11 @@ Page {
                 function timeValko() {sekuntitv0 = sekuntitv0 + sekuntitv}
                 function updateValko() {
                     kello.timeChanged();
-                    if (rogres_sekuntitv <= 0) {tilat.peliloppui = true} else {
+                    if (rogres_sekuntitv <= 0) {
+                        tilat.peliloppui = true;
+                        tilat.peliLoppui()
+                    }
+                    else {
                         sekuntitv = kello.sekuntit;
                         label_sekuntitv = (valkomax - (sekuntitv0 + sekuntitv))%60;
                         label_minuutitv = ((valkomax - (sekuntitv0 + sekuntitv))-label_sekuntitv)/60;
@@ -155,9 +174,21 @@ Page {
                         muttakello.sekuntitm0 = 0;
                         muttakello.sekuntitm = 0;
                         kello.sekuntit = 0;
+                        startti.timeAsetus();
                         valkokello.updateValko();
-                        muttakello.updateMutta()
+                        muttakello.updateMutta();
+                        tilat.peliloppui = false
                     } else {
+                        valkomax = 300;
+                        mustamax = 300;
+                        valkokello.rogres_sekuntitv = valkomax;
+                        muttakello.rogres_sekuntitm = mustamax;
+                        valkokello.sekuntitv0 = 0;
+                        valkokello.sekuntitv = 0;
+                        muttakello.sekuntitm0 = 0;
+                        muttakello.sekuntitm = 0;
+                        kello.sekuntit = 0;
+                        tilat.peliloppui = false;
                         pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
                     }
                 }
@@ -213,6 +244,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Button {
                     text: aloitapause
+                    enabled: !tilat.peliloppui
                     onClicked: {
                         tilat.aloitaPeli();
                         tilat.juoksee = !tilat.juoksee;
@@ -229,7 +261,7 @@ Page {
                 Button {
                     text: maharollisuuret
                     onClicked: asetussivulle.siirrytKo()
-                    enabled: !tilat.juoksee
+                    enabled: !tilat.juoksee || tilat.peliloppui
                 }
             }
 

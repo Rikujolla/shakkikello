@@ -10,8 +10,9 @@
 
 * Sat Dec 27 2014 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1-1
 - First release to harbour
-* Sat Dec 27 2014 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1-2
+* Sat Jan 8 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1-2
 - Name changed to obey harbour rules
 - Spanish translation updated
-- QA Changes requested by Jolla Team
+- The timer stops when another player has a zero time
+- Power consumption reduced when app is in pause
 
