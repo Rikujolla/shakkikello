@@ -31,9 +31,6 @@ Page {
 
             width: page.width
             spacing: Theme.paddingLarge
-            PageHeader {
-                title: qsTr("Shakkikello")
-            }
 
             Item {
                 id : vuoro
@@ -46,6 +43,8 @@ Page {
                         valkokello.sekuntitv = 0;
                         muttakello.timeMutta();
                         muttakello.sekuntitm=0
+                        valkokello.sum_incrementv = valkokello.sum_incrementv + increment
+                        valkokello.updateValko()
                     }
                 }
                 function vaihdaValkealle() {
@@ -57,6 +56,8 @@ Page {
                         valkokello.sekuntitv = 0;
                         muttakello.timeMutta();
                         muttakello.sekuntitm=0
+                        muttakello.sum_incrementm = muttakello.sum_incrementm + increment
+                        muttakello.updateMutta()
                     }
                 }
             }
@@ -107,6 +108,7 @@ Page {
                 property int rogres_sekuntitm : mustamax
                 property int label_sekuntitm
                 property int label_minuutitm : mustamax/60
+                property int sum_incrementm : 0
                 function timeMutta() {sekuntitm0 = sekuntitm0 + sekuntitm}
                 function updateMutta() {
                     kello.timeChanged();
@@ -116,9 +118,9 @@ Page {
                     }
                     else {
                         sekuntitm = kello.sekuntit;
-                        label_sekuntitm = (mustamax - (sekuntitm0 + sekuntitm))%60;
-                        label_minuutitm = ((mustamax - (sekuntitm0 + sekuntitm))-label_sekuntitm)/60;
-                        rogres_sekuntitm = mustamax - (sekuntitm0 + sekuntitm)
+                        label_sekuntitm = (mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))%60;
+                        label_minuutitm = ((mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))-label_sekuntitm)/60;
+                        rogres_sekuntitm = mustamax + sum_incrementm - (sekuntitm0 + sekuntitm)
                     }
                 }
             }
@@ -130,6 +132,7 @@ Page {
                 property int rogres_sekuntitv : valkomax
                 property int label_sekuntitv
                 property int label_minuutitv : valkomax/60
+                property int sum_incrementv : 0
                 function timeValko() {sekuntitv0 = sekuntitv0 + sekuntitv}
                 function updateValko() {
                     kello.timeChanged();
@@ -139,9 +142,9 @@ Page {
                     }
                     else {
                         sekuntitv = kello.sekuntit;
-                        label_sekuntitv = (valkomax - (sekuntitv0 + sekuntitv))%60;
-                        label_minuutitv = ((valkomax - (sekuntitv0 + sekuntitv))-label_sekuntitv)/60;
-                        rogres_sekuntitv = valkomax - (sekuntitv0 + sekuntitv)
+                        label_sekuntitv = (valkomax + sum_incrementv - (sekuntitv0 + sekuntitv))%60;
+                        label_minuutitv = ((valkomax + sum_incrementv - (sekuntitv0 + sekuntitv))-label_sekuntitv)/60;
+                        rogres_sekuntitv = valkomax + sum_incrementv - (sekuntitv0 + sekuntitv)
                     }
                 }
             }
@@ -162,6 +165,7 @@ Page {
             Item {
                 id : asetussivulle
                 function siirrytKo() {
+// Nollaus
                     if (tilat.pelialkoi == true) {
                         maharollisuuret = qsTr("Asetukset");
                         tilat.asetaTilat();
@@ -171,22 +175,27 @@ Page {
                         muttakello.rogres_sekuntitm = mustamax;
                         valkokello.sekuntitv0 = 0;
                         valkokello.sekuntitv = 0;
+                        valkokello.sum_incrementv = 0;
                         muttakello.sekuntitm0 = 0;
                         muttakello.sekuntitm = 0;
+                        muttakello.sum_incrementm = 0;
                         kello.sekuntit = 0;
                         startti.timeAsetus();
                         valkokello.updateValko();
                         muttakello.updateMutta();
                         tilat.peliloppui = false
+// Siirtyminen asetussivulle
                     } else {
-                        valkomax = 300;
-                        mustamax = 300;
+//                        valkomax = 300;
+//                        mustamax = 300;
                         valkokello.rogres_sekuntitv = valkomax;
                         muttakello.rogres_sekuntitm = mustamax;
                         valkokello.sekuntitv0 = 0;
                         valkokello.sekuntitv = 0;
+                        valkokello.sum_incrementv = 0;
                         muttakello.sekuntitm0 = 0;
                         muttakello.sekuntitm = 0;
+                        muttakello.sum_incrementm = 0;
                         kello.sekuntit = 0;
                         tilat.peliloppui = false;
                         pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
@@ -207,19 +216,31 @@ Page {
                }
            }
 
-            ProgressBar {
-                id: progressBar2
-                width: parent.width
-                maximumValue: valkomax
-                valueText: valkokello.label_minuutitv + ":" + valkokello.label_sekuntitv
-                label: qsTr("min:s")
-                value: valkokello.rogres_sekuntitv
-                rotation: 180
-                Timer {
-                    interval: 100
-                    running: tilat.juoksee && tilat.valko && Qt.ApplicationActive
-                    repeat: true
-                    onTriggered: valkokello.updateValko()
+            BackgroundItem {
+                width: page.width
+                height: 275
+                enabled: tilat.juoksee && tilat.valko
+                onClicked: vuoro.vaihdaMustalle()
+                PageHeader {
+                    title: qsTr("Shakkikello")
+                }
+                ProgressBar {
+                    id: progressBar2
+                    width: parent.width
+                    height: 200
+                    maximumValue: valkomax
+                    valueText: valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv
+                    label: qsTr("min:s")
+                    value: valkokello.rogres_sekuntitv
+                    rotation: 180
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.verticalCenterOffset: 100
+                    Timer {
+                        interval: 100
+                        running: tilat.juoksee && tilat.valko && Qt.ApplicationActive
+                        repeat: true
+                        onTriggered: valkokello.updateValko()
+                    }
                 }
             }
 
@@ -234,6 +255,7 @@ Page {
                     rotation: 180
                 }
             }
+
             Text {
                 text: qsTr("              Ohjaukset")
                 color: Theme.highlightColor
@@ -275,20 +297,24 @@ Page {
                 }
             }
 
-
-            ProgressBar {
-                id: progressBarm
-                width: parent.width
-                maximumValue: mustamax
-                valueText: muttakello.label_minuutitm + ":" + muttakello.label_sekuntitm
-                label: qsTr("min:s")
-                value: muttakello.rogres_sekuntitm
-                Timer {interval: 100
-                    running: tilat.juoksee && tilat.musta && Qt.ApplicationActive
-                    repeat: true
-                    onTriggered: muttakello.updateMutta()}
+            BackgroundItem {
+                width: page.width
+                height: 275
+                enabled: tilat.juoksee && tilat.musta
+                onClicked: vuoro.vaihdaValkealle()
+                ProgressBar {
+                    id: progressBarm
+                    width: parent.width
+                    maximumValue: mustamax
+                    valueText: muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm
+                    label: qsTr("min:s")
+                    value: muttakello.rogres_sekuntitm
+                    Timer {interval: 100
+                        running: tilat.juoksee && tilat.musta && Qt.ApplicationActive
+                        repeat: true
+                        onTriggered: muttakello.updateMutta()}
+                }
             }
-
 // loppusulkeet
         }
     }

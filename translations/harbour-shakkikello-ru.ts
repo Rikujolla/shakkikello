@@ -13,7 +13,7 @@
     </message>
     <message>
         <source> min</source>
-        <translation type="unfinished"></translation>
+        <translation> мин</translation>
     </message>
     <message>
         <source>Valkoinen </source>
@@ -25,11 +25,27 @@
     </message>
     <message>
         <source>- 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 мин</translation>
     </message>
     <message>
         <source>+ 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 мин</translation>
+    </message>
+    <message>
+        <source> s</source>
+        <translation> c</translation>
+    </message>
+    <message>
+        <source>- 1 s</source>
+        <translation>- 1 с</translation>
+    </message>
+    <message>
+        <source>+ 1 s</source>
+        <translation>+ 1 c</translation>
+    </message>
+    <message>
+        <source>Lisäys/siirto </source>
+        <translation>Увеличение/ход </translation>
     </message>
 </context>
 <context>
@@ -83,18 +99,7 @@
     </message>
     <message>
         <source>min:s</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Shakkikello</name>
-    <message>
-        <source>Asetukset</source>
-        <translation type="vanished">настройки</translation>
-    </message>
-    <message>
-        <source>Aloita</source>
-        <translation type="vanished">начало</translation>
+        <translation>мин:c</translation>
     </message>
 </context>
 <context>

@@ -11,5 +11,6 @@ ApplicationWindow
     property string maharollisuuret: qsTr("Asetukset")
     property int valkomax : 300
     property int mustamax : 300
+    property int increment : 0
 
 }

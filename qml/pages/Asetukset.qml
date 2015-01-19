@@ -9,6 +9,12 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
+//Kesken
+//            MenuItem {
+//                text: qsTr("Tietoja")
+//                enabled: false
+//                onClicked: pageStack.pop()
+//            }
             MenuItem {
                 text: qsTr("Palaa peliin")
                 onClicked: pageStack.pop()
@@ -70,6 +76,29 @@ Page {
                 }
             }
 
+            Label {
+                x: Theme.paddingLarge
+                text: qsTr("Lisäys/siirto ") + increment + qsTr(" s")
+                color: Theme.secondaryHighlightColor
+                font.pixelSize: Theme.fontSizeLarge
+                  }
+
+
+            Row {
+                spacing: Theme.paddingLarge
+                anchors.horizontalCenter: parent.horizontalCenter
+                Button {
+                    text: qsTr("- 1 s")
+                    onClicked: {increment > 0 ? increment = increment - 1 : increment = 0
+                    }
+                }
+                Button {
+                    text: qsTr("+ 1 s")
+                    onClicked: {increment = increment + 1
+                    }
+                }
+            }
+//loppusulkeet
         }
     }
 }

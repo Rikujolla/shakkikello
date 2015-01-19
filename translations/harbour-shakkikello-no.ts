@@ -31,6 +31,22 @@
         <source>+ 1 min</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source> s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>- 1 s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>+ 1 s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lisäys/siirto </source>
+        <translation>Tilvekst/flytte </translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

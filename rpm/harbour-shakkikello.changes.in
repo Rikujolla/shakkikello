@@ -10,9 +10,18 @@
 
 * Sat Dec 27 2014 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1-1
 - First release to harbour
-* Sat Jan 8 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1-2
+* Thu Jan 8 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1-2
 - Name changed to obey harbour rules
 - Spanish translation updated
 - The timer stops when another player has a zero time
 - Power consumption reduced when app is in pause
-
+* Mon Jan 19 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.2-1
+- Buttons
+- Seconds in two digits
+- Increments
+* Sat Jan xx 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.X-X
+- GitHub NOT OK
+- Update problem correction NOT OK
+- About page NOT OK
+- Translations update NOT OK
+- Else??
