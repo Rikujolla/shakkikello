@@ -5,112 +5,112 @@
     <name>Asetukset</name>
     <message>
         <source>Palaa peliin</source>
-        <translation>Вернуться к игре</translation>
+        <translation>Back to game</translation>
     </message>
     <message>
         <source>Asetussivu</source>
-        <translation>страница настроек</translation>
+        <translation>Settings page</translation>
     </message>
     <message>
         <source> min</source>
-        <translation> мин</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Valkoinen </source>
-        <translation>белый </translation>
+        <translation>White </translation>
     </message>
     <message>
         <source>Musta </source>
-        <translation>черный </translation>
+        <translation>Black </translation>
     </message>
     <message>
         <source>- 1 min</source>
-        <translation>- 1 мин</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>+ 1 min</source>
-        <translation>+ 1 мин</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source> s</source>
-        <translation> c</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>- 1 s</source>
-        <translation>- 1 с</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>+ 1 s</source>
-        <translation>+ 1 c</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Lisäys/siirto </source>
-        <translation>Увеличение/ход </translation>
+        <translation>Increment/move </translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Shakkikello</source>
-        <translation>Шахматные часы</translation>
+        <translation>Chess clock</translation>
     </message>
 </context>
 <context>
     <name>Pelisivu</name>
     <message>
         <source>Shakkikello</source>
-        <translation>Шахматные часы</translation>
+        <translation>Chess clock</translation>
     </message>
     <message>
         <source>Mustan vuoro</source>
-        <translation>ход чёрный</translation>
+        <translation>Black&apos;s turn</translation>
     </message>
     <message>
         <source>Valkoisen vuoro</source>
-        <translation>Xод белый</translation>
+        <translation>White&apos;s turn</translation>
     </message>
     <message>
         <source>Valkoisen kello</source>
-        <translation>Tаймер белый</translation>
+        <translation>White&apos;s clock</translation>
     </message>
     <message>
         <source>Mustan kello</source>
-        <translation>Tаймер чёрный</translation>
+        <translation>Black&apos;s clock</translation>
     </message>
     <message>
         <source>Jatka</source>
-        <translation>продолжать</translation>
+        <translation>Continue</translation>
     </message>
     <message>
         <source>Asetukset</source>
-        <translation>настройки</translation>
+        <translation>Settings</translation>
     </message>
     <message>
         <source>Keskeytä</source>
-        <translation>пауза</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>              Ohjaukset</source>
-        <translation>              управления</translation>
+        <translation>              Controls</translation>
     </message>
     <message>
         <source>Nollaa</source>
-        <translation>Cброс</translation>
+        <translation>Reset</translation>
     </message>
     <message>
         <source>min:s</source>
-        <translation>мин:c</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>harbour-shakkikello</name>
     <message>
         <source>Aloita</source>
-        <translation>начало</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Asetukset</source>
-        <translation>настройки</translation>
+        <translation>Settings</translation>
     </message>
 </context>
 </TS>

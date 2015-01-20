@@ -42,5 +42,6 @@ TRANSLATIONS +=  translations/harbour-shakkikello-da.ts \
                  translations/harbour-shakkikello-pl.ts \
                  translations/harbour-shakkikello-pt.ts \
                  translations/harbour-shakkikello-sv.ts \
-                 translations/harbour-shakkikello-ru.ts
+                 translations/harbour-shakkikello-ru.ts \
+                 translations/harbour-shakkikello-zh.ts
 

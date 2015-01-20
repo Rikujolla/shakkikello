@@ -14,7 +14,7 @@ Name:       harbour-shakkikello
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Shakkikello-sovellus
 Version:    0.2
-Release:    1
+Release:    2
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/
