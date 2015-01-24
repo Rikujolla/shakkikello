@@ -12,6 +12,8 @@ Name[de]=Schachuhr
 Name[en]=Chess clock
 # Espanjaksi (es)
 Name[es]=Reloj de ajedrez
+# Suomeksi (fr)
+Name[fi]=Shakkikello
 # Ranskaksi (fr)
 Name[fr]=Pendule d&apos;échecs
 # Italiaksi (it)
@@ -26,5 +28,7 @@ Name[pt]=Relógio de xadrez
 Name[ru]=Шахматные часы
 # Ruotsiksi (sv)
 Name[sv]=Schackklocka
-# Kiinaksi (zh)
-Name[zh]=Chess clock
+# Kiinaksi (zh_cn)
+Name[zh_cn]=Chess clock
+# Kiinaksi (zh_hk)
+Name[zh_hk]=Chess clock

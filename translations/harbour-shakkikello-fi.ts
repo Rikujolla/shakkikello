@@ -29,30 +29,30 @@
     </message>
     <message>
         <source>Back to game</source>
-        <translation type="unfinished"></translation>
+        <translation>Palaa peliin</translation>
     </message>
     <message>
         <source>Settings page</source>
-        <translation type="unfinished"></translation>
+        <translation>Asetussivu</translation>
     </message>
     <message>
         <source>White </source>
-        <translation type="unfinished"></translation>
+        <translation>Valkoinen </translation>
     </message>
     <message>
         <source>Black </source>
-        <translation type="unfinished"></translation>
+        <translation>Musta </translation>
     </message>
     <message>
         <source>Increment/move </source>
-        <translation type="unfinished"></translation>
+        <translation>Lisäys/siirto </translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
-        <translation type="unfinished"></translation>
+        <translation>Shakkikello</translation>
     </message>
 </context>
 <context>
@@ -63,54 +63,54 @@
     </message>
     <message>
         <source>Black´s turn</source>
-        <translation type="unfinished"></translation>
+        <translation>Mustan vuoro</translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation type="unfinished"></translation>
+        <translation>Valkoisen vuoro</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Jatka</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Nollaa</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation type="unfinished"></translation>
+        <translation>Shakkikello</translation>
     </message>
     <message>
         <source>White´s clock</source>
-        <translation type="unfinished"></translation>
+        <translation>Valkoisen kello</translation>
     </message>
     <message>
         <source>              Controls</source>
-        <translation type="unfinished"></translation>
+        <translation>              Ohjaukset</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation type="unfinished"></translation>
+        <translation>Mustan kello</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Keskeytä</translation>
     </message>
 </context>
 <context>
     <name>harbour-shakkikello</name>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Aloita</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Asetukset</translation>
     </message>
 </context>
 </TS>

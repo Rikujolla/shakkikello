@@ -27,7 +27,8 @@ OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/pages/Pelisivu.qml \
     harbour-shakkikello.png \
     qml/pages/vaihtoMusta.png \
-    qml/pages/vaihtoValkoinen.png
+    qml/pages/vaihtoValkoinen.png \
+    LICENSE
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -36,12 +37,14 @@ TRANSLATIONS +=  translations/harbour-shakkikello-da.ts \
                  translations/harbour-shakkikello-de.ts \
                  translations/harbour-shakkikello-en.ts \
                  translations/harbour-shakkikello-es.ts \
+                 translations/harbour-shakkikello-fi.ts \
                  translations/harbour-shakkikello-fr.ts \
                  translations/harbour-shakkikello-it.ts \
                  translations/harbour-shakkikello-no.ts \
                  translations/harbour-shakkikello-pl.ts \
                  translations/harbour-shakkikello-pt.ts \
-                 translations/harbour-shakkikello-sv.ts \
                  translations/harbour-shakkikello-ru.ts \
-                 translations/harbour-shakkikello-zh.ts
+                 translations/harbour-shakkikello-sv.ts \
+                 translations/harbour-shakkikello-zh_cn.ts \
+                 translations/harbour-shakkikello-zh_hk.ts
 

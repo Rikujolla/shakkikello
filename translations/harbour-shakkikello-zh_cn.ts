@@ -5,112 +5,112 @@
     <name>Asetukset</name>
     <message>
         <source> min</source>
-        <translation type="unfinished"></translation>
+        <translation> 分</translation>
     </message>
     <message>
         <source>- 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 分</translation>
     </message>
     <message>
         <source>+ 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>+ 1 分</translation>
     </message>
     <message>
         <source> s</source>
-        <translation type="unfinished"></translation>
+        <translation> 秒</translation>
     </message>
     <message>
         <source>- 1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 秒</translation>
     </message>
     <message>
         <source>+ 1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>+ 1 秒</translation>
     </message>
     <message>
         <source>Back to game</source>
-        <translation type="unfinished"></translation>
+        <translation>返回游戏</translation>
     </message>
     <message>
         <source>Settings page</source>
-        <translation type="unfinished"></translation>
+        <translation>设置页面</translation>
     </message>
     <message>
         <source>White </source>
-        <translation type="unfinished"></translation>
+        <translation>白 </translation>
     </message>
     <message>
         <source>Black </source>
-        <translation type="unfinished"></translation>
+        <translation>黑 </translation>
     </message>
     <message>
         <source>Increment/move </source>
-        <translation type="unfinished"></translation>
+        <translation>增量/移动 </translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
-        <translation type="unfinished"></translation>
+        <translation>棋钟</translation>
     </message>
 </context>
 <context>
     <name>Pelisivu</name>
     <message>
         <source>min:s</source>
-        <translation type="unfinished"></translation>
+        <translation>分:秒</translation>
     </message>
     <message>
         <source>Black´s turn</source>
-        <translation type="unfinished"></translation>
+        <translation>黑转</translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation type="unfinished"></translation>
+        <translation>白转</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>继续</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>重置</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>设置</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation type="unfinished"></translation>
+        <translation>棋钟</translation>
     </message>
     <message>
         <source>White´s clock</source>
-        <translation type="unfinished"></translation>
+        <translation>白钟</translation>
     </message>
     <message>
         <source>              Controls</source>
-        <translation type="unfinished"></translation>
+        <translation>              控制</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation type="unfinished"></translation>
+        <translation>黑锺</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>暂停</translation>
     </message>
 </context>
 <context>
     <name>harbour-shakkikello</name>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>开始</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>设置</translation>
     </message>
 </context>
 </TS>

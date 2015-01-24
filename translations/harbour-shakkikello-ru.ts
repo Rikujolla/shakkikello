@@ -4,24 +4,8 @@
 <context>
     <name>Asetukset</name>
     <message>
-        <source>Palaa peliin</source>
-        <translation>Вернуться к игре</translation>
-    </message>
-    <message>
-        <source>Asetussivu</source>
-        <translation>страница настроек</translation>
-    </message>
-    <message>
         <source> min</source>
         <translation> мин</translation>
-    </message>
-    <message>
-        <source>Valkoinen </source>
-        <translation>белый </translation>
-    </message>
-    <message>
-        <source>Musta </source>
-        <translation>черный </translation>
     </message>
     <message>
         <source>- 1 min</source>
@@ -44,72 +28,88 @@
         <translation>+ 1 c</translation>
     </message>
     <message>
-        <source>Lisäys/siirto </source>
+        <source>Back to game</source>
+        <translation>Вернуться к игре</translation>
+    </message>
+    <message>
+        <source>Settings page</source>
+        <translation>страница настроек</translation>
+    </message>
+    <message>
+        <source>White </source>
+        <translation>белый </translation>
+    </message>
+    <message>
+        <source>Black </source>
+        <translation>черный </translation>
+    </message>
+    <message>
+        <source>Increment/move </source>
         <translation>Увеличение/ход </translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Shakkikello</source>
+        <source>Chess clock</source>
         <translation>Шахматные часы</translation>
     </message>
 </context>
 <context>
     <name>Pelisivu</name>
     <message>
-        <source>Shakkikello</source>
-        <translation>Шахматные часы</translation>
+        <source>min:s</source>
+        <translation>мин:c</translation>
     </message>
     <message>
-        <source>Mustan vuoro</source>
+        <source>Black´s turn</source>
         <translation>ход чёрный</translation>
     </message>
     <message>
-        <source>Valkoisen vuoro</source>
+        <source>White´s turn</source>
         <translation>Xод белый</translation>
     </message>
     <message>
-        <source>Valkoisen kello</source>
-        <translation>Tаймер белый</translation>
-    </message>
-    <message>
-        <source>Mustan kello</source>
-        <translation>Tаймер чёрный</translation>
-    </message>
-    <message>
-        <source>Jatka</source>
+        <source>Continue</source>
         <translation>продолжать</translation>
     </message>
     <message>
-        <source>Asetukset</source>
-        <translation>настройки</translation>
-    </message>
-    <message>
-        <source>Keskeytä</source>
-        <translation>пауза</translation>
-    </message>
-    <message>
-        <source>              Ohjaukset</source>
-        <translation>              управления</translation>
-    </message>
-    <message>
-        <source>Nollaa</source>
+        <source>Reset</source>
         <translation>Cброс</translation>
     </message>
     <message>
-        <source>min:s</source>
-        <translation>мин:c</translation>
+        <source>Settings</source>
+        <translation>настройки</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation>Шахматные часы</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation>Tаймер белый</translation>
+    </message>
+    <message>
+        <source>              Controls</source>
+        <translation>              управления</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation>Tаймер чёрный</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>пауза</translation>
     </message>
 </context>
 <context>
     <name>harbour-shakkikello</name>
     <message>
-        <source>Aloita</source>
+        <source>Start</source>
         <translation>начало</translation>
     </message>
     <message>
-        <source>Asetukset</source>
+        <source>Settings</source>
         <translation>настройки</translation>
     </message>
 </context>
