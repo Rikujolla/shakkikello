@@ -95,7 +95,7 @@
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation>黑锺</translation>
+        <translation>黑钟</translation>
     </message>
     <message>
         <source>Pause</source>
