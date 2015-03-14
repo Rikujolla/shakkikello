@@ -40,6 +40,7 @@ TRANSLATIONS +=  translations/harbour-shakkikello-da.ts \
                  translations/harbour-shakkikello-fi.ts \
                  translations/harbour-shakkikello-fr.ts \
                  translations/harbour-shakkikello-it.ts \
+                 translations/harbour-shakkikello-nl.ts \
                  translations/harbour-shakkikello-no.ts \
                  translations/harbour-shakkikello-pl.ts \
                  translations/harbour-shakkikello-pt.ts \

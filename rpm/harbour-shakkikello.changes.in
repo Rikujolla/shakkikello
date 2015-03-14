@@ -5,27 +5,33 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
-# * date Author's Name <author's email> version-release
-# - Summary of changes
-
 * Sat Dec 27 2014 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1-1
 - First release to harbour
+
 * Thu Jan 8 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1-2
 - Name changed to obey harbour rules
 - Spanish translation updated
 - The timer stops when another player has a zero time
 - Power consumption reduced when app is in pause
+
 * Mon Jan 19 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.2-1
 - Buttons
 - Seconds in two digits
 - Increments
+
 * Sat Jan 24 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.2-2
 - Source code in GitHub
 - Translations update
+
 * Sat Jan 24 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.2-3
 - Translations update
+
 * Mon Jan 26 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.3-1
 - Translations update
-* Mon Jan XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.3-X
+
+* Sat Mar 14 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.3.2
+- Dutch translation by Vistaus (Heimen Stoffels) transifex.com
+
+* Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.3.X
 - Update problem correction NOT OK
 - About page NOT OK
