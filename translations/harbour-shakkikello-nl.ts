@@ -4,20 +4,12 @@
 <context>
     <name>Asetukset</name>
     <message>
-        <source> min</source>
-        <translation> min</translation>
-    </message>
-    <message>
         <source>- 1 min</source>
         <translation>-1 min</translation>
     </message>
     <message>
         <source>+ 1 min</source>
         <translation>+1 min</translation>
-    </message>
-    <message>
-        <source> s</source>
-        <translation> s</translation>
     </message>
     <message>
         <source>- 1 s</source>
@@ -36,16 +28,28 @@
         <translation>Instellingenpagina</translation>
     </message>
     <message>
-        <source>White </source>
-        <translation>Wit </translation>
+        <source>About</source>
+        <translation>Over</translation>
     </message>
     <message>
-        <source>Black </source>
-        <translation>Zwart </translation>
+        <source>White</source>
+        <translation>Wit</translation>
     </message>
     <message>
-        <source>Increment/move </source>
-        <translation>Vermeerderen/verplaatsen </translation>
+        <source>min</source>
+        <translation>min</translation>
+    </message>
+    <message>
+        <source>Black</source>
+        <translation>Zwart</translation>
+    </message>
+    <message>
+        <source>Increment/move</source>
+        <translation>Vermeerderen/verplaatsen</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation>s</translation>
     </message>
 </context>
 <context>
@@ -90,16 +94,47 @@
         <translation>De klok van Wit</translation>
     </message>
     <message>
-        <source>              Controls</source>
-        <translation>              Knoppen</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>De klok van Zwart</translation>
     </message>
     <message>
         <source>Pause</source>
         <translation>Pauzeren</translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation>Knoppen</translation>
+    </message>
+</context>
+<context>
+    <name>Tietoja</name>
+    <message>
+        <source>Back to settings</source>
+        <translation>Terug naar de instellingen</translation>
+    </message>
+    <message>
+        <source>About page</source>
+        <translation>Over-pagina</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Vertalingen</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Licentie</translation>
+    </message>
+    <message>
+        <source>German (Nit)
+Dutch (Heimen Stoffels)</source>
+        <translation>Duits (Nit)
+Nederlands (Heimen Stoffels)</translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen
+Licenced under BSD.</source>
+        <translation>Copyright (c) 2015, Riku Lahtinen
+Gelicenseerd onder de BSD-licentie.</translation>
     </message>
 </context>
 <context>

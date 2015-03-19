@@ -4,28 +4,20 @@
 <context>
     <name>Asetukset</name>
     <message>
-        <source> min</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>- 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 min</translation>
     </message>
     <message>
         <source>+ 1 min</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> s</source>
-        <translation type="unfinished"></translation>
+        <translation>+ 1 min</translation>
     </message>
     <message>
         <source>- 1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 s</translation>
     </message>
     <message>
         <source>+ 1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>+ 1 s</translation>
     </message>
     <message>
         <source>Back to game</source>
@@ -36,16 +28,28 @@
         <translation>Indstillinger side</translation>
     </message>
     <message>
-        <source>White </source>
-        <translation>Hvid </translation>
+        <source>About</source>
+        <translation>Om</translation>
     </message>
     <message>
-        <source>Black </source>
-        <translation>Sort </translation>
+        <source>White</source>
+        <translation>Hvid</translation>
     </message>
     <message>
-        <source>Increment/move </source>
-        <translation>Tilvækst/flytte </translation>
+        <source>min</source>
+        <translation>min</translation>
+    </message>
+    <message>
+        <source>Black</source>
+        <translation>Sort</translation>
+    </message>
+    <message>
+        <source>Increment/move</source>
+        <translation>Tilvækst/flytte</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation>s</translation>
     </message>
 </context>
 <context>
@@ -59,7 +63,7 @@
     <name>Pelisivu</name>
     <message>
         <source>min:s</source>
-        <translation type="unfinished"></translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Black´s turn</source>
@@ -90,16 +94,47 @@
         <translation>Hvids ur</translation>
     </message>
     <message>
-        <source>              Controls</source>
-        <translation>              Controls</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Sorts ur</translation>
     </message>
     <message>
         <source>Pause</source>
         <translation>Pause</translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation>Controls</translation>
+    </message>
+</context>
+<context>
+    <name>Tietoja</name>
+    <message>
+        <source>Back to settings</source>
+        <translation>Tilbage til indstillinger</translation>
+    </message>
+    <message>
+        <source>About page</source>
+        <translation>Om side</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Oversættelser</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Licens</translation>
+    </message>
+    <message>
+        <source>German (Nit)
+Dutch (Heimen Stoffels)</source>
+        <translation>Tysk (Nit)
+        Dutch (Heimen Stoffels)</translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen
+Licenced under BSD.</source>
+        <translation>Copyright (c) 2015, Riku Lahtinen
+        Licens under BSD.</translation>
     </message>
 </context>
 <context>

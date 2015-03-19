@@ -4,19 +4,11 @@
 <context>
     <name>Asetukset</name>
     <message>
-        <source> min</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>- 1 min</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>+ 1 min</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -37,15 +29,39 @@
     </message>
     <message>
         <source>White </source>
-        <translation>Hvit </translation>
+        <translation type="vanished">Hvit </translation>
     </message>
     <message>
         <source>Black </source>
-        <translation>Svart </translation>
+        <translation type="vanished">Svart </translation>
     </message>
     <message>
         <source>Increment/move </source>
-        <translation>Tilvekst/flytte </translation>
+        <translation type="vanished">Tilvekst/flytte </translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increment/move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -91,7 +107,7 @@
     </message>
     <message>
         <source>              Controls</source>
-        <translation>              Kontroller</translation>
+        <translation type="vanished">              Kontroller</translation>
     </message>
     <message>
         <source>Black´s clock</source>
@@ -100,6 +116,51 @@
     <message>
         <source>Pause</source>
         <translation>Pause</translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Tietoja</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White </source>
+        <translation type="obsolete">Hvit </translation>
+    </message>
+    <message>
+        <source>Black </source>
+        <translation type="obsolete">Svart </translation>
+    </message>
+    <message>
+        <source>Increment/move </source>
+        <translation type="obsolete">Tilvekst/flytte </translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>German (Nit)
+Dutch (Heimen Stoffels)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen
+Licenced under BSD.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

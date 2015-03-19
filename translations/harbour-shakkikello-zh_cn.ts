@@ -5,7 +5,7 @@
     <name>Asetukset</name>
     <message>
         <source> min</source>
-        <translation> 分</translation>
+        <translation type="vanished"> 分</translation>
     </message>
     <message>
         <source>- 1 min</source>
@@ -17,7 +17,7 @@
     </message>
     <message>
         <source> s</source>
-        <translation> 秒</translation>
+        <translation type="vanished"> 秒</translation>
     </message>
     <message>
         <source>- 1 s</source>
@@ -37,15 +37,39 @@
     </message>
     <message>
         <source>White </source>
-        <translation>白 </translation>
+        <translation type="vanished">白 </translation>
     </message>
     <message>
         <source>Black </source>
-        <translation>黑 </translation>
+        <translation type="vanished">黑 </translation>
     </message>
     <message>
         <source>Increment/move </source>
-        <translation>增量/移动 </translation>
+        <translation type="vanished">增量/移动 </translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increment/move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -91,7 +115,7 @@
     </message>
     <message>
         <source>              Controls</source>
-        <translation>              控制</translation>
+        <translation type="vanished">              控制</translation>
     </message>
     <message>
         <source>Black´s clock</source>
@@ -100,6 +124,67 @@
     <message>
         <source>Pause</source>
         <translation>暂停</translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Tietoja</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White </source>
+        <translation type="obsolete">白 </translation>
+    </message>
+    <message>
+        <source> min</source>
+        <translation type="obsolete"> 分</translation>
+    </message>
+    <message>
+        <source>- 1 min</source>
+        <translation type="obsolete">- 1 分</translation>
+    </message>
+    <message>
+        <source>+ 1 min</source>
+        <translation type="obsolete">+ 1 分</translation>
+    </message>
+    <message>
+        <source>Black </source>
+        <translation type="obsolete">黑 </translation>
+    </message>
+    <message>
+        <source>Increment/move </source>
+        <translation type="obsolete">增量/移动 </translation>
+    </message>
+    <message>
+        <source> s</source>
+        <translation type="obsolete"> 秒</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>German (Nit)
+Dutch (Heimen Stoffels)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen
+Licenced under BSD.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

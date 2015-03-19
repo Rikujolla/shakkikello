@@ -4,19 +4,11 @@
 <context>
     <name>Asetukset</name>
     <message>
-        <source> min</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>- 1 min</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>+ 1 min</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -36,15 +28,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>White </source>
+        <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Black </source>
+        <source>White</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Increment/move </source>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increment/move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>s</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -90,15 +94,44 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>              Controls</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Tietoja</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>German (Nit)
+Dutch (Heimen Stoffels)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen
+Licenced under BSD.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

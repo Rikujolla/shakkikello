@@ -5,7 +5,7 @@
     <name>Asetukset</name>
     <message>
         <source> min</source>
-        <translation> мин</translation>
+        <translation type="vanished"> мин</translation>
     </message>
     <message>
         <source>- 1 min</source>
@@ -17,7 +17,7 @@
     </message>
     <message>
         <source> s</source>
-        <translation> c</translation>
+        <translation type="vanished"> c</translation>
     </message>
     <message>
         <source>- 1 s</source>
@@ -37,15 +37,39 @@
     </message>
     <message>
         <source>White </source>
-        <translation>белый </translation>
+        <translation type="vanished">белый </translation>
     </message>
     <message>
         <source>Black </source>
-        <translation>черный </translation>
+        <translation type="vanished">черный </translation>
     </message>
     <message>
         <source>Increment/move </source>
-        <translation>Увеличение/ход </translation>
+        <translation type="vanished">Увеличение/ход </translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increment/move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -91,7 +115,7 @@
     </message>
     <message>
         <source>              Controls</source>
-        <translation>              управления</translation>
+        <translation type="vanished">              управления</translation>
     </message>
     <message>
         <source>Black´s clock</source>
@@ -100,6 +124,67 @@
     <message>
         <source>Pause</source>
         <translation>пауза</translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Tietoja</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White </source>
+        <translation type="obsolete">белый </translation>
+    </message>
+    <message>
+        <source> min</source>
+        <translation type="obsolete"> мин</translation>
+    </message>
+    <message>
+        <source>- 1 min</source>
+        <translation type="obsolete">- 1 мин</translation>
+    </message>
+    <message>
+        <source>+ 1 min</source>
+        <translation type="obsolete">+ 1 мин</translation>
+    </message>
+    <message>
+        <source>Black </source>
+        <translation type="obsolete">черный </translation>
+    </message>
+    <message>
+        <source>Increment/move </source>
+        <translation type="obsolete">Увеличение/ход </translation>
+    </message>
+    <message>
+        <source> s</source>
+        <translation type="obsolete"> c</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>German (Nit)
+Dutch (Heimen Stoffels)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen
+Licenced under BSD.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

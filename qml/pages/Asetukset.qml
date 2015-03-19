@@ -34,12 +34,12 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
-//Kesken
-//            MenuItem {
-//                text: qsTr("Tietoja")
+
+            MenuItem {
+                text: qsTr("About")
 //                enabled: false
-//                onClicked: pageStack.pop()
-//            }
+                onClicked: pageStack.push(Qt.resolvedUrl("Tietoja.qml"))
+            }
             MenuItem {
                 text: qsTr("Back to game")
                 onClicked: pageStack.pop()
@@ -59,7 +59,7 @@ Page {
 
             Label {
                 x: Theme.paddingLarge
-                text: qsTr("White ") + valkomax/60 + qsTr(" min")
+                text: qsTr("White") +" "+ valkomax/60 + " " + qsTr("min")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeLarge
                   }
@@ -81,7 +81,7 @@ Page {
 
             Label {
                 x: Theme.paddingLarge
-                text: qsTr("Black ") + mustamax/60 + qsTr(" min")
+                text: qsTr("Black") +" "+ mustamax/60 + " " + qsTr("min")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeLarge
                   }
@@ -103,7 +103,7 @@ Page {
 
             Label {
                 x: Theme.paddingLarge
-                text: qsTr("Increment/move ") + increment + qsTr(" s")
+                text: qsTr("Increment/move") + " " + increment + " " + qsTr("s")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeLarge
                   }

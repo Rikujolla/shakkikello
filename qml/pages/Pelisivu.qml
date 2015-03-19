@@ -282,7 +282,7 @@ Page {
             }
 
             Text {
-                text: qsTr("              Controls")
+                text: "              " + qsTr("Controls")
                 color: Theme.highlightColor
             }
 

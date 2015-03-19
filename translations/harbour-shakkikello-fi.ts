@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="fi">
 <context>
     <name>Asetukset</name>
     <message>
-        <source> min</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>- 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 min</translation>
     </message>
     <message>
         <source>+ 1 min</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> s</source>
-        <translation type="unfinished"></translation>
+        <translation>+ 1 min</translation>
     </message>
     <message>
         <source>- 1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 s</translation>
     </message>
     <message>
         <source>+ 1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>+ 1 s</translation>
     </message>
     <message>
         <source>Back to game</source>
@@ -36,16 +28,28 @@
         <translation>Asetussivu</translation>
     </message>
     <message>
-        <source>White </source>
-        <translation>Valkoinen </translation>
+        <source>About</source>
+        <translation>Tietoja</translation>
     </message>
     <message>
-        <source>Black </source>
-        <translation>Musta </translation>
+        <source>White</source>
+        <translation>Valkoinen</translation>
     </message>
     <message>
-        <source>Increment/move </source>
-        <translation>Lisäys/siirto </translation>
+        <source>min</source>
+        <translation>min</translation>
+    </message>
+    <message>
+        <source>Black</source>
+        <translation>Musta</translation>
+    </message>
+    <message>
+        <source>Increment/move</source>
+        <translation>Lisäys/siirto</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation>s</translation>
     </message>
 </context>
 <context>
@@ -59,7 +63,7 @@
     <name>Pelisivu</name>
     <message>
         <source>min:s</source>
-        <translation type="unfinished"></translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Black´s turn</source>
@@ -90,16 +94,47 @@
         <translation>Valkoisen kello</translation>
     </message>
     <message>
-        <source>              Controls</source>
-        <translation>              Ohjaukset</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Mustan kello</translation>
     </message>
     <message>
         <source>Pause</source>
         <translation>Keskeytä</translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation>Ohjaukset</translation>
+    </message>
+</context>
+<context>
+    <name>Tietoja</name>
+    <message>
+        <source>Back to settings</source>
+        <translation>Asetussivulle</translation>
+    </message>
+    <message>
+        <source>About page</source>
+        <translation>Tietosivu</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Käännökset</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Lisenssi</translation>
+    </message>
+    <message>
+        <source>German (Nit)
+Dutch (Heimen Stoffels)</source>
+        <translation>Saksaksi (Nit)
+Hollanniksi (Heimen Stoffels)</translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen
+Licenced under BSD.</source>
+        <translation>Copyright (c) 2015, Riku Lahtinen
+BSD-lisenssi</translation>
     </message>
 </context>
 <context>
