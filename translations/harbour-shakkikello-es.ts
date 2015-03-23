@@ -5,19 +5,19 @@
     <name>Asetukset</name>
     <message>
         <source>- 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 min</translation>
     </message>
     <message>
         <source>+ 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>+ 1 min</translation>
     </message>
     <message>
         <source>- 1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 s</translation>
     </message>
     <message>
         <source>+ 1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>+ 1 s</translation>
     </message>
     <message>
         <source>Back to game</source>
@@ -28,39 +28,31 @@
         <translation>Página Configuración</translation>
     </message>
     <message>
-        <source>White </source>
-        <translation type="vanished">Blanco </translation>
-    </message>
-    <message>
-        <source>Black </source>
-        <translation type="vanished">Negro </translation>
-    </message>
-    <message>
-        <source>Increment/move </source>
-        <translation type="vanished">Incremento/mover </translation>
-    </message>
-    <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca de</translation>
     </message>
     <message>
         <source>White</source>
-        <translation type="unfinished"></translation>
+        <translation>Blanco</translation>
     </message>
     <message>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <source>Black</source>
-        <translation type="unfinished"></translation>
+        <translation>Negro</translation>
     </message>
     <message>
         <source>Increment/move</source>
-        <translation type="unfinished"></translation>
+        <translation>Incremento/mover</translation>
     </message>
     <message>
         <source>s</source>
+        <translation>s</translation>
+    </message>
+    <message>
+        <source>Board</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -72,10 +64,25 @@
     </message>
 </context>
 <context>
+    <name>Pelilauta</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="unfinished">A los ajustes</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="obsolete">Acerca de</translation>
+    </message>
+    <message>
+        <source>Board</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Pelisivu</name>
     <message>
         <source>min:s</source>
-        <translation type="unfinished"></translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Black´s turn</source>
@@ -106,10 +113,6 @@
         <translation>Reloj de blanco</translation>
     </message>
     <message>
-        <source>              Controls</source>
-        <translation type="vanished">              Controles</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Reloj de negro</translation>
     </message>
@@ -119,48 +122,38 @@
     </message>
     <message>
         <source>Controls</source>
-        <translation type="unfinished"></translation>
+        <translation>Controles</translation>
     </message>
 </context>
 <context>
     <name>Tietoja</name>
     <message>
         <source>Back to settings</source>
-        <translation type="unfinished"></translation>
+        <translation>A los ajustes</translation>
     </message>
     <message>
         <source>About page</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca de la página</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>White </source>
-        <translation type="obsolete">Blanco </translation>
-    </message>
-    <message>
-        <source>Black </source>
-        <translation type="obsolete">Negro </translation>
-    </message>
-    <message>
-        <source>Increment/move </source>
-        <translation type="obsolete">Incremento/mover </translation>
+        <translation>Traducciones</translation>
     </message>
     <message>
         <source>Licence</source>
-        <translation type="unfinished"></translation>
+        <translation>Licencia</translation>
     </message>
     <message>
         <source>German (Nit)
 Dutch (Heimen Stoffels)</source>
-        <translation type="unfinished"></translation>
+        <translation>Alemán (Nit)
+Holandés (Heimen Stoffels)</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen
 Licenced under BSD.</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (c) 2015, Riku Lahtinen
+Bajo licencia BSD.</translation>
     </message>
 </context>
 <context>

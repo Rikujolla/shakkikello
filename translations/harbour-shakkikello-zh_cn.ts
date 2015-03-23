@@ -71,12 +71,27 @@
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Board</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>棋钟</translation>
+    </message>
+</context>
+<context>
+    <name>Pelilauta</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Board</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

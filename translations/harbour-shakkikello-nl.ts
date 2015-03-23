@@ -51,12 +51,31 @@
         <source>s</source>
         <translation>s</translation>
     </message>
+    <message>
+        <source>Board</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Schaakklok</translation>
+    </message>
+</context>
+<context>
+    <name>Pelilauta</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="unfinished">Terug naar de instellingen</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="obsolete">Over</translation>
+    </message>
+    <message>
+        <source>Board</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

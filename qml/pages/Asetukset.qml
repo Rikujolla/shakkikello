@@ -37,8 +37,11 @@ Page {
 
             MenuItem {
                 text: qsTr("About")
-//                enabled: false
                 onClicked: pageStack.push(Qt.resolvedUrl("Tietoja.qml"))
+            }
+            MenuItem {
+                text: qsTr("Board")
+                onClicked: pageStack.push(Qt.resolvedUrl("Pelilauta.qml"))
             }
             MenuItem {
                 text: qsTr("Back to game")
