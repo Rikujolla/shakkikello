@@ -44,6 +44,10 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("Pelilauta.qml"))
             }
             MenuItem {
+                text: qsTr("Board2")
+                onClicked: pageStack.push(Qt.resolvedUrl("Pelilauta2.qml"))
+            }
+            MenuItem {
                 text: qsTr("Back to game")
                 onClicked: pageStack.pop()
             }

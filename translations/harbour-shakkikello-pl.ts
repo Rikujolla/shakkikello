@@ -67,6 +67,10 @@
         <source>Board</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Board2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -78,11 +82,86 @@
 <context>
     <name>Pelilauta</name>
     <message>
-        <source>Back to settings</source>
+        <source>Insert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board</source>
+        <source>Black´s turn</source>
+        <translation type="unfinished">Czarny kolej</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Zresetować</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pauza</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Kontynuować</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Ustawienia</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Pelilauta2</name>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="obsolete">Czarny kolej</translation>
+    </message>
+    <message>
+        <source>White´s turn</source>
+        <translation type="obsolete">Biały kolej</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pauza</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Kontynuować</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Zresetować</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Ustawienia</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="obsolete">Zegar szachowy</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation type="obsolete">Biały zegar</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation type="obsolete">Czarny zegar</translation>
+    </message>
+    <message>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess board</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

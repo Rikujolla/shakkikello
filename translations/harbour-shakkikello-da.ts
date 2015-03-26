@@ -55,6 +55,10 @@
         <source>Board</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Board2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -67,14 +71,101 @@
     <name>Pelilauta</name>
     <message>
         <source>Back to settings</source>
-        <translation type="unfinished">Tilbage til indstillinger</translation>
+        <translation type="obsolete">Tilbage til indstillinger</translation>
     </message>
     <message>
         <source>About</source>
         <translation type="obsolete">Om</translation>
     </message>
     <message>
-        <source>Board</source>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished">min:s</translation>
+    </message>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="unfinished">Sorts tur</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Reset</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pause</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Fortsætte</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Indstillinger</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Pelilauta2</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="obsolete">Tilbage til indstillinger</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished">min:s</translation>
+    </message>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="obsolete">Sorts tur</translation>
+    </message>
+    <message>
+        <source>White´s turn</source>
+        <translation type="obsolete">Hvids turn</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pause</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Fortsætte</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Reset</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Indstillinger</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="obsolete">Chess ur</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation type="obsolete">Hvids ur</translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation type="obsolete">Controls</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation type="obsolete">Sorts ur</translation>
+    </message>
+    <message>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess board</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

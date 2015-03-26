@@ -55,6 +55,10 @@
         <source>Board</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Board2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -67,14 +71,101 @@
     <name>Pelilauta</name>
     <message>
         <source>Back to settings</source>
-        <translation type="unfinished">Terug naar de instellingen</translation>
+        <translation type="obsolete">Terug naar de instellingen</translation>
     </message>
     <message>
         <source>About</source>
         <translation type="obsolete">Over</translation>
     </message>
     <message>
-        <source>Board</source>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished">min:s</translation>
+    </message>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="unfinished">Zwart is aan zet</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Herstellen</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pauzeren</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Doorgaan</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Instellingen</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Pelilauta2</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="obsolete">Terug naar de instellingen</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished">min:s</translation>
+    </message>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="obsolete">Zwart is aan zet</translation>
+    </message>
+    <message>
+        <source>White´s turn</source>
+        <translation type="obsolete">Wit is aan zet</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pauzeren</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Doorgaan</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Herstellen</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Instellingen</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="obsolete">Schaakklok</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation type="obsolete">De klok van Wit</translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation type="obsolete">Knoppen</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation type="obsolete">De klok van Zwart</translation>
+    </message>
+    <message>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess board</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -67,6 +67,10 @@
         <source>Board</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Board2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -78,11 +82,86 @@
 <context>
     <name>Pelilauta</name>
     <message>
-        <source>Back to settings</source>
+        <source>Insert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board</source>
+        <source>Black´s turn</source>
+        <translation type="unfinished">Svarts tur</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Återställ</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Stoppa</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Fortsätta</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Inställningar</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Pelilauta2</name>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="obsolete">Svarts tur</translation>
+    </message>
+    <message>
+        <source>White´s turn</source>
+        <translation type="obsolete">Vits tur</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Stoppa</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Fortsätta</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Återställ</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Inställningar</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="obsolete">Schackklocka</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation type="obsolete">Vits klocka</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation type="obsolete">Svarts klocka</translation>
+    </message>
+    <message>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess board</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

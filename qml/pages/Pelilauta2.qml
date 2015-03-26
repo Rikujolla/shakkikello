@@ -40,10 +40,10 @@ Page {
                 onClicked: kripti.lisaa()
 
             }
-            MenuItem {
+/*            MenuItem {
                 text: qsTr("Black´s turn")
                 onClicked: vuoro.vaihdaMustalle()
-            }
+            }*/
             MenuItem {
                 text: aloitapause
                 enabled: !tilat.peliloppui

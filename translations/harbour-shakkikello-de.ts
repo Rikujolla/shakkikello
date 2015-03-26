@@ -55,6 +55,10 @@
         <source>Board</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Board2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -67,14 +71,101 @@
     <name>Pelilauta</name>
     <message>
         <source>Back to settings</source>
-        <translation type="unfinished">Zurück zu den Einstellungen</translation>
+        <translation type="obsolete">Zurück zu den Einstellungen</translation>
     </message>
     <message>
         <source>About</source>
         <translation type="obsolete">Über</translation>
     </message>
     <message>
-        <source>Board</source>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished">min:s</translation>
+    </message>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="unfinished">Schwarz am Zug</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Neu stellen</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pause</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Weiter</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Einstellungen</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Pelilauta2</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="obsolete">Zurück zu den Einstellungen</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished">min:s</translation>
+    </message>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="obsolete">Schwarz am Zug</translation>
+    </message>
+    <message>
+        <source>White´s turn</source>
+        <translation type="obsolete">Weiß am Zug</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pause</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Weiter</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Neu stellen</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Einstellungen</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="obsolete">Schachuhr</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation type="obsolete">Uhr von Weiß</translation>
+    </message>
+    <message>
+        <source>Controls</source>
+        <translation type="obsolete">Kontrollen</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation type="obsolete">Uhr von Schwarz</translation>
+    </message>
+    <message>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess board</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -30,7 +30,10 @@ OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/pages/vaihtoValkoinen.png \
     LICENSE \
     qml/pages/Tietoja.qml \
-    qml/pages/Pelilauta.qml
+    qml/pages/Pelilauta.qml \
+    qml/pages/mruutu.png \
+    qml/pages/vruutu.png \
+    qml/pages/Pelilauta2.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

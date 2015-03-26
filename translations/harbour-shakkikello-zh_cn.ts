@@ -75,6 +75,10 @@
         <source>Board</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Board2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -86,11 +90,86 @@
 <context>
     <name>Pelilauta</name>
     <message>
-        <source>Back to settings</source>
+        <source>Insert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board</source>
+        <source>min:s</source>
+        <translation type="unfinished">分:秒</translation>
+    </message>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="unfinished">黑转</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">重置</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">暂停</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">继续</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">设置</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Pelilauta2</name>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished">分:秒</translation>
+    </message>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="obsolete">黑转</translation>
+    </message>
+    <message>
+        <source>White´s turn</source>
+        <translation type="obsolete">白转</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">暂停</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">继续</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">重置</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">设置</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="obsolete">棋钟</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation type="obsolete">白钟</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation type="obsolete">黑钟</translation>
+    </message>
+    <message>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess board</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
