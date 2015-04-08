@@ -52,11 +52,11 @@
         <translation>s</translation>
     </message>
     <message>
-        <source>Board</source>
+        <source>Board view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board2</source>
+        <source>Board view2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -78,16 +78,12 @@
         <translation type="obsolete">Tietoja</translation>
     </message>
     <message>
-        <source>Insert</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>min:s</source>
         <translation type="unfinished">min:s</translation>
     </message>
     <message>
         <source>Black´s turn</source>
-        <translation type="unfinished">Mustan vuoro</translation>
+        <translation type="obsolete">Mustan vuoro</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -159,10 +155,6 @@
     <message>
         <source>Black´s clock</source>
         <translation type="obsolete">Mustan kello</translation>
-    </message>
-    <message>
-        <source>Insert</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Chess board</source>

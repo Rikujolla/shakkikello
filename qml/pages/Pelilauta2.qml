@@ -25,7 +25,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-
+import "./images"
+import "funktiot.js" as Myfunks
 
 Page {
     id: page
@@ -35,19 +36,15 @@ Page {
 
         PullDownMenu {
 //            quickSelect: true
-            MenuItem {
+/*            MenuItem { //Insert
                 text: qsTr("Insert")
                 onClicked: kripti.lisaa()
 
-            }
-/*            MenuItem {
-                text: qsTr("Black´s turn")
-                onClicked: vuoro.vaihdaMustalle()
             }*/
-            MenuItem {
+            MenuItem { //Start/Pause
                 text: aloitapause
                 enabled: !tilat.peliloppui
-                onClicked: {
+                onClicked: {kripti.lisaa();
                     tilat.aloitaPeli();
                     tilat.juoksee = !tilat.juoksee;
                     startti.timeAsetus();
@@ -262,68 +259,564 @@ Page {
                    sekuntit= date.getSeconds()-startti.sekuntit0+60*minutes
                }
            }
-            ///////////////////////////////////////////////
+
+            Item {
+                id: kripti
                 property int koo: 0
-
-                Item {
-                    id: kripti
-                    property int koo: 0
-                    property int aksa: 1
-                    property int yyy: 1
-                    function lisaa() {
-                        while (yyy < 9) {
-                        if (yyy%2 > 0) {
-                        while (aksa<5){
-                            galeryModel.set(koo,{"name":"empty_white", "portrait":"vruutu.png"});
+                property int aksa: 1
+                property int yyy: 1
+                function lisaa() {
+                    while (koo<64) {
+                        switch(koo) {
+                        case 0:
+                        case 7:
+                            galeryModel.set(koo,{"color":"b", "piece":"images/r.png"});
                             koo=koo+1;
-                            galeryModel.set(koo,{"name":"empty_black", "portrait":"mruutu.png"});
+                            break;
+                        case 1:
+                        case 6:
+                            galeryModel.set(koo,{"color":"b", "piece":"images/n.png"});
                             koo=koo+1;
-                            aksa++
-                        }
-                        aksa=1;
+                            break;
+                        case 2:
+                        case 5:
+                            galeryModel.set(koo,{"color":"b", "piece":"images/b.png"});
+                            koo=koo+1;
+                            break;
+                        case 3:
+                            galeryModel.set(koo,{"color":"b", "piece":"images/q.png"});
+                            koo=koo+1;
+                            break;
+                        case 4:
+                            galeryModel.set(koo,{"color":"b", "piece":"images/k.png"});
+                            koo=koo+1;
+                            break;
+                        case 8:
+                        case 9:
+                        case 10:
+                        case 11:
+                        case 12:
+                        case 13:
+                        case 14:
+                        case 15:
+                            galeryModel.set(koo,{"color":"b", "piece":"images/p.png"});
+                            koo=koo+1;
+                            break;
+                        case 48:
+                        case 49:
+                        case 50:
+                        case 51:
+                        case 52:
+                        case 53:
+                        case 54:
+                        case 55:
+                            galeryModel.set(koo,{"color":"w", "piece":"images/P.png"});
+                            koo=koo+1;
+                            break;
+                        case 56:
+                        case 63:
+                            galeryModel.set(koo,{"color":"w", "piece":"images/R.png"});
+                            koo=koo+1;
+                            break;
+                        case 57:
+                        case 62:
+                            galeryModel.set(koo,{"color":"w", "piece":"images/N.png"});
+                            koo=koo+1;
+                            break;
+                        case 58:
+                        case 61:
+                            galeryModel.set(koo,{"color":"w", "piece":"images/B.png"});
+                            koo=koo+1;
+                            break;
+                        case 59:
+                            galeryModel.set(koo,{"color":"w", "piece":"images/Q.png"});
+                            koo=koo+1;
+                            break;
+                        case 60:
+                            galeryModel.set(koo,{"color":"w", "piece":"images/K.png"});
+                            koo=koo+1;
+                            break;
+                        default:
+                            galeryModel.set(koo,{"color":"e", "piece":"images/empty.png"});
+                            koo=koo+1;
                     }
-                        else {
-                            while (aksa<5){
-                                galeryModel.set(koo,{"name":"empty_black", "portrait":"mruutu.png"});
-                                koo=koo+1;
-                                galeryModel.set(koo,{"name":"empty_white", "portrait":"vruutu.png"});
-                                koo=koo+1;
-                                aksa++
-                            }
-                            aksa=1;
-                        }
-                        yyy++
-                        }
                     }
-
                 }
+            }
 
-                ListModel {
+            Item {
+                id:moveMent
+                property int indeksi;
+                property int toHelpIndex; //for checking empty midsquares for bishop, rook and queen
+                property int wenpassant: -1;
+                property int benpassant: -1
+                property string itemTobemoved;
+                property string colorTobemoved;
+                property string itemMoved;
+                property string colorMoved;
+                property bool canBemoved: false; //True if the piece can be moved somewhere
+                property bool moveLegal: false; //True if the move to the destination is possible
+                property bool moveLegalHelp; //for checking empty midsquares for bishop, rook and queen
+                // Pawn is promoted to queen now
+//                function pawnPromotion() {
+// one possibility to have the pawnpromotion dialog
+//                }
+
+                // block isMovable:
+                function isMovable() {
+                    if (colorTobemoved == "b" && tilat.musta) {
+                        canBemoved = true;
+                    }
+                    else if (colorTobemoved == "w" && tilat.valko) {
+                        canBemoved = true;
+                    }
+                    else {
+                        canBemoved = false;
+                    }
+                }
+                function isLegalmove() {
+                    switch (itemMoved) {
+                    case "images/p.png":
+                        // Normal move
+                        if (((fromIndex-toIndex) == -8) && galeryModel.get(toIndex).color == "e") {
+                            moveLegal = true;
+                            if (toIndex > 55) {
+                                itemMoved = "images/q.png"
+                            }
+                        }
+                        // Move of two rows from the start position
+                        else if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).color == "e"
+                                 && galeryModel.get(toIndex-8).color == "e"
+                                 && (fromIndex < 16)) {
+                            moveLegal = true;
+                            benpassant = toIndex-8;
+                            galeryModel.set(benpassant,{"color":"bp"})
+                        }
+                        else if (((fromIndex-toIndex) == -7) || ((fromIndex-toIndex) == -9)) {
+                            if (galeryModel.get(toIndex).color == "w") {
+                                moveLegal = true;
+                                if (toIndex > 55) {
+                                    itemMoved = "images/q.png"
+                                }
+                            }
+                            else if (galeryModel.get(toIndex).color == "wp") {
+                                moveLegal = true;
+                                galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
+                                wenpassant = -1;
+                            }
+                            else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                            }
+                            //porsaanreikä rivinvaihdossa??
+                        }
+
+                        else {
+                            moveStarted=false;
+                            fromIndex=-1;
+                            toIndex=-1;
+                        }
+                        break;
+                    case "images/P.png":
+                        // Normal move
+                        if (((fromIndex-toIndex) == 8) && galeryModel.get(toIndex).color == "e") {
+                            moveLegal = true;
+                            if (toIndex < 8) {
+                                itemMoved = "images/Q.png"
+                            }
+                        }
+                        // Move of two rows from the start position
+                        else if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).color == "e"
+                                 && galeryModel.get(toIndex+8).color == "e"
+                                 && (fromIndex > 47)) {
+                            moveLegal = true;
+                            wenpassant = toIndex+8;
+                            galeryModel.set(wenpassant,{"color":"wp"})
+                        }
+                        else if (((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 9)) {
+                            if (galeryModel.get(toIndex).color == "b") {
+                                moveLegal = true;
+                                if (toIndex < 8) {
+                                    itemMoved = "images/Q.png"
+                                }
+                            }
+                            else if (galeryModel.get(toIndex).color == "bp") {
+                                moveLegal = true;
+                                galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
+                                benpassant = -1;
+                            }
+
+                            else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                            }
+                            //porsaanreikä rivinvaihdossa??
+                        }
+
+                        else {
+                            moveStarted=false;
+                            fromIndex=-1;
+                            toIndex=-1;
+                        }
+                        break;
+                    case "images/k.png":
+                        if ((((fromIndex-toIndex) == 9) || ((fromIndex-toIndex) == 8)
+                              || ((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 1)
+                              || ((fromIndex-toIndex) == -1) || ((fromIndex-toIndex) == -7)
+                              || ((fromIndex-toIndex) == -8) || ((fromIndex-toIndex) == -9))
+                             && galeryModel.get(toIndex).color !== "b") {
+                            moveLegal = true;
+                        }
+                        // Castling short
+                        else if ((toIndex == 57) && galeryModel.get(57).color === "e"
+                                  && galeryModel.get(58).color === "e") {
+                            moveLegal = true;
+                            galeryModel.set((58),{"color":"b", "piece":"images/r.png"});
+                            galeryModel.set((56),{"color":"e", "piece":"images/empty.png"});
+                            // Castling legality checks are missing
+                        }
+                        // Castling long
+                        else if ((toIndex == 61) && galeryModel.get(60).color === "e"
+                                 && galeryModel.get(61).color === "e" && galeryModel.get(62).color === "e") {
+                            moveLegal = true;
+                            galeryModel.set((60),{"color":"b", "piece":"images/r.png"});
+                            galeryModel.set((63),{"color":"e", "piece":"images/empty.png"});
+                            // Castling legality checks are missing
+                        }
+
+                        else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                        }
+                        break;
+                    case "images/K.png":
+                        if ((((fromIndex-toIndex) == 9) || ((fromIndex-toIndex) == 8)
+                              || ((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 1)
+                              || ((fromIndex-toIndex) == -1) || ((fromIndex-toIndex) == -7)
+                              || ((fromIndex-toIndex) == -8) || ((fromIndex-toIndex) == -9))
+                             && galeryModel.get(toIndex).color !== "w") {
+                            moveLegal = true;
+                        }
+                        // Castling kingside
+                        else if ((toIndex == 1) && galeryModel.get(1).color === "e"
+                                  && galeryModel.get(2).color === "e") {
+                            moveLegal = true;
+                            galeryModel.set((2),{"color":"b", "piece":"images/R.png"});
+                            galeryModel.set((0),{"color":"e", "piece":"images/empty.png"});
+                            // Castling legality checks are missing
+                        }
+                        // Castling queenside
+                        else if ((toIndex == 5) && galeryModel.get(4).color === "e"
+                                 && galeryModel.get(5).color === "e" && galeryModel.get(6).color === "e") {
+                            moveLegal = true;
+                            galeryModel.set((4),{"color":"b", "piece":"images/R.png"});
+                            galeryModel.set((7),{"color":"e", "piece":"images/empty.png"});
+                            // Castling legality checks are missing
+                        }
+
+                        else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                        }
+                        break;
+                    case "images/Q.png":  //Kesken
+                        if (galeryModel.get(toIndex).color !== "w") {
+                            moveLegal = true;
+                        }
+                        else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                        }
+                        break;
+                    case "images/q.png":  //Kesken
+                        if (galeryModel.get(toIndex).color !== "b") {
+                            moveLegal = true;
+                        }
+                        else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                        }
+                        break;
+                    case "images/B.png":
+                        if ((((fromIndex-toIndex)%9 == 0))
+                                &&   galeryModel.get(toIndex).color !== "w") {
+                               if (Math.abs(toIndex-fromIndex) == 9) {
+                                   moveLegal = true;
+                               }
+                               else if (toIndex > fromIndex +9) {
+                                   toHelpIndex = toIndex-9;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex -9;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+                               }
+                               else if (toIndex < fromIndex-9) {
+                                   toHelpIndex = toIndex+9;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex +9;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+
+                               }
+                           }
+                        else if ((((fromIndex-toIndex)%7 == 0))
+                             &&   galeryModel.get(toIndex).color !== "w") {
+                            if (Math.abs(toIndex-fromIndex) == 7) {
+                                moveLegal = true;
+                            }
+                            else if (toIndex > fromIndex +7) {
+                                toHelpIndex = toIndex-7;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex -7;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
+                            else if (toIndex < fromIndex-7) {
+                                toHelpIndex = toIndex+7;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex +7;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+
+                            }
+                        }
+                        else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                        }
+                        break;
+                    case "images/b.png": // Copy of white but two color checks changed from "w" to "b"
+                        if ((((fromIndex-toIndex)%9 == 0))
+                                &&   galeryModel.get(toIndex).color !== "b") {
+                               if (Math.abs(toIndex-fromIndex) == 9) {
+                                   moveLegal = true;
+                               }
+                               else if (toIndex > fromIndex +9) {
+                                   toHelpIndex = toIndex-9;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex -9;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+                               }
+                               else if (toIndex < fromIndex-9) {
+                                   toHelpIndex = toIndex+9;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex +9;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+
+                               }
+                           }
+                        else if ((((fromIndex-toIndex)%7 == 0))
+                             &&   galeryModel.get(toIndex).color !== "b") {
+                            if (Math.abs(toIndex-fromIndex) == 7) {
+                                moveLegal = true;
+                            }
+                            else if (toIndex > fromIndex +7) {
+                                toHelpIndex = toIndex-7;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex -7;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
+                            else if (toIndex < fromIndex-7) {
+                                toHelpIndex = toIndex+7;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex +7;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+
+                            }
+                        }
+                        else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                        }
+                        break;
+                    case "images/N.png":
+                        if ((((fromIndex-toIndex) == 10) || ((fromIndex-toIndex) == 17)
+                             || ((fromIndex-toIndex) == 15) || ((fromIndex-toIndex) == 6)
+                             || ((fromIndex-toIndex) == -10) || ((fromIndex-toIndex) == -17)
+                             || ((fromIndex-toIndex) == -15) || ((fromIndex-toIndex) == -6))
+                                && galeryModel.get(toIndex).color !== "w") {
+                            moveLegal = true;
+                        }
+                        else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                        }
+                        break;
+                    case "images/n.png":
+                        if ((((fromIndex-toIndex) == 10) || ((fromIndex-toIndex) == 17)
+                             || ((fromIndex-toIndex) == 15) || ((fromIndex-toIndex) == 6)
+                             || ((fromIndex-toIndex) == -10) || ((fromIndex-toIndex) == -17)
+                             || ((fromIndex-toIndex) == -15) || ((fromIndex-toIndex) == -6))
+                                && galeryModel.get(toIndex).color !== "b") {
+                            moveLegal = true;
+                        }
+                        else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                        }
+                        break;
+                    default:
+                        moveLegal = true;
+                    }
+                }
+// end block isMovable:
+                function movePiece() {
+                    if (!moveStarted) { //Need for global property??
+                        fromIndex=indeksi;
+                        toIndex=indeksi;
+                        isMovable();
+                        if (canBemoved){
+                            itemMoved=itemTobemoved;
+                            moveStarted=!moveStarted;
+                            colorMoved=colorTobemoved;
+                            canBemoved=false;
+                        }
+                    }
+                    else {
+                        toIndex=indeksi;
+                        isLegalmove();
+                        if (moveLegal){
+                            galeryModel.set(toIndex,{"color":colorMoved, "piece":itemMoved})
+                            galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
+                            moveStarted=!moveStarted;
+                            moveLegal=false;
+                            if (tilat.valko) {
+                                if (benpassant > 0 && galeryModel.get(benpassant).color == "bp") {
+                                    galeryModel.set(benpassant,{"color":"e", "piece":"images/empty.png"});
+                                    benpassant = -1
+                                }
+                                vuoro.vaihdaMustalle()
+                            }
+                            else {
+                                if (wenpassant > 0 && galeryModel.get(wenpassant).color == "wp") {
+                                    galeryModel.set(wenpassant,{"color":"e", "piece":"images/empty.png"});
+                                    wenpassant = -1
+                                }
+                                vuoro.vaihdaValkealle()
+                            }
+
+//                        fromIndex=-1;
+//                        toIndex=-1;
+                        }
+                    }
+                }
+            }
+
+            ListModel {
                     id: galeryModel
                     ListElement {
-                        name: "black"
-                        portrait: "vaihtoMusta.png"
-                    }
-                    ListElement {
-                        name: "white"
-                        portrait: "vaihtoValkoinen.png"
-                    }
-                    ListElement {
-                        name: "empty_black"
-                        portrait: "mruutu.png"
-                    }
-                    ListElement {
-                        name: "empty_white"
-                        portrait: "vruutu.png"
+                        color: "e"
+                        piece: "images/empty.png"
                     }
                 }
 
-            ///////////////////////////////////////////////////////////////////////////
-
             BackgroundItem {
+                id: upperBar
                 width: page.width
                 height: 185
-                enabled: tilat.juoksee && tilat.valko
+                enabled: false //tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
                     title: qsTr("Chess board")
@@ -348,45 +841,57 @@ Page {
                 }
             }
 
-
-///////
             Rectangle {
                 height: 540
                 width:parent.width
+                Image {
+                    id: backround
+                    source: "images/grid.png"
+                }
                 GridView {
                     id: grid
                     cellWidth: width / 8
                     cellHeight: width / 8
                     anchors.fill: parent
+                    layoutDirection: Qt.RightToLeft
+                    verticalLayoutDirection: GridView.BottomToTop
                     model: galeryModel
+                    delegate: Image {
+                        asynchronous: true
+                        source:  piece
+                        sourceSize.width: grid.cellWidth
+                        sourceSize.height: grid.cellHeight
+//                        ShaderEffect {}
+/*                        Rectangle {
+                            color: "blue"
+                            anchors.fill: parent
+                            enabled: true
+                            opacity: 0.5
+                        } */
+                        MouseArea {
+                                anchors.fill: parent
+//                                opacity: 0.5
+                                onClicked: {moveMent.indeksi = index;
+                                    moveMent.itemTobemoved = piece;
+                                    moveMent.colorTobemoved = color;
+                                    moveMent.movePiece();
+                                    console.log("Index", index, piece, color);
+ //                                   console.log("FEN")
+                                    Myfunks.gridToFEN()
 
-                delegate: Image {
-                    asynchronous: true
-                    source:  portrait
-                    sourceSize.width: grid.cellWidth
-                    sourceSize.height: grid.cellHeight
-        /*        delegate: Repeater {
-                    model: 3
-                    Rectangle { width: 20; height: 20; radius: 10; color: "green" }
-        */
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: window.pageStack.push(Qt.resolvedUrl("Tapahtuma.qml"),
-                                                         {currentIndex: index, model: grid.model} )
+                                }
+                            }
                     }
-                }
 //                ScrollDecorator {}
-            } // end GridView
-
-} //end Rectangle
-///////
+                } // end GridView
+            } //end Rectangle
 
 
             BackgroundItem {
+                id: lowerBar
                 width: page.width
                 height: 185
-                enabled: tilat.juoksee && tilat.musta
+                enabled: false //tilat.juoksee && tilat.musta
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {
                     id: progressBarm

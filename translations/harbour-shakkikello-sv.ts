@@ -64,11 +64,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board</source>
+        <source>Board view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board2</source>
+        <source>Board view2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -82,12 +82,8 @@
 <context>
     <name>Pelilauta</name>
     <message>
-        <source>Insert</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Black´s turn</source>
-        <translation type="unfinished">Svarts tur</translation>
+        <translation type="obsolete">Svarts tur</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -116,10 +112,6 @@
 </context>
 <context>
     <name>Pelilauta2</name>
-    <message>
-        <source>min:s</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Black´s turn</source>
         <translation type="obsolete">Svarts tur</translation>
@@ -157,11 +149,11 @@
         <translation type="obsolete">Svarts klocka</translation>
     </message>
     <message>
-        <source>Insert</source>
+        <source>Chess board</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Chess board</source>
+        <source>min:s</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

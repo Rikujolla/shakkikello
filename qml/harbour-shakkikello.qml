@@ -37,5 +37,8 @@ ApplicationWindow
     property int valkomax : 300
     property int mustamax : 300
     property int increment : 0
+    property bool moveStarted : false
+    property int fromIndex : -1
+    property int toIndex : -1
 
 }

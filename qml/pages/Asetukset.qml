@@ -40,11 +40,11 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("Tietoja.qml"))
             }
             MenuItem {
-                text: qsTr("Board")
+                text: qsTr("Board view")
                 onClicked: pageStack.push(Qt.resolvedUrl("Pelilauta.qml"))
             }
             MenuItem {
-                text: qsTr("Board2")
+                text: qsTr("Board view2")
                 onClicked: pageStack.push(Qt.resolvedUrl("Pelilauta2.qml"))
             }
             MenuItem {
