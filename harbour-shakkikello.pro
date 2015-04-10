@@ -31,7 +31,6 @@ OTHER_FILES += qml/harbour-shakkikello.qml \
     LICENSE \
     qml/pages/Tietoja.qml \
     qml/pages/Pelilauta.qml \
-    qml/pages/Pelilauta2.qml \
     qml/pages/funktiot.js
 
 # to disable building translations every time, comment out the

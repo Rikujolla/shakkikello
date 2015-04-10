@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>Back to game</source>
-        <translation>Tilbage til spillet</translation>
+        <translation type="vanished">Tilbage til spillet</translation>
     </message>
     <message>
         <source>Settings page</source>
@@ -56,7 +56,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board view2</source>
+        <source>Clock view</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -114,7 +114,7 @@
     </message>
     <message>
         <source>min:s</source>
-        <translation type="unfinished">min:s</translation>
+        <translation type="obsolete">min:s</translation>
     </message>
     <message>
         <source>Black´s turn</source>
@@ -126,19 +126,19 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Pause</translation>
+        <translation type="obsolete">Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Fortsætte</translation>
+        <translation type="obsolete">Fortsætte</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Reset</translation>
+        <translation type="obsolete">Reset</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Indstillinger</translation>
+        <translation type="obsolete">Indstillinger</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -155,10 +155,6 @@
     <message>
         <source>Black´s clock</source>
         <translation type="obsolete">Sorts ur</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

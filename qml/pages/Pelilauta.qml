@@ -470,19 +470,19 @@ Page {
                             moveLegal = true;
                         }
                         // Castling short
-                        else if ((toIndex == 57) && galeryModel.get(57).color === "e"
-                                  && galeryModel.get(58).color === "e") {
+                        else if ((toIndex == 6) && galeryModel.get(6).color === "e"
+                                  && galeryModel.get(5).color === "e") {
                             moveLegal = true;
-                            galeryModel.set((58),{"color":"b", "piece":"images/r.png"});
-                            galeryModel.set((56),{"color":"e", "piece":"images/empty.png"});
+                            galeryModel.set((5),{"color":"b", "piece":"images/r.png"});
+                            galeryModel.set((7),{"color":"e", "piece":"images/empty.png"});
                             // Castling legality checks are missing
                         }
                         // Castling long
-                        else if ((toIndex == 61) && galeryModel.get(60).color === "e"
-                                 && galeryModel.get(61).color === "e" && galeryModel.get(62).color === "e") {
+                        else if ((toIndex == 2) && galeryModel.get(2).color === "e"
+                                 && galeryModel.get(3).color === "e" && galeryModel.get(1).color === "e") {
                             moveLegal = true;
-                            galeryModel.set((60),{"color":"b", "piece":"images/r.png"});
-                            galeryModel.set((63),{"color":"e", "piece":"images/empty.png"});
+                            galeryModel.set((3),{"color":"b", "piece":"images/r.png"});
+                            galeryModel.set((0),{"color":"e", "piece":"images/empty.png"});
                             // Castling legality checks are missing
                         }
 
@@ -501,19 +501,19 @@ Page {
                             moveLegal = true;
                         }
                         // Castling kingside
-                        else if ((toIndex == 1) && galeryModel.get(1).color === "e"
-                                  && galeryModel.get(2).color === "e") {
+                        else if ((toIndex == 62) && galeryModel.get(62).color === "e"
+                                  && galeryModel.get(61).color === "e") {
                             moveLegal = true;
-                            galeryModel.set((2),{"color":"b", "piece":"images/R.png"});
-                            galeryModel.set((0),{"color":"e", "piece":"images/empty.png"});
+                            galeryModel.set((61),{"color":"b", "piece":"images/R.png"});
+                            galeryModel.set((63),{"color":"e", "piece":"images/empty.png"});
                             // Castling legality checks are missing
                         }
                         // Castling queenside
-                        else if ((toIndex == 5) && galeryModel.get(4).color === "e"
-                                 && galeryModel.get(5).color === "e" && galeryModel.get(6).color === "e") {
+                        else if ((toIndex == 58) && galeryModel.get(58).color === "e"
+                                 && galeryModel.get(59).color === "e" && galeryModel.get(57).color === "e") {
                             moveLegal = true;
-                            galeryModel.set((4),{"color":"b", "piece":"images/R.png"});
-                            galeryModel.set((7),{"color":"e", "piece":"images/empty.png"});
+                            galeryModel.set((59),{"color":"b", "piece":"images/R.png"});
+                            galeryModel.set((56),{"color":"e", "piece":"images/empty.png"});
                             // Castling legality checks are missing
                         }
 
@@ -523,9 +523,180 @@ Page {
                                 toIndex=-1;
                         }
                         break;
-                    case "images/Q.png":  //Kesken
-                        if (galeryModel.get(toIndex).color !== "w") {
-                            moveLegal = true;
+                    case "images/Q.png":
+                        // Same column
+                        if ((((fromIndex-toIndex)%8 == 0))
+                                &&   galeryModel.get(toIndex).color !== "w") {
+                               if (Math.abs(toIndex-fromIndex) == 8) {
+                                   moveLegal = true;
+                               }
+                               else if (toIndex > fromIndex +8) {
+                                   toHelpIndex = toIndex-8;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex -8;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+                               }
+                               else if (toIndex < fromIndex-8) {
+                                   toHelpIndex = toIndex+8;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex +8;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+
+                               }
+                           }
+                        // Same row
+                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "w") {
+                            if (Math.abs(toIndex-fromIndex) == 1) {
+                                moveLegal = true;
+                            }
+                            else if (toIndex > fromIndex +1) {
+                                toHelpIndex = toIndex-1;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex -1;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
+                            else if (toIndex < fromIndex -1) {
+                                toHelpIndex = toIndex+1;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex +1;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
+                        }
+                        // Same diagonal 9
+                        else if ((((fromIndex-toIndex)%9 == 0))
+                                &&   galeryModel.get(toIndex).color !== "w") {
+                               if (Math.abs(toIndex-fromIndex) == 9) {
+                                   moveLegal = true;
+                               }
+                               else if (toIndex > fromIndex +9) {
+                                   toHelpIndex = toIndex-9;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex -9;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+                               }
+                               else if (toIndex < fromIndex-9) {
+                                   toHelpIndex = toIndex+9;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex +9;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+
+                               }
+                           }
+                        // Same diagonal 7
+                        else if ((((fromIndex-toIndex)%7 == 0))
+                             &&   galeryModel.get(toIndex).color !== "w") {
+                            if (Math.abs(toIndex-fromIndex) == 7) {
+                                moveLegal = true;
+                            }
+                            else if (toIndex > fromIndex +7) {
+                                toHelpIndex = toIndex-7;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex -7;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
+                            else if (toIndex < fromIndex-7) {
+                                toHelpIndex = toIndex+7;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex +7;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+
+                            }
                         }
                         else {
                                 moveStarted=false;
@@ -533,9 +704,180 @@ Page {
                                 toIndex=-1;
                         }
                         break;
-                    case "images/q.png":  //Kesken
-                        if (galeryModel.get(toIndex).color !== "b") {
-                            moveLegal = true;
+                    case "images/q.png":  // Same as Q.png but four "w"s
+                        // Same column
+                        if ((((fromIndex-toIndex)%8 == 0))
+                                &&   galeryModel.get(toIndex).color !== "b") {
+                               if (Math.abs(toIndex-fromIndex) == 8) {
+                                   moveLegal = true;
+                               }
+                               else if (toIndex > fromIndex +8) {
+                                   toHelpIndex = toIndex-8;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex -8;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+                               }
+                               else if (toIndex < fromIndex-8) {
+                                   toHelpIndex = toIndex+8;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex +8;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+
+                               }
+                           }
+                        // Same row
+                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "b") {
+                            if (Math.abs(toIndex-fromIndex) == 1) {
+                                moveLegal = true;
+                            }
+                            else if (toIndex > fromIndex +1) {
+                                toHelpIndex = toIndex-1;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex -1;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
+                            else if (toIndex < fromIndex -1) {
+                                toHelpIndex = toIndex+1;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex +1;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
+                        }
+                        // Same diagonal 9
+                        else if ((((fromIndex-toIndex)%9 == 0))
+                                &&   galeryModel.get(toIndex).color !== "b") {
+                               if (Math.abs(toIndex-fromIndex) == 9) {
+                                   moveLegal = true;
+                               }
+                               else if (toIndex > fromIndex +9) {
+                                   toHelpIndex = toIndex-9;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex -9;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+                               }
+                               else if (toIndex < fromIndex-9) {
+                                   toHelpIndex = toIndex+9;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex +9;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+
+                               }
+                           }
+                        // Same diagonal 7
+                        else if ((((fromIndex-toIndex)%7 == 0))
+                             &&   galeryModel.get(toIndex).color !== "b") {
+                            if (Math.abs(toIndex-fromIndex) == 7) {
+                                moveLegal = true;
+                            }
+                            else if (toIndex > fromIndex +7) {
+                                toHelpIndex = toIndex-7;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex -7;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
+                            else if (toIndex < fromIndex-7) {
+                                toHelpIndex = toIndex+7;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex +7;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+
+                            }
                         }
                         else {
                                 moveStarted=false;
@@ -750,6 +1092,190 @@ Page {
                              || ((fromIndex-toIndex) == -15) || ((fromIndex-toIndex) == -6))
                                 && galeryModel.get(toIndex).color !== "b") {
                             moveLegal = true;
+                        }
+                        else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                        }
+                        break;
+                    case "images/R.png":
+                        if ((((fromIndex-toIndex)%8 == 0))
+                                &&   galeryModel.get(toIndex).color !== "w") {
+                               if (Math.abs(toIndex-fromIndex) == 8) {
+                                   moveLegal = true;
+                               }
+                               else if (toIndex > fromIndex +8) {
+                                   toHelpIndex = toIndex-8;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex -8;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+                               }
+                               else if (toIndex < fromIndex-8) {
+                                   toHelpIndex = toIndex+8;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex +8;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+
+                               }
+                           }
+                        // Same row
+                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "w") {
+                            if (Math.abs(toIndex-fromIndex) == 1) {
+                                moveLegal = true;
+                            }
+                            else if (toIndex > fromIndex +1) {
+                                toHelpIndex = toIndex-1;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex -1;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
+                            else if (toIndex < fromIndex -1) {
+                                toHelpIndex = toIndex+1;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex +1;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
+                        }
+                        else {
+                                moveStarted=false;
+                                fromIndex=-1;
+                                toIndex=-1;
+                        }
+                        break;
+                    case "images/r.png": // Same as R.png but two "w"s changed to "b"s
+                        if ((((fromIndex-toIndex)%8 == 0))
+                                &&   galeryModel.get(toIndex).color !== "b") {
+                               if (Math.abs(toIndex-fromIndex) == 8) {
+                                   moveLegal = true;
+                               }
+                               else if (toIndex > fromIndex +8) {
+                                   toHelpIndex = toIndex-8;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex -8;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+                               }
+                               else if (toIndex < fromIndex-8) {
+                                   toHelpIndex = toIndex+8;
+                                   moveLegalHelp = true;
+                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                           moveLegal = true;
+                                           toHelpIndex = toHelpIndex +8;
+                                       }
+                                       else {
+                                           moveLegal = false;
+                                           moveLegalHelp = false;
+                                           moveStarted=false;
+                                           fromIndex=-1;
+                                           toIndex=-1;
+                                       }
+                                   }
+
+                               }
+                           }
+                        // Same row
+                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "b") {
+                            if (Math.abs(toIndex-fromIndex) == 1) {
+                                moveLegal = true;
+                            }
+                            else if (toIndex > fromIndex +1) {
+                                toHelpIndex = toIndex-1;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex -1;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
+                            else if (toIndex < fromIndex -1) {
+                                toHelpIndex = toIndex+1;
+                                moveLegalHelp = true;
+                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
+                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
+                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                        moveLegal = true;
+                                        toHelpIndex = toHelpIndex +1;
+                                    }
+                                    else {
+                                        moveLegal = false;
+                                        moveLegalHelp = false;
+                                        moveStarted=false;
+                                        fromIndex=-1;
+                                        toIndex=-1;
+                                    }
+                                }
+                            }
                         }
                         else {
                                 moveStarted=false;

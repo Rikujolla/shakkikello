@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>Back to game</source>
-        <translation>Terug naar het spel</translation>
+        <translation type="vanished">Terug naar het spel</translation>
     </message>
     <message>
         <source>Settings page</source>
@@ -56,7 +56,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board view2</source>
+        <source>Clock view</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -114,7 +114,7 @@
     </message>
     <message>
         <source>min:s</source>
-        <translation type="unfinished">min:s</translation>
+        <translation type="obsolete">min:s</translation>
     </message>
     <message>
         <source>Black´s turn</source>
@@ -126,19 +126,19 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Pauzeren</translation>
+        <translation type="obsolete">Pauzeren</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Doorgaan</translation>
+        <translation type="obsolete">Doorgaan</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Herstellen</translation>
+        <translation type="obsolete">Herstellen</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Instellingen</translation>
+        <translation type="obsolete">Instellingen</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -155,10 +155,6 @@
     <message>
         <source>Black´s clock</source>
         <translation type="obsolete">De klok van Zwart</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

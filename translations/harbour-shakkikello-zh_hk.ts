@@ -29,7 +29,7 @@
     </message>
     <message>
         <source>Back to game</source>
-        <translation>回到遊戲</translation>
+        <translation type="vanished">回到遊戲</translation>
     </message>
     <message>
         <source>Settings page</source>
@@ -76,7 +76,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board view2</source>
+        <source>Clock view</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -122,7 +122,7 @@
     <name>Pelilauta2</name>
     <message>
         <source>min:s</source>
-        <translation type="unfinished">分:秒</translation>
+        <translation type="obsolete">分:秒</translation>
     </message>
     <message>
         <source>Black´s turn</source>
@@ -134,19 +134,19 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">暫停</translation>
+        <translation type="obsolete">暫停</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">繼續</translation>
+        <translation type="obsolete">繼續</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">重置</translation>
+        <translation type="obsolete">重置</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">設置</translation>
+        <translation type="obsolete">設置</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -159,10 +159,6 @@
     <message>
         <source>Black´s clock</source>
         <translation type="obsolete">黑鍾</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

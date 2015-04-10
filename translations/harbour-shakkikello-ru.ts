@@ -29,7 +29,7 @@
     </message>
     <message>
         <source>Back to game</source>
-        <translation>Вернуться к игре</translation>
+        <translation type="vanished">Вернуться к игре</translation>
     </message>
     <message>
         <source>Settings page</source>
@@ -76,7 +76,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board view2</source>
+        <source>Clock view</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -122,7 +122,7 @@
     <name>Pelilauta2</name>
     <message>
         <source>min:s</source>
-        <translation type="unfinished">мин:c</translation>
+        <translation type="obsolete">мин:c</translation>
     </message>
     <message>
         <source>Black´s turn</source>
@@ -134,19 +134,19 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">пауза</translation>
+        <translation type="obsolete">пауза</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">продолжать</translation>
+        <translation type="obsolete">продолжать</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Cброс</translation>
+        <translation type="obsolete">Cброс</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">настройки</translation>
+        <translation type="obsolete">настройки</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -159,10 +159,6 @@
     <message>
         <source>Black´s clock</source>
         <translation type="obsolete">Tаймер чёрный</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

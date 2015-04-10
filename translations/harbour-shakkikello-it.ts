@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>Back to game</source>
-        <translation>Torna al gioco</translation>
+        <translation type="vanished">Torna al gioco</translation>
     </message>
     <message>
         <source>Settings page</source>
@@ -68,7 +68,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board view2</source>
+        <source>Clock view</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -122,19 +122,19 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Pausa</translation>
+        <translation type="obsolete">Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Continuare</translation>
+        <translation type="obsolete">Continuare</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Reset</translation>
+        <translation type="obsolete">Reset</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Impostazioni</translation>
+        <translation type="obsolete">Impostazioni</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -147,14 +147,6 @@
     <message>
         <source>Black´s clock</source>
         <translation type="obsolete">Orologio Nero</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
