@@ -20,10 +20,6 @@
         <translation>+ 1 s</translation>
     </message>
     <message>
-        <source>Back to game</source>
-        <translation type="vanished">zurück zum Spiel</translation>
-    </message>
-    <message>
         <source>Settings page</source>
         <translation>Einstellungs Seite</translation>
     </message>
@@ -53,11 +49,11 @@
     </message>
     <message>
         <source>Board view</source>
-        <translation type="unfinished"></translation>
+        <translation>Brettansicht </translation>
     </message>
     <message>
         <source>Clock view</source>
-        <translation type="unfinished"></translation>
+        <translation>Uhransicht</translation>
     </message>
 </context>
 <context>
@@ -70,91 +66,28 @@
 <context>
     <name>Pelilauta</name>
     <message>
-        <source>Back to settings</source>
-        <translation type="obsolete">Zurück zu den Einstellungen</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="obsolete">Über</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation type="unfinished">min:s</translation>
-    </message>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Schwarz am Zug</translation>
-    </message>
-    <message>
         <source>Reset</source>
-        <translation type="unfinished">Neu stellen</translation>
+        <translation>Zurücksetzen </translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Pause</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Weiter</translation>
+        <translation>Weiter</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Einstellungen</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta2</name>
-    <message>
-        <source>Back to settings</source>
-        <translation type="obsolete">Zurück zu den Einstellungen</translation>
+        <translation>Schachbrett</translation>
     </message>
     <message>
         <source>min:s</source>
-        <translation type="obsolete">min:s</translation>
-    </message>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Schwarz am Zug</translation>
-    </message>
-    <message>
-        <source>White´s turn</source>
-        <translation type="obsolete">Weiß am Zug</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="obsolete">Pause</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation type="obsolete">Weiter</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="obsolete">Neu stellen</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="obsolete">Einstellungen</translation>
-    </message>
-    <message>
-        <source>Chess clock</source>
-        <translation type="obsolete">Schachuhr</translation>
-    </message>
-    <message>
-        <source>White´s clock</source>
-        <translation type="obsolete">Uhr von Weiß</translation>
-    </message>
-    <message>
-        <source>Controls</source>
-        <translation type="obsolete">Kontrollen</translation>
-    </message>
-    <message>
-        <source>Black´s clock</source>
-        <translation type="obsolete">Uhr von Schwarz</translation>
+        <translation>min:s</translation>
     </message>
 </context>
 <context>
