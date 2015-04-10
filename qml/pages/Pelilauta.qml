@@ -35,12 +35,6 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
-//            quickSelect: true
-/*            MenuItem { //Insert
-                text: qsTr("Insert")
-                onClicked: kripti.lisaa()
-
-            }*/
             MenuItem { //Start/Pause
                 text: aloitapause
                 enabled: !tilat.peliloppui
@@ -209,7 +203,7 @@ Page {
             Item {
                 id : asetussivulle
                 function siirrytKo() {
-// Nollaus
+                    // Nollaus
                     if (tilat.pelialkoi == true) {
                         maharollisuuret = qsTr("Settings");
                         tilat.asetaTilat();
@@ -228,10 +222,8 @@ Page {
                         valkokello.updateValko();
                         muttakello.updateMutta();
                         tilat.peliloppui = false
-// Siirtyminen asetussivulle
+                        // Siirtyminen asetussivulle
                     } else {
-//                        valkomax = 300;
-//                        mustamax = 300;
                         valkokello.rogres_sekuntitv = valkomax;
                         muttakello.rogres_sekuntitm = mustamax;
                         valkokello.sekuntitv0 = 0;
@@ -504,7 +496,7 @@ Page {
                         else if ((toIndex == 62) && galeryModel.get(62).color === "e"
                                   && galeryModel.get(61).color === "e") {
                             moveLegal = true;
-                            galeryModel.set((61),{"color":"b", "piece":"images/R.png"});
+                            galeryModel.set((61),{"color":"w", "piece":"images/R.png"});
                             galeryModel.set((63),{"color":"e", "piece":"images/empty.png"});
                             // Castling legality checks are missing
                         }
@@ -512,7 +504,7 @@ Page {
                         else if ((toIndex == 58) && galeryModel.get(58).color === "e"
                                  && galeryModel.get(59).color === "e" && galeryModel.get(57).color === "e") {
                             moveLegal = true;
-                            galeryModel.set((59),{"color":"b", "piece":"images/R.png"});
+                            galeryModel.set((59),{"color":"w", "piece":"images/R.png"});
                             galeryModel.set((56),{"color":"e", "piece":"images/empty.png"});
                             // Castling legality checks are missing
                         }
@@ -1323,8 +1315,6 @@ Page {
                                 vuoro.vaihdaValkealle()
                             }
 
-//                        fromIndex=-1;
-//                        toIndex=-1;
                         }
                     }
                 }
@@ -1396,19 +1386,16 @@ Page {
                         } */
                         MouseArea {
                                 anchors.fill: parent
-//                                opacity: 0.5
                                 onClicked: {moveMent.indeksi = index;
                                     moveMent.itemTobemoved = piece;
                                     moveMent.colorTobemoved = color;
                                     moveMent.movePiece();
-                                    console.log("Index", index, piece, color);
- //                                   console.log("FEN")
-                                    Myfunks.gridToFEN()
+//                                    console.log("Index", index, piece, color);
+//                                    Myfunks.gridToFEN()
 
                                 }
                             }
                     }
-//                ScrollDecorator {}
                 } // end GridView
             } //end Rectangle
 
