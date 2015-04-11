@@ -20,10 +20,6 @@
         <translation>+ 1 s</translation>
     </message>
     <message>
-        <source>Back to game</source>
-        <translation type="vanished">Tilbage til spillet</translation>
-    </message>
-    <message>
         <source>Settings page</source>
         <translation>Indstillinger side</translation>
     </message>
@@ -53,11 +49,11 @@
     </message>
     <message>
         <source>Board view</source>
-        <translation type="unfinished"></translation>
+        <translation>Bræt visning</translation>
     </message>
     <message>
         <source>Clock view</source>
-        <translation type="unfinished"></translation>
+        <translation>Ur visning</translation>
     </message>
 </context>
 <context>
@@ -70,91 +66,28 @@
 <context>
     <name>Pelilauta</name>
     <message>
-        <source>Back to settings</source>
-        <translation type="obsolete">Tilbage til indstillinger</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="obsolete">Om</translation>
-    </message>
-    <message>
         <source>min:s</source>
-        <translation type="unfinished">min:s</translation>
-    </message>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Sorts tur</translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Reset</translation>
+        <translation>Reset</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Pause</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Fortsætte</translation>
+        <translation>Fortsætte</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Indstillinger</translation>
+        <translation>Indstillinger</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta2</name>
-    <message>
-        <source>Back to settings</source>
-        <translation type="obsolete">Tilbage til indstillinger</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation type="obsolete">min:s</translation>
-    </message>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Sorts tur</translation>
-    </message>
-    <message>
-        <source>White´s turn</source>
-        <translation type="obsolete">Hvids turn</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="obsolete">Pause</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation type="obsolete">Fortsætte</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="obsolete">Reset</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="obsolete">Indstillinger</translation>
-    </message>
-    <message>
-        <source>Chess clock</source>
-        <translation type="obsolete">Chess ur</translation>
-    </message>
-    <message>
-        <source>White´s clock</source>
-        <translation type="obsolete">Hvids ur</translation>
-    </message>
-    <message>
-        <source>Controls</source>
-        <translation type="obsolete">Controls</translation>
-    </message>
-    <message>
-        <source>Black´s clock</source>
-        <translation type="obsolete">Sorts ur</translation>
+        <translation>Skakbræt</translation>
     </message>
 </context>
 <context>

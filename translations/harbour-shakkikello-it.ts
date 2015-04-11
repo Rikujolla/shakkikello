@@ -5,71 +5,55 @@
     <name>Asetukset</name>
     <message>
         <source>- 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 min</translation>
     </message>
     <message>
         <source>+ 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>+ 1 min</translation>
     </message>
     <message>
         <source>- 1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 s</translation>
     </message>
     <message>
         <source>+ 1 s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Back to game</source>
-        <translation type="vanished">Torna al gioco</translation>
+        <translation>+ 1 s</translation>
     </message>
     <message>
         <source>Settings page</source>
         <translation>Pagina delle impostazioni</translation>
     </message>
     <message>
-        <source>White </source>
-        <translation type="vanished">Bianco </translation>
-    </message>
-    <message>
-        <source>Black </source>
-        <translation type="vanished">Nero </translation>
-    </message>
-    <message>
-        <source>Increment/move </source>
-        <translation type="vanished">Incremento/mossa </translation>
-    </message>
-    <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Crediti</translation>
     </message>
     <message>
         <source>White</source>
-        <translation type="unfinished"></translation>
+        <translation>Bianco</translation>
     </message>
     <message>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <source>Black</source>
-        <translation type="unfinished"></translation>
+        <translation>Nero</translation>
     </message>
     <message>
         <source>Increment/move</source>
-        <translation type="unfinished"></translation>
+        <translation>Incremento/mossa</translation>
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation>s</translation>
     </message>
     <message>
         <source>Board view</source>
-        <translation type="unfinished"></translation>
+        <translation>Scacchiera</translation>
     </message>
     <message>
         <source>Clock view</source>
-        <translation type="unfinished"></translation>
+        <translation>Orologio Scacchi</translation>
     </message>
 </context>
 <context>
@@ -82,78 +66,35 @@
 <context>
     <name>Pelilauta</name>
     <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Turno Nero</translation>
-    </message>
-    <message>
         <source>Reset</source>
-        <translation type="unfinished">Reset</translation>
+        <translation>Reset</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Pausa</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Continuare</translation>
+        <translation>Continuare</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Impostazioni</translation>
+        <translation>Impostazioni</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished"></translation>
+        <translation>Scacchiera</translation>
     </message>
     <message>
         <source>min:s</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta2</name>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Turno Nero</translation>
-    </message>
-    <message>
-        <source>White´s turn</source>
-        <translation type="obsolete">Turno Bianco</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="obsolete">Pausa</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation type="obsolete">Continuare</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="obsolete">Reset</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="obsolete">Impostazioni</translation>
-    </message>
-    <message>
-        <source>Chess clock</source>
-        <translation type="obsolete">Orologio Scacchi</translation>
-    </message>
-    <message>
-        <source>White´s clock</source>
-        <translation type="obsolete">Orologio Bianco</translation>
-    </message>
-    <message>
-        <source>Black´s clock</source>
-        <translation type="obsolete">Orologio Nero</translation>
+        <translation>min:s</translation>
     </message>
 </context>
 <context>
     <name>Pelisivu</name>
     <message>
         <source>min:s</source>
-        <translation type="unfinished"></translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Black´s turn</source>
@@ -184,10 +125,6 @@
         <translation>Orologio Bianco</translation>
     </message>
     <message>
-        <source>              Controls</source>
-        <translation type="vanished">              Controlli</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Orologio Nero</translation>
     </message>
@@ -197,48 +134,38 @@
     </message>
     <message>
         <source>Controls</source>
-        <translation type="unfinished"></translation>
+        <translation>Controlli</translation>
     </message>
 </context>
 <context>
     <name>Tietoja</name>
     <message>
         <source>Back to settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle impostazioni</translation>
     </message>
     <message>
         <source>About page</source>
-        <translation type="unfinished"></translation>
+        <translation>Crediti</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>White </source>
-        <translation type="obsolete">Bianco </translation>
-    </message>
-    <message>
-        <source>Black </source>
-        <translation type="obsolete">Nero </translation>
-    </message>
-    <message>
-        <source>Increment/move </source>
-        <translation type="obsolete">Incremento/mossa </translation>
+        <translation>Traduttori</translation>
     </message>
     <message>
         <source>Licence</source>
-        <translation type="unfinished"></translation>
+        <translation>Licenza</translation>
     </message>
     <message>
         <source>German (Nit)
 Dutch (Heimen Stoffels)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tedesco (Nit)
+Olandese (Heimen Stoffels)</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen
 Licenced under BSD.</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (c) 2015, Riku Lahtinen
+Distribuito sotto licenza BSD.</translation>
     </message>
 </context>
 <context>

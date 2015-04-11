@@ -119,49 +119,6 @@
     </message>
 </context>
 <context>
-    <name>Pelilauta2</name>
-    <message>
-        <source>min:s</source>
-        <translation type="obsolete">мин:c</translation>
-    </message>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">ход чёрный</translation>
-    </message>
-    <message>
-        <source>White´s turn</source>
-        <translation type="obsolete">Xод белый</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="obsolete">пауза</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation type="obsolete">продолжать</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="obsolete">Cброс</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="obsolete">настройки</translation>
-    </message>
-    <message>
-        <source>Chess clock</source>
-        <translation type="obsolete">Шахматные часы</translation>
-    </message>
-    <message>
-        <source>White´s clock</source>
-        <translation type="obsolete">Tаймер белый</translation>
-    </message>
-    <message>
-        <source>Black´s clock</source>
-        <translation type="obsolete">Tаймер чёрный</translation>
-    </message>
-</context>
-<context>
     <name>Pelisivu</name>
     <message>
         <source>min:s</source>

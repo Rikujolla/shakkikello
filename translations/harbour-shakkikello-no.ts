@@ -5,39 +5,23 @@
     <name>Asetukset</name>
     <message>
         <source>- 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 min</translation>
     </message>
     <message>
         <source>+ 1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>+ 1 min</translation>
     </message>
     <message>
         <source>- 1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>- 1 s</translation>
     </message>
     <message>
         <source>+ 1 s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Back to game</source>
-        <translation type="vanished">Tilbake til spillet</translation>
+        <translation>+ 1 s</translation>
     </message>
     <message>
         <source>Settings page</source>
         <translation>Innstillingsside</translation>
-    </message>
-    <message>
-        <source>White </source>
-        <translation type="vanished">Hvit </translation>
-    </message>
-    <message>
-        <source>Black </source>
-        <translation type="vanished">Svart </translation>
-    </message>
-    <message>
-        <source>Increment/move </source>
-        <translation type="vanished">Tilvekst/flytte </translation>
     </message>
     <message>
         <source>About</source>
@@ -45,31 +29,31 @@
     </message>
     <message>
         <source>White</source>
-        <translation type="unfinished"></translation>
+        <translation>Hvit</translation>
     </message>
     <message>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <source>Black</source>
-        <translation type="unfinished"></translation>
+        <translation>Svart</translation>
     </message>
     <message>
         <source>Increment/move</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilvekst/flytte</translation>
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation>s</translation>
     </message>
     <message>
         <source>Board view</source>
-        <translation type="unfinished"></translation>
+        <translation>Sjakkbrett</translation>
     </message>
     <message>
         <source>Clock view</source>
-        <translation type="unfinished"></translation>
+        <translation>Sjakklokke</translation>
     </message>
 </context>
 <context>
@@ -82,78 +66,35 @@
 <context>
     <name>Pelilauta</name>
     <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Svartes tur</translation>
-    </message>
-    <message>
         <source>Reset</source>
-        <translation type="unfinished">Reset</translation>
+        <translation>Reset</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Pause</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Fortsette</translation>
+        <translation>Fortsette</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Innstillinger</translation>
+        <translation>Innstillinger</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished"></translation>
+        <translation>Sjakkbrett</translation>
     </message>
     <message>
         <source>min:s</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta2</name>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Svartes tur</translation>
-    </message>
-    <message>
-        <source>White´s turn</source>
-        <translation type="obsolete">Hvits tur</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="obsolete">Pause</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation type="obsolete">Fortsette</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="obsolete">Reset</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="obsolete">Innstillinger</translation>
-    </message>
-    <message>
-        <source>Chess clock</source>
-        <translation type="obsolete">Sjakklokke</translation>
-    </message>
-    <message>
-        <source>White´s clock</source>
-        <translation type="obsolete">Hvits klokke</translation>
-    </message>
-    <message>
-        <source>Black´s clock</source>
-        <translation type="obsolete">Svartes klokke</translation>
+        <translation>min:s</translation>
     </message>
 </context>
 <context>
     <name>Pelisivu</name>
     <message>
         <source>min:s</source>
-        <translation type="unfinished"></translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Black´s turn</source>

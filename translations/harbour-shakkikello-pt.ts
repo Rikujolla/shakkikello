@@ -111,45 +111,6 @@
     </message>
 </context>
 <context>
-    <name>Pelilauta2</name>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Turno preto</translation>
-    </message>
-    <message>
-        <source>White´s turn</source>
-        <translation type="obsolete">Turno branco</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="obsolete">Pausa</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation type="obsolete">Continuar</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="obsolete">Restabelecer</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="obsolete">Configurações</translation>
-    </message>
-    <message>
-        <source>Chess clock</source>
-        <translation type="obsolete">Relógio de xadrez</translation>
-    </message>
-    <message>
-        <source>White´s clock</source>
-        <translation type="obsolete">Timer branco</translation>
-    </message>
-    <message>
-        <source>Black´s clock</source>
-        <translation type="obsolete">Timer preto</translation>
-    </message>
-</context>
-<context>
     <name>Pelisivu</name>
     <message>
         <source>min:s</source>

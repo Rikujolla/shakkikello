@@ -20,10 +20,6 @@
         <translation>+ 1 s</translation>
     </message>
     <message>
-        <source>Back to game</source>
-        <translation type="vanished">Volver al juego</translation>
-    </message>
-    <message>
         <source>Settings page</source>
         <translation>Página Configuración</translation>
     </message>
@@ -53,11 +49,11 @@
     </message>
     <message>
         <source>Board view</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista del tablero</translation>
     </message>
     <message>
         <source>Clock view</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista del reloj</translation>
     </message>
 </context>
 <context>
@@ -70,91 +66,28 @@
 <context>
     <name>Pelilauta</name>
     <message>
-        <source>Back to settings</source>
-        <translation type="obsolete">A los ajustes</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="obsolete">Acerca de</translation>
-    </message>
-    <message>
         <source>min:s</source>
-        <translation type="unfinished">min:s</translation>
-    </message>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Turno de negro</translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Reajustar</translation>
+        <translation>Reajustar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Interrumba</translation>
+        <translation>Interrumba</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Continuar</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Ajustes</translation>
+        <translation>Ajustes</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta2</name>
-    <message>
-        <source>Back to settings</source>
-        <translation type="obsolete">A los ajustes</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation type="obsolete">min:s</translation>
-    </message>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Turno de negro</translation>
-    </message>
-    <message>
-        <source>White´s turn</source>
-        <translation type="obsolete">Turno de blanco</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="obsolete">Interrumba</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation type="obsolete">Continuar</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="obsolete">Reajustar</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="obsolete">Ajustes</translation>
-    </message>
-    <message>
-        <source>Chess clock</source>
-        <translation type="obsolete">Reloj de ajedrez</translation>
-    </message>
-    <message>
-        <source>White´s clock</source>
-        <translation type="obsolete">Reloj de blanco</translation>
-    </message>
-    <message>
-        <source>Controls</source>
-        <translation type="obsolete">Controles</translation>
-    </message>
-    <message>
-        <source>Black´s clock</source>
-        <translation type="obsolete">Reloj de negro</translation>
+        <translation>Tablero</translation>
     </message>
 </context>
 <context>

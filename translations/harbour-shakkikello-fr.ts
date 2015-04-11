@@ -20,10 +20,6 @@
         <translation>+ 1 s</translation>
     </message>
     <message>
-        <source>Back to game</source>
-        <translation type="vanished">Retour au jeu</translation>
-    </message>
-    <message>
         <source>Settings page</source>
         <translation>Paramètres page</translation>
     </message>
@@ -53,11 +49,11 @@
     </message>
     <message>
         <source>Board view</source>
-        <translation type="unfinished"></translation>
+        <translation>Vue de l&apos;échiquier</translation>
     </message>
     <message>
         <source>Clock view</source>
-        <translation type="unfinished"></translation>
+        <translation>Vue de la pendule</translation>
     </message>
 </context>
 <context>
@@ -70,91 +66,28 @@
 <context>
     <name>Pelilauta</name>
     <message>
-        <source>Back to settings</source>
-        <translation type="obsolete">Retour aux réglages</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="obsolete">À propos</translation>
-    </message>
-    <message>
         <source>min:s</source>
-        <translation type="unfinished">min:s</translation>
-    </message>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Tour de Noir</translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Réinitialiser</translation>
+        <translation>Réinitialiser</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Pause</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Continuer</translation>
+        <translation>Continuer</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Paramètres</translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta2</name>
-    <message>
-        <source>Back to settings</source>
-        <translation type="obsolete">Retour aux réglages</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation type="obsolete">min:s</translation>
-    </message>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">Tour de Noir</translation>
-    </message>
-    <message>
-        <source>White´s turn</source>
-        <translation type="obsolete">Tour de Blanc</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="obsolete">Pause</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation type="obsolete">Continuer</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="obsolete">Réinitialiser</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="obsolete">Paramètres</translation>
-    </message>
-    <message>
-        <source>Chess clock</source>
-        <translation type="obsolete">Pendule d&apos;échecs</translation>
-    </message>
-    <message>
-        <source>White´s clock</source>
-        <translation type="obsolete">Horloge de Blanc</translation>
-    </message>
-    <message>
-        <source>Controls</source>
-        <translation type="obsolete">Contrôles</translation>
-    </message>
-    <message>
-        <source>Black´s clock</source>
-        <translation type="obsolete">Horloge de Noir</translation>
+        <translation>Échiquier</translation>
     </message>
 </context>
 <context>
