@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Om</translation>
     </message>
     <message>
         <source>White</source>
@@ -125,10 +125,6 @@
         <translation>Hvits klokke</translation>
     </message>
     <message>
-        <source>              Controls</source>
-        <translation type="vanished">              Kontroller</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Svartes klokke</translation>
     </message>
@@ -138,48 +134,38 @@
     </message>
     <message>
         <source>Controls</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontroller</translation>
     </message>
 </context>
 <context>
     <name>Tietoja</name>
     <message>
         <source>Back to settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Innstillinger</translation>
     </message>
     <message>
         <source>About page</source>
-        <translation type="unfinished"></translation>
+        <translation>Om side</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>White </source>
-        <translation type="obsolete">Hvit </translation>
-    </message>
-    <message>
-        <source>Black </source>
-        <translation type="obsolete">Svart </translation>
-    </message>
-    <message>
-        <source>Increment/move </source>
-        <translation type="obsolete">Tilvekst/flytte </translation>
+        <translation>Oversett</translation>
     </message>
     <message>
         <source>Licence</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisens</translation>
     </message>
     <message>
         <source>German (Nit)
 Dutch (Heimen Stoffels)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tysk (Nit)
+Nederlandsk (Heimen Stoffels)</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen
 Licenced under BSD.</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (c) 2015, Riku Lahtinen
+Lisensiert under BSD.</translation>
     </message>
 </context>
 <context>

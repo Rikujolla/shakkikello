@@ -32,10 +32,11 @@
 * Sat Mar 14 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.3.2
 - Dutch translation by Vistaus (Heimen Stoffels) @ www.transifex.com
 
-* Sat Apr XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.4.1
+* Wed Apr 15 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.4.1
 - German translation by 6E6974 (Nit) @ www.transifex.com
 - About page
 - Twoplayer chess board with a clock
 
 * Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.4.x
 - Update problem correction NOT OK
+- Promotion of the pawn other than queen not possible

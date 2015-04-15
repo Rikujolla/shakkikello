@@ -4,20 +4,12 @@
 <context>
     <name>Asetukset</name>
     <message>
-        <source> min</source>
-        <translation type="vanished"> мин</translation>
-    </message>
-    <message>
         <source>- 1 min</source>
         <translation>- 1 мин</translation>
     </message>
     <message>
         <source>+ 1 min</source>
         <translation>+ 1 мин</translation>
-    </message>
-    <message>
-        <source> s</source>
-        <translation type="vanished"> c</translation>
     </message>
     <message>
         <source>- 1 s</source>
@@ -28,56 +20,40 @@
         <translation>+ 1 c</translation>
     </message>
     <message>
-        <source>Back to game</source>
-        <translation type="vanished">Вернуться к игре</translation>
-    </message>
-    <message>
         <source>Settings page</source>
-        <translation>страница настроек</translation>
-    </message>
-    <message>
-        <source>White </source>
-        <translation type="vanished">белый </translation>
-    </message>
-    <message>
-        <source>Black </source>
-        <translation type="vanished">черный </translation>
-    </message>
-    <message>
-        <source>Increment/move </source>
-        <translation type="vanished">Увеличение/ход </translation>
+        <translation>Страница настроек</translation>
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>О пpoгpаммe</translation>
     </message>
     <message>
         <source>White</source>
-        <translation type="unfinished"></translation>
+        <translation>Белый</translation>
     </message>
     <message>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>мин</translation>
     </message>
     <message>
         <source>Black</source>
-        <translation type="unfinished"></translation>
+        <translation>Черный</translation>
     </message>
     <message>
         <source>Increment/move</source>
-        <translation type="unfinished"></translation>
+        <translation>Увеличение/ход</translation>
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation>c</translation>
     </message>
     <message>
         <source>Board view</source>
-        <translation type="unfinished"></translation>
+        <translation>Шахматная доска</translation>
     </message>
     <message>
         <source>Clock view</source>
-        <translation type="unfinished"></translation>
+        <translation>Шахматные часы</translation>
     </message>
 </context>
 <context>
@@ -91,31 +67,27 @@
     <name>Pelilauta</name>
     <message>
         <source>min:s</source>
-        <translation type="unfinished">мин:c</translation>
-    </message>
-    <message>
-        <source>Black´s turn</source>
-        <translation type="obsolete">ход чёрный</translation>
+        <translation>мин:c</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Cброс</translation>
+        <translation>Cброс</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">пауза</translation>
+        <translation>Пауза</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">продолжать</translation>
+        <translation>Продолжать</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">настройки</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished"></translation>
+        <translation>доска</translation>
     </message>
 </context>
 <context>
@@ -126,7 +98,7 @@
     </message>
     <message>
         <source>Black´s turn</source>
-        <translation>ход чёрный</translation>
+        <translation>Xод чёрный</translation>
     </message>
     <message>
         <source>White´s turn</source>
@@ -134,7 +106,7 @@
     </message>
     <message>
         <source>Continue</source>
-        <translation>продолжать</translation>
+        <translation>Продолжать</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -142,7 +114,7 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation>настройки</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -153,88 +125,58 @@
         <translation>Tаймер белый</translation>
     </message>
     <message>
-        <source>              Controls</source>
-        <translation type="vanished">              управления</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Tаймер чёрный</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>пауза</translation>
+        <translation>Пауза</translation>
     </message>
     <message>
         <source>Controls</source>
-        <translation type="unfinished"></translation>
+        <translation>Управления</translation>
     </message>
 </context>
 <context>
     <name>Tietoja</name>
     <message>
         <source>Back to settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <source>About page</source>
-        <translation type="unfinished"></translation>
+        <translation>О пpoгpаммe</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>White </source>
-        <translation type="obsolete">белый </translation>
-    </message>
-    <message>
-        <source> min</source>
-        <translation type="obsolete"> мин</translation>
-    </message>
-    <message>
-        <source>- 1 min</source>
-        <translation type="obsolete">- 1 мин</translation>
-    </message>
-    <message>
-        <source>+ 1 min</source>
-        <translation type="obsolete">+ 1 мин</translation>
-    </message>
-    <message>
-        <source>Black </source>
-        <translation type="obsolete">черный </translation>
-    </message>
-    <message>
-        <source>Increment/move </source>
-        <translation type="obsolete">Увеличение/ход </translation>
-    </message>
-    <message>
-        <source> s</source>
-        <translation type="obsolete"> c</translation>
+        <translation>Переводы</translation>
     </message>
     <message>
         <source>Licence</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>German (Nit)
-Dutch (Heimen Stoffels)</source>
-        <translation type="unfinished"></translation>
+        <translation>Лицензия</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen
 Licenced under BSD.</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (c) 2015, Riku Lahtinen
+        Лицензия под BSD.</translation>
+    </message>
+    <message>
+        <source>German (Nit)
+Dutch (Heimen Stoffels)</source>
+        <translation>Немецкий (Nit)
+        Голландский (Heimen Stoffels)</translation>
     </message>
 </context>
 <context>
     <name>harbour-shakkikello</name>
     <message>
         <source>Start</source>
-        <translation>начало</translation>
+        <translation>Начало</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>настройки</translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 </TS>
