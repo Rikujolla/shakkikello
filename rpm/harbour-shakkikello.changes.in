@@ -37,6 +37,13 @@
 - About page
 - Twoplayer chess board with a clock
 
-* Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.4.x
+* Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.4.2
+- Correction of the bug movig between pages
+- Improved the code translatability
+- Polish translation by szopin @ www.transifex.com
+
+* Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.x
 - Update problem correction NOT OK
 - Promotion of the pawn other than queen not possible
+
+- Stockfish (git checkout f5622cd5ec7836e899e263cc4cd4cc386e1ed5f4)

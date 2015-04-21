@@ -63,7 +63,9 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("German (Nit)\nDutch (Heimen Stoffels)")
+                text: {qsTr("German (Nit)") + "\n"
+                       + qsTr("Dutch (Heimen Stoffels)") + "\n"
+                       + qsTr("Polish (szopin)")
                 }
             }
 
@@ -78,7 +80,8 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: qsTr("Copyright (c) 2015, Riku Lahtinen\nLicenced under BSD.")
+                text: qsTr("Copyright (c) 2015, Riku Lahtinen") + "\n"
+                      + qsTr("Licenced under BSD.")
             }
 
 //loppusulkeet

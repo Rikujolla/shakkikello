@@ -156,16 +156,24 @@
         <translation>Licens</translation>
     </message>
     <message>
-        <source>German (Nit)
-Dutch (Heimen Stoffels)</source>
-        <translation>Tysk (Nit)
-        Dutch (Heimen Stoffels)</translation>
+        <source>Polish (szopin)</source>
+        <translation>Polsk (szopin)</translation>
     </message>
     <message>
-        <source>Copyright (c) 2015, Riku Lahtinen
-Licenced under BSD.</source>
-        <translation>Copyright (c) 2015, Riku Lahtinen
-        Licens under BSD.</translation>
+        <source>German (Nit)</source>
+        <translation>Tysk (Nit)</translation>
+    </message>
+    <message>
+        <source>Dutch (Heimen Stoffels)</source>
+        <translation>Dutch (Heimen Stoffels)</translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen</source>
+        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
+    </message>
+    <message>
+        <source>Licenced under BSD.</source>
+        <translation>Licens under BSD.</translation>
     </message>
 </context>
 <context>

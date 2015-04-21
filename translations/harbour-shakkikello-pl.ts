@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="pl">
 <context>
     <name>Asetukset</name>
     <message>
@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>Settings page</source>
-        <translation>Ustawienia strony</translation>
+        <translation>Ustawienia</translation>
     </message>
     <message>
         <source>About</source>
@@ -29,7 +29,7 @@
     </message>
     <message>
         <source>White</source>
-        <translation>Biały</translation>
+        <translation>Białe</translation>
     </message>
     <message>
         <source>min</source>
@@ -37,11 +37,11 @@
     </message>
     <message>
         <source>Black</source>
-        <translation>Czarny</translation>
+        <translation>Czarne</translation>
     </message>
     <message>
         <source>Increment/move</source>
-        <translation>Przyrost/akcja</translation>
+        <translation>Dodany czas/ruch</translation>
     </message>
     <message>
         <source>s</source>
@@ -49,11 +49,11 @@
     </message>
     <message>
         <source>Board view</source>
-        <translation>Szachownica</translation>
+        <translation>Widok szachownicy</translation>
     </message>
     <message>
         <source>Clock view</source>
-        <translation>Zegar szachowy</translation>
+        <translation>Widok zegara</translation>
     </message>
 </context>
 <context>
@@ -67,7 +67,7 @@
     <name>Pelilauta</name>
     <message>
         <source>Reset</source>
-        <translation>Zresetować</translation>
+        <translation>Resetuj</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -75,7 +75,7 @@
     </message>
     <message>
         <source>Continue</source>
-        <translation>Kontynuować</translation>
+        <translation>Kontynuuj</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -98,19 +98,19 @@
     </message>
     <message>
         <source>Black´s turn</source>
-        <translation>Czarny kolej</translation>
+        <translation>Ruch czarnych</translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation>Biały kolej</translation>
+        <translation>Ruch białych</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Kontynuować</translation>
+        <translation>Kontynuacja</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Zresetować</translation>
+        <translation>Resetuj</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -122,11 +122,11 @@
     </message>
     <message>
         <source>White´s clock</source>
-        <translation>Biały zegar</translation>
+        <translation>Zegar białych</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation>Czarny zegar</translation>
+        <translation>Zegar czarnych</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -134,18 +134,18 @@
     </message>
     <message>
         <source>Controls</source>
-        <translation>Sterownica</translation>
+        <translation>Przyciski kontrolne</translation>
     </message>
 </context>
 <context>
     <name>Tietoja</name>
     <message>
         <source>Back to settings</source>
-        <translation>Ustawienia</translation>
+        <translation>Powrót do ustawień</translation>
     </message>
     <message>
         <source>About page</source>
-        <translation>O programie strony</translation>
+        <translation>O programie</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -158,21 +158,42 @@
     <message>
         <source>German (Nit)
 Dutch (Heimen Stoffels)</source>
-        <translation>Niemiecki (Nit)
-Holenderski (Heimen Stoffels)</translation>
+        <translation type="vanished">Niemiecki (Nit)
+Holenderski (Heimen Stoffels)
+Polski (szopin)</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen
 Licenced under BSD.</source>
-        <translation>Copyright (c) 2015, Riku Lahtinen
+        <translation type="vanished">Prawa autorskie (c) 2015, Riku Lahtinen
 Na licencji BSD.</translation>
+    </message>
+    <message>
+        <source>Polish (szopin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>German (Nit)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dutch (Heimen Stoffels)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Licenced under BSD.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>harbour-shakkikello</name>
     <message>
         <source>Start</source>
-        <translation>Początek</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Settings</source>

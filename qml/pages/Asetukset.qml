@@ -49,7 +49,8 @@ Page {
 //            }
             MenuItem {
                 text: qsTr("Clock view")
-                onClicked: pageStack.pop()
+//                onClicked: pageStack.pop()
+                onClicked: pageStack.push(Qt.resolvedUrl("Pelisivu.qml"))
             }
         }
 

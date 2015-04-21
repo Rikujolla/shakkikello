@@ -158,14 +158,34 @@
     <message>
         <source>German (Nit)
 Dutch (Heimen Stoffels)</source>
-        <translation>德國 (Nit)
+        <translation type="vanished">德國 (Nit)
 荷蘭人 (Heimen Stoffels)</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen
 Licenced under BSD.</source>
-        <translation>版權 2015, Riku Lahtinen
+        <translation type="vanished">版權 2015, Riku Lahtinen
 BSD許可下</translation>
+    </message>
+    <message>
+        <source>Polish (szopin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>German (Nit)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dutch (Heimen Stoffels)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Licenced under BSD.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

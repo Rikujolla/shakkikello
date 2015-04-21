@@ -156,16 +156,24 @@
         <translation>Lisenssi</translation>
     </message>
     <message>
-        <source>German (Nit)
-Dutch (Heimen Stoffels)</source>
-        <translation>Saksaksi (Nit)
-Hollanniksi (Heimen Stoffels)</translation>
+        <source>Polish (szopin)</source>
+        <translation>Puolaksi (szopin)</translation>
     </message>
     <message>
-        <source>Copyright (c) 2015, Riku Lahtinen
-Licenced under BSD.</source>
-        <translation>Copyright (c) 2015, Riku Lahtinen
-BSD-lisenssi</translation>
+        <source>German (Nit)</source>
+        <translation>Saksaksi (Nit)</translation>
+    </message>
+    <message>
+        <source>Dutch (Heimen Stoffels)</source>
+        <translation>Hollanniksi (Heimen Stoffels)</translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen</source>
+        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
+    </message>
+    <message>
+        <source>Licenced under BSD.</source>
+        <translation>BSD-lisenssi</translation>
     </message>
 </context>
 <context>

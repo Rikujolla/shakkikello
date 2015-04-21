@@ -156,13 +156,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>German (Nit)
-Dutch (Heimen Stoffels)</source>
+        <source>Polish (szopin)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copyright (c) 2015, Riku Lahtinen
-Licenced under BSD.</source>
+        <source>German (Nit)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dutch (Heimen Stoffels)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Licenced under BSD.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
