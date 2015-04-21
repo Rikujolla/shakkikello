@@ -156,36 +156,24 @@
         <translation>Лицензия</translation>
     </message>
     <message>
-        <source>Copyright (c) 2015, Riku Lahtinen
-Licenced under BSD.</source>
-        <translation type="vanished">Copyright (c) 2015, Riku Lahtinen
-        Лицензия под BSD.</translation>
-    </message>
-    <message>
-        <source>German (Nit)
-Dutch (Heimen Stoffels)</source>
-        <translation type="vanished">Немецкий (Nit)
-        Голландский (Heimen Stoffels)</translation>
-    </message>
-    <message>
         <source>Polish (szopin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Польский (szopin)</translation>
     </message>
     <message>
         <source>German (Nit)</source>
-        <translation type="unfinished"></translation>
+        <translation>Немецкий (Nit)</translation>
     </message>
     <message>
         <source>Dutch (Heimen Stoffels)</source>
-        <translation type="unfinished"></translation>
+        <translation>Голландский (Heimen Stoffels)</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
         <source>Licenced under BSD.</source>
-        <translation type="unfinished"></translation>
+        <translation>Лицензия под BSD.</translation>
     </message>
 </context>
 <context>
