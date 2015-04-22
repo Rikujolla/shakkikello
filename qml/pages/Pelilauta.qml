@@ -355,9 +355,10 @@ Page {
                 property bool moveLegal: false; //True if the move to the destination is possible
                 property bool moveLegalHelp; //for checking empty midsquares for bishop, rook and queen
                 // Pawn is promoted to queen now
-//                function pawnPromotion() {
+                function pawnPromotion() {
+                Qt.createComponent("Promotion.qml").createObject(page, {});
 // one possibility to have the pawnpromotion dialog
-//                }
+                }
 
                 // block isMovable:
                 function isMovable() {
@@ -378,6 +379,7 @@ Page {
                         if (((fromIndex-toIndex) == -8) && galeryModel.get(toIndex).color == "e") {
                             moveLegal = true;
                             if (toIndex > 55) {
+                                pawnPromotion()
                                 itemMoved = "images/q.png"
                             }
                         }
@@ -393,6 +395,7 @@ Page {
                             if (galeryModel.get(toIndex).color == "w") {
                                 moveLegal = true;
                                 if (toIndex > 55) {
+                                    pawnPromotion()
                                     itemMoved = "images/q.png"
                                 }
                             }
@@ -420,6 +423,7 @@ Page {
                         if (((fromIndex-toIndex) == 8) && galeryModel.get(toIndex).color == "e") {
                             moveLegal = true;
                             if (toIndex < 8) {
+                                pawnPromotion()
                                 itemMoved = "images/Q.png"
                             }
                         }
@@ -435,6 +439,7 @@ Page {
                             if (galeryModel.get(toIndex).color == "b") {
                                 moveLegal = true;
                                 if (toIndex < 8) {
+                                    pawnPromotion()
                                     itemMoved = "images/Q.png"
                                 }
                             }
