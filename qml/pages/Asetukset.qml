@@ -43,13 +43,12 @@ Page {
                 text: qsTr("Board view")
                 onClicked: pageStack.push(Qt.resolvedUrl("Pelilauta.qml"))
             }
-//            MenuItem {
-//                text: qsTr("Board view2")
-//                onClicked: pageStack.push(Qt.resolvedUrl("Pelilauta2.qml"))
-//            }
+            MenuItem {
+                text: qsTr("Board view2")
+                onClicked: pageStack.push(Qt.resolvedUrl("Boardview.qml"))
+            }
             MenuItem {
                 text: qsTr("Clock view")
-//                onClicked: pageStack.pop()
                 onClicked: pageStack.push(Qt.resolvedUrl("Pelisivu.qml"))
             }
         }

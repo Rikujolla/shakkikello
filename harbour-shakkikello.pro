@@ -14,7 +14,26 @@ TARGET = harbour-shakkikello
 
 CONFIG += sailfishapp
 
-SOURCES += src/harbour-shakkikello.cpp
+SOURCES += src/harbour-shakkikello.cpp \
+    src/stockfish/benchmark.cpp \
+    src/stockfish/bitbase.cpp \
+    src/stockfish/bitboard.cpp \
+    src/stockfish/book.cpp \
+    src/stockfish/endgame.cpp \
+    src/stockfish/evaluate.cpp \
+    src/stockfish/material.cpp \
+    src/stockfish/misc.cpp \
+    src/stockfish/movegen.cpp \
+    src/stockfish/movepick.cpp \
+    src/stockfish/notation.cpp \
+    src/stockfish/pawns.cpp \
+    src/stockfish/position.cpp \
+    src/stockfish/search.cpp \
+    src/stockfish/thread.cpp \
+    src/stockfish/timeman.cpp \
+    src/stockfish/tt.cpp \
+    src/stockfish/uci.cpp \
+    src/stockfish/ucioption.cpp
 
 OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/cover/CoverPage.qml \
@@ -46,7 +65,8 @@ OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/pages/images/grid.png \
     qml/pages/images/empty.png \
     qml/pages/images/p.png \
-    qml/pages/Promotion.qml
+    qml/pages/Promotion.qml \
+    qml/pages/Boardview.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -66,4 +86,28 @@ TRANSLATIONS +=  translations/harbour-shakkikello-da.ts \
                  translations/harbour-shakkikello-sv.ts \
                  translations/harbour-shakkikello-zh_cn.ts \
                  translations/harbour-shakkikello-zh_hk.ts
+
+HEADERS += \
+    src/stockfish/bitboard.h \
+    src/stockfish/bitcount.h \
+    src/stockfish/book.h \
+    src/stockfish/endgame.h \
+    src/stockfish/evaluate.h \
+    src/stockfish/material.h \
+    src/stockfish/misc.h \
+    src/stockfish/movegen.h \
+    src/stockfish/movepick.h \
+    src/stockfish/notation.h \
+    src/stockfish/pawns.h \
+    src/stockfish/platform.h \
+    src/stockfish/position.h \
+    src/stockfish/psqtab.h \
+    src/stockfish/rkiss.h \
+    src/stockfish/search.h \
+    src/stockfish/thread.h \
+    src/stockfish/timeman.h \
+    src/stockfish/tt.h \
+    src/stockfish/types.h \
+    src/stockfish/uci.h \
+    src/stockfish/ucioption.h
 

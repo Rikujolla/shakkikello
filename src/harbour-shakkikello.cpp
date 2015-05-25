@@ -33,6 +33,21 @@
 #endif
 
 #include <sailfishapp.h>
+#include <QtQml>
+
+// Stockfish
+
+#include <iostream>
+
+#include "stockfish/bitboard.h"
+#include "stockfish/evaluate.h"
+#include "stockfish/position.h"
+#include "stockfish/search.h"
+#include "stockfish/thread.h"
+#include "stockfish/tt.h"
+#include "stockfish/ucioption.h"
+#include "stockfish/uci.h"
+// end Stockfish
 
 
 int main(int argc, char *argv[])
@@ -46,6 +61,21 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
+    qmlRegisterType<A>("stockfish.commands", 1, 0, "Stockfishe");
+    qmlRegisterType<Veca>("stockfish.commands", 1, 0, "Stockfishev");
+
+    UCI::init(Options);
+    Bitboards::init();
+    Position::init();
+    Bitbases::init_kpk();
+    Search::init();
+    Pawns::init();
+    Eval::init();
+    Threads.init();
+    TT.resize(Options["Hash"]);
+
     return SailfishApp::main(argc, argv);
+
+    Threads.exit();
 }
 
