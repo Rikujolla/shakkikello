@@ -85,6 +85,12 @@ Page {
             spacing: Theme.paddingLarge
 
             Item {
+                id: feni
+                property string startFeni;
+                property string stopFeni;
+            }
+
+            Item {
                 id : vuoro
                 function vaihdaMustalle() {
                     if (tilat.musta == true) {} else {
@@ -1299,6 +1305,9 @@ Page {
                     }
                 }
 // end block isMovable:
+
+/// Start block movePiece()
+
                 function movePiece() {
                     if (!moveStarted) { //Need for global property??
                         fromIndex=indeksi;
@@ -1324,6 +1333,7 @@ Page {
                                     galeryModel.set(benpassant,{"color":"e", "piece":"images/empty.png"});
                                     benpassant = -1
                                 }
+                                Myfunks.gridToFEN() //change manual mode to FEN notation for Stockfish
                                 vuoro.vaihdaMustalle()
                             }
                             else {
@@ -1331,6 +1341,7 @@ Page {
                                     galeryModel.set(wenpassant,{"color":"e", "piece":"images/empty.png"});
                                     wenpassant = -1
                                 }
+                                Myfunks.fenToGRID()
                                 vuoro.vaihdaValkealle()
                             }
 
@@ -1338,6 +1349,8 @@ Page {
                     }
                 }
             }
+
+/// End block movePiece()
 
             ListModel {
                     id: galeryModel
@@ -1410,7 +1423,7 @@ Page {
                                     moveMent.colorTobemoved = color;
                                     moveMent.movePiece();
 //                                    console.log("Index", index, piece, color);
-                                    Myfunks.gridToFEN()
+//                                    Myfunks.gridToFEN()
 
                                 }
                             }
