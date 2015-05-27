@@ -88,6 +88,10 @@ Page {
                 id: feni
                 property string startFeni;
                 property string stopFeni;
+                property bool feniReady:false;
+                property int feniHelper;
+                property string stringHelper;
+                property bool feniBlack:false;
             }
 
             Item {
@@ -1334,6 +1338,7 @@ Page {
                                     benpassant = -1
                                 }
                                 Myfunks.gridToFEN() //change manual mode to FEN notation for Stockfish
+//                                hopo.inni();
                                 vuoro.vaihdaMustalle()
                             }
                             else {
@@ -1341,6 +1346,9 @@ Page {
                                     galeryModel.set(wenpassant,{"color":"e", "piece":"images/empty.png"});
                                     wenpassant = -1
                                 }
+                                Myfunks.gridToFEN() //temporary work
+                                hopo.outti();
+                                console.log(hopo.test);
                                 Myfunks.fenToGRID()
                                 vuoro.vaihdaValkealle()
                             }
@@ -1426,11 +1434,33 @@ Page {
 //                                    Myfunks.gridToFEN()
 
                                 }
+
                             }
                     }
                 } // end GridView
             } //end Rectangle
 
+            Timer {
+                interval: 500; running: feni.feniReady; repeat: false  //ApplicationWindowactive
+                onTriggered: {hopo.inni();
+                    feni.feniReady = false;
+                    feni.feniBlack = true;
+                }
+            }
+
+            Timer {
+                interval: 500; running: feni.feniBlack; repeat: false  //ApplicationWindowactive
+                onTriggered: {hopo.outti();
+                    Myfunks.fenToGRID()
+//                    galeryModel.get(fromIndex).piece
+                    galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
+                    galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
+                    // enpassant still missing
+                    vuoro.vaihdaValkealle()
+
+                    feni.feniBlack = false;
+                }
+            }
 
             BackgroundItem {
                 id: lowerBar
