@@ -2,7 +2,7 @@
 // this function transforms grid notation to FEN-notation
 
 function gridToFEN() {
-    console.log(fromIndex, toIndex)
+    console.log("Valkoisen siirto, FEN ",fromIndex, toIndex)
     hopo.test = "";
     switch (fromIndex%8) {
     case 0: feni.startFeni= "a"
@@ -55,7 +55,7 @@ function gridToFEN() {
 
 }
 
-// this function transforms grid notation to FEN-notation
+// this function transforms FEN notation to grid-notation
 
 function fenToGRID() {
     console.log(hopo.test)
@@ -80,7 +80,7 @@ function fenToGRID() {
     default: feni.feniHelper = 8
     }
 
-    console.log(feni.feniHelper)
+//    console.log(feni.feniHelper)
 
     feni.stringHelper = hopo.test.slice(1,2);
     console.log(feni.stringHelper)
@@ -105,7 +105,7 @@ function fenToGRID() {
 
     }
     fromIndex=feni.feniHelper;
-    console.log(fromIndex)
+//    console.log(fromIndex)
 
     feni.stringHelper = hopo.test.slice(2,3);
     switch (feni.stringHelper) {
@@ -128,7 +128,7 @@ function fenToGRID() {
     default: feni.feniHelper = 8
     }
 
-    console.log(feni.feniHelper)
+//    console.log(feni.feniHelper)
 
     feni.stringHelper = hopo.test.slice(3,4);
     console.log(feni.stringHelper)
@@ -153,6 +153,6 @@ function fenToGRID() {
 
     }
     toIndex=feni.feniHelper;
-    console.log(toIndex)
+    console.log("mustan siirto ", fromIndex,toIndex)
 
 }

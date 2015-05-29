@@ -175,6 +175,16 @@ void UCI::loopi(const std::vector<std::string> &fransu) {
         cout << token; //Konsoliin
         m = move_from_uci(pos, token);
         SetupStates->push(StateInfo());
+/*
+//        if (pos.pos_is_ok()) {
+        CheckInfo ci(*this);
+        if (pos.gives_check(m,ci)) {
+            cout << "Hyvä siirto" << endl;
+        }
+        else {
+            cout << "Kannattiko siirtää" << endl;
+        } */
+
         pos.do_move(m, SetupStates->top());
         ind++;
     }

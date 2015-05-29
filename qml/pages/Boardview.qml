@@ -1449,13 +1449,13 @@ Page {
             }
 
             Timer {
-                interval: 500; running: feni.feniBlack; repeat: false  //ApplicationWindowactive
+                interval: 1500; running: feni.feniBlack; repeat: false  //ApplicationWindowactive
                 onTriggered: {hopo.outti();
                     Myfunks.fenToGRID()
 //                    galeryModel.get(fromIndex).piece
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
-                    // enpassant still missing
+                    // enpassant still missing, castling still missing,
                     vuoro.vaihdaValkealle()
 
                     feni.feniBlack = false;

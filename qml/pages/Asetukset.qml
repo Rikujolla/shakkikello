@@ -40,11 +40,11 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("Tietoja.qml"))
             }
             MenuItem {
-                text: qsTr("Board view")
+                text: qsTr("Board, twoplayer")
                 onClicked: pageStack.push(Qt.resolvedUrl("Pelilauta.qml"))
             }
             MenuItem {
-                text: qsTr("Board view2")
+                text: qsTr("Board, Stockfish")
                 onClicked: pageStack.push(Qt.resolvedUrl("Boardview.qml"))
             }
             MenuItem {
