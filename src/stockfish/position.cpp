@@ -33,6 +33,7 @@
 #include "tt.h"
 
 using std::string;
+int g_peru; //SFOS
 
 static const string PieceToChar(" PNBRQK  pnbrqk");
 
@@ -166,7 +167,10 @@ Position& Position::operator=(const Position& pos) {
   st = &startState;
   nodes = 0;
 
-  assert(pos_is_ok());
+  //assert(pos_is_ok());
+  g_peru = ((pos_is_ok() == true) && (g_peru != 99) ? 88 : 99); //SFOS
+//  if (pos_is_ok()) {g_peru = 99;}
+//  else {g_peru = 88;}
 
   return *this;
 }
@@ -630,7 +634,12 @@ bool Position::pseudo_legal(const Move m) const {
 
 bool Position::gives_check(Move m, const CheckInfo& ci) const {
 
-  assert(is_ok(m));
+//  assert(is_ok(m)); //SFOS
+    if (is_ok(m)) {g_peru = 88; // SFOS
+    }
+    else {g_peru = 99; // SFOS
+    }
+
   assert(ci.dcCandidates == discovered_check_candidates());
   assert(color_of(moved_piece(m)) == sideToMove);
 
@@ -697,7 +706,8 @@ void Position::do_move(Move m, StateInfo& newSt) {
 
 void Position::do_move(Move m, StateInfo& newSt, const CheckInfo& ci, bool moveIsCheck) {
 
-  assert(is_ok(m));
+//  assert(is_ok(m));
+  g_peru = ((is_ok(m) == true) && (g_peru != 99) ? 88 : 99); //SFOS
   assert(&newSt != st);
 
   ++nodes;
@@ -729,8 +739,16 @@ void Position::do_move(Move m, StateInfo& newSt, const CheckInfo& ci, bool moveI
   PieceType captured = type_of(m) == ENPASSANT ? PAWN : type_of(piece_on(to));
 
   assert(color_of(pc) == us);
-  assert(piece_on(to) == NO_PIECE || color_of(piece_on(to)) == them || type_of(m) == CASTLING);
-  assert(captured != KING);
+// SFOS
+//  assert(piece_on(to) == NO_PIECE || color_of(piece_on(to)) == them || type_of(m) == CASTLING);
+   if ((piece_on(to) == NO_PIECE || color_of(piece_on(to)) == them || type_of(m) == CASTLING)
+           && g_peru !=99) { g_peru = 88;}
+   else {g_peru = 99;}
+
+//  assert(captured != KING);
+   if (captured != KING && g_peru !=99) { g_peru = 88;}
+   else {g_peru = 99;}
+
 
   if (type_of(m) == CASTLING)
   {
@@ -888,7 +906,9 @@ void Position::do_move(Move m, StateInfo& newSt, const CheckInfo& ci, bool moveI
 
   sideToMove = ~sideToMove;
 
-  assert(pos_is_ok());
+  //assert(pos_is_ok());
+  g_peru = ((pos_is_ok() == true) && (g_peru != 99) ? 88 : 99); //SFOS
+
 }
 
 
@@ -907,7 +927,8 @@ void Position::undo_move(Move m) {
   PieceType pt = type_of(piece_on(to));
 
   assert(empty(from) || type_of(m) == CASTLING);
-  assert(st->capturedType != KING);
+//  assert(st->capturedType != KING);
+  g_peru = ((st->capturedType != KING) && (g_peru != 99) ? 88 : 99); //SFOS
 
   if (type_of(m) == PROMOTION)
   {
@@ -1000,7 +1021,9 @@ void Position::do_null_move(StateInfo& newSt) {
 
   sideToMove = ~sideToMove;
 
-  assert(pos_is_ok());
+//  assert(pos_is_ok());
+  g_peru = ((pos_is_ok() == true) && (g_peru != 99) ? 88 : 99); //SFOS
+
 }
 
 void Position::undo_null_move() {

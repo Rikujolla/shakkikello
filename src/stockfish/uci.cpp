@@ -36,6 +36,7 @@ using namespace std;
 extern void benchmark(const Position& pos, istream& is);
 
 std::vector<std::string> g_siirrot; // SFOS
+extern int g_peru;
 
 namespace {
 
@@ -147,7 +148,13 @@ void A::inni() {
     string ransu;
     ransu=myTest.toStdString();//    Move m;
     g_siirrot.push_back(ransu);
+    g_peru = 88;
     UCI::loopi(g_siirrot);
+    if (g_peru == 99) {
+        myTest= "peru";
+        g_siirrot.pop_back();
+    }
+    else {}
 }
 
 void A::outti() {
@@ -191,6 +198,13 @@ void UCI::loopi(const std::vector<std::string> &fransu) {
     Search::LimitsType limits;
     limits.depth = 5;
     Threads.start_thinking(pos, limits, SetupStates);
+    if (g_peru==88) {
+       cout << "Vörkkisiirto" << endl;
+    }
+    else
+    {
+        cout << "Höpö juttu" << endl;
+    }
 
 }
 

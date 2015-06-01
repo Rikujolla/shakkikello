@@ -1366,7 +1366,17 @@ Page {
                         color: "e"
                         piece: "images/empty.png"
                     }
-                }
+            }
+
+            ListModel {
+                    id: movedPieces
+                    ListElement {
+                        color: "e"
+                        piece: "images/empty.png"
+                        indeksos: -1
+                    }
+            }
+
 
             BackgroundItem {
                 id: upperBar
@@ -1443,8 +1453,21 @@ Page {
             Timer {
                 interval: 500; running: feni.feniReady; repeat: false  //ApplicationWindowactive
                 onTriggered: {hopo.inni();
+                    if (hopo.test == "peru") {
+// old position
+                        //siirretty piece (movelist.index 0)
+                        galeryModel.set(fromIndex,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece})
+                        galeryModel.set(toIndex,{"color":"e", "piece":"images/empty.png"})
+                        //syöty piece (movelist. index 1)
+                        // castling tai wenpassant (movelist.index 2)
+                        feni.feniReady = false;
+                        vuoro.vaihdaValkealle();
+//                        feni.feniBlack = true;
+                    }
+                    else {
                     feni.feniReady = false;
                     feni.feniBlack = true;
+                    }
                 }
             }
 
