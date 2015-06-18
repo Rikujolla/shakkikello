@@ -509,7 +509,7 @@ Page {
                                 && galeryModel.get(toIndex-8).piece != "images/K.png"
                                 ||
                                 toIndex > 8 && toIndex < 55
-                                &&galeryModel.get(toIndex+9).piece != "images/K.png"
+                                && galeryModel.get(toIndex+9).piece != "images/K.png"
                                 && galeryModel.get(toIndex+8).piece != "images/K.png"
                                 && galeryModel.get(toIndex+7).piece != "images/K.png"
                                 && galeryModel.get(toIndex+1).piece != "images/K.png"
@@ -519,7 +519,7 @@ Page {
                                 && galeryModel.get(toIndex-9).piece != "images/K.png"
                                 ||
                                 toIndex == 8
-                                &&galeryModel.get(toIndex+9).piece != "images/K.png"
+                                && galeryModel.get(toIndex+9).piece != "images/K.png"
                                 && galeryModel.get(toIndex+8).piece != "images/K.png"
                                 && galeryModel.get(toIndex+7).piece != "images/K.png"
                                 && galeryModel.get(toIndex+1).piece != "images/K.png"
@@ -579,7 +579,7 @@ Page {
                                 && galeryModel.get(toIndex-9).piece != "images/k.png"
                                 ||
                                 toIndex == 0
-                                &&galeryModel.get(toIndex+9).piece != "images/k.png"
+                                && galeryModel.get(toIndex+9).piece != "images/k.png"
                                 && galeryModel.get(toIndex+8).piece != "images/k.png"
                                 && galeryModel.get(toIndex+7).piece != "images/k.png"
                                 && galeryModel.get(toIndex+1).piece != "images/k.png"
