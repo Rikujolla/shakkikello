@@ -70,11 +70,11 @@ Page {
 
         contentHeight: column.height
 
-        Stockfishe {
+        Stockfishe { // for Stockfish communication
             id:hopo
         }
 
-        Stockfishev {
+        Stockfishev { // remove?
             id:hopov
         }
 
@@ -92,6 +92,14 @@ Page {
                 property int feniHelper;
                 property string stringHelper;
                 property bool feniBlack:false;
+                property bool feniWhiteChess: false;
+                property bool feniBlackChess: false;
+                property int feniWkingInd: 60;
+                property int feniBkingInd: 4;
+                property bool feniCancelMove: false;
+                property int temptoIndex;
+                property int tempfromIndex;
+                property int ax; // for looping
             }
 
             Item {
@@ -410,8 +418,9 @@ Page {
                             benpassant = toIndex-8;
                             galeryModel.set(benpassant,{"color":"bp"})
                         }
+                        // Capturing a piece
                         else if (((fromIndex-toIndex) == -7) || ((fromIndex-toIndex) == -9)) {
-                            if (galeryModel.get(toIndex).color == "w") {
+                            if ((galeryModel.get(toIndex).color == "w") && (galeryModel.get(toIndex).piece != "images/K.png")) {
                                 moveLegal = true;
                                 if (toIndex > 55) {
                                     pawnPromotion()
@@ -454,8 +463,9 @@ Page {
                             wenpassant = toIndex+8;
                             galeryModel.set(wenpassant,{"color":"wp"})
                         }
+                        // Capturing a piece
                         else if (((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 9)) {
-                            if (galeryModel.get(toIndex).color == "b") {
+                            if ((galeryModel.get(toIndex).color == "b") && (galeryModel.get(toIndex).piece != "images/k.png")) {
                                 moveLegal = true;
                                 if (toIndex < 8) {
                                     pawnPromotion()
@@ -483,71 +493,222 @@ Page {
                         }
                         break;
                     case "images/k.png":
-                        if ((((fromIndex-toIndex) == 9) || ((fromIndex-toIndex) == 8)
-                              || ((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 1)
-                              || ((fromIndex-toIndex) == -1) || ((fromIndex-toIndex) == -7)
-                              || ((fromIndex-toIndex) == -8) || ((fromIndex-toIndex) == -9))
-                             && galeryModel.get(toIndex).color !== "b") {
-                            moveLegal = true;
-                        }
-                        // Castling short
-                        else if ((toIndex == 6) && galeryModel.get(6).color === "e"
-                                  && galeryModel.get(5).color === "e") {
-                            moveLegal = true;
-                            galeryModel.set((5),{"color":"b", "piece":"images/r.png"});
-                            galeryModel.set((7),{"color":"e", "piece":"images/empty.png"});
-                            // Castling legality checks are missing
-                        }
-                        // Castling long
-                        else if ((toIndex == 2) && galeryModel.get(2).color === "e"
-                                 && galeryModel.get(3).color === "e" && galeryModel.get(1).color === "e") {
-                            moveLegal = true;
-                            galeryModel.set((3),{"color":"b", "piece":"images/r.png"});
-                            galeryModel.set((0),{"color":"e", "piece":"images/empty.png"});
-                            // Castling legality checks are missing
-                        }
-
-                        else {
+                        if (    toIndex == 63
+                                && galeryModel.get(toIndex-1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-7).piece != "images/K.png"
+                                && galeryModel.get(toIndex-8).piece != "images/K.png"
+                                && galeryModel.get(toIndex-9).piece != "images/K.png"
+                                ||
+                                toIndex == 0
+                                && galeryModel.get(toIndex+9).piece != "images/K.png"
+                                && galeryModel.get(toIndex+8).piece != "images/K.png"
+                                && galeryModel.get(toIndex+7).piece != "images/K.png"
+                                && galeryModel.get(toIndex+1).piece != "images/K.png"
+                                ||
+                                toIndex >55 && toIndex < 63
+                                && galeryModel.get(toIndex+1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-7).piece != "images/K.png"
+                                && galeryModel.get(toIndex-8).piece != "images/K.png"
+                                && galeryModel.get(toIndex-9).piece != "images/K.png"
+                                ||
+                                toIndex > 0 && toIndex < 8
+                                && galeryModel.get(toIndex+9).piece != "images/K.png"
+                                && galeryModel.get(toIndex+8).piece != "images/K.png"
+                                && galeryModel.get(toIndex+7).piece != "images/K.png"
+                                && galeryModel.get(toIndex+1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-1).piece != "images/K.png"
+                                ||
+                                // At this phase all the indexes beoynd the index area are solved
+                                // Trying to solve line ending issue blocking the king to move
+                                toIndex%8==7 // kesken
+                                && galeryModel.get(toIndex+8).piece != "images/K.png"
+                                && galeryModel.get(toIndex+7).piece != "images/K.png"
+                                && galeryModel.get(toIndex-1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-8).piece != "images/K.png"
+                                && galeryModel.get(toIndex-9).piece != "images/K.png"
+                                ||
+                                toIndex%8==0
+                                && galeryModel.get(toIndex+9).piece != "images/K.png"
+                                && galeryModel.get(toIndex+8).piece != "images/K.png"
+                                && galeryModel.get(toIndex+1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-7).piece != "images/K.png"
+                                && galeryModel.get(toIndex-8).piece != "images/K.png"
+                                ||
+                                toIndex > 8 && toIndex < 55
+                                && galeryModel.get(toIndex+9).piece != "images/K.png"
+                                && galeryModel.get(toIndex+8).piece != "images/K.png"
+                                && galeryModel.get(toIndex+7).piece != "images/K.png"
+                                && galeryModel.get(toIndex+1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-7).piece != "images/K.png"
+                                && galeryModel.get(toIndex-8).piece != "images/K.png"
+                                && galeryModel.get(toIndex-9).piece != "images/K.png"
+                                ||
+                                toIndex == 8
+                                && galeryModel.get(toIndex+9).piece != "images/K.png"
+                                && galeryModel.get(toIndex+8).piece != "images/K.png"
+                                && galeryModel.get(toIndex+7).piece != "images/K.png"
+                                && galeryModel.get(toIndex+1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-7).piece != "images/K.png"
+                                && galeryModel.get(toIndex-8).piece != "images/K.png"
+                                ||
+                                toIndex == 55
+                                && galeryModel.get(toIndex+8).piece != "images/K.png"
+                                && galeryModel.get(toIndex+7).piece != "images/K.png"
+                                && galeryModel.get(toIndex+1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-1).piece != "images/K.png"
+                                && galeryModel.get(toIndex-7).piece != "images/K.png"
+                                && galeryModel.get(toIndex-8).piece != "images/K.png"
+                                && galeryModel.get(toIndex-9).piece != "images/K.png"
+                                ) {
+                            if ((((fromIndex-toIndex) == 9) || ((fromIndex-toIndex) == 8)
+                                 || ((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 1)
+                                 || ((fromIndex-toIndex) == -1) || ((fromIndex-toIndex) == -7)
+                                 || ((fromIndex-toIndex) == -8) || ((fromIndex-toIndex) == -9))
+                                    && galeryModel.get(toIndex).color !== "b") {
+                                moveLegal = true;
+                            }
+                            // Castling short
+                            else if ((toIndex == 6) && galeryModel.get(6).color === "e"
+                                     && galeryModel.get(5).color === "e") {
+                                moveLegal = true;
+                                galeryModel.set((5),{"color":"b", "piece":"images/r.png"});
+                                galeryModel.set((7),{"color":"e", "piece":"images/empty.png"});
+                                // Castling legality checks are missing
+                            }
+                            // Castling long
+                            else if ((toIndex == 2) && galeryModel.get(2).color === "e"
+                                     && galeryModel.get(3).color === "e" && galeryModel.get(1).color === "e") {
+                                moveLegal = true;
+                                galeryModel.set((3),{"color":"b", "piece":"images/r.png"});
+                                galeryModel.set((0),{"color":"e", "piece":"images/empty.png"});
+                                // Castling legality checks are missing
+                            }
+                            else {
                                 moveStarted=false;
                                 fromIndex=-1;
                                 toIndex=-1;
+                            }
+                        }
+                        else {
+                            moveStarted=false;
+                            fromIndex=-1;
+                            toIndex=-1;
                         }
                         break;
                     case "images/K.png":
-                        if ((((fromIndex-toIndex) == 9) || ((fromIndex-toIndex) == 8)
-                              || ((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 1)
-                              || ((fromIndex-toIndex) == -1) || ((fromIndex-toIndex) == -7)
-                              || ((fromIndex-toIndex) == -8) || ((fromIndex-toIndex) == -9))
-                             && galeryModel.get(toIndex).color !== "w") {
-                            moveLegal = true;
-                        }
-                        // Castling kingside
-                        else if ((toIndex == 62) && galeryModel.get(62).color === "e"
-                                  && galeryModel.get(61).color === "e") {
-                            moveLegal = true;
-                            galeryModel.set((61),{"color":"w", "piece":"images/R.png"});
-                            galeryModel.set((63),{"color":"e", "piece":"images/empty.png"});
-                            // Castling legality checks are missing
-                        }
-                        // Castling queenside
-                        else if ((toIndex == 58) && galeryModel.get(58).color === "e"
-                                 && galeryModel.get(59).color === "e" && galeryModel.get(57).color === "e") {
-                            moveLegal = true;
-                            galeryModel.set((59),{"color":"w", "piece":"images/R.png"});
-                            galeryModel.set((56),{"color":"e", "piece":"images/empty.png"});
-                            // Castling legality checks are missing
-                        }
-
-                        else {
+                        if (    toIndex == 63
+                                && galeryModel.get(toIndex-1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-7).piece != "images/k.png"
+                                && galeryModel.get(toIndex-8).piece != "images/k.png"
+                                && galeryModel.get(toIndex-9).piece != "images/k.png"
+                                ||
+                                toIndex == 0
+                                && galeryModel.get(toIndex+9).piece != "images/k.png"
+                                && galeryModel.get(toIndex+8).piece != "images/k.png"
+                                && galeryModel.get(toIndex+7).piece != "images/k.png"
+                                && galeryModel.get(toIndex+1).piece != "images/k.png"
+                                ||
+                                toIndex >55 && toIndex < 63
+                                && galeryModel.get(toIndex+1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-7).piece != "images/k.png"
+                                && galeryModel.get(toIndex-8).piece != "images/k.png"
+                                && galeryModel.get(toIndex-9).piece != "images/k.png"
+                                ||
+                                toIndex > 0 && toIndex < 8
+                                &&galeryModel.get(toIndex+9).piece != "images/k.png"
+                                && galeryModel.get(toIndex+8).piece != "images/k.png"
+                                && galeryModel.get(toIndex+7).piece != "images/k.png"
+                                && galeryModel.get(toIndex+1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-1).piece != "images/k.png"
+                                ||
+                                // At this phase all the indexes beoynd the index area are solved
+                                // Trying to solve line ending issue blocking the king to move
+                                toIndex%8==7 // kesken
+                                && galeryModel.get(toIndex+8).piece != "images/k.png"
+                                && galeryModel.get(toIndex+7).piece != "images/k.png"
+                                && galeryModel.get(toIndex-1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-8).piece != "images/k.png"
+                                && galeryModel.get(toIndex-9).piece != "images/k.png"
+                                ||
+                                toIndex%8==0
+                                && galeryModel.get(toIndex+9).piece != "images/k.png"
+                                && galeryModel.get(toIndex+8).piece != "images/k.png"
+                                && galeryModel.get(toIndex+1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-7).piece != "images/k.png"
+                                && galeryModel.get(toIndex-8).piece != "images/k.png"
+                                ||
+                                toIndex > 8 && toIndex < 55
+                                &&galeryModel.get(toIndex+9).piece != "images/k.png"
+                                && galeryModel.get(toIndex+8).piece != "images/k.png"
+                                && galeryModel.get(toIndex+7).piece != "images/k.png"
+                                && galeryModel.get(toIndex+1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-7).piece != "images/k.png"
+                                && galeryModel.get(toIndex-8).piece != "images/k.png"
+                                && galeryModel.get(toIndex-9).piece != "images/k.png"
+                                ||
+                                toIndex == 8
+                                &&galeryModel.get(toIndex+9).piece != "images/k.png"
+                                && galeryModel.get(toIndex+8).piece != "images/k.png"
+                                && galeryModel.get(toIndex+7).piece != "images/k.png"
+                                && galeryModel.get(toIndex+1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-7).piece != "images/k.png"
+                                && galeryModel.get(toIndex-8).piece != "images/k.png"
+                                ||
+                                toIndex == 55
+                                && galeryModel.get(toIndex+8).piece != "images/k.png"
+                                && galeryModel.get(toIndex+7).piece != "images/k.png"
+                                && galeryModel.get(toIndex+1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-1).piece != "images/k.png"
+                                && galeryModel.get(toIndex-7).piece != "images/k.png"
+                                && galeryModel.get(toIndex-8).piece != "images/k.png"
+                                && galeryModel.get(toIndex-9).piece != "images/k.png"
+                                ) {
+                            if ((((fromIndex-toIndex) == 9) || ((fromIndex-toIndex) == 8)
+                                 || ((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 1)
+                                 || ((fromIndex-toIndex) == -1) || ((fromIndex-toIndex) == -7)
+                                 || ((fromIndex-toIndex) == -8) || ((fromIndex-toIndex) == -9))
+                                    && galeryModel.get(toIndex).color !== "w") {
+                                moveLegal = true;
+                            }
+                            // Castling kingside
+                            else if ((toIndex == 62) && galeryModel.get(62).color === "e"
+                                     && galeryModel.get(61).color === "e") {
+                                moveLegal = true;
+                                galeryModel.set((61),{"color":"w", "piece":"images/R.png"});
+                                galeryModel.set((63),{"color":"e", "piece":"images/empty.png"});
+                                // Castling legality checks are missing
+                            }
+                            // Castling queenside
+                            else if ((toIndex == 58) && galeryModel.get(58).color === "e"
+                                     && galeryModel.get(59).color === "e" && galeryModel.get(57).color === "e") {
+                                moveLegal = true;
+                                galeryModel.set((59),{"color":"w", "piece":"images/R.png"});
+                                galeryModel.set((56),{"color":"e", "piece":"images/empty.png"});
+                                // Castling legality checks are missing
+                            }
+                            else {
                                 moveStarted=false;
                                 fromIndex=-1;
                                 toIndex=-1;
+                            }
+                        }
+                        else {
+                            moveStarted=false;
+                            fromIndex=-1;
+                            toIndex=-1;
                         }
                         break;
                     case "images/Q.png":
                         // Same column
                         if ((((fromIndex-toIndex)%8 == 0))
-                                &&   galeryModel.get(toIndex).color !== "w") {
+                                &&   galeryModel.get(toIndex).color !== "w"
+                                && galeryModel.get(toIndex).piece != "images/k.png") {
                                if (Math.abs(toIndex-fromIndex) == 8) {
                                    moveLegal = true;
                                }
@@ -590,7 +751,8 @@ Page {
                                }
                            }
                         // Same row
-                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "w") {
+                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "w"
+                                 && galeryModel.get(toIndex).piece != "images/k.png") {
                             if (Math.abs(toIndex-fromIndex) == 1) {
                                 moveLegal = true;
                             }
@@ -633,7 +795,8 @@ Page {
                         }
                         // Same diagonal 9
                         else if ((((fromIndex-toIndex)%9 == 0))
-                                &&   galeryModel.get(toIndex).color !== "w") {
+                                &&   galeryModel.get(toIndex).color !== "w"
+                                 && galeryModel.get(toIndex).piece != "images/k.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
                                    moveLegal = true;
                                }
@@ -677,7 +840,8 @@ Page {
                            }
                         // Same diagonal 7
                         else if ((((fromIndex-toIndex)%7 == 0))
-                             &&   galeryModel.get(toIndex).color !== "w") {
+                             &&   galeryModel.get(toIndex).color !== "w"
+                                 && galeryModel.get(toIndex).piece != "images/k.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
                                 moveLegal = true;
                             }
@@ -728,7 +892,8 @@ Page {
                     case "images/q.png":  // Same as Q.png but four "w"s
                         // Same column
                         if ((((fromIndex-toIndex)%8 == 0))
-                                &&   galeryModel.get(toIndex).color !== "b") {
+                                &&   galeryModel.get(toIndex).color !== "b"
+                                && galeryModel.get(toIndex).piece != "images/K.png") {
                                if (Math.abs(toIndex-fromIndex) == 8) {
                                    moveLegal = true;
                                }
@@ -771,7 +936,8 @@ Page {
                                }
                            }
                         // Same row
-                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "b") {
+                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "b"
+                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                             if (Math.abs(toIndex-fromIndex) == 1) {
                                 moveLegal = true;
                             }
@@ -814,7 +980,8 @@ Page {
                         }
                         // Same diagonal 9
                         else if ((((fromIndex-toIndex)%9 == 0))
-                                &&   galeryModel.get(toIndex).color !== "b") {
+                                &&   galeryModel.get(toIndex).color !== "b"
+                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
                                    moveLegal = true;
                                }
@@ -858,7 +1025,8 @@ Page {
                            }
                         // Same diagonal 7
                         else if ((((fromIndex-toIndex)%7 == 0))
-                             &&   galeryModel.get(toIndex).color !== "b") {
+                             &&   galeryModel.get(toIndex).color !== "b"
+                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
                                 moveLegal = true;
                             }
@@ -908,7 +1076,8 @@ Page {
                         break;
                     case "images/B.png":
                         if ((((fromIndex-toIndex)%9 == 0))
-                                &&   galeryModel.get(toIndex).color !== "w") {
+                                &&   galeryModel.get(toIndex).color !== "w"
+                                && galeryModel.get(toIndex).piece != "images/k.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
                                    moveLegal = true;
                                }
@@ -951,7 +1120,8 @@ Page {
                                }
                            }
                         else if ((((fromIndex-toIndex)%7 == 0))
-                             &&   galeryModel.get(toIndex).color !== "w") {
+                             &&   galeryModel.get(toIndex).color !== "w"
+                                 && galeryModel.get(toIndex).piece != "images/k.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
                                 moveLegal = true;
                             }
@@ -999,9 +1169,10 @@ Page {
                                 toIndex=-1;
                         }
                         break;
-                    case "images/b.png": // Copy of white but two color checks changed from "w" to "b"
+                    case "images/b.png": // Copy of white but two color checks changed from "w" to "b" ank k.png to K.png
                         if ((((fromIndex-toIndex)%9 == 0))
-                                &&   galeryModel.get(toIndex).color !== "b") {
+                                &&   galeryModel.get(toIndex).color !== "b"
+                                && galeryModel.get(toIndex).piece != "images/K.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
                                    moveLegal = true;
                                }
@@ -1044,7 +1215,8 @@ Page {
                                }
                            }
                         else if ((((fromIndex-toIndex)%7 == 0))
-                             &&   galeryModel.get(toIndex).color !== "b") {
+                             &&   galeryModel.get(toIndex).color !== "b"
+                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
                                 moveLegal = true;
                             }
@@ -1097,7 +1269,8 @@ Page {
                              || ((fromIndex-toIndex) == 15) || ((fromIndex-toIndex) == 6)
                              || ((fromIndex-toIndex) == -10) || ((fromIndex-toIndex) == -17)
                              || ((fromIndex-toIndex) == -15) || ((fromIndex-toIndex) == -6))
-                                && galeryModel.get(toIndex).color !== "w") {
+                                && galeryModel.get(toIndex).color !== "w"
+                                && galeryModel.get(toIndex).piece != "images/k.png") {
                             moveLegal = true;
                         }
                         else {
@@ -1111,7 +1284,8 @@ Page {
                              || ((fromIndex-toIndex) == 15) || ((fromIndex-toIndex) == 6)
                              || ((fromIndex-toIndex) == -10) || ((fromIndex-toIndex) == -17)
                              || ((fromIndex-toIndex) == -15) || ((fromIndex-toIndex) == -6))
-                                && galeryModel.get(toIndex).color !== "b") {
+                                && galeryModel.get(toIndex).color !== "b"
+                                && galeryModel.get(toIndex).piece != "images/K.png") {
                             moveLegal = true;
                         }
                         else {
@@ -1122,7 +1296,8 @@ Page {
                         break;
                     case "images/R.png":
                         if ((((fromIndex-toIndex)%8 == 0))
-                                &&   galeryModel.get(toIndex).color !== "w") {
+                                &&   galeryModel.get(toIndex).color !== "w"
+                                && galeryModel.get(toIndex).piece != "images/k.png") {
                                if (Math.abs(toIndex-fromIndex) == 8) {
                                    moveLegal = true;
                                }
@@ -1165,7 +1340,8 @@ Page {
                                }
                            }
                         // Same row
-                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "w") {
+                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "w"
+                                 && galeryModel.get(toIndex).piece != "images/k.png") {
                             if (Math.abs(toIndex-fromIndex) == 1) {
                                 moveLegal = true;
                             }
@@ -1214,7 +1390,8 @@ Page {
                         break;
                     case "images/r.png": // Same as R.png but two "w"s changed to "b"s
                         if ((((fromIndex-toIndex)%8 == 0))
-                                &&   galeryModel.get(toIndex).color !== "b") {
+                                &&   galeryModel.get(toIndex).color !== "b"
+                                && galeryModel.get(toIndex).piece != "images/K.png") {
                                if (Math.abs(toIndex-fromIndex) == 8) {
                                    moveLegal = true;
                                }
@@ -1257,7 +1434,8 @@ Page {
                                }
                            }
                         // Same row
-                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "b") {
+                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "b"
+                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                             if (Math.abs(toIndex-fromIndex) == 1) {
                                 moveLegal = true;
                             }
@@ -1327,6 +1505,9 @@ Page {
                     else {
                         toIndex=indeksi;
                         isLegalmove();
+                        if (moveLegal) {
+//                        Myfunks.isChess(); // this is moved to another place
+                        }
                         if (moveLegal){
                             galeryModel.set(toIndex,{"color":colorMoved, "piece":itemMoved})
                             galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
@@ -1451,10 +1632,11 @@ Page {
             } //end Rectangle
 
             Timer {
-                interval: 500; running: feni.feniReady; repeat: false  //ApplicationWindowactive
+                interval: 500; running: feni.feniReady && Qt.ApplicationActive; repeat: false
                 onTriggered: {hopo.inni();
                     if (hopo.test == "peru") {
 // old position
+                        Myfunks.cancelMove(); // Does nothing now
                         //siirretty piece (movelist.index 0)
                         galeryModel.set(fromIndex,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece})
                         galeryModel.set(toIndex,{"color":"e", "piece":"images/empty.png"})
@@ -1472,13 +1654,28 @@ Page {
             }
 
             Timer {
-                interval: 1500; running: feni.feniBlack; repeat: false  //ApplicationWindowactive
+                interval: 1500; running: feni.feniBlack && Qt.ApplicationActive; repeat: false
                 onTriggered: {hopo.outti();
                     Myfunks.fenToGRID()
-//                    galeryModel.get(fromIndex).piece
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
-                    // enpassant still missing, castling still missing,
+                    // If castling, moving the rook also
+                    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece == "images/k.png") {
+                        if (toIndex == 6){
+                            galeryModel.set(5,{"color":"b", "piece":"images/r.png"})
+                            galeryModel.set(7,{"color":"e", "piece":"images/empty.png"})
+                        }
+                        else {
+                            galeryModel.set(3,{"color":"b", "piece":"images/r.png"})
+                            galeryModel.set(0,{"color":"e", "piece":"images/empty.png"})
+                        }
+                    }
+                    // If white gives enpassant possibility and it is utilized let's print a board accordingly
+                    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece == "images/p.png") {
+                        galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
+                        moveMent.wenpassant = -1;
+                    }
+
                     vuoro.vaihdaValkealle()
 
                     feni.feniBlack = false;

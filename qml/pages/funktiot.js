@@ -1,6 +1,11 @@
+// Function gridToFEN(), row 7
+// Function fenToGRID(), row 65
+// Function isChess(), row 169
+// Function cancelMove(), row 204
 
+/////////////////////////////////////////////////////////
 // this function transforms grid notation to FEN-notation
-
+/////////////////////////////////////////////////////////
 function gridToFEN() {
     console.log("Valkoisen siirto, FEN ",fromIndex, toIndex)
     hopo.test = "";
@@ -55,7 +60,9 @@ function gridToFEN() {
 
 }
 
+/////////////////////////////////////////////////////////
 // this function transforms FEN notation to grid-notation
+/////////////////////////////////////////////////////////
 
 function fenToGRID() {
     console.log(hopo.test)
@@ -154,5 +161,46 @@ function fenToGRID() {
     }
     toIndex=feni.feniHelper;
     console.log("mustan siirto ", fromIndex,toIndex)
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+// Function checks if after move the Chess is still on. If so the movement is cancelled
+///////////////////////////////////////////////////////////////////////////////////////
+
+function isChess() {
+    feni.feniWhiteChess = false;
+    feni.feniBlackChess = false;
+    feni.feniWkingInd = 60;
+    feni.feniBkingInd = 4;
+    feni.temptoIndex = toIndex;
+    feni.tempfromIndex = fromIndex;
+
+    for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
+        //console.log(feni.ax);
+        toIndex=feni.feniWkingInd;
+        fromIndex = feni.ax;
+        // ismovable
+
+
+        // is legalmove
+
+
+    }
+
+
+    if (tilat.valko && feni.feniWhiteChess) {
+        moveMent.moveLegal = false;
+    }
+    else if (tilat.musta && feni.feniBlackChess) {
+        moveMent.moveLegal = true;
+    }
+
+    toIndex = feni.temptoIndex;
+    fromIndex = feni.tempfromIndex;
+
+}
+
+function cancelMove() {
 
 }
