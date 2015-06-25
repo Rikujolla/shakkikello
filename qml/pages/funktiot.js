@@ -171,19 +171,34 @@ function fenToGRID() {
 function isChess() {
     feni.feniWhiteChess = false;
     feni.feniBlackChess = false;
-    feni.feniWkingInd = 60;
+//    feni.feniWkingInd = 60;
     feni.feniBkingInd = 4;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
-
+//    toIndex=feni.feniWkingInd;
+    console.log("Tässä kingi testissä", feni.feniWkingInd);
     for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
-        //console.log(feni.ax);
         toIndex=feni.feniWkingInd;
         fromIndex = feni.ax;
-        // ismovable
+//        console.log(toIndex, feni.ax);
 
+        if (galeryModel.get(feni.ax).color == "b") {
+            moveMent.canBemoved = true;  //palautettava falseksi joskus??
+            moveMent.itemMoved=galeryModel.get(feni.ax).piece;
+            console.log(moveMent.itemMoved);
 
-        // is legalmove
+//            itemMoved=itemTobemoved;
+//            moveStarted=!moveStarted;
+//            colorMoved=colorTobemoved;
+//            canBemoved=false;
+
+            moveMent.isLegalmove();
+            console.log(moveMent.moveLegal);
+            if (moveMent.moveLegal){
+                feni.chessIsOn = true; //
+                console.log("kingiä ei voi siirtää", feni.feniWkingInd);
+            }
+        }
 
 
     }
@@ -198,7 +213,7 @@ function isChess() {
 
     toIndex = feni.temptoIndex;
     fromIndex = feni.tempfromIndex;
-    feni.chessIsOn = false; //// temporary
+//    feni.chessIsOn = false; //// temporary
 if (tilat.valko && !feni.chessIsOn){
     gridToFEN();
     vuoro.vaihdaMustalle();
@@ -219,10 +234,19 @@ function cancelMove() {
     console.log(movedPieces.get(1).indeksos,movedPieces.get(1).color, movedPieces.get(1).piece)
     moveStarted=false;
     moveMent.moveLegal=false;
-    galeryModel.set(moveMent.wenpassant,{"color":"e"})
-    moveMent.wenpassant = -1;
+    if (moveMent.wenpassant > -1){
+        galeryModel.set(moveMent.wenpassant,{"color":"e"})
+        moveMent.wenpassant = -1;
+    }
+    feni.chessIsOn = false;
 
-    // castling tai wenpassant (movelist.index 2)
+    // king index backing
+    if (movedPieces.get(0).piece == "images/K.png"){
+        feni.feniWkingInd = movedPieces.get(0).indeksos;
+        console.log("king index backing",feni.feniWkingInd);
+    }
+
+    // castling or wenpassant doesnt work yet (movelist.index 2)
 //    feni.feniReady = false;
 //    vuoro.vaihdaValkealle();
 

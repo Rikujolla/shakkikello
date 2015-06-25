@@ -382,6 +382,7 @@ Page {
                 property string colorMoved;
                 property bool canBemoved: false; //True if the piece can be moved somewhere
                 property bool moveLegal: false; //True if the move to the destination is possible
+                property int intLegal: -1; //this is an unneeded variable
                 property bool moveLegalHelp; //for checking empty midsquares for bishop, rook and queen
                 // Pawn is promoted to queen now
                 function pawnPromotion() {
@@ -406,7 +407,7 @@ Page {
                     case "images/p.png":
                         // Normal move
                         if (((fromIndex-toIndex) == -8) && galeryModel.get(toIndex).color == "e") {
-                            moveLegal = true;
+                            moveLegal = true; intLegal = 1;
                             if (toIndex > 55) {
                                 pawnPromotion()
                                 itemMoved = "images/q.png"
@@ -416,21 +417,24 @@ Page {
                         else if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).color == "e"
                                  && galeryModel.get(toIndex-8).color == "e"
                                  && (fromIndex < 16)) {
-                            moveLegal = true;
+                            moveLegal = true; intLegal = 1;
                             benpassant = toIndex-8;
                             galeryModel.set(benpassant,{"color":"bp"})
                         }
                         // Capturing a piece
                         else if (((fromIndex-toIndex) == -7) || ((fromIndex-toIndex) == -9)) {
-                            if ((galeryModel.get(toIndex).color == "w") && (galeryModel.get(toIndex).piece != "images/K.png")) {
-                                moveLegal = true;
+                            if ((galeryModel.get(toIndex).color == "w")
+                                    ){
+
+//                                && (galeryModel.get(toIndex).piece != "images/K.png")) {
+                                moveLegal = true; intLegal = 1;
                                 if (toIndex > 55) {
                                     pawnPromotion()
                                     itemMoved = "images/q.png"
                                 }
                             }
                             else if (galeryModel.get(toIndex).color == "wp") {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                                 galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
                                 wenpassant = -1;
                             }
@@ -451,7 +455,7 @@ Page {
                     case "images/P.png":
                         // Normal move
                         if (((fromIndex-toIndex) == 8) && galeryModel.get(toIndex).color == "e") {
-                            moveLegal = true;
+                            moveLegal = true; intLegal = 1;
                             if (toIndex < 8) {
                                 pawnPromotion()
                                 itemMoved = "images/Q.png"
@@ -461,21 +465,21 @@ Page {
                         else if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).color == "e"
                                  && galeryModel.get(toIndex+8).color == "e"
                                  && (fromIndex > 47)) {
-                            moveLegal = true;
+                            moveLegal = true; intLegal = 1;
                             wenpassant = toIndex+8;
                             galeryModel.set(wenpassant,{"color":"wp"})
                         }
                         // Capturing a piece
                         else if (((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 9)) {
                             if ((galeryModel.get(toIndex).color == "b") && (galeryModel.get(toIndex).piece != "images/k.png")) {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                                 if (toIndex < 8) {
                                     pawnPromotion()
                                     itemMoved = "images/Q.png"
                                 }
                             }
                             else if (galeryModel.get(toIndex).color == "bp") {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                                 galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
                                 benpassant = -1;
                             }
@@ -570,12 +574,12 @@ Page {
                                  || ((fromIndex-toIndex) == -1) || ((fromIndex-toIndex) == -7)
                                  || ((fromIndex-toIndex) == -8) || ((fromIndex-toIndex) == -9))
                                     && galeryModel.get(toIndex).color !== "b") {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                             }
                             // Castling short
                             else if ((toIndex == 6) && galeryModel.get(6).color === "e"
                                      && galeryModel.get(5).color === "e") {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                                 galeryModel.set((5),{"color":"b", "piece":"images/r.png"});
                                 galeryModel.set((7),{"color":"e", "piece":"images/empty.png"});
                                 // Castling legality checks are missing
@@ -583,7 +587,7 @@ Page {
                             // Castling long
                             else if ((toIndex == 2) && galeryModel.get(2).color === "e"
                                      && galeryModel.get(3).color === "e" && galeryModel.get(1).color === "e") {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                                 galeryModel.set((3),{"color":"b", "piece":"images/r.png"});
                                 galeryModel.set((0),{"color":"e", "piece":"images/empty.png"});
                                 // Castling legality checks are missing
@@ -681,7 +685,7 @@ Page {
                             // Castling kingside
                             else if ((toIndex == 62) && galeryModel.get(62).color === "e"
                                      && galeryModel.get(61).color === "e") {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                                 galeryModel.set((61),{"color":"w", "piece":"images/R.png"});
                                 galeryModel.set((63),{"color":"e", "piece":"images/empty.png"});
                                 // Castling legality checks are missing
@@ -689,7 +693,7 @@ Page {
                             // Castling queenside
                             else if ((toIndex == 58) && galeryModel.get(58).color === "e"
                                      && galeryModel.get(59).color === "e" && galeryModel.get(57).color === "e") {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                                 galeryModel.set((59),{"color":"w", "piece":"images/R.png"});
                                 galeryModel.set((56),{"color":"e", "piece":"images/empty.png"});
                                 // Castling legality checks are missing
@@ -712,7 +716,7 @@ Page {
                                 &&   galeryModel.get(toIndex).color !== "w"
                                 && galeryModel.get(toIndex).piece != "images/k.png") {
                                if (Math.abs(toIndex-fromIndex) == 8) {
-                                   moveLegal = true;
+                                   moveLegal = true; intLegal = 1;
                                }
                                else if (toIndex > fromIndex +8) {
                                    toHelpIndex = toIndex-8;
@@ -720,11 +724,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -8;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -738,11 +742,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +8;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -756,7 +760,7 @@ Page {
                         else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "w"
                                  && galeryModel.get(toIndex).piece != "images/k.png") {
                             if (Math.abs(toIndex-fromIndex) == 1) {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                             }
                             else if (toIndex > fromIndex +1) {
                                 toHelpIndex = toIndex-1;
@@ -764,11 +768,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -1;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -782,11 +786,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +1;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -800,7 +804,7 @@ Page {
                                 &&   galeryModel.get(toIndex).color !== "w"
                                  && galeryModel.get(toIndex).piece != "images/k.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
-                                   moveLegal = true;
+                                   moveLegal = true; intLegal = 1;
                                }
                                else if (toIndex > fromIndex +9) {
                                    toHelpIndex = toIndex-9;
@@ -808,11 +812,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -9;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -826,11 +830,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +9;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -845,7 +849,7 @@ Page {
                              &&   galeryModel.get(toIndex).color !== "w"
                                  && galeryModel.get(toIndex).piece != "images/k.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                             }
                             else if (toIndex > fromIndex +7) {
                                 toHelpIndex = toIndex-7;
@@ -853,11 +857,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                          || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -7;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -871,11 +875,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                          || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +7;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -895,9 +899,10 @@ Page {
                         // Same column
                         if ((((fromIndex-toIndex)%8 == 0))
                                 &&   galeryModel.get(toIndex).color !== "b"
-                                && galeryModel.get(toIndex).piece != "images/K.png") {
+                    ){
+                                //                                && galeryModel.get(toIndex).piece != "images/K.png") {
                                if (Math.abs(toIndex-fromIndex) == 8) {
-                                   moveLegal = true;
+                                   moveLegal = true; intLegal = 1;
                                }
                                else if (toIndex > fromIndex +8) {
                                    toHelpIndex = toIndex-8;
@@ -905,11 +910,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -8;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -923,11 +928,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +8;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -939,9 +944,10 @@ Page {
                            }
                         // Same row
                         else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "b"
-                                 && galeryModel.get(toIndex).piece != "images/K.png") {
+                                 ){
+//                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                             if (Math.abs(toIndex-fromIndex) == 1) {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                             }
                             else if (toIndex > fromIndex +1) {
                                 toHelpIndex = toIndex-1;
@@ -949,11 +955,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -1;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -967,11 +973,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +1;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -983,9 +989,10 @@ Page {
                         // Same diagonal 9
                         else if ((((fromIndex-toIndex)%9 == 0))
                                 &&   galeryModel.get(toIndex).color !== "b"
-                                 && galeryModel.get(toIndex).piece != "images/K.png") {
+                                 ){
+//                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
-                                   moveLegal = true;
+                                   moveLegal = true; intLegal = 1;
                                }
                                else if (toIndex > fromIndex +9) {
                                    toHelpIndex = toIndex-9;
@@ -993,11 +1000,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -9;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -1011,11 +1018,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +9;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -1028,9 +1035,10 @@ Page {
                         // Same diagonal 7
                         else if ((((fromIndex-toIndex)%7 == 0))
                              &&   galeryModel.get(toIndex).color !== "b"
-                                 && galeryModel.get(toIndex).piece != "images/K.png") {
+                                 ){
+//                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                             }
                             else if (toIndex > fromIndex +7) {
                                 toHelpIndex = toIndex-7;
@@ -1038,11 +1046,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                          || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -7;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -1056,11 +1064,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                          || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +7;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -1081,7 +1089,7 @@ Page {
                                 &&   galeryModel.get(toIndex).color !== "w"
                                 && galeryModel.get(toIndex).piece != "images/k.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
-                                   moveLegal = true;
+                                   moveLegal = true; intLegal = 1;
                                }
                                else if (toIndex > fromIndex +9) {
                                    toHelpIndex = toIndex-9;
@@ -1089,11 +1097,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -9;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -1107,11 +1115,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +9;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -1125,7 +1133,7 @@ Page {
                              &&   galeryModel.get(toIndex).color !== "w"
                                  && galeryModel.get(toIndex).piece != "images/k.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                             }
                             else if (toIndex > fromIndex +7) {
                                 toHelpIndex = toIndex-7;
@@ -1133,11 +1141,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                          || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -7;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -1151,11 +1159,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                          || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +7;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -1174,9 +1182,10 @@ Page {
                     case "images/b.png": // Copy of white but two color checks changed from "w" to "b" ank k.png to K.png
                         if ((((fromIndex-toIndex)%9 == 0))
                                 &&   galeryModel.get(toIndex).color !== "b"
-                                && galeryModel.get(toIndex).piece != "images/K.png") {
+                                ){
+//                                && galeryModel.get(toIndex).piece != "images/K.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
-                                   moveLegal = true;
+                                   moveLegal = true; intLegal = 1;
                                }
                                else if (toIndex > fromIndex +9) {
                                    toHelpIndex = toIndex-9;
@@ -1184,11 +1193,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -9;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -1202,11 +1211,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +9;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -1218,9 +1227,10 @@ Page {
                            }
                         else if ((((fromIndex-toIndex)%7 == 0))
                              &&   galeryModel.get(toIndex).color !== "b"
-                                 && galeryModel.get(toIndex).piece != "images/K.png") {
+                                 ){
+//                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                             }
                             else if (toIndex > fromIndex +7) {
                                 toHelpIndex = toIndex-7;
@@ -1228,11 +1238,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                          || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -7;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -1246,11 +1256,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                          || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +7;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -1273,7 +1283,7 @@ Page {
                              || ((fromIndex-toIndex) == -15) || ((fromIndex-toIndex) == -6))
                                 && galeryModel.get(toIndex).color !== "w"
                                 && galeryModel.get(toIndex).piece != "images/k.png") {
-                            moveLegal = true;
+                            moveLegal = true; intLegal = 1;
                         }
                         else {
                                 moveStarted=false;
@@ -1287,8 +1297,9 @@ Page {
                              || ((fromIndex-toIndex) == -10) || ((fromIndex-toIndex) == -17)
                              || ((fromIndex-toIndex) == -15) || ((fromIndex-toIndex) == -6))
                                 && galeryModel.get(toIndex).color !== "b"
-                                && galeryModel.get(toIndex).piece != "images/K.png") {
-                            moveLegal = true;
+                                ){
+//                                && galeryModel.get(toIndex).piece != "images/K.png") {
+                            moveLegal = true; intLegal = 1;
                         }
                         else {
                                 moveStarted=false;
@@ -1301,7 +1312,7 @@ Page {
                                 &&   galeryModel.get(toIndex).color !== "w"
                                 && galeryModel.get(toIndex).piece != "images/k.png") {
                                if (Math.abs(toIndex-fromIndex) == 8) {
-                                   moveLegal = true;
+                                   moveLegal = true; intLegal = 1;
                                }
                                else if (toIndex > fromIndex +8) {
                                    toHelpIndex = toIndex-8;
@@ -1309,11 +1320,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -8;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -1327,11 +1338,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +8;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -1345,7 +1356,7 @@ Page {
                         else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "w"
                                  && galeryModel.get(toIndex).piece != "images/k.png") {
                             if (Math.abs(toIndex-fromIndex) == 1) {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                             }
                             else if (toIndex > fromIndex +1) {
                                 toHelpIndex = toIndex-1;
@@ -1353,11 +1364,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -1;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -1371,11 +1382,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +1;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -1393,9 +1404,10 @@ Page {
                     case "images/r.png": // Same as R.png but two "w"s changed to "b"s
                         if ((((fromIndex-toIndex)%8 == 0))
                                 &&   galeryModel.get(toIndex).color !== "b"
-                                && galeryModel.get(toIndex).piece != "images/K.png") {
+                                ){
+//                                && galeryModel.get(toIndex).piece != "images/K.png") {
                                if (Math.abs(toIndex-fromIndex) == 8) {
-                                   moveLegal = true;
+                                   moveLegal = true; intLegal = 1;
                                }
                                else if (toIndex > fromIndex +8) {
                                    toHelpIndex = toIndex-8;
@@ -1403,11 +1415,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -8;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -1421,11 +1433,11 @@ Page {
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                           moveLegal = true;
+                                           moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +8;
                                        }
                                        else {
-                                           moveLegal = false;
+                                           moveLegal = false; intLegal = -1;
                                            moveLegalHelp = false;
                                            moveStarted=false;
                                            fromIndex=-1;
@@ -1437,9 +1449,10 @@ Page {
                            }
                         // Same row
                         else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "b"
-                                 && galeryModel.get(toIndex).piece != "images/K.png") {
+                                 ){
+//                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                             if (Math.abs(toIndex-fromIndex) == 1) {
-                                moveLegal = true;
+                                moveLegal = true; intLegal = 1;
                             }
                             else if (toIndex > fromIndex +1) {
                                 toHelpIndex = toIndex-1;
@@ -1447,11 +1460,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -1;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -1465,11 +1478,11 @@ Page {
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
                                     if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
                                             || galeryModel.get(toHelpIndex).color == "bp") {
-                                        moveLegal = true;
+                                        moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +1;
                                     }
                                     else {
-                                        moveLegal = false;
+                                        moveLegal = false; intLegal = -1;
                                         moveLegalHelp = false;
                                         moveStarted=false;
                                         fromIndex=-1;
@@ -1485,7 +1498,7 @@ Page {
                         }
                         break;
                     default:
-                        moveLegal = true;
+                        moveLegal = true; intLegal = 1;
                     }
                 }
 // end block isMovable:
@@ -1525,6 +1538,12 @@ Page {
                                     galeryModel.set(benpassant,{"color":"e", "piece":"images/empty.png"});
                                     benpassant = -1
                                 }
+                                if (itemMoved == "images/K.png") {
+                                    console.log("kingi ennen siirtoa", feni.feniWkingInd)
+                                    feni.feniWkingInd = toIndex;
+                                    console.log("kingi siirtyy", feni.feniWkingInd);
+                                }
+
 //                                Myfunks.gridToFEN() //change manual mode to FEN notation for Stockfish
 //                                hopo.inni();
 //                                vuoro.vaihdaMustalle() //Possible need to change to diff place after chess checks
