@@ -198,9 +198,32 @@ function isChess() {
 
     toIndex = feni.temptoIndex;
     fromIndex = feni.tempfromIndex;
+    feni.chessIsOn = false; //// temporary
+if (tilat.valko && !feni.chessIsOn){
+    gridToFEN();
+    vuoro.vaihdaMustalle();
+}
 
 }
 
+///////////////////////////////////////////////////////////////////////
+// Function cancels the move
+////////////////////////////////////////////////////////////////
+
 function cancelMove() {
+    // Returning the moved piece to it's original position.
+    galeryModel.set(movedPieces.get(0).indeksos,{"color":movedPieces.get(0).color, "piece":movedPieces.get(0).piece})
+    console.log(movedPieces.get(0).indeksos,movedPieces.get(0).color, movedPieces.get(0).piece)
+    // Returning the captured piece to it's original position
+    galeryModel.set(movedPieces.get(1).indeksos,{"color":movedPieces.get(1).color, "piece":movedPieces.get(1).piece})
+    console.log(movedPieces.get(1).indeksos,movedPieces.get(1).color, movedPieces.get(1).piece)
+    moveStarted=false;
+    moveMent.moveLegal=false;
+    galeryModel.set(moveMent.wenpassant,{"color":"e"})
+    moveMent.wenpassant = -1;
+
+    // castling tai wenpassant (movelist.index 2)
+//    feni.feniReady = false;
+//    vuoro.vaihdaValkealle();
 
 }

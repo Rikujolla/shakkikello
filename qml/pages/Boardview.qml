@@ -94,6 +94,8 @@ Page {
                 property bool feniBlack:false;
                 property bool feniWhiteChess: false;
                 property bool feniBlackChess: false;
+                property bool chessIsOn: false;
+                property bool forChessCheck: false;
                 property int feniWkingInd: 60;
                 property int feniBkingInd: 4;
                 property bool feniCancelMove: false;
@@ -1509,6 +1511,11 @@ Page {
 //                        Myfunks.isChess(); // this is moved to another place
                         }
                         if (moveLegal){
+                            // Saving position before move to possiple cancellation od a move
+                            movedPieces.set(0,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece moved
+                            movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
+//                            movedPieces.set(2,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece enpassant or castling
+                            //
                             galeryModel.set(toIndex,{"color":colorMoved, "piece":itemMoved})
                             galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
                             moveStarted=!moveStarted;
@@ -1518,9 +1525,9 @@ Page {
                                     galeryModel.set(benpassant,{"color":"e", "piece":"images/empty.png"});
                                     benpassant = -1
                                 }
-                                Myfunks.gridToFEN() //change manual mode to FEN notation for Stockfish
+//                                Myfunks.gridToFEN() //change manual mode to FEN notation for Stockfish
 //                                hopo.inni();
-                                vuoro.vaihdaMustalle()
+//                                vuoro.vaihdaMustalle() //Possible need to change to diff place after chess checks
                             }
                             else {
                                 if (wenpassant > 0 && galeryModel.get(wenpassant).color == "wp") {
@@ -1533,7 +1540,7 @@ Page {
                                 Myfunks.fenToGRID()
                                 vuoro.vaihdaValkealle()
                             }
-
+                            feni.forChessCheck = true; //starts the chess check timer
                         }
                     }
                 }
@@ -1621,7 +1628,12 @@ Page {
                                     moveMent.itemTobemoved = piece;
                                     moveMent.colorTobemoved = color;
                                     moveMent.movePiece();
-//                                    console.log("Index", index, piece, color);
+//                                    Myfunks.isChess()
+//                                    if (feni.chessIsOn) {
+//                                        Myfunks.cancelMove();
+//                                    }
+
+                                    //                                    console.log("Index", index, piece, color);
 //                                    Myfunks.gridToFEN()
 
                                 }
@@ -1630,6 +1642,22 @@ Page {
                     }
                 } // end GridView
             } //end Rectangle
+
+            Timer {
+                interval: 200; running: feni.forChessCheck && Qt.ApplicationActive; repeat: true
+                onTriggered: {
+                    Myfunks.isChess();
+                    feni.forChessCheck = false;
+                }
+            }
+            Timer {
+                interval: 300; running: feni.chessIsOn && Qt.ApplicationActive; repeat: true
+                onTriggered: {
+                    Myfunks.cancelMove();
+                    feni.chessIsOn = false;
+                }
+            }
+
 
             Timer {
                 interval: 500; running: feni.feniReady && Qt.ApplicationActive; repeat: false
