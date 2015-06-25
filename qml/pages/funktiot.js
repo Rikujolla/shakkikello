@@ -1,7 +1,7 @@
 // Function gridToFEN(), row 7
 // Function fenToGRID(), row 65
 // Function isChess(), row 169
-// Function cancelMove(), row 204
+// Function cancelMove(), row 220
 
 /////////////////////////////////////////////////////////
 // this function transforms grid notation to FEN-notation
@@ -90,7 +90,7 @@ function fenToGRID() {
 //    console.log(feni.feniHelper)
 
     feni.stringHelper = hopo.test.slice(1,2);
-    console.log(feni.stringHelper)
+//    console.log(feni.stringHelper)
     switch (feni.stringHelper) {
     case "1": feni.feniHelper = feni.feniHelper+56
         break;
@@ -138,7 +138,7 @@ function fenToGRID() {
 //    console.log(feni.feniHelper)
 
     feni.stringHelper = hopo.test.slice(3,4);
-    console.log(feni.stringHelper)
+//    console.log(feni.stringHelper)
     switch (feni.stringHelper) {
     case "1": feni.feniHelper = feni.feniHelper+56
         break;
@@ -203,14 +203,6 @@ function isChess() {
 
     }
 
-
-    if (tilat.valko && feni.feniWhiteChess) {
-        moveMent.moveLegal = false;
-    }
-    else if (tilat.musta && feni.feniBlackChess) {
-        moveMent.moveLegal = true;
-    }
-
     toIndex = feni.temptoIndex;
     fromIndex = feni.tempfromIndex;
 //    feni.chessIsOn = false; //// temporary
@@ -247,6 +239,7 @@ function cancelMove() {
     }
 
     // castling or wenpassant doesnt work yet (movelist.index 2)
+    //also  promotion to queen may not be cancelled
 //    feni.feniReady = false;
 //    vuoro.vaihdaValkealle();
 

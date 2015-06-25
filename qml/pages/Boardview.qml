@@ -1723,6 +1723,12 @@ Page {
                         moveMent.wenpassant = -1;
                     }
 
+                    // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
+
+                    if (toIndex > 55 && galeryModel.get(toIndex).piece == "images/p.png") {
+                        galeryModel.set(toIndex, {"piece": "images/q.png"});
+                    }
+
                     vuoro.vaihdaValkealle()
 
                     feni.feniBlack = false;
