@@ -422,7 +422,8 @@ Page {
                             galeryModel.set(benpassant,{"color":"bp"})
                         }
                         // Capturing a piece
-                        else if (((fromIndex-toIndex) == -7) || ((fromIndex-toIndex) == -9)) {
+                        else if (((fromIndex-toIndex) == -7) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1
+                                 || ((fromIndex-toIndex) == -9) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1) {
                             if ((galeryModel.get(toIndex).color == "w")
                                     ){
 
@@ -470,7 +471,8 @@ Page {
                             galeryModel.set(wenpassant,{"color":"wp"})
                         }
                         // Capturing a piece
-                        else if (((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 9)) {
+                        else if (((fromIndex-toIndex) == 7) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1
+                                 || ((fromIndex-toIndex) == 9) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1) {
                             if ((galeryModel.get(toIndex).color == "b") && (galeryModel.get(toIndex).piece != "images/k.png")) {
                                 moveLegal = true; intLegal = 1;
                                 if (toIndex < 8) {

@@ -196,7 +196,7 @@ void UCI::loopi(const std::vector<std::string> &fransu) {
         ind++;
     }
     Search::LimitsType limits;
-    limits.depth = 5;
+    limits.depth = 1; // Has to be parametrisized
     Threads.start_thinking(pos, limits, SetupStates);
     if (g_peru==88) {
        cout << "Vörkkisiirto" << endl;
