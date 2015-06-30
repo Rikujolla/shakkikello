@@ -2,6 +2,7 @@
 // Function fenToGRID(), row 65
 // Function isChess(), row 169
 // Function cancelMove(), row 220
+// Function parityEval(), row xxx
 
 /////////////////////////////////////////////////////////
 // this function transforms grid notation to FEN-notation
@@ -192,6 +193,7 @@ function isChess() {
 //            colorMoved=colorTobemoved;
 //            canBemoved=false;
 
+            moveMent.sameColor();
             moveMent.isLegalmove();
             console.log(moveMent.moveLegal);
             if (moveMent.moveLegal){

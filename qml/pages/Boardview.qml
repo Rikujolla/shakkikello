@@ -384,10 +384,27 @@ Page {
                 property bool moveLegal: false; //True if the move to the destination is possible
                 property int intLegal: -1; //this is an unneeded variable
                 property bool moveLegalHelp; //for checking empty midsquares for bishop, rook and queen
+                property int rowInd; // This ind to help diagonal moves checks
+                property int colInd; // This ind to help diagonal moves checks
+                property int fromParity; // This ind to help diagonal moves checks
+                property int toParity; // This ind to help diagonal moves checks
                 // Pawn is promoted to queen now
                 function pawnPromotion() {
                 Qt.createComponent("Promotion.qml").createObject(page, {});
 // one possibility to have the pawnpromotion dialog
+                }
+                ///////////////////////////////////////////////////////////////////////////
+                // This function checks if fromIndex and toIndex are on same color
+                ///////////////////////////////////////////////////////////////////////////
+                function sameColor() {
+                    rowInd = 8-(fromIndex-fromIndex%8)/8;
+                    colInd = fromIndex%8+1;
+                    fromParity = (rowInd + colInd)%2;
+//                    console.log("From parity row,col", rowInd, colInd, fromParity)
+                    rowInd = 8-(toIndex-toIndex%8)/8;
+                    colInd = toIndex%8+1;
+                    toParity = (rowInd + colInd)%2;
+//                    console.log(" To parity row,col", rowInd, colInd, toParity)
                 }
 
                 // block isMovable:
@@ -402,6 +419,10 @@ Page {
                         canBemoved = false;
                     }
                 }
+                ////////////////////////////////////////
+                // This function determines legal moves
+                ////////////////////////////////////////
+
                 function isLegalmove() {
                     switch (itemMoved) {
                     case "images/p.png":
@@ -444,7 +465,6 @@ Page {
                                 fromIndex=-1;
                                 toIndex=-1;
                             }
-                            //porsaanreikä rivinvaihdossa??
                         }
 
                         else {
@@ -491,7 +511,6 @@ Page {
                                 fromIndex=-1;
                                 toIndex=-1;
                             }
-                            //porsaanreikä rivinvaihdossa??
                         }
 
                         else {
@@ -804,6 +823,7 @@ Page {
                         // Same diagonal 9
                         else if ((((fromIndex-toIndex)%9 == 0))
                                 &&   galeryModel.get(toIndex).color !== "w"
+                                 && fromParity == toParity
                                  && galeryModel.get(toIndex).piece != "images/k.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
                                    moveLegal = true; intLegal = 1;
@@ -849,6 +869,7 @@ Page {
                         // Same diagonal 7
                         else if ((((fromIndex-toIndex)%7 == 0))
                              &&   galeryModel.get(toIndex).color !== "w"
+                                 && fromParity == toParity
                                  && galeryModel.get(toIndex).piece != "images/k.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
                                 moveLegal = true; intLegal = 1;
@@ -991,6 +1012,7 @@ Page {
                         // Same diagonal 9
                         else if ((((fromIndex-toIndex)%9 == 0))
                                 &&   galeryModel.get(toIndex).color !== "b"
+                                 && fromParity == toParity
                                  ){
 //                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
@@ -1037,6 +1059,7 @@ Page {
                         // Same diagonal 7
                         else if ((((fromIndex-toIndex)%7 == 0))
                              &&   galeryModel.get(toIndex).color !== "b"
+                                 && fromParity == toParity
                                  ){
 //                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
@@ -1088,7 +1111,8 @@ Page {
                         break;
                     case "images/B.png":
                         if ((((fromIndex-toIndex)%9 == 0))
-                                &&   galeryModel.get(toIndex).color !== "w"
+                                && galeryModel.get(toIndex).color !== "w"
+                                && fromParity == toParity
                                 && galeryModel.get(toIndex).piece != "images/k.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
                                    moveLegal = true; intLegal = 1;
@@ -1132,7 +1156,8 @@ Page {
                                }
                            }
                         else if ((((fromIndex-toIndex)%7 == 0))
-                             &&   galeryModel.get(toIndex).color !== "w"
+                                 && galeryModel.get(toIndex).color !== "w"
+                                 && fromParity == toParity
                                  && galeryModel.get(toIndex).piece != "images/k.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
                                 moveLegal = true; intLegal = 1;
@@ -1183,7 +1208,8 @@ Page {
                         break;
                     case "images/b.png": // Copy of white but two color checks changed from "w" to "b" ank k.png to K.png
                         if ((((fromIndex-toIndex)%9 == 0))
-                                &&   galeryModel.get(toIndex).color !== "b"
+                                && galeryModel.get(toIndex).color !== "b"
+                                && fromParity == toParity
                                 ){
 //                                && galeryModel.get(toIndex).piece != "images/K.png") {
                                if (Math.abs(toIndex-fromIndex) == 9) {
@@ -1228,7 +1254,8 @@ Page {
                                }
                            }
                         else if ((((fromIndex-toIndex)%7 == 0))
-                             &&   galeryModel.get(toIndex).color !== "b"
+                                 && galeryModel.get(toIndex).color !== "b"
+                                 && fromParity == toParity
                                  ){
 //                                 && galeryModel.get(toIndex).piece != "images/K.png") {
                             if (Math.abs(toIndex-fromIndex) == 7) {
@@ -1284,6 +1311,7 @@ Page {
                              || ((fromIndex-toIndex) == -10) || ((fromIndex-toIndex) == -17)
                              || ((fromIndex-toIndex) == -15) || ((fromIndex-toIndex) == -6))
                                 && galeryModel.get(toIndex).color !== "w"
+                                && fromParity != toParity
                                 && galeryModel.get(toIndex).piece != "images/k.png") {
                             moveLegal = true; intLegal = 1;
                         }
@@ -1299,6 +1327,7 @@ Page {
                              || ((fromIndex-toIndex) == -10) || ((fromIndex-toIndex) == -17)
                              || ((fromIndex-toIndex) == -15) || ((fromIndex-toIndex) == -6))
                                 && galeryModel.get(toIndex).color !== "b"
+                                && fromParity != toParity
                                 ){
 //                                && galeryModel.get(toIndex).piece != "images/K.png") {
                             moveLegal = true; intLegal = 1;
@@ -1521,6 +1550,8 @@ Page {
                     }
                     else {
                         toIndex=indeksi;
+                        // here fomParity and toParity checks
+                        sameColor(); // Checks if fromIndex and toIndex are same color
                         isLegalmove();
                         if (moveLegal) {
 //                        Myfunks.isChess(); // this is moved to another place
