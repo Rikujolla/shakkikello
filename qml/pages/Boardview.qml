@@ -384,8 +384,10 @@ Page {
                 property bool moveLegal: false; //True if the move to the destination is possible
                 property int intLegal: -1; //this is an unneeded variable
                 property bool moveLegalHelp; //for checking empty midsquares for bishop, rook and queen
-                property int rowInd; // This ind to help diagonal moves checks
-                property int colInd; // This ind to help diagonal moves checks
+                property int rowfromInd; // This ind to help diagonal moves checks
+                property int colfromInd; // This ind to help diagonal moves checks
+                property int rowtoInd; // This ind to help diagonal moves checks
+                property int coltoInd; // This ind to help diagonal moves checks
                 property int fromParity; // This ind to help diagonal moves checks
                 property int toParity; // This ind to help diagonal moves checks
                 // Pawn is promoted to queen now
@@ -397,17 +399,20 @@ Page {
                 // This function checks if fromIndex and toIndex are on same color
                 ///////////////////////////////////////////////////////////////////////////
                 function sameColor() {
-                    rowInd = 8-(fromIndex-fromIndex%8)/8;
-                    colInd = fromIndex%8+1;
-                    fromParity = (rowInd + colInd)%2;
-//                    console.log("From parity row,col", rowInd, colInd, fromParity)
-                    rowInd = 8-(toIndex-toIndex%8)/8;
-                    colInd = toIndex%8+1;
-                    toParity = (rowInd + colInd)%2;
-//                    console.log(" To parity row,col", rowInd, colInd, toParity)
+                    rowfromInd = 8-(fromIndex-fromIndex%8)/8;
+                    colfromInd = fromIndex%8+1;
+                    fromParity = (rowfromInd + colfromInd)%2;
+//                    console.log("From parity row,col", rowfromInd, colfromInd, fromParity)
+                    rowtoInd = 8-(toIndex-toIndex%8)/8;
+                    coltoInd = toIndex%8+1;
+                    toParity = (rowtoInd + coltoInd)%2;
+//                    console.log(" To parity row,col", rowtoInd, coltoInd, toParity)
                 }
 
-                // block isMovable:
+                /////////////////////////////////////////////////////////////////////
+                // Function isMovable() checks whether the square has a movable piece
+                /////////////////////////////////////////////////////////////////////
+
                 function isMovable() {
                     if (colorTobemoved == "b" && tilat.musta) {
                         canBemoved = true;
@@ -425,7 +430,7 @@ Page {
 
                 function isLegalmove() {
                     switch (itemMoved) {
-                    case "images/p.png":
+                    case "images/p.png":  // Black pawn
                         // Normal move
                         if (((fromIndex-toIndex) == -8) && galeryModel.get(toIndex).color == "e") {
                             moveLegal = true; intLegal = 1;
@@ -520,7 +525,7 @@ Page {
                         }
                         break;
                     case "images/k.png":
-                        if (    toIndex == 63
+/*                        if (    toIndex == 63
                                 && galeryModel.get(toIndex-1).piece != "images/K.png"
                                 && galeryModel.get(toIndex-7).piece != "images/K.png"
                                 && galeryModel.get(toIndex-8).piece != "images/K.png"
@@ -589,12 +594,11 @@ Page {
                                 && galeryModel.get(toIndex-7).piece != "images/K.png"
                                 && galeryModel.get(toIndex-8).piece != "images/K.png"
                                 && galeryModel.get(toIndex-9).piece != "images/K.png"
+                                ) {*/
+                        if (Math.abs(rowfromInd-rowtoInd) < 2
+                                && galeryModel.get(toIndex).color !== "b"
+                                && Math.abs(coltoInd-colfromInd) < 2
                                 ) {
-                            if ((((fromIndex-toIndex) == 9) || ((fromIndex-toIndex) == 8)
-                                 || ((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 1)
-                                 || ((fromIndex-toIndex) == -1) || ((fromIndex-toIndex) == -7)
-                                 || ((fromIndex-toIndex) == -8) || ((fromIndex-toIndex) == -9))
-                                    && galeryModel.get(toIndex).color !== "b") {
                                 moveLegal = true; intLegal = 1;
                             }
                             // Castling short
@@ -618,15 +622,15 @@ Page {
                                 fromIndex=-1;
                                 toIndex=-1;
                             }
-                        }
+/*                        }
                         else {
                             moveStarted=false;
                             fromIndex=-1;
                             toIndex=-1;
-                        }
+                        }*/
                         break;
                     case "images/K.png":
-                        if (    toIndex == 63
+/*                        if (    toIndex == 63
                                 && galeryModel.get(toIndex-1).piece != "images/k.png"
                                 && galeryModel.get(toIndex-7).piece != "images/k.png"
                                 && galeryModel.get(toIndex-8).piece != "images/k.png"
@@ -695,12 +699,18 @@ Page {
                                 && galeryModel.get(toIndex-7).piece != "images/k.png"
                                 && galeryModel.get(toIndex-8).piece != "images/k.png"
                                 && galeryModel.get(toIndex-9).piece != "images/k.png"
-                                ) {
-                            if ((((fromIndex-toIndex) == 9) || ((fromIndex-toIndex) == 8)
+                                ) { */
+/*                            if ((((fromIndex-toIndex) == 9) || ((fromIndex-toIndex) == 8)
                                  || ((fromIndex-toIndex) == 7) || ((fromIndex-toIndex) == 1)
                                  || ((fromIndex-toIndex) == -1) || ((fromIndex-toIndex) == -7)
                                  || ((fromIndex-toIndex) == -8) || ((fromIndex-toIndex) == -9))
-                                    && galeryModel.get(toIndex).color !== "w") {
+                                    && galeryModel.get(toIndex).color !== "w"
+                                    && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) <= 2
+                                    ) {*/
+                                if (Math.abs(rowfromInd-rowtoInd) < 2
+                                        && galeryModel.get(toIndex).color !== "w"
+                                        && Math.abs(coltoInd-colfromInd) < 2
+                                        ) {
                                 moveLegal = true;
                             }
                             // Castling kingside
@@ -724,12 +734,12 @@ Page {
                                 fromIndex=-1;
                                 toIndex=-1;
                             }
-                        }
-                        else {
+//                        }
+/*                        else {
                             moveStarted=false;
                             fromIndex=-1;
                             toIndex=-1;
-                        }
+                        } */
                         break;
                     case "images/Q.png":
                         // Same column
