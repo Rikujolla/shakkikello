@@ -102,6 +102,7 @@ Page {
                 property int temptoIndex;
                 property int tempfromIndex;
                 property int ax; // for looping
+                property string playMode: "stockfish"
             }
 
             Item {
@@ -1544,7 +1545,9 @@ Page {
                 }
 // end block isMovable:
 
-/// Start block movePiece()
+                ////////////////////////////////////////////
+                /// Function movePiece()
+                ////////////////////////////////////////////////////
 
                 function movePiece() {
                     if (!moveStarted) { //Need for global property??

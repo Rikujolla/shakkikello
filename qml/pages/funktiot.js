@@ -173,32 +173,33 @@ function isChess() {
     feni.feniWhiteChess = false;
     feni.feniBlackChess = false;
 //    feni.feniWkingInd = 60;
-    feni.feniBkingInd = 4;
+//    feni.feniBkingInd = 4;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
 //    toIndex=feni.feniWkingInd;
-    console.log("Tässä kingi testissä", feni.feniWkingInd);
+    console.log("Tässä kingi testissä, W,B", feni.feniWkingInd, feni.feniBkingInd);
     for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
-        toIndex=feni.feniWkingInd;
+        if (tilat.valko) {
+            toIndex=feni.feniWkingInd;
+        }
+        else {
+            toIndex=feni.feniBkingInd;
+        }
+
         fromIndex = feni.ax;
 //        console.log(toIndex, feni.ax);
 
-        if (galeryModel.get(feni.ax).color == "b") {
+        if (tilat.valko && galeryModel.get(feni.ax).color == "b"
+                || tilat.musta && galeryModel.get(feni.ax).color == "w") {
             moveMent.canBemoved = true;  //palautettava falseksi joskus??
             moveMent.itemMoved=galeryModel.get(feni.ax).piece;
             console.log(moveMent.itemMoved);
-
-//            itemMoved=itemTobemoved;
-//            moveStarted=!moveStarted;
-//            colorMoved=colorTobemoved;
-//            canBemoved=false;
-
             moveMent.sameColor();
             moveMent.isLegalmove();
             console.log(moveMent.moveLegal);
             if (moveMent.moveLegal){
                 feni.chessIsOn = true; //
-                console.log("kingiä ei voi siirtää", feni.feniWkingInd);
+                console.log("kingiä ei voi siirtää W,B", feni.feniWkingInd, feni.feniBkingInd);
             }
         }
 
@@ -209,8 +210,14 @@ function isChess() {
     fromIndex = feni.tempfromIndex;
 //    feni.chessIsOn = false; //// temporary
 if (tilat.valko && !feni.chessIsOn){
-    gridToFEN();
+    if (feni.playMode == "stockfish"){
+        gridToFEN();
+    }
     vuoro.vaihdaMustalle();
+}
+
+else if (tilat.musta && !feni.chessIsOn) {
+    vuoro.vaihdaValkealle()
 }
 
 }
@@ -228,16 +235,24 @@ function cancelMove() {
     console.log(movedPieces.get(1).indeksos,movedPieces.get(1).color, movedPieces.get(1).piece)
     moveStarted=false;
     moveMent.moveLegal=false;
-    if (moveMent.wenpassant > -1){
+    if (tilat.valko && moveMent.wenpassant > -1){
         galeryModel.set(moveMent.wenpassant,{"color":"e"})
         moveMent.wenpassant = -1;
+    }
+    if (tilat.musta && moveMent.benpassant > -1){
+        galeryModel.set(moveMent.benpassant,{"color":"e"})
+        moveMent.benpassant = -1;
     }
     feni.chessIsOn = false;
 
     // king index backing
     if (movedPieces.get(0).piece == "images/K.png"){
         feni.feniWkingInd = movedPieces.get(0).indeksos;
-        console.log("king index backing",feni.feniWkingInd);
+        console.log("W king index backing",feni.feniWkingInd);
+    }
+    if (movedPieces.get(0).piece == "images/k.png"){
+        feni.feniBkingInd = movedPieces.get(0).indeksos;
+        console.log("B king index backing",feni.feniBkingInd);
     }
 
     // castling or wenpassant doesnt work yet (movelist.index 2)
