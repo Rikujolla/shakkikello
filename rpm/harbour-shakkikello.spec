@@ -12,8 +12,8 @@ Name:       harbour-shakkikello
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
-Summary:    Shakkikello-sovellus
-Version:    0.4.2
+Summary:    Chess Clock application for Jolla and SailfishOS
+Version:    0.5.1
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -28,7 +28,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my SailfishOS Application
+Chess Clock application including the possibility to play.
 
 
 %prep

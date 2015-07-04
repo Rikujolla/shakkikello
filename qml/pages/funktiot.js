@@ -1,8 +1,7 @@
-// Function gridToFEN(), row 7
-// Function fenToGRID(), row 65
-// Function isChess(), row 169
-// Function cancelMove(), row 220
-// Function parityEval(), row xxx
+// Function gridToFEN(), row 9
+// Function fenToGRID(), row 67
+// Function isChess(), row 171
+// Function cancelMove(), row 226
 
 /////////////////////////////////////////////////////////
 // this function transforms grid notation to FEN-notation
@@ -172,11 +171,9 @@ function fenToGRID() {
 function isChess() {
     feni.feniWhiteChess = false;
     feni.feniBlackChess = false;
-//    feni.feniWkingInd = 60;
-//    feni.feniBkingInd = 4;
+    moveMent.chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
-//    toIndex=feni.feniWkingInd;
     console.log("Tässä kingi testissä, W,B", feni.feniWkingInd, feni.feniBkingInd);
     for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
         if (tilat.valko) {
@@ -208,7 +205,7 @@ function isChess() {
 
     toIndex = feni.temptoIndex;
     fromIndex = feni.tempfromIndex;
-//    feni.chessIsOn = false; //// temporary
+    moveMent.chessTest = false;
 if (tilat.valko && !feni.chessIsOn){
     if (feni.playMode == "stockfish"){
         gridToFEN();

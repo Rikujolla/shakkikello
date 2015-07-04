@@ -42,8 +42,13 @@
 - Improved the code translatability
 - Polish translation by szopin @ www.transifex.com
 
+* Sat Jul XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.1
+- Possible to use a Stockfish engine (version 5 git checkout f5622cd5ec7836e899e263cc4cd4cc386e1ed5f4)
+- Chess checks also in twoplayer mode
+- Updated pieces by Kapu (Kalevi Puistolinna)
+
 * Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.x
 - Update problem correction NOT OK
 - Promotion of the pawn other than queen not possible
+- Time counting up from zero (user request)
 
-- Stockfish (version 5 git checkout f5622cd5ec7836e899e263cc4cd4cc386e1ed5f4)

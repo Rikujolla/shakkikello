@@ -69,6 +69,36 @@ Page {
                 }
             }
 
+            SectionHeader { text: qsTr("Contributions") }
+            Text {
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                wrapMode: Text.WordWrap
+                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: {qsTr("The design of the pieces (Kapu)")
+                }
+            }
+
+            SectionHeader { text: qsTr("Third party software") }
+            Text {
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                wrapMode: Text.WordWrap
+                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: {qsTr("Stockfish engine, v5 (stockfishchess.org)")
+                }
+            }
+
             SectionHeader { text: qsTr("Licence") }
             Text {
                 font.pixelSize: Theme.fontSizeSmall
@@ -81,7 +111,8 @@ Page {
                     margins: Theme.paddingLarge
                 }
                 text: qsTr("Copyright (c) 2015, Riku Lahtinen") + "\n"
-                      + qsTr("Licenced under BSD.")
+                      + qsTr("Licenced under GPLv3. Licence, source code and more information:") + "\n"
+                      + ("https://github.com/Rikujolla/shakkikello")
             }
 
 //loppusulkeet
