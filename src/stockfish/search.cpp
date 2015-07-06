@@ -197,9 +197,9 @@ void Search::think() {
   if (RootMoves.empty())
   {
       RootMoves.push_back(MOVE_NONE);
-      sync_cout << "info depth 0 score "
-                << score_to_uci(RootPos.checkers() ? -VALUE_MATE : VALUE_DRAW)
-                << sync_endl;
+//      sync_cout << "info depth 0 score "
+//                << score_to_uci(RootPos.checkers() ? -VALUE_MATE : VALUE_DRAW)
+//                << sync_endl;
 
       goto finalize;
   }
@@ -256,8 +256,8 @@ void Search::think() {
 finalize:
 
   // When search is stopped this info is not printed
-  sync_cout << "info nodes " << RootPos.nodes_searched()
-            << " time " << Time::now() - SearchTime + 1 << sync_endl;
+//  sync_cout << "info nodes " << RootPos.nodes_searched()
+//            << " time " << Time::now() - SearchTime + 1 << sync_endl;
 
   // When we reach the maximum depth, we can arrive here without a raise of
   // Signals.stop. However, if we are pondering or in an infinite search,
@@ -271,9 +271,9 @@ finalize:
   }
 
   // Best move could be MOVE_NONE when searching on a stalemate position
-  sync_cout << "bestmove " << move_to_uci(RootMoves[0].pv[0], RootPos.is_chess960())
-            << " ponder "  << move_to_uci(RootMoves[0].pv[1], RootPos.is_chess960())
-            << sync_endl;
+ // sync_cout << "bestmove " << move_to_uci(RootMoves[0].pv[0], RootPos.is_chess960())
+ //           << " ponder "  << move_to_uci(RootMoves[0].pv[1], RootPos.is_chess960())
+ //           << sync_endl;
 
 
   g_koruksi = move_to_uci(RootMoves[0].pv[0], RootPos.is_chess960()); //SFOS
@@ -367,9 +367,9 @@ namespace {
 
                 // When failing high/low give some update (without cluttering
                 // the UI) before a re-search.
-                if (  (bestValue <= alpha || bestValue >= beta)
-                    && Time::now() - SearchTime > 3000)
-                    sync_cout << uci_pv(pos, depth, alpha, beta) << sync_endl;
+//                if (  (bestValue <= alpha || bestValue >= beta)
+//                    && Time::now() - SearchTime > 3000)
+  //                  sync_cout << uci_pv(pos, depth, alpha, beta) << sync_endl;
 
                 // In case of failing low/high increase aspiration window and
                 // re-search, otherwise exit the loop.
@@ -394,8 +394,8 @@ namespace {
             // Sort the PV lines searched so far and update the GUI
             std::stable_sort(RootMoves.begin(), RootMoves.begin() + PVIdx + 1);
 
-            if (PVIdx + 1 == MultiPV || Time::now() - SearchTime > 3000)
-                sync_cout << uci_pv(pos, depth, alpha, beta) << sync_endl;
+   //         if (PVIdx + 1 == MultiPV || Time::now() - SearchTime > 3000)
+   //             sync_cout << uci_pv(pos, depth, alpha, beta) << sync_endl;
         }
 
         // If skill levels are enabled and time is up, pick a sub-optimal best move
@@ -757,10 +757,10 @@ moves_loop: // When in check and at SpNode search starts from here
       {
           Signals.firstRootMove = (moveCount == 1);
 
-          if (thisThread == Threads.main() && Time::now() - SearchTime > 3000)
-              sync_cout << "info depth " << depth / ONE_PLY
-                        << " currmove " << move_to_uci(move, pos.is_chess960())
-                        << " currmovenumber " << moveCount + PVIdx << sync_endl;
+  //        if (thisThread == Threads.main() && Time::now() - SearchTime > 3000)
+  //            sync_cout << "info depth " << depth / ONE_PLY
+  //                      << " currmove " << move_to_uci(move, pos.is_chess960())
+  //                      << " currmovenumber " << moveCount + PVIdx << sync_endl;
       }
 
       ext = DEPTH_ZERO;

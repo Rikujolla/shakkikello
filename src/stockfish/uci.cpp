@@ -2,6 +2,7 @@
   Stockfish, a UCI chess playing engine derived from Glaurung 2.1
   Copyright (C) 2004-2008 Tord Romstad (Glaurung author)
   Copyright (C) 2008-2014 Marco Costalba, Joona Kiiski, Tord Romstad
+  Modifications for Shakkikello made by Riku Lahtinen, 2015
 
   Stockfish is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,6 +23,7 @@
 #include <sstream>
 #include <string>
 
+#include "bitboard.h"
 #include "evaluate.h"
 #include "notation.h"
 #include "position.h"
@@ -144,6 +146,30 @@ namespace {
 
 /// START SFOS part
 
+void A::initio() {
+//    cout << "initio alkaa" << endl;
+    g_siirrot.clear();
+    UCI::init(Options);
+    Bitboards::init();
+    Position::init();
+    Bitbases::init_kpk();
+    Search::init();
+    Pawns::init();
+    Eval::init();
+    Threads.init();
+    TT.resize(Options["Hash"]);
+
+
+//    Threads.exit();
+
+}
+
+void A::deletio() {
+    Threads.exit();
+//    cout << "Threadit pois" << endl;
+
+}
+
 void A::inni() {
     string ransu;
     ransu=myTest.toStdString();//    Move m;
@@ -159,11 +185,11 @@ void A::inni() {
 
 void A::outti() {
     extern std::string g_koruksi;
-    sync_cout << g_koruksi <<sync_endl;
+//    sync_cout << g_koruksi <<sync_endl;
     myTest = QString::fromStdString(g_koruksi);
     g_siirrot.push_back(g_koruksi);
     for (int ii = 0; ii < g_siirrot.size(); ii++) {
-        cout << g_siirrot[ii] << " i" << ii << endl;
+//        cout << g_siirrot[ii] << " i" << ii << endl;
     }
 }
 
@@ -179,7 +205,7 @@ void UCI::loopi(const std::vector<std::string> &fransu) {
     koko= fransu.size();
     while (ind < koko) {
         token = fransu[ind];
-        cout << token; //Konsoliin
+//        cout << token; //Konsoliin
         m = move_from_uci(pos, token);
         SetupStates->push(StateInfo());
 /*
@@ -196,15 +222,15 @@ void UCI::loopi(const std::vector<std::string> &fransu) {
         ind++;
     }
     Search::LimitsType limits;
-    limits.depth = 1; // Has to be parametrisized
+    limits.depth = 2; // Has to be parametrisized
     Threads.start_thinking(pos, limits, SetupStates);
-    if (g_peru==88) {
-       cout << "Vörkkisiirto" << endl;
+ /*   if (g_peru==88) {
+ //      cout << "Vörkkisiirto" << endl;
     }
     else
     {
-        cout << "Höpö juttu" << endl;
-    }
+ //       cout << "Höpö juttu" << endl;
+    }*/
 
 }
 

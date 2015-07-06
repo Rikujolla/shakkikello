@@ -44,7 +44,8 @@ Page {
             MenuItem { //Start/Pause
                 text: aloitapause
                 enabled: !tilat.peliloppui
-                onClicked: {kripti.lisaa();
+                onClicked: {hopo.initio();
+                    kripti.lisaa();
                     tilat.aloitaPeli();
                     tilat.juoksee = !tilat.juoksee;
                     startti.timeAsetus();
@@ -62,11 +63,16 @@ Page {
 /*        PushUpMenu {
 //            quickSelect: true
             MenuItem {
-                text: maharollisuuret
-                onClicked: asetussivulle.siirrytKo()
-                enabled: !tilat.juoksee || tilat.peliloppui
+                text: "Reset engine" //maharollisuuret
+                onClicked: hopo.initio();
+                enabled: true //!tilat.juoksee || tilat.peliloppui
             }
-        } */
+            MenuItem {
+                text: "Deletio" //maharollisuuret
+                onClicked: hopo.deletio();
+                enabled: true //!tilat.juoksee || tilat.peliloppui
+            }
+        }*/
 
         contentHeight: column.height
 
@@ -1417,9 +1423,9 @@ Page {
                                     benpassant = -1
                                 }
                                 if (itemMoved == "images/K.png") {
-                                    console.log("kingi ennen siirtoa", feni.feniWkingInd)
+                                    //console.log("kingi ennen siirtoa", feni.feniWkingInd)
                                     feni.feniWkingInd = toIndex;
-                                    console.log("kingi siirtyy", feni.feniWkingInd);
+                                    //console.log("kingi siirtyy", feni.feniWkingInd);
                                 }
 
 //                                Myfunks.gridToFEN() //change manual mode to FEN notation for Stockfish
@@ -1433,7 +1439,7 @@ Page {
                                 }
                                 Myfunks.gridToFEN() //temporary work
                                 hopo.outti();
-                                console.log(hopo.test);
+                                //console.log(hopo.test);
                                 Myfunks.fenToGRID()
                                 vuoro.vaihdaValkealle()
                             }

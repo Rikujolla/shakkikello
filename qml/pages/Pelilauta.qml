@@ -1404,9 +1404,9 @@ Page {
                                     benpassant = -1
                                 }
                                 if (itemMoved == "images/K.png") {
-                                    console.log("Wkingi ennen siirtoa", feni.feniWkingInd)
+                                    //console.log("Wkingi ennen siirtoa", feni.feniWkingInd)
                                     feni.feniWkingInd = toIndex;
-                                    console.log("Wkingi siirtyy", feni.feniWkingInd);
+                                    //console.log("Wkingi siirtyy", feni.feniWkingInd);
                                 }
 //                                vuoro.vaihdaMustalle()
                             }

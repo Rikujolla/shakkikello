@@ -7,7 +7,7 @@
 // this function transforms grid notation to FEN-notation
 /////////////////////////////////////////////////////////
 function gridToFEN() {
-    console.log("Valkoisen siirto, FEN ",fromIndex, toIndex)
+//    console.log("Valkoisen siirto, FEN ",fromIndex, toIndex)
     hopo.test = "";
     switch (fromIndex%8) {
     case 0: feni.startFeni= "a"
@@ -56,7 +56,7 @@ function gridToFEN() {
     hopo.test = hopo.test+feni.startFeni+feni.stopFeni;
     feni.feniReady = true;
 
-    console.log(hopo.test);
+//    console.log(hopo.test);
 
 }
 
@@ -65,7 +65,7 @@ function gridToFEN() {
 /////////////////////////////////////////////////////////
 
 function fenToGRID() {
-    console.log(hopo.test)
+//    console.log(hopo.test)
     feni.stringHelper = hopo.test.slice(0,1);
     switch (feni.stringHelper) {
     case "a": feni.feniHelper = 0
@@ -160,7 +160,7 @@ function fenToGRID() {
 
     }
     toIndex=feni.feniHelper;
-    console.log("mustan siirto ", fromIndex,toIndex)
+//    console.log("mustan siirto ", fromIndex,toIndex)
 
 }
 
@@ -174,7 +174,7 @@ function isChess() {
     moveMent.chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
-    console.log("Tässä kingi testissä, W,B", feni.feniWkingInd, feni.feniBkingInd);
+//    console.log("Tässä kingi testissä, W,B", feni.feniWkingInd, feni.feniBkingInd);
     for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
         if (tilat.valko) {
             toIndex=feni.feniWkingInd;
@@ -190,13 +190,13 @@ function isChess() {
                 || tilat.musta && galeryModel.get(feni.ax).color == "w") {
             moveMent.canBemoved = true;  //palautettava falseksi joskus??
             moveMent.itemMoved=galeryModel.get(feni.ax).piece;
-            console.log(moveMent.itemMoved);
+//            console.log(moveMent.itemMoved);
             moveMent.sameColor();
             moveMent.isLegalmove();
-            console.log(moveMent.moveLegal);
+//            console.log(moveMent.moveLegal);
             if (moveMent.moveLegal){
                 feni.chessIsOn = true; //
-                console.log("kingiä ei voi siirtää W,B", feni.feniWkingInd, feni.feniBkingInd);
+//                console.log("kingiä ei voi siirtää W,B", feni.feniWkingInd, feni.feniBkingInd);
             }
         }
 
@@ -226,10 +226,10 @@ else if (tilat.musta && !feni.chessIsOn) {
 function cancelMove() {
     // Returning the moved piece to it's original position.
     galeryModel.set(movedPieces.get(0).indeksos,{"color":movedPieces.get(0).color, "piece":movedPieces.get(0).piece})
-    console.log(movedPieces.get(0).indeksos,movedPieces.get(0).color, movedPieces.get(0).piece)
+//    console.log(movedPieces.get(0).indeksos,movedPieces.get(0).color, movedPieces.get(0).piece)
     // Returning the captured piece to it's original position
     galeryModel.set(movedPieces.get(1).indeksos,{"color":movedPieces.get(1).color, "piece":movedPieces.get(1).piece})
-    console.log(movedPieces.get(1).indeksos,movedPieces.get(1).color, movedPieces.get(1).piece)
+//    console.log(movedPieces.get(1).indeksos,movedPieces.get(1).color, movedPieces.get(1).piece)
     moveStarted=false;
     moveMent.moveLegal=false;
     if (tilat.valko && moveMent.wenpassant > -1){
@@ -245,11 +245,11 @@ function cancelMove() {
     // king index backing
     if (movedPieces.get(0).piece == "images/K.png"){
         feni.feniWkingInd = movedPieces.get(0).indeksos;
-        console.log("W king index backing",feni.feniWkingInd);
+//        console.log("W king index backing",feni.feniWkingInd);
     }
     if (movedPieces.get(0).piece == "images/k.png"){
         feni.feniBkingInd = movedPieces.get(0).indeksos;
-        console.log("B king index backing",feni.feniBkingInd);
+//        console.log("B king index backing",feni.feniBkingInd);
     }
 
     // castling or wenpassant doesnt work yet (movelist.index 2)
