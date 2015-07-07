@@ -48,12 +48,43 @@
         <translation>s</translation>
     </message>
     <message>
-        <source>Board view</source>
-        <translation>Bordweergave</translation>
-    </message>
-    <message>
         <source>Clock view</source>
         <translation>Klokweergave</translation>
+    </message>
+    <message>
+        <source>Board, twoplayer</source>
+        <translation>Bord voor twee spelers</translation>
+    </message>
+    <message>
+        <source>Board, Stockfish</source>
+        <translation>Bord voor stokvis</translation>
+    </message>
+</context>
+<context>
+    <name>Boardview</name>
+    <message>
+        <source>Reset</source>
+        <translation>Herstellen</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pauzeren</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Doorgaan</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Instellingen</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation>Schaakbord</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -152,14 +183,6 @@
         <translation>Vertalingen</translation>
     </message>
     <message>
-        <source>Licence</source>
-        <translation>Licentie</translation>
-    </message>
-    <message>
-        <source>Polish (szopin)</source>
-        <translation>Pools (szopin)</translation>
-    </message>
-    <message>
         <source>German (Nit)</source>
         <translation>Duits (Nit)</translation>
     </message>
@@ -168,12 +191,36 @@
         <translation>Nederlands (Heimen Stoffels)</translation>
     </message>
     <message>
+        <source>Polish (szopin)</source>
+        <translation>Pools (szopin)</translation>
+    </message>
+    <message>
+        <source>Contributions</source>
+        <translation>Bijdragen</translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation>Het ontwerp van de stukken (Kapu)</translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation>Software van derden</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation>Stokvis-motor, v5 (stockfishchess.org)</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Licentie</translation>
+    </message>
+    <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
         <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under BSD.</source>
-        <translation>Gelicenseerd onder de BSD-licentie.</translation>
+        <source>Licenced under GPLv3. Licence, source code and more information:</source>
+        <translation>Gelicenseerd onder de GPLv3-licentie. Licentie, broncode en meer informatie:</translation>
     </message>
 </context>
 <context>

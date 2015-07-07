@@ -48,12 +48,43 @@
         <translation>s</translation>
     </message>
     <message>
-        <source>Board view</source>
+        <source>Clock view</source>
+        <translation>Shakkikello</translation>
+    </message>
+    <message>
+        <source>Board, twoplayer</source>
+        <translation>Pelilauta, kaksinpeli</translation>
+    </message>
+    <message>
+        <source>Board, Stockfish</source>
+        <translation>Pelilauta, Stockfish</translation>
+    </message>
+</context>
+<context>
+    <name>Boardview</name>
+    <message>
+        <source>Reset</source>
+        <translation>Nollaa</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Keskeytä</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Jatka</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Asetukset</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
         <translation>Shakkilauta</translation>
     </message>
     <message>
-        <source>Clock view</source>
-        <translation>Shakkikello</translation>
+        <source>min:s</source>
+        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -152,14 +183,6 @@
         <translation>Käännökset</translation>
     </message>
     <message>
-        <source>Licence</source>
-        <translation>Lisenssi</translation>
-    </message>
-    <message>
-        <source>Polish (szopin)</source>
-        <translation>Puolaksi (szopin)</translation>
-    </message>
-    <message>
         <source>German (Nit)</source>
         <translation>Saksaksi (Nit)</translation>
     </message>
@@ -168,12 +191,36 @@
         <translation>Hollanniksi (Heimen Stoffels)</translation>
     </message>
     <message>
+        <source>Polish (szopin)</source>
+        <translation>Puolaksi (szopin)</translation>
+    </message>
+    <message>
+        <source>Contributions</source>
+        <translation>Avustaminen</translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation>Nappuloiden suunnittelu (Kapu)</translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation>Kolmannen osapuolen ohjelmistot</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation>Stockfish-laskin, v5 (stockfishchess.org)</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Lisenssi</translation>
+    </message>
+    <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
         <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under BSD.</source>
-        <translation>BSD-lisenssi</translation>
+        <source>Licenced under GPLv3. Licence, source code and more information:</source>
+        <translation>GPLv3-lisenssi. Lisenssi, lähdekoodi ja lisätietoja:</translation>
     </message>
 </context>
 <context>

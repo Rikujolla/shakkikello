@@ -395,11 +395,11 @@ Page {
                     rowfromInd = 8-(fromIndex-fromIndex%8)/8;
                     colfromInd = fromIndex%8+1;
                     fromParity = (rowfromInd + colfromInd)%2;
-//                    console.log("From parity row,col", rowfromInd, colfromInd, fromParity)
+//                    //console.log("From parity row,col", rowfromInd, colfromInd, fromParity)
                     rowtoInd = 8-(toIndex-toIndex%8)/8;
                     coltoInd = toIndex%8+1;
                     toParity = (rowtoInd + coltoInd)%2;
-//                    console.log(" To parity row,col", rowtoInd, coltoInd, toParity)
+//                    //console.log(" To parity row,col", rowtoInd, coltoInd, toParity)
                 }
 
                 /////////////////////////////////////////////////////////////////////
@@ -1416,9 +1416,9 @@ Page {
                                     wenpassant = -1
                                 }
                                 if (itemMoved == "images/k.png") {
-                                    console.log("Bkingi ennen siirtoa", feni.feniBkingInd)
+                                    //console.log("Bkingi ennen siirtoa", feni.feniBkingInd)
                                     feni.feniBkingInd = toIndex;
-                                    console.log("Bkingi siirtyy", feni.feniBkingInd);
+                                    //console.log("Bkingi siirtyy", feni.feniBkingInd);
                                 }
 //                                vuoro.vaihdaValkealle()
                             }
@@ -1507,7 +1507,7 @@ Page {
                                     moveMent.itemTobemoved = piece;
                                     moveMent.colorTobemoved = color;
                                     moveMent.movePiece();
-//                                    console.log("Index", index, piece, color);
+//                                    //console.log("Index", index, piece, color);
 //                                    Myfunks.gridToFEN()
 
                                 }
