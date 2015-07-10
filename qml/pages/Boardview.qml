@@ -36,16 +36,19 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
-            MenuItem {
+/*            MenuItem {
                 text: maharollisuuret
                 onClicked: asetussivulle.siirrytKo()
                 enabled: !tilat.juoksee || tilat.peliloppui
-            }
+            }*/
             MenuItem { //Start/Pause
                 text: aloitapause
                 enabled: !tilat.peliloppui
-                onClicked: {hopo.initio();
-                    kripti.lisaa();
+                onClicked: {
+                    if (!tilat.pelialkoi) {
+                        hopo.initio();
+                        kripti.lisaa();
+                    }
                     tilat.aloitaPeli();
                     tilat.juoksee = !tilat.juoksee;
                     startti.timeAsetus();
@@ -1527,6 +1530,7 @@ Page {
                         } */
                         MouseArea {
                                 anchors.fill: parent
+                                enabled: tilat.valko
                                 onClicked: {moveMent.indeksi = index;
                                     moveMent.itemTobemoved = piece;
                                     moveMent.colorTobemoved = color;

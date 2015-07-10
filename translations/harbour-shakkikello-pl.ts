@@ -48,12 +48,43 @@
         <translation>s</translation>
     </message>
     <message>
-        <source>Board view</source>
-        <translation>Widok szachownicy</translation>
-    </message>
-    <message>
         <source>Clock view</source>
         <translation>Widok zegara</translation>
+    </message>
+    <message>
+        <source>Board, twoplayer</source>
+        <translation>Szachownica, dwóch graczy</translation>
+    </message>
+    <message>
+        <source>Board, Stockfish</source>
+        <translation>Szachownica, Stockfish</translation>
+    </message>
+</context>
+<context>
+    <name>Boardview</name>
+    <message>
+        <source>Reset</source>
+        <translation>Resetuj</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pauza</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Kontynuuj</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Ustawienia</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation>Szachownica</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -152,14 +183,6 @@
         <translation>Tłumaczenia</translation>
     </message>
     <message>
-        <source>Licence</source>
-        <translation>Licencja</translation>
-    </message>
-    <message>
-        <source>Polish (szopin)</source>
-        <translation>Polski (szopin)</translation>
-    </message>
-    <message>
         <source>German (Nit)</source>
         <translation>Niemiecki (Nit)</translation>
     </message>
@@ -168,12 +191,36 @@
         <translation>Holenderski (Heimen Stoffels)</translation>
     </message>
     <message>
+        <source>Polish (szopin)</source>
+        <translation>Polski (szopin)</translation>
+    </message>
+    <message>
+        <source>Contributions</source>
+        <translation>Współautorzy</translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation>Projekt bierek (Kapu)</translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation>Oprogramowanie firm trzecich</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation>Silnik szachowy Stockfish, v5 (stockfishchess.org)</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Licencja</translation>
+    </message>
+    <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
         <translation>Prawa autorskie (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under BSD.</source>
-        <translation>Na licencji BSD.</translation>
+        <source>Licenced under GPLv3. Licence, source code and more information:</source>
+        <translation>Na licencji GPLv3. Licencja, kod źródłowy i więcej informacji:</translation>
     </message>
 </context>
 <context>

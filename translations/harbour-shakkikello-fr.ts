@@ -49,11 +49,46 @@
     </message>
     <message>
         <source>Board view</source>
-        <translation>Vue de l&apos;échiquier</translation>
+        <translation type="vanished">Vue de l&apos;échiquier</translation>
     </message>
     <message>
         <source>Clock view</source>
         <translation>Vue de la pendule</translation>
+    </message>
+    <message>
+        <source>Board, twoplayer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Board, Stockfish</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Boardview</name>
+    <message>
+        <source>Reset</source>
+        <translation>Réinitialiser</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pause</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Continuer</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Paramètres</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation>Échiquier</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -173,7 +208,27 @@
     </message>
     <message>
         <source>Licenced under BSD.</source>
-        <translation>Sous licence BSD.</translation>
+        <translation type="vanished">Sous licence BSD.</translation>
+    </message>
+    <message>
+        <source>Contributions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Licenced under GPLv3. Licence, source code and more information:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -35,11 +35,11 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
-            MenuItem {
+/*            MenuItem {
                 text: maharollisuuret
                 onClicked: asetussivulle.siirrytKo()
                 enabled: !tilat.juoksee || tilat.peliloppui
-            }
+            }*/
             MenuItem { //Start/Pause
                 text: aloitapause
                 enabled: !tilat.peliloppui

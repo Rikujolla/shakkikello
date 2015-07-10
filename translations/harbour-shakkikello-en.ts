@@ -48,11 +48,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board view</source>
+        <source>Clock view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clock view</source>
+        <source>Board, twoplayer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Board, Stockfish</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Boardview</name>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min:s</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -152,14 +183,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Licence</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Polish (szopin)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>German (Nit)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -168,11 +191,35 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Polish (szopin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contributions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Licenced under BSD.</source>
+        <source>Licenced under GPLv3. Licence, source code and more information:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
