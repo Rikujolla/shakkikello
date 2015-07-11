@@ -111,7 +111,7 @@ Page {
                     margins: Theme.paddingLarge
                 }
                 text: qsTr("Copyright (c) 2015, Riku Lahtinen") + "\n"
-                      + qsTr("Licenced under GPLv3. Licence, source code and more information:") + "\n"
+                      + qsTr("Licensed under GPLv3. License, source code and more information:") + "\n"
                       + ("https://github.com/Rikujolla/shakkikello")
             }
 

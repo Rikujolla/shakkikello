@@ -40,7 +40,7 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("Tietoja.qml"))
             }
             MenuItem {
-                text: qsTr("Board, twoplayer")
+                text: qsTr("Board, two-player")
                 onClicked: pageStack.push(Qt.resolvedUrl("Pelilauta.qml"))
             }
             MenuItem {

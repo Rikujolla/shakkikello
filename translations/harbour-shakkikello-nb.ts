@@ -48,12 +48,43 @@
         <translation>s</translation>
     </message>
     <message>
-        <source>Board view</source>
+        <source>Clock view</source>
+        <translation>Sjakklokke</translation>
+    </message>
+    <message>
+        <source>Board, Stockfish</source>
+        <translation>Sjakkbrett, Stockfish</translation>
+    </message>
+    <message>
+        <source>Board, two-player</source>
+        <translation>Sjakkbrett, to spillere</translation>
+    </message>
+</context>
+<context>
+    <name>Boardview</name>
+    <message>
+        <source>Reset</source>
+        <translation>Reset</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pause</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Fortsette</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Innstillinger</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
         <translation>Sjakkbrett</translation>
     </message>
     <message>
-        <source>Clock view</source>
-        <translation>Sjakklokke</translation>
+        <source>min:s</source>
+        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -172,8 +203,24 @@
         <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under BSD.</source>
-        <translation>Lisensiert under BSD.</translation>
+        <source>Contributions</source>
+        <translation>Bidrag</translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation>Utformingen av brikker (Kapu)</translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation>Tredjeparts programvare</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation>Stockfish motor, v5 (stockfishchess.org)</translation>
+    </message>
+    <message>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
+        <translation>Lisensiert under GPLv3. Lisens, kildekode og mer informasjon:</translation>
     </message>
 </context>
 <context>

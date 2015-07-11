@@ -48,20 +48,16 @@
         <translation>s</translation>
     </message>
     <message>
-        <source>Board view</source>
-        <translation type="vanished">Vue de l&apos;échiquier</translation>
-    </message>
-    <message>
         <source>Clock view</source>
         <translation>Vue de la pendule</translation>
     </message>
     <message>
-        <source>Board, twoplayer</source>
-        <translation type="unfinished"></translation>
+        <source>Board, Stockfish</source>
+        <translation>L&apos;échiquier, Stockfish</translation>
     </message>
     <message>
-        <source>Board, Stockfish</source>
-        <translation type="unfinished"></translation>
+        <source>Board, two-player</source>
+        <translation type="unfinished">L&apos;échiquier, deux joueurs</translation>
     </message>
 </context>
 <context>
@@ -207,28 +203,24 @@
         <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under BSD.</source>
-        <translation type="vanished">Sous licence BSD.</translation>
-    </message>
-    <message>
         <source>Contributions</source>
-        <translation type="unfinished"></translation>
+        <translation>Contributions</translation>
     </message>
     <message>
         <source>The design of the pieces (Kapu)</source>
-        <translation type="unfinished"></translation>
+        <translation>La conception des pièces (Kapu)</translation>
     </message>
     <message>
         <source>Third party software</source>
-        <translation type="unfinished"></translation>
+        <translation>Logiciel tiers</translation>
     </message>
     <message>
         <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation type="unfinished"></translation>
+        <translation>Moteur stockfish, v5 (stockfishchess.org)</translation>
     </message>
     <message>
-        <source>Licenced under GPLv3. Licence, source code and more information:</source>
-        <translation type="unfinished"></translation>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
+        <translation>Sous licence GPLv3. Licence, code source et plus d&apos;informations:</translation>
     </message>
 </context>
 <context>

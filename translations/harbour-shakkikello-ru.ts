@@ -48,12 +48,43 @@
         <translation>c</translation>
     </message>
     <message>
-        <source>Board view</source>
-        <translation>Шахматная доска</translation>
-    </message>
-    <message>
         <source>Clock view</source>
         <translation>Шахматные часы</translation>
+    </message>
+    <message>
+        <source>Board, Stockfish</source>
+        <translation>Доска, Stockfish</translation>
+    </message>
+    <message>
+        <source>Board, two-player</source>
+        <translation>Доска, двух игроков</translation>
+    </message>
+</context>
+<context>
+    <name>Boardview</name>
+    <message>
+        <source>Reset</source>
+        <translation>Cброс</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Пауза</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Продолжать</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Настройки</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation>Доска</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation>мин:c</translation>
     </message>
 </context>
 <context>
@@ -172,8 +203,24 @@
         <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under BSD.</source>
-        <translation>Лицензия под BSD.</translation>
+        <source>Contributions</source>
+        <translation>Взносы</translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation>Дизайн фигуры (Капу)</translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation>Программное обеспечение третьих</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation>Stockfish двигатель, в5 (stockfishchess.org)</translation>
+    </message>
+    <message>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
+        <translation>Лицензированные под GPLv3. Лицензия, исходный код и больше информации:</translation>
     </message>
 </context>
 <context>

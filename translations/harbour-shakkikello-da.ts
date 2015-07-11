@@ -48,12 +48,43 @@
         <translation>s</translation>
     </message>
     <message>
-        <source>Board view</source>
-        <translation>Bræt visning</translation>
-    </message>
-    <message>
         <source>Clock view</source>
         <translation>Ur visning</translation>
+    </message>
+    <message>
+        <source>Board, Stockfish</source>
+        <translation>Bræt, Stockfish</translation>
+    </message>
+    <message>
+        <source>Board, two-player</source>
+        <translation>Bræt, to spillere</translation>
+    </message>
+</context>
+<context>
+    <name>Boardview</name>
+    <message>
+        <source>Reset</source>
+        <translation>Reset</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pause</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Fortsætte</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Indstillinger</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation>Skakbræt</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -172,8 +203,24 @@
         <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under BSD.</source>
-        <translation>Licens under BSD.</translation>
+        <source>Contributions</source>
+        <translation>Bidrag</translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation>Udformningen af stykkerne (Kapu)</translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation>Tredjeparts software</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation>Stockfish motor, v5 (stockfishchess.org)</translation>
+    </message>
+    <message>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
+        <translation>Licenseret under GPLv3. Licens, kildekode og mere information:</translation>
     </message>
 </context>
 <context>

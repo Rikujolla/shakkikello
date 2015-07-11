@@ -48,12 +48,43 @@
         <translation>s</translation>
     </message>
     <message>
-        <source>Board view</source>
+        <source>Clock view</source>
+        <translation>Orologio Scacchi</translation>
+    </message>
+    <message>
+        <source>Board, Stockfish</source>
+        <translation>Scacchiera, Stockfish</translation>
+    </message>
+    <message>
+        <source>Board, two-player</source>
+        <translation>Scacchiera, due giocatori</translation>
+    </message>
+</context>
+<context>
+    <name>Boardview</name>
+    <message>
+        <source>Reset</source>
+        <translation>Reset</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pausa</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Continuare</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Impostazioni</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
         <translation>Scacchiera</translation>
     </message>
     <message>
-        <source>Clock view</source>
-        <translation>Orologio Scacchi</translation>
+        <source>min:s</source>
+        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -172,8 +203,24 @@
         <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under BSD.</source>
-        <translation>Distribuito sotto licenza BSD.</translation>
+        <source>Contributions</source>
+        <translation>Contributi</translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation>Il disegno dei pezzi (Kapu)</translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation>Software di terze parti</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation>Motore Stockfish, v5 (stockfishchess.org)</translation>
+    </message>
+    <message>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
+        <translation>Licenced sotto GPLv3. Licenza, codice sorgente e ulteriori informazioni:</translation>
     </message>
 </context>
 <context>

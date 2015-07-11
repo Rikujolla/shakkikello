@@ -52,12 +52,12 @@
         <translation>Shakkikello</translation>
     </message>
     <message>
-        <source>Board, twoplayer</source>
-        <translation>Pelilauta, kaksinpeli</translation>
-    </message>
-    <message>
         <source>Board, Stockfish</source>
         <translation>Pelilauta, Stockfish</translation>
+    </message>
+    <message>
+        <source>Board, two-player</source>
+        <translation>Pelilauta, kaksinpeli</translation>
     </message>
 </context>
 <context>
@@ -219,7 +219,7 @@
         <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under GPLv3. Licence, source code and more information:</source>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
         <translation>GPLv3-lisenssi. Lisenssi, lähdekoodi ja lisätietoja:</translation>
     </message>
 </context>

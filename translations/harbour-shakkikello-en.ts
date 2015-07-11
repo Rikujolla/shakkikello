@@ -52,11 +52,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board, twoplayer</source>
+        <source>Board, Stockfish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Board, Stockfish</source>
+        <source>Board, two-player</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -219,7 +219,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Licenced under GPLv3. Licence, source code and more information:</source>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

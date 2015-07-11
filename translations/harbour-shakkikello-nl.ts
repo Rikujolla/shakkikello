@@ -52,12 +52,12 @@
         <translation>Klokweergave</translation>
     </message>
     <message>
-        <source>Board, twoplayer</source>
-        <translation>Bord voor twee spelers</translation>
-    </message>
-    <message>
         <source>Board, Stockfish</source>
         <translation>Bord voor stokvis</translation>
+    </message>
+    <message>
+        <source>Board, two-player</source>
+        <translation>Bord voor twee spelers</translation>
     </message>
 </context>
 <context>
@@ -219,7 +219,7 @@
         <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under GPLv3. Licence, source code and more information:</source>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
         <translation>Gelicenseerd onder de GPLv3-licentie. Licentie, broncode en meer informatie:</translation>
     </message>
 </context>

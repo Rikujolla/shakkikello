@@ -48,12 +48,43 @@
         <translation>秒</translation>
     </message>
     <message>
-        <source>Board view</source>
+        <source>Clock view</source>
+        <translation>棋钟</translation>
+    </message>
+    <message>
+        <source>Board, Stockfish</source>
+        <translation>棋盘，Stockfish</translation>
+    </message>
+    <message>
+        <source>Board, two-player</source>
+        <translation>棋盘，两名球员</translation>
+    </message>
+</context>
+<context>
+    <name>Boardview</name>
+    <message>
+        <source>Reset</source>
+        <translation>重置</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>暂停</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>继续</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>设置</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
         <translation>棋盘</translation>
     </message>
     <message>
-        <source>Clock view</source>
-        <translation>棋钟</translation>
+        <source>min:s</source>
+        <translation>分:秒</translation>
     </message>
 </context>
 <context>
@@ -172,8 +203,24 @@
         <translation>版权 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under BSD.</source>
-        <translation>BSD许可下</translation>
+        <source>Contributions</source>
+        <translation>捐款</translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation>件的设计 (Kapu)</translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation>第三方软件</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation>Stockfish 发动机，第5版（stockfishchess.org）</translation>
+    </message>
+    <message>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
+        <translation>GPLv3的下获发牌。牌照，源代码和详细信息：</translation>
     </message>
 </context>
 <context>

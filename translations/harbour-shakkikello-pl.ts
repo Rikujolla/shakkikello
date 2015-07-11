@@ -52,12 +52,12 @@
         <translation>Widok zegara</translation>
     </message>
     <message>
-        <source>Board, twoplayer</source>
-        <translation>Szachownica, dwóch graczy</translation>
-    </message>
-    <message>
         <source>Board, Stockfish</source>
         <translation>Szachownica, Stockfish</translation>
+    </message>
+    <message>
+        <source>Board, two-player</source>
+        <translation>Szachownica, dwóch graczy</translation>
     </message>
 </context>
 <context>
@@ -219,7 +219,7 @@
         <translation>Prawa autorskie (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Licenced under GPLv3. Licence, source code and more information:</source>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
         <translation>Na licencji GPLv3. Licencja, kod źródłowy i więcej informacji:</translation>
     </message>
 </context>
