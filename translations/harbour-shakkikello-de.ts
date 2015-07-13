@@ -53,15 +53,19 @@
     </message>
     <message>
         <source>Board, Stockfish</source>
-        <translation type="unfinished"></translation>
+        <translation>Spielbrett, Stockfish</translation>
     </message>
     <message>
         <source>Board, two-player</source>
-        <translation type="unfinished"></translation>
+        <translation>Spielbrett, zwei Spieler</translation>
     </message>
 </context>
 <context>
     <name>Boardview</name>
+    <message>
+        <source>Reset</source>
+        <translation>Zurücksetzen</translation>
+    </message>
     <message>
         <source>Pause</source>
         <translation>Pause</translation>
@@ -81,10 +85,6 @@
     <message>
         <source>min:s</source>
         <translation>min:s</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Zurücksetzen</translation>
     </message>
 </context>
 <context>
@@ -183,14 +183,6 @@
         <translation>Übersetzungen</translation>
     </message>
     <message>
-        <source>Licence</source>
-        <translation>Lizenz</translation>
-    </message>
-    <message>
-        <source>Polish (szopin)</source>
-        <translation>Polski (szopin)</translation>
-    </message>
-    <message>
         <source>German (Nit)</source>
         <translation>Deutsch (Nit)</translation>
     </message>
@@ -199,28 +191,36 @@
         <translation>Nederlands (Heimen Stoffels)</translation>
     </message>
     <message>
+        <source>Polish (szopin)</source>
+        <translation>Polski (szopin)</translation>
+    </message>
+    <message>
+        <source>Contributions</source>
+        <translation>Beiträge</translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation>Das Design der Figuren(Kapu)</translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation>Software von Drittanbietern</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation>Stockfish engine, v5 (stockfishchess.org)</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Lizenz</translation>
+    </message>
+    <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
         <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>Contributions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The design of the pieces (Kapu)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Third party software</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Licensed under GPLv3. License, source code and more information:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lizensiert unter GPLv3. Lizenz, Quellcode und weitere Informationen:</translation>
     </message>
 </context>
 <context>

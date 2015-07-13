@@ -57,7 +57,7 @@
     </message>
     <message>
         <source>Board, two-player</source>
-        <translation type="unfinished">L&apos;échiquier, deux joueurs</translation>
+        <translation>L&apos;échiquier, deux joueurs</translation>
     </message>
 </context>
 <context>
@@ -216,7 +216,7 @@
     </message>
     <message>
         <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Moteur stockfish, v5 (stockfishchess.org)</translation>
+        <translation>Moteur Stockfish, v5 (stockfishchess.org)</translation>
     </message>
     <message>
         <source>Licensed under GPLv3. License, source code and more information:</source>

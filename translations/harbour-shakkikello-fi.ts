@@ -208,7 +208,7 @@
     </message>
     <message>
         <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Stockfish-laskin, v5 (stockfishchess.org)</translation>
+        <translation>Stockfish-shakkiohjelma, v5 (stockfishchess.org)</translation>
     </message>
     <message>
         <source>Licence</source>
