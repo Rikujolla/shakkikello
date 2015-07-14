@@ -27,7 +27,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "./images"
 import "funktiot.js" as Myfunks
-import stockfish.commands 1.0
+import harbour.shakkikello.stockfish 1.0
 
 Page {
     id: page

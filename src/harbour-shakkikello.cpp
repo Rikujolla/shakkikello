@@ -55,8 +55,8 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
-    qmlRegisterType<A>("stockfish.commands", 1, 0, "Stockfishe");
-    qmlRegisterType<Veca>("stockfish.commands", 1, 0, "Stockfishev");
+    qmlRegisterType<A>("harbour.shakkikello.stockfish", 1, 0, "Stockfishe");
+    qmlRegisterType<Veca>("harbour.shakkikello.stockfish", 1, 0, "Stockfishev");
 
 /*    UCI::init(Options);
     Bitboards::init();

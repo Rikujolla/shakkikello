@@ -43,7 +43,7 @@
 - Polish translation by szopin @ www.transifex.com
 
 * Mon Jul 13 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.1
-- Possible  use a Stockfish engine (version 5 git checkout f5622cd5ec7836e899e263cc4cd4cc386e1ed5f4)
+- Possible to use a Stockfish engine (version 5 git checkout f5622cd5ec7836e899e263cc4cd4cc386e1ed5f4)
 - Chess checks also in twoplayer mode
 - Updated pieces by Kapu (Kalevi Puistolinna)
 
