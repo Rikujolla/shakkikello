@@ -130,7 +130,35 @@ Page {
                     }
                 }
             }
-//loppusulkeet
+
+            Label {
+                x: Theme.paddingLarge
+                text: qsTr("Time counting") + " " + countDirName
+                color: Theme.secondaryHighlightColor
+                font.pixelSize: Theme.fontSizeLarge
+                  }
+
+
+            Row {
+                spacing: Theme.paddingLarge
+                anchors.horizontalCenter: parent.horizontalCenter
+                Button {
+                    text: qsTr("Upwards")
+                    enabled: countDirDown
+                    onClicked: {countDirDown = false;
+                        countDirName = qsTr("Upwards")
+                    }
+                }
+                Button {
+                    text: qsTr("Downwards")
+                    enabled: !countDirDown
+                    onClicked: {countDirDown = true;
+                        countDirName = qsTr("Downwards")
+                    }
+                }
+            }
+
+            //loppusulkeet
         }
     }
 }

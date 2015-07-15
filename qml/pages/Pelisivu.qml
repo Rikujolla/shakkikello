@@ -59,6 +59,9 @@ Page {
 
             Item {
                 id : vuoro
+                /////////////////////////////////////////////
+                // Function changes from White to Black
+                ////////////////////////////////////////////
                 function vaihdaMustalle() {
                     if (tilat.musta == true) {} else {
                         startti.timeAsetus();
@@ -72,6 +75,9 @@ Page {
                         valkokello.updateValko()
                     }
                 }
+                /////////////////////////////////////////////
+                // Function changes from Black to White
+                ////////////////////////////////////////////
                 function vaihdaValkealle() {
                     if (tilat.valko == true) {} else {
                         startti.timeAsetus();
@@ -128,7 +134,7 @@ Page {
 
             Item {
                 id : muttakello
-                property int sekuntitm0: 0
+                property int sekuntitm0: 0 //Total time Black has accumulated before the move
                 property int sekuntitm : 0
                 property int rogres_sekuntitm : mustamax
                 property int label_sekuntitm
@@ -137,15 +143,29 @@ Page {
                 function timeMutta() {sekuntitm0 = sekuntitm0 + sekuntitm}
                 function updateMutta() {
                     kello.timeChanged();
-                    if (rogres_sekuntitm <= 0) {
+                    if (tilat.pelialkoi && countDirDown == true && rogres_sekuntitm <= 0) {
+                        tilat.peliloppui = true;
+                        tilat.peliLoppui();
+                        //console.log("if1" , mustamax)
+                    }
+                    else if (tilat.pelialkoi && countDirDown == false && rogres_sekuntitm >= mustamax) {
                         tilat.peliloppui = true;
                         tilat.peliLoppui()
+                        //console.log("if2" , "rogres",rogres_sekuntitm ,mustamax)
+                    }
+                    else if (countDirDown == false) {
+                        sekuntitm = kello.sekuntit;
+                        label_sekuntitm = (-sum_incrementm + (sekuntitm0 + sekuntitm))%60;
+                        label_minuutitm = ((-sum_incrementm + (sekuntitm0 + sekuntitm))-label_sekuntitm)/60;
+                        rogres_sekuntitm = -sum_incrementm + (sekuntitm0 + sekuntitm)
+                        //console.log("if3" , mustamax)
                     }
                     else {
                         sekuntitm = kello.sekuntit;
                         label_sekuntitm = (mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))%60;
                         label_minuutitm = ((mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))-label_sekuntitm)/60;
                         rogres_sekuntitm = mustamax + sum_incrementm - (sekuntitm0 + sekuntitm)
+                        //console.log("if4" , mustamax)
                     }
                 }
             }
@@ -153,7 +173,7 @@ Page {
             Item {
                 id : valkokello
                 property int sekuntitv: 0
-                property int sekuntitv0: 0
+                property int sekuntitv0: 0 // Total time the White has accumulated before the move
                 property int rogres_sekuntitv : valkomax
                 property int label_sekuntitv
                 property int label_minuutitv : valkomax/60
@@ -161,10 +181,21 @@ Page {
                 function timeValko() {sekuntitv0 = sekuntitv0 + sekuntitv}
                 function updateValko() {
                     kello.timeChanged();
-                    if (rogres_sekuntitv <= 0) {
+                    if (tilat.pelialkoi && countDirDown == true && rogres_sekuntitv <= 0) {
                         tilat.peliloppui = true;
                         tilat.peliLoppui()
                     }
+                    else if (tilat.pelialkoi && countDirDown == false && rogres_sekuntitv >= valkomax) {
+                        tilat.peliloppui = true;
+                        tilat.peliLoppui()
+                    }
+                    else if (countDirDown == false) {
+                        sekuntitv = kello.sekuntit;
+                        label_sekuntitv = (-sum_incrementv + (sekuntitv0 + sekuntitv))%60;
+                        label_minuutitv = ((-sum_incrementv + (sekuntitv0 + sekuntitv))-label_sekuntitv)/60;
+                        rogres_sekuntitv = -sum_incrementv + (sekuntitv0 + sekuntitv)
+                    }
+
                     else {
                         sekuntitv = kello.sekuntit;
                         label_sekuntitv = (valkomax + sum_incrementv - (sekuntitv0 + sekuntitv))%60;
@@ -190,12 +221,14 @@ Page {
             Item {
                 id : asetussivulle
                 function siirrytKo() {
-// Nollaus
+                    //////////////////////////////////////////////////////////////////////////////////////
+                    // Logic to reset the timer and changing the button to enable a move to settings page
+                    /////////////////////////////////////////////////////////////////////////////////////
                     if (tilat.pelialkoi == true) {
                         maharollisuuret = qsTr("Settings");
                         tilat.asetaTilat();
-                        valkomax = 300;
-                        mustamax = 300;
+//                        valkomax = 300;
+//                        mustamax = 300;
                         valkokello.rogres_sekuntitv = valkomax;
                         muttakello.rogres_sekuntitm = mustamax;
                         valkokello.sekuntitv0 = 0;
@@ -209,7 +242,9 @@ Page {
                         valkokello.updateValko();
                         muttakello.updateMutta();
                         tilat.peliloppui = false
-// Siirtyminen asetussivulle
+                        //////////////////////////////
+                        // Logic to move to settings page
+                        //////////////////////////
                     } else {
 //                        valkomax = 300;
 //                        mustamax = 300;
@@ -254,8 +289,12 @@ Page {
                     width: parent.width
                     height: 200
                     maximumValue: valkomax
-                    valueText: valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv
-                    label: qsTr("min:s")
+                    //valueText: valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv
+                    valueText: {(valkokello.rogres_sekuntitv < 0 && valkokello.rogres_sekuntitv > -60 ? "-":"")
+                                + valkokello.label_minuutitv + ":"
+                                + (Math.abs(valkokello.label_sekuntitv) < 10 ? "0" : "")
+                                + Math.abs(valkokello.label_sekuntitv)}
+                    label: qsTr("min:s")+ "     (" + (valkomax-valkomax%60)/60 + ":00)"
                     value: valkokello.rogres_sekuntitv
                     rotation: 180
                     anchors.verticalCenter: parent.verticalCenter
@@ -295,12 +334,17 @@ Page {
                     onClicked: {
                         tilat.aloitaPeli();
                         tilat.juoksee = !tilat.juoksee;
-                        startti.timeAsetus();
-                        kello.sekuntit = 0;
-                        valkokello.timeValko();
+                        startti.timeAsetus(); // Zero time referece setting
+                        kello.sekuntit = 0; //Zeroing the master clock
+                        valkokello.timeValko(); // Saving accumulated time fo White
                         valkokello.sekuntitv = 0;
-                        muttakello.timeMutta();
+                        muttakello.timeMutta(); // Saving accumulated time for Black
                         muttakello.sekuntitm=0;
+//                        muttakello.rogres_sekuntitm = mustamax;
+                        if (!countDirDown) {
+                            muttakello.rogres_sekuntitm = -muttakello.sum_incrementm + muttakello.sekuntitm0;
+                            valkokello.rogres_sekuntitv = -valkokello.sum_incrementv + valkokello.sekuntitv0;
+                        }
                         tilat.vaihdaTila();
                         maharollisuuret = qsTr("Reset")
                     }
@@ -331,9 +375,12 @@ Page {
                     id: progressBarm
                     width: parent.width
                     maximumValue: mustamax
-                    valueText: muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm
-                    label: qsTr("min:s")
-                    value: muttakello.rogres_sekuntitm
+                    valueText: {(muttakello.rogres_sekuntitm < 0 && muttakello.rogres_sekuntitm > -60 ? "-":"")
+                                + muttakello.label_minuutitm + ":"
+                                + (Math.abs(muttakello.label_sekuntitm) < 10 ? "0" : "")
+                                + Math.abs(muttakello.label_sekuntitm)}
+                    label: qsTr("min:s")+ "     (" + (mustamax-mustamax%60)/60 + ":00)"
+                        value: muttakello.rogres_sekuntitm
                     Timer {interval: 100
                         running: tilat.juoksee && tilat.musta && Qt.ApplicationActive
                         repeat: true

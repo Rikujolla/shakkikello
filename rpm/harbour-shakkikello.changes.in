@@ -42,15 +42,23 @@
 - Improved the code translatability
 - Polish translation by szopin @ www.transifex.com
 
-* Mon Jul 13 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.1
+* Mon Jul 13 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.2
 - Possible to use a Stockfish engine (version 5 git checkout f5622cd5ec7836e899e263cc4cd4cc386e1ed5f4)
-- Chess checks also in twoplayer mode
+- Chess checks also in twoplayer mod
 - Updated pieces by Kapu (Kalevi Puistolinna)
+
+* Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.3
+- Update problem correction NOT OK
+- Promotion of the pawn other than queen not possible NOT OK
+- Possibility for time counting up from zero in the Clock view (user request)
+- Showing the maximum time setting in the Clock view
+- Resetting time to user set values, not defaults
+- Castling chess checks NOT OK
+- Chess, Chessmate and Stalemate notifications NOT OK
 
 * Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.x
 - Update problem correction NOT OK
 - Promotion of the pawn other than queen not possible
-- Time counting up from zero (user request)
 - Castling chess checks
 - Chess, Chessmate and Stalemate notifications
 
