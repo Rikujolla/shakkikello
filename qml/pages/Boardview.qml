@@ -112,6 +112,14 @@ Page {
                 property int tempfromIndex;
                 property int ax; // for looping
                 property string playMode: "stockfish"
+                property string upperMessage: ""
+                property string lowerMessage: ""
+                property var messages: [{msg:qsTr("Check!")},
+                    {msg:qsTr("Checkmate!")},
+                    {msg:qsTr("Stalemate!")},
+                    {msg:qsTr("White won!")},
+                    {msg:qsTr("Black won!")}
+                ]
             }
 
             Item {
@@ -401,6 +409,13 @@ Page {
                 property int fromParity; // This ind to help diagonal moves checks
                 property int toParity; // This ind to help diagonal moves checks
                 property bool chessTest: false; // Flag if chess is tested, prevents pawn promotion
+                property bool castlingWpossible: true; // Check if White castling is possible
+                property bool castlingBpossible: true; // Check if Black castling is possible
+                property string currentMove: ""; // Values castling, wenpassant or promotion
+                property bool wKingMoved: false; // To record this for castling checks
+                property bool bKingMoved: false; // To record this for castling checks
+                property int midSquareInd  // Used for castling test
+                property bool midSquareCheck: false; // Used for castling check
                 // Pawn is promoted to queen now
                 function pawnPromotion() {
                     //Qt.createComponent("Promotion.qml").createObject(page, {});

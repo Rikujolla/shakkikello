@@ -2,6 +2,7 @@
 // Function fenToGRID(), row 67
 // Function isChess(), row 171
 // Function cancelMove(), row 226
+// Function isChessPure(), row 298
 
 /////////////////////////////////////////////////////////
 // this function transforms grid notation to FEN-notation
@@ -196,6 +197,9 @@ function isChess() {
 //            console.log(moveMent.moveLegal);
             if (moveMent.moveLegal){
                 feni.chessIsOn = true; //
+                //testing
+               // feni.upperMessage = feni.messages[1].msg;
+               // feni.lowerMessage = feni.messages[0].msg;
 //                console.log("kingiä ei voi siirtää W,B", feni.feniWkingInd, feni.feniBkingInd);
             }
         }
@@ -207,14 +211,28 @@ function isChess() {
     fromIndex = feni.tempfromIndex;
     moveMent.chessTest = false;
 if (tilat.valko && !feni.chessIsOn){
+    feni.upperMessage = "";
+
     if (feni.playMode == "stockfish"){
         gridToFEN();
     }
+    moveMent.currentMove = "";
+    if (movedPieces.get(0).piece == "images/K.png") {moveMent.wKingMoved = true;}
+    moveMent.midSquareCheck = false;
     vuoro.vaihdaMustalle();
+    isChessPure();
 }
 
 else if (tilat.musta && !feni.chessIsOn) {
-    vuoro.vaihdaValkealle()
+    feni.lowerMessage = "";
+
+    moveMent.currentMove = "";
+    if (movedPieces.get(0).piece == "images/k.png") {moveMent.bKingMoved = true;}
+    //console.log("moved", movedPieces.get(0).piece);
+    moveMent.midSquareCheck = false;
+    vuoro.vaihdaValkealle();
+    isChessPure();
+
 }
 
 }
@@ -252,9 +270,141 @@ function cancelMove() {
 //        console.log("B king index backing",feni.feniBkingInd);
     }
 
+    // Backing rook in castling
+    if (moveMent.currentMove == "castling") {
+        // Setting rook bck
+        galeryModel.set(movedPieces.get(2).indeksos,{"color":movedPieces.get(2).color, "piece":movedPieces.get(2).piece})
+        //Setting empty back
+        galeryModel.set(movedPieces.get(3).indeksos,{"color":movedPieces.get(3).color, "piece":movedPieces.get(3).piece})
+        if (tilat.valko) {
+            moveMent.castlingWpossible = true;
+        }
+        else {
+            moveMent.castlingBpossible = true;
+        }
+
+    }
+
     // castling or wenpassant doesnt work yet (movelist.index 2)
     //also  promotion to queen may not be cancelled
 //    feni.feniReady = false;
 //    vuoro.vaihdaValkealle();
 
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+// Function checks if Chess is  on. Used for notifications and castling checks
+///////////////////////////////////////////////////////////////////////////////////////
+
+function isChessPure() {
+    feni.feniWhiteChess = false;
+    feni.feniBlackChess = false;
+    moveMent.chessTest = true;
+    feni.temptoIndex = toIndex;
+    feni.tempfromIndex = fromIndex;
+//    console.log("Tässä kingi testissä, W,B", feni.feniWkingInd, feni.feniBkingInd);
+    for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
+        if (tilat.valko) {
+            toIndex=feni.feniWkingInd;
+        }
+        else {
+            toIndex=feni.feniBkingInd;
+        }
+
+        fromIndex = feni.ax;
+
+        if (tilat.valko && galeryModel.get(feni.ax).color == "b") {
+            moveMent.canBemoved = true;  //
+            moveMent.itemMoved=galeryModel.get(feni.ax).piece;
+            moveMent.sameColor();
+            moveMent.isLegalmove();
+            if (moveMent.moveLegal){
+                feni.feniWhiteChess = true;
+                feni.upperMessage = feni.messages[0].msg;
+            }
+        }
+
+        else if (tilat.musta && galeryModel.get(feni.ax).color == "w") {
+            moveMent.canBemoved = true;  //To enable the tests
+            moveMent.itemMoved=galeryModel.get(feni.ax).piece;
+            moveMent.sameColor();
+            moveMent.isLegalmove();
+            if (moveMent.moveLegal){
+                feni.feniBlackChess = true;
+                feni.lowerMessage = feni.messages[0].msg;
+            }
+
+        }
+
+
+    }
+
+    toIndex = feni.temptoIndex;
+    fromIndex = feni.tempfromIndex;
+    // Resetting values to defaults after checks
+    moveMent.canBemoved = false;
+    moveMent.moveLegal = false;
+    moveMent.chessTest = false;
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+// Function checks if Chess is  on. Used for notifications and castling checks
+///////////////////////////////////////////////////////////////////////////////////////
+function midSquareCheck() {
+//    feni.feniWhiteChess = false;
+//    feni.feniBlackChess = false;
+    moveMent.chessTest = true;
+    feni.temptoIndex = toIndex;
+    feni.tempfromIndex = fromIndex;
+//    console.log("Tässä kingi testissä, W,B", feni.feniWkingInd, feni.feniBkingInd);
+    for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
+//        if (tilat.valko) {
+            toIndex = moveMent.midSquareInd;
+//        }
+//        else {
+//            toIndex=feni.feniBkingInd;
+//        }
+
+        fromIndex = feni.ax;
+
+        if (tilat.valko && galeryModel.get(feni.ax).color == "b") {
+            moveMent.canBemoved = true;  //
+            moveMent.itemMoved=galeryModel.get(feni.ax).piece;
+            moveMent.sameColor();
+            moveMent.isLegalmove();
+            if (moveMent.moveLegal){
+                moveMent.midSquareCheck = true;
+//                feni.chessIsOn = true;
+                //feni.upperMessage = feni.messages[0].msg; Should there be info message???
+            }
+        }
+
+        else if (tilat.musta && galeryModel.get(feni.ax).color == "w") {
+            moveMent.canBemoved = true;  //To enable the tests
+            moveMent.itemMoved=galeryModel.get(feni.ax).piece;
+            moveMent.sameColor();
+            moveMent.isLegalmove();
+            if (moveMent.moveLegal){
+                moveMent.midSquareCheck = true;
+//                feni.chessIsOn = true;
+                //feni.lowerMessage = feni.messages[0].msg;
+            }
+
+        }
+
+
+    }
+
+    toIndex = feni.temptoIndex;
+    fromIndex = feni.tempfromIndex;
+    // Resetting values to defaults after checks
+    moveMent.canBemoved = false;
+    moveMent.moveLegal = false;
+    moveMent.chessTest = false;
+
+    if (moveMent.midSquareCheck) {
+        cancelMove();
+        moveMent.midSquareCheck = false;
+    }
 }
