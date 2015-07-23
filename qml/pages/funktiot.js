@@ -197,10 +197,6 @@ function isChess() {
 //            console.log(moveMent.moveLegal);
             if (moveMent.moveLegal){
                 feni.chessIsOn = true; //
-                //testing
-               // feni.upperMessage = feni.messages[1].msg;
-               // feni.lowerMessage = feni.messages[0].msg;
-//                console.log("kingiä ei voi siirtää W,B", feni.feniWkingInd, feni.feniBkingInd);
             }
         }
 
@@ -210,31 +206,7 @@ function isChess() {
     toIndex = feni.temptoIndex;
     fromIndex = feni.tempfromIndex;
     moveMent.chessTest = false;
-if (tilat.valko && !feni.chessIsOn){
-    feni.upperMessage = "";
-
-    if (feni.playMode == "stockfish"){
-        gridToFEN();
-    }
-    moveMent.currentMove = "";
-    if (movedPieces.get(0).piece == "images/K.png") {moveMent.wKingMoved = true;}
-    moveMent.midSquareCheck = false;
-    vuoro.vaihdaMustalle();
-    isChessPure();
-}
-
-else if (tilat.musta && !feni.chessIsOn) {
-    feni.lowerMessage = "";
-
-    moveMent.currentMove = "";
-    if (movedPieces.get(0).piece == "images/k.png") {moveMent.bKingMoved = true;}
-    //console.log("moved", movedPieces.get(0).piece);
-    moveMent.midSquareCheck = false;
-    vuoro.vaihdaValkealle();
-    isChessPure();
-
-}
-
+    feni.chessTestDone = true;
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -284,6 +256,8 @@ function cancelMove() {
         }
 
     }
+    moveMent.midSquareCheckki = false;
+    moveMent.currentMove = "";
 
     // castling or wenpassant doesnt work yet (movelist.index 2)
     //also  promotion to queen may not be cancelled
@@ -374,7 +348,8 @@ function midSquareCheck() {
             moveMent.sameColor();
             moveMent.isLegalmove();
             if (moveMent.moveLegal){
-                moveMent.midSquareCheck = true;
+                moveMent.midSquareCheckki = true;
+                //console.log("valko midsquare")
 //                feni.chessIsOn = true;
                 //feni.upperMessage = feni.messages[0].msg; Should there be info message???
             }
@@ -386,7 +361,7 @@ function midSquareCheck() {
             moveMent.sameColor();
             moveMent.isLegalmove();
             if (moveMent.moveLegal){
-                moveMent.midSquareCheck = true;
+                moveMent.midSquareCheckki = true;
 //                feni.chessIsOn = true;
                 //feni.lowerMessage = feni.messages[0].msg;
             }
@@ -402,9 +377,39 @@ function midSquareCheck() {
     moveMent.canBemoved = false;
     moveMent.moveLegal = false;
     moveMent.chessTest = false;
+    feni.midSquareTestDone = true;
 
-    if (moveMent.midSquareCheck) {
+/*    if (moveMent.midSquareCheck) {
         cancelMove();
         moveMent.midSquareCheck = false;
+    }*/
+}
+
+function doMove() {
+
+    if (tilat.valko && !feni.chessIsOn){
+        feni.upperMessage = "";
+
+        if (playMode == "stockfish"){
+            gridToFEN();
+        }
+        moveMent.currentMove = "";
+        if (movedPieces.get(0).piece == "images/K.png") {moveMent.wKingMoved = true;}
+        moveMent.midSquareCheckki = false;
+        vuoro.vaihdaMustalle();
+        isChessPure();
     }
+
+    else if (tilat.musta && !feni.chessIsOn) {
+        feni.lowerMessage = "";
+
+        moveMent.currentMove = "";
+        if (movedPieces.get(0).piece == "images/k.png") {moveMent.bKingMoved = true;}
+        //console.log("moved", movedPieces.get(0).piece);
+        moveMent.midSquareCheckki = false;
+        vuoro.vaihdaValkealle();
+        isChessPure();
+
+    }
+
 }

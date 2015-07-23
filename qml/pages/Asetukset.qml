@@ -41,11 +41,13 @@ Page {
             }
             MenuItem {
                 text: qsTr("Board, two-player")
-                onClicked: pageStack.push(Qt.resolvedUrl("Pelilauta.qml"))
+                onClicked: {pageStack.push(Qt.resolvedUrl("Pelilauta.qml"));
+                    playMode= "human"}
             }
             MenuItem {
                 text: qsTr("Board, Stockfish")
-                onClicked: pageStack.push(Qt.resolvedUrl("Boardview.qml"))
+                onClicked: {pageStack.push(Qt.resolvedUrl("Boardview.qml"));
+                    playMode = "stockfish"}
             }
             MenuItem {
                 text: qsTr("Clock view")

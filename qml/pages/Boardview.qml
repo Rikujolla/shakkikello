@@ -111,7 +111,7 @@ Page {
                 property int temptoIndex;
                 property int tempfromIndex;
                 property int ax; // for looping
-                property string playMode: "stockfish"
+//                property string playMode: "stockfish"
                 property string upperMessage: ""
                 property string lowerMessage: ""
                 property var messages: [{msg:qsTr("Check!")},
@@ -120,6 +120,8 @@ Page {
                     {msg:qsTr("White won!")},
                     {msg:qsTr("Black won!")}
                 ]
+                property bool chessTestDone: false;
+                property bool midSquareTestDone: false;
             }
 
             Item {
@@ -415,7 +417,7 @@ Page {
                 property bool wKingMoved: false; // To record this for castling checks
                 property bool bKingMoved: false; // To record this for castling checks
                 property int midSquareInd  // Used for castling test
-                property bool midSquareCheck: false; // Used for castling check
+                property bool midSquareCheckki: false; // Used for castling check
                 // Pawn is promoted to queen now
                 function pawnPromotion() {
                     //Qt.createComponent("Promotion.qml").createObject(page, {});
@@ -554,29 +556,47 @@ Page {
                                 && galeryModel.get(toIndex).color !== "b"
                                 && Math.abs(coltoInd-colfromInd) < 2
                                 ) {
-                                moveLegal = true; intLegal = 1;
-                            }
+                                moveLegal = true; intLegal = 1; //intLegal not needed any more to be removed from code
+                        }
                             // Castling short
-                            else if ((toIndex == 6) && galeryModel.get(6).color === "e"
-                                     && galeryModel.get(5).color === "e") {
-                                moveLegal = true; intLegal = 1;
-                                galeryModel.set((5),{"color":"b", "piece":"images/r.png"});
-                                galeryModel.set((7),{"color":"e", "piece":"images/empty.png"});
-                                // Castling legality checks are missing
-                            }
+                        else if ((toIndex == 6) && galeryModel.get(6).color === "e"
+                                 && galeryModel.get(5).color === "e" && fromIndex == 4
+                                 && castlingBpossible && !feni.feniBlackChess
+                                 && !bKingMoved) {
+                            moveLegal = true; intLegal = 1;
+                            galeryModel.set((5),{"color":"b", "piece":"images/r.png"});
+                            galeryModel.set((7),{"color":"e", "piece":"images/empty.png"});
+                            currentMove = "castling";
+                            castlingBpossible = false;
+                            midSquareInd = 5;
+                            // Saving the moved pieces and positions for a possible cancel of the move
+                            movedPieces.set(2,{"color":"b", "piece":"images/r.png", "indeksos":7})
+                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":5})
+                            //console.log("test1")
+                            // Castling legality checks are missing
+                        }
                             // Castling long
-                            else if ((toIndex == 2) && galeryModel.get(2).color === "e"
-                                     && galeryModel.get(3).color === "e" && galeryModel.get(1).color === "e") {
-                                moveLegal = true; intLegal = 1;
-                                galeryModel.set((3),{"color":"b", "piece":"images/r.png"});
-                                galeryModel.set((0),{"color":"e", "piece":"images/empty.png"});
+                        else if ((toIndex == 2) && galeryModel.get(2).color === "e"
+                                 && galeryModel.get(3).color === "e" && galeryModel.get(1).color === "e"
+                                 && fromIndex == 4
+                                 && castlingBpossible && !feni.feniBlackChess
+                                 && !bKingMoved) {
+                            moveLegal = true; intLegal = 1;
+                            galeryModel.set((3),{"color":"b", "piece":"images/r.png"});
+                            galeryModel.set((0),{"color":"e", "piece":"images/empty.png"});
+                            currentMove = "castling";
+                            castlingBpossible = false;
+                            midSquareInd = 3;
+                            // Saving the moved pieces and positions for a possible cancel of the move
+                            movedPieces.set(2,{"color":"b", "piece":"images/r.png", "indeksos":0})
+                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":3})
                                 // Castling legality checks are missing
-                            }
-                            else {
+                        }
+                        else {
                                 moveStarted=false;
                                 fromIndex=-1;
                                 toIndex=-1;
-                            }
+                        }
                         break;
                     case "images/K.png":
                                 if (Math.abs(rowfromInd-rowtoInd) < 2
@@ -587,18 +607,36 @@ Page {
                             }
                             // Castling kingside
                             else if ((toIndex == 62) && galeryModel.get(62).color === "e"
-                                     && galeryModel.get(61).color === "e") {
-                                moveLegal = true; intLegal = 1;
-                                galeryModel.set((61),{"color":"w", "piece":"images/R.png"});
-                                galeryModel.set((63),{"color":"e", "piece":"images/empty.png"});
+                                        && galeryModel.get(61).color === "e"
+                                        && fromIndex == 60
+                                        && castlingWpossible && !feni.feniWhiteChess
+                                        && !wKingMoved) {
+                                    moveLegal = true; intLegal = 1;
+                                    galeryModel.set((61),{"color":"w", "piece":"images/R.png"});
+                                    galeryModel.set((63),{"color":"e", "piece":"images/empty.png"});
+                                    currentMove = "castling";
+                                    castlingWpossible =false;
+                                    midSquareInd = 61;
+                                    // Saving the moved pieces and positions for a possible cancel of the move
+                                    movedPieces.set(2,{"color":"b", "piece":"images/R.png", "indeksos":63})
+                                    movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":61})
                                 // Castling legality checks are missing
                             }
                             // Castling queenside
                             else if ((toIndex == 58) && galeryModel.get(58).color === "e"
-                                     && galeryModel.get(59).color === "e" && galeryModel.get(57).color === "e") {
-                                moveLegal = true; intLegal = 1;
-                                galeryModel.set((59),{"color":"w", "piece":"images/R.png"});
-                                galeryModel.set((56),{"color":"e", "piece":"images/empty.png"});
+                                        && galeryModel.get(59).color === "e" && galeryModel.get(57).color === "e"
+                                        && fromIndex == 60
+                                        && castlingWpossible && !feni.feniWhiteChess
+                                        && !wKingMoved) {
+                                    moveLegal = true; intLegal = 1;
+                                    galeryModel.set((59),{"color":"w", "piece":"images/R.png"});
+                                    galeryModel.set((56),{"color":"e", "piece":"images/empty.png"});
+                                    currentMove = "castling";
+                                    castlingWpossible = false;
+                                    midSquareInd = 59;
+                                    // Saving the moved pieces and positions for a possible cancel of the move
+                                    movedPieces.set(2,{"color":"b", "piece":"images/R.png", "indeksos":56})
+                                    movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":59})
                                 // Castling legality checks are missing
                             }
                             else {
@@ -1396,7 +1434,7 @@ Page {
                         }
                         break;
                     default:
-                        moveLegal = true; intLegal = 1;
+                        moveLegal = false;
                     }
                 }
 // end block isMovable:
@@ -1490,7 +1528,7 @@ Page {
             BackgroundItem {
                 id: upperBar
                 width: page.width
-                height: 185
+                height: 155
                 enabled: false //tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
@@ -1499,7 +1537,7 @@ Page {
                 ProgressBar {
                     id: progressBar2
                     width: parent.width
-                    height: 150
+                    height: 130
                     maximumValue: valkomax
                     valueText: valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv
                     label: qsTr("min:s")
@@ -1514,6 +1552,18 @@ Page {
                         onTriggered: valkokello.updateValko()
                     }
                 }
+            }
+            Text {
+                id: upperNotes
+                text: feni.upperMessage
+                color: Theme.primaryColor
+                font.pixelSize: Theme.fontSizeSmall
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                rotation:180
+                height: 8
+                width: parent.width
+//                anchors.horizontalCenter: parent.horizontalCenter
             }
 
             Rectangle {
@@ -1545,21 +1595,11 @@ Page {
                         } */
                         MouseArea {
                                 anchors.fill: parent
-                                enabled: tilat.valko
                                 onClicked: {moveMent.indeksi = index;
                                     moveMent.itemTobemoved = piece;
                                     moveMent.colorTobemoved = color;
                                     moveMent.movePiece();
-//                                    Myfunks.isChess()
-//                                    if (feni.chessIsOn) {
-//                                        Myfunks.cancelMove();
-//                                    }
-
-                                    //                                    console.log("Index", index, piece, color);
-//                                    Myfunks.gridToFEN()
-
                                 }
-
                             }
                     }
                 } // end GridView
@@ -1568,15 +1608,31 @@ Page {
             Timer {
                 interval: 200; running: feni.forChessCheck && Qt.ApplicationActive; repeat: true
                 onTriggered: {
+                    if (moveMent.currentMove == "castling") {
+                        Myfunks.midSquareCheck();
+                    }
+                    else {
+                        feni.midSquareTestDone = true;
+                    }
+
                     Myfunks.isChess();
                     feni.forChessCheck = false;
                 }
             }
             Timer {
-                interval: 300; running: feni.chessIsOn && Qt.ApplicationActive; repeat: true
+                interval: 300; running: feni.midSquareTestDone && feni.chessTestDone && Qt.ApplicationActive;
+                repeat: true
                 onTriggered: {
+                    if (moveMent.midSquareCheckki || feni.chessIsOn) {
                     Myfunks.cancelMove();
-                    feni.chessIsOn = false;
+                    }
+                    else {
+                        Myfunks.doMove();
+                    }
+                    feni.midSquareTestDone = false;
+                    feni.chessTestDone = false;
+
+                    //                    feni.chessIsOn = false;
                 }
             }
 
@@ -1638,10 +1694,22 @@ Page {
                 }
             }
 
+            Text {
+                id: lowerNotes
+                text: feni.lowerMessage
+                color: Theme.primaryColor
+                font.pixelSize: Theme.fontSizeSmall
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                height: 5
+                width: parent.width
+//                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
             BackgroundItem {
                 id: lowerBar
                 width: page.width
-                height: 185
+                height: 177
                 enabled: false //tilat.juoksee && tilat.musta
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {

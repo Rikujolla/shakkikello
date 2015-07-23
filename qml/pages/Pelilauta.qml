@@ -93,7 +93,7 @@ Page {
                 property int temptoIndex;
                 property int tempfromIndex;
                 property int ax; // for looping
-                property string playMode: "human"
+//                property string playMode: "human"
                 property string upperMessage: ""
                 property string lowerMessage: ""
                 property var messages: [{msg:qsTr("Check!")},
@@ -102,6 +102,8 @@ Page {
                     {msg:qsTr("White won!")},
                     {msg:qsTr("Black won!")}
                 ]
+                property bool chessTestDone: false;
+                property bool midSquareTestDone: false;
             }
 
             Item {
@@ -397,7 +399,7 @@ Page {
                 property bool wKingMoved: false; // To record this for castling checks
                 property bool bKingMoved: false; // To record this for castling checks
                 property int midSquareInd  // Used for castling test
-                property bool midSquareCheck: false; // Used for castling check
+                property bool midSquareCheckki: false; // Used for castling check
                 // Pawn is promoted to queen now
                 function pawnPromotion() {
                     //Qt.createComponent("Promotion.qml").createObject(page, {});
@@ -1570,9 +1572,6 @@ Page {
                                     moveMent.itemTobemoved = piece;
                                     moveMent.colorTobemoved = color;
                                     moveMent.movePiece();
-//                                    //console.log("Index", index, piece, color);
-//                                    Myfunks.gridToFEN()
-
                                 }
                             }
                     }
@@ -1585,15 +1584,28 @@ Page {
                     if (moveMent.currentMove == "castling") {
                         Myfunks.midSquareCheck();
                     }
+                    else {
+                        feni.midSquareTestDone = true;
+                    }
+
                     Myfunks.isChess();
                     feni.forChessCheck = false;
                 }
             }
             Timer {
-                interval: 300; running: feni.chessIsOn && Qt.ApplicationActive; repeat: true
+                interval: 300; running: feni.midSquareTestDone && feni.chessTestDone && Qt.ApplicationActive;
+                repeat: true
                 onTriggered: {
+                    if (moveMent.midSquareCheckki || feni.chessIsOn) {
                     Myfunks.cancelMove();
-                    feni.chessIsOn = false;
+                    }
+                    else {
+                        Myfunks.doMove();
+                    }
+                    feni.midSquareTestDone = false;
+                    feni.chessTestDone = false;
+
+                    //                    feni.chessIsOn = false;
                 }
             }
 

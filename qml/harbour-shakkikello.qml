@@ -42,5 +42,6 @@ ApplicationWindow
     property int toIndex : -1
     property bool countDirDown: true //Default is Downwards
     property string countDirName: qsTr("Downwards")
+    property string playMode
 
 }
