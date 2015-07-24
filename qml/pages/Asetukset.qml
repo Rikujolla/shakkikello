@@ -41,7 +41,8 @@ Page {
             }
             MenuItem {
                 text: qsTr("Board, two-player")
-                onClicked: {pageStack.push(Qt.resolvedUrl("Pelilauta.qml"));
+//                onClicked: {pageStack.push(Qt.resolvedUrl("Pelilauta.qml"));
+                onClicked: {pageStack.push(Qt.resolvedUrl("Boardview.qml"));
                     playMode= "human"}
             }
             MenuItem {

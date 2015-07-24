@@ -93,7 +93,6 @@ Page {
                 property int temptoIndex;
                 property int tempfromIndex;
                 property int ax; // for looping
-//                property string playMode: "human"
                 property string upperMessage: ""
                 property string lowerMessage: ""
                 property var messages: [{msg:qsTr("Check!")},
@@ -412,11 +411,9 @@ Page {
                     rowfromInd = 8-(fromIndex-fromIndex%8)/8;
                     colfromInd = fromIndex%8+1;
                     fromParity = (rowfromInd + colfromInd)%2;
-//                    //console.log("From parity row,col", rowfromInd, colfromInd, fromParity)
                     rowtoInd = 8-(toIndex-toIndex%8)/8;
                     coltoInd = toIndex%8+1;
                     toParity = (rowtoInd + coltoInd)%2;
-//                    //console.log(" To parity row,col", rowtoInd, coltoInd, toParity)
                 }
 
                 /////////////////////////////////////////////////////////////////////
@@ -1461,7 +1458,6 @@ Page {
                                     feni.feniWkingInd = toIndex;
                                     //console.log("Wkingi siirtyy", feni.feniWkingInd);
                                 }
-//                                vuoro.vaihdaMustalle()
                             }
                             else {
                                 if (wenpassant > 0 && galeryModel.get(wenpassant).color == "wp") {
@@ -1473,7 +1469,6 @@ Page {
                                     feni.feniBkingInd = toIndex;
                                     //console.log("Bkingi siirtyy", feni.feniBkingInd);
                                 }
-//                                vuoro.vaihdaValkealle()
                             }
                             feni.forChessCheck = true; //starts the chess check timer
                         }

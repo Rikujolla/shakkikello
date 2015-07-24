@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
 <context>
     <name>Asetukset</name>
     <message>
@@ -59,6 +57,18 @@
         <source>Board, two-player</source>
         <translation>Bord voor twee spelers</translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation>Volgorde van tijdsteller</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Opwaarts</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Neerwaarts</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -85,6 +95,26 @@
     <message>
         <source>min:s</source>
         <translation>min:s</translation>
+    </message>
+    <message>
+        <source>Check!</source>
+        <translation>Controleren!</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>Schaakmat!</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>Staalmat!</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>Wit heeft gewonnen!</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>Zwart heeft gewonnen!</translation>
     </message>
 </context>
 <context>
@@ -119,6 +149,26 @@
     <message>
         <source>min:s</source>
         <translation>min:s</translation>
+    </message>
+    <message>
+        <source>Check!</source>
+        <translation>Controleren!</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>Schaakmat!</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>Staalmat!</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>Wit heeft gewonnen!</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>Zwart heeft gewonnen!</translation>
     </message>
 </context>
 <context>
@@ -232,6 +282,10 @@
     <message>
         <source>Settings</source>
         <translation>Instellingen</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Neerwaarts</translation>
     </message>
 </context>
 </TS>

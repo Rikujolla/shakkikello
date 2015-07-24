@@ -46,7 +46,7 @@ Page {
                 enabled: !tilat.peliloppui
                 onClicked: {
                     if (!tilat.pelialkoi) {
-                        hopo.initio();
+                        if (playMode == "stockfish") {hopo.initio();}
                         kripti.lisaa();
                     }
                     tilat.aloitaPeli();
@@ -111,7 +111,6 @@ Page {
                 property int temptoIndex;
                 property int tempfromIndex;
                 property int ax; // for looping
-//                property string playMode: "stockfish"
                 property string upperMessage: ""
                 property string lowerMessage: ""
                 property var messages: [{msg:qsTr("Check!")},
@@ -430,11 +429,9 @@ Page {
                     rowfromInd = 8-(fromIndex-fromIndex%8)/8;
                     colfromInd = fromIndex%8+1;
                     fromParity = (rowfromInd + colfromInd)%2;
-//                    console.log("From parity row,col", rowfromInd, colfromInd, fromParity)
                     rowtoInd = 8-(toIndex-toIndex%8)/8;
                     coltoInd = toIndex%8+1;
                     toParity = (rowtoInd + coltoInd)%2;
-//                    console.log(" To parity row,col", rowtoInd, coltoInd, toParity)
                 }
 
                 /////////////////////////////////////////////////////////////////////
@@ -1460,9 +1457,6 @@ Page {
                         // here fomParity and toParity checks
                         sameColor(); // Checks if fromIndex and toIndex are same color
                         isLegalmove();
-                        if (moveLegal) {
-//                        Myfunks.isChess(); // this is moved to another place
-                        }
                         if (moveLegal){
                             // Saving position before move to possiple cancellation od a move
                             movedPieces.set(0,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece moved
@@ -1479,25 +1473,21 @@ Page {
                                     benpassant = -1
                                 }
                                 if (itemMoved == "images/K.png") {
-                                    //console.log("kingi ennen siirtoa", feni.feniWkingInd)
+                                    //console.log("Wkingi ennen siirtoa", feni.feniWkingInd)
                                     feni.feniWkingInd = toIndex;
-                                    //console.log("kingi siirtyy", feni.feniWkingInd);
+                                    //console.log("Wkingi siirtyy", feni.feniWkingInd);
                                 }
-
-//                                Myfunks.gridToFEN() //change manual mode to FEN notation for Stockfish
-//                                hopo.inni();
-//                                vuoro.vaihdaMustalle() //Possible need to change to diff place after chess checks
                             }
                             else {
                                 if (wenpassant > 0 && galeryModel.get(wenpassant).color == "wp") {
                                     galeryModel.set(wenpassant,{"color":"e", "piece":"images/empty.png"});
                                     wenpassant = -1
                                 }
-                                Myfunks.gridToFEN() //temporary work
-                                hopo.outti();
-                                //console.log(hopo.test);
-                                Myfunks.fenToGRID()
-                                vuoro.vaihdaValkealle()
+                                if (itemMoved == "images/k.png") {
+                                    //console.log("Bkingi ennen siirtoa", feni.feniBkingInd)
+                                    feni.feniBkingInd = toIndex;
+                                    //console.log("Bkingi siirtyy", feni.feniBkingInd);
+                                }
                             }
                             feni.forChessCheck = true; //starts the chess check timer
                         }
@@ -1638,7 +1628,7 @@ Page {
 
 
             Timer {
-                interval: 500; running: feni.feniReady && Qt.ApplicationActive; repeat: false
+                interval: 500; running: playMode == "stockfish" && feni.feniReady && Qt.ApplicationActive; repeat: false
                 onTriggered: {hopo.inni();
                     if (hopo.test == "peru") {
 // old position
@@ -1650,7 +1640,6 @@ Page {
                         // castling tai wenpassant (movelist.index 2)
                         feni.feniReady = false;
                         vuoro.vaihdaValkealle();
-//                        feni.feniBlack = true;
                     }
                     else {
                     feni.feniReady = false;
@@ -1660,7 +1649,7 @@ Page {
             }
 
             Timer {
-                interval: 1500; running: feni.feniBlack && Qt.ApplicationActive; repeat: false
+                interval: 1500; running: playMode == "stockfish"&& feni.feniBlack && Qt.ApplicationActive; repeat: false
                 onTriggered: {hopo.outti();
                     Myfunks.fenToGRID()
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
