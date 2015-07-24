@@ -55,7 +55,7 @@ function gridToFEN() {
     }
     feni.stopFeni = 8-(toIndex-toIndex%8)/8;
     hopo.test = hopo.test+feni.startFeni+feni.stopFeni;
-    feni.feniReady = true;
+//    feni.feniReady = true;
 
 //    console.log(hopo.test);
 
@@ -214,6 +214,8 @@ function isChess() {
 ////////////////////////////////////////////////////////////////
 
 function cancelMove() {
+    // Enabling the grid for white inputs
+    if (tilat.valko) {feni.feniWhite = true;}
     // Returning the moved piece to it's original position.
     galeryModel.set(movedPieces.get(0).indeksos,{"color":movedPieces.get(0).color, "piece":movedPieces.get(0).piece})
 //    console.log(movedPieces.get(0).indeksos,movedPieces.get(0).color, movedPieces.get(0).piece)
@@ -379,10 +381,6 @@ function midSquareCheck() {
     moveMent.chessTest = false;
     feni.midSquareTestDone = true;
 
-/*    if (moveMent.midSquareCheck) {
-        cancelMove();
-        moveMent.midSquareCheck = false;
-    }*/
 }
 
 function doMove() {

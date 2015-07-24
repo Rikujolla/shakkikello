@@ -49,7 +49,6 @@ OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/pages/vaihtoValkoinen.png \
     LICENSE \
     qml/pages/Tietoja.qml \
-    qml/pages/Pelilauta.qml \
     qml/pages/funktiot.js \
     qml/pages/images/N.png \
     qml/pages/images/n.png \

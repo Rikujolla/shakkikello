@@ -101,6 +101,7 @@ Page {
                 property int feniHelper;
                 property string stringHelper;
                 property bool feniBlack:false;
+                property bool feniWhite:true;
                 property bool feniWhiteChess: false;
                 property bool feniBlackChess: false;
                 property bool chessIsOn: false;
@@ -133,9 +134,11 @@ Page {
                         valkokello.timeValko();
                         valkokello.sekuntitv = 0;
                         muttakello.timeMutta();
-                        muttakello.sekuntitm=0
-                        valkokello.sum_incrementv = valkokello.sum_incrementv + increment
-                        valkokello.updateValko()
+                        muttakello.sekuntitm=0;
+                        valkokello.sum_incrementv = valkokello.sum_incrementv + increment;
+                        valkokello.updateValko();
+                        feni.feniWhite = false;
+                        feni.feniReady = true;
                     }
                 }
                 function vaihdaValkealle() {
@@ -146,9 +149,10 @@ Page {
                         valkokello.timeValko();
                         valkokello.sekuntitv = 0;
                         muttakello.timeMutta();
-                        muttakello.sekuntitm=0
-                        muttakello.sum_incrementm = muttakello.sum_incrementm + increment
-                        muttakello.updateMutta()
+                        muttakello.sekuntitm=0;
+                        muttakello.sum_incrementm = muttakello.sum_incrementm + increment;
+                        muttakello.updateMutta();
+                        feni.feniWhite = true
                     }
                 }
             }
@@ -1468,6 +1472,7 @@ Page {
                             moveStarted=!moveStarted;
                             moveLegal=false;
                             if (tilat.valko) {
+                                if (playMode == "stockfish") {feni.feniWhite = false;}
                                 if (benpassant > 0 && galeryModel.get(benpassant).color == "bp") {
                                     galeryModel.set(benpassant,{"color":"e", "piece":"images/empty.png"});
                                     benpassant = -1
@@ -1585,6 +1590,7 @@ Page {
                         } */
                         MouseArea {
                                 anchors.fill: parent
+                                enabled: feni.feniWhite || playMode == "human"
                                 onClicked: {moveMent.indeksi = index;
                                     moveMent.itemTobemoved = piece;
                                     moveMent.colorTobemoved = color;
@@ -1630,21 +1636,8 @@ Page {
             Timer {
                 interval: 500; running: playMode == "stockfish" && feni.feniReady && Qt.ApplicationActive; repeat: false
                 onTriggered: {hopo.inni();
-                    if (hopo.test == "peru") {
-// old position
-                        Myfunks.cancelMove(); // Does nothing now
-                        //siirretty piece (movelist.index 0)
-                        galeryModel.set(fromIndex,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece})
-                        galeryModel.set(toIndex,{"color":"e", "piece":"images/empty.png"})
-                        //syöty piece (movelist. index 1)
-                        // castling tai wenpassant (movelist.index 2)
-                        feni.feniReady = false;
-                        vuoro.vaihdaValkealle();
-                    }
-                    else {
                     feni.feniReady = false;
                     feni.feniBlack = true;
-                    }
                 }
             }
 
@@ -1676,9 +1669,9 @@ Page {
                     if (toIndex > 55 && galeryModel.get(toIndex).piece == "images/p.png") {
                         galeryModel.set(toIndex, {"piece": "images/q.png"});
                     }
-
-                    vuoro.vaihdaValkealle()
-
+                    feni.lowerMessage = "";
+                    vuoro.vaihdaValkealle();
+                    Myfunks.isChessPure();
                     feni.feniBlack = false;
                 }
             }
