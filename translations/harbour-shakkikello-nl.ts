@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl_NL">
 <context>
     <name>Asetukset</name>
     <message>
@@ -122,53 +124,6 @@
     <message>
         <source>Chess clock</source>
         <translation>Schaakklok</translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>Reset</source>
-        <translation>Herstellen</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pauzeren</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Doorgaan</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Instellingen</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Schaakbord</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
-    </message>
-    <message>
-        <source>Check!</source>
-        <translation>Controleren!</translation>
-    </message>
-    <message>
-        <source>Checkmate!</source>
-        <translation>Schaakmat!</translation>
-    </message>
-    <message>
-        <source>Stalemate!</source>
-        <translation>Staalmat!</translation>
-    </message>
-    <message>
-        <source>White won!</source>
-        <translation>Wit heeft gewonnen!</translation>
-    </message>
-    <message>
-        <source>Black won!</source>
-        <translation>Zwart heeft gewonnen!</translation>
     </message>
 </context>
 <context>

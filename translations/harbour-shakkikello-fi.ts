@@ -59,6 +59,18 @@
         <source>Board, two-player</source>
         <translation>Pelilauta, kaksinpeli</translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation>Ajan laskenta</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Ylöspäin</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Alaspäin</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -86,39 +98,32 @@
         <source>min:s</source>
         <translation>min:s</translation>
     </message>
+    <message>
+        <source>Check!</source>
+        <translation>Shakki!</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>Matti!</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>Patti!</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>Valkoinen voitti!</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>Musta voitti!</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Shakkikello</translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>Reset</source>
-        <translation>Nollaa</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Keskeytä</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Jatka</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Asetukset</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Shakkilauta</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -208,7 +213,7 @@
     </message>
     <message>
         <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Stockfish-shakkiohjelma, v5 (stockfishchess.org)</translation>
+        <translation>Stockfish-laskin, v5 (stockfishchess.org)</translation>
     </message>
     <message>
         <source>Licence</source>
@@ -232,6 +237,10 @@
     <message>
         <source>Settings</source>
         <translation>Asetukset</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Alaspäin</translation>
     </message>
 </context>
 </TS>

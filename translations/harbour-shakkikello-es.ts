@@ -59,6 +59,18 @@
         <source>Board, two-player</source>
         <translation>Tablero, dos jugadores que</translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation>Conteo Tiempo</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Hacia arriba</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Hacia abajo</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -86,39 +98,32 @@
         <source>min:s</source>
         <translation>min:s</translation>
     </message>
+    <message>
+        <source>Check!</source>
+        <translation>Jaque!</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>Jaque mate!</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>Ahogado!</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>Blanca ganó</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>Negro ganó</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Reloj de ajedrez</translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Reajustar</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Interrumba</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Continuar</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Ajustes</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Tablero</translation>
     </message>
 </context>
 <context>
@@ -232,6 +237,10 @@
     <message>
         <source>Settings</source>
         <translation>Ajustes</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Hacia abajo</translation>
     </message>
 </context>
 </TS>

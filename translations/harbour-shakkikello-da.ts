@@ -59,6 +59,18 @@
         <source>Board, two-player</source>
         <translation>Bræt, to spillere</translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation>Time tælling</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Opad</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Nedad</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -86,39 +98,32 @@
         <source>min:s</source>
         <translation>min:s</translation>
     </message>
+    <message>
+        <source>Check!</source>
+        <translation>Skak!</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>Skakmat!</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>Pat!</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>Hvid vandt!</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>Sort vandt!</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Chess ur</translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Reset</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pause</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Fortsætte</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Indstillinger</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Skakbræt</translation>
     </message>
 </context>
 <context>
@@ -232,6 +237,10 @@
     <message>
         <source>Settings</source>
         <translation>Indstillinger</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Nedad</translation>
     </message>
 </context>
 </TS>

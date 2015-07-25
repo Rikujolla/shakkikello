@@ -59,6 +59,18 @@
         <source>Board, two-player</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -86,38 +98,31 @@
         <source>min:s</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Check!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>Reset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>min:s</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -231,6 +236,10 @@
     </message>
     <message>
         <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downwards</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

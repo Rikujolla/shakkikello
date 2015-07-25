@@ -59,6 +59,18 @@
         <source>Board, two-player</source>
         <translation>L&apos;échiquier, deux joueurs</translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation>Comptage de temps</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Vers le haut</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Vers le bas</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -86,39 +98,32 @@
         <source>min:s</source>
         <translation>min:s</translation>
     </message>
+    <message>
+        <source>Check!</source>
+        <translation>Échec!</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>Échec et mat</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>Pat!</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>Wons blanc!</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>Wons noir!</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Pendule d&apos;échecs</translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Réinitialiser</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pause</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Continuer</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Paramètres</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Échiquier</translation>
     </message>
 </context>
 <context>
@@ -232,6 +237,10 @@
     <message>
         <source>Settings</source>
         <translation>Paramètres</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Vers le bas</translation>
     </message>
 </context>
 </TS>
