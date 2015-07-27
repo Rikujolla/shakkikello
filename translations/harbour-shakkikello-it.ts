@@ -59,6 +59,18 @@
         <source>Board, two-player</source>
         <translation>Scacchiera, due giocatori</translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation>Conteggio del tempo</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Verso l'alto</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Verso il basso</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -86,39 +98,32 @@
         <source>min:s</source>
         <translation>min:s</translation>
     </message>
+    <message>
+        <source>Check!</source>
+        <translation>Scacco!</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>Scacco matto!</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>Stallo</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>Won bianco!</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>Won nera!</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Orologio Scacchi</translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>Reset</source>
-        <translation>Reset</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pausa</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Continuare</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Impostazioni</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Scacchiera</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -232,6 +237,10 @@
     <message>
         <source>Settings</source>
         <translation>Impostazioni</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Verso il basso</translation>
     </message>
 </context>
 </TS>

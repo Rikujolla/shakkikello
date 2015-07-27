@@ -63,20 +63,6 @@ Page {
             }
         }
 
-/*        PushUpMenu {
-//            quickSelect: true
-            MenuItem {
-                text: "Reset engine" //maharollisuuret
-                onClicked: hopo.initio();
-                enabled: true //!tilat.juoksee || tilat.peliloppui
-            }
-            MenuItem {
-                text: "Deletio" //maharollisuuret
-                onClicked: hopo.deletio();
-                enabled: true //!tilat.juoksee || tilat.peliloppui
-            }
-        }*/
-
         contentHeight: column.height
 
         Stockfishe { // for Stockfish communication
