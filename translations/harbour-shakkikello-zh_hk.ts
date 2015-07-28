@@ -59,6 +59,18 @@
         <source>Board, two-player</source>
         <translation>棋盤,兩個玩家</translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation>計時</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>向上</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>向下</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -86,39 +98,32 @@
         <source>min:s</source>
         <translation>分:秒</translation>
     </message>
+    <message>
+        <source>Check!</source>
+        <translation>檢查</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>將死</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>僵持</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>白色韓元</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>黑韓元</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>棋鐘</translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>min:s</source>
-        <translation>分:秒</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>重置</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>暫停</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>繼續</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>設置</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>棋盤</translation>
     </message>
 </context>
 <context>
@@ -232,6 +237,10 @@
     <message>
         <source>Settings</source>
         <translation>設置</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>向下</translation>
     </message>
 </context>
 </TS>

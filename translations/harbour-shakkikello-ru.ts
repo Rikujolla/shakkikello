@@ -59,6 +59,18 @@
         <source>Board, two-player</source>
         <translation>Доска, двух игроков</translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation>Подсчет времени</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Вверх</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Вниз</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -86,39 +98,32 @@
         <source>min:s</source>
         <translation>мин:c</translation>
     </message>
+    <message>
+        <source>Check!</source>
+        <translation>Шах!</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>Мат!</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>Пат!</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>Белый вон!</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>Ччерный вон!</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Шахматные часы</translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>min:s</source>
-        <translation>мин:c</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Cброс</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Пауза</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Продолжать</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Настройки</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>доска</translation>
     </message>
 </context>
 <context>
@@ -232,6 +237,10 @@
     <message>
         <source>Settings</source>
         <translation>Настройки</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Вниз</translation>
     </message>
 </context>
 </TS>

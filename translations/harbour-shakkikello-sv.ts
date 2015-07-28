@@ -59,6 +59,18 @@
         <source>Board, two-player</source>
         <translation>Bräde, två-spelare</translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation>Tidräkning</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Uppåt</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Nedåt</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -86,39 +98,32 @@
         <source>min:s</source>
         <translation>min:s</translation>
     </message>
+    <message>
+        <source>Check!</source>
+        <translation>Schack!</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>Matt!</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>Patt!</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>Vit vann!</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>Svart vann!</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Schackklocka</translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>Reset</source>
-        <translation>Återställ</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Stoppa</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Fortsätta</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Inställningar</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Schackbräde</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -232,6 +237,10 @@
     <message>
         <source>Settings</source>
         <translation>Inställningar</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Nedåt</translation>
     </message>
 </context>
 </TS>

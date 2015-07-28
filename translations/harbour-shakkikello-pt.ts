@@ -59,6 +59,18 @@
         <source>Board, two-player</source>
         <translation>Tabuleiro, dois jogadores</translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation>Contagem do tempo</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Para cima</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Para baixo</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -86,39 +98,32 @@
         <source>min:s</source>
         <translation>min:s</translation>
     </message>
+    <message>
+        <source>Check!</source>
+        <translation>Xeque!</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>Xeque-mate!</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>Rei afogado!</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>Won branco!</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>Won preto</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Relógio de xadrez</translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>Reset</source>
-        <translation>Restabelecer</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pausa</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Continuar</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Configurações</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Tabuleiro</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -232,6 +237,10 @@
     <message>
         <source>Settings</source>
         <translation>Configurações</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Para baixo</translation>
     </message>
 </context>
 </TS>

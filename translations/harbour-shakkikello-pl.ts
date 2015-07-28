@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pl" version="2.1">
 <context>
     <name>Asetukset</name>
     <message>
@@ -59,6 +57,18 @@
         <source>Board, two-player</source>
         <translation>Szachownica, dwóch graczy</translation>
     </message>
+    <message>
+        <source>Time counting</source>
+        <translation>Liczenie czasu</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>W górę</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>W dół</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -86,39 +96,32 @@
         <source>min:s</source>
         <translation>min:s</translation>
     </message>
+    <message>
+        <source>Check!</source>
+        <translation>Szach!</translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation>Mat!</translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation>Pat!</translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation>Białe wygrały!</translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation>Czarne wygrały!</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Zegar szachowy</translation>
-    </message>
-</context>
-<context>
-    <name>Pelilauta</name>
-    <message>
-        <source>Reset</source>
-        <translation>Resetuj</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pauza</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Kontynuuj</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Ustawienia</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Szachownica</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
     </message>
 </context>
 <context>
@@ -232,6 +235,10 @@
     <message>
         <source>Settings</source>
         <translation>Ustawienia</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>W dół</translation>
     </message>
 </context>
 </TS>

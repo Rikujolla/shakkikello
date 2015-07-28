@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>Upwards</source>
-        <translation>Verso l'alto</translation>
+        <translation>Verso l&apos;alto</translation>
     </message>
     <message>
         <source>Downwards</source>
