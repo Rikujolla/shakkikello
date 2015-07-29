@@ -258,6 +258,15 @@ function cancelMove() {
         }
 
     }
+    // Backing queen to pawn in promotion
+    if (moveMent.currentMove == "promotion") {
+        galeryModel.set(movedPieces.get(2).indeksos,{"color":movedPieces.get(2).color, "piece":movedPieces.get(2).piece})
+    }
+    // Backing queen to pawn in promotion
+    if (moveMent.currentMove == "enpassant") {
+        galeryModel.set(movedPieces.get(2).indeksos,{"color":movedPieces.get(2).color, "piece":movedPieces.get(2).piece})
+    }
+
     moveMent.midSquareCheckki = false;
     moveMent.currentMove = "";
 

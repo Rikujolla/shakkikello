@@ -47,18 +47,15 @@
 - Chess checks also in twoplayer mod
 - Updated pieces by Kapu (Kalevi Puistolinna)
 
-* Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.3
-- Update problem correction NOT OK
-- Promotion of the pawn other than queen not possible NOT OK
+* Wed Jul 29 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.3
 - Possibility for time counting up from zero in the Clock view (user request)
 - Showing the maximum time setting in the Clock view
 - Resetting time to user set values, not defaults
-- Castling chess checks NOT OK
-- Chess, Chessmate and Stalemate notifications NOT OK
+- Castling chess checks
+- Chess notification
 
 * Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.x
 - Update problem correction NOT OK
-- Promotion of the pawn other than queen not possible
-- Castling chess checks
-- Chess, Chessmate and Stalemate notifications
+- Promotion of the pawn other than queen not possible NOT OK
+- Chessmate and Stalemate notifications NOT OK
 

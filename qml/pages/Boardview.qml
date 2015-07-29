@@ -450,8 +450,10 @@ Page {
                         if (((fromIndex-toIndex) == -8) && galeryModel.get(toIndex).color == "e") {
                             moveLegal = true; intLegal = 1;
                             if (toIndex > 55 && !chessTest) {
-                                pawnPromotion()
-                                itemMoved = "images/q.png"
+                                pawnPromotion();
+                                itemMoved = "images/q.png";
+                                currentMove = "promotion";
+                                movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":fromIndex})
                             }
                         }
                         // Move of two rows from the start position
@@ -471,11 +473,16 @@ Page {
                                 if (toIndex > 55 && !chessTest) {
                                     pawnPromotion()
                                     itemMoved = "images/q.png"
+                                    currentMove = "promotion";
+                                    movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":fromIndex})
                                 }
                             }
+                            // En passant
                             else if (galeryModel.get(toIndex).color == "wp") {
-                                moveLegal = true; intLegal = 1;
+                                moveLegal = true;
                                 galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
+                                currentMove = "enpassant";
+                                movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":toIndex-8})
                                 wenpassant = -1;
                             }
                             else {
@@ -498,6 +505,8 @@ Page {
                             if (toIndex < 8 && !chessTest) {
                                 pawnPromotion()
                                 itemMoved = "images/Q.png"
+                                currentMove = "promotion";
+                                movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":fromIndex})
                             }
                         }
                         // Move of two rows from the start position
@@ -517,11 +526,16 @@ Page {
                                 if (toIndex < 8 && !chessTest) {
                                     pawnPromotion()
                                     itemMoved = "images/Q.png"
+                                    currentMove = "promotion";
+                                    movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":fromIndex})
                                 }
                             }
+                            // En passant
                             else if (galeryModel.get(toIndex).color == "bp") {
-                                moveLegal = true; intLegal = 1;
+                                moveLegal = true;
                                 galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
+                                currentMove = "enpassant";
+                                movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":toIndex+8})
                                 benpassant = -1;
                             }
 
@@ -560,7 +574,6 @@ Page {
                             movedPieces.set(2,{"color":"b", "piece":"images/r.png", "indeksos":7})
                             movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":5})
                             //console.log("test1")
-                            // Castling legality checks are missing
                         }
                             // Castling long
                         else if ((toIndex == 2) && galeryModel.get(2).color === "e"
@@ -577,7 +590,6 @@ Page {
                             // Saving the moved pieces and positions for a possible cancel of the move
                             movedPieces.set(2,{"color":"b", "piece":"images/r.png", "indeksos":0})
                             movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":3})
-                                // Castling legality checks are missing
                         }
                         else {
                                 moveStarted=false;
@@ -607,7 +619,6 @@ Page {
                                     // Saving the moved pieces and positions for a possible cancel of the move
                                     movedPieces.set(2,{"color":"b", "piece":"images/R.png", "indeksos":63})
                                     movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":61})
-                                // Castling legality checks are missing
                             }
                             // Castling queenside
                             else if ((toIndex == 58) && galeryModel.get(58).color === "e"
@@ -624,7 +635,6 @@ Page {
                                     // Saving the moved pieces and positions for a possible cancel of the move
                                     movedPieces.set(2,{"color":"b", "piece":"images/R.png", "indeksos":56})
                                     movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":59})
-                                // Castling legality checks are missing
                             }
                             else {
                                 moveStarted=false;
