@@ -66,11 +66,13 @@ Page {
                 title: qsTr("Settings page")
             }
 
+            SectionHeader { text: qsTr("Clock settings") }
+
             Label {
                 x: Theme.paddingLarge
                 text: qsTr("White") +" "+ valkomax/60 + " " + qsTr("min")
                 color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeLarge
+                font.pixelSize: Theme.fontSizeMedium
                   }
 
             Row {
@@ -92,7 +94,7 @@ Page {
                 x: Theme.paddingLarge
                 text: qsTr("Black") +" "+ mustamax/60 + " " + qsTr("min")
                 color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeLarge
+                font.pixelSize: Theme.fontSizeMedium
                   }
 
             Row {
@@ -114,7 +116,7 @@ Page {
                 x: Theme.paddingLarge
                 text: qsTr("Increment/move") + " " + increment + " " + qsTr("s")
                 color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeLarge
+                font.pixelSize: Theme.fontSizeMedium
                   }
 
 
@@ -137,13 +139,14 @@ Page {
                 x: Theme.paddingLarge
                 text: qsTr("Time counting") + " " + countDirName
                 color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeLarge
+                font.pixelSize: Theme.fontSizeMedium
                   }
 
 
             Row {
                 spacing: Theme.paddingLarge
                 anchors.horizontalCenter: parent.horizontalCenter
+
                 Button {
                     text: qsTr("Upwards")
                     enabled: countDirDown
@@ -157,6 +160,31 @@ Page {
                     onClicked: {countDirDown = true;
                         countDirName = qsTr("Downwards")
                     }
+                }
+            }
+            SectionHeader { text: qsTr("Chess settings") }
+
+            ComboBox {
+                id: opsiSettings
+                width: parent.width
+                label: qsTr("Opening")
+
+                menu: ContextMenu {
+                        MenuItem {
+                            text: "Stockfish"
+                            onClicked: {openingMode = opsiSettings.currentIndex;
+                                //console.log(opsiSettings.currentIndex)
+                            }
+                        }
+                        MenuItem {
+                            text: "Random"
+                            onClicked: {openingMode = opsiSettings.currentIndex;
+                                //console.log(opsiSettings.currentIndex)
+                            }
+                        }
+//                        MenuItem {
+//                            text: "ECOX"
+//                        }
                 }
             }
 

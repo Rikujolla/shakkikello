@@ -49,7 +49,9 @@ public:
   Q_INVOKABLE  void initio();
   Q_INVOKABLE  void deletio();
   Q_INVOKABLE  void inni();
+  Q_INVOKABLE  void innio();
   Q_INVOKABLE  void outti();
+//  Q_INVOKABLE  void outtio();
 
 signals:
   void testChanged(QString teeu);

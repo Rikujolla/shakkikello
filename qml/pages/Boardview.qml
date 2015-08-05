@@ -27,6 +27,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "./images"
 import "funktiot.js" as Myfunks
+import "openings.js" as Myops
 import harbour.shakkikello.stockfish 1.0
 
 Page {
@@ -108,6 +109,39 @@ Page {
                 ]
                 property bool chessTestDone: false;
                 property bool midSquareTestDone: false;
+            }
+
+            Item {
+                id:opsi
+                property string movesDone: ""; //saves done moves to single string eg. e2e4d7d5
+                property string openingCompare: "";
+                property string openingSelected: "";
+                property string recentMove: "";
+                property int movesTotal: 0; //Records moves done
+                property bool openingPossible: false; // Tells if opening possible
+                property int yx //index for for
+                property int rantomi; //random number for opening selection
+                property var selOpenings: []; //array for sel openings
+                property var openings: [
+                    {name:"Sicilian, Dragon", eco:"B70",
+                        moves:"e2e4c7c5g1f3d7d6d2d4c5d4f3d4g8f6b1c3g7g6"},
+                    {name:"Sicilian, Dragon, Levenfish", eco:"B71",
+                        moves:"e2e4c7c5g1f3d7d6d2d4c5d4f3d4g8f6b1c3g7g6f2f4"},
+                    {name:"Sicilian, Dragon", eco:"B72",
+                        moves:"e2e4c7c5g1f3d7d6d2d4c5d4f3d4g8f6b1c3g7g6c1e3"},
+                    {name:"Sicilian, Dragon", eco:"B73",
+                        moves:"e2e4c7c5g1f3d7d6d2d4c5d4f3d4g8f6b1c3g7g6c1e3f8g7f1e2b8c6e1g1"},
+                    {name:"Giuoco Piano", eco:"C50",
+                        moves:"e2e4e7e5g1f3b8c6f1c4f8c5b1c3g8f6"},
+                    {name:"Queen's Gambit", eco:"D06",
+                        moves:"d2d4d7d5c2c4"},
+                    {name:"Queen's Gambit Declined", eco:"D30",
+                        moves:"d2d4d7d5c2c4e7e6"},
+                    {name:"Queen's Gambit Declined, Tarrasch", eco:"D32",
+                        moves:"d2d4d7d5c2c4e7e6b1c3c7c5"},
+                    {name:"Riku test", eco:"R01",
+                        moves:"a2a4h7h6"}
+                ]
             }
 
             Item {
@@ -1631,7 +1665,17 @@ Page {
 
             Timer {
                 interval: 500; running: playMode == "stockfish" && feni.feniReady && Qt.ApplicationActive; repeat: false
-                onTriggered: {hopo.inni();
+                onTriggered: {
+                    if (opsi.openingPossible) {
+                        hopo.innio();
+                        //hopo.test = opsi.openingCompare.slice(4*opsi.movesTotal,4*opsi.movesTotal+4)
+                        console.log("hopo.innio()", opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+4))
+                        hopo.test = opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+4);
+                        hopo.innio();
+                    }
+                    else {
+                        hopo.inni();
+                    }
                     feni.feniReady = false;
                     feni.feniBlack = true;
                 }
@@ -1639,7 +1683,10 @@ Page {
 
             Timer {
                 interval: 1500; running: playMode == "stockfish"&& feni.feniBlack && Qt.ApplicationActive; repeat: false
-                onTriggered: {hopo.outti();
+                onTriggered: {
+                    if (!opsi.openingPossible) {
+                        hopo.outti();
+                    }
                     Myfunks.fenToGRID()
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
@@ -1668,6 +1715,8 @@ Page {
                     feni.lowerMessage = "";
                     vuoro.vaihdaValkealle();
                     Myfunks.isChessPure();
+                    opsi.movesDone = opsi.movesDone + opsi.recentMove; // Adding the move for openings comparison
+                    opsi.movesTotal++;
                     feni.feniBlack = false;
                 }
             }

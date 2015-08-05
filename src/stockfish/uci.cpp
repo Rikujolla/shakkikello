@@ -183,13 +183,19 @@ void A::inni() {
     else {}
 }
 
+void A::innio() {
+    //string ransu;
+    //ransu=myTest.toStdString();//    Move m;
+    g_siirrot.push_back(myTest.toStdString());
+}
+
 void A::outti() {
     extern std::string g_koruksi;
 //    sync_cout << g_koruksi <<sync_endl;
     myTest = QString::fromStdString(g_koruksi);
     g_siirrot.push_back(g_koruksi);
     for (int ii = 0; ii < g_siirrot.size(); ii++) {
-//        cout << g_siirrot[ii] << " i" << ii << endl;
+        cout << g_siirrot[ii] << " i" << ii << endl;
     }
 }
 

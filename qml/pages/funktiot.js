@@ -1,14 +1,17 @@
-// Function gridToFEN(), row 9
-// Function fenToGRID(), row 67
-// Function isChess(), row 171
-// Function cancelMove(), row 226
-// Function isChessPure(), row 298
+// Function gridToFEN(), row 12
+// Function fenToGRID(), row 70
+// Function isChess(), row 174
+// Function cancelMove(), row 218
+// Function isChessPure(), row 286
+// Function midSquareCheck(), row 342
+// Function doMove(), row 402
 
 /////////////////////////////////////////////////////////
 // this function transforms grid notation to FEN-notation
 /////////////////////////////////////////////////////////
 function gridToFEN() {
 //    console.log("Valkoisen siirto, FEN ",fromIndex, toIndex)
+    opsi.recentMove = hopo.test;
     hopo.test = "";
     switch (fromIndex%8) {
     case 0: feni.startFeni= "a"
@@ -67,6 +70,7 @@ function gridToFEN() {
 
 function fenToGRID() {
 //    console.log(hopo.test)
+    opsi.recentMove = hopo.test;
     feni.stringHelper = hopo.test.slice(0,1);
     switch (feni.stringHelper) {
     case "a": feni.feniHelper = 0
@@ -336,6 +340,7 @@ function isChessPure() {
 ///////////////////////////////////////////////////////////////////////////////////////
 // Function checks if Chess is  on. Used for notifications and castling checks
 ///////////////////////////////////////////////////////////////////////////////////////
+
 function midSquareCheck() {
 //    feni.feniWhiteChess = false;
 //    feni.feniBlackChess = false;
@@ -392,6 +397,10 @@ function midSquareCheck() {
 
 }
 
+///////////////////////////////////////////////////////////////////////////////////////
+// Function does the move
+///////////////////////////////////////////////////////////////////////////////////////
+
 function doMove() {
 
     if (tilat.valko && !feni.chessIsOn){
@@ -405,6 +414,13 @@ function doMove() {
         moveMent.midSquareCheckki = false;
         vuoro.vaihdaMustalle();
         isChessPure();
+        opsi.recentMove = hopo.test; //only effective for stockfish game
+        opsi.movesDone = opsi.movesDone + opsi.recentMove; //only effective for stockfish game
+        opsi.movesTotal++;
+        console.log("white")
+        if (openingMode == 0) {
+            Myops.inOpenings();
+        }
     }
 
     else if (tilat.musta && !feni.chessIsOn) {
@@ -412,11 +428,15 @@ function doMove() {
 
         moveMent.currentMove = "";
         if (movedPieces.get(0).piece == "images/k.png") {moveMent.bKingMoved = true;}
-        //console.log("moved", movedPieces.get(0).piece);
         moveMent.midSquareCheckki = false;
         vuoro.vaihdaValkealle();
         isChessPure();
-
+        //opsi.movesDone = opsi.movesDone + opsi.recentMove;  // Maybe needed in future
+        opsi.movesTotal++;
+        console.log("black")
+        if (openingMode == 0) {
+            Myops.inOpenings();
+        }
     }
 
 }

@@ -43,5 +43,7 @@ ApplicationWindow
     property bool countDirDown: true //Default is Downwards
     property string countDirName: qsTr("Downwards")
     property string playMode
+    property int openingMode: 1 // 1 Stockfish, 0 Random
+    property int stockfishDepth: 2 //depth of stockfish engine
 
 }
