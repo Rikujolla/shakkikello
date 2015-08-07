@@ -57,6 +57,11 @@ Page {
 
         contentHeight: column.height
 
+        Item {
+            id: sets
+            property bool indexUpdater: false;
+        }
+
         Column {
             id: column
 
@@ -68,45 +73,44 @@ Page {
 
             SectionHeader { text: qsTr("Clock settings") }
 
-            Label {
-                x: Theme.paddingLarge
-                text: qsTr("White") +" "+ valkomax/60 + " " + qsTr("min")
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeMedium
-                  }
-
             Row {
+                x: Theme.paddingLarge
                 spacing: Theme.paddingLarge
-                anchors.horizontalCenter: parent.horizontalCenter
+                Text {
+                    color: Theme.secondaryHighlightColor
+                    text: qsTr("White") +" "+ valkomax/60 + " " + qsTr("min")
+                }
+
                 Button {
                     text: qsTr("- 1 min")
+                    width: page.width /4
                     onClicked: {valkomax = valkomax - 60
                     }
                 }
                 Button {
                     text: qsTr("+ 1 min")
+                    width: page.width /4
                     onClicked: {valkomax = valkomax + 60
                     }
                 }
             }
 
-            Label {
-                x: Theme.paddingLarge
-                text: qsTr("Black") +" "+ mustamax/60 + " " + qsTr("min")
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeMedium
-                  }
-
             Row {
+                x: Theme.paddingLarge
                 spacing: Theme.paddingLarge
-                anchors.horizontalCenter: parent.horizontalCenter
+                Text {
+                    color: Theme.secondaryHighlightColor
+                    text: qsTr("Black") +" "+ mustamax/60 + " " + qsTr("min")
+                }
                 Button {
                     text: qsTr("- 1 min")
+                    width: page.width /4
                     onClicked: {mustamax = mustamax - 60
                     }
                 }
                 Button {
                     text: qsTr("+ 1 min")
+                    width: page.width /4
                     onClicked: {mustamax = mustamax + 60
                     }
                 }
@@ -135,59 +139,61 @@ Page {
                 }
             }
 
-            Label {
-                x: Theme.paddingLarge
-                text: qsTr("Time counting") + " " + countDirName
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeMedium
-                  }
+            ComboBox {
+                id: timeCounting
+                width: parent.width
+                label: qsTr("Time counting")
+                currentIndex: countDirInt
 
-
-            Row {
-                spacing: Theme.paddingLarge
-                anchors.horizontalCenter: parent.horizontalCenter
-
-                Button {
-                    text: qsTr("Upwards")
-                    enabled: countDirDown
-                    onClicked: {countDirDown = false;
-                        countDirName = qsTr("Upwards")
-                    }
-                }
-                Button {
-                    text: qsTr("Downwards")
-                    enabled: !countDirDown
-                    onClicked: {countDirDown = true;
-                        countDirName = qsTr("Downwards")
-                    }
+                menu: ContextMenu {
+                        MenuItem {
+                            text: qsTr("Downwards")
+                            onClicked: {sets.indexUpdater = true;
+                                countDirInt = timeCounting.currentIndex;
+                                countDirDown = true;
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Upwards")
+                            onClicked: {sets.indexUpdater = true;
+                                countDirInt = timeCounting.currentIndex;
+                                countDirDown = false;
+                            }
+                        }
                 }
             }
+
             SectionHeader { text: qsTr("Chess settings") }
 
-            ComboBox {
+            ComboBox { // for dynamic creation see Pastie: http://pastie.org/9813891
                 id: opsiSettings
                 width: parent.width
                 label: qsTr("Opening")
+                currentIndex: openingMode
 
                 menu: ContextMenu {
                         MenuItem {
                             text: "Stockfish"
-                            onClicked: {openingMode = opsiSettings.currentIndex;
-                                //console.log(opsiSettings.currentIndex)
+                            onClicked: {sets.indexUpdater = true;
                             }
                         }
                         MenuItem {
-                            text: "Random"
-                            onClicked: {openingMode = opsiSettings.currentIndex;
-                                //console.log(opsiSettings.currentIndex)
+                            text: qsTr("Random")
+                            onClicked: {sets.indexUpdater = true;
                             }
                         }
-//                        MenuItem {
-//                            text: "ECOX"
-//                        }
                 }
             }
 
+            // This timer is requested to change currentIndex values to global variables
+            Timer {
+                interval:50
+                running:sets.indexUpdater && Qt.ApplicationActive
+                repeat:true
+                onTriggered: {openingMode = opsiSettings.currentIndex;
+                    countDirInt = timeCounting.currentIndex;
+                    sets.indexUpdater = false}
+            }
             //loppusulkeet
         }
     }

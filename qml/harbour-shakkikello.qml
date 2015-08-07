@@ -41,9 +41,9 @@ ApplicationWindow
     property int fromIndex : -1
     property int toIndex : -1
     property bool countDirDown: true //Default is Downwards
+    property int countDirInt: 0 // For combo box index, related to countDirDown, 0 Downwards
     property string countDirName: qsTr("Downwards")
     property string playMode
-    property int openingMode: 1 // 1 Stockfish, 0 Random
+    property int openingMode: 0 // 0 Stockfish, 1 Random
     property int stockfishDepth: 2 //depth of stockfish engine
-
 }
