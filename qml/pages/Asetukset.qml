@@ -77,19 +77,20 @@ Page {
                 x: Theme.paddingLarge
                 spacing: Theme.paddingLarge
                 Text {
+                    width: page.width*4/10
                     color: Theme.secondaryHighlightColor
                     text: qsTr("White") +" "+ valkomax/60 + " " + qsTr("min")
                 }
 
                 Button {
                     text: qsTr("- 1 min")
-                    width: page.width /4
+                    width: page.width /5
                     onClicked: {valkomax = valkomax - 60
                     }
                 }
                 Button {
                     text: qsTr("+ 1 min")
-                    width: page.width /4
+                    width: page.width /5
                     onClicked: {valkomax = valkomax + 60
                     }
                 }
@@ -99,18 +100,19 @@ Page {
                 x: Theme.paddingLarge
                 spacing: Theme.paddingLarge
                 Text {
+                    width: page.width*4/10
                     color: Theme.secondaryHighlightColor
                     text: qsTr("Black") +" "+ mustamax/60 + " " + qsTr("min")
                 }
                 Button {
                     text: qsTr("- 1 min")
-                    width: page.width /4
+                    width: page.width /5
                     onClicked: {mustamax = mustamax - 60
                     }
                 }
                 Button {
                     text: qsTr("+ 1 min")
-                    width: page.width /4
+                    width: page.width /5
                     onClicked: {mustamax = mustamax + 60
                     }
                 }

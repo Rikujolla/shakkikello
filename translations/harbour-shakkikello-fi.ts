@@ -64,12 +64,28 @@
         <translation>Ajan laskenta</translation>
     </message>
     <message>
-        <source>Upwards</source>
-        <translation>Ylöspäin</translation>
+        <source>Opening</source>
+        <translation>Avaus</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation>Kellon asetukset</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation>Shakkiasetukset</translation>
     </message>
     <message>
         <source>Downwards</source>
         <translation>Alaspäin</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Ylöspäin</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation>Satunnainen</translation>
     </message>
 </context>
 <context>

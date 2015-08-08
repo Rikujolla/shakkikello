@@ -64,12 +64,28 @@
         <translation>Volgorde van tijdsteller</translation>
     </message>
     <message>
-        <source>Upwards</source>
-        <translation>Opwaarts</translation>
+        <source>Opening</source>
+        <translation>Bezig met openen</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation>Klok-instellingen</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation>Schaken-instellingen</translation>
     </message>
     <message>
         <source>Downwards</source>
         <translation>Neerwaarts</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Opwaarts</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation>Willekeurig</translation>
     </message>
 </context>
 <context>

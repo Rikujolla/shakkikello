@@ -64,11 +64,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Upwards</source>
+        <source>Opening</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Downwards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Random</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -54,6 +54,9 @@
 - Castling chess checks
 - Chess notification
 
+* Tue Aug 11 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.4
+- Random opening can be selected for black in Stockfish mode
+
 * Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.x
 - Update problem correction NOT OK
 - Promotion of the pawn other than queen not possible NOT OK
