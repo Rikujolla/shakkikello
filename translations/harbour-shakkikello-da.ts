@@ -71,6 +71,22 @@
         <source>Downwards</source>
         <translation>Nedad</translation>
     </message>
+    <message>
+        <source>Opening</source>
+        <translation>Skakåbningen</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation>Urindstillinger</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation>Skak-indstillinger</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation>Tilfældig</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>

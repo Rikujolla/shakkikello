@@ -122,7 +122,18 @@ Page {
                 property int yx //index for for
                 property int rantomi; //random number for opening selection
                 property var selOpenings: []; //array for sel openings
+                // Openings collected from various web pages. Main source is https://en.wikipedia.org/wiki/List_of_chess_openings
                 property var openings: [
+                    {name:"Queen's Pawn Game", eco:"A45",
+                        moves:"d2d4g8f6"},
+                    {name:"Queen's Pawn Game, Torre Attack", eco:"A46",
+                        moves:"d2d4g8f6g1f3"},
+                    {name:"Queen's Indian Defence", eco:"A47",
+                        moves:"d2d4g8f6g1f3b7b6"},
+                    {name:" King's Indian, East Indian Defence", eco:"A48",
+                        moves:"d2d4g8f6g1f3b7b6"},
+                    {name:" King's Indian, East Indian Defence Przepiórka", eco:"A49",
+                        moves:"d2d4g8f6g1f3b7b6g2g3"},
                     {name:"Sicilian, Dragon", eco:"B70",
                         moves:"e2e4c7c5g1f3d7d6d2d4c5d4f3d4g8f6b1c3g7g6"},
                     {name:"Sicilian, Dragon, Levenfish", eco:"B71",
@@ -139,6 +150,10 @@ Page {
                         moves:"d2d4d7d5c2c4e7e6"},
                     {name:"Queen's Gambit Declined, Tarrasch", eco:"D32",
                         moves:"d2d4d7d5c2c4e7e6b1c3c7c5"},
+                    {name:" King's Indian Defence", eco:"E60",
+                        moves:"d2d4g8f6c2c4g7g6"},
+                    {name:"  King's Indian, Classical Variation", eco:"E92",
+                        moves:"d2d4g8f6c2c4g7g6b1c3f8g7e2e4d7d6g1f3e8g8f1e2e7e5"},
                     {name:"Riku test", eco:"R01",
                         moves:"a2a4h7h6"}
                 ]
@@ -1668,8 +1683,7 @@ Page {
                 onTriggered: {
                     if (opsi.openingPossible) {
                         hopo.innio();
-                        //hopo.test = opsi.openingCompare.slice(4*opsi.movesTotal,4*opsi.movesTotal+4)
-                        console.log("hopo.innio()", opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+4))
+                        //console.log("hopo.innio()", opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+4))
                         hopo.test = opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+4);
                         hopo.innio();
                     }

@@ -417,7 +417,7 @@ function doMove() {
         opsi.recentMove = hopo.test; //only effective for stockfish game
         opsi.movesDone = opsi.movesDone + opsi.recentMove; //only effective for stockfish game
         opsi.movesTotal++;
-        console.log("white")
+        //console.log("white")
         if (openingMode == 1) {
             Myops.inOpenings();
         }
@@ -433,7 +433,7 @@ function doMove() {
         isChessPure();
         //opsi.movesDone = opsi.movesDone + opsi.recentMove;  // Maybe needed in future
         opsi.movesTotal++;
-        console.log("black")
+        //console.log("black")
         if (openingMode == 1) {
             Myops.inOpenings();
         }
