@@ -71,6 +71,22 @@
         <source>Downwards</source>
         <translation>Вниз</translation>
     </message>
+    <message>
+        <source>Opening</source>
+        <translation>Дебют</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation>Настройки часов</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation>Настройки шахматные</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation>Случайный</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>

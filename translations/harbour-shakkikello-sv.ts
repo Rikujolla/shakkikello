@@ -71,6 +71,22 @@
         <source>Downwards</source>
         <translation>Nedåt</translation>
     </message>
+    <message>
+        <source>Opening</source>
+        <translation>Schacköppning</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation>Klockinställningar</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation>Schack inställningar</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation>Slumpvis</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>

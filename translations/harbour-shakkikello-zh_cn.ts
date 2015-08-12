@@ -71,6 +71,22 @@
         <source>Downwards</source>
         <translation>向下</translation>
     </message>
+    <message>
+        <source>Opening</source>
+        <translation>国际象棋开幕</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation>时钟设置</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation>棋牌设置</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation>随机</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>

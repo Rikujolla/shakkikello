@@ -71,6 +71,22 @@
         <source>Downwards</source>
         <translation>Verso il basso</translation>
     </message>
+    <message>
+        <source>Opening</source>
+        <translation>Apertura</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation>Impostazioni dell'orologio</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation>Impostazioni di scacchi</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation>Casuale</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>

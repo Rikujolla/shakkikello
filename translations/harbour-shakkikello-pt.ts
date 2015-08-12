@@ -71,6 +71,22 @@
         <source>Downwards</source>
         <translation>Para baixo</translation>
     </message>
+    <message>
+        <source>Opening</source>
+        <translation>Abertura</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation>Configurações do relógio</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation>Configurações de xadrez</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation>Acaso</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>

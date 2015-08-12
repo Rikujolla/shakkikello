@@ -71,6 +71,22 @@
         <source>Downwards</source>
         <translation>Nedover</translation>
     </message>
+    <message>
+        <source>Opening</source>
+        <translation>Sjakkåpning</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation>Klokkeinnstillinger</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation>Sjakk innstillinger</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation>Tilfeldig</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
