@@ -194,9 +194,9 @@ void A::outti() {
 //    sync_cout << g_koruksi <<sync_endl;
     myTest = QString::fromStdString(g_koruksi);
     g_siirrot.push_back(g_koruksi);
-    for (int ii = 0; ii < g_siirrot.size(); ii++) {
-        cout << g_siirrot[ii] << " i" << ii << endl;
-    }
+//    for (int ii = 0; ii < g_siirrot.size(); ii++) {
+//        cout << g_siirrot[ii] << " i" << ii << endl;
+//    }
 }
 
 void UCI::loopi(const std::vector<std::string> &fransu) {
