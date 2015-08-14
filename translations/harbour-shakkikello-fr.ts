@@ -77,11 +77,11 @@
     </message>
     <message>
         <source>Clock settings</source>
-        <translation>Paramètres de l'horloge</translation>
+        <translation>Paramètres de l&apos;horloge</translation>
     </message>
     <message>
         <source>Chess settings</source>
-        <translation>Paramètres d'échecs</translation>
+        <translation>Paramètres d&apos;échecs</translation>
     </message>
     <message>
         <source>Random</source>

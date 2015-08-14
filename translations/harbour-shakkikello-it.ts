@@ -77,7 +77,7 @@
     </message>
     <message>
         <source>Clock settings</source>
-        <translation>Impostazioni dell'orologio</translation>
+        <translation>Impostazioni dell&apos;orologio</translation>
     </message>
     <message>
         <source>Chess settings</source>

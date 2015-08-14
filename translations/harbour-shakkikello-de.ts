@@ -64,12 +64,28 @@
         <translation>Zeitzählung</translation>
     </message>
     <message>
-        <source>Upwards</source>
-        <translation>vorwärts</translation>
+        <source>Opening</source>
+        <translation>Eröffnung</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation>Uhr-Einstellungen </translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation>Schach-Einstellungen</translation>
     </message>
     <message>
         <source>Downwards</source>
         <translation>rückwärts</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>vorwärts</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation>Zufällig</translation>
     </message>
 </context>
 <context>

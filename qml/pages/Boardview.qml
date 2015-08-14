@@ -480,9 +480,11 @@ Page {
                 function isMovable() {
                     if (colorTobemoved == "b" && tilat.musta) {
                         canBemoved = true;
+                        galeryModel.set(fromIndex,{"frameop":100});
                     }
                     else if (colorTobemoved == "w" && tilat.valko) {
                         canBemoved = true;
+                        galeryModel.set(fromIndex,{"frameop":100});
                     }
                     else {
                         canBemoved = false;
@@ -1503,6 +1505,7 @@ Page {
                     }
                     else {
                         toIndex=indeksi;
+                        galeryModel.set(fromIndex,{"frameop":0}); // Better performance needed
                         // here fomParity and toParity checks
                         sameColor(); // Checks if fromIndex and toIndex are same color
                         isLegalmove();
@@ -1552,6 +1555,7 @@ Page {
                     ListElement {
                         color: "e"
                         piece: "images/empty.png"
+                        frameop: 0
                     }
             }
 
@@ -1633,6 +1637,12 @@ Page {
                             enabled: true
                             opacity: 0.5
                         } */
+                        Image {
+                            asynchronous: true
+                            source: "images/frame.png"
+                            opacity: frameop
+                            sourceSize.width: grid.cellWidth
+                            sourceSize.height: grid.cellHeight
                         MouseArea {
                                 anchors.fill: parent
                                 enabled: feni.feniWhite || playMode == "human"
@@ -1640,9 +1650,11 @@ Page {
                                     moveMent.itemTobemoved = piece;
                                     moveMent.colorTobemoved = color;
                                     moveMent.movePiece();
+                                    //galeryModel.set(index,{"frameop":100});
                                 }
                             }
-                    }
+                        }
+                    } // end Image
                 } // end GridView
             } //end Rectangle
 
