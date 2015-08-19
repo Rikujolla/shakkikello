@@ -145,15 +145,15 @@
 <context>
     <name>Pelisivu</name>
     <message>
-        <source>min:s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Black´s turn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>White´s turn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -173,19 +173,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>min:s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>White´s clock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Black´s clock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Controls</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

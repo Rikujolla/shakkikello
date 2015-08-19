@@ -47,7 +47,10 @@ Page {
             MenuItem {
                 text: qsTr("Board, Stockfish")
                 onClicked: {pageStack.push(Qt.resolvedUrl("Boardview.qml"));
-                    playMode = "stockfish"}
+                    playMode = "stockfish";
+                    openingECO = eku.text;
+                    console.log(openingECO)
+                }
             }
             MenuItem {
                 text: qsTr("Clock view")
@@ -167,13 +170,17 @@ Page {
 
             SectionHeader { text: qsTr("Chess settings") }
 
-            ComboBox { // for dynamic creation see Pastie: http://pastie.org/9813891
-                id: opsiSettings
-                width: parent.width
-                label: qsTr("Opening")
-                currentIndex: openingMode
-
-                menu: ContextMenu {
+            Row {
+                x: Theme.paddingLarge
+                spacing: Theme.paddingLarge
+                anchors.left: parent.left
+                //anchors.fill: parent
+                ComboBox { // for dynamic creation see Pastie: http://pastie.org/9813891
+                    id: opsiSettings
+                    width: page.width*2/3
+                    label: qsTr("Opening")
+                    currentIndex: openingMode
+                    menu: ContextMenu {
                         MenuItem {
                             text: "Stockfish"
                             onClicked: {sets.indexUpdater = true;
@@ -184,6 +191,23 @@ Page {
                             onClicked: {sets.indexUpdater = true;
                             }
                         }
+                        MenuItem {
+                            text: "ECO"
+                            onClicked: {sets.indexUpdater = true;
+                            }
+                        }
+                    }
+                }
+                TextField {
+                    id: eku
+                    placeholderText: "E20"
+                    //label: qsTr("ECO code")
+                    visible: openingMode == 2
+                    width: page.width/4
+                    //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0-9])$/ }
+                    validator: RegExpValidator { regExp: /^([A-E])([0-9])([0])$/ }
+                    color: errorHighlight? "red" : Theme.primaryColor
+                    inputMethodHints: Qt.ImhNoPredictiveText
                 }
             }
 
@@ -192,9 +216,11 @@ Page {
                 interval:50
                 running:sets.indexUpdater && Qt.ApplicationActive
                 repeat:true
-                onTriggered: {openingMode = opsiSettings.currentIndex;
+                onTriggered: {
+                    openingMode = opsiSettings.currentIndex;
                     countDirInt = timeCounting.currentIndex;
-                    sets.indexUpdater = false}
+                    sets.indexUpdater = false;
+                }
             }
             //loppusulkeet
         }

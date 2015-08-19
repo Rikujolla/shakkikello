@@ -8,7 +8,7 @@
 function inOpenings() {
     //console.log("All openings", opsi.openings.length)
     // The loop finds the possible moves to selOpenings array
-    // If opening still valid, no chanke is evaluated
+    // If opening still valid, no change is evaluated
     if (opsi.openingSelected.slice(0,4*opsi.movesTotal) == opsi.movesDone
             && opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+1) !== "") {
     }
@@ -19,8 +19,14 @@ function inOpenings() {
         //console.log("Tehdyt siirrot", opsi.movesTotal, opsi.movesDone);
             if (opsi.openingCompare.slice(0,4*opsi.movesTotal) == opsi.movesDone
                     && opsi.openingCompare.slice(4*opsi.movesTotal,4*opsi.movesTotal+1) !== "") {
-                console.log("Possile opening", opsi.openings[opsi.yx].eco);
-                opsi.selOpenings.push(opsi.openings[opsi.yx].moves);
+                if (openingMode == 1) {
+                    opsi.selOpenings.push(opsi.openings[opsi.yx].moves);
+                    console.log("Possile opening", opsi.openings[opsi.yx].eco);
+                }
+                else if (openingMode == 2 && opsi.openings[opsi.yx].eco == openingECO) {
+                    opsi.selOpenings.push(opsi.openings[opsi.yx].moves);
+                    console.log("ECO opening", opsi.openings[opsi.yx].eco);
+                }
         }
         else {
             // Nothing

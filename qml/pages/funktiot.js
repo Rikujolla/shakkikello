@@ -418,7 +418,7 @@ function doMove() {
         opsi.movesDone = opsi.movesDone + opsi.recentMove; //only effective for stockfish game
         opsi.movesTotal++;
         //console.log("white")
-        if (openingMode == 1) {
+        if (openingMode == 1 || openingMode == 2) {
             Myops.inOpenings();
         }
     }
@@ -434,7 +434,7 @@ function doMove() {
         //opsi.movesDone = opsi.movesDone + opsi.recentMove;  // Maybe needed in future
         opsi.movesTotal++;
         //console.log("black")
-        if (openingMode == 1) {
+        if (openingMode == 1 || openingMode == 2) {
             Myops.inOpenings();
         }
     }
