@@ -13,7 +13,7 @@ function clearRecent() {
             // Adding comment row
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Event', 'My Event', 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Site', 'My Site', 'e', 'e', '[ssss]' ]);
-            tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Date', '5.9.2015', 'e', 'e', '[ssss]' ]);
+            tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Date', startti.dateTag, 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Round', '1', 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'White', 'Me', 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Black', 'You', 'e', 'e', '[ssss]' ]);

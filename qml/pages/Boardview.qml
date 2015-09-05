@@ -431,11 +431,15 @@ Page {
                 property int hours0
                 property int minutes0
                 property int sekuntit0
+                property string dateTag: "1.9.2015"
                 function timeAsetus() {
                     var date0 = new Date;
                     hours0 = date0.getHours()
                     minutes0 = date0.getMinutes()
                     sekuntit0= date0.getSeconds()
+                    dateTag = date0.getFullYear() + "." + ((date0.getMonth()+1)<10 ? "0":"") +(date0.getMonth()+1)
+                            + "." + ((date0.getDate())<10 ? "0":"") + date0.getDate();
+
                 }
             }
 
@@ -1886,6 +1890,7 @@ Page {
                         galeryModel.set(toIndex, {"piece": "images/q.png"});
                     }
                     feni.lowerMessage = "";
+                    Mytab.addMove();
                     vuoro.vaihdaValkealle();
                     Myfunks.isChessPure();
                     opsi.movesDone = opsi.movesDone + opsi.recentMove; // Adding the move for openings comparison
