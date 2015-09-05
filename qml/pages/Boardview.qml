@@ -25,9 +25,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick.LocalStorage 2.0
 import "./images"
 import "funktiot.js" as Myfunks
 import "openings.js" as Myops
+import "tables.js" as Mytab
 import harbour.shakkikello.stockfish 1.0
 
 Page {
@@ -42,6 +44,11 @@ Page {
                 onClicked: asetussivulle.siirrytKo()
                 enabled: !tilat.juoksee || tilat.peliloppui
             }*/
+            MenuItem {
+                text: qsTr("Show moves")
+                onClicked: pageStack.push(Qt.resolvedUrl("GameInfo.qml"))
+            }
+
             MenuItem { //Start/Pause
                 text: aloitapause
                 enabled: !tilat.peliloppui
@@ -59,7 +66,8 @@ Page {
                     muttakello.timeMutta();
                     muttakello.sekuntitm=0;
                     tilat.vaihdaTila();
-                    maharollisuuret = qsTr("Reset")
+                    maharollisuuret = qsTr("Reset");
+                    Mytab.clearRecent()
                 }
             }
         }
@@ -148,6 +156,24 @@ Page {
                     // In some phase web link to wiki could be nice
                     {name:"English Anglo-Dutch", eco:"A10",
                         moves:"c2c4f7f5"},
+                    {name:"English, Caroâ€“Kann defensive system", eco:"A11",
+                        moves:"c2c4c7c6"},
+                    {name:"English London Defence", eco:"A12",
+                        moves:"c2c4c7c6g1f3d7d5b2b3g8f6g2g3c8f5"},
+                    {name:"English Opening: 1...e6", eco:"A13",
+                        moves:"c2c4e7e6"},
+                    {name:"English, Neo-Catalan declined", eco:"A14",
+                        moves:"c2c4e7e6g1f3d7d5g2g3g8f6f1g2f8e7"},
+                    {name:"English, Anglo-Indian Defence: 1...Nf6", eco:"A15",
+                        moves:"c2c4g8f6"},
+                    {name:"Anglo-GrÃ¼nfeld", eco:"A16",
+                        moves:"c2c4g8f6b1c3d7d5"},
+                    {name:"English Opening, Hedgehog Defence", eco:"A17",
+                        moves:"c2c4g8f6b1c3e7e6"},
+                    {name:"English, Mikenasâ€“Carls Variation", eco:"A18",
+                        moves:"c2c4g8f6b1c3e7e6e2e4"},
+                    {name:"English, Mikenasâ€“Carls, Sicilian Variation:", eco:"A19",
+                        moves:"c2c4g8f6b1c3e7e6e2e4c7c5"},
                     {name:"English Opening", eco:"A20",
                         moves:"c2c4e7e5"},
                     {name:"English Opening", eco:"A30",

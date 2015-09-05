@@ -406,12 +406,14 @@ function doMove() {
     if (tilat.valko && !feni.chessIsOn){
         feni.upperMessage = "";
 
-        if (playMode == "stockfish"){
+//        if (playMode == "stockfish"){
             gridToFEN();
-        }
+//        }
         moveMent.currentMove = "";
         if (movedPieces.get(0).piece == "images/K.png") {moveMent.wKingMoved = true;}
         moveMent.midSquareCheckki = false;
+        //console.log(hopo.test);
+        Mytab.addMove();
         vuoro.vaihdaMustalle();
         isChessPure();
         opsi.recentMove = hopo.test; //only effective for stockfish game
@@ -425,10 +427,11 @@ function doMove() {
 
     else if (tilat.musta && !feni.chessIsOn) {
         feni.lowerMessage = "";
-
+        gridToFEN();
         moveMent.currentMove = "";
         if (movedPieces.get(0).piece == "images/k.png") {moveMent.bKingMoved = true;}
         moveMent.midSquareCheckki = false;
+        Mytab.addMove();
         vuoro.vaihdaValkealle();
         isChessPure();
         //opsi.movesDone = opsi.movesDone + opsi.recentMove;  // Maybe needed in future
