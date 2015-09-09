@@ -134,12 +134,31 @@
         <source>Black won!</source>
         <translation>Sort vandt!</translation>
     </message>
+    <message>
+        <source>Show moves</source>
+        <translation>Vis flytter</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Chess ur</translation>
+    </message>
+</context>
+<context>
+    <name>GameInfo</name>
+    <message>
+        <source>Tag pairs</source>
+        <translation>Spil information</translation>
+    </message>
+    <message>
+        <source>Current game</source>
+        <translation>Aktuelle spil</translation>
+    </message>
+    <message>
+        <source>Movetext, Coordinate notation</source>
+        <translation>Flytter, Koordinere notation</translation>
     </message>
 </context>
 <context>

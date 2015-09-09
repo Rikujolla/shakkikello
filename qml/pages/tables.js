@@ -16,7 +16,13 @@ function clearRecent() {
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Date', startti.dateTag, 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Round', '1', 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'White', 'Me', 'e', 'e', '[ssss]' ]);
-            tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Black', 'You', 'e', 'e', '[ssss]' ]);
+            if (playMode == "stockfish") {
+                tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Black', 'Stockfish, v5', 'e', 'e', '[ssss]' ]);
+            }
+            else {
+                tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Black', 'You', 'e', 'e', '[ssss]' ]);
+            }
+
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Result', '*', 'e', 'e', '[ssss]' ]);
 
         }

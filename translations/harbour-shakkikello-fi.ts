@@ -134,6 +134,10 @@
         <source>Black won!</source>
         <translation>Musta voitti!</translation>
     </message>
+    <message>
+        <source>Show moves</source>
+        <translation>Näytä siirrot</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -143,11 +147,22 @@
     </message>
 </context>
 <context>
-    <name>Pelisivu</name>
+    <name>GameInfo</name>
     <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
+        <source>Tag pairs</source>
+        <translation>Pelitiedot</translation>
     </message>
+    <message>
+        <source>Current game</source>
+        <translation>Nykyinen peli</translation>
+    </message>
+    <message>
+        <source>Movetext, Coordinate notation</source>
+        <translation>Siirrot koordinaatein</translation>
+    </message>
+</context>
+<context>
+    <name>Pelisivu</name>
     <message>
         <source>Black´s turn</source>
         <translation>Mustan vuoro</translation>
@@ -155,6 +170,10 @@
     <message>
         <source>White´s turn</source>
         <translation>Valkoisen vuoro</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Keskeytä</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -173,20 +192,20 @@
         <translation>Shakkikello</translation>
     </message>
     <message>
+        <source>min:s</source>
+        <translation>min:s</translation>
+    </message>
+    <message>
         <source>White´s clock</source>
         <translation>Valkoisen kello</translation>
     </message>
     <message>
-        <source>Black´s clock</source>
-        <translation>Mustan kello</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Keskeytä</translation>
-    </message>
-    <message>
         <source>Controls</source>
         <translation>Ohjaukset</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation>Mustan kello</translation>
     </message>
 </context>
 <context>
