@@ -206,7 +206,7 @@ Page {
                     width: page.width/4
                     //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0-9])$/ }
                     //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0])$/ }
-                    validator: RegExpValidator { regExp: /^((([A-E])([0-9])([0]))|((A)([0-1])([0-9])))$/ }
+                    validator: RegExpValidator { regExp: /^((([A-E])([0-9])([0]))|((A)([0-2])([0-9])))$/ }
                     color: errorHighlight? "red" : Theme.primaryColor
                     inputMethodHints: Qt.ImhNoPredictiveText
                 }
