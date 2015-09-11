@@ -134,12 +134,31 @@
         <source>Black won!</source>
         <translation>Negro ganó</translation>
     </message>
+    <message>
+        <source>Show moves</source>
+        <translation>Mostrar mueve</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Reloj de ajedrez</translation>
+    </message>
+</context>
+<context>
+    <name>GameInfo</name>
+    <message>
+        <source>Tag pairs</source>
+        <translation>Perfil del juego</translation>
+    </message>
+    <message>
+        <source>Current game</source>
+        <translation>Juego actual</translation>
+    </message>
+    <message>
+        <source>Movetext, Coordinate notation</source>
+        <translation>Se mueve, coordinar la notación</translation>
     </message>
 </context>
 <context>

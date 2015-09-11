@@ -25,9 +25,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick.LocalStorage 2.0
 import "./images"
 import "funktiot.js" as Myfunks
 import "openings.js" as Myops
+import "tables.js" as Mytab
 import harbour.shakkikello.stockfish 1.0
 
 Page {
@@ -42,6 +44,11 @@ Page {
                 onClicked: asetussivulle.siirrytKo()
                 enabled: !tilat.juoksee || tilat.peliloppui
             }*/
+            MenuItem {
+                text: qsTr("Show moves")
+                onClicked: pageStack.push(Qt.resolvedUrl("GameInfo.qml"))
+            }
+
             MenuItem { //Start/Pause
                 text: aloitapause
                 enabled: !tilat.peliloppui
@@ -59,7 +66,8 @@ Page {
                     muttakello.timeMutta();
                     muttakello.sekuntitm=0;
                     tilat.vaihdaTila();
-                    maharollisuuret = qsTr("Reset")
+                    maharollisuuret = qsTr("Reset");
+                    Mytab.clearRecent()
                 }
             }
         }
@@ -127,13 +135,85 @@ Page {
                     // A
                     {name:"Irregular,Sokolsky Opening, Schuhler Gambit", eco:"A00",
                         moves:"b2b4c7c6c1b2a7a5b4b5c6b5e2e4"},
+                    {name:"Larsen's Opening, Polish variation", eco:"A01",
+                        moves:"b2b3b7b5"},
+                    {name:"Bird's Opening, Swiss Gambit", eco:"A02",
+                        moves:"f2f4f7f5e2e4f5e4b1c3g1f6g2g4"},
+                    {name:"Bird's Opening, Timothy Taylor's book", eco:"A03",
+                        moves:"f2f4d7d5g1f3g7g6e2e3f8g7f1e2g8f6e1g1e8g8d2d3c7c5"},
+                    {name:"RÃ©ti Opening", eco:"A04",
+                        moves:"g1f3"},
+                    {name:"RÃ©ti Opening, Santassiere's Folly", eco:"A05",
+                        moves:"g1f3g8f6b2b4"},
+                    {name:"RÃ©ti Opening", eco:"A06",
+                        moves:"g1f3d7d5"},
+                    {name:"RÃ©ti Opening, King's Indian Attack (Barcza System), Yugoslav variation", eco:"A07",
+                        moves:"g1f3d7d5g2g3c7c6"},
+                    {name:"RÃ©ti Opening, King's Indian Attack", eco:"A08",
+                        moves:"g1f3d7d5g2g3c7c5f1g2"},
+                    {name:"RÃ©ti Opening", eco:"A09",
+                        moves:"g1f3d7d5c2c4"},
                     // In some phase web link to wiki could be nice
                     {name:"English Anglo-Dutch", eco:"A10",
                         moves:"c2c4f7f5"},
+                    {name:"English, Caroâ€“Kann defensive system", eco:"A11",
+                        moves:"c2c4c7c6"},
+                    {name:"English London Defence", eco:"A12",
+                        moves:"c2c4c7c6g1f3d7d5b2b3g8f6g2g3c8f5"},
+                    {name:"English Opening: 1...e6", eco:"A13",
+                        moves:"c2c4e7e6"},
+                    {name:"English, Neo-Catalan declined", eco:"A14",
+                        moves:"c2c4e7e6g1f3d7d5g2g3g8f6f1g2f8e7"},
+                    {name:"English, Anglo-Indian Defence: 1...Nf6", eco:"A15",
+                        moves:"c2c4g8f6"},
+                    {name:"Anglo-GrÃ¼nfeld", eco:"A16",
+                        moves:"c2c4g8f6b1c3d7d5"},
+                    {name:"English Opening, Hedgehog Defence", eco:"A17",
+                        moves:"c2c4g8f6b1c3e7e6"},
+                    {name:"English, Mikenasâ€“Carls Variation", eco:"A18",
+                        moves:"c2c4g8f6b1c3e7e6e2e4"},
+                    {name:"English, Mikenasâ€“Carls, Sicilian Variation:", eco:"A19",
+                        moves:"c2c4g8f6b1c3e7e6e2e4c7c5"},
                     {name:"English Opening", eco:"A20",
-                        moves:"c2c4e7e5"},
+                        moves:"c2c4e7e5"},   
+                    {name:"English Opening", eco:"A21",
+                        moves:"c2c4e7e5b1c3"},
+                    {name:"English Opening", eco:"A22",
+                        moves:"c2c4e7e5b1c3g8f6"},
+                    {name:"English Opening, Bremen System, Keres Variation", eco:"A23",
+                        moves:"c2c4e7e5b1c3g8f6g2g3c7c6"},
+                    {name:"English Opening, Bremen System", eco:"A24",
+                        moves:"c2c4e7e5b1c3g8f6g2g3g7g6"},
+                    {name:"English Opening, Sicilian Reversed", eco:"A25",
+                        moves:"c2c4e7e5b1c3b8c6"},
+                    {name:"English Opening, Closed System, Botvinnik System", eco:"A26",
+                        moves:"c2c4e7e5b1c3b8c6g2g3g7g6f1g2f8g7d2d3d7d6e2e4"},
+                    {name:"English Opening, Three Knights System", eco:"A27",
+                        moves:"c2c4e7e5b1c3b8c6g1f3"},
+                    {name:"English Opening, Four Knights System", eco:"A28",
+                        moves:"c2c4e7e5b1c3b8c6g1f3g8f6"},
+                    {name:"English Opening, Four Knights, Kingside Fianchetto", eco:"A29",
+                        moves:"c2c4e7e5b1c3b8c6g1f3g8f6g2g3"},
                     {name:"English Opening", eco:"A30",
                         moves:"c2c4c7c5"},
+                    {name:"English Opening, Symmetrical, Benoni formation", eco:"A31",
+                        moves:"c2c4c7c5g1f3g8f6d2d4"},
+                    {name:"English Opening, Symmetrical", eco:"A32",
+                        moves:"c2c4c7c5g1f3g8f6d2d4c5d4f3d4e7e6"},
+                    {name:"English Opening, Symmetrical, Geller variation", eco:"A33",
+                        moves:"c2c4c7c5g1f3g8f6d2d4c5d4f3d4e7e6b1c3b8c6g2g3d8b6"},
+                    {name:"English Opening, Symmetrical", eco:"A34",
+                        moves:"c2c4c7c5b1c3"},
+                    {name:"English Opening, Symmetrical, Four Knights", eco:"A35",
+                        moves:"c2c4c7c5b1c3b8c6e2e3g8f6g1f3"},
+                    {name:"English Opening, Symmetrical", eco:"A36",
+                        moves:"c2c4c7c5b1c3b8c6g2g3"},
+                    {name:"English Opening, Symmetrical", eco:"A37",
+                        moves:"c2c4c7c5b1c3b8c6g2g3g7g6f1g2f8g7g1f3"},
+                    {name:"English Opening, Symmetrical", eco:"A38",
+                        moves:"c2c4c7c5b1c3b8c6g2g3g7g6f1g2f8g7g1f3g8f6"},
+                    {name:"English Opening, Symmetrical", eco:"A39",
+                        moves:"c2c4c7c5b1c3b8c6g2g3g7g6f1g2f8g7g1f3g8f6e1g1e8g8"},
                     {name:"Queen's Pawn Game, Polish Defence", eco:"A40",
                         moves:"d2d4b7b5"},
                     {name:"Queen's Pawn Game", eco:"A45",
@@ -387,11 +467,15 @@ Page {
                 property int hours0
                 property int minutes0
                 property int sekuntit0
+                property string dateTag: "1.9.2015"
                 function timeAsetus() {
                     var date0 = new Date;
                     hours0 = date0.getHours()
                     minutes0 = date0.getMinutes()
                     sekuntit0= date0.getSeconds()
+                    dateTag = date0.getFullYear() + "." + ((date0.getMonth()+1)<10 ? "0":"") +(date0.getMonth()+1)
+                            + "." + ((date0.getDate())<10 ? "0":"") + date0.getDate();
+
                 }
             }
 
@@ -1842,6 +1926,7 @@ Page {
                         galeryModel.set(toIndex, {"piece": "images/q.png"});
                     }
                     feni.lowerMessage = "";
+                    Mytab.addMove();
                     vuoro.vaihdaValkealle();
                     Myfunks.isChessPure();
                     opsi.movesDone = opsi.movesDone + opsi.recentMove; // Adding the move for openings comparison
