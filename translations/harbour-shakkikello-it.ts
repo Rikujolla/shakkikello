@@ -134,12 +134,31 @@
         <source>Black won!</source>
         <translation>Won nera!</translation>
     </message>
+    <message>
+        <source>Show moves</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Chess clock</source>
         <translation>Orologio Scacchi</translation>
+    </message>
+</context>
+<context>
+    <name>GameInfo</name>
+    <message>
+        <source>Tag pairs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Movetext, Coordinate notation</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
