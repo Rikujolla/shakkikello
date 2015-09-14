@@ -136,7 +136,7 @@
     </message>
     <message>
         <source>Show moves</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar movimentos</translation>
     </message>
 </context>
 <context>
@@ -150,15 +150,15 @@
     <name>GameInfo</name>
     <message>
         <source>Tag pairs</source>
-        <translation type="unfinished"></translation>
+        <translation>Informações sobre o jogo</translation>
     </message>
     <message>
         <source>Current game</source>
-        <translation type="unfinished"></translation>
+        <translation>Jogo atual</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation type="unfinished"></translation>
+        <translation>Move, coordenadas notação</translation>
     </message>
 </context>
 <context>

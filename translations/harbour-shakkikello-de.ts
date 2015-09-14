@@ -136,7 +136,7 @@
     </message>
     <message>
         <source>Show moves</source>
-        <translation type="unfinished"></translation>
+        <translation>Züge anzeigen</translation>
     </message>
 </context>
 <context>
@@ -150,23 +150,19 @@
     <name>GameInfo</name>
     <message>
         <source>Tag pairs</source>
-        <translation type="unfinished"></translation>
+        <translation>Partieformular</translation>
     </message>
     <message>
         <source>Current game</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuelle Partie</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation type="unfinished"></translation>
+        <translation>Züge, Koordinaten</translation>
     </message>
 </context>
 <context>
     <name>Pelisivu</name>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
-    </message>
     <message>
         <source>Black´s turn</source>
         <translation>Schwarz am Zug</translation>
@@ -174,6 +170,10 @@
     <message>
         <source>White´s turn</source>
         <translation>Weiß am Zug</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -192,20 +192,20 @@
         <translation>Schachuhr</translation>
     </message>
     <message>
+        <source>min:s</source>
+        <translation>min:s</translation>
+    </message>
+    <message>
         <source>White´s clock</source>
         <translation>Uhr von Weiß</translation>
     </message>
     <message>
-        <source>Black´s clock</source>
-        <translation>Uhr von Schwarz</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pause</translation>
-    </message>
-    <message>
         <source>Controls</source>
         <translation>Kontrollen</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation>Uhr von Schwarz</translation>
     </message>
 </context>
 <context>

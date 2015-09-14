@@ -136,7 +136,7 @@
     </message>
     <message>
         <source>Show moves</source>
-        <translation type="unfinished"></translation>
+        <translation>显示移动</translation>
     </message>
 </context>
 <context>
@@ -150,15 +150,15 @@
     <name>GameInfo</name>
     <message>
         <source>Tag pairs</source>
-        <translation type="unfinished"></translation>
+        <translation>游戏信息</translation>
     </message>
     <message>
         <source>Current game</source>
-        <translation type="unfinished"></translation>
+        <translation>目前游戏</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation type="unfinished"></translation>
+        <translation>移动，坐标表示</translation>
     </message>
 </context>
 <context>

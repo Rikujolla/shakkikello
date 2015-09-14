@@ -11,8 +11,8 @@ function clearRecent() {
             tx.executeSql('DELETE FROM Recentmoves');
 
             // Adding comment row
-            tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Event', 'My Event', 'e', 'e', '[ssss]' ]);
-            tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Site', 'My Site', 'e', 'e', '[ssss]' ]);
+            tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Event', 'Local Event', 'e', 'e', '[ssss]' ]);
+            tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Site', 'Local Site', 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Date', startti.dateTag, 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Round', '1', 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'White', 'Me', 'e', 'e', '[ssss]' ]);

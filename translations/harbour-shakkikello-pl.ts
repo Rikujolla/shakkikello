@@ -154,7 +154,7 @@
     </message>
     <message>
         <source>Current game</source>
-        <translation type="unfinished"></translation>
+        <translation>Obecna gra</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
@@ -164,16 +164,16 @@
 <context>
     <name>Pelisivu</name>
     <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
-    </message>
-    <message>
         <source>Black´s turn</source>
         <translation>Ruch czarnych</translation>
     </message>
     <message>
         <source>White´s turn</source>
         <translation>Ruch białych</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -192,20 +192,20 @@
         <translation>Zegar szachowy</translation>
     </message>
     <message>
+        <source>min:s</source>
+        <translation>min:s</translation>
+    </message>
+    <message>
         <source>White´s clock</source>
         <translation>Zegar białych</translation>
     </message>
     <message>
-        <source>Black´s clock</source>
-        <translation>Zegar czarnych</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pauza</translation>
-    </message>
-    <message>
         <source>Controls</source>
         <translation>Przyciski kontrolne</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation>Zegar czarnych</translation>
     </message>
 </context>
 <context>
