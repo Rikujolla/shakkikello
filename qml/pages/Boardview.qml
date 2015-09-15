@@ -812,7 +812,6 @@ Page {
                             // Saving the moved pieces and positions for a possible cancel of the move
                             movedPieces.set(2,{"color":"b", "piece":"images/r.png", "indeksos":7})
                             movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":5})
-                            //console.log("test1")
                         }
                             // Castling long
                         else if ((toIndex == 2) && galeryModel.get(2).color === "e"
@@ -1714,9 +1713,7 @@ Page {
                                     benpassant = -1
                                 }
                                 if (itemMoved == "images/K.png") {
-                                    //console.log("Wkingi ennen siirtoa", feni.feniWkingInd)
                                     feni.feniWkingInd = toIndex;
-                                    //console.log("Wkingi siirtyy", feni.feniWkingInd);
                                 }
                             }
                             else {
@@ -1725,9 +1722,7 @@ Page {
                                     wenpassant = -1
                                 }
                                 if (itemMoved == "images/k.png") {
-                                    //console.log("Bkingi ennen siirtoa", feni.feniBkingInd)
                                     feni.feniBkingInd = toIndex;
-                                    //console.log("Bkingi siirtyy", feni.feniBkingInd);
                                 }
                             }
                             feni.forChessCheck = true; //starts the chess check timer
@@ -1884,7 +1879,6 @@ Page {
                 onTriggered: {
                     if (opsi.openingPossible) {
                         hopo.innio();
-                        //console.log("hopo.innio()", opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+4))
                         hopo.test = opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+4);
                         hopo.innio();
                     }

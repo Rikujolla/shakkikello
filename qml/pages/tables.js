@@ -1,5 +1,5 @@
 function clearRecent() {
-    console.log("Clearing recent moves")
+    //console.log("Clearing recent moves")
     var db = LocalStorage.openDatabaseSync("ChessDB", "1.0", "Chess database", 1000000);
 
     db.transaction(
@@ -31,7 +31,7 @@ function clearRecent() {
 }
 
 function addMove() {
-    console.log("Adding recent moves")
+    //console.log("Adding recent moves")
     var db = LocalStorage.openDatabaseSync("ChessDB", "1.0", "Chess database", 1000000);
 
     db.transaction(
