@@ -39,6 +39,7 @@ extern void benchmark(const Position& pos, istream& is);
 
 std::vector<std::string> g_siirrot; // SFOS
 extern int g_peru;
+int g_depth;
 
 namespace {
 
@@ -172,20 +173,14 @@ void A::deletio() {
 
 void A::inni() {
     string ransu;
+    g_depth = myStoDepth.toInt();
+    //cout << g_depth << endl;
     ransu=myTest.toStdString();//    Move m;
     g_siirrot.push_back(ransu);
-    g_peru = 88;
     UCI::loopi(g_siirrot);
-    if (g_peru == 99) {
-        myTest= "peru";
-        g_siirrot.pop_back();
-    }
-    else {}
 }
 
 void A::innio() {
-    //string ransu;
-    //ransu=myTest.toStdString();//    Move m;
     g_siirrot.push_back(myTest.toStdString());
 }
 
@@ -228,7 +223,8 @@ void UCI::loopi(const std::vector<std::string> &fransu) {
         ind++;
     }
     Search::LimitsType limits;
-    limits.depth = 2; // Has to be parametrisized
+    limits.depth = g_depth; // Has to be parametrisized
+    //cout << limits.depth << endl;
     Threads.start_thinking(pos, limits, SetupStates);
  /*   if (g_peru==88) {
  //      cout << "Vörkkisiirto" << endl;

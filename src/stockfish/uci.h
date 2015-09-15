@@ -36,49 +36,35 @@ class A : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString test READ test WRITE setTest NOTIFY testChanged)
+    Q_PROPERTY(QString stoDepth READ stoDepth WRITE setStoDepth NOTIFY stoDepthChanged)
 public:
     explicit A(QObject *parent = 0) : QObject(parent){}
     QString reksi;
 
   QString test(){return myTest;}
+  QString stoDepth(){return myStoDepth;}
 
   void setTest(QString teeu){
     myTest = teeu;
     testChanged(myTest);
+  }
+  void setStoDepth(QString stode){
+    myStoDepth = stode;
+    stoDepthChanged(myStoDepth);
   }
   Q_INVOKABLE  void initio();
   Q_INVOKABLE  void deletio();
   Q_INVOKABLE  void inni();
   Q_INVOKABLE  void innio();
   Q_INVOKABLE  void outti();
-//  Q_INVOKABLE  void outtio();
 
 signals:
   void testChanged(QString teeu);
+  void stoDepthChanged(QString stode);
 
 private:
   QString myTest;
+  QString myStoDepth;
 };
 
-class Veca : public QObject
-{
-    Q_OBJECT
-    Q_PROPERTY(QVariantList vtest READ vtest WRITE vsetTest NOTIFY vtestChanged)
-public:
-    explicit Veca(QObject *parent = 0) : QObject(parent){}
-
-
-  QVariantList vtest(){return vmyTest;}
-
-  void vsetTest(QVariantList vteeu){
-    vmyTest = vteeu;
-    vtestChanged(vmyTest);
-  }
-
-signals:
-  void vtestChanged(QVariantList vteeu);
-
-private:
-  QVariantList vmyTest;
-};
 #endif // UCI_H

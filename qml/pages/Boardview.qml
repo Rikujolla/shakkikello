@@ -53,6 +53,7 @@ Page {
                 text: aloitapause
                 enabled: !tilat.peliloppui
                 onClicked: {
+                    hopo.stoDepth = 2;
                     if (!tilat.pelialkoi) {
                         if (playMode == "stockfish") {hopo.initio();}
                         kripti.lisaa();
@@ -78,9 +79,9 @@ Page {
             id:hopo
         }
 
-        Stockfishev { // remove?
+/*        Stockfishev { // remove?
             id:hopov
-        }
+        }*/
 
         Column {
             id: column
@@ -1838,6 +1839,7 @@ Page {
                                     moveMent.colorTobemoved = color;
                                     moveMent.movePiece();
                                     //galeryModel.set(index,{"frameop":100});
+                                    //hopo.stoDepth = 3;
                                 }
                             }
                         }
