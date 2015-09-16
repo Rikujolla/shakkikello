@@ -46,5 +46,5 @@ ApplicationWindow
     property string playMode
     property int openingMode: 0 // 0 Stockfish, 1 Random
     property string openingECO: "E00" // Used for fixed opening
-    property int stockfishDepth: 2 //depth of stockfish engine
+    property int stockfishDepth: 4 //depth of stockfish engine
 }

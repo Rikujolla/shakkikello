@@ -53,7 +53,7 @@ Page {
                 text: aloitapause
                 enabled: !tilat.peliloppui
                 onClicked: {
-                    hopo.stoDepth = 2;
+                    hopo.stoDepth = stockfishDepth;
                     if (!tilat.pelialkoi) {
                         if (playMode == "stockfish") {hopo.initio();}
                         kripti.lisaa();

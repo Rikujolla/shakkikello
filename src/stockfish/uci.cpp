@@ -209,15 +209,6 @@ void UCI::loopi(const std::vector<std::string> &fransu) {
 //        cout << token; //Konsoliin
         m = move_from_uci(pos, token);
         SetupStates->push(StateInfo());
-/*
-//        if (pos.pos_is_ok()) {
-        CheckInfo ci(*this);
-        if (pos.gives_check(m,ci)) {
-            cout << "Hyvä siirto" << endl;
-        }
-        else {
-            cout << "Kannattiko siirtää" << endl;
-        } */
 
         pos.do_move(m, SetupStates->top());
         ind++;
@@ -226,13 +217,6 @@ void UCI::loopi(const std::vector<std::string> &fransu) {
     limits.depth = g_depth; // Has to be parametrisized
     //cout << limits.depth << endl;
     Threads.start_thinking(pos, limits, SetupStates);
- /*   if (g_peru==88) {
- //      cout << "Vörkkisiirto" << endl;
-    }
-    else
-    {
- //       cout << "Höpö juttu" << endl;
-    }*/
 
 }
 

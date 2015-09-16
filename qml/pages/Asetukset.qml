@@ -80,20 +80,20 @@ Page {
                 x: Theme.paddingLarge
                 spacing: Theme.paddingLarge
                 Text {
-                    width: page.width*4/10
+                    width: page.width /2
                     color: Theme.secondaryHighlightColor
                     text: qsTr("White") +" "+ valkomax/60 + " " + qsTr("min")
                 }
 
                 Button {
                     text: qsTr("- 1 min")
-                    width: page.width /5
+                    width: page.width /6
                     onClicked: {valkomax = valkomax - 60
                     }
                 }
                 Button {
                     text: qsTr("+ 1 min")
-                    width: page.width /5
+                    width: page.width /6
                     onClicked: {valkomax = valkomax + 60
                     }
                 }
@@ -103,42 +103,42 @@ Page {
                 x: Theme.paddingLarge
                 spacing: Theme.paddingLarge
                 Text {
-                    width: page.width*4/10
+                    width: page.width /2
                     color: Theme.secondaryHighlightColor
                     text: qsTr("Black") +" "+ mustamax/60 + " " + qsTr("min")
                 }
                 Button {
                     text: qsTr("- 1 min")
-                    width: page.width /5
+                    width: page.width /6
                     onClicked: {mustamax = mustamax - 60
                     }
                 }
                 Button {
                     text: qsTr("+ 1 min")
-                    width: page.width /5
+                    width: page.width /6
                     onClicked: {mustamax = mustamax + 60
                     }
                 }
             }
 
-            Label {
-                x: Theme.paddingLarge
-                text: qsTr("Increment/move") + " " + increment + " " + qsTr("s")
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeMedium
-                  }
-
-
             Row {
+                x: Theme.paddingLarge
                 spacing: Theme.paddingLarge
-                anchors.horizontalCenter: parent.horizontalCenter
+                //anchors.horizontalCenter: parent.horizontalCenter
+                Text {
+                    width: page.width /2
+                    color: Theme.secondaryHighlightColor
+                    text: qsTr("Increment/move") + " " + increment + " " + qsTr("s")
+                }
                 Button {
                     text: qsTr("- 1 s")
+                    width: page.width /6
                     onClicked: {increment > 0 ? increment = increment - 1 : increment = 0
                     }
                 }
                 Button {
                     text: qsTr("+ 1 s")
+                    width: page.width /6
                     onClicked: {increment = increment + 1
                     }
                 }
@@ -209,6 +209,30 @@ Page {
                     validator: RegExpValidator { regExp: /^((([A-E])([0-9])([0]))|((A)([0-3])([0-9])))$/ }
                     color: errorHighlight? "red" : Theme.primaryColor
                     inputMethodHints: Qt.ImhNoPredictiveText
+                }
+            }
+
+            Row {
+                x: Theme.paddingLarge
+                spacing: Theme.paddingLarge
+                Text {
+                    width: page.width /2
+                    color: Theme.secondaryHighlightColor
+                    text: qsTr("Stockfish parameter \n depth:") +" "+ stockfishDepth
+                }
+
+                Button {
+                    text: "- 1"
+                    width: page.width /6
+                    onClicked: {stockfishDepth > 1 ? stockfishDepth = stockfishDepth - 1 : stockfishDepth = 1
+                    }
+                }
+                Button {
+                    text: "+ 1"
+                    width: page.width /6
+                    // Stockfish allows the depth 20, but is limited to 10 due to performance and stability issues
+                    onClicked: {stockfishDepth < 10 ? stockfishDepth = stockfishDepth + 1 : stockfishDepth = 10
+                    }
                 }
             }
 
