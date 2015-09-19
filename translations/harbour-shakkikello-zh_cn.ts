@@ -87,6 +87,10 @@
         <source>Random</source>
         <translation>随机</translation>
     </message>
+    <message>
+        <source>Difficulty</source>
+        <translation>困难</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>

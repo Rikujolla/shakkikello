@@ -218,7 +218,7 @@ Page {
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
-                    text: qsTr("Stockfish parameter \n depth:") +" "+ stockfishDepth
+                    text: qsTr("Difficulty") + ": " + stockfishDepth
                 }
 
                 Button {

@@ -87,6 +87,10 @@
         <source>Random</source>
         <translation>Satunnainen</translation>
     </message>
+    <message>
+        <source>Difficulty</source>
+        <translation>Vaikeusaste</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
