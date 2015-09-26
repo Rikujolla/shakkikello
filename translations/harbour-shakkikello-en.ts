@@ -4,22 +4,6 @@
 <context>
     <name>Asetukset</name>
     <message>
-        <source>- 1 min</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>+ 1 min</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>- 1 s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>+ 1 s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Settings page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -88,8 +72,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Difficulty</source>
+        <source>-1 min</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>+1 min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>-1 s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>+1 s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skill Level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Movetime</source>
+        <translation>Move time</translation>
     </message>
 </context>
 <context>

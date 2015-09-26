@@ -4,22 +4,6 @@
 <context>
     <name>Asetukset</name>
     <message>
-        <source>- 1 min</source>
-        <translation>- 1 分</translation>
-    </message>
-    <message>
-        <source>+ 1 min</source>
-        <translation>+ 1 分</translation>
-    </message>
-    <message>
-        <source>- 1 s</source>
-        <translation>- 1 秒</translation>
-    </message>
-    <message>
-        <source>+ 1 s</source>
-        <translation>+ 1 秒</translation>
-    </message>
-    <message>
         <source>Settings page</source>
         <translation>設置頁面</translation>
     </message>
@@ -88,8 +72,28 @@
         <translation>隨機</translation>
     </message>
     <message>
-        <source>Difficulty</source>
-        <translation>困難</translation>
+        <source>-1 min</source>
+        <translation>-1 分</translation>
+    </message>
+    <message>
+        <source>+1 min</source>
+        <translation>+1 分</translation>
+    </message>
+    <message>
+        <source>-1 s</source>
+        <translation>-1 秒</translation>
+    </message>
+    <message>
+        <source>+1 s</source>
+        <translation>+1 秒</translation>
+    </message>
+    <message>
+        <source>Skill Level</source>
+        <translation>技能等級</translation>
+    </message>
+    <message>
+        <source>Movetime</source>
+        <translation>移動時間</translation>
     </message>
 </context>
 <context>

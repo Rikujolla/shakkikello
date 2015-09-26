@@ -65,10 +65,10 @@
 - More ECOs: A00-A39
 - Possibility to show the moves played
 
-* Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.x
-- Changing Stockfish parameter depth possile NOT OK
-- Promotion of the pawn other than queen not possible NOT OK
-- Chessmate and Stalemate notifications NOT OK
+* Sat Sep XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.7
+- Skill Level setting added (Stockfish parameter Skill Level 0-20)
+- Movetime setting added
+- Tablet ability
 
 * Sat Mar XX 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.x
 - Update problem correction NOT OK

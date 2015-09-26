@@ -54,6 +54,8 @@ Page {
                 enabled: !tilat.peliloppui
                 onClicked: {
                     hopo.stoDepth = stockfishDepth;
+                    hopo.stoMovetime = stockfishMovetime;
+                    hopo.stoSkill = stockfishSkill;
                     if (!tilat.pelialkoi) {
                         if (playMode == "stockfish") {hopo.initio();}
                         kripti.lisaa();
@@ -1891,7 +1893,7 @@ Page {
             }
 
             Timer {
-                interval: 1500; running: playMode == "stockfish"&& feni.feniBlack && Qt.ApplicationActive; repeat: false
+                interval: (stockfishMovetime*1000 + 120); running: playMode == "stockfish"&& feni.feniBlack && Qt.ApplicationActive; repeat: false
                 onTriggered: {
                     if (!opsi.openingPossible) {
                         hopo.outti();

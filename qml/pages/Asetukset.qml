@@ -63,13 +63,21 @@ Page {
         Item {
             id: sets
             property bool indexUpdater: false;
+            property var labels: [{lab:qsTr("-1 min")},
+                {lab:qsTr("+1 min")},
+                {lab:qsTr("-1 s")},
+                {lab:qsTr("+1 s")},
+                {lab:qsTr("min")},
+                {lab:qsTr("s")}
+            ]
+
         }
 
         Column {
             id: column
 
             width: page.width
-            spacing: Theme.paddingLarge
+            spacing: Theme.paddingMedium
             PageHeader {
                 title: qsTr("Settings page")
             }
@@ -82,17 +90,17 @@ Page {
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
-                    text: qsTr("White") +" "+ valkomax/60 + " " + qsTr("min")
+                    text: qsTr("White") +" "+ valkomax/60 + " " + sets.labels[4].lab
                 }
 
                 Button {
-                    text: qsTr("- 1 min")
+                    text: sets.labels[0].lab
                     width: page.width /6
                     onClicked: {valkomax = valkomax - 60
                     }
                 }
                 Button {
-                    text: qsTr("+ 1 min")
+                    text: sets.labels[1].lab
                     width: page.width /6
                     onClicked: {valkomax = valkomax + 60
                     }
@@ -105,16 +113,16 @@ Page {
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
-                    text: qsTr("Black") +" "+ mustamax/60 + " " + qsTr("min")
+                    text: qsTr("Black") +" "+ mustamax/60 + " " + sets.labels[4].lab
                 }
                 Button {
-                    text: qsTr("- 1 min")
+                    text: sets.labels[0].lab
                     width: page.width /6
                     onClicked: {mustamax = mustamax - 60
                     }
                 }
                 Button {
-                    text: qsTr("+ 1 min")
+                    text: sets.labels[1].lab
                     width: page.width /6
                     onClicked: {mustamax = mustamax + 60
                     }
@@ -128,16 +136,16 @@ Page {
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
-                    text: qsTr("Increment/move") + " " + increment + " " + qsTr("s")
+                    text: qsTr("Increment/move") + " " + increment + " " + sets.labels[5].lab
                 }
                 Button {
-                    text: qsTr("- 1 s")
+                    text: sets.labels[2].lab
                     width: page.width /6
                     onClicked: {increment > 0 ? increment = increment - 1 : increment = 0
                     }
                 }
                 Button {
-                    text: qsTr("+ 1 s")
+                    text: sets.labels[3].lab
                     width: page.width /6
                     onClicked: {increment = increment + 1
                     }
@@ -168,11 +176,12 @@ Page {
                 }
             }
 
-            SectionHeader { text: qsTr("Chess settings") }
+            SectionHeader { text: qsTr("Chess settings")
+            }
 
             Row {
                 x: Theme.paddingLarge
-                spacing: Theme.paddingLarge
+                spacing: Theme.paddingMedium
                 anchors.left: parent.left
                 //anchors.fill: parent
                 ComboBox { // for dynamic creation see Pastie: http://pastie.org/9813891
@@ -218,20 +227,42 @@ Page {
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
-                    text: qsTr("Difficulty") + ": " + stockfishDepth
+                    text: qsTr("Skill Level") + " " + stockfishSkill
                 }
 
                 Button {
-                    text: "- 1"
+                    text: "-1"
                     width: page.width /6
-                    onClicked: {stockfishDepth > 1 ? stockfishDepth = stockfishDepth - 1 : stockfishDepth = 1
+                    onClicked: {stockfishSkill > 0 ? stockfishSkill = stockfishSkill - 1 : stockfishSkill = 0
                     }
                 }
                 Button {
-                    text: "+ 1"
+                    text: "+1"
                     width: page.width /6
-                    // Stockfish allows the depth 20, but is limited to 10 due to performance and stability issues
-                    onClicked: {stockfishDepth < 10 ? stockfishDepth = stockfishDepth + 1 : stockfishDepth = 10
+                    onClicked: {stockfishSkill < 20 ? stockfishSkill = stockfishSkill + 1 : stockfishSkill = 20
+                    }
+                }
+            }
+            Row {
+                x: Theme.paddingLarge
+                spacing: Theme.paddingLarge
+                Text {
+                    width: page.width /2
+                    color: Theme.secondaryHighlightColor
+                    text: qsTr("Movetime") + " " + stockfishMovetime + " " + sets.labels[5].lab
+                }
+
+                Button {
+                    text: sets.labels[2].lab
+                    width: page.width /6
+                    onClicked: {stockfishMovetime > 1 ? stockfishMovetime = stockfishMovetime - 1 : stockfishMovetime = 1
+                    }
+                }
+                Button {
+                    text: sets.labels[3].lab
+                    width: page.width /6
+                    // Stockfish movetime in seconds
+                    onClicked: {stockfishMovetime = stockfishMovetime + 1
                     }
                 }
             }

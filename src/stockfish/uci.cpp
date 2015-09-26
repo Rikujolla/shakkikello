@@ -40,6 +40,8 @@ extern void benchmark(const Position& pos, istream& is);
 std::vector<std::string> g_siirrot; // SFOS
 extern int g_peru;
 int g_depth;
+int g_skill;
+int g_movetime;
 
 namespace {
 
@@ -174,7 +176,9 @@ void A::deletio() {
 void A::inni() {
     string ransu;
     g_depth = myStoDepth.toInt();
-    //cout << g_depth << endl;
+    g_skill = myStoSkill.toInt();
+    g_movetime = myStoMovetime.toInt() * 1000 - 120;
+    cout << g_depth << " " << g_movetime << " " << g_skill << endl;
     ransu=myTest.toStdString();//    Move m;
     g_siirrot.push_back(ransu);
     UCI::loopi(g_siirrot);
@@ -214,7 +218,8 @@ void UCI::loopi(const std::vector<std::string> &fransu) {
         ind++;
     }
     Search::LimitsType limits;
-    limits.depth = g_depth; // Has to be parametrisized
+    //limits.depth = g_depth; // Has to be parametrisized
+    limits.movetime = g_movetime; //
     //cout << limits.depth << endl;
     Threads.start_thinking(pos, limits, SetupStates);
 

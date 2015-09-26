@@ -4,22 +4,6 @@
 <context>
     <name>Asetukset</name>
     <message>
-        <source>- 1 min</source>
-        <translation>- 1 мин</translation>
-    </message>
-    <message>
-        <source>+ 1 min</source>
-        <translation>+ 1 мин</translation>
-    </message>
-    <message>
-        <source>- 1 s</source>
-        <translation>- 1 с</translation>
-    </message>
-    <message>
-        <source>+ 1 s</source>
-        <translation>+ 1 c</translation>
-    </message>
-    <message>
         <source>Settings page</source>
         <translation>Страница настроек</translation>
     </message>
@@ -88,8 +72,28 @@
         <translation>Случайный</translation>
     </message>
     <message>
-        <source>Difficulty</source>
-        <translation>Трудность</translation>
+        <source>-1 min</source>
+        <translation>-1 мин</translation>
+    </message>
+    <message>
+        <source>+1 min</source>
+        <translation>+1 мин</translation>
+    </message>
+    <message>
+        <source>-1 s</source>
+        <translation>-1 с</translation>
+    </message>
+    <message>
+        <source>+1 s</source>
+        <translation>+1 с</translation>
+    </message>
+    <message>
+        <source>Skill Level</source>
+        <translation>Уровень квалификации</translation>
+    </message>
+    <message>
+        <source>Movetime</source>
+        <translation>Двигаться время</translation>
     </message>
 </context>
 <context>

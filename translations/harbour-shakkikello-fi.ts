@@ -4,22 +4,6 @@
 <context>
     <name>Asetukset</name>
     <message>
-        <source>- 1 min</source>
-        <translation>- 1 min</translation>
-    </message>
-    <message>
-        <source>+ 1 min</source>
-        <translation>+ 1 min</translation>
-    </message>
-    <message>
-        <source>- 1 s</source>
-        <translation>- 1 s</translation>
-    </message>
-    <message>
-        <source>+ 1 s</source>
-        <translation>+ 1 s</translation>
-    </message>
-    <message>
         <source>Settings page</source>
         <translation>Asetussivu</translation>
     </message>
@@ -88,8 +72,28 @@
         <translation>Satunnainen</translation>
     </message>
     <message>
-        <source>Difficulty</source>
-        <translation>Vaikeusaste</translation>
+        <source>-1 min</source>
+        <translation>-1 min</translation>
+    </message>
+    <message>
+        <source>+1 min</source>
+        <translation>+1 min</translation>
+    </message>
+    <message>
+        <source>-1 s</source>
+        <translation>-1 s</translation>
+    </message>
+    <message>
+        <source>+1 s</source>
+        <translation>+1 s</translation>
+    </message>
+    <message>
+        <source>Skill Level</source>
+        <translation>Taitotaso</translation>
+    </message>
+    <message>
+        <source>Movetime</source>
+        <translation>Siirtoaika</translation>
     </message>
 </context>
 <context>

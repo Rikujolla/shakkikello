@@ -37,12 +37,16 @@ class A : public QObject
     Q_OBJECT
     Q_PROPERTY(QString test READ test WRITE setTest NOTIFY testChanged)
     Q_PROPERTY(QString stoDepth READ stoDepth WRITE setStoDepth NOTIFY stoDepthChanged)
+    Q_PROPERTY(QString stoMovetime READ stoMovetime WRITE setStoMovetime NOTIFY stoMovetimeChanged)
+    Q_PROPERTY(QString stoSkill READ stoSkill WRITE setStoSkill NOTIFY stoSkillChanged)
 public:
     explicit A(QObject *parent = 0) : QObject(parent){}
     QString reksi;
 
   QString test(){return myTest;}
   QString stoDepth(){return myStoDepth;}
+  QString stoMovetime(){return myStoMovetime;}
+  QString stoSkill(){return myStoSkill;}
 
   void setTest(QString teeu){
     myTest = teeu;
@@ -51,6 +55,14 @@ public:
   void setStoDepth(QString stode){
     myStoDepth = stode;
     stoDepthChanged(myStoDepth);
+  }
+  void setStoMovetime(QString stoti){
+    myStoMovetime = stoti;
+    stoMovetimeChanged(myStoMovetime);
+  }
+  void setStoSkill(QString stoski){
+    myStoSkill = stoski;
+    stoSkillChanged(myStoSkill);
   }
   Q_INVOKABLE  void initio();
   Q_INVOKABLE  void deletio();
@@ -61,10 +73,14 @@ public:
 signals:
   void testChanged(QString teeu);
   void stoDepthChanged(QString stode);
+  void stoMovetimeChanged(QString stoti);
+  void stoSkillChanged(QString stoski);
 
 private:
   QString myTest;
   QString myStoDepth;
+  QString myStoMovetime;
+  QString myStoSkill;
 };
 
 #endif // UCI_H
