@@ -1,24 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="de">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
 <context>
     <name>Asetukset</name>
-    <message>
-        <source>- 1 min</source>
-        <translation>- 1 min</translation>
-    </message>
-    <message>
-        <source>+ 1 min</source>
-        <translation>+ 1 min</translation>
-    </message>
-    <message>
-        <source>- 1 s</source>
-        <translation>- 1 s</translation>
-    </message>
-    <message>
-        <source>+ 1 s</source>
-        <translation>+ 1 s</translation>
-    </message>
     <message>
         <source>Settings page</source>
         <translation>Einstellungs Seite</translation>
@@ -86,6 +68,30 @@
     <message>
         <source>Random</source>
         <translation>Zufällig</translation>
+    </message>
+    <message>
+        <source>-1 min</source>
+        <translation>-1 min</translation>
+    </message>
+    <message>
+        <source>+1 min</source>
+        <translation>+1 min</translation>
+    </message>
+    <message>
+        <source>-1 s</source>
+        <translation>-1 s</translation>
+    </message>
+    <message>
+        <source>+1 s</source>
+        <translation>+1 s</translation>
+    </message>
+    <message>
+        <source>Skill Level</source>
+        <translation>Spielstärke </translation>
+    </message>
+    <message>
+        <source>Movetime </source>
+        <translation>Zugzeit</translation>
     </message>
 </context>
 <context>

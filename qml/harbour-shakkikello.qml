@@ -31,6 +31,8 @@ ApplicationWindow
 {
     initialPage: Component { Pelisivu { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    allowedOrientations: Orientation.Portrait
+    _defaultPageOrientations: Orientation.Portrait
     property string aloitapause: qsTr("Start")
     property bool aloitettu : false
     property string maharollisuuret: qsTr("Settings")

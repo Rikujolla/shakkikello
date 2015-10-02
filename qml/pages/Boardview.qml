@@ -1796,11 +1796,14 @@ Page {
             }
 
             Rectangle {
-                height: 540
+                height: parent.width
                 width:parent.width
                 Image {
+                    // Light color dddea1, dark color 997400
                     id: backround
                     source: "images/grid.png"
+                    width: parent.width
+                    height: parent.width
                 }
                 GridView {
                     id: grid

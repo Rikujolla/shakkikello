@@ -4,22 +4,6 @@
 <context>
     <name>Asetukset</name>
     <message>
-        <source>- 1 min</source>
-        <translation>-1 min</translation>
-    </message>
-    <message>
-        <source>+ 1 min</source>
-        <translation>+1 min</translation>
-    </message>
-    <message>
-        <source>- 1 s</source>
-        <translation>-1 s</translation>
-    </message>
-    <message>
-        <source>+ 1 s</source>
-        <translation>+1 s</translation>
-    </message>
-    <message>
         <source>Settings page</source>
         <translation>Instellingenpagina</translation>
     </message>
@@ -87,6 +71,30 @@
         <source>Random</source>
         <translation>Willekeurig</translation>
     </message>
+    <message>
+        <source>-1 min</source>
+        <translation>-1 min</translation>
+    </message>
+    <message>
+        <source>+1 min</source>
+        <translation>+1 min</translation>
+    </message>
+    <message>
+        <source>-1 s</source>
+        <translation>-1 s</translation>
+    </message>
+    <message>
+        <source>+1 s</source>
+        <translation>+1 s</translation>
+    </message>
+    <message>
+        <source>Skill Level</source>
+        <translation>Niveau</translation>
+    </message>
+    <message>
+        <source>Movetime</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -136,7 +144,7 @@
     </message>
     <message>
         <source>Show moves</source>
-        <translation type="unfinished"></translation>
+        <translation>Zetten weergeven</translation>
     </message>
 </context>
 <context>
@@ -150,23 +158,19 @@
     <name>GameInfo</name>
     <message>
         <source>Tag pairs</source>
-        <translation type="unfinished"></translation>
+        <translation>Paren aantikken</translation>
     </message>
     <message>
         <source>Current game</source>
-        <translation type="unfinished"></translation>
+        <translation>Huidig spel</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaatstekst, coördinatennotatie</translation>
     </message>
 </context>
 <context>
     <name>Pelisivu</name>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
-    </message>
     <message>
         <source>Black´s turn</source>
         <translation>Zwart is aan zet</translation>
@@ -174,6 +178,10 @@
     <message>
         <source>White´s turn</source>
         <translation>Wit is aan zet</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pauzeren</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -192,20 +200,20 @@
         <translation>Schaakklok</translation>
     </message>
     <message>
+        <source>min:s</source>
+        <translation>min:s</translation>
+    </message>
+    <message>
         <source>White´s clock</source>
         <translation>De klok van Wit</translation>
     </message>
     <message>
-        <source>Black´s clock</source>
-        <translation>De klok van Zwart</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pauzeren</translation>
-    </message>
-    <message>
         <source>Controls</source>
         <translation>Knoppen</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation>De klok van Zwart</translation>
     </message>
 </context>
 <context>
