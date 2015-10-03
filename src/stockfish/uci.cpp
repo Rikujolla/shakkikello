@@ -178,7 +178,7 @@ void A::inni() {
     g_depth = myStoDepth.toInt();
     g_skill = myStoSkill.toInt();
     g_movetime = myStoMovetime.toInt() * 1000 - 120;
-    cout << g_depth << " " << g_movetime << " " << g_skill << endl;
+    //cout << g_depth << " " << g_movetime << " " << g_skill << endl;
     ransu=myTest.toStdString();//    Move m;
     g_siirrot.push_back(ransu);
     UCI::loopi(g_siirrot);
