@@ -6,6 +6,7 @@
 Name:       harbour-shakkikello
 
 # >> macros
+%define __requires_exclude ^libgcc_s.so.|libpthread.so.*$
 # << macros
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
