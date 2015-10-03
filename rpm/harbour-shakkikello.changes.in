@@ -65,7 +65,7 @@
 - More ECOs: A00-A39
 - Possibility to show the moves played
 
-* Fri Oct 02 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.7
+* Sat Oct 03 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.7
 - Skill Level setting added (Stockfish parameter Skill Level 0-20)
 - Movetime setting added
 - Tablet ability
