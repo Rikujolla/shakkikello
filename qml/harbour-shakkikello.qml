@@ -51,4 +51,5 @@ ApplicationWindow
     property int stockfishDepth: 4 //depth of stockfish engine
     property int stockfishMovetime: 2 //Movetime in seconds
     property int stockfishSkill: 1 // Skill Level default
+    property bool isMyStart: true // Default me playing white
 }

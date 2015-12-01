@@ -150,8 +150,8 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Chess clock</source>
-        <translation>Шахматные часы</translation>
+        <source>Fast chess</source>
+        <translation>Блиц шахматы</translation>
     </message>
 </context>
 <context>

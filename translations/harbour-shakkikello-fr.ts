@@ -150,8 +150,8 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Chess clock</source>
-        <translation>Pendule d&apos;échecs</translation>
+        <source>Fast chess</source>
+        <translation>Blitz échecs</translation>
     </message>
 </context>
 <context>

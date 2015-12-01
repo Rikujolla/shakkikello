@@ -150,8 +150,8 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Chess clock</source>
-        <translation>棋鐘</translation>
+        <source>Fast chess</source>
+        <translation>快速棋牌</translation>
     </message>
 </context>
 <context>

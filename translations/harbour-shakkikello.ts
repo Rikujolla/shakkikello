@@ -150,7 +150,7 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Chess clock</source>
+        <source>Fast chess</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -5,19 +5,23 @@ CoverBackground {
     Label {
         id: label
         anchors.centerIn: parent
-        text: qsTr("Chess clock")
+        text: qsTr("Fast chess")
     }
 
-    CoverActionList {
+    /*CoverActionList {
         id: coverAction
-//
-//        CoverAction {
-//            iconSource: "image://theme/icon-cover-next"
-//        }
-//
-//        CoverAction {
-//            iconSource: "image://theme/icon-cover-pause"
-//        }
-    }
+
+        CoverAction {
+            iconSource: "image://theme/icon-cover-next"
+            onTriggered: {
+                //pageStack.clear()
+                //Qt.resolvedUrl("../pages/Asetukset.qml")
+            }
+        }
+
+        CoverAction {
+            iconSource: "image://theme/icon-cover-pause"
+        }
+    }*/
 }
 

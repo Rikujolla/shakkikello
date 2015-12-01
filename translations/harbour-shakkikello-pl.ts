@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pl" version="2.1">
 <context>
     <name>Asetukset</name>
     <message>
@@ -73,27 +71,27 @@
     </message>
     <message>
         <source>-1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>-1 min</translation>
     </message>
     <message>
         <source>+1 min</source>
-        <translation type="unfinished"></translation>
+        <translation>+1 min</translation>
     </message>
     <message>
         <source>-1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>-1 s</translation>
     </message>
     <message>
         <source>+1 s</source>
-        <translation type="unfinished"></translation>
+        <translation>+1 s</translation>
     </message>
     <message>
         <source>Skill Level</source>
-        <translation type="unfinished"></translation>
+        <translation>Poziom umiejętności</translation>
     </message>
     <message>
-        <source>Movetime</source>
-        <translation type="unfinished"></translation>
+        <source>Movetime </source>
+        <translation>Czas ruchu</translation>
     </message>
 </context>
 <context>
@@ -158,7 +156,7 @@
     <name>GameInfo</name>
     <message>
         <source>Tag pairs</source>
-        <translation>Zaznacz pary</translation>
+        <translation>Zestaw tagów</translation>
     </message>
     <message>
         <source>Current game</source>

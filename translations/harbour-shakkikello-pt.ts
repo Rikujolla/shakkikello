@@ -150,8 +150,8 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Chess clock</source>
-        <translation>Relógio de xadrez</translation>
+        <source>Fast chess</source>
+        <translation>Xadrez rápido</translation>
     </message>
 </context>
 <context>

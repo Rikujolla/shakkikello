@@ -150,8 +150,8 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Chess clock</source>
-        <translation>Sjakklokke</translation>
+        <source>Fast chess</source>
+        <translation>Lynsjakk</translation>
     </message>
 </context>
 <context>

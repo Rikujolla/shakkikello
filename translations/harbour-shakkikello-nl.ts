@@ -93,7 +93,7 @@
     </message>
     <message>
         <source>Movetime</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaatstijd</translation>
     </message>
 </context>
 <context>
@@ -150,8 +150,8 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Chess clock</source>
-        <translation>Schaakklok</translation>
+        <source>Fast chess</source>
+        <translation>Snel schaken</translation>
     </message>
 </context>
 <context>

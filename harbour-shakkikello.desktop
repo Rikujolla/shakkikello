@@ -5,32 +5,32 @@ Icon=harbour-shakkikello
 Exec=harbour-shakkikello
 Name=harbour-shakkikello
 # Tanskaksi (da)
-Name[da]=Chess ur
+Name[da]=Lynskak
 # Saksaksi (de)
 Name[de]=Schachuhr
 # Englanniksi (en)
-Name[en]=Chess clock
+Name[en]=Fast chess
 # Espanjaksi (es)
-Name[es]=Reloj de ajedrez
+Name[es]=Ajedrez rápido
 # Suomeksi (fi)
-Name[fi]=Shakkikello
+Name[fi]=Pikashakki
 # Ranskaksi (fr)
-Name[fr]=Pendule d&apos;échecs
+Name[fr]=Blitz échecs
 # Italiaksi (it)
-Name[it]=Orologio Scacchi
-# Hollanniksi (nl)
-Name[nl]=Schaakklok
+Name[it]=Partita lampo
 # norvégien bokmål (no)
-Name[nb]=Sjakklokke
+Name[nb]=Lynsjakk
+# Hollanniksi (nl)
+Name[nl]=Snel schaken
 # Puolaksi (pl)
 Name[pl]=Zegar szachowy
 # Portugaliksi (pt)
-Name[pt]=Relógio de xadrez
+Name[pt]=Xadrez rápido
 # Venäjäksi (ru)
-Name[ru]=Шахматные часы
+Name[ru]=Блиц шахматы
 # Ruotsiksi (sv)
-Name[sv]=Schackklocka
+Name[sv]=Blixtschack
 # Kiinaksi (zh_cn)
-Name[zh_CN]=棋钟
+Name[zh_CN]=快速棋牌
 # Kiinaksi (zh_hk)
-Name[zh_HK]=棋鐘
+Name[zh_HK]=快速棋牌

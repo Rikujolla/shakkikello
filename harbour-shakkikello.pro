@@ -37,7 +37,6 @@ SOURCES += src/harbour-shakkikello.cpp \
 
 OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/cover/CoverPage.qml \
-    rpm/harbour-shakkikello.changes.in \
     rpm/harbour-shakkikello.spec \
     rpm/harbour-shakkikello.yaml \
     translations/*.ts \
@@ -113,4 +112,7 @@ HEADERS += \
     src/stockfish/types.h \
     src/stockfish/uci.h \
     src/stockfish/ucioption.h
+
+DISTFILES += \
+    rpm/harbour-shakkikello.changes
 

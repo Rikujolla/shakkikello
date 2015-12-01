@@ -1767,18 +1767,20 @@ Page {
                     id: progressBar2
                     width: parent.width
                     height: 130
-                    maximumValue: valkomax
-                    valueText: valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv
+                    maximumValue: isMyStart ? mustamax : valkomax
+                    //valueText: valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv
+                    valueText: isMyStart ? (muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm)  : (valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv)
                     label: qsTr("min:s")
-                    value: valkokello.rogres_sekuntitv
+                    value: isMyStart ? muttakello.rogres_sekuntitm : valkokello.rogres_sekuntitv
                     rotation: 180
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.verticalCenterOffset: 35
                     Timer {
                         interval: 100
-                        running: tilat.juoksee && tilat.valko && Qt.ApplicationActive
+                        //running: tilat.juoksee && tilat.valko && Qt.ApplicationActive
+                        running: tilat.juoksee && Qt.ApplicationActive && (isMyStart ? tilat.musta : tilat.valko)
                         repeat: true
-                        onTriggered: valkokello.updateValko()
+                        onTriggered: isMyStart ? muttakello.updateMutta() : valkokello.updateValko()
                     }
                 }
             }
@@ -1810,12 +1812,15 @@ Page {
                     cellWidth: width / 8
                     cellHeight: width / 8
                     anchors.fill: parent
-                    layoutDirection: Qt.RightToLeft
-                    verticalLayoutDirection: GridView.BottomToTop
+                    //layoutDirection: Qt.RightToLeft
+                    layoutDirection: isMyStart ? Qt.LeftToRight : Qt.RightToLeft
+                    //verticalLayoutDirection: GridView.BottomToTop
+                    verticalLayoutDirection: isMyStart ? GridView.TopToBottom : GridView.BottomToTop
                     model: galeryModel
                     delegate: Image {
                         asynchronous: true
                         source:  piece
+                        rotation: isMyStart ? 180 : 0
                         sourceSize.width: grid.cellWidth
                         sourceSize.height: grid.cellHeight
 //                        ShaderEffect {}
@@ -1957,14 +1962,16 @@ Page {
                 ProgressBar {
                     id: progressBarm
                     width: parent.width
-                    maximumValue: mustamax
-                    valueText: muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm
+                    maximumValue: isMyStart ? valkomax : mustamax
+                    //valueText: muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm
+                    valueText: isMyStart ? (valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv) : (muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm)
                     label: qsTr("min:s")
-                    value: muttakello.rogres_sekuntitm
+                    value: isMyStart ? valkokello.rogres_sekuntitv : muttakello.rogres_sekuntitm
                     Timer {interval: 100
-                        running: tilat.juoksee && tilat.musta && Qt.ApplicationActive
+                        //running: tilat.juoksee && tilat.musta && Qt.ApplicationActive
+                        running: tilat.juoksee && Qt.ApplicationActive && (isMyStart ? tilat.valko : tilat.musta)
                         repeat: true
-                        onTriggered: muttakello.updateMutta()}
+                        onTriggered: isMyStart ? valkokello.updateValko() : muttakello.updateMutta()}
                 }
             }
 // loppusulkeet
