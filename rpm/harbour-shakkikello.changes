@@ -5,13 +5,15 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
-* Sat Nov 26 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.8
+#* Sat Dec 08 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.9
+#- Save settings NOT OK
+#- Update problem correction NOT OK
+#- Promotion of the pawn other than queen not possible NOT OK
+#- Chessmate and Stalemate notifications NOT OK
+
+* Sat Dec 05 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.8
 - Flipped board view
-- Changed the name Chess clock -> Fast chess
-- Save settings NOT OK
-- Update problem correction NOT OK
-- Promotion of the pawn other than queen not possible NOT OK
-- Chessmate and Stalemate notifications NOT OK
+- Changed the name Chess clock to Fast chess
 
 * Sat Oct 03 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.7
 - Skill Level setting added (Stockfish parameter Skill Level 0-20)

@@ -5,7 +5,7 @@
     <name>Asetukset</name>
     <message>
         <source>Settings page</source>
-        <translation>Einstellungs Seite</translation>
+        <translation>Einstellungsseite</translation>
     </message>
     <message>
         <source>About</source>
@@ -93,7 +93,7 @@
     </message>
     <message>
         <source>Movetime</source>
-        <translation type="unfinished"></translation>
+        <translation>Zugzeit</translation>
     </message>
 </context>
 <context>
@@ -150,8 +150,8 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Chess clock</source>
-        <translation>Schachuhr</translation>
+        <source>Fast chess</source>
+        <translation>Blitzschach</translation>
     </message>
 </context>
 <context>
