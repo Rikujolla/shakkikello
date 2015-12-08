@@ -11,6 +11,10 @@
 #- Promotion of the pawn other than queen not possible NOT OK
 #- Chessmate and Stalemate notifications NOT OK
 
+* Tue Dec 08 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.9
+- Bug fix in tablet version
+- Polish translation update
+
 * Sat Dec 05 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.8
 - Flipped board view
 - Changed the name Chess clock to Fast chess

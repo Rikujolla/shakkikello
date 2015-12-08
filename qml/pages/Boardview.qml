@@ -1799,7 +1799,9 @@ Page {
 
             Rectangle {
                 height: parent.width
+                //height: Screen.sizeCategory >= Screen.Large ?
                 width:parent.width
+                //width: Screen.width
                 Image {
                     // Light color dddea1, dark color 997400
                     id: backround
@@ -1809,8 +1811,8 @@ Page {
                 }
                 GridView {
                     id: grid
-                    cellWidth: width / 8
-                    cellHeight: width / 8
+                    cellWidth: parent.width / 8
+                    cellHeight: parent.width / 8
                     anchors.fill: parent
                     //layoutDirection: Qt.RightToLeft
                     layoutDirection: isMyStart ? Qt.LeftToRight : Qt.RightToLeft
@@ -1838,6 +1840,8 @@ Page {
                             sourceSize.height: grid.cellHeight
                         MouseArea {
                                 anchors.fill: parent
+                                height: grid.cellHeight
+                                width: grid.cellWidth
                                 enabled: feni.feniWhite || playMode == "human"
                                 onClicked: {moveMent.indeksi = index;
                                     moveMent.itemTobemoved = piece;
@@ -1897,6 +1901,7 @@ Page {
                     }
                     feni.feniReady = false;
                     feni.feniBlack = true;
+                    //console.log(Screen.width)
                 }
             }
 

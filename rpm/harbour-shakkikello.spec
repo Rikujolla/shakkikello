@@ -14,8 +14,8 @@ Name:       harbour-shakkikello
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Chess Clock application for Jolla and SailfishOS
-Version:    0.5.8
-Release:    4
+Version:    0.5.9
+Release:    1
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/
