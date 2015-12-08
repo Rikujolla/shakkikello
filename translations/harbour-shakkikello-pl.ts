@@ -151,7 +151,7 @@
     <name>CoverPage</name>
     <message>
         <source>Fast chess</source>
-        <translation type="unfinished"></translation>
+        <translation>Szybkie szachy</translation>
     </message>
 </context>
 <context>
