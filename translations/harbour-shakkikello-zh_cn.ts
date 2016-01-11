@@ -95,6 +95,10 @@
         <source>Movetime</source>
         <translation>移动时间</translation>
     </message>
+    <message>
+        <source>Save settings</source>
+        <translation>保存设置</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>

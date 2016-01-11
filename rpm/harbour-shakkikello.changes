@@ -5,11 +5,13 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
-#* Sat Dec 08 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.9
-#- Save settings NOT OK
+#* Sat Dec 08 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.1
 #- Update problem correction NOT OK
 #- Promotion of the pawn other than queen not possible NOT OK
 #- Chessmate and Stalemate notifications NOT OK
+
+* Mon Jan 10 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.0
+- Save settings NOT OK
 
 * Tue Dec 08 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.9
 - Bug fix in tablet version

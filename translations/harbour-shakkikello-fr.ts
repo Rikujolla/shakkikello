@@ -95,6 +95,10 @@
         <source>Movetime</source>
         <translation>Déplacer temps</translation>
     </message>
+    <message>
+        <source>Save settings</source>
+        <translation>Enregistrer les paramètres</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>

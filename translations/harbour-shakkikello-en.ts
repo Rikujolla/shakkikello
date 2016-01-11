@@ -95,6 +95,10 @@
         <source>Movetime</source>
         <translation>Move time</translation>
     </message>
+    <message>
+        <source>Save settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>

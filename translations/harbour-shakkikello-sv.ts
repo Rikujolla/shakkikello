@@ -95,6 +95,10 @@
         <source>Movetime</source>
         <translation>Överföringstiden</translation>
     </message>
+    <message>
+        <source>Save settings</source>
+        <translation>Spara inställningar</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
