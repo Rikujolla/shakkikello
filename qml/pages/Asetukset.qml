@@ -25,6 +25,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick.LocalStorage 2.0
+import "setting.js" as Mysets
 
 
 Page {
@@ -36,8 +38,8 @@ Page {
         PullDownMenu {
 
             MenuItem {
-                text: qsTr("About")
-                onClicked: pageStack.push(Qt.resolvedUrl("Tietoja.qml"))
+                text: qsTr("Save settings")
+                onClicked: Mysets.saveSettings()
             }
             MenuItem {
                 text: qsTr("Board, two-player")
@@ -58,6 +60,13 @@ Page {
             }
         }
 
+        PushUpMenu {
+            MenuItem {
+                text: qsTr("About")
+                onClicked: pageStack.push(Qt.resolvedUrl("Tietoja.qml"))
+            }
+
+        }
         contentHeight: column.height
 
         Item {
@@ -209,6 +218,7 @@ Page {
                 }
                 TextField {
                     id: eku
+                    text: openingECO
                     placeholderText: "E20"
                     //label: qsTr("ECO code")
                     visible: openingMode == 2
@@ -218,6 +228,12 @@ Page {
                     validator: RegExpValidator { regExp: /^((([A-E])([0-9])([0]))|((A)([0-3])([0-9])))$/ }
                     color: errorHighlight? "red" : Theme.primaryColor
                     inputMethodHints: Qt.ImhNoPredictiveText
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        focus = false
+                        openingECO = eku.text;
+                    }
                 }
             }
 

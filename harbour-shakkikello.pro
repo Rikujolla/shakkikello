@@ -68,6 +68,7 @@ OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/pages/openings.js \
     qml/pages/tables.js \
     qml/pages/infofuncs.js \
+    qml/pages/setting.js \
     qml/pages/GameInfo.qml
 
 # to disable building translations every time, comment out the
