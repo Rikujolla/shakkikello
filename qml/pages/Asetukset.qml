@@ -55,6 +55,14 @@ Page {
                 }
             }
             MenuItem {
+                text: qsTr("Play chess")
+                onClicked: {pageStack.push(Qt.resolvedUrl("Boardview.qml"));
+                    //playMode = "stockfish";
+                    openingECO = eku.text;
+                    console.log(openingECO)
+                }
+            }
+            MenuItem {
                 text: qsTr("Clock view")
                 onClicked: pageStack.push(Qt.resolvedUrl("Pelisivu.qml"))
             }
@@ -188,10 +196,63 @@ Page {
             SectionHeader { text: qsTr("Chess settings")
             }
 
+            ComboBox {
+                id: setColor
+                width: parent.width
+                label: qsTr("My color")
+                currentIndex: isMyStart ? 0 : 1
+
+                menu: ContextMenu {
+                        MenuItem {
+                            text: qsTr("White")
+                            onClicked: {
+                                console.log("white")
+                                setColor.currentIndex = 0
+                                isMyStart = true
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Black")
+                            onClicked: {
+                                console.log("black")
+                                setColor.currentIndex = 1
+                                isMyStart = false
+                            }
+                        }
+                }
+            }
+
+            ComboBox {
+                id: setOpponent
+                width: parent.width
+                label: qsTr("Opponent")
+                currentIndex: playMode == "stockfish" ? 0 : 1
+
+                menu: ContextMenu {
+                        MenuItem {
+                            text: qsTr("Stockfish")
+                            onClicked: {
+                                console.log("stockfish")
+                                playMode = "stockfish"
+                                setOpponent.currentIndex = 0
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Human")
+                            onClicked: {
+                                console.log("human")
+                                playMode = "human"
+                                setOpponent.currentIndex = 1
+                            }
+                        }
+                }
+            }
+
             Row {
                 x: Theme.paddingLarge
                 spacing: Theme.paddingMedium
                 anchors.left: parent.left
+                visible: playMode == "stockfish" ? true : false
                 //anchors.fill: parent
                 ComboBox { // for dynamic creation see Pastie: http://pastie.org/9813891
                     id: opsiSettings
@@ -240,6 +301,7 @@ Page {
             Row {
                 x: Theme.paddingLarge
                 spacing: Theme.paddingLarge
+                visible: playMode == "stockfish" ? true : false
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
@@ -262,6 +324,7 @@ Page {
             Row {
                 x: Theme.paddingLarge
                 spacing: Theme.paddingLarge
+                visible: playMode == "stockfish" ? true : false
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
