@@ -22,6 +22,7 @@
 #include <cassert>
 #include <cstring>
 #include <iomanip>
+#include <iostream>
 #include <sstream>
 
 #include "bitcount.h"
@@ -633,6 +634,7 @@ bool Position::pseudo_legal(const Move m) const {
 
 bool Position::gives_check(Move m, const CheckInfo& ci) const {
 
+    //sync_cout << "testi" << m << sync_endl;
   assert(is_ok(m)); //SFOS
 //    if (is_ok(m)) {g_peru = 88; // SFOS
 //    }
@@ -644,6 +646,8 @@ bool Position::gives_check(Move m, const CheckInfo& ci) const {
 
   Square from = from_sq(m);
   Square to = to_sq(m);
+  //sync_cout << from << ", " << to << sync_endl;
+
   PieceType pt = type_of(piece_on(from));
 
   // Is there a direct check?

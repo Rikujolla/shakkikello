@@ -36,14 +36,6 @@
         <translation>Shakkikello</translation>
     </message>
     <message>
-        <source>Board, Stockfish</source>
-        <translation>Pelilauta, Stockfish</translation>
-    </message>
-    <message>
-        <source>Board, two-player</source>
-        <translation>Pelilauta, kaksinpeli</translation>
-    </message>
-    <message>
         <source>Time counting</source>
         <translation>Ajan laskenta</translation>
     </message>
@@ -99,6 +91,42 @@
         <source>Save settings</source>
         <translation>Tallenna asetukset</translation>
     </message>
+    <message>
+        <source>Play chess</source>
+        <translation>Pelaa shakkia</translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation>Vastustaja</translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <translation>Stockfish</translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation>Ihminen</translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation>Värini</translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation>Näyttöasetukset</translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation>Oletusnäyttö</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation>Shakkikello</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation>Shakkilauta</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -149,6 +177,10 @@
     <message>
         <source>Show moves</source>
         <translation>Näytä siirrot</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Aloita</translation>
     </message>
 </context>
 <context>

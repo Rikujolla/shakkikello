@@ -36,14 +36,6 @@
         <translation>Vue de la pendule</translation>
     </message>
     <message>
-        <source>Board, Stockfish</source>
-        <translation>L&apos;échiquier, Stockfish</translation>
-    </message>
-    <message>
-        <source>Board, two-player</source>
-        <translation>L&apos;échiquier, deux joueurs</translation>
-    </message>
-    <message>
         <source>Time counting</source>
         <translation>Comptage de temps</translation>
     </message>
@@ -99,6 +91,42 @@
         <source>Save settings</source>
         <translation>Enregistrer les paramètres</translation>
     </message>
+    <message>
+        <source>Play chess</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="unfinished">Pendule d&apos;échecs</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished">Échiquier</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -149,6 +177,10 @@
     <message>
         <source>Show moves</source>
         <translation>Voir déplace</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">Début</translation>
     </message>
 </context>
 <context>

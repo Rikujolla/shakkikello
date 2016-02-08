@@ -25,8 +25,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtQuick.LocalStorage 2.0
-import "setting.js" as Mysets
+//import QtQuick.LocalStorage 2.0
+//import "setting.js" as Mysets
 
 
 Page {
@@ -244,6 +244,7 @@ Page {
                         valkokello.updateValko();
                         muttakello.updateMutta();
                         tilat.peliloppui = false
+                        //startButton.text = qsTr("Start")
                         //////////////////////////////
                         // Logic to move to settings page
                         //////////////////////////
@@ -260,6 +261,7 @@ Page {
                         muttakello.sum_incrementm = 0;
                         kello.sekuntit = 0;
                         tilat.peliloppui = false;
+                        //startButton.text = qsTr("Start")
                         pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
                     }
                 }
@@ -331,6 +333,7 @@ Page {
                 spacing: Theme.paddingLarge
                 anchors.horizontalCenter: parent.horizontalCenter
                 Button {
+                    id: startButton
                     text: aloitapause
                     enabled: !tilat.peliloppui
                     onClicked: {
@@ -392,5 +395,5 @@ Page {
 // loppusulkeet
         }
     }
-    Component.onCompleted: Mysets.loadSettings()
+    //Component.onCompleted: Mysets.loadSettings()
 }

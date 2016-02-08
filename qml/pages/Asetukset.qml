@@ -41,7 +41,7 @@ Page {
                 text: qsTr("Save settings")
                 onClicked: Mysets.saveSettings()
             }
-            MenuItem {
+            /*MenuItem {
                 text: qsTr("Board, two-player")
                 onClicked: {pageStack.push(Qt.resolvedUrl("Boardview.qml"));
                     playMode= "human"}
@@ -53,7 +53,7 @@ Page {
                     openingECO = eku.text;
                     console.log(openingECO)
                 }
-            }
+            }*/
             MenuItem {
                 text: qsTr("Play chess")
                 onClicked: {pageStack.push(Qt.resolvedUrl("Boardview.qml"));
@@ -345,6 +345,49 @@ Page {
                     }
                 }
             }
+
+            SectionHeader { text: qsTr("View settings")
+            }
+
+            ComboBox {
+                id: setView
+                width: parent.width
+                label: qsTr("Default view")
+                currentIndex: startPage
+
+                menu: ContextMenu {
+                        MenuItem {
+                            text: qsTr("Chess clock")
+                            onClicked: {
+                                console.log("Chess clock")
+                                startPageTxt = "pages/Pelisivu.qml"
+                                startPage = 0
+                                setView.currentIndex = 0
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Chess board")
+                            onClicked: {
+                                console.log("Chess board")
+                                startPageTxt = "pages/Boardview.qml"
+                                startPage = 1
+                                setView.currentIndex = 1
+                            }
+                        }
+
+                        MenuItem {
+                            text: qsTr("Settings page")
+                            onClicked: {
+                                console.log("Settings page")
+                                startPageTxt = "pages/Asetukset.qml"
+                                startPage = 2
+                                setView.currentIndex = 2
+                            }
+                        }
+                }
+            }
+
+            VerticalScrollDecorator {}
 
             // This timer is requested to change currentIndex values to global variables
             Timer {

@@ -36,14 +36,6 @@
         <translation>Vista del reloj</translation>
     </message>
     <message>
-        <source>Board, Stockfish</source>
-        <translation>Tablero, Stockfish</translation>
-    </message>
-    <message>
-        <source>Board, two-player</source>
-        <translation>Tablero, dos jugadores que</translation>
-    </message>
-    <message>
         <source>Time counting</source>
         <translation>Conteo Tiempo</translation>
     </message>
@@ -99,6 +91,42 @@
         <source>Save settings</source>
         <translation>Guardar ajustes</translation>
     </message>
+    <message>
+        <source>Play chess</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="unfinished">Reloj de ajedrez</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished">Tablero</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -149,6 +177,10 @@
     <message>
         <source>Show moves</source>
         <translation>Mostrar mueve</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">Inicio</translation>
     </message>
 </context>
 <context>

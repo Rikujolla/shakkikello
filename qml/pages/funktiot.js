@@ -58,6 +58,7 @@ function gridToFEN() {
     }
     feni.stopFeni = 8-(toIndex-toIndex%8)/8;
     hopo.test = hopo.test+feni.startFeni+feni.stopFeni;
+    if (moveMent.currentMove == "promotion") {hopo.test = hopo.test +"q"}
 //    feni.feniReady = true;
 
 //    console.log(hopo.test);
@@ -69,7 +70,7 @@ function gridToFEN() {
 /////////////////////////////////////////////////////////
 
 function fenToGRID() {
-//    console.log(hopo.test)
+    //console.log(hopo.test)
     opsi.recentMove = hopo.test;
     feni.stringHelper = hopo.test.slice(0,1);
     switch (feni.stringHelper) {
@@ -434,7 +435,8 @@ function doMove() {
         Mytab.addMove();
         vuoro.vaihdaValkealle();
         isChessPure();
-        //opsi.movesDone = opsi.movesDone + opsi.recentMove;  // Maybe needed in future
+        opsi.recentMove = hopo.test; //only effective for stockfish game
+        opsi.movesDone = opsi.movesDone + opsi.recentMove;  // Maybe needed in future
         opsi.movesTotal++;
         //console.log("black")
         if (openingMode == 1 || openingMode == 2) {
