@@ -8,20 +8,28 @@ CoverBackground {
         text: qsTr("Fast chess")
     }
 
-    /*CoverActionList {
+    // /*
+    CoverActionList {
         id: coverAction
 
         CoverAction {
-            iconSource: "image://theme/icon-cover-next"
+            iconSource: "../pages/vaihtoValkoinen.png"
             onTriggered: {
-                //pageStack.clear()
-                //Qt.resolvedUrl("../pages/Asetukset.qml")
+                pageStack.clear()
+                pageStack.push(Qt.resolvedUrl("../pages/Pelisivu.qml"))
+                window.activate()
             }
         }
 
         CoverAction {
-            iconSource: "image://theme/icon-cover-pause"
+            iconSource: "../pages/images/grid.png"
+            onTriggered: {
+                pageStack.clear()
+                pageStack.push(Qt.resolvedUrl("../pages/Boardview.qml"))
+                window.activate()
+            }
         }
-    }*/
+    }
+    //*/
 }
 

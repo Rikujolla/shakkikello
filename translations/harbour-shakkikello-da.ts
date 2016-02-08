@@ -36,14 +36,6 @@
         <translation>Ur visning</translation>
     </message>
     <message>
-        <source>Board, Stockfish</source>
-        <translation>Bræt, Stockfish</translation>
-    </message>
-    <message>
-        <source>Board, two-player</source>
-        <translation>Bræt, to spillere</translation>
-    </message>
-    <message>
         <source>Time counting</source>
         <translation>Time tælling</translation>
     </message>
@@ -99,6 +91,42 @@
         <source>Save settings</source>
         <translation>Gemme indstillinger</translation>
     </message>
+    <message>
+        <source>Play chess</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="unfinished">Chess ur</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished">Skakbræt</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -149,6 +177,10 @@
     <message>
         <source>Show moves</source>
         <translation>Vis flytter</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">Starte</translation>
     </message>
 </context>
 <context>

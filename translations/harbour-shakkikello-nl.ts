@@ -36,14 +36,6 @@
         <translation>Klokweergave</translation>
     </message>
     <message>
-        <source>Board, Stockfish</source>
-        <translation>Bord voor stokvis</translation>
-    </message>
-    <message>
-        <source>Board, two-player</source>
-        <translation>Bord voor twee spelers</translation>
-    </message>
-    <message>
         <source>Time counting</source>
         <translation>Volgorde van tijdsteller</translation>
     </message>
@@ -99,6 +91,42 @@
         <source>Save settings</source>
         <translation>Instellingen opslaan</translation>
     </message>
+    <message>
+        <source>Play chess</source>
+        <translation>Schaken</translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation>Tegenstander</translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <translation>Stokvis</translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation>Mens</translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation>Mijn kleur</translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation>Weergave-instellingen</translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation>Standaard weergave</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation>Schaakklok</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation>Schaakbord</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -149,6 +177,10 @@
     <message>
         <source>Show moves</source>
         <translation>Zetten weergeven</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Starten</translation>
     </message>
 </context>
 <context>

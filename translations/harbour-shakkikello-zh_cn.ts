@@ -36,14 +36,6 @@
         <translation>棋钟</translation>
     </message>
     <message>
-        <source>Board, Stockfish</source>
-        <translation>棋盘，Stockfish</translation>
-    </message>
-    <message>
-        <source>Board, two-player</source>
-        <translation>棋盘，两名球员</translation>
-    </message>
-    <message>
         <source>Time counting</source>
         <translation>计时</translation>
     </message>
@@ -99,6 +91,42 @@
         <source>Save settings</source>
         <translation>保存设置</translation>
     </message>
+    <message>
+        <source>Play chess</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="unfinished">棋钟</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished">棋盘</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -149,6 +177,10 @@
     <message>
         <source>Show moves</source>
         <translation>显示移动</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">开始</translation>
     </message>
 </context>
 <context>

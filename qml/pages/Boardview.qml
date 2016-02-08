@@ -39,11 +39,16 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
-/*            MenuItem {
-                text: maharollisuuret
-                onClicked: asetussivulle.siirrytKo()
-                enabled: !tilat.juoksee || tilat.peliloppui
-            }*/
+            MenuItem {
+                text: qsTr("Settings")
+                //onClicked: asetussivulle.siirrytKo()
+                onClicked: {
+                    pageStack.clear()
+                    pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
+                }
+                //enabled: !tilat.juoksee || tilat.peliloppui
+            }
+
             MenuItem {
                 text: qsTr("Show moves")
                 onClicked: pageStack.push(Qt.resolvedUrl("GameInfo.qml"))
@@ -58,8 +63,14 @@ Page {
                     hopo.stoSkill = stockfishSkill;
                     if (!tilat.pelialkoi) {
                         if (playMode == "stockfish") {hopo.initio();}
-                        kripti.lisaa();
+                        //kripti.lisaa();
+                        isMyStart ? feni.stockfishFirstmove = false : feni.stockfishFirstmove = true
+                        isMyStart ? feni.feniWhiteReady = false : feni.feniWhiteReady = true
+                        //isMyStart ? feni.forChessCheck = false : feni.forChessCheck = true
+
+
                     }
+                    isMyStart ? feni.feniWhite = true : feni.feniWhite = false
                     tilat.aloitaPeli();
                     tilat.juoksee = !tilat.juoksee;
                     startti.timeAsetus();
@@ -95,11 +106,15 @@ Page {
                 id: feni
                 property string startFeni;
                 property string stopFeni;
-                property bool feniReady:false;
+                property bool feniBlackReady:false;
+                property bool feniBlackReady2:false;
+                property bool feniWhiteReady:false;
+                property bool feniWhiteReady2:false;
                 property int feniHelper;
                 property string stringHelper;
-                property bool feniBlack:false;
-                property bool feniWhite:true;
+                property bool feniBlack:false; //tells if it is blacks turn
+                property bool feniWhite:false; // tells if it is Whites turn
+                property bool stockfishFirstmove: false
                 property bool feniWhiteChess: false;
                 property bool feniBlackChess: false;
                 property bool chessIsOn: false;
@@ -128,6 +143,7 @@ Page {
                 property string openingCompare: "";
                 property string openingSelected: "";
                 property string recentMove: "";
+                property string tymp: "" //temporary
                 property int movesTotal: 0; //Records moves done
                 property bool openingPossible: false; // Tells if opening possible
                 property int yx //index for for
@@ -377,7 +393,8 @@ Page {
                         valkokello.sum_incrementv = valkokello.sum_incrementv + increment;
                         valkokello.updateValko();
                         feni.feniWhite = false;
-                        feni.feniReady = true;
+                        feni.feniBlack = true;
+                        feni.feniBlackReady = true;
                     }
                 }
                 function vaihdaValkealle() {
@@ -392,6 +409,8 @@ Page {
                         muttakello.sum_incrementm = muttakello.sum_incrementm + increment;
                         muttakello.updateMutta();
                         feni.feniWhite = true
+                        feni.feniBlack = false;
+                        feni.feniWhiteReady = true;
                     }
                 }
             }
@@ -1860,7 +1879,7 @@ Page {
                                 anchors.fill: parent
                                 height: grid.cellHeight
                                 width: grid.cellWidth
-                                enabled: feni.feniWhite || playMode == "human"
+                                enabled: feni.feniWhite && isMyStart || !feni.feniWhite && !isMyStart || playMode == "human"
                                 onClicked: {moveMent.indeksi = index;
                                     moveMent.itemTobemoved = piece;
                                     moveMent.colorTobemoved = color;
@@ -1905,9 +1924,14 @@ Page {
                 }
             }
 
+            /// Timer stockfish plays black
+            /// Either sends the move for stockfish analysis or only pushes it to the end of the vector if in opening
 
             Timer {
-                interval: 500; running: playMode == "stockfish" && feni.feniReady && Qt.ApplicationActive; repeat: false
+                interval: 500;
+                running: playMode == "stockfish" && feni.feniBlackReady && Qt.ApplicationActive && isMyStart;
+                repeat: false
+                //interval: 500; running: playMode == "stockfish" && Qt.ApplicationActive; repeat: false
                 onTriggered: {
                     if (opsi.openingPossible) {
                         hopo.innio();
@@ -1917,17 +1941,82 @@ Page {
                     else {
                         hopo.inni();
                     }
-                    feni.feniReady = false;
-                    feni.feniBlack = true;
-                    //console.log(Screen.width)
+                    feni.feniBlackReady = false;
+                    feni.feniBlackReady2 = true;
+                    blackTimer.start()
                 }
             }
 
+            /// Timer stockfish plays White
             Timer {
-                interval: (stockfishMovetime*1000 + 120); running: playMode == "stockfish"&& feni.feniBlack && Qt.ApplicationActive; repeat: false
+                interval: 500;
+                running: playMode == "stockfish" && feni.feniWhiteReady && Qt.ApplicationActive && tilat.pelialkoi && !isMyStart;
+                repeat: false
+                //interval: 500; running: playMode == "stockfish" && Qt.ApplicationActive; repeat: false
                 onTriggered: {
+                    if (opsi.openingPossible) {
+                        hopo.innio();
+                        hopo.test = opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+4);
+                        hopo.innio();
+                    }
+                    else if (feni.stockfishFirstmove == true) {
+                        if (openingMode == 0 ){
+                            // Random winning openings from Finnish game statistics december 2014, www.shakki.net
+                            var rand = Math.random()
+                            //console.log(rand)
+                            if (rand < 0.43){hopo.test = "e2e4"}
+                            else if (rand > 0.43 && rand < 0.83) {hopo.test = "d2d4"}
+                            else if (rand > 0.83 && rand < 0.92) {hopo.test = "c2c4"}
+                            else if (rand > 0.92) {hopo.test = "g1f3"}
+                            else {hopo.test = "b1c3"}
+                            hopo.innio()
+                            //console.log("RandomFirst move", hopo.test)
+                        }
+                        else if (openingMode == 1) {
+                            // Random first move from the list of  ECO openings
+                            opsi.rantomi = Math.random()*opsi.openings.length;
+                            //console.log(opsi.rantomi)
+                            opsi.tymp = opsi.openings[opsi.rantomi].moves
+                            hopo.test = opsi.tymp.slice(0,4)
+                            //console.log(hopo.test, opsi.openings[opsi.rantomi].eco)
+                            hopo.innio()
+                        }
+                        else {
+                            //selected eco
+                            //console.log("ECO")
+                            for(var i = 0; i < opsi.openings.length; i++){
+                                if (opsi.openings[i].eco == openingECO) {
+                                    opsi.tymp = opsi.openings[i].moves
+                                    hopo.test = opsi.tymp.slice(0,4)
+                                    //console.log("ECO opening", opsi.openings[i].eco, hopo.test);
+                                }
+                            }
+                            hopo.innio()
+                        }
+                    }
+
+                    else {
+                        hopo.inni();
+                    }
+                    feni.feniWhiteReady = false;
+                    feni.feniWhiteReady2 = true;
+                    whiteTimer.start()
+                }
+            }
+
+            /// Timer Stockfish plays black
+
+            Timer {
+                id:blackTimer
+                interval: (stockfishMovetime*1000 + 120);
+                running: playMode == "stockfish"&& feni.feniBlackReady2 && isMyStart && Qt.ApplicationActive;
+                repeat: false
+                onTriggered: {
+                    //whiteTimer.repeat = false
+                    console.log("vaihe2")
                     if (!opsi.openingPossible) {
                         hopo.outti();
+                        console.log(hopo.test)
                     }
                     Myfunks.fenToGRID()
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
@@ -1960,9 +2049,69 @@ Page {
                     Myfunks.isChessPure();
                     opsi.movesDone = opsi.movesDone + opsi.recentMove; // Adding the move for openings comparison
                     opsi.movesTotal++;
-                    feni.feniBlack = false;
+                    feni.feniBlackReady2 = false;
                 }
             }
+
+            ///
+            /// Symmetric timer for Stockfish white start
+            ///
+
+
+            Timer {
+                id: whiteTimer
+                interval: (stockfishMovetime*1000 + 120);
+                running: playMode == "stockfish"&& feni.feniWhiteReady2 && !isMyStart && Qt.ApplicationActive && tilat.pelialkoi;
+                repeat: false
+                onTriggered: {
+                    //console.log("white proceeds", opsi.openingPossible,hopo.test)
+                    if (feni.stockfishFirstmove == true) {
+                        feni.stockfishFirstmove = false
+                        //console.log(hopo.test)
+                    }
+
+                    else if (!opsi.openingPossible) {
+                        //console.log(hopo.test)
+                        hopo.outti();
+                        //console.log(hopo.test)
+                    }
+                    else {}
+
+                    Myfunks.fenToGRID()
+                    galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
+                    galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
+                    // If castling, moving the rook also
+                    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece == "images/K.png") {
+                        if (toIndex == 62){
+                            galeryModel.set(61,{"color":"w", "piece":"images/R.png"})
+                            galeryModel.set(63,{"color":"e", "piece":"images/empty.png"})
+                        }
+                        else {
+                            galeryModel.set(59,{"color":"w", "piece":"images/R.png"})
+                            galeryModel.set(56,{"color":"e", "piece":"images/empty.png"})
+                        }
+                    }
+                    // If black gives enpassant possibility and it is utilized let's print a board accordingly
+                    if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece == "images/P.png") {
+                        galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
+                        moveMent.benpassant = -1;
+                    }
+
+                    // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
+
+                    if (toIndex < 8 && galeryModel.get(toIndex).piece == "images/P.png") {
+                        galeryModel.set(toIndex, {"piece": "images/Q.png"});
+                    }
+                    feni.upperMessage = "";
+                    Mytab.addMove();
+                    vuoro.vaihdaMustalle();
+                    Myfunks.isChessPure();
+                    opsi.movesDone = opsi.movesDone + opsi.recentMove; // Adding the move for openings comparison
+                    opsi.movesTotal++;
+                    feni.feniWhiteReady2 = false;
+                }
+            }
+
 
             Text {
                 id: lowerNotes
@@ -1996,6 +2145,10 @@ Page {
                         repeat: true
                         onTriggered: isMyStart ? valkokello.updateValko() : muttakello.updateMutta()}
                 }
+            }
+            Component.onCompleted: {
+                aloitapause = qsTr("Start")
+                kripti.lisaa()
             }
 // loppusulkeet
         }

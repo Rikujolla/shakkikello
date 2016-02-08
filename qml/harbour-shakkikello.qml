@@ -25,11 +25,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick.LocalStorage 2.0
+import "pages/setting.js" as Mysets
 import "pages"
+
 
 ApplicationWindow
 {
-    initialPage: Component { Pelisivu { } }
+    id: shakkikelloWindow
+    //initialPage: Component { Pelisivu { } }
+    //initialPage: Qt.resolvedUrl(startPageTxt)
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: Orientation.Portrait
     _defaultPageOrientations: Orientation.Portrait
@@ -45,11 +50,20 @@ ApplicationWindow
     property bool countDirDown: true //Default is Downwards
     property int countDirInt: 0 // For combo box index, related to countDirDown, 0 Downwards
     property string countDirName: qsTr("Downwards")
-    property string playMode
+    property string playMode : "stockfish"
     property int openingMode: 0 // 0 Stockfish, 1 Random
     property string openingECO: "E00" // Used for fixed opening
     property int stockfishDepth: 4 //depth of stockfish engine
     property int stockfishMovetime: 2 //Movetime in seconds
     property int stockfishSkill: 1 // Skill Level default
     property bool isMyStart: true // Default me playing white
+    property int startPage: 0 // 0 = Chess clock, 1 Settings page, 2 Chess board
+    property string startPageTxt : "pages/Pelisivu.qml"
+
+    Component.onCompleted: {
+        Mysets.loadSettings()
+        //console.log(startPageTxt)
+        pageStack.push(Qt.resolvedUrl(startPageTxt))
+    }
+
 }

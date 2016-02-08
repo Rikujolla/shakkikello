@@ -36,14 +36,6 @@
         <translation>Relógio de xadrez</translation>
     </message>
     <message>
-        <source>Board, Stockfish</source>
-        <translation>Tabuleiro, Stockfish</translation>
-    </message>
-    <message>
-        <source>Board, two-player</source>
-        <translation>Tabuleiro, dois jogadores</translation>
-    </message>
-    <message>
         <source>Time counting</source>
         <translation>Contagem do tempo</translation>
     </message>
@@ -99,6 +91,42 @@
         <source>Save settings</source>
         <translation>Salvar configurações</translation>
     </message>
+    <message>
+        <source>Play chess</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="unfinished">Relógio de xadrez</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished">Tabuleiro</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -149,6 +177,10 @@
     <message>
         <source>Show moves</source>
         <translation>Mostrar movimentos</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">Começo</translation>
     </message>
 </context>
 <context>

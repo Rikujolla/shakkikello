@@ -10,8 +10,13 @@
 #- Promotion of the pawn other than queen not possible NOT OK
 #- Chessmate and Stalemate notifications NOT OK
 
+* Mon Feb 08 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.1
+- A play against Stockfish with Black is now also possible
+- Coveractions added to start a chess clock or a chess game with presettings
+- The bug crashing the app in the Stockfish mode fixed
+
 * Mon Jan 10 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.0
-- Save settings NOT OK
+- Save settings possible
 
 * Tue Dec 08 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.9
 - Bug fix in tablet version

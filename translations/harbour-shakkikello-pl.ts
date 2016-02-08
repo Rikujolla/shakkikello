@@ -36,14 +36,6 @@
         <translation>Widok zegara</translation>
     </message>
     <message>
-        <source>Board, Stockfish</source>
-        <translation>Szachownica, Stockfish</translation>
-    </message>
-    <message>
-        <source>Board, two-player</source>
-        <translation>Szachownica, dwóch graczy</translation>
-    </message>
-    <message>
         <source>Time counting</source>
         <translation>Liczenie czasu</translation>
     </message>
@@ -97,7 +89,43 @@
     </message>
     <message>
         <source>Save settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapisz ustawienia</translation>
+    </message>
+    <message>
+        <source>Play chess</source>
+        <translation>Graj w szachy</translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation>Przeciwnik</translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <translation>Stockfish</translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation>Człowiek</translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation>Mój kolor</translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation>Zobacz ustawienia</translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation>Widok standardowy</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation>Zegar szachowy</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation>Szachownica</translation>
     </message>
 </context>
 <context>
@@ -149,6 +177,10 @@
     <message>
         <source>Show moves</source>
         <translation>Pokaż ruchy</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Start</translation>
     </message>
 </context>
 <context>

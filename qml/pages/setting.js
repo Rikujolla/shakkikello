@@ -27,6 +27,14 @@
                 rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'countDirDown');
                 if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [countDirDown, 'countDirDown'])}
                 else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'countDirDown', '', '', '', countDirDown ])}
+                // isMyStart
+                rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'isMyStart');
+                if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [isMyStart, 'isMyStart'])}
+                else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'isMyStart', '', '', '', isMyStart ])}
+                // playMode
+                rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'playMode');
+                if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valte=? WHERE name=?', [playMode, 'playMode'])}
+                else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'playMode', '', playMode, '', '' ])}
                 // openingMode
                 rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'openingMode');
                 if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [openingMode, 'openingMode'])}
@@ -43,6 +51,14 @@
                 rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'stockfishMovetime');
                 if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [stockfishMovetime, 'stockfishMovetime'])}
                 else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'stockfishMovetime', '', '', '', stockfishMovetime ])}
+                // startPage
+                rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'startPage');
+                if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [startPage, 'startPage'])}
+                else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'startPage', '', '', '', startPage ])}
+                // startPageTxt
+                rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'startPageTxt');
+                if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valte=? WHERE name=?', [startPageTxt, 'startPageTxt'])}
+                else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'startPageTxt', '', startPageTxt, '', '' ])}
 
 
             }
@@ -86,6 +102,14 @@ function loadSettings() {
                     countDirDown = false;
                 }
             }
+            // isMyStart
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'isMyStart');
+            if (rs.rows.length > 0) {isMyStart = rs.rows.item(0).valint}
+            else {}
+            // playMode
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'playMode');
+            if (rs.rows.length > 0) {playMode = rs.rows.item(0).valte}
+            else {}
             // openingMode
             rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'openingMode');
             if (rs.rows.length > 0) {openingMode = rs.rows.item(0).valint}
@@ -101,6 +125,14 @@ function loadSettings() {
             // stockfishMovetime
             rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'stockfishMovetime');
             if (rs.rows.length > 0) {stockfishMovetime = rs.rows.item(0).valint}
+            else {}
+            // startPage
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'startPage');
+            if (rs.rows.length > 0) {startPage = rs.rows.item(0).valint}
+            else {}
+            // startPageTxt
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'startPageTxt');
+            if (rs.rows.length > 0) {startPageTxt = rs.rows.item(0).valte}
             else {}
 
         }
