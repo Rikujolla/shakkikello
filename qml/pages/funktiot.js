@@ -58,7 +58,8 @@ function gridToFEN() {
     }
     feni.stopFeni = 8-(toIndex-toIndex%8)/8;
     hopo.test = hopo.test+feni.startFeni+feni.stopFeni;
-    if (moveMent.currentMove == "promotion") {hopo.test = hopo.test +"q"}
+    //if (moveMent.currentMove == "promotion") {hopo.test = hopo.test +"q"}
+    if (moveMent.currentMove == "promotion") {hopo.test = hopo.test + promotedShort}
 //    feni.feniReady = true;
 
 //    console.log(hopo.test);
@@ -196,10 +197,10 @@ function isChess() {
                 || tilat.musta && galeryModel.get(feni.ax).color == "w") {
             moveMent.canBemoved = true;  //palautettava falseksi joskus??
             moveMent.itemMoved=galeryModel.get(feni.ax).piece;
-//            console.log(moveMent.itemMoved);
+            //console.log(moveMent.itemMoved);
             moveMent.sameColor();
             moveMent.isLegalmove();
-//            console.log(moveMent.moveLegal);
+            //console.log(moveMent.moveLegal);
             if (moveMent.moveLegal){
                 feni.chessIsOn = true; //
             }
@@ -339,23 +340,19 @@ function isChessPure() {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-// Function checks if Chess is  on. Used for notifications and castling checks
+// Function checks if the king tries to jump over the checked square in castling.
+// If so the move will be cancelled.
 ///////////////////////////////////////////////////////////////////////////////////////
 
 function midSquareCheck() {
-//    feni.feniWhiteChess = false;
-//    feni.feniBlackChess = false;
+    //    feni.feniWhiteChess = false;
+    //    feni.feniBlackChess = false;
     moveMent.chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
-//    console.log("Tässä kingi testissä, W,B", feni.feniWkingInd, feni.feniBkingInd);
+    //    console.log("Tässä kingi testissä, W,B", feni.feniWkingInd, feni.feniBkingInd);
     for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
-//        if (tilat.valko) {
-            toIndex = moveMent.midSquareInd;
-//        }
-//        else {
-//            toIndex=feni.feniBkingInd;
-//        }
+        toIndex = moveMent.midSquareInd;
 
         fromIndex = feni.ax;
 
@@ -366,9 +363,6 @@ function midSquareCheck() {
             moveMent.isLegalmove();
             if (moveMent.moveLegal){
                 moveMent.midSquareCheckki = true;
-                //console.log("valko midsquare")
-//                feni.chessIsOn = true;
-                //feni.upperMessage = feni.messages[0].msg; Should there be info message???
             }
         }
 
@@ -379,13 +373,8 @@ function midSquareCheck() {
             moveMent.isLegalmove();
             if (moveMent.moveLegal){
                 moveMent.midSquareCheckki = true;
-//                feni.chessIsOn = true;
-                //feni.lowerMessage = feni.messages[0].msg;
             }
-
         }
-
-
     }
 
     toIndex = feni.temptoIndex;
@@ -395,7 +384,6 @@ function midSquareCheck() {
     moveMent.moveLegal = false;
     moveMent.chessTest = false;
     feni.midSquareTestDone = true;
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////

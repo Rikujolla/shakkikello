@@ -131,52 +131,52 @@
 <context>
     <name>Boardview</name>
     <message>
-        <source>Reset</source>
-        <translation>重置</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>暫停</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>繼續</translation>
-    </message>
-    <message>
         <source>Settings</source>
-        <translation>設置</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>棋盤</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation>分:秒</translation>
-    </message>
-    <message>
-        <source>Check!</source>
-        <translation>檢查</translation>
-    </message>
-    <message>
-        <source>Checkmate!</source>
-        <translation>將死</translation>
-    </message>
-    <message>
-        <source>Stalemate!</source>
-        <translation>僵持</translation>
-    </message>
-    <message>
-        <source>White won!</source>
-        <translation>白色韓元</translation>
-    </message>
-    <message>
-        <source>Black won!</source>
-        <translation>黑韓元</translation>
+        <translation type="unfinished">設置</translation>
     </message>
     <message>
         <source>Show moves</source>
-        <translation>顯示移動</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">重置</translation>
+    </message>
+    <message>
+        <source>Check!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">暫停</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">繼續</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished">棋盤</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished">分:秒</translation>
     </message>
     <message>
         <source>Start</source>

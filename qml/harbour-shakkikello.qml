@@ -59,6 +59,10 @@ ApplicationWindow
     property bool isMyStart: true // Default me playing white
     property int startPage: 0 // 0 = Chess clock, 1 Settings page, 2 Chess board
     property string startPageTxt : "pages/Pelisivu.qml"
+    property bool waitPromo : false //if promotion needs to be wait
+    property string promotedLong: ""
+    property string promotedShort: "q"
+    property bool turnWhite  // used for promotion
 
     Component.onCompleted: {
         Mysets.loadSettings()

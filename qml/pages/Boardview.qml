@@ -685,7 +685,7 @@ Page {
                 property bool midSquareCheckki: false; // Used for castling check
                 // Pawn is promoted to queen now
                 function pawnPromotion() {
-                    //Qt.createComponent("Promotion.qml").createObject(page, {});
+                    Qt.createComponent("Promotion.qml").createObject(page, {});
                     // one possibility to have the pawnpromotion dialog
                 }
                 ///////////////////////////////////////////////////////////////////////////
@@ -728,8 +728,14 @@ Page {
                         if (((fromIndex-toIndex) == -8) && galeryModel.get(toIndex).color == "e") {
                             moveLegal = true; intLegal = 1;
                             if (toIndex > 55 && !chessTest) {
+                                waitPromo = true
+                                turnWhite = false
+                                //console.log("nyt mennään", waitPromo)
                                 pawnPromotion();
-                                itemMoved = "images/q.png";
+                                //Qt.createComponent("Promotion.qml").createObject(page, {});
+                                itemMoved = "images/p.png";
+                                //itemMoved = promotedLong;
+                                //console.log(itemMoved, "tuli lakki")
                                 currentMove = "promotion";
                                 movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":fromIndex})
                             }
@@ -749,8 +755,10 @@ Page {
                                     ){
                                 moveLegal = true; intLegal = 1;
                                 if (toIndex > 55 && !chessTest) {
+                                    waitPromo = true
+                                    turnWhite = false
                                     pawnPromotion()
-                                    itemMoved = "images/q.png"
+                                    itemMoved = "images/p.png"
                                     currentMove = "promotion";
                                     movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":fromIndex})
                                 }
@@ -781,8 +789,10 @@ Page {
                         if (((fromIndex-toIndex) == 8) && galeryModel.get(toIndex).color == "e") {
                             moveLegal = true; intLegal = 1;
                             if (toIndex < 8 && !chessTest) {
+                                waitPromo = true
+                                turnWhite = true
                                 pawnPromotion()
-                                itemMoved = "images/Q.png"
+                                itemMoved = "images/P.png"
                                 currentMove = "promotion";
                                 movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":fromIndex})
                             }
@@ -802,8 +812,10 @@ Page {
                                     ){
                                 moveLegal = true; intLegal = 1;
                                 if (toIndex < 8 && !chessTest) {
+                                    waitPromo = true
+                                    turnWhite = true
                                     pawnPromotion()
-                                    itemMoved = "images/Q.png"
+                                    itemMoved = "images/P.png"
                                     currentMove = "promotion";
                                     movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":fromIndex})
                                 }
@@ -1736,7 +1748,7 @@ Page {
                         sameColor(); // Checks if fromIndex and toIndex are same color
                         isLegalmove();
                         if (moveLegal){
-                            // Saving position before move to possiple cancellation od a move
+                            // Saving position before move to possiple cancellation of a move
                             movedPieces.set(0,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece moved
                             movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
 //                            movedPieces.set(2,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece enpassant or castling
@@ -1764,7 +1776,13 @@ Page {
                                     feni.feniBkingInd = toIndex;
                                 }
                             }
+                            if (currentMove == "promotion"){
+                                promotionWaiter.start()
+                            }
+                            else {
                             feni.forChessCheck = true; //starts the chess check timer
+                            chessChecker.start()
+                            }
                         }
                     }
                 }
@@ -1893,9 +1911,31 @@ Page {
                 } // end GridView
             } //end Rectangle
 
-            Timer {
-                interval: 200; running: feni.forChessCheck && Qt.ApplicationActive; repeat: true
+
+            Timer{
+                id: promotionWaiter
+                running: false
+                repeat:true
+                interval:100
                 onTriggered: {
+                    if (!waitPromo) {
+                        promotionWaiter.running = false
+                        feni.forChessCheck = true
+                        galeryModel.set(toIndex,{"color":moveMent.colorMoved, "piece":promotedLong})
+                        galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
+                        chessChecker.start()
+                    }
+                    else { }
+                }
+            }
+
+            Timer {
+                id:chessChecker
+                interval: 100;
+                running: feni.forChessCheck && Qt.ApplicationActive && !waitPromo;
+                repeat: false
+                onTriggered: {
+                    //console.log("chess checker")
                     if (moveMent.currentMove == "castling") {
                         Myfunks.midSquareCheck();
                     }
@@ -1905,11 +1945,13 @@ Page {
 
                     Myfunks.isChess();
                     feni.forChessCheck = false;
+                    itemMover.start()
                 }
             }
             Timer {
-                interval: 300; running: feni.midSquareTestDone && feni.chessTestDone && Qt.ApplicationActive;
-                repeat: true
+                id:itemMover
+                interval: 100; running: feni.midSquareTestDone && feni.chessTestDone && Qt.ApplicationActive && !waitPromo;
+                repeat: false
                 onTriggered: {
                     if (moveMent.midSquareCheckki || feni.chessIsOn) {
                     Myfunks.cancelMove();

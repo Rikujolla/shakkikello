@@ -131,52 +131,52 @@
 <context>
     <name>Boardview</name>
     <message>
-        <source>Reset</source>
-        <translation>Restabelecer</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pausa</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Continuar</translation>
-    </message>
-    <message>
         <source>Settings</source>
-        <translation>Configurações</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Tabuleiro</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
-    </message>
-    <message>
-        <source>Check!</source>
-        <translation>Xeque!</translation>
-    </message>
-    <message>
-        <source>Checkmate!</source>
-        <translation>Xeque-mate!</translation>
-    </message>
-    <message>
-        <source>Stalemate!</source>
-        <translation>Rei afogado!</translation>
-    </message>
-    <message>
-        <source>White won!</source>
-        <translation>Won branco!</translation>
-    </message>
-    <message>
-        <source>Black won!</source>
-        <translation>Won preto</translation>
+        <translation type="unfinished">Configurações</translation>
     </message>
     <message>
         <source>Show moves</source>
-        <translation>Mostrar movimentos</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Restabelecer</translation>
+    </message>
+    <message>
+        <source>Check!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pausa</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Continuar</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished">Tabuleiro</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished">min:s</translation>
     </message>
     <message>
         <source>Start</source>

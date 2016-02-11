@@ -131,52 +131,52 @@
 <context>
     <name>Boardview</name>
     <message>
-        <source>Reset</source>
-        <translation>Återställ</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Stoppa</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Fortsätta</translation>
-    </message>
-    <message>
         <source>Settings</source>
-        <translation>Inställningar</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Schackbräde</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
-    </message>
-    <message>
-        <source>Check!</source>
-        <translation>Schack!</translation>
-    </message>
-    <message>
-        <source>Checkmate!</source>
-        <translation>Matt!</translation>
-    </message>
-    <message>
-        <source>Stalemate!</source>
-        <translation>Patt!</translation>
-    </message>
-    <message>
-        <source>White won!</source>
-        <translation>Vit vann!</translation>
-    </message>
-    <message>
-        <source>Black won!</source>
-        <translation>Svart vann!</translation>
+        <translation type="unfinished">Inställningar</translation>
     </message>
     <message>
         <source>Show moves</source>
-        <translation>Visa flyttar</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Återställ</translation>
+    </message>
+    <message>
+        <source>Check!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Stoppa</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Fortsätta</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished">Schackbräde</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished">min:s</translation>
     </message>
     <message>
         <source>Start</source>

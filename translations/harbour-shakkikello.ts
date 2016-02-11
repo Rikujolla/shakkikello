@@ -131,27 +131,15 @@
 <context>
     <name>Boardview</name>
     <message>
-        <source>Reset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Chess board</source>
+        <source>Show moves</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>min:s</source>
+        <source>Reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -175,7 +163,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show moves</source>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min:s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

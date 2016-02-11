@@ -131,52 +131,52 @@
 <context>
     <name>Boardview</name>
     <message>
-        <source>Reset</source>
-        <translation>Cброс</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Пауза</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Продолжать</translation>
-    </message>
-    <message>
         <source>Settings</source>
-        <translation>Настройки</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Доска</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <translation>мин:c</translation>
-    </message>
-    <message>
-        <source>Check!</source>
-        <translation>Шах!</translation>
-    </message>
-    <message>
-        <source>Checkmate!</source>
-        <translation>Мат!</translation>
-    </message>
-    <message>
-        <source>Stalemate!</source>
-        <translation>Пат!</translation>
-    </message>
-    <message>
-        <source>White won!</source>
-        <translation>Белый вон!</translation>
-    </message>
-    <message>
-        <source>Black won!</source>
-        <translation>Ччерный вон!</translation>
+        <translation type="unfinished">Настройки</translation>
     </message>
     <message>
         <source>Show moves</source>
-        <translation>Показать перемещается</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Cброс</translation>
+    </message>
+    <message>
+        <source>Check!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checkmate!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stalemate!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>White won!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black won!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Пауза</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Продолжать</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation type="unfinished">Доска</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation type="unfinished">мин:c</translation>
     </message>
     <message>
         <source>Start</source>
