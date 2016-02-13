@@ -7,8 +7,12 @@
 
 #* Sat Dec 08 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.1
 #- Update problem correction NOT OK
-#- Promotion of the pawn other than queen not possible NOT OK
 #- Chessmate and Stalemate notifications NOT OK
+#- Buggy Chess messages in endgame situation NOT OK
+
+* Sat Feb 13 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.2
+- Promotion limitations removed
+- Enpassant bug in Stockfish mode removed
 
 * Mon Feb 08 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.1
 - A play against Stockfish with Black is now also possible

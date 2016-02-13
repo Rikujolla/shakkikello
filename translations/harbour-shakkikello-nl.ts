@@ -131,28 +131,16 @@
 <context>
     <name>Boardview</name>
     <message>
-        <source>Reset</source>
-        <translation>Herstellen</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pauzeren</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Doorgaan</translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation>Instellingen</translation>
     </message>
     <message>
-        <source>Chess board</source>
-        <translation>Schaakbord</translation>
+        <source>Show moves</source>
+        <translation>Zetten weergeven</translation>
     </message>
     <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
+        <source>Reset</source>
+        <translation>Herstellen</translation>
     </message>
     <message>
         <source>Check!</source>
@@ -175,8 +163,20 @@
         <translation>Zwart heeft gewonnen!</translation>
     </message>
     <message>
-        <source>Show moves</source>
-        <translation>Zetten weergeven</translation>
+        <source>Pause</source>
+        <translation>Pauzeren</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Doorgaan</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation>Schaakbord</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Start</source>

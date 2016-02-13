@@ -131,28 +131,16 @@
 <context>
     <name>Boardview</name>
     <message>
-        <source>Reset</source>
-        <translation>Resetuj</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pauza</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Kontynuuj</translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation>Ustawienia</translation>
     </message>
     <message>
-        <source>Chess board</source>
-        <translation>Szachownica</translation>
+        <source>Show moves</source>
+        <translation>Pokaż ruchy</translation>
     </message>
     <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
+        <source>Reset</source>
+        <translation>Resetuj</translation>
     </message>
     <message>
         <source>Check!</source>
@@ -175,8 +163,20 @@
         <translation>Czarne wygrały!</translation>
     </message>
     <message>
-        <source>Show moves</source>
-        <translation>Pokaż ruchy</translation>
+        <source>Pause</source>
+        <translation>Pauza</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Kontynuuj</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation>Szachownica</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Start</source>

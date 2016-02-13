@@ -374,8 +374,16 @@ Page {
                     {name:"King's Indian, Classical Variation", eco:"E92",
                         moves:"d2d4g8f6c2c4g7g6b1c3f8g7e2e4d7d6g1f3e8g8f1e2e7e5"},
                     // Test
-                    {name:"Riku test", eco:"R01",
-                        moves:"a2a4h7h6"}
+                    {name:"Riku test 1", eco:"R01",
+                        moves:"a2a4h7h6"},
+                    {name:"Riku test 2", eco:"R02", //For white enpassant testing
+                        moves:"e2e4g8f6b1c3e7e6e4e5d7d5"},
+                    {name:"Riku test 3", eco:"R03", //For black enpassant testing
+                        moves:"g1f3e7e5e2e3e5e4d2d4"},
+                    {name:"Riku test 4", eco:"R04", //To help white to win, testing
+                        moves:"d2d4c7c6c1f4d8c7f4c7g8f6c7b8"},
+                    {name:"Riku test 5", eco:"R05", //to help black to win, testing
+                        moves:"e2e3b7b5d1f3c8b7b1c3b7f3d2d4"}
                 ]
             }
 
@@ -660,7 +668,7 @@ Page {
                 property int indeksi;
                 property int toHelpIndex; //for checking empty midsquares for bishop, rook and queen
                 property int wenpassant: -1;
-                property int benpassant: -1
+                property int benpassant: -1 //Black gives enpassant possibility
                 property string itemTobemoved;
                 property string colorTobemoved;
                 property string itemMoved;
@@ -2074,6 +2082,11 @@ Page {
                             galeryModel.set(0,{"color":"e", "piece":"images/empty.png"})
                         }
                     }
+                    // If blacks move gives enpassant possibility to whiteTimer
+                    if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece == "images/p.png") {
+                        moveMent.benpassant = toIndex-8;
+                        galeryModel.set(moveMent.benpassant,{"color":"bp"})
+                    }
                     // If white gives enpassant possibility and it is utilized let's print a board accordingly
                     if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece == "images/p.png") {
                         galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
@@ -2132,6 +2145,11 @@ Page {
                             galeryModel.set(59,{"color":"w", "piece":"images/R.png"})
                             galeryModel.set(56,{"color":"e", "piece":"images/empty.png"})
                         }
+                    }
+                    // If whites move gives enpassant possibility to whiteTimer
+                    if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece == "images/P.png") {
+                        moveMent.wenpassant = toIndex+8
+                        galeryModel.set(moveMent.wenpassant,{"color":"wp"})
                     }
                     // If black gives enpassant possibility and it is utilized let's print a board accordingly
                     if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece == "images/P.png") {

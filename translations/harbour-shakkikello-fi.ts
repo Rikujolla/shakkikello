@@ -131,28 +131,16 @@
 <context>
     <name>Boardview</name>
     <message>
-        <source>Reset</source>
-        <translation>Nollaa</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Keskeytä</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Jatka</translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation>Asetukset</translation>
     </message>
     <message>
-        <source>Chess board</source>
-        <translation>Shakkilauta</translation>
+        <source>Show moves</source>
+        <translation>Näytä siirrot</translation>
     </message>
     <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
+        <source>Reset</source>
+        <translation>Nollaa</translation>
     </message>
     <message>
         <source>Check!</source>
@@ -175,8 +163,20 @@
         <translation>Musta voitti!</translation>
     </message>
     <message>
-        <source>Show moves</source>
-        <translation>Näytä siirrot</translation>
+        <source>Pause</source>
+        <translation>Keskeytä</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Jatka</translation>
+    </message>
+    <message>
+        <source>Chess board</source>
+        <translation>Shakkilauta</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Start</source>
