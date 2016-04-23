@@ -31,7 +31,7 @@ import Sailfish.Silica 1.0
 
 Page {
     id: page
-
+    //onStatusChanged: progressBar2.value = valkokello.rogres_sekuntitv
     SilicaFlickable {
         anchors.fill: parent
 
@@ -305,7 +305,7 @@ Page {
                     anchors.verticalCenterOffset: 100
                     Timer {
                         interval: 100
-                        running: tilat.juoksee && tilat.valko && Qt.ApplicationActive
+                        running: tilat.juoksee && tilat.valko && Qt.application.active
                         repeat: true
                         onTriggered: valkokello.updateValko()
                     }
@@ -387,7 +387,7 @@ Page {
                     label: qsTr("min:s")+ "     (" + (mustamax-mustamax%60)/60 + ":00)"
                         value: muttakello.rogres_sekuntitm
                     Timer {interval: 100
-                        running: tilat.juoksee && tilat.musta && Qt.ApplicationActive
+                        running: tilat.juoksee && tilat.musta && Qt.application.active
                         repeat: true
                         onTriggered: muttakello.updateMutta()}
                 }

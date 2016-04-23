@@ -10,6 +10,10 @@
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
 
+* Sat Apr 23 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.3
+- Reduced battery consumption when idle
+- Possibility to save a game and use it as an opening
+
 * Sat Feb 13 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.2
 - Promotion limitations removed
 - Enpassant bug in Stockfish mode removed

@@ -55,7 +55,7 @@ Page {
             width: page.width
             spacing: Theme.paddingLarge
             PageHeader {
-                title: qsTr("Game") + " " + (selectedGame + 1)
+                title: qsTr("Current game")
             }
 
             SectionHeader { text: qsTr("Tag pairs") }
@@ -86,9 +86,7 @@ Page {
                 text: vars.moves
             }
 
-            Component.onCompleted: {Myinfo.populateGameInfoView(selectedGame)
-            console.log(selectedGame)
-            }
+            Component.onCompleted: Myinfo.populateView()
 //loppusulkeet
         }
     }

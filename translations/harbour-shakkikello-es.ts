@@ -127,6 +127,10 @@
         <source>Chess board</source>
         <translation type="unfinished">Tablero</translation>
     </message>
+    <message>
+        <source>Saved game</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -182,6 +186,10 @@
         <source>Start</source>
         <translation type="unfinished">Inicio</translation>
     </message>
+    <message>
+        <source>Save and manage games</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -197,12 +205,65 @@
         <translation>Perfil del juego</translation>
     </message>
     <message>
+        <source>Movetext, Coordinate notation</source>
+        <translation>Se mueve, coordinar la notación</translation>
+    </message>
+    <message>
+        <source>Game</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GameInfo2</name>
+    <message>
         <source>Current game</source>
-        <translation>Juego actual</translation>
+        <translation type="unfinished">Juego actual</translation>
+    </message>
+    <message>
+        <source>Tag pairs</source>
+        <translation type="unfinished">Perfil del juego</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation>Se mueve, coordinar la notación</translation>
+        <translation type="unfinished">Se mueve, coordinar la notación</translation>
+    </message>
+</context>
+<context>
+    <name>GameList</name>
+    <message>
+        <source>Save current game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Game list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Animate game</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GameSelector</name>
+    <message>
+        <source>Game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select game</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

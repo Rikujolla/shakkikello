@@ -53,6 +53,7 @@ ApplicationWindow
     property string playMode : "stockfish"
     property int openingMode: 0 // 0 Stockfish, 1 Random
     property string openingECO: "E00" // Used for fixed opening
+    property string openingGame  //Selected gameid
     property int stockfishDepth: 4 //depth of stockfish engine
     property int stockfishMovetime: 2 //Movetime in seconds
     property int stockfishSkill: 1 // Skill Level default
@@ -63,10 +64,19 @@ ApplicationWindow
     property string promotedLong: ""
     property string promotedShort: "q"
     property bool turnWhite  // used for promotion
+    property int selectedGame: -1 //Used for game selection
+
+    ListModel {
+        id: listix
+        ListElement {
+            iidee: 0
+            title: "Test3"
+        }
+    }
+
 
     Component.onCompleted: {
         Mysets.loadSettings()
-        //console.log(startPageTxt)
         pageStack.push(Qt.resolvedUrl(startPageTxt))
     }
 

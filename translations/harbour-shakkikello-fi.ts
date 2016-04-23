@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fi">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi" version="2.1">
 <context>
     <name>Asetukset</name>
     <message>
@@ -127,6 +125,10 @@
         <source>Chess board</source>
         <translation>Shakkilauta</translation>
     </message>
+    <message>
+        <source>Saved game</source>
+        <translation>Tallennettu peli</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -182,6 +184,10 @@
         <source>Start</source>
         <translation>Aloita</translation>
     </message>
+    <message>
+        <source>Save and manage games</source>
+        <translation>Tallenna ja hallitse pelejä</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -197,12 +203,65 @@
         <translation>Pelitiedot</translation>
     </message>
     <message>
+        <source>Movetext, Coordinate notation</source>
+        <translation>Siirrot koordinaatein</translation>
+    </message>
+    <message>
+        <source>Game</source>
+        <translation>Peli</translation>
+    </message>
+</context>
+<context>
+    <name>GameInfo2</name>
+    <message>
         <source>Current game</source>
         <translation>Nykyinen peli</translation>
     </message>
     <message>
+        <source>Tag pairs</source>
+        <translation>Pelitiedot</translation>
+    </message>
+    <message>
         <source>Movetext, Coordinate notation</source>
         <translation>Siirrot koordinaatein</translation>
+    </message>
+</context>
+<context>
+    <name>GameList</name>
+    <message>
+        <source>Save current game</source>
+        <translation>Tallenna peli</translation>
+    </message>
+    <message>
+        <source>Game list</source>
+        <translation>Peliluettelo</translation>
+    </message>
+    <message>
+        <source>Game</source>
+        <translation>Peli</translation>
+    </message>
+    <message>
+        <source>Show game</source>
+        <translation>Näytä peli</translation>
+    </message>
+    <message>
+        <source>Delete game</source>
+        <translation>Poista peli</translation>
+    </message>
+    <message>
+        <source>Animate game</source>
+        <translation>Animoi peli</translation>
+    </message>
+</context>
+<context>
+    <name>GameSelector</name>
+    <message>
+        <source>Game</source>
+        <translation>Peli</translation>
+    </message>
+    <message>
+        <source>Select game</source>
+        <translation>Valitse peli</translation>
     </message>
 </context>
 <context>

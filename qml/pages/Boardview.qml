@@ -50,8 +50,13 @@ Page {
             }
 
             MenuItem {
+                text: qsTr("Save and manage games")
+                onClicked: pageStack.push(Qt.resolvedUrl("GameList.qml"))
+            }
+
+            MenuItem {
                 text: qsTr("Show moves")
-                onClicked: pageStack.push(Qt.resolvedUrl("GameInfo.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("GameInfo2.qml"))
             }
 
             MenuItem { //Start/Pause
@@ -81,7 +86,7 @@ Page {
                     muttakello.sekuntitm=0;
                     tilat.vaihdaTila();
                     maharollisuuret = qsTr("Reset");
-                    Mytab.clearRecent()
+                    //Mytab.clearRecent()
                 }
             }
         }
@@ -1841,7 +1846,7 @@ Page {
                     Timer {
                         interval: 100
                         //running: tilat.juoksee && tilat.valko && Qt.ApplicationActive
-                        running: tilat.juoksee && Qt.ApplicationActive && (isMyStart ? tilat.musta : tilat.valko)
+                        running: tilat.juoksee && Qt.application.active && (isMyStart ? tilat.musta : tilat.valko)
                         repeat: true
                         onTriggered: isMyStart ? muttakello.updateMutta() : valkokello.updateValko()
                     }
@@ -1905,7 +1910,7 @@ Page {
                                 anchors.fill: parent
                                 height: grid.cellHeight
                                 width: grid.cellWidth
-                                enabled: feni.feniWhite && isMyStart || !feni.feniWhite && !isMyStart || playMode == "human"
+                                enabled: feni.feniWhite && isMyStart || feni.feniBlack && !isMyStart || playMode == "human"
                                 onClicked: {moveMent.indeksi = index;
                                     moveMent.itemTobemoved = piece;
                                     moveMent.colorTobemoved = color;
@@ -1940,7 +1945,7 @@ Page {
             Timer {
                 id:chessChecker
                 interval: 100;
-                running: feni.forChessCheck && Qt.ApplicationActive && !waitPromo;
+                running: feni.forChessCheck && Qt.application.active && !waitPromo;
                 repeat: false
                 onTriggered: {
                     //console.log("chess checker")
@@ -1958,7 +1963,7 @@ Page {
             }
             Timer {
                 id:itemMover
-                interval: 100; running: feni.midSquareTestDone && feni.chessTestDone && Qt.ApplicationActive && !waitPromo;
+                interval: 100; running: feni.midSquareTestDone && feni.chessTestDone && Qt.application.active && !waitPromo;
                 repeat: false
                 onTriggered: {
                     if (moveMent.midSquareCheckki || feni.chessIsOn) {
@@ -1979,7 +1984,7 @@ Page {
 
             Timer {
                 interval: 500;
-                running: playMode == "stockfish" && feni.feniBlackReady && Qt.ApplicationActive && isMyStart;
+                running: playMode == "stockfish" && feni.feniBlackReady && Qt.application.active && isMyStart;
                 repeat: false
                 //interval: 500; running: playMode == "stockfish" && Qt.ApplicationActive; repeat: false
                 onTriggered: {
@@ -2000,7 +2005,7 @@ Page {
             /// Timer stockfish plays White
             Timer {
                 interval: 500;
-                running: playMode == "stockfish" && feni.feniWhiteReady && Qt.ApplicationActive && tilat.pelialkoi && !isMyStart;
+                running: playMode == "stockfish" && feni.feniWhiteReady && Qt.application.active && tilat.pelialkoi && !isMyStart;
                 repeat: false
                 //interval: 500; running: playMode == "stockfish" && Qt.ApplicationActive; repeat: false
                 onTriggered: {
@@ -2059,7 +2064,7 @@ Page {
             Timer {
                 id:blackTimer
                 interval: (stockfishMovetime*1000 + 120);
-                running: playMode == "stockfish"&& feni.feniBlackReady2 && isMyStart && Qt.ApplicationActive;
+                running: playMode == "stockfish"&& feni.feniBlackReady2 && isMyStart && Qt.application.active;
                 repeat: false
                 onTriggered: {
                     //whiteTimer.repeat = false
@@ -2116,7 +2121,7 @@ Page {
             Timer {
                 id: whiteTimer
                 interval: (stockfishMovetime*1000 + 120);
-                running: playMode == "stockfish"&& feni.feniWhiteReady2 && !isMyStart && Qt.ApplicationActive && tilat.pelialkoi;
+                running: playMode == "stockfish"&& feni.feniWhiteReady2 && !isMyStart && Qt.application.active && tilat.pelialkoi;
                 repeat: false
                 onTriggered: {
                     //console.log("white proceeds", opsi.openingPossible,hopo.test)
@@ -2201,7 +2206,7 @@ Page {
                     value: isMyStart ? valkokello.rogres_sekuntitv : muttakello.rogres_sekuntitm
                     Timer {interval: 100
                         //running: tilat.juoksee && tilat.musta && Qt.ApplicationActive
-                        running: tilat.juoksee && Qt.ApplicationActive && (isMyStart ? tilat.valko : tilat.musta)
+                        running: tilat.juoksee && Qt.application.active && (isMyStart ? tilat.valko : tilat.musta)
                         repeat: true
                         onTriggered: isMyStart ? valkokello.updateValko() : muttakello.updateMutta()}
                 }
@@ -2209,6 +2214,7 @@ Page {
             Component.onCompleted: {
                 aloitapause = qsTr("Start")
                 kripti.lisaa()
+                Mytab.clearRecent()
             }
 // loppusulkeet
         }

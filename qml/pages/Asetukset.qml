@@ -1,4 +1,4 @@
-/*Copyright (c) 2015, Riku Lahtinen
+/*Copyright (c) 2015-2016, Riku Lahtinen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,7 @@ import "setting.js" as Mysets
 
 Page {
     id: page
-
+    //onStatusChanged: game.text = openingGame
     SilicaFlickable {
         anchors.fill: parent
 
@@ -275,6 +275,12 @@ Page {
                             onClicked: {sets.indexUpdater = true;
                             }
                         }
+                        MenuItem {
+                            text: qsTr("Saved game")
+                            onClicked: {sets.indexUpdater = true;
+                                pageStack.push(Qt.resolvedUrl("GameSelector.qml"));
+                            }
+                        }
                     }
                 }
                 TextField {
@@ -295,6 +301,23 @@ Page {
                     EnterKey.onClicked: {
                         focus = false
                         openingECO = eku.text;
+                    }
+                }
+
+                TextField {
+                    id: game
+                    text: openingGame
+                    placeholderText: "1"
+                    visible: openingMode == 3
+                    width: page.width/4
+                    validator: RegExpValidator { regExp: /^[0-9]+$/ }
+                    color: errorHighlight? "red" : Theme.primaryColor
+                    inputMethodHints: Qt.ImhNoPredictiveText
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        focus = false
+                        openingGame = game.text;
                     }
                 }
             }
