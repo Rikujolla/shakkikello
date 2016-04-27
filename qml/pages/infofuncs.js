@@ -50,33 +50,30 @@ function populateView() {
     }
 
 function populateGameInfoView(indxx) {
-        console.log("populating sth new")
-        var db = LocalStorage.openDatabaseSync("ChessDB", "1.0", "Chess database", 1000000);
+    //console.log("populating sth new")
+    var db = LocalStorage.openDatabaseSync("ChessDB", "1.0", "Chess database", 1000000);
 
-        db.transaction(
-            function(tx) {
-                // Create the table, if not existing
-                tx.executeSql('CREATE TABLE IF NOT EXISTS Recentmoves(stockwhite TEXT, stockblack TEXT, pgnwhite TEXT, pgnblack TEXT, comment TEXT)');
-                tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, movestring TEXT)');
-                tx.executeSql('CREATE TABLE IF NOT EXISTS Moves(gameid INTEGER, moveid INTEGER, stockwhite TEXT, stockblack TEXT, addinfo TEXT, wtime TEXT, btime TEXT, other TEXT)');
+    db.transaction(
+                function(tx) {
+                    // Create the table, if not existing
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Recentmoves(stockwhite TEXT, stockblack TEXT, pgnwhite TEXT, pgnblack TEXT, comment TEXT)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, movestring TEXT)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Moves(gameid INTEGER, moveid INTEGER, stockwhite TEXT, stockblack TEXT, addinfo TEXT, wtime TEXT, btime TEXT, other TEXT)');
 
-                // Show all
-                var rs = tx.executeSql('SELECT * FROM Gameinfo WHERE gameid=?', indxx);
-                var rt = tx.executeSql('SELECT * FROM Moves WHERE gameid=?', indxx);
-                var i
-                // Filling the tag pairs table
-                //for(var i = 0; i < 7; i++) {
+                    // Show all
+                    var rs = tx.executeSql('SELECT * FROM Gameinfo WHERE gameid=?', indxx);
+                    var rt = tx.executeSql('SELECT * FROM Moves WHERE gameid=?', indxx);
+                    var i
                     vars.tagpairs = rs.rows.item(0).tagpairs;
-                //}
 
-                // Filling movetext
-                for(i = 0; i < rt.rows.length; i++) {
-                    vars.moves += (i+1) + ". " + rt.rows.item(i).stockwhite + ", " + rt.rows.item(i).stockblack + "\n";
+                    // Filling movetext
+                    for(i = 0; i < rt.rows.length; i++) {
+                        vars.moves += (i+1) + ". " + rt.rows.item(i).stockwhite + ", " + rt.rows.item(i).stockblack + "\n";
+                    }
                 }
-            }
-        )
+                )
 
-    }
+}
 
 
 function saveGameDB() {
@@ -110,7 +107,7 @@ function saveGameDB() {
                             tx.executeSql('INSERT INTO Moves VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [ indX, i-6, rs.rows.item(i).stockwhite, rs.rows.item(i).stockblack, '', '', '', '' ]);
                         }
                         tx.executeSql('INSERT INTO Gameinfo VALUES(?, ?, ?, ?)', [ indX, 'Noname ' + (indX + 1), tagPairs, moveChain ]);
-                        console.log(moveChain)
+                        //console.log(moveChain)
                     }
                 }
                 )
@@ -118,43 +115,17 @@ function saveGameDB() {
 }
 
 function updateName(ido, titlo) {
-    console.log("edit:name", ido+1)
+    //console.log("edit:name", ido+1)
     var db = LocalStorage.openDatabaseSync("ChessDB", "1.0", "Chess database", 1000000);
 
     db.transaction(
                 function(tx) {
                     // Create the tables, if not existing
-                    //tx.executeSql('CREATE TABLE IF NOT EXISTS Recentmoves(stockwhite TEXT, stockblack TEXT, pgnwhite TEXT, pgnblack TEXT, comment TEXT)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, movestring TEXT)');
-                    //tx.executeSql('CREATE TABLE IF NOT EXISTS Moves(gameid INTEGER, moveid INTEGER, stockwhite TEXT, stockblack TEXT, addinfo TEXT, wtime TEXT, btime TEXT, other TEXT)');
                     tx.executeSql('UPDATE Gameinfo SET gamename=? WHERE gameid=?', [titlo, ido])
-
-                    // Show all
-                    //var rs = tx.executeSql('SELECT * FROM Recentmoves');
-                    //var rt = tx.executeSql('SELECT * FROM Gameinfo');
-                    //var tagPairs = ""
-                    //var indX = rt.rows.length //Finding the index where to save the game
-                    //var moveChain = ""
-
-                    /*if (rs.rows.length >6) { //Testing that recent game has moves
-
-                        //Filling the tag pairs table
-                        for(var i = 0; i < 7; i++) {
-                            tagPairs += rs.rows.item(i).stockwhite + ": " + rs.rows.item(i).stockblack + "\n";
-                        }
-
-                        // Filling movetext
-                        for(i = 7; i < rs.rows.length; i++) {
-                            moveChain += rs.rows.item(i).stockwhite + rs.rows.item(i).stockblack
-                            tx.executeSql('INSERT INTO Moves VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [ indX, i-6, rs.rows.item(i).stockwhite, rs.rows.item(i).stockblack, '', '', '', '' ]);
-                        }
-                        tx.executeSql('INSERT INTO Gameinfo VALUES(?, ?, ?, ?)', [ indX, 'Noname ' + (indX + 1), tagPairs, moveChain ]);
-                        console.log(moveChain)
-                    }*/
                 }
                 )
     fillGameList()
-
 }
 
 
@@ -171,12 +142,10 @@ function deleteGame(indo) { //Filling the listView in GameList.qml
 
                     // Show all
                     var rt = tx.executeSql('SELECT gameid FROM Gameinfo');
-                    //console.log(rt.rows.item(indo).gameid, indo)
                     tx.executeSql('DELETE FROM Gameinfo WHERE gameid = ?', indo);
                     tx.executeSql('DELETE FROM Moves WHERE gameid = ?', indo);
                     for(var i = indo; i < (rt.rows.length -1); i++) {
                         var rs = tx.executeSql('SELECT gameid FROM Gameinfo WHERE gameid=?', i+1);
-                        //console.log(i, i+1, rs.rows.item(0).gameid)
                         tx.executeSql('UPDATE Gameinfo SET gameid=? WHERE gameid=?', [i, i+1])
                         tx.executeSql('UPDATE Moves SET gameid=? WHERE gameid=?', [i, i+1])
                     }

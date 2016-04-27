@@ -41,25 +41,11 @@ Page {
                 text: qsTr("Save settings")
                 onClicked: Mysets.saveSettings()
             }
-            /*MenuItem {
-                text: qsTr("Board, two-player")
-                onClicked: {pageStack.push(Qt.resolvedUrl("Boardview.qml"));
-                    playMode= "human"}
-            }
-            MenuItem {
-                text: qsTr("Board, Stockfish")
-                onClicked: {pageStack.push(Qt.resolvedUrl("Boardview.qml"));
-                    playMode = "stockfish";
-                    openingECO = eku.text;
-                    console.log(openingECO)
-                }
-            }*/
             MenuItem {
                 text: qsTr("Play chess")
                 onClicked: {pageStack.push(Qt.resolvedUrl("Boardview.qml"));
-                    //playMode = "stockfish";
                     openingECO = eku.text;
-                    console.log(openingECO)
+                    //console.log(openingECO)
                 }
             }
             MenuItem {
@@ -206,7 +192,7 @@ Page {
                         MenuItem {
                             text: qsTr("White")
                             onClicked: {
-                                console.log("white")
+                                //console.log("white")
                                 setColor.currentIndex = 0
                                 isMyStart = true
                             }
@@ -214,7 +200,7 @@ Page {
                         MenuItem {
                             text: qsTr("Black")
                             onClicked: {
-                                console.log("black")
+                                //console.log("black")
                                 setColor.currentIndex = 1
                                 isMyStart = false
                             }
@@ -232,7 +218,7 @@ Page {
                         MenuItem {
                             text: qsTr("Stockfish")
                             onClicked: {
-                                console.log("stockfish")
+                                //console.log("stockfish")
                                 playMode = "stockfish"
                                 setOpponent.currentIndex = 0
                             }
@@ -240,7 +226,7 @@ Page {
                         MenuItem {
                             text: qsTr("Human")
                             onClicked: {
-                                console.log("human")
+                                //console.log("human")
                                 playMode = "human"
                                 setOpponent.currentIndex = 1
                             }
@@ -383,7 +369,7 @@ Page {
                         MenuItem {
                             text: qsTr("Chess clock")
                             onClicked: {
-                                console.log("Chess clock")
+                                //console.log("Chess clock")
                                 startPageTxt = "pages/Pelisivu.qml"
                                 startPage = 0
                                 setView.currentIndex = 0
@@ -392,7 +378,7 @@ Page {
                         MenuItem {
                             text: qsTr("Chess board")
                             onClicked: {
-                                console.log("Chess board")
+                                //console.log("Chess board")
                                 startPageTxt = "pages/Boardview.qml"
                                 startPage = 1
                                 setView.currentIndex = 1
@@ -402,7 +388,7 @@ Page {
                         MenuItem {
                             text: qsTr("Settings page")
                             onClicked: {
-                                console.log("Settings page")
+                                //console.log("Settings page")
                                 startPageTxt = "pages/Asetukset.qml"
                                 startPage = 2
                                 setView.currentIndex = 2

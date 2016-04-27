@@ -10,7 +10,7 @@
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
 
-* Sat Apr 23 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.3
+* Wed Apr 27 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.3
 - Reduced battery consumption when idle
 - Possibility to save a game and use it as an opening
 

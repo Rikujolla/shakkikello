@@ -127,6 +127,10 @@
         <source>Chess board</source>
         <translation>Schaakbord</translation>
     </message>
+    <message>
+        <source>Saved game</source>
+        <translation>Opgeslagen spel</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -182,6 +186,10 @@
         <source>Start</source>
         <translation>Starten</translation>
     </message>
+    <message>
+        <source>Save and manage games</source>
+        <translation>Opslaan en spellen beheren</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -197,12 +205,65 @@
         <translation>Paren aantikken</translation>
     </message>
     <message>
+        <source>Movetext, Coordinate notation</source>
+        <translation>Verplaatstekst, coördinatennotatie</translation>
+    </message>
+    <message>
+        <source>Game</source>
+        <translation>Spel</translation>
+    </message>
+</context>
+<context>
+    <name>GameInfo2</name>
+    <message>
         <source>Current game</source>
         <translation>Huidig spel</translation>
     </message>
     <message>
+        <source>Tag pairs</source>
+        <translation>Paren taggen</translation>
+    </message>
+    <message>
         <source>Movetext, Coordinate notation</source>
-        <translation>Verplaatstekst, coördinatennotatie</translation>
+        <translation>Verplaatstekst, notatie van coördinaten</translation>
+    </message>
+</context>
+<context>
+    <name>GameList</name>
+    <message>
+        <source>Save current game</source>
+        <translation>Huidig spel opslaan</translation>
+    </message>
+    <message>
+        <source>Game list</source>
+        <translation>Spellijst</translation>
+    </message>
+    <message>
+        <source>Game</source>
+        <translation>Spel</translation>
+    </message>
+    <message>
+        <source>Show game</source>
+        <translation>Spel weergeven</translation>
+    </message>
+    <message>
+        <source>Delete game</source>
+        <translation>Spel verwijderen</translation>
+    </message>
+    <message>
+        <source>Animate game</source>
+        <translation>Spel voorzien van grafische effecten</translation>
+    </message>
+</context>
+<context>
+    <name>GameSelector</name>
+    <message>
+        <source>Game</source>
+        <translation>Spel</translation>
+    </message>
+    <message>
+        <source>Select game</source>
+        <translation>Spel selecteren</translation>
     </message>
 </context>
 <context>
