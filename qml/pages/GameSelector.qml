@@ -52,6 +52,7 @@ Page {
             }
             onClicked: {
                 openingGame = iidee+1;
+                openingGameMoves = moves
                 pageStack.pop();
             }
         }

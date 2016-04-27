@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Clock settings</source>
-        <translation>Uhr-Einstellungen </translation>
+        <translation>Uhr-Einstellungen</translation>
     </message>
     <message>
         <source>Chess settings</source>
@@ -81,7 +81,7 @@
     </message>
     <message>
         <source>Skill Level</source>
-        <translation>Spielstärke </translation>
+        <translation>Spielstärke</translation>
     </message>
     <message>
         <source>Movetime</source>
@@ -109,7 +109,7 @@
     </message>
     <message>
         <source>My color</source>
-        <translation>Eigene Farbe </translation>
+        <translation>Eigene Farbe</translation>
     </message>
     <message>
         <source>View settings</source>
@@ -126,6 +126,10 @@
     <message>
         <source>Chess board</source>
         <translation>Schachbrett</translation>
+    </message>
+    <message>
+        <source>Saved game</source>
+        <translation>Spiel speichern</translation>
     </message>
 </context>
 <context>
@@ -182,6 +186,10 @@
         <source>Start</source>
         <translation>Start</translation>
     </message>
+    <message>
+        <source>Save and manage games</source>
+        <translation>Partien speichern und verwalten</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -197,12 +205,65 @@
         <translation>Partieformular</translation>
     </message>
     <message>
+        <source>Movetext, Coordinate notation</source>
+        <translation>Züge, Koordinaten</translation>
+    </message>
+    <message>
+        <source>Game</source>
+        <translation>Partie</translation>
+    </message>
+</context>
+<context>
+    <name>GameInfo2</name>
+    <message>
         <source>Current game</source>
         <translation>Aktuelle Partie</translation>
     </message>
     <message>
+        <source>Tag pairs</source>
+        <translation>Partieformular</translation>
+    </message>
+    <message>
         <source>Movetext, Coordinate notation</source>
         <translation>Züge, Koordinaten</translation>
+    </message>
+</context>
+<context>
+    <name>GameList</name>
+    <message>
+        <source>Save current game</source>
+        <translation>Aktuelle Partie speichern</translation>
+    </message>
+    <message>
+        <source>Game list</source>
+        <translation>Liste der Spiele</translation>
+    </message>
+    <message>
+        <source>Game</source>
+        <translation>Partie</translation>
+    </message>
+    <message>
+        <source>Show game</source>
+        <translation>Partie anzeigen</translation>
+    </message>
+    <message>
+        <source>Delete game</source>
+        <translation>Partie löschen</translation>
+    </message>
+    <message>
+        <source>Animate game</source>
+        <translation>Partie animieren</translation>
+    </message>
+</context>
+<context>
+    <name>GameSelector</name>
+    <message>
+        <source>Game</source>
+        <translation>Partie</translation>
+    </message>
+    <message>
+        <source>Select game</source>
+        <translation>Partie auswählen</translation>
     </message>
 </context>
 <context>

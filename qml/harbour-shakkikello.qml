@@ -54,6 +54,7 @@ ApplicationWindow
     property int openingMode: 0 // 0 Stockfish, 1 Random
     property string openingECO: "E00" // Used for fixed opening
     property string openingGame  //Selected gameid
+    property string openingGameMoves : "" //Contains the moves of the selected game
     property int stockfishDepth: 4 //depth of stockfish engine
     property int stockfishMovetime: 2 //Movetime in seconds
     property int stockfishSkill: 1 // Skill Level default
@@ -65,12 +66,15 @@ ApplicationWindow
     property string promotedShort: "q"
     property bool turnWhite  // used for promotion
     property int selectedGame: -1 //Used for game selection
+    property string movesDone: ""; //saves done moves to single string eg. e2e4d7d5
+
 
     ListModel {
         id: listix
         ListElement {
             iidee: 0
             title: "Test3"
+            moves: "ouh"
         }
     }
 

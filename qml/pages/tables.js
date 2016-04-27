@@ -9,11 +9,15 @@ function clearRecent() {
 
             // Deleting all entries from recent moves
             tx.executeSql('DELETE FROM Recentmoves');
+            var dateTagi
+            var date1 = new Date;
+            dateTagi = date1.getFullYear() + "." + ((date1.getMonth()+1)<10 ? "0":"") +(date1.getMonth()+1)
+                    + "." + ((date1.getDate())<10 ? "0":"") + date1.getDate();
 
             // Adding comment row
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Event', 'Local Event', 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Site', 'Local Site', 'e', 'e', '[ssss]' ]);
-            tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Date', startti.dateTag, 'e', 'e', '[ssss]' ]);
+            tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Date', dateTagi, 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'Round', '1', 'e', 'e', '[ssss]' ]);
             tx.executeSql('INSERT INTO Recentmoves VALUES(?, ?, ?, ?, ?)', [ 'White', 'Me', 'e', 'e', '[ssss]' ]);
             if (playMode == "stockfish") {

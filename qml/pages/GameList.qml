@@ -26,23 +26,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
+//import org.nemomobile.notifications 1.0
 import "infofuncs.js" as Myinfo
 
 
 Page {
     id: page
     onStatusChanged: {
-        //console.log("status")
         Myinfo.fillGameList()
     }
-    /*ListModel {
-        id: listix
-        ListElement {
-            iidee: 0
-            title: "Test3"
-        }
-    }*/
-
 
     SilicaListView {
         id: listView
@@ -50,51 +42,39 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
-            /*MenuItem {
-                text: qsTr("Data maintenance")
-                onClicked: pageStack.push(Qt.resolvedUrl("Del.qml"))
-            }*/
-            /*MenuItem {
-                text: qsTr("Export location")
-                onClicked:{
-                    console.log("export")
-                }
-            }
-            MenuItem {
-                text: qsTr("Import location")
-                onClicked:{
-                    console.log("import")
-                }
-            }*/
             MenuItem {
                 text: qsTr("Save current game")
+                visible: movesDone != ""
                 onClicked:{
                     Myinfo.saveGameDB()
                     Myinfo.fillGameList()
                 }
             }
         }
-        /*PushUpMenu {
-            MenuItem {
-                text: qsTr("Help")
-                onClicked: pageStack.push(Qt.resolvedUrl("HelpSetLoc.qml"))
-            }
-        }*/
-
 
         header: PageHeader {
             title: qsTr("Game list")
         }
+
         delegate: ListItem {
             id: delegate
 
-            Label {
-                id: listos
-                //x: Theme.paddingLarge
-                text: qsTr("Game") + " " + (iidee + 1) + ": " + title
-                //anchors.verticalCenter: parent.verticalCenter
-                //color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+            Row {
+                Label {
+                    id: listos
+                    text: qsTr("Game") + " " + (iidee + 1) + ": "
+                }
+                TextInput {
+                    id:texti
+                    color: Theme.primaryColor
+                    text:title
+                    onAccepted: {
+                        title=text
+                        Myinfo.updateName(iidee, text)
+                    }
+                }
             }
+
             menu: ContextMenu {
                 MenuItem {
                     text: qsTr("Show game")
@@ -107,24 +87,31 @@ Page {
                     text: qsTr("Animate game")
                     visible: false
                     onClicked: {
-                        //currentIndex = index+1;
                         pageStack.push(Qt.resolvedUrl("GameInfo.qml"))
                     }
                 }
                 MenuItem {
                     text: qsTr("Delete game")
                     onClicked: {
-                        //currentIndex = index+1;
                         Myinfo.deleteGame(iidee)
                     }
                 }
+                /*MenuItem {
+                    text: ("Error")
+                    onClicked: {
+                        ermes.publish()
+                    }
+                }*/
             }
         }
         VerticalScrollDecorator {}
 
-        Component.onCompleted: {
-            //Mydbases.loadLocation()
-        }
+        /*Notification {
+            id: ermes
+            previewBody: "Notification preview body"
+        }*/
+
+        Component.onCompleted: {}
 
     }
 }

@@ -57,7 +57,7 @@ function populateGameInfoView(indxx) {
             function(tx) {
                 // Create the table, if not existing
                 tx.executeSql('CREATE TABLE IF NOT EXISTS Recentmoves(stockwhite TEXT, stockblack TEXT, pgnwhite TEXT, pgnblack TEXT, comment TEXT)');
-                tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, other TEXT)');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, movestring TEXT)');
                 tx.executeSql('CREATE TABLE IF NOT EXISTS Moves(gameid INTEGER, moveid INTEGER, stockwhite TEXT, stockblack TEXT, addinfo TEXT, wtime TEXT, btime TEXT, other TEXT)');
 
                 // Show all
@@ -87,7 +87,7 @@ function saveGameDB() {
                 function(tx) {
                     // Create the tables, if not existing
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Recentmoves(stockwhite TEXT, stockblack TEXT, pgnwhite TEXT, pgnblack TEXT, comment TEXT)');
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, other TEXT)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, movestring TEXT)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Moves(gameid INTEGER, moveid INTEGER, stockwhite TEXT, stockblack TEXT, addinfo TEXT, wtime TEXT, btime TEXT, other TEXT)');
 
                     // Show all
@@ -95,7 +95,7 @@ function saveGameDB() {
                     var rt = tx.executeSql('SELECT * FROM Gameinfo');
                     var tagPairs = ""
                     var indX = rt.rows.length //Finding the index where to save the game
-                    var move = ""
+                    var moveChain = ""
 
                     if (rs.rows.length >6) { //Testing that recent game has moves
 
@@ -103,17 +103,60 @@ function saveGameDB() {
                         for(var i = 0; i < 7; i++) {
                             tagPairs += rs.rows.item(i).stockwhite + ": " + rs.rows.item(i).stockblack + "\n";
                         }
-                        tx.executeSql('INSERT INTO Gameinfo VALUES(?, ?, ?, ?)', [ indX, 'Noname ' + (indX + 1), tagPairs, 'something' ]);
 
                         // Filling movetext
                         for(i = 7; i < rs.rows.length; i++) {
+                            moveChain += rs.rows.item(i).stockwhite + rs.rows.item(i).stockblack
                             tx.executeSql('INSERT INTO Moves VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [ indX, i-6, rs.rows.item(i).stockwhite, rs.rows.item(i).stockblack, '', '', '', '' ]);
                         }
+                        tx.executeSql('INSERT INTO Gameinfo VALUES(?, ?, ?, ?)', [ indX, 'Noname ' + (indX + 1), tagPairs, moveChain ]);
+                        console.log(moveChain)
                     }
                 }
                 )
 
 }
+
+function updateName(ido, titlo) {
+    console.log("edit:name", ido+1)
+    var db = LocalStorage.openDatabaseSync("ChessDB", "1.0", "Chess database", 1000000);
+
+    db.transaction(
+                function(tx) {
+                    // Create the tables, if not existing
+                    //tx.executeSql('CREATE TABLE IF NOT EXISTS Recentmoves(stockwhite TEXT, stockblack TEXT, pgnwhite TEXT, pgnblack TEXT, comment TEXT)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, movestring TEXT)');
+                    //tx.executeSql('CREATE TABLE IF NOT EXISTS Moves(gameid INTEGER, moveid INTEGER, stockwhite TEXT, stockblack TEXT, addinfo TEXT, wtime TEXT, btime TEXT, other TEXT)');
+                    tx.executeSql('UPDATE Gameinfo SET gamename=? WHERE gameid=?', [titlo, ido])
+
+                    // Show all
+                    //var rs = tx.executeSql('SELECT * FROM Recentmoves');
+                    //var rt = tx.executeSql('SELECT * FROM Gameinfo');
+                    //var tagPairs = ""
+                    //var indX = rt.rows.length //Finding the index where to save the game
+                    //var moveChain = ""
+
+                    /*if (rs.rows.length >6) { //Testing that recent game has moves
+
+                        //Filling the tag pairs table
+                        for(var i = 0; i < 7; i++) {
+                            tagPairs += rs.rows.item(i).stockwhite + ": " + rs.rows.item(i).stockblack + "\n";
+                        }
+
+                        // Filling movetext
+                        for(i = 7; i < rs.rows.length; i++) {
+                            moveChain += rs.rows.item(i).stockwhite + rs.rows.item(i).stockblack
+                            tx.executeSql('INSERT INTO Moves VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [ indX, i-6, rs.rows.item(i).stockwhite, rs.rows.item(i).stockblack, '', '', '', '' ]);
+                        }
+                        tx.executeSql('INSERT INTO Gameinfo VALUES(?, ?, ?, ?)', [ indX, 'Noname ' + (indX + 1), tagPairs, moveChain ]);
+                        console.log(moveChain)
+                    }*/
+                }
+                )
+    fillGameList()
+
+}
+
 
 function deleteGame(indo) { //Filling the listView in GameList.qml
     console.log("delete Game", indo +1)
@@ -123,7 +166,7 @@ function deleteGame(indo) { //Filling the listView in GameList.qml
                 function(tx) {
                     // Create the tables, if not existing
                     //tx.executeSql('CREATE TABLE IF NOT EXISTS Recentmoves(stockwhite TEXT, stockblack TEXT, pgnwhite TEXT, pgnblack TEXT, comment TEXT)');
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, other TEXT)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, movestring TEXT)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Moves(gameid INTEGER, moveid INTEGER, stockwhite TEXT, stockblack TEXT, addinfo TEXT, wtime TEXT, btime TEXT, other TEXT)');
 
                     // Show all
@@ -151,7 +194,7 @@ function fillGameList() { //Filling the listView in GameList.qml
                 function(tx) {
                     // Create the tables, if not existing
                     //tx.executeSql('CREATE TABLE IF NOT EXISTS Recentmoves(stockwhite TEXT, stockblack TEXT, pgnwhite TEXT, pgnblack TEXT, comment TEXT)');
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, other TEXT)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Gameinfo(gameid INTEGER, gamename TEXT, tagpairs TEXT, movestring TEXT)');
                     //tx.executeSql('CREATE TABLE IF NOT EXISTS Moves(gameid INTEGER, moveid INTEGER, stockwhite TEXT, stockblack TEXT, addinfo TEXT, wtime TEXT, btime TEXT, other TEXT)');
 
                     // Show all
@@ -161,7 +204,7 @@ function fillGameList() { //Filling the listView in GameList.qml
                     //Filling the tag pairs table
                     listix.clear()
                     for(var i = 0; i < rt.rows.length; i++) {
-                        listix.append({"iidee": rt.rows.item(i).gameid, "title": rt.rows.item(i).gamename})
+                        listix.append({"iidee": rt.rows.item(i).gameid, "title": rt.rows.item(i).gamename, "moves":rt.rows.item(i).movestring})
                     }
 
                     //tx.executeSql('SELECT gameid FROM Gameinfo ORDER BY gameid DESC LIMIT 1,?', i+1)

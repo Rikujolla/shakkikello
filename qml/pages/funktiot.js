@@ -406,10 +406,10 @@ function doMove() {
         vuoro.vaihdaMustalle();
         isChessPure();
         opsi.recentMove = hopo.test; //only effective for stockfish game
-        opsi.movesDone = opsi.movesDone + opsi.recentMove; //only effective for stockfish game
+        movesDone = movesDone + opsi.recentMove; //only effective for stockfish game
         opsi.movesTotal++;
         //console.log("white")
-        if (openingMode == 1 || openingMode == 2) {
+        if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
             Myops.inOpenings();
         }
     }
@@ -424,10 +424,10 @@ function doMove() {
         vuoro.vaihdaValkealle();
         isChessPure();
         opsi.recentMove = hopo.test; //only effective for stockfish game
-        opsi.movesDone = opsi.movesDone + opsi.recentMove;  // Maybe needed in future
+        movesDone = movesDone + opsi.recentMove;  // Maybe needed in future
         opsi.movesTotal++;
         //console.log("black")
-        if (openingMode == 1 || openingMode == 2) {
+        if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
             Myops.inOpenings();
         }
     }

@@ -144,14 +144,14 @@ Page {
 
             Item {
                 id:opsi
-                property string movesDone: ""; //saves done moves to single string eg. e2e4d7d5
+                //property string movesDone: ""; //saves done moves to single string eg. e2e4d7d5
                 property string openingCompare: "";
                 property string openingSelected: "";
                 property string recentMove: "";
                 property string tymp: "" //temporary
                 property int movesTotal: 0; //Records moves done
                 property bool openingPossible: false; // Tells if opening possible
-                property int yx //index for for
+                property int yx //index for for, maybe not needed in future, replace by var i
                 property int rantomi; //random number for opening selection
                 property var selOpenings: []; //array for sel openings
                 // Openings collected from various web pages. Main source is https://en.wikipedia.org/wiki/List_of_chess_openings
@@ -2036,7 +2036,7 @@ Page {
                             //console.log(hopo.test, opsi.openings[opsi.rantomi].eco)
                             hopo.innio()
                         }
-                        else {
+                        else if (openingMode == 2) {
                             //selected eco
                             //console.log("ECO")
                             for(var i = 0; i < opsi.openings.length; i++){
@@ -2046,6 +2046,11 @@ Page {
                                     //console.log("ECO opening", opsi.openings[i].eco, hopo.test);
                                 }
                             }
+                            hopo.innio()
+                        }
+                        else if (openingMode == 3) {
+                            //console.log(openingGameMoves)
+                            hopo.test = openingGameMoves.slice(0,4)
                             hopo.innio()
                         }
                     }
@@ -2068,10 +2073,10 @@ Page {
                 repeat: false
                 onTriggered: {
                     //whiteTimer.repeat = false
-                    console.log("vaihe2")
+                    //console.log("vaihe2")
                     if (!opsi.openingPossible) {
                         hopo.outti();
-                        console.log(hopo.test)
+                        //console.log(hopo.test)
                     }
                     Myfunks.fenToGRID()
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
@@ -2107,7 +2112,7 @@ Page {
                     Mytab.addMove();
                     vuoro.vaihdaValkealle();
                     Myfunks.isChessPure();
-                    opsi.movesDone = opsi.movesDone + opsi.recentMove; // Adding the move for openings comparison
+                    movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
                     opsi.movesTotal++;
                     feni.feniBlackReady2 = false;
                 }
@@ -2171,7 +2176,7 @@ Page {
                     Mytab.addMove();
                     vuoro.vaihdaMustalle();
                     Myfunks.isChessPure();
-                    opsi.movesDone = opsi.movesDone + opsi.recentMove; // Adding the move for openings comparison
+                    movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
                     opsi.movesTotal++;
                     feni.feniWhiteReady2 = false;
                 }
@@ -2215,6 +2220,7 @@ Page {
                 aloitapause = qsTr("Start")
                 kripti.lisaa()
                 Mytab.clearRecent()
+                movesDone = ""
             }
 // loppusulkeet
         }

@@ -47,6 +47,10 @@
                 rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'openingGame');
                 if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [openingGame, 'openingGame'])}
                 else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'openingGame', '', '', '', openingGame ])}
+                // openingGameMoves
+                rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'openingGameMoves');
+                if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valte=? WHERE name=?', [openingGameMoves, 'openingGameMoves'])}
+                else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'openingGameMoves', '', openingGameMoves, '', '' ])}
                 // stockfishSkill
                 rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'stockfishSkill');
                 if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [stockfishSkill, 'stockfishSkill'])}
@@ -125,6 +129,10 @@ function loadSettings() {
             // openingGame
             rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'openingGame');
             if (rs.rows.length > 0) {openingGame = rs.rows.item(0).valint}
+            else {}
+            // openingGameMoves
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'openingGameMoves');
+            if (rs.rows.length > 0) {openingGameMoves = rs.rows.item(0).valte}
             else {}
             // stockfishSkill
             rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'stockfishSkill');
