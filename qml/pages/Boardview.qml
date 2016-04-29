@@ -594,25 +594,25 @@ Page {
                         switch(koo) {
                         case 0:
                         case 7:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/r.png"});
+                            galeryModel.set(koo,{"color":"b", "piece":"images/r.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 1:
                         case 6:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/n.png"});
+                            galeryModel.set(koo,{"color":"b", "piece":"images/n.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 2:
                         case 5:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/b.png"});
+                            galeryModel.set(koo,{"color":"b", "piece":"images/b.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 3:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/q.png"});
+                            galeryModel.set(koo,{"color":"b", "piece":"images/q.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 4:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/k.png"});
+                            galeryModel.set(koo,{"color":"b", "piece":"images/k.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 8:
@@ -623,7 +623,7 @@ Page {
                         case 13:
                         case 14:
                         case 15:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/p.png"});
+                            galeryModel.set(koo,{"color":"b", "piece":"images/p.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 48:
@@ -634,34 +634,34 @@ Page {
                         case 53:
                         case 54:
                         case 55:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/P.png"});
+                            galeryModel.set(koo,{"color":"w", "piece":"images/P.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 56:
                         case 63:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/R.png"});
+                            galeryModel.set(koo,{"color":"w", "piece":"images/R.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 57:
                         case 62:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/N.png"});
+                            galeryModel.set(koo,{"color":"w", "piece":"images/N.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 58:
                         case 61:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/B.png"});
+                            galeryModel.set(koo,{"color":"w", "piece":"images/B.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 59:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/Q.png"});
+                            galeryModel.set(koo,{"color":"w", "piece":"images/Q.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 60:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/K.png"});
+                            galeryModel.set(koo,{"color":"w", "piece":"images/K.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         default:
-                            galeryModel.set(koo,{"color":"e", "piece":"images/empty.png"});
+                            galeryModel.set(koo,{"color":"e", "piece":"images/empty.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                     }
                     }
@@ -743,12 +743,8 @@ Page {
                             if (toIndex > 55 && !chessTest) {
                                 waitPromo = true
                                 turnWhite = false
-                                //console.log("nyt mennään", waitPromo)
                                 pawnPromotion();
-                                //Qt.createComponent("Promotion.qml").createObject(page, {});
                                 itemMoved = "images/p.png";
-                                //itemMoved = promotedLong;
-                                //console.log(itemMoved, "tuli lakki")
                                 currentMove = "promotion";
                                 movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":fromIndex})
                             }
@@ -1809,6 +1805,7 @@ Page {
                         color: "e"
                         piece: "images/empty.png"
                         frameop: 0
+                        recmove: -1
                     }
             }
 
@@ -1882,9 +1879,7 @@ Page {
                     cellWidth: parent.width / 8
                     cellHeight: parent.width / 8
                     anchors.fill: parent
-                    //layoutDirection: Qt.RightToLeft
                     layoutDirection: isMyStart ? Qt.LeftToRight : Qt.RightToLeft
-                    //verticalLayoutDirection: GridView.BottomToTop
                     verticalLayoutDirection: isMyStart ? GridView.TopToBottom : GridView.BottomToTop
                     model: galeryModel
                     delegate: Image {
@@ -1893,33 +1888,33 @@ Page {
                         rotation: isMyStart ? 180 : 0
                         sourceSize.width: grid.cellWidth
                         sourceSize.height: grid.cellHeight
-//                        ShaderEffect {}
-/*                        Rectangle {
-                            color: "blue"
-                            anchors.fill: parent
-                            enabled: true
-                            opacity: 0.5
-                        } */
+
+                        Image {
+                            asynchronous: true
+                            source: "images/framemoved.png"
+                            visible: recmove > 0
+                            opacity: (opsi.movesTotal - recmove) < 1 ? 100 : 0
+                            sourceSize.width: grid.cellWidth
+                            sourceSize.height: grid.cellHeight
+                        }
                         Image {
                             asynchronous: true
                             source: "images/frame.png"
                             opacity: frameop
                             sourceSize.width: grid.cellWidth
                             sourceSize.height: grid.cellHeight
-                        MouseArea {
-                                anchors.fill: parent
-                                height: grid.cellHeight
-                                width: grid.cellWidth
-                                enabled: feni.feniWhite && isMyStart || feni.feniBlack && !isMyStart || playMode == "human"
-                                onClicked: {moveMent.indeksi = index;
-                                    moveMent.itemTobemoved = piece;
-                                    moveMent.colorTobemoved = color;
-                                    moveMent.movePiece();
-                                    //galeryModel.set(index,{"frameop":100});
-                                    //hopo.stoDepth = 3;
-                                }
-                            }
                         }
+                        MouseArea {
+                            anchors.fill: parent
+                            height: grid.cellHeight
+                            width: grid.cellWidth
+                            enabled: feni.feniWhite && isMyStart || feni.feniBlack && !isMyStart || playMode == "human"
+                            onClicked: {moveMent.indeksi = index;
+                                moveMent.itemTobemoved = piece;
+                                moveMent.colorTobemoved = color;
+                                moveMent.movePiece();
+                            }
+                        } //end MouseArea
                     } // end Image
                 } // end GridView
             } //end Rectangle
@@ -1948,7 +1943,6 @@ Page {
                 running: feni.forChessCheck && Qt.application.active && !waitPromo;
                 repeat: false
                 onTriggered: {
-                    //console.log("chess checker")
                     if (moveMent.currentMove == "castling") {
                         Myfunks.midSquareCheck();
                     }
@@ -1971,6 +1965,8 @@ Page {
                     }
                     else {
                         Myfunks.doMove();
+                        galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
+                        galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     }
                     feni.midSquareTestDone = false;
                     feni.chessTestDone = false;
@@ -1986,7 +1982,6 @@ Page {
                 interval: 500;
                 running: playMode == "stockfish" && feni.feniBlackReady && Qt.application.active && isMyStart;
                 repeat: false
-                //interval: 500; running: playMode == "stockfish" && Qt.ApplicationActive; repeat: false
                 onTriggered: {
                     if (opsi.openingPossible) {
                         hopo.innio();
@@ -2007,7 +2002,6 @@ Page {
                 interval: 500;
                 running: playMode == "stockfish" && feni.feniWhiteReady && Qt.application.active && tilat.pelialkoi && !isMyStart;
                 repeat: false
-                //interval: 500; running: playMode == "stockfish" && Qt.ApplicationActive; repeat: false
                 onTriggered: {
                     if (opsi.openingPossible) {
                         hopo.innio();
@@ -2018,38 +2012,30 @@ Page {
                         if (openingMode == 0 ){
                             // Random winning openings from Finnish game statistics december 2014, www.shakki.net
                             var rand = Math.random()
-                            //console.log(rand)
                             if (rand < 0.43){hopo.test = "e2e4"}
                             else if (rand > 0.43 && rand < 0.83) {hopo.test = "d2d4"}
                             else if (rand > 0.83 && rand < 0.92) {hopo.test = "c2c4"}
                             else if (rand > 0.92) {hopo.test = "g1f3"}
                             else {hopo.test = "b1c3"}
                             hopo.innio()
-                            //console.log("RandomFirst move", hopo.test)
                         }
                         else if (openingMode == 1) {
                             // Random first move from the list of  ECO openings
                             opsi.rantomi = Math.random()*opsi.openings.length;
-                            //console.log(opsi.rantomi)
                             opsi.tymp = opsi.openings[opsi.rantomi].moves
                             hopo.test = opsi.tymp.slice(0,4)
-                            //console.log(hopo.test, opsi.openings[opsi.rantomi].eco)
                             hopo.innio()
                         }
                         else if (openingMode == 2) {
-                            //selected eco
-                            //console.log("ECO")
                             for(var i = 0; i < opsi.openings.length; i++){
                                 if (opsi.openings[i].eco == openingECO) {
                                     opsi.tymp = opsi.openings[i].moves
                                     hopo.test = opsi.tymp.slice(0,4)
-                                    //console.log("ECO opening", opsi.openings[i].eco, hopo.test);
                                 }
                             }
                             hopo.innio()
                         }
                         else if (openingMode == 3) {
-                            //console.log(openingGameMoves)
                             hopo.test = openingGameMoves.slice(0,4)
                             hopo.innio()
                         }
@@ -2072,11 +2058,8 @@ Page {
                 running: playMode == "stockfish"&& feni.feniBlackReady2 && isMyStart && Qt.application.active;
                 repeat: false
                 onTriggered: {
-                    //whiteTimer.repeat = false
-                    //console.log("vaihe2")
                     if (!opsi.openingPossible) {
                         hopo.outti();
-                        //console.log(hopo.test)
                     }
                     Myfunks.fenToGRID()
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
@@ -2114,6 +2097,8 @@ Page {
                     Myfunks.isChessPure();
                     movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
                     opsi.movesTotal++;
+                    galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
+                    galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     feni.feniBlackReady2 = false;
                 }
             }
@@ -2129,16 +2114,12 @@ Page {
                 running: playMode == "stockfish"&& feni.feniWhiteReady2 && !isMyStart && Qt.application.active && tilat.pelialkoi;
                 repeat: false
                 onTriggered: {
-                    //console.log("white proceeds", opsi.openingPossible,hopo.test)
                     if (feni.stockfishFirstmove == true) {
                         feni.stockfishFirstmove = false
-                        //console.log(hopo.test)
                     }
 
                     else if (!opsi.openingPossible) {
-                        //console.log(hopo.test)
                         hopo.outti();
-                        //console.log(hopo.test)
                     }
                     else {}
 
@@ -2178,6 +2159,8 @@ Page {
                     Myfunks.isChessPure();
                     movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
                     opsi.movesTotal++;
+                    galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
+                    galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     feni.feniWhiteReady2 = false;
                 }
             }
