@@ -9,6 +9,9 @@
 #- Update problem correction NOT OK
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
+* Fri Apr 29 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.4
+- Highlighting previous move
+- Updated Polish translation
 
 * Wed Apr 27 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.3
 - Reduced battery consumption when idle

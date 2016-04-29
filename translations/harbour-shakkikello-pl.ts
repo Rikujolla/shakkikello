@@ -129,7 +129,7 @@
     </message>
     <message>
         <source>Saved game</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapisana gra</translation>
     </message>
 </context>
 <context>
@@ -188,7 +188,7 @@
     </message>
     <message>
         <source>Save and manage games</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapisz i zarządzaj grami</translation>
     </message>
 </context>
 <context>
@@ -210,60 +210,60 @@
     </message>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Gra</translation>
     </message>
 </context>
 <context>
     <name>GameInfo2</name>
     <message>
         <source>Current game</source>
-        <translation type="unfinished"></translation>
+        <translation>Obecna gra</translation>
     </message>
     <message>
         <source>Tag pairs</source>
-        <translation type="unfinished">Zestaw tagów</translation>
+        <translation>Zestaw tagów</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation type="unfinished">Tekst ruchu, zapis współrzędnych</translation>
+        <translation>Tekst ruchu, zapis współrzędnych</translation>
     </message>
 </context>
 <context>
     <name>GameList</name>
     <message>
         <source>Save current game</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapisz obecną grę</translation>
     </message>
     <message>
         <source>Game list</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista gier</translation>
     </message>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Gra</translation>
     </message>
     <message>
         <source>Show game</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż grę</translation>
     </message>
     <message>
         <source>Delete game</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń grę</translation>
     </message>
     <message>
         <source>Animate game</source>
-        <translation type="unfinished"></translation>
+        <translation>Odtwórz grę</translation>
     </message>
 </context>
 <context>
     <name>GameSelector</name>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Gra</translation>
     </message>
     <message>
         <source>Select game</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz grę</translation>
     </message>
 </context>
 <context>
