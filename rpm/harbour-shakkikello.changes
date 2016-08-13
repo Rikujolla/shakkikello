@@ -9,6 +9,11 @@
 #- Update problem correction NOT OK
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
+
+* Sat Aug 13 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.5
+- Bug fix related to save settings
+- Resolution fixes for Jolla C/Intex Aqua Fish
+
 * Fri Apr 29 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.4
 - Highlighting previous move
 - Updated Polish translation

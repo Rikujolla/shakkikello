@@ -118,5 +118,6 @@ HEADERS += \
     src/stockfish/ucioption.h
 
 DISTFILES += \
-    rpm/harbour-shakkikello.changes
+    rpm/harbour-shakkikello.changes \
+    qml/pages/images/framemoved.png
 

@@ -282,7 +282,7 @@ Page {
 
             BackgroundItem {
                 width: page.width
-                height: 275
+                height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : 275)
                 enabled: tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
@@ -373,7 +373,8 @@ Page {
 
             BackgroundItem {
                 width: page.width
-                height: 275
+                //height: Screen.height == 960 ? 275 : 435
+                height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : 275)
                 enabled: tilat.juoksee && tilat.musta
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {

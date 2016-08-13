@@ -1822,7 +1822,8 @@ Page {
             BackgroundItem {
                 id: upperBar
                 width: page.width
-                height: 155
+                //height: 155
+                height: Screen.height == 960 ? 155 : 205
                 enabled: false //tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
@@ -2181,7 +2182,8 @@ Page {
             BackgroundItem {
                 id: lowerBar
                 width: page.width
-                height: 177
+                //height: 177
+                height: Screen.height == 960 ? 177 : 217
                 enabled: false //tilat.juoksee && tilat.musta
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {

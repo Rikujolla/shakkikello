@@ -51,10 +51,10 @@ ApplicationWindow
     property int countDirInt: 0 // For combo box index, related to countDirDown, 0 Downwards
     property string countDirName: qsTr("Downwards")
     property string playMode : "stockfish"
-    property int openingMode: 0 // 0 Stockfish, 1 Random
+    property int openingMode: 0 // 0 Stockfish, 1 Random, 2 ECO, 3 Saved game
     property string openingECO: "E00" // Used for fixed opening
     property string openingGame  //Selected gameid
-    property string openingGameMoves : "" //Contains the moves of the selected game
+    property string openingGameMoves: "e2e4" //Contains the moves of the selected game
     property int stockfishDepth: 4 //depth of stockfish engine
     property int stockfishMovetime: 2 //Movetime in seconds
     property int stockfishSkill: 1 // Skill Level default
@@ -82,6 +82,7 @@ ApplicationWindow
     Component.onCompleted: {
         Mysets.loadSettings()
         pageStack.push(Qt.resolvedUrl(startPageTxt))
+        //console.log("width, height", Screen.width, Screen.height)
     }
 
 }
