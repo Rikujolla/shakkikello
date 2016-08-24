@@ -139,6 +139,10 @@
         <translation type="unfinished">设置</translation>
     </message>
     <message>
+        <source>Save and manage games</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Show moves</source>
         <translation type="unfinished"></translation>
     </message>
@@ -185,10 +189,6 @@
     <message>
         <source>Start</source>
         <translation type="unfinished">开始</translation>
-    </message>
-    <message>
-        <source>Save and manage games</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

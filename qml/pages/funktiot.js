@@ -268,7 +268,7 @@ function cancelMove() {
     if (moveMent.currentMove == "promotion") {
         galeryModel.set(movedPieces.get(2).indeksos,{"color":movedPieces.get(2).color, "piece":movedPieces.get(2).piece})
     }
-    // Backing queen to pawn in promotion
+    // Backing queen to pawn in enpassant
     if (moveMent.currentMove == "enpassant") {
         galeryModel.set(movedPieces.get(2).indeksos,{"color":movedPieces.get(2).color, "piece":movedPieces.get(2).piece})
     }
@@ -311,7 +311,12 @@ function isChessPure() {
             moveMent.isLegalmove();
             if (moveMent.moveLegal){
                 feni.feniWhiteChess = true;
-                feni.upperMessage = feni.messages[0].msg;
+                if (isMyStart) {
+                    feni.lowerMessage = feni.messages[0].msg;
+                }
+                else {
+                    feni.upperMessage = feni.messages[0].msg;
+                }
             }
         }
 
@@ -322,12 +327,15 @@ function isChessPure() {
             moveMent.isLegalmove();
             if (moveMent.moveLegal){
                 feni.feniBlackChess = true;
-                feni.lowerMessage = feni.messages[0].msg;
+                if (isMyStart) {
+                    feni.upperMessage = feni.messages[0].msg;
+                }
+                else {
+                    feni.lowerMessage = feni.messages[0].msg;
+                }
             }
 
         }
-
-
     }
 
     toIndex = feni.temptoIndex;
@@ -393,11 +401,18 @@ function midSquareCheck() {
 function doMove() {
 
     if (tilat.valko && !feni.chessIsOn){
-        feni.upperMessage = "";
+        if (isMyStart) {
+            feni.lowerMessage = "";
+        }
+        else {
+            feni.upperMessage = "";
+        }
 
-//        if (playMode == "stockfish"){
-            gridToFEN();
-//        }
+        gridToFEN();
+        if (moveMent.currentMove == "enpassant") {blackCaptured.append({"captured":"images/p.png"})}
+        if (movedPieces.get(1).piece != "images/empty.png") {
+            blackCaptured.append({"captured":movedPieces.get(1).piece})
+        }
         moveMent.currentMove = "";
         if (movedPieces.get(0).piece == "images/K.png") {moveMent.wKingMoved = true;}
         moveMent.midSquareCheckki = false;
@@ -408,15 +423,24 @@ function doMove() {
         opsi.recentMove = hopo.test; //only effective for stockfish game
         movesDone = movesDone + opsi.recentMove; //only effective for stockfish game
         opsi.movesTotal++;
-        //console.log("white")
         if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
             Myops.inOpenings();
         }
     }
 
     else if (tilat.musta && !feni.chessIsOn) {
-        feni.lowerMessage = "";
+        if (isMyStart) {
+            feni.upperMessage = "";
+        }
+        else {
+            feni.lowerMessage = "";
+        }
+
         gridToFEN();
+        if (moveMent.currentMove == "enpassant") {whiteCaptured.append({"captured":"images/P.png"})}
+        if (movedPieces.get(1).piece != "images/empty.png") {
+            whiteCaptured.append({"captured":movedPieces.get(1).piece})
+        }
         moveMent.currentMove = "";
         if (movedPieces.get(0).piece == "images/k.png") {moveMent.bKingMoved = true;}
         moveMent.midSquareCheckki = false;
@@ -426,7 +450,6 @@ function doMove() {
         opsi.recentMove = hopo.test; //only effective for stockfish game
         movesDone = movesDone + opsi.recentMove;  // Maybe needed in future
         opsi.movesTotal++;
-        //console.log("black")
         if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
             Myops.inOpenings();
         }

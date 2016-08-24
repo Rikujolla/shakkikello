@@ -139,6 +139,10 @@
         <translation>Instellingen</translation>
     </message>
     <message>
+        <source>Save and manage games</source>
+        <translation>Opslaan en spellen beheren</translation>
+    </message>
+    <message>
         <source>Show moves</source>
         <translation>Zetten weergeven</translation>
     </message>
@@ -185,10 +189,6 @@
     <message>
         <source>Start</source>
         <translation>Starten</translation>
-    </message>
-    <message>
-        <source>Save and manage games</source>
-        <translation>Opslaan en spellen beheren</translation>
     </message>
 </context>
 <context>

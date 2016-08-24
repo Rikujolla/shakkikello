@@ -139,6 +139,10 @@
         <translation>Ustawienia</translation>
     </message>
     <message>
+        <source>Save and manage games</source>
+        <translation>Zapisz i zarządzaj grami</translation>
+    </message>
+    <message>
         <source>Show moves</source>
         <translation>Pokaż ruchy</translation>
     </message>
@@ -185,10 +189,6 @@
     <message>
         <source>Start</source>
         <translation>Start</translation>
-    </message>
-    <message>
-        <source>Save and manage games</source>
-        <translation>Zapisz i zarządzaj grami</translation>
     </message>
 </context>
 <context>

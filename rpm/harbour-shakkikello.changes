@@ -9,6 +9,9 @@
 #- Update problem correction NOT OK
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
+* Wed Aug 24 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.6
+- Captured pieces are shown
+- Bug and view fixes
 
 * Sat Aug 13 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.5
 - Bug fix related to save settings

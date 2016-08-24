@@ -105,7 +105,8 @@ Page {
             id: column
 
             width: page.width
-            spacing: Theme.paddingLarge
+            //spacing: Theme.paddingLarge
+            spacing: 0
 
             Item {
                 id: feni
@@ -1823,7 +1824,7 @@ Page {
                 id: upperBar
                 width: page.width
                 //height: 155
-                height: Screen.height == 960 ? 155 : 205
+                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : 164)
                 enabled: false //tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
@@ -1850,20 +1851,57 @@ Page {
                     }
                 }
             }
-            Text {
-                id: upperNotes
-                text: feni.upperMessage
-                color: Theme.primaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                rotation:180
-                height: 8
-                width: parent.width
-//                anchors.horizontalCenter: parent.horizontalCenter
+
+            BackgroundItem {
+                id: uppMessageArea
+                width: page.width
+                height: page.width/15
+
+                Text {
+                    id: upperNotes
+                    text: feni.upperMessage
+                    visible:feni.upperMessage != ""
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeSmall
+                    verticalAlignment: Text.AlignTop
+                    horizontalAlignment: Text.AlignHCenter
+                    rotation:180
+                    width: parent.width
+                    height: Screen.height == 2048 ? 66 : page.width/15
+                }
+
+                GridView {
+                    id:upperMessageGrid
+                    cellWidth: Screen.height == 2048 ? 66 : page.width/15
+                    cellHeight: Screen.height == 2048 ? 66 : page.width/15
+                    anchors.fill: parent
+                    visible:feni.upperMessage == ""
+                    model:isMyStart ? whiteCaptured : blackCaptured
+                    delegate: Rectangle {
+                        height:upperMessageGrid.cellHeight
+                        width: upperMessageGrid.cellWidth
+                        color: "#dddea1"
+                        Image {
+                            source: captured
+                            rotation: isMyStart ? 0 : 180
+                            sourceSize.width: upperMessageGrid.cellWidth
+                            sourceSize.height: upperMessageGrid.cellHeight
+                        }
+                    }
+                }
+            }
+
+            BackgroundItem {height:10}
+
+            ListModel {
+                id:blackCaptured
+                ListElement {
+                captured: "images/q.png"
+                }
             }
 
             Rectangle {
+                id:gridBackround
                 height: parent.width
                 //height: Screen.sizeCategory >= Screen.Large ?
                 width:parent.width
@@ -2063,6 +2101,10 @@ Page {
                         hopo.outti();
                     }
                     Myfunks.fenToGRID()
+                    // Saving moves for captured pieces
+                    movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
+                    movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
+
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
                     // If castling, moving the rook also
@@ -2084,15 +2126,25 @@ Page {
                     // If white gives enpassant possibility and it is utilized let's print a board accordingly
                     if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece == "images/p.png") {
                         galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
+                        moveMent.currentMove = "enpassant";
                         moveMent.wenpassant = -1;
                     }
+                    // Adding moves to captures list
+                    if (moveMent.currentMove == "enpassant") {
+                        whiteCaptured.append({"captured":"images/P.png"});
+                        moveMent.currentMove = "";
+                    }
+                    if (movedPieces.get(1).piece != "images/empty.png") {
+                        whiteCaptured.append({"captured":movedPieces.get(1).piece})
+                    }
 
-                    // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
+                    // If pawn reaches the last line let's guess the promotion to be a queen. Have to correct in future some how
 
                     if (toIndex > 55 && galeryModel.get(toIndex).piece == "images/p.png") {
                         galeryModel.set(toIndex, {"piece": "images/q.png"});
                     }
                     feni.lowerMessage = "";
+                    feni.upperMessage = "";
                     Mytab.addMove();
                     vuoro.vaihdaValkealle();
                     Myfunks.isChessPure();
@@ -2125,6 +2177,10 @@ Page {
                     else {}
 
                     Myfunks.fenToGRID()
+                    // Saving moves for captured pieces
+                    movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
+                    movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
+
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
                     // If castling, moving the rook also
@@ -2146,7 +2202,16 @@ Page {
                     // If black gives enpassant possibility and it is utilized let's print a board accordingly
                     if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece == "images/P.png") {
                         galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
+                        moveMent.currentMove = "enpassant";
                         moveMent.benpassant = -1;
+                    }
+                    // Adding moves to captures list
+                    if (moveMent.currentMove == "enpassant") {
+                        blackCaptured.append({"captured":"images/p.png"});
+                        moveMent.currentMove = "";
+                    }
+                    if (movedPieces.get(1).piece != "images/empty.png") {
+                        blackCaptured.append({"captured":movedPieces.get(1).piece})
                     }
 
                     // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
@@ -2154,6 +2219,7 @@ Page {
                     if (toIndex < 8 && galeryModel.get(toIndex).piece == "images/P.png") {
                         galeryModel.set(toIndex, {"piece": "images/Q.png"});
                     }
+                    feni.lowerMessage = "";
                     feni.upperMessage = "";
                     Mytab.addMove();
                     vuoro.vaihdaMustalle();
@@ -2166,24 +2232,58 @@ Page {
                 }
             }
 
+            BackgroundItem {height:10}
 
-            Text {
-                id: lowerNotes
-                text: feni.lowerMessage
-                color: Theme.primaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                height: 5
-                width: parent.width
-//                anchors.horizontalCenter: parent.horizontalCenter
+            BackgroundItem {
+                id: lowMessageArea
+                width: page.width
+                height: Screen.height == 2048 ? 66 : page.width/15
+
+                Text {
+                    id: lowerNotes
+                    text: feni.lowerMessage
+                    visible:feni.lowerMessage != ""
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeSmall
+                    verticalAlignment: Text.AlignBottom
+                    horizontalAlignment: Text.AlignHCenter
+                    width: parent.width
+                    height: page.width/15
+                }
+
+                GridView {
+                    id:lowerMessageGrid
+                    cellWidth: Screen.height == 2048 ? 66 : page.width/15
+                    cellHeight: Screen.height == 2048 ? 66 : page.width/15
+                    anchors.fill: parent
+                    visible: feni.lowerMessage == ""
+                    verticalLayoutDirection: GridView.BottomToTop
+                    model:isMyStart ? blackCaptured: whiteCaptured
+                    delegate: Rectangle {
+                        height:lowerMessageGrid.cellHeight
+                        width: lowerMessageGrid.cellWidth
+                        color: "#997400"
+                        Image {
+                            source: captured
+                            rotation: isMyStart ? 0 : 180
+                            sourceSize.width: lowerMessageGrid.cellWidth
+                            sourceSize.height: lowerMessageGrid.cellHeight
+                        }
+                    }
+                }
+            }
+
+            ListModel {
+                id:whiteCaptured
+                ListElement {
+                captured: "images/Q.png"
+                }
             }
 
             BackgroundItem {
                 id: lowerBar
                 width: page.width
-                //height: 177
-                height: Screen.height == 960 ? 177 : 217
+                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : 164)
                 enabled: false //tilat.juoksee && tilat.musta
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {
@@ -2206,6 +2306,8 @@ Page {
                 kripti.lisaa()
                 Mytab.clearRecent()
                 movesDone = ""
+                whiteCaptured.clear()
+                blackCaptured.clear()
             }
 // loppusulkeet
         }

@@ -302,7 +302,7 @@ Page {
                     value: valkokello.rogres_sekuntitv
                     rotation: 180
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.verticalCenterOffset: 100
+                    //anchors.verticalCenterOffset: 100
                     Timer {
                         interval: 100
                         running: tilat.juoksee && tilat.valko && Qt.application.active
@@ -386,14 +386,15 @@ Page {
                                 + (Math.abs(muttakello.label_sekuntitm) < 10 ? "0" : "")
                                 + Math.abs(muttakello.label_sekuntitm)}
                     label: qsTr("min:s")+ "     (" + (mustamax-mustamax%60)/60 + ":00)"
-                        value: muttakello.rogres_sekuntitm
+                    value: muttakello.rogres_sekuntitm
+                    anchors.verticalCenter: parent.verticalCenter
                     Timer {interval: 100
                         running: tilat.juoksee && tilat.musta && Qt.application.active
                         repeat: true
                         onTriggered: muttakello.updateMutta()}
                 }
             }
-// loppusulkeet
+            // loppusulkeet
         }
     }
     //Component.onCompleted: Mysets.loadSettings()

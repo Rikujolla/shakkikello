@@ -139,6 +139,10 @@
         <translation>Asetukset</translation>
     </message>
     <message>
+        <source>Save and manage games</source>
+        <translation>Tallenna ja hallitse pelejä</translation>
+    </message>
+    <message>
         <source>Show moves</source>
         <translation>Näytä siirrot</translation>
     </message>
@@ -185,10 +189,6 @@
     <message>
         <source>Start</source>
         <translation>Aloita</translation>
-    </message>
-    <message>
-        <source>Save and manage games</source>
-        <translation>Tallenna ja hallitse pelejä</translation>
     </message>
 </context>
 <context>

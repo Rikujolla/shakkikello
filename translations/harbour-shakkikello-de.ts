@@ -129,7 +129,7 @@
     </message>
     <message>
         <source>Saved game</source>
-        <translation>Spiel speichern</translation>
+        <translation>gespeicherte Partie</translation>
     </message>
 </context>
 <context>
@@ -137,6 +137,10 @@
     <message>
         <source>Settings</source>
         <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <source>Save and manage games</source>
+        <translation>Partien speichern und verwalten</translation>
     </message>
     <message>
         <source>Show moves</source>
@@ -185,10 +189,6 @@
     <message>
         <source>Start</source>
         <translation>Start</translation>
-    </message>
-    <message>
-        <source>Save and manage games</source>
-        <translation>Partien speichern und verwalten</translation>
     </message>
 </context>
 <context>
