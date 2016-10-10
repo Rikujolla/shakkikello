@@ -282,7 +282,8 @@ Page {
 
             BackgroundItem {
                 width: page.width
-                height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : 275)
+                //height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : 275)
+                height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : (Screen.height == 1920 ? 680 : 275))
                 enabled: tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
@@ -341,7 +342,7 @@ Page {
                         tilat.juoksee = !tilat.juoksee;
                         startti.timeAsetus(); // Zero time referece setting
                         kello.sekuntit = 0; //Zeroing the master clock
-                        valkokello.timeValko(); // Saving accumulated time fo White
+                        valkokello.timeValko(); // Saving accumulated time for White
                         valkokello.sekuntitv = 0;
                         muttakello.timeMutta(); // Saving accumulated time for Black
                         muttakello.sekuntitm=0;
@@ -373,8 +374,9 @@ Page {
 
             BackgroundItem {
                 width: page.width
-                //height: Screen.height == 960 ? 275 : 435
-                height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : 275)
+                //height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : 275)
+                //height: JollaC ? 435 : JollaTablet ? 819 : TuringPhone&&Oysters ? xxx: Jolla1 : 275)
+                height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : (Screen.height == 1920 ? 680 : 275))
                 enabled: tilat.juoksee && tilat.musta
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {

@@ -5,6 +5,7 @@
 // Function isChessPure(), row 286
 // Function midSquareCheck(), row 342
 // Function doMove(), row 402
+// Function whiteinMate(), row 461
 
 /////////////////////////////////////////////////////////
 // this function transforms grid notation to FEN-notation
@@ -455,4 +456,21 @@ function doMove() {
         }
     }
 
+}
+
+///////////////////////////////////////////////////////
+// Function checks if white is in mate condition
+////////////////////////////////////////////
+
+function iswhiteInMate() {
+    console.log(opsi.movesTotal)
+    for(var i = 0; i < 64; i++){
+        whiteInMate = true;
+    }
+    if (whiteInMate) {
+        console.log("White is in mate")
+    }
+    else {
+        console.log("White is not in mate")
+    }
 }

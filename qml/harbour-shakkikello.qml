@@ -67,6 +67,7 @@ ApplicationWindow
     property bool turnWhite  // used for promotion
     property int selectedGame: -1 //Used for game selection
     property string movesDone: ""; //saves done moves to single string eg. e2e4d7d5
+    property bool whiteInMate: false // Tells if white is in mate
 
 
     ListModel {

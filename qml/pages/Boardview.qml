@@ -1824,7 +1824,8 @@ Page {
                 id: upperBar
                 width: page.width
                 //height: 155
-                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : 164)
+                //height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : 164)
+                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : (Screen.height == 1920 ? 420 : 164))
                 enabled: false //tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
@@ -2101,7 +2102,7 @@ Page {
                         hopo.outti();
                     }
                     Myfunks.fenToGRID()
-                    // Saving moves for captured pieces
+                    // Saving moves for captured pieces //Possible BUG in fast play in next line, could be related to narrow timeslot where you can select piece on opponents turn. Have to follow
                     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
                     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
 
@@ -2153,6 +2154,7 @@ Page {
                     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     feni.feniBlackReady2 = false;
+                    whiteMatetimer.start();
                 }
             }
 
@@ -2232,6 +2234,18 @@ Page {
                 }
             }
 
+            Timer {
+                id: whiteMatetimer
+                running: false
+                repeat: false
+                interval: 3000
+                onTriggered: {
+                    console.log("WhiteMatetimer started")
+                    tilat.valko ? Myfunks.iswhiteInMate():
+                    whiteMatetimer.stop()
+                }
+            }
+
             BackgroundItem {height:10}
 
             BackgroundItem {
@@ -2283,7 +2297,7 @@ Page {
             BackgroundItem {
                 id: lowerBar
                 width: page.width
-                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : 164)
+                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : (Screen.height == 1920 ? 420 : 164))
                 enabled: false //tilat.juoksee && tilat.musta
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {
