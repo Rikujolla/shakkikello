@@ -303,7 +303,7 @@ Page {
                     value: valkokello.rogres_sekuntitv
                     rotation: 180
                     anchors.verticalCenter: parent.verticalCenter
-                    //anchors.verticalCenterOffset: 100
+                    anchors.verticalCenterOffset: Screen.height == 960 ? 50 :0
                     Timer {
                         interval: 100
                         running: tilat.juoksee && tilat.valko && Qt.application.active
