@@ -2240,7 +2240,7 @@ Page {
                 repeat: false
                 interval: 3000
                 onTriggered: {
-                    console.log("WhiteMatetimer started")
+                    //console.log("WhiteMatetimer started")
                     tilat.valko ? Myfunks.iswhiteInMate():
                     whiteMatetimer.stop()
                 }

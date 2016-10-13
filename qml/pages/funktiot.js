@@ -468,9 +468,9 @@ function iswhiteInMate() {
         whiteInMate = true;
     }
     if (whiteInMate) {
-        console.log("White is in mate")
+        //console.log("White is in mate")
     }
     else {
-        console.log("White is not in mate")
+        //console.log("White is not in mate")
     }
 }
