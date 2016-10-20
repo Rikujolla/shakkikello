@@ -31,7 +31,12 @@ import Sailfish.Silica 1.0
 
 Page {
     id: page
-    //onStatusChanged: progressBar2.value = valkokello.rogres_sekuntitv
+
+    /*onStatusChanged: {
+        progressBar2.value = valkokello.rogres_sekuntitv+1 //not working
+        progressBar2.value = valkokello.rogres_sekuntitv
+    }*/
+
     SilicaFlickable {
         anchors.fill: parent
 
@@ -399,5 +404,10 @@ Page {
             // loppusulkeet
         }
     }
-    //Component.onCompleted: Mysets.loadSettings()
+
+    /*Component.onCompleted: {
+        progressBar2.value = valkokello.rogres_sekuntitv+1 // not working
+        progressBar2.value = valkokello.rogres_sekuntitv
+        //Mysets.loadSettings()
+    }*/
 }

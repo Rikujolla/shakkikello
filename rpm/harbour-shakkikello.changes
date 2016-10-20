@@ -10,7 +10,7 @@
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
 
-* Wed Aug 24 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.7
+* Wed Oct 13 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.7
 - Turing Phone and Oysters screen resolution supported
 - Published only in OpenRepos due to Harbour limitations for Early Access SDK (Fiskarsinjoki)
 
