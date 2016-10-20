@@ -119,5 +119,6 @@ HEADERS += \
 
 DISTFILES += \
     rpm/harbour-shakkikello.changes \
-    qml/pages/images/framemoved.png
+    qml/pages/images/framemoved.png \
+    qml/pages/images/frame.png
 
