@@ -68,6 +68,7 @@ Page {
                     id:texti
                     color: Theme.primaryColor
                     text:title
+                    font.pixelSize: Theme.fontSizeMedium
                     onAccepted: {
                         title=text
                         Myinfo.updateName(iidee, text)

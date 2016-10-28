@@ -9,6 +9,11 @@
 #- Update problem correction NOT OK
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
+* Wed Oct 20 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.9
+- Minor changes and harbour release
+
+* Wed Oct 20 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.8
+- Version not for release
 
 * Wed Oct 13 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.7
 - Turing Phone and Oysters screen resolution supported
