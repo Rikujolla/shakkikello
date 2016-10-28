@@ -68,6 +68,7 @@ Page {
                     id:texti
                     color: Theme.primaryColor
                     text:title
+                    width: contentWidth + 50
                     font.pixelSize: Theme.fontSizeMedium
                     onAccepted: {
                         title=text

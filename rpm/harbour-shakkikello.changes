@@ -9,7 +9,7 @@
 #- Update problem correction NOT OK
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
-* Wed Oct 20 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.9
+* Fri Oct 28 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.9
 - Minor changes and harbour release
 
 * Wed Oct 20 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.8
