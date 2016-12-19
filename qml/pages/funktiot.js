@@ -474,3 +474,25 @@ function iswhiteInMate() {
         //console.log("White is not in mate")
     }
 }
+
+// Function checks if piece is movable
+
+function isMovableB() {
+    if (colorTobemoved == "b" && tilat.musta) {
+        canBemoved = true;
+        galeryModel.set(fromIndex,{"frameop":100});
+    }
+    else if (colorTobemoved == "w" && tilat.valko) {
+        canBemoved = true;
+        galeryModel.set(fromIndex,{"frameop":100});
+    }
+    else {
+        canBemoved = false;
+    }
+}
+
+
+
+function isLegalmoveB() {
+
+}

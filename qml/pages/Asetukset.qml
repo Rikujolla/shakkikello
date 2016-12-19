@@ -27,7 +27,10 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
 import "setting.js" as Mysets
-
+//import harbour.shakkikello.btservice 1.0
+//import harbour.shakkikello.chessservice 1.0
+//import harbour.shakkikello.server 1.0
+import QtBluetooth 5.2
 
 Page {
     id: page
@@ -183,6 +186,68 @@ Page {
             }
 
             ComboBox {
+                id: setOpponent
+                width: parent.width
+                label: qsTr("Opponent")
+                currentIndex: playMode == "stockfish" ? 0 : (playMode == "human" ? 1 : 2)
+
+                menu: ContextMenu {
+                        MenuItem {
+                            text: qsTr("Stockfish")
+                            onClicked: {
+                                //console.log("stockfish")
+                                playMode = "stockfish"
+                                setOpponent.currentIndex = 0
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Human")
+                            onClicked: {
+                                //console.log("human")
+                                playMode = "human"
+                                setOpponent.currentIndex = 1
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Another device")
+                            onClicked: {
+                                //console.log("othDevice")
+                                playMode = "othDevice"
+                                setOpponent.currentIndex = 2
+                                pageStack.push(Qt.resolvedUrl("Chat3.qml"));
+                            }
+                        }
+                }
+            }
+
+            ComboBox { // for dynamic creation see Pastie: http://pastie.org/9813891
+                id: serverSettings
+                visible: playMode == "othDevice"
+                width: page.width*2/3
+                label: qsTr("My role")
+                //currentIndex: openingMode
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("Server")
+                        onClicked: {
+                            //sets.indexUpdater = true;
+                            console.log("Myrole server")
+                            //btCom.startServer()
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Client")
+                        onClicked: {
+                            //sets.indexUpdater = true;
+                            //pageStack.push(Qt.resolvedUrl("GameSelector.qml"));
+                            console.log("Myrole client")
+                            //btCom.startClient()
+                        }
+                    }
+                }
+            }
+
+            ComboBox {
                 id: setColor
                 width: parent.width
                 label: qsTr("My color")
@@ -208,31 +273,6 @@ Page {
                 }
             }
 
-            ComboBox {
-                id: setOpponent
-                width: parent.width
-                label: qsTr("Opponent")
-                currentIndex: playMode == "stockfish" ? 0 : 1
-
-                menu: ContextMenu {
-                        MenuItem {
-                            text: qsTr("Stockfish")
-                            onClicked: {
-                                //console.log("stockfish")
-                                playMode = "stockfish"
-                                setOpponent.currentIndex = 0
-                            }
-                        }
-                        MenuItem {
-                            text: qsTr("Human")
-                            onClicked: {
-                                //console.log("human")
-                                playMode = "human"
-                                setOpponent.currentIndex = 1
-                            }
-                        }
-                }
-            }
 
             Row {
                 x: Theme.paddingLarge
@@ -307,6 +347,23 @@ Page {
                     }
                 }
             }
+
+            /*Button {
+                id:tcpSeverStart
+                visible: playMode == "othDevice"
+                text:"Start TCP server"
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("Chat3a.qml"));
+                    //conTcpSrv.Server();
+                    tcpSeverStart.text = "Starting köhä"
+                }
+            }*/
+            /*Button {
+                id:tcpClientStart
+                visible: playMode == "othDevice"
+                text:"Start tcp thing"
+                onClicked: pageStack.push(Qt.resolvedUrl("Chat3.qml"));
+            }*/
 
             Row {
                 x: Theme.paddingLarge

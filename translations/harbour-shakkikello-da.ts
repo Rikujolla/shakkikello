@@ -131,6 +131,22 @@
         <source>Saved game</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Another device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>My role</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Client</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -189,6 +205,52 @@
     <message>
         <source>Start</source>
         <translation type="unfinished">Starte</translation>
+    </message>
+</context>
+<context>
+    <name>Chat</name>
+    <message>
+        <source>Bluetooth Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local Bluetooth Adapter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Chat3</name>
+    <message>
+        <source>TCP client page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Server IP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Server port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -311,6 +373,21 @@
     <message>
         <source>Controls</source>
         <translation>Controls</translation>
+    </message>
+</context>
+<context>
+    <name>RemoteSelector</name>
+    <message>
+        <source>Available chat services</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scanning...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

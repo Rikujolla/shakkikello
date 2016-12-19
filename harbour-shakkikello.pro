@@ -13,6 +13,8 @@
 TARGET = harbour-shakkikello
 
 CONFIG += sailfishapp
+# If in harbour comment the next line
+# QT += quick
 
 SOURCES += src/harbour-shakkikello.cpp \
     src/stockfish/benchmark.cpp \
@@ -33,7 +35,9 @@ SOURCES += src/harbour-shakkikello.cpp \
     src/stockfish/timeman.cpp \
     src/stockfish/tt.cpp \
     src/stockfish/uci.cpp \
-    src/stockfish/ucioption.cpp
+    src/stockfish/ucioption.cpp \
+    src/fortuneserver/server.cpp \
+    src/fortuneclient/client.cpp
 
 OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/cover/CoverPage.qml \
@@ -115,10 +119,17 @@ HEADERS += \
     src/stockfish/tt.h \
     src/stockfish/types.h \
     src/stockfish/uci.h \
-    src/stockfish/ucioption.h
+    src/stockfish/ucioption.h \
+    src/fortuneserver/server.h \
+    src/fortuneclient/client.h
 
 DISTFILES += \
     rpm/harbour-shakkikello.changes \
     qml/pages/images/framemoved.png \
-    qml/pages/images/frame.png
+    qml/pages/images/frame.png \
+    qml/pages/Chat3.qml
+
+FORMS += \
+    src/btchat/chat.ui \
+    src/btchat/remoteselector.ui
 

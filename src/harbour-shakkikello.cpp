@@ -42,7 +42,8 @@
 //#include "stockfish/thread.h"
 #include "stockfish/uci.h"
 // end Stockfish
-
+#include "fortuneserver/server.h"
+#include "fortuneclient/client.h"
 
 int main(int argc, char *argv[])
 {
@@ -56,6 +57,8 @@ int main(int argc, char *argv[])
     // To display the view, call "show()" (will show fullscreen on device).
 
     qmlRegisterType<A>("harbour.shakkikello.stockfish", 1, 0, "Stockfishe");
+    qmlRegisterType<Server>("harbour.shakkikello.server", 1, 0, "TcpServer");
+    qmlRegisterType<Client>("harbour.shakkikello.client", 1, 0, "TcpClient");
 
 /*    UCI::init(Options);
     Bitboards::init();
