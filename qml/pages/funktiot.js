@@ -419,6 +419,13 @@ function doMove() {
         moveMent.midSquareCheckki = false;
         //console.log(hopo.test);
         Mytab.addMove();
+        if (playMode == "othDevice") {
+            conTcpSrv.smove = hopo.test;
+            console.log("Move " + conTcpSrv.smove);
+            conTcpCli.requestNewFortune();
+            oppOldmovemsg = conTcpCli.cmove; //is this needed??
+            conTcpSrv.waitmove = conTcpCli.cmove;//if this helps
+        }
         vuoro.vaihdaMustalle();
         isChessPure();
         opsi.recentMove = hopo.test; //only effective for stockfish game
@@ -494,5 +501,64 @@ function isMovableB() {
 
 
 function isLegalmoveB() {
+
+}
+
+function othDeviceMove() {
+    console.log("othDevice moves")
+    fenToGRID()
+    // Saving moves for captured pieces //Possible BUG in fast play in next line, could be related to narrow timeslot where you can select piece on opponents turn. Have to follow
+    movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
+    movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
+
+    galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
+    galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
+    // If castling, moving the rook also
+    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece == "images/k.png") {
+        if (toIndex == 6){
+            galeryModel.set(5,{"color":"b", "piece":"images/r.png"})
+            galeryModel.set(7,{"color":"e", "piece":"images/empty.png"})
+        }
+        else {
+            galeryModel.set(3,{"color":"b", "piece":"images/r.png"})
+            galeryModel.set(0,{"color":"e", "piece":"images/empty.png"})
+        }
+    }
+    // If blacks move gives enpassant possibility to whiteTimer
+    if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece == "images/p.png") {
+        moveMent.benpassant = toIndex-8;
+        galeryModel.set(moveMent.benpassant,{"color":"bp"})
+    }
+    // If white gives enpassant possibility and it is utilized let's print a board accordingly
+    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece == "images/p.png") {
+        galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
+        moveMent.currentMove = "enpassant";
+        moveMent.wenpassant = -1;
+    }
+    // Adding moves to captures list
+    if (moveMent.currentMove == "enpassant") {
+        whiteCaptured.append({"captured":"images/P.png"});
+        moveMent.currentMove = "";
+    }
+    if (movedPieces.get(1).piece != "images/empty.png") {
+        whiteCaptured.append({"captured":movedPieces.get(1).piece})
+    }
+
+    // If pawn reaches the last line let's guess the promotion to be a queen. Have to correct in future some how
+
+    if (toIndex > 55 && galeryModel.get(toIndex).piece == "images/p.png") {
+        galeryModel.set(toIndex, {"piece": "images/q.png"});
+    }
+    feni.lowerMessage = "";
+    feni.upperMessage = "";
+    Mytab.addMove();
+    vuoro.vaihdaValkealle();
+    isChessPure();
+    movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
+    opsi.movesTotal++;
+    galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
+    galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
+    feni.feniBlackReady2 = false;
+    whiteMatetimer.start();
 
 }

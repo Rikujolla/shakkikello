@@ -105,6 +105,8 @@ void Server::sessionOpened()
         settings.endGroup();
     }
 
+    //connect(tcpServer, &QTcpServer::newConnection, this, &Server::sendFortune); //moved
+
     tcpServer = new QTcpServer(this);
 
     if (!tcpServer->listen()) {
@@ -131,7 +133,6 @@ void Server::sessionOpened()
 
 void Server::sendFortune() //later to be named sendMove
 {
-    if (myWaitmove == "1") { // Sending my own move to the opponent
     QByteArray block;
     QDataStream out(&block, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_4_0);
@@ -145,10 +146,22 @@ void Server::sendFortune() //later to be named sendMove
     clientConnection->write(block);
     qDebug() << "Move sent " << mySmove;
     clientConnection->disconnectFromHost();
-    myWaitmove = "0";
-    }
-    else { // After opponents move the request is sent to opponent to send the move
+    //myWaitmove = "0";
+   // }
+   /* else { // After opponents move the request is sent to opponent to send the move
         qDebug() << "request moveinfo" << myWaitmove;
         myWaitmove = "1";
+    }*/
+    waitmoveChanged(myWaitmove);
+
+    /*if (myWaitmove == "1") {
+        myWaitmove = "0";
+        waitmoveChanged(myWaitmove);
+        qDebug() << myWaitmove;
     }
+    else {
+        myWaitmove = "1";
+        waitmoveChanged(myWaitmove);
+        qDebug() << myWaitmove;
+    }*/
 }

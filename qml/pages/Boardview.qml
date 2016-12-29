@@ -31,6 +31,8 @@ import "funktiot.js" as Myfunks
 import "openings.js" as Myops
 import "tables.js" as Mytab
 import harbour.shakkikello.stockfish 1.0
+import harbour.shakkikello.client 1.0
+import harbour.shakkikello.server 1.0
 
 Page {
     id: page
@@ -96,10 +98,52 @@ Page {
         Stockfishe { // for Stockfish communication
             id:hopo
         }
+/// Network connection
+        TcpClient {
+            id: conTcpCli
+            onCmoveChanged:{
+                if (conTcpSrv.waitmove == cmove) {
+                    //oppmove.text = cmove;
+                    console.log ("Wow not a move yet");
+                }
+                else {
+                    console.log("Now she moved")
+                    hopo.test = cmove;
+                    oppOldmovemsg = cmove;
+                    Myfunks.othDeviceMove();
+                    //conTcpSrv.waitmove = cmove;
+                }
+                /*console.log("Now she moved")
+                hopo.test = cmove;
+                oppOldmovemsg = cmove;
+                Myfunks.othDeviceMove();
+                conTcpSrv.waitmove = cmove;*/
+            }
+        }
 
-/*        Stockfishev { // remove?
-            id:hopov
-        }*/
+        TcpServer {
+            id: conTcpSrv
+
+            onWaitmoveChanged: {
+                console.log("pituus" + movesDone.length%8)
+                if (conTcpSrv.waitmove == conTcpCli.cmove){
+                //if (myOldmovemsg == conTcpCli.cmove){ // on construction??
+
+             //if (isMyStart && movesDone.length%8 == 4 || !isMyStart && movesDone.length%8 == 0) {
+                 console.log("Do opponent move request");
+                 conTcpCli.requestNewFortune();
+                 console.log(movesDone);
+                    oppOldmovemsg = conTcpCli.cmove;
+             }
+             else {
+                 console.log("Do nothing");
+                    //conTcpSrv.waitmove = conTcpCli.cmove;//if this helps
+             }
+             //movesDon = movesDon + "a1b2";
+            }
+        }
+
+////
 
         Column {
             id: column
@@ -1768,7 +1812,7 @@ Page {
                             moveStarted=!moveStarted;
                             moveLegal=false;
                             if (tilat.valko) {
-                                if (playMode == "stockfish") {feni.feniWhite = false;}
+                                if (playMode == "stockfish") {feni.feniWhite = false;} //Check also in othDevice mode??
                                 if (benpassant > 0 && galeryModel.get(benpassant).color == "bp") {
                                     galeryModel.set(benpassant,{"color":"e", "piece":"images/empty.png"});
                                     benpassant = -1
@@ -1778,6 +1822,7 @@ Page {
                                 }
                             }
                             else {
+                                // why not here the check as above feni.feniBlack = false;
                                 if (wenpassant > 0 && galeryModel.get(wenpassant).color == "wp") {
                                     galeryModel.set(wenpassant,{"color":"e", "piece":"images/empty.png"});
                                     wenpassant = -1
@@ -1823,8 +1868,6 @@ Page {
             BackgroundItem {
                 id: upperBar
                 width: page.width
-                //height: 155
-                //height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : 164)
                 height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : (Screen.height == 1920 ? 420 : 164))
                 enabled: false //tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
@@ -1845,7 +1888,6 @@ Page {
                     anchors.verticalCenterOffset: 35
                     Timer {
                         interval: 100
-                        //running: tilat.juoksee && tilat.valko && Qt.ApplicationActive
                         running: tilat.juoksee && Qt.application.active && (isMyStart ? tilat.musta : tilat.valko)
                         repeat: true
                         onTriggered: isMyStart ? muttakello.updateMutta() : valkokello.updateValko()
@@ -2322,6 +2364,9 @@ Page {
                 movesDone = ""
                 whiteCaptured.clear()
                 blackCaptured.clear()
+                if (playMode == "othDevice") {
+                    Qt.createComponent("Connbox.qml").createObject(page, {});
+                }
             }
 // loppusulkeet
         }

@@ -25,12 +25,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-//import QtBluetooth 5.2
-import harbour.shakkikello.client 1.0
-import harbour.shakkikello.server 1.0
 
 Page {
-    id: page
+    id: connectionBox
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.height
@@ -42,6 +39,16 @@ Page {
 
             PageHeader {
                 title: qsTr("TCP client page")
+            }
+
+            Text {
+                text: "MyIP: " + conTcpSrv.cipadd
+                color: Theme.highlightColor
+            }
+
+            Text {
+                text: "My port: " + conTcpSrv.cport
+                color: Theme.highlightColor
             }
 
             TextField {
@@ -62,10 +69,8 @@ Page {
                 EnterKey.onClicked: {
                     conTcpSrv.smove = text
                     conTcpCli.requestNewFortune();
-                    //if (oppOldmovemsg != conTcpCli.cmove) {oppOldmovemsg = conTcpCli.cmove;} //is this needed
                     //console.log(conTcpSrv.smove);
                     focus = false;
-                    conTcpSrv.waitmove = conTcpCli.cmove;//if this helps
                 }
             }
 
@@ -101,74 +106,12 @@ Page {
                 }
             }
 
-            Text {
-                text: "MyIP: " + conTcpSrv.cipadd
-                color: Theme.highlightColor
-            }
-
-            Text {
-                text: "My port: " + conTcpSrv.cport
-                color: Theme.highlightColor
-            }
-
             Button {
                 text: "Connect"
-                onClicked: conTcpSrv.sessionOpened();
+                onClicked: connectionBox.destroy()
             }
 
 
-            TcpClient {
-                id: conTcpCli
-                /*onCmoveChanged: {
-                    oppmove.text = cmove;
-                   conTcpSrv.waitmove = cmove;
-                }*/
-                onCmoveChanged:{
-                    if (conTcpSrv.waitmove == cmove) {
-                        //oppmove.text = cmove;
-                        console.log ("Wow not a move yet");
-                    }
-                    else {
-                        console.log("Now she moved")
-                        oppmove.text = cmove;
-//                        oppOldmovemsg = cmove;
-  //                      Myfunks.othDeviceMove();
-                        //conTcpSrv.waitmove = cmove;
-                    }
-                    /*console.log("Now she moved")
-                    hopo.test = cmove;
-                    oppOldmovemsg = cmove;
-                    Myfunks.othDeviceMove();
-                    conTcpSrv.waitmove = cmove;*/
-                }
-            }
-
-            TcpServer {
-                id: conTcpSrv
-
-                onWaitmoveChanged: {
-                    console.log("pituus" + movesDon.length%8)
-                    if (conTcpSrv.waitmove == conTcpCli.cmove){
-//                        if (oppOldmovemsg == conTcpCli.cmove){
-                 //if (isMyStart && movesDon.length%8 == 0 || !isMyStart && movesDon.length%8 == 4) {
-                     console.log("Do opponent move request");
-                     conTcpCli.requestNewFortune();
-//                     console.log(movesDon);
-//                        oppOldmovemsg = conTcpCli.cmove;
-                 }
-                 else {
-                     console.log("Do nothing");
-                        //conTcpSrv.waitmove = conTcpCli.cmove;//if this helps
-                 }
-                 movesDon = movesDon + "a1b2";
-                    //oppOldmovemsg = conTcpCli.cmove;
-                }
-            }
-
-            Component.onCompleted: {
-                //conTcpSrv.sessionOpened();
-                conTcpSrv.waitmove = "";
-            }
         }
 
     }

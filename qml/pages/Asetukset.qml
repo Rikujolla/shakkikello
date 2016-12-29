@@ -214,13 +214,13 @@ Page {
                                 //console.log("othDevice")
                                 playMode = "othDevice"
                                 setOpponent.currentIndex = 2
-                                pageStack.push(Qt.resolvedUrl("Chat3.qml"));
+                                //pageStack.push(Qt.resolvedUrl("Chat3.qml"));
                             }
                         }
                 }
             }
 
-            ComboBox { // for dynamic creation see Pastie: http://pastie.org/9813891
+           /* ComboBox { // for dynamic creation see Pastie: http://pastie.org/9813891
                 id: serverSettings
                 visible: playMode == "othDevice"
                 width: page.width*2/3
@@ -245,6 +245,10 @@ Page {
                         }
                     }
                 }
+            }*/
+            Button {
+              text: "test"
+              onClicked:pageStack.push(Qt.resolvedUrl("Chat3.qml"));
             }
 
             ComboBox {

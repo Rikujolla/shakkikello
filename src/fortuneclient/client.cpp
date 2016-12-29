@@ -138,17 +138,21 @@ void Client::readFortune()
     QString nextFortune;
     in >> nextFortune;
 
-    /*if (!in.commitTransaction())
+    /*if (!in.commitTransaction()) Qt 5.7
         return;
 
     if (nextFortune == currentFortune) {
         QTimer::singleShot(0, this, &Client::requestNewFortune);
         return;
     }*/
-
+    if (nextFortune == currentFortune) {
+        qDebug () <<"Oppmove not changed" << currentFortune;
+        return;
+    }
     currentFortune = nextFortune;
-    qDebug () <<"Its a long way to tipperary" << currentFortune;
+    qDebug () <<"Oppmove changed" << currentFortune;
     myCmove = currentFortune;
+    cmoveChanged(myCmove);
 }
 
 void Client::displayError(QAbstractSocket::SocketError socketError)

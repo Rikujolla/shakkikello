@@ -67,6 +67,13 @@ ApplicationWindow
     property bool turnWhite  // used for promotion
     property int selectedGame: -1 //Used for game selection
     property string movesDone: ""; //saves done moves to single string eg. e2e4d7d5
+    property string movesDon: ""; //temporary length for testing
+    //property string myIP:"" // My IP
+    //property int myPort // My TCP port
+    //property string oppIP:"" // Opponents IP
+    //property int oppPort //Opponents TCP port
+    property string oppOldmovemsg: "" //Used to separate real move from a fake message in othDevice mode
+    property string myOldmovemsg: "" //Used to separate real move from a fake message in othDevice mode
     property bool whiteInMate: false // Tells if white is in mate
 
 

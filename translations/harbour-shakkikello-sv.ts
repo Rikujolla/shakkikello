@@ -135,18 +135,6 @@
         <source>Another device</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>My role</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Server</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Client</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -250,6 +238,36 @@
     </message>
     <message>
         <source>Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Connbox</name>
+    <message>
+        <source>Server IP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Server port</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Connbox1</name>
+    <message>
+        <source>TCP client page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Server IP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Server port</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
