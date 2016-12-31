@@ -223,25 +223,6 @@
     </message>
 </context>
 <context>
-    <name>Chat3</name>
-    <message>
-        <source>TCP client page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Server IP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Server port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Move</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Connbox</name>
     <message>
         <source>Server IP</source>

@@ -27,10 +27,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
 import "setting.js" as Mysets
-//import harbour.shakkikello.btservice 1.0
-//import harbour.shakkikello.chessservice 1.0
-//import harbour.shakkikello.server 1.0
-import QtBluetooth 5.2
 
 Page {
     id: page
@@ -220,37 +216,6 @@ Page {
                 }
             }
 
-           /* ComboBox { // for dynamic creation see Pastie: http://pastie.org/9813891
-                id: serverSettings
-                visible: playMode == "othDevice"
-                width: page.width*2/3
-                label: qsTr("My role")
-                //currentIndex: openingMode
-                menu: ContextMenu {
-                    MenuItem {
-                        text: qsTr("Server")
-                        onClicked: {
-                            //sets.indexUpdater = true;
-                            console.log("Myrole server")
-                            //btCom.startServer()
-                        }
-                    }
-                    MenuItem {
-                        text: qsTr("Client")
-                        onClicked: {
-                            //sets.indexUpdater = true;
-                            //pageStack.push(Qt.resolvedUrl("GameSelector.qml"));
-                            console.log("Myrole client")
-                            //btCom.startClient()
-                        }
-                    }
-                }
-            }
-            Button {
-              text: "test"
-              onClicked:pageStack.push(Qt.resolvedUrl("Chat3.qml"));
-            }*/
-
             ComboBox {
                 id: setColor
                 width: parent.width
@@ -351,23 +316,6 @@ Page {
                     }
                 }
             }
-
-            /*Button {
-                id:tcpSeverStart
-                visible: playMode == "othDevice"
-                text:"Start TCP server"
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("Chat3a.qml"));
-                    //conTcpSrv.Server();
-                    tcpSeverStart.text = "Starting köhä"
-                }
-            }*/
-            /*Button {
-                id:tcpClientStart
-                visible: playMode == "othDevice"
-                text:"Start tcp thing"
-                onClicked: pageStack.push(Qt.resolvedUrl("Chat3.qml"));
-            }*/
 
             Row {
                 x: Theme.paddingLarge

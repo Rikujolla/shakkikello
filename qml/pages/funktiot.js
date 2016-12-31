@@ -421,9 +421,7 @@ function doMove() {
         Mytab.addMove();
         if (playMode == "othDevice") {
             conTcpSrv.smove = hopo.test;
-            //console.log("White moves " + conTcpSrv.smove);
             conTcpCli.requestNewFortune();
-            //oppOldmovemsg = conTcpCli.cmove; //is this needed??
             conTcpSrv.waitmove = conTcpCli.cmove;
         }
         vuoro.vaihdaMustalle();
@@ -455,9 +453,7 @@ function doMove() {
         Mytab.addMove();
         if (playMode == "othDevice") {
             conTcpSrv.smove = hopo.test;
-            //console.log("Black moves " + conTcpSrv.smove);
             conTcpCli.requestNewFortune();
-            //oppOldmovemsg = conTcpCli.cmove; //is this needed??
             conTcpSrv.waitmove = conTcpCli.cmove;
         }
         vuoro.vaihdaValkealle();
@@ -477,7 +473,7 @@ function doMove() {
 ////////////////////////////////////////////
 
 function iswhiteInMate() {
-    console.log(opsi.movesTotal)
+    //console.log(opsi.movesTotal)
     for(var i = 0; i < 64; i++){
         whiteInMate = true;
     }
@@ -512,7 +508,7 @@ function isLegalmoveB() {
 }
 
 function othDeviceMoveBlack() {
-    console.log("othDevice movesBlack")
+    //console.log("othDevice movesBlack")
     fenToGRID()
     // Saving moves for captured pieces //Possible BUG in fast play in next line, could be related to narrow timeslot where you can select piece on opponents turn. Have to follow
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
@@ -571,7 +567,7 @@ function othDeviceMoveBlack() {
 }
 
 function othDeviceMoveWhite() {
-    console.log("othDevice moves White")
+    //console.log("othDevice moves White")
     Myfunks.fenToGRID()
     // Saving moves for captured pieces
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved

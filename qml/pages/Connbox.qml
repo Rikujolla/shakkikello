@@ -104,6 +104,7 @@ Item {
                 console.log(conTcpCli.cmove);
                 if (isMyStart && conTcpCli.cmove == "black" || !isMyStart && conTcpCli.cmove == "white"){
                     connTestTimer.stop();
+                    colBtn.visible = false;
                     connBtn.visible = true;
                     tstBtn.visible = false;
                 }
@@ -126,7 +127,7 @@ Item {
                 conTcpCli.requestNewFortune();
                 connTestTimer.start()
                 console.log(conTcpCli.cmove);
-                colBtn.visible = false;
+                //colBtn.visible = false;
             }
         }
 

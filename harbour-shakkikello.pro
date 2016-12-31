@@ -127,7 +127,6 @@ DISTFILES += \
     rpm/harbour-shakkikello.changes \
     qml/pages/images/framemoved.png \
     qml/pages/images/frame.png \
-    qml/pages/Chat3.qml \
     qml/pages/Connbox.qml
 
 FORMS += \
