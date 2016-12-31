@@ -251,23 +251,28 @@
         <source>Server port</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>Connbox1</name>
     <message>
-        <source>TCP client page</source>
+        <source>TCP connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Move</source>
+        <source>My device info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Server IP</source>
+        <source>Opponent&apos;s device info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Server port</source>
+        <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Test connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Color mismatch, change my color</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

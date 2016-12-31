@@ -18,61 +18,129 @@ Item {
             anchors.fill: parent
         }
     }
-    Text {
-        text: "MyIP: " + conTcpSrv.cipadd
-        color: Theme.highlightColor
-        anchors.bottom: text3.top
-    }
-
-    Text {
-        id:text3
-        text: "My port: " + conTcpSrv.cport
-        color: Theme.highlightColor
-        anchors.bottom: iipee.top
-    }
-
-    // This rectangle is the actual popup
-    TextField {
-        id: iipee
-        text: ""
-        anchors.centerIn: parent
-        placeholderText: "192.168.1.70"
-        label: qsTr("Server IP")
-        //visible: openingMode == 2
+    Column {
+        id: column
         width: parent.width
-        inputMethodHints: Qt.ImhNoPredictiveText
-        EnterKey.iconSource: "image://theme/icon-m-enter-close"
-        EnterKey.onClicked: {
-            conTcpCli.sipadd = text
-            console.log(conTcpCli.sipadd);
-            focus = false;
-        }
-    }
+        spacing: Theme.paddingMedium
 
-    TextField {
-        id: portti
-        text: ""
-        anchors.top: iipee.bottom
-        placeholderText: "12345"
-        label: qsTr("Server port")
-        //visible: openingMode == 2
-        width: page.width
-        inputMethodHints: Qt.ImhNoPredictiveText
-        EnterKey.iconSource: "image://theme/icon-m-enter-close"
-        EnterKey.onClicked: {
-            conTcpCli.sport = text
-            console.log(conTcpCli.sport);
-            focus = false;
+        PageHeader {
+            title: qsTr("TCP connection")
         }
-    }
-    Button {
-        text: "Connect"
-        onClicked: {
-            console.log(conTcpCli.sipadd);
-            console.log(conTcpCli.sport);
-            connectionBox.destroy()
+
+
+        SectionHeader { text: qsTr("Opponent's device info") }
+
+        TextField {
+            id: iipee
+            text: ""
+            //anchors.centerIn: parent
+            placeholderText: "192.168.1.70"
+            label: qsTr("Server IP")
+            //visible: openingMode == 2
+            width: parent.width
+            inputMethodHints: Qt.ImhNoPredictiveText
+            EnterKey.iconSource: "image://theme/icon-m-enter-close"
+            EnterKey.onClicked: {
+                conTcpCli.sipadd = text
+                console.log(conTcpCli.sipadd);
+                focus = false;
+            }
         }
-        anchors.top : portti.bottom
+
+        TextField {
+            id: portti
+            text: ""
+            //anchors.top: iipee.bottom
+            placeholderText: "12345"
+            label: qsTr("Server port")
+            //visible: openingMode == 2
+            width: page.width
+            inputMethodHints: Qt.ImhDigitsOnly
+            EnterKey.iconSource: "image://theme/icon-m-enter-close"
+            EnterKey.onClicked: {
+                conTcpCli.sport = text
+                console.log(conTcpCli.sport);
+                focus = false;
+            }
+        }
+        SectionHeader { text: qsTr("My device info") }
+
+        Text {
+            text: "MyIP: " + conTcpSrv.cipadd
+            color: Theme.highlightColor
+            anchors.margins: Theme.paddingLarge
+            anchors.left: parent.left
+            //anchors.bottom: text3.top
+        }
+
+        Text {
+            id:text3
+            text: "My port: " + conTcpSrv.cport
+            color: Theme.highlightColor
+            //anchors.bottom: iipee.top
+            anchors.margins: Theme.paddingLarge
+            anchors.left: parent.left
+        }
+
+        Button {
+            id:tstBtn
+            text: qsTr("Test connection")
+            onClicked: {
+                isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
+                console.log(conTcpSrv.smove);
+                conTcpCli.requestNewFortune();
+                connTestTimer.start()
+                console.log(conTcpCli.cmove);
+                colBtn.visible = false;
+            }
+
+        }
+        Timer {
+            id:connTestTimer
+            running:false
+            interval: 1000
+            repeat:true
+            onTriggered: {
+                console.log(conTcpCli.cmove);
+                if (isMyStart && conTcpCli.cmove == "black" || !isMyStart && conTcpCli.cmove == "white"){
+                    connTestTimer.stop();
+                    connBtn.visible = true;
+                    tstBtn.visible = false;
+                }
+                else if (isMyStart && conTcpCli.cmove == "white" || !isMyStart && conTcpCli.cmove == "black"){
+                    connTestTimer.stop();
+                    colBtn.visible = true;
+              }
+            }
+        }
+
+        Button {
+            id: colBtn
+            visible: false
+            text: qsTr("Color mismatch, change my color")
+            onClicked: {
+                console.log("change my color");
+                console.log(conTcpCli.sport);
+                isMyStart = !isMyStart;
+                isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
+                conTcpCli.requestNewFortune();
+                connTestTimer.start()
+                console.log(conTcpCli.cmove);
+                colBtn.visible = false;
+            }
+        }
+
+        Button {
+            id:connBtn
+            visible: false
+            text: qsTr("Connect")
+            onClicked: {
+                console.log(conTcpCli.sipadd);
+                console.log(conTcpCli.sport);
+                //conTcpSrv.waitmove = conTcpCli.cmove;
+                connectionBox.destroy()
+            }
+        }
     }
 
 }

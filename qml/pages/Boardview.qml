@@ -61,6 +61,12 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("GameInfo2.qml"))
             }
 
+            /*MenuItem {
+                text: qsTr("Change color")
+                enabled:playMode == "othDevice"
+                onClicked: isMyStart = !isMyStart
+            }*/
+
             MenuItem { //Start/Pause
                 text: aloitapause
                 enabled: !tilat.peliloppui
@@ -89,6 +95,9 @@ Page {
                     tilat.vaihdaTila();
                     maharollisuuret = qsTr("Reset");
                     //Mytab.clearRecent()
+                    conTcpSrv.waitmove = "";
+                    conTcpCli.cmove = "";
+                    conTcpSrv.smove = "";
                 }
             }
         }
@@ -102,22 +111,18 @@ Page {
         TcpClient {
             id: conTcpCli
             onCmoveChanged:{
-                if (conTcpSrv.waitmove == cmove) {
-                    //oppmove.text = cmove;
-                    console.log ("Wow not a move yet");
+                if (conTcpSrv.waitmove != cmove) {
+                    console.log("Now she moved ", cmove)
+                    if (!isMyStart && tilat.pelialkoi && cmove != "white"){
+                        hopo.test = cmove;
+                        Myfunks.othDeviceMoveWhite()
+                    }
+                    else if (isMyStart && tilat.pelialkoi && cmove != "black")
+                    {
+                        hopo.test = cmove;
+                        Myfunks.othDeviceMoveBlack();
+                    }
                 }
-                else {
-                    console.log("Now she moved")
-                    hopo.test = cmove;
-                    oppOldmovemsg = cmove;
-                    Myfunks.othDeviceMove();
-                    //conTcpSrv.waitmove = cmove;
-                }
-                /*console.log("Now she moved")
-                hopo.test = cmove;
-                oppOldmovemsg = cmove;
-                Myfunks.othDeviceMove();
-                conTcpSrv.waitmove = cmove;*/
             }
         }
 
@@ -125,21 +130,10 @@ Page {
             id: conTcpSrv
 
             onWaitmoveChanged: {
-                console.log("pituus" + movesDone.length%8)
                 if (conTcpSrv.waitmove == conTcpCli.cmove){
-                //if (myOldmovemsg == conTcpCli.cmove){ // on construction??
-
-             //if (isMyStart && movesDone.length%8 == 4 || !isMyStart && movesDone.length%8 == 0) {
-                 console.log("Do opponent move request");
-                 conTcpCli.requestNewFortune();
-                 console.log(movesDone);
-                    oppOldmovemsg = conTcpCli.cmove;
-             }
-             else {
-                 console.log("Do nothing");
-                    //conTcpSrv.waitmove = conTcpCli.cmove;//if this helps
-             }
-             //movesDon = movesDon + "a1b2";
+                    //console.log("Do opponent move request");
+                    conTcpCli.requestNewFortune();
+                }
             }
         }
 

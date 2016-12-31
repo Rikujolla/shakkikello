@@ -245,11 +245,11 @@ Page {
                         }
                     }
                 }
-            }*/
+            }
             Button {
               text: "test"
               onClicked:pageStack.push(Qt.resolvedUrl("Chat3.qml"));
-            }
+            }*/
 
             ComboBox {
                 id: setColor

@@ -72,8 +72,8 @@ ApplicationWindow
     //property int myPort // My TCP port
     //property string oppIP:"" // Opponents IP
     //property int oppPort //Opponents TCP port
-    property string oppOldmovemsg: "" //Used to separate real move from a fake message in othDevice mode
-    property string myOldmovemsg: "" //Used to separate real move from a fake message in othDevice mode
+    //property string oppOldmovemsg: "" //Used to separate real move from a fake message in othDevice mode
+    //property string myOldmovemsg: "" //Used to separate real move from a fake message in othDevice mode
     property bool whiteInMate: false // Tells if white is in mate
 
 
