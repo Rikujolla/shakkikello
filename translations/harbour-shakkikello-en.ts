@@ -245,15 +245,31 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Connect</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Test connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Color mismatch, change my color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Test in progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waiting your opponent to start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Retest the connection</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

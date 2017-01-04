@@ -113,11 +113,11 @@ Page {
             onCmoveChanged:{
                 if (conTcpSrv.waitmove != cmove) {
                     console.log("Now she moved ", cmove)
-                    if (!isMyStart && tilat.pelialkoi && cmove != "white"){
+                    if (!isMyStart && tilat.pelialkoi && cmove != "white" && cmove != "start"){
                         hopo.test = cmove;
                         Myfunks.othDeviceMoveWhite()
                     }
-                    else if (isMyStart && tilat.pelialkoi && cmove != "black")
+                    else if (isMyStart && tilat.pelialkoi && cmove != "black" && cmove != "start")
                     {
                         hopo.test = cmove;
                         Myfunks.othDeviceMoveBlack();

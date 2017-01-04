@@ -32,7 +32,7 @@ Item {
 
         TextField {
             id: iipee
-            text: ""
+            text: myIP
             //anchors.centerIn: parent
             placeholderText: "192.168.1.70"
             label: qsTr("Server IP")
@@ -42,7 +42,7 @@ Item {
             EnterKey.iconSource: "image://theme/icon-m-enter-close"
             EnterKey.onClicked: {
                 conTcpCli.sipadd = text
-                console.log(conTcpCli.sipadd);
+                //console.log(conTcpCli.sipadd);
                 focus = false;
             }
         }
@@ -59,7 +59,7 @@ Item {
             EnterKey.iconSource: "image://theme/icon-m-enter-close"
             EnterKey.onClicked: {
                 conTcpCli.sport = text
-                console.log(conTcpCli.sport);
+                //console.log(conTcpCli.sport);
                 focus = false;
             }
         }
@@ -87,10 +87,11 @@ Item {
             text: qsTr("Test connection")
             onClicked: {
                 isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
-                console.log(conTcpSrv.smove);
+                //console.log(conTcpSrv.smove);
                 conTcpCli.requestNewFortune();
                 connTestTimer.start()
-                console.log(conTcpCli.cmove);
+                //console.log(conTcpCli.cmove);
+                tstBtn.text = qsTr("Test in progress") + "..."
                 colBtn.visible = false;
             }
 
@@ -101,7 +102,7 @@ Item {
             interval: 1000
             repeat:true
             onTriggered: {
-                console.log(conTcpCli.cmove);
+                //console.log(conTcpCli.cmove);
                 if (isMyStart && conTcpCli.cmove == "black" || !isMyStart && conTcpCli.cmove == "white"){
                     connTestTimer.stop();
                     colBtn.visible = false;
@@ -111,6 +112,9 @@ Item {
                 else if (isMyStart && conTcpCli.cmove == "white" || !isMyStart && conTcpCli.cmove == "black"){
                     connTestTimer.stop();
                     colBtn.visible = true;
+                    connBtn.visible = false;
+                    tstBtn.visible = true;
+                    tstBtn.text = qsTr("Retest the connection")
               }
             }
         }
@@ -120,28 +124,78 @@ Item {
             visible: false
             text: qsTr("Color mismatch, change my color")
             onClicked: {
-                console.log("change my color");
-                console.log(conTcpCli.sport);
+                //console.log("change my color");
+                //console.log(conTcpCli.sport);
                 isMyStart = !isMyStart;
                 isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
                 conTcpCli.requestNewFortune();
                 connTestTimer.start()
-                console.log(conTcpCli.cmove);
+                //console.log(conTcpCli.cmove);
                 //colBtn.visible = false;
+            }
+        }
+
+        Timer {
+            id:startTimer
+            running:false
+            interval: 1000
+            repeat:true
+            onTriggered: {
+                //console.log("waiting start", conTcpCli.cmove);
+                if (conTcpSrv.smove == "start" && conTcpCli.cmove == "start"){
+                    startTimer.stop();
+                    //
+                    hopo.stoDepth = stockfishDepth;
+                    hopo.stoMovetime = stockfishMovetime;
+                    hopo.stoSkill = stockfishSkill;
+                    if (!tilat.pelialkoi) {
+                        if (playMode == "stockfish") {hopo.initio();}
+                        //kripti.lisaa();
+                        isMyStart ? feni.stockfishFirstmove = false : feni.stockfishFirstmove = true
+                        isMyStart ? feni.feniWhiteReady = false : feni.feniWhiteReady = true
+                        //isMyStart ? feni.forChessCheck = false : feni.forChessCheck = true
+
+
+                    }
+                    isMyStart ? feni.feniWhite = true : feni.feniWhite = false
+                    tilat.aloitaPeli();
+                    tilat.juoksee = !tilat.juoksee;
+                    startti.timeAsetus();
+                    kello.sekuntit = 0;
+                    valkokello.timeValko();
+                    valkokello.sekuntitv = 0;
+                    muttakello.timeMutta();
+                    muttakello.sekuntitm=0;
+                    tilat.vaihdaTila();
+                    maharollisuuret = qsTr("Reset");
+                    //Mytab.clearRecent()
+                    conTcpSrv.waitmove = "";
+                    conTcpCli.cmove = "";
+                    conTcpSrv.smove = "";
+                    //
+                    connectionBox.destroy()
+                }
+                else {
+                conTcpCli.requestNewFortune();
+                }
             }
         }
 
         Button {
             id:connBtn
             visible: false
-            text: qsTr("Connect")
+            text: qsTr("Start")
             onClicked: {
-                console.log(conTcpCli.sipadd);
-                console.log(conTcpCli.sport);
-                //conTcpSrv.waitmove = conTcpCli.cmove;
-                connectionBox.destroy()
+                //isMyStart ? conTcpSrv.smove = "start" : conTcpSrv.smove = "start";
+                conTcpSrv.smove = "start";
+                conTcpCli.requestNewFortune();
+                startTimer.start();
+                //console.log("starting", conTcpSrv.smove, conTcpCli.cmove);
+                //connectionBox.destroy()
+                connBtn.text = qsTr("Waiting your opponent to start") + "..."
             }
         }
+        //Component.onCompleted:
     }
 
 }
