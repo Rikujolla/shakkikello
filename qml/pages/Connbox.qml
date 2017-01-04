@@ -35,7 +35,7 @@ Item {
             text: myIP
             //anchors.centerIn: parent
             placeholderText: "192.168.1.70"
-            label: qsTr("Server IP")
+            label: qsTr("IP address")
             //visible: openingMode == 2
             width: parent.width
             inputMethodHints: Qt.ImhNoPredictiveText
@@ -52,7 +52,7 @@ Item {
             text: ""
             //anchors.top: iipee.bottom
             placeholderText: "12345"
-            label: qsTr("Server port")
+            label: qsTr("Port number")
             //visible: openingMode == 2
             width: page.width
             inputMethodHints: Qt.ImhDigitsOnly
@@ -66,7 +66,7 @@ Item {
         SectionHeader { text: qsTr("My device info") }
 
         Text {
-            text: "MyIP: " + conTcpSrv.cipadd
+            text: qsTr("IP address") + ": " + conTcpSrv.cipadd
             color: Theme.highlightColor
             anchors.margins: Theme.paddingLarge
             anchors.left: parent.left
@@ -75,7 +75,7 @@ Item {
 
         Text {
             id:text3
-            text: "My port: " + conTcpSrv.cport
+            text: qsTr("Port number") + ": " + conTcpSrv.cport
             color: Theme.highlightColor
             //anchors.bottom: iipee.top
             anchors.margins: Theme.paddingLarge

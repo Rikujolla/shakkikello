@@ -129,7 +129,5 @@ DISTFILES += \
     qml/pages/images/frame.png \
     qml/pages/Connbox.qml
 
-FORMS += \
-    src/btchat/chat.ui \
-    src/btchat/remoteselector.ui
+FORMS +=
 

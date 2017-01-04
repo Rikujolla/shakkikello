@@ -196,42 +196,7 @@
     </message>
 </context>
 <context>
-    <name>Chat</name>
-    <message>
-        <source>Bluetooth Chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Local Bluetooth Adapter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Connect</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Quit</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Connbox</name>
-    <message>
-        <source>Server IP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Server port</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>TCP connection</source>
         <translation type="unfinished"></translation>
@@ -270,6 +235,14 @@
     </message>
     <message>
         <source>Retest the connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IP address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Port number</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -393,21 +366,6 @@
     <message>
         <source>Black´s clock</source>
         <translation>Uhr von Schwarz</translation>
-    </message>
-</context>
-<context>
-    <name>RemoteSelector</name>
-    <message>
-        <source>Available chat services</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Scanning...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

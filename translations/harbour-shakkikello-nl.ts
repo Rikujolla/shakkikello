@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
 <context>
     <name>Asetukset</name>
     <message>
@@ -133,7 +131,7 @@
     </message>
     <message>
         <source>Another device</source>
-        <translation type="unfinished"></translation>
+        <translation>Nog een apparaat</translation>
     </message>
 </context>
 <context>
@@ -196,81 +194,54 @@
     </message>
 </context>
 <context>
-    <name>Chat</name>
-    <message>
-        <source>Bluetooth Chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Local Bluetooth Adapter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Connect</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Quit</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Connbox</name>
     <message>
-        <source>Server IP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Server port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>TCP connection</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP-verbinding</translation>
     </message>
     <message>
         <source>My device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Mijn apparaatinformatie</translation>
     </message>
     <message>
         <source>Opponent&apos;s device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Apparaatinformatie tegenstander</translation>
     </message>
     <message>
         <source>Test connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbinding testen</translation>
     </message>
     <message>
         <source>Color mismatch, change my color</source>
-        <translation type="unfinished"></translation>
+        <translation>Kleur komt niet overeen; wijzig mijn kleur</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Herstellen</translation>
+        <translation>Herstellen</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished">Starten</translation>
+        <translation>Starten</translation>
     </message>
     <message>
         <source>Test in progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met testen</translation>
     </message>
     <message>
         <source>Waiting your opponent to start</source>
-        <translation type="unfinished"></translation>
+        <translation>Wachten op tegenstander</translation>
     </message>
     <message>
         <source>Retest the connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbinding opnieuw testen</translation>
+    </message>
+    <message>
+        <source>IP address</source>
+        <translation>IP-adres</translation>
+    </message>
+    <message>
+        <source>Port number</source>
+        <translation>Poortnummer</translation>
     </message>
 </context>
 <context>
@@ -393,21 +364,6 @@
     <message>
         <source>Black´s clock</source>
         <translation>De klok van Zwart</translation>
-    </message>
-</context>
-<context>
-    <name>RemoteSelector</name>
-    <message>
-        <source>Available chat services</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Scanning...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

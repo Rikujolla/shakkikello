@@ -133,7 +133,7 @@
     </message>
     <message>
         <source>Another device</source>
-        <translation type="unfinished"></translation>
+        <translation>Toinen laite</translation>
     </message>
 </context>
 <context>
@@ -196,81 +196,54 @@
     </message>
 </context>
 <context>
-    <name>Chat</name>
-    <message>
-        <source>Bluetooth Chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Local Bluetooth Adapter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Connect</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Quit</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Connbox</name>
     <message>
-        <source>Server IP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Server port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>TCP connection</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP-yhteys</translation>
     </message>
     <message>
         <source>My device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Laitteeni tiedot</translation>
     </message>
     <message>
         <source>Opponent&apos;s device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Vastustajan laitteen tiedot</translation>
     </message>
     <message>
         <source>Test connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Testaa yhteys</translation>
     </message>
     <message>
         <source>Color mismatch, change my color</source>
-        <translation type="unfinished"></translation>
+        <translation>Samat värit, vaihda värini</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Nollaa</translation>
+        <translation>Nollaa</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished">Aloita</translation>
+        <translation>Aloita</translation>
     </message>
     <message>
         <source>Test in progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Testi käynnissä</translation>
     </message>
     <message>
         <source>Waiting your opponent to start</source>
-        <translation type="unfinished"></translation>
+        <translation>Odotetaan vastustajaa</translation>
     </message>
     <message>
         <source>Retest the connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Testaa yhteys uudelleen</translation>
+    </message>
+    <message>
+        <source>IP address</source>
+        <translation>IP-osoite</translation>
+    </message>
+    <message>
+        <source>Port number</source>
+        <translation>Porttinumero</translation>
     </message>
 </context>
 <context>
@@ -393,21 +366,6 @@
     <message>
         <source>Black´s clock</source>
         <translation>Mustan kello</translation>
-    </message>
-</context>
-<context>
-    <name>RemoteSelector</name>
-    <message>
-        <source>Available chat services</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Scanning...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
