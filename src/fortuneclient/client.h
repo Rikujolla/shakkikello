@@ -52,16 +52,10 @@
 
 #ifndef CLIENT_H
 #define CLIENT_H
-
-//#include <QDialog>
 #include <QObject>
 #include <QTcpSocket>
 #include <QDataStream>
 
-//class QComboBox;
-//class QLabel;
-//class QLineEdit;
-//class QPushButton;
 class QTcpSocket;
 class QNetworkSession;
 
@@ -71,7 +65,6 @@ class Client : public QObject
     Q_PROPERTY(QString sipadd READ sipadd WRITE setSipadd NOTIFY sipaddChanged)
     Q_PROPERTY(int sport READ sport WRITE setSport NOTIFY sportChanged)
     Q_PROPERTY(QString cmove READ cmove WRITE setCmove NOTIFY cmoveChanged) //opponents move
-
 
 public:
     explicit Client();
@@ -91,26 +84,20 @@ public:
       cmoveChanged(myCmove);
     }
     Q_INVOKABLE void requestNewFortune();
+    Q_INVOKABLE void startClient();
 
 signals:
     void sipaddChanged(QString tee1);
     void sportChanged(int tee2);
     void cmoveChanged(QString tee3);
 
-
 private slots:
     //void requestNewFortune();
     void readFortune();
     void displayError(QAbstractSocket::SocketError socketError);
-    void enableGetFortuneButton();
     void sessionOpened();
 
 private:
-    //QComboBox *hostCombo;
-    //QLineEdit *portLineEdit;
-    //QLabel *statusLabel;
-    //QPushButton *getFortuneButton;
-
     QTcpSocket *tcpSocket;
     QDataStream in;
     QString currentFortune;
@@ -118,7 +105,6 @@ private:
     QString mySipadd;
     int mySport;
     QString myCmove;
-
 };
 
 #endif

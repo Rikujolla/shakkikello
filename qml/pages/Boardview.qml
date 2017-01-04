@@ -2359,6 +2359,8 @@ Page {
                 whiteCaptured.clear()
                 blackCaptured.clear()
                 if (playMode == "othDevice") {
+                    conTcpCli.startClient();
+                    conTcpSrv.startServer();
                     Qt.createComponent("Connbox.qml").createObject(page, {});
                 }
             }

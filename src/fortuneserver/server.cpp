@@ -58,6 +58,9 @@
 Server::Server()
     : tcpServer(Q_NULLPTR)
     , networkSession(0)
+{}
+
+void Server::startServer()
 {
 
     QNetworkConfigurationManager manager;
@@ -78,7 +81,7 @@ Server::Server()
         networkSession = new QNetworkSession(config, this);
         connect(networkSession, &QNetworkSession::opened, this, &Server::sessionOpened);
 
-        qDebug() << "Opening network session.";
+        //qDebug() << "Opening network session.";
         networkSession->open();
     } else {
         sessionOpened();
@@ -104,8 +107,6 @@ void Server::sessionOpened()
         settings.setValue(QLatin1String("DefaultNetworkConfiguration"), id);
         settings.endGroup();
     }
-
-    //connect(tcpServer, &QTcpServer::newConnection, this, &Server::sendFortune); //moved
 
     tcpServer = new QTcpServer(this);
 
@@ -144,24 +145,8 @@ void Server::sendFortune() //later to be named sendMove
             clientConnection, &QObject::deleteLater);
 
     clientConnection->write(block);
-    qDebug() << "Move sent " << mySmove;
+    //qDebug() << "Move sent " << mySmove;
     clientConnection->disconnectFromHost();
-    //myWaitmove = "0";
-   // }
-   /* else { // After opponents move the request is sent to opponent to send the move
-        qDebug() << "request moveinfo" << myWaitmove;
-        myWaitmove = "1";
-    }*/
-    waitmoveChanged(myWaitmove);
 
-    /*if (myWaitmove == "1") {
-        myWaitmove = "0";
-        waitmoveChanged(myWaitmove);
-        qDebug() << myWaitmove;
-    }
-    else {
-        myWaitmove = "1";
-        waitmoveChanged(myWaitmove);
-        qDebug() << myWaitmove;
-    }*/
+    waitmoveChanged(myWaitmove);
 }

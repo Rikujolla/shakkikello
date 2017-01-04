@@ -92,7 +92,7 @@ public:
       myWaitmove = see4;
       waitmoveChanged(myWaitmove);
     }
-    //Q_INVOKABLE void sessionOpened();
+    Q_INVOKABLE void startServer();
 
 signals:
     void smoveChanged(QString see1);

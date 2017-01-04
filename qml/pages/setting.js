@@ -156,3 +156,41 @@ function loadSettings() {
     )
 
 }
+
+function saveInstantSetting() {
+    //console.log("Save a setting")
+    var db = LocalStorage.openDatabaseSync("ChessDB", "1.0", "Chess database", 1000000);
+
+    db.transaction(
+        function(tx) {
+            // Create the table, if not existing
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Settings(name TEXT, subname TEXT, valte TEXT, valre REAL, valint INTEGER)');
+
+            // oppIP
+            var rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'oppIP');
+            if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valte=? WHERE name=?', [oppIP, 'oppIP'])}
+            else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'oppIP', '', oppIP, '', '' ])}
+        }
+
+    )
+
+}
+
+function loadInstantSetting() {
+    //console.log("Load Settings")
+    var db = LocalStorage.openDatabaseSync("ChessDB", "1.0", "Chess database", 1000000);
+
+    db.transaction(
+        function(tx) {
+            // Create the table, if not existing
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Settings(name TEXT, subname TEXT, valte TEXT, valre REAL, valint INTEGER)');
+
+            // valkomax
+            var rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'oppIP');
+            if (rs.rows.length > 0) {oppIP = rs.rows.item(0).valte}
+            else {}
+        }
+
+    )
+
+}

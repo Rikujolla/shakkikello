@@ -56,9 +56,11 @@
 Client::Client()
     : tcpSocket(new QTcpSocket(this))
     , networkSession(Q_NULLPTR)
+{}
+
+void Client::startClient()
+
 {
-    //setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-    //hostCombo->setEditable(true);
     // find out name of this machine
     QString name = QHostInfo::localHostName();
     if (!name.isEmpty()) {
@@ -71,20 +73,17 @@ Client::Client()
     qDebug() << "Name" << name;
     if (name != QLatin1String("Sailfish"))
     {}
-        //hostCombo->addItem(QString("localhost"));
     // find out IP addresses of this machine
     QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
     // add non-localhost addresses
     for (int i = 0; i < ipAddressesList.size(); ++i) {
        if (!ipAddressesList.at(i).isLoopback())
            qDebug() << "Name " << i << " ff " << ipAddressesList.at(i).toString();
-    //       hostCombo->addItem(ipAddressesList.at(i).toString());
     }
     // add localhost addresses
     for (int i = 0; i < ipAddressesList.size(); ++i) {
         if (ipAddressesList.at(i).isLoopback())
             qDebug() << "Name " << i << " ff " << ipAddressesList.at(i).toString();
-    //        hostCombo->addItem(ipAddressesList.at(i).toString());
     }
 
     //portLineEdit->setValidator(new QIntValidator(1, 65535, this));
@@ -169,16 +168,6 @@ void Client::displayError(QAbstractSocket::SocketError socketError)
     default:
         qDebug() <<"The following error occurred";
     }
-
-    //getFortuneButton->setEnabled(true);
-}
-
-void Client::enableGetFortuneButton()
-{
-    /*getFortuneButton->setEnabled((!networkSession || networkSession->isOpen()) &&
-                                 !hostCombo->currentText().isEmpty() &&
-                                 !portLineEdit->text().isEmpty());*/
-
 }
 
 void Client::sessionOpened()
@@ -197,6 +186,4 @@ void Client::sessionOpened()
     settings.endGroup();
 
     qDebug() <<"This examples requires that you run the Fortune Server example as well.";
-
-    enableGetFortuneButton();
 }

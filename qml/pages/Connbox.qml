@@ -1,11 +1,11 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick.LocalStorage 2.0
+import "setting.js" as Mysets
 
 Item {
     id: connectionBox
     anchors.fill: parent
-
-    // PropertyAnimation voi lisätä tällä tyylikkyyttä
 
     Rectangle {
         anchors.fill: parent
@@ -27,22 +27,20 @@ Item {
             title: qsTr("TCP connection")
         }
 
-
         SectionHeader { text: qsTr("Opponent's device info") }
 
         TextField {
             id: iipee
-            text: myIP
-            //anchors.centerIn: parent
+            text: oppIP
             placeholderText: "192.168.1.70"
             label: qsTr("IP address")
-            //visible: openingMode == 2
             width: parent.width
             inputMethodHints: Qt.ImhNoPredictiveText
             EnterKey.iconSource: "image://theme/icon-m-enter-close"
             EnterKey.onClicked: {
-                conTcpCli.sipadd = text
-                //console.log(conTcpCli.sipadd);
+                conTcpCli.sipadd = text;
+                oppIP = text;
+                Mysets.saveInstantSetting();
                 focus = false;
             }
         }
@@ -50,16 +48,13 @@ Item {
         TextField {
             id: portti
             text: ""
-            //anchors.top: iipee.bottom
             placeholderText: "12345"
             label: qsTr("Port number")
-            //visible: openingMode == 2
             width: page.width
             inputMethodHints: Qt.ImhDigitsOnly
             EnterKey.iconSource: "image://theme/icon-m-enter-close"
             EnterKey.onClicked: {
                 conTcpCli.sport = text
-                //console.log(conTcpCli.sport);
                 focus = false;
             }
         }
@@ -67,17 +62,17 @@ Item {
 
         Text {
             text: qsTr("IP address") + ": " + conTcpSrv.cipadd
+            font.pixelSize: Theme.fontSizeMedium
             color: Theme.highlightColor
             anchors.margins: Theme.paddingLarge
             anchors.left: parent.left
-            //anchors.bottom: text3.top
         }
 
         Text {
             id:text3
             text: qsTr("Port number") + ": " + conTcpSrv.cport
+            font.pixelSize: Theme.fontSizeMedium
             color: Theme.highlightColor
-            //anchors.bottom: iipee.top
             anchors.margins: Theme.paddingLarge
             anchors.left: parent.left
         }
@@ -87,22 +82,19 @@ Item {
             text: qsTr("Test connection")
             onClicked: {
                 isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
-                //console.log(conTcpSrv.smove);
                 conTcpCli.requestNewFortune();
                 connTestTimer.start()
-                //console.log(conTcpCli.cmove);
                 tstBtn.text = qsTr("Test in progress") + "..."
                 colBtn.visible = false;
             }
-
         }
+
         Timer {
             id:connTestTimer
             running:false
             interval: 1000
             repeat:true
             onTriggered: {
-                //console.log(conTcpCli.cmove);
                 if (isMyStart && conTcpCli.cmove == "black" || !isMyStart && conTcpCli.cmove == "white"){
                     connTestTimer.stop();
                     colBtn.visible = false;
@@ -115,7 +107,7 @@ Item {
                     connBtn.visible = false;
                     tstBtn.visible = true;
                     tstBtn.text = qsTr("Retest the connection")
-              }
+                }
             }
         }
 
@@ -124,14 +116,10 @@ Item {
             visible: false
             text: qsTr("Color mismatch, change my color")
             onClicked: {
-                //console.log("change my color");
-                //console.log(conTcpCli.sport);
                 isMyStart = !isMyStart;
                 isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
                 conTcpCli.requestNewFortune();
                 connTestTimer.start()
-                //console.log(conTcpCli.cmove);
-                //colBtn.visible = false;
             }
         }
 
@@ -141,7 +129,6 @@ Item {
             interval: 1000
             repeat:true
             onTriggered: {
-                //console.log("waiting start", conTcpCli.cmove);
                 if (conTcpSrv.smove == "start" && conTcpCli.cmove == "start"){
                     startTimer.stop();
                     //
@@ -154,8 +141,6 @@ Item {
                         isMyStart ? feni.stockfishFirstmove = false : feni.stockfishFirstmove = true
                         isMyStart ? feni.feniWhiteReady = false : feni.feniWhiteReady = true
                         //isMyStart ? feni.forChessCheck = false : feni.forChessCheck = true
-
-
                     }
                     isMyStart ? feni.feniWhite = true : feni.feniWhite = false
                     tilat.aloitaPeli();
@@ -176,7 +161,7 @@ Item {
                     connectionBox.destroy()
                 }
                 else {
-                conTcpCli.requestNewFortune();
+                    conTcpCli.requestNewFortune();
                 }
             }
         }
@@ -186,16 +171,13 @@ Item {
             visible: false
             text: qsTr("Start")
             onClicked: {
-                //isMyStart ? conTcpSrv.smove = "start" : conTcpSrv.smove = "start";
                 conTcpSrv.smove = "start";
                 conTcpCli.requestNewFortune();
                 startTimer.start();
-                //console.log("starting", conTcpSrv.smove, conTcpCli.cmove);
-                //connectionBox.destroy()
                 connBtn.text = qsTr("Waiting your opponent to start") + "..."
             }
         }
-        //Component.onCompleted:
-    }
 
+        Component.onCompleted: Mysets.loadInstantSetting()
+    }
 }
