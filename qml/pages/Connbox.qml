@@ -6,7 +6,8 @@ import "setting.js" as Mysets
 Item {
     id: connectionBox
     anchors.fill: parent
-
+    property bool vtesttimer: false
+    property bool vstarttimer: false
     Rectangle {
         anchors.fill: parent
         id: overlay
@@ -85,7 +86,8 @@ Item {
                 conTcpCli.sipadd = iipee.text;
                 conTcpCli.sport = portti.text
                 conTcpCli.requestNewFortune();
-                connTestTimer.start()
+                //connTestTimer.start()
+                vtesttimer = true;
                 tstBtn.text = qsTr("Test in progress") + "..."
                 colBtn.visible = false;
             }
@@ -93,18 +95,20 @@ Item {
 
         Timer {
             id:connTestTimer
-            running:false
+            running:vtesttimer && Qt.application.active
             interval: 1000
             repeat:true
             onTriggered: {
                 if (isMyStart && conTcpCli.cmove == "black" || !isMyStart && conTcpCli.cmove == "white"){
-                    connTestTimer.stop();
+                    //connTestTimer.stop();
+                    vtesttimer = false;
                     colBtn.visible = false;
                     connBtn.visible = true;
                     tstBtn.visible = false;
                 }
                 else if (isMyStart && conTcpCli.cmove == "white" || !isMyStart && conTcpCli.cmove == "black"){
-                    connTestTimer.stop();
+                    //connTestTimer.stop();
+                    vtesttimer = false;
                     colBtn.visible = true;
                     connBtn.visible = false;
                     tstBtn.visible = true;
@@ -121,18 +125,20 @@ Item {
                 isMyStart = !isMyStart;
                 isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
                 conTcpCli.requestNewFortune();
-                connTestTimer.start()
+                //connTestTimer.start()
+                vtesttimer = true;
             }
         }
 
         Timer {
             id:startTimer
-            running:false
+            running:vstarttimer && Qt.application.active
             interval: 1000
             repeat:true
             onTriggered: {
                 if (conTcpSrv.smove == "start" && conTcpCli.cmove == "start"){
-                    startTimer.stop();
+                    //startTimer.stop();
+                    vstarttimer = false;
                     //
                     hopo.stoDepth = stockfishDepth;
                     hopo.stoMovetime = stockfishMovetime;
@@ -175,7 +181,8 @@ Item {
             onClicked: {
                 conTcpSrv.smove = "start";
                 conTcpCli.requestNewFortune();
-                startTimer.start();
+                //startTimer.start();
+                vstarttimer = true;
                 connBtn.text = qsTr("Waiting your opponent to start") + "..."
             }
         }
