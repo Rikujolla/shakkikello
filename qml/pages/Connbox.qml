@@ -81,6 +81,7 @@ Item {
         Button {
             id:tstBtn
             text: qsTr("Test connection")
+            anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
                 conTcpCli.sipadd = iipee.text;
@@ -121,6 +122,7 @@ Item {
             id: colBtn
             visible: false
             text: qsTr("Color mismatch, change my color")
+            anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 isMyStart = !isMyStart;
                 isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
@@ -178,6 +180,7 @@ Item {
             id:connBtn
             visible: false
             text: qsTr("Start")
+            anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 conTcpSrv.smove = "start";
                 conTcpCli.requestNewFortune();
