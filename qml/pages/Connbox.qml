@@ -82,6 +82,8 @@ Item {
             text: qsTr("Test connection")
             onClicked: {
                 isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
+                conTcpCli.sipadd = iipee.text;
+                conTcpCli.sport = portti.text
                 conTcpCli.requestNewFortune();
                 connTestTimer.start()
                 tstBtn.text = qsTr("Test in progress") + "..."

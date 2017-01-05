@@ -9,6 +9,10 @@
 #- Update problem correction NOT OK
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
+
+* Thu Jan 05 2017 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.0
+- Added option to play with two devices
+
 * Fri Oct 28 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.9
 - Minor changes and harbour release
 

@@ -61,12 +61,6 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("GameInfo2.qml"))
             }
 
-            /*MenuItem {
-                text: qsTr("Change color")
-                enabled:playMode == "othDevice"
-                onClicked: isMyStart = !isMyStart
-            }*/
-
             MenuItem { //Start/Pause
                 text: aloitapause
                 enabled: !tilat.peliloppui
@@ -107,12 +101,13 @@ Page {
         Stockfishe { // for Stockfish communication
             id:hopo
         }
-/// Network connection
+
+        /// TCP P2P connection correspondence
         TcpClient {
             id: conTcpCli
             onCmoveChanged:{
                 if (conTcpSrv.waitmove != cmove) {
-                    console.log("Now she moved ", cmove)
+                    //console.log("Now she moved ", cmove)
                     if (!isMyStart && tilat.pelialkoi && cmove != "white" && cmove != "start"){
                         hopo.test = cmove;
                         Myfunks.othDeviceMoveWhite()
@@ -131,13 +126,12 @@ Page {
 
             onWaitmoveChanged: {
                 if (conTcpSrv.waitmove == conTcpCli.cmove){
-                    //console.log("Do opponent move request");
                     conTcpCli.requestNewFortune();
                 }
             }
         }
 
-////
+        //// End TCP P2P portion
 
         Column {
             id: column
