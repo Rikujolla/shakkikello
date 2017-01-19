@@ -135,6 +135,14 @@
         <source>Another device</source>
         <translation>Nog een apparaat</translation>
     </message>
+    <message>
+        <source>Port number</source>
+        <translation>Poortnummer</translation>
+    </message>
+    <message>
+        <source>Fixed</source>
+        <translation>Vastgezet</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -244,6 +252,10 @@
     <message>
         <source>Port number</source>
         <translation>Poortnummer</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Instellingen</translation>
     </message>
 </context>
 <context>

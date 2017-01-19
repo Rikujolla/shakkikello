@@ -68,7 +68,10 @@ ApplicationWindow
     property int selectedGame: -1 //Used for game selection
     property string movesDone: ""; //saves done moves to single string eg. e2e4d7d5
     property string movesDon: ""; //temporary length for testing
-    property string oppIP:"192.168.1.70" // Opponents IP
+    property string oppIP:"192.168.1.70" // Opponent's IP
+    property int portFixed:0 // Selects if port is random or fixed, default is random
+    property int myPort // myIPport
+    property int oppPort // Opponent's IPport
     property bool whiteInMate: false // Tells if white is in mate
 
 

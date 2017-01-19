@@ -8,6 +8,7 @@ Item {
     anchors.fill: parent
     property bool vtesttimer: false
     property bool vstarttimer: false
+
     Rectangle {
         anchors.fill: parent
         id: overlay
@@ -30,12 +31,13 @@ Item {
 
         SectionHeader { text: qsTr("Opponent's device info") }
 
+Row {
         TextField {
             id: iipee
             text: oppIP
-            placeholderText: "192.168.1.70"
+            placeholderText: qsTr("IP address")
             label: qsTr("IP address")
-            width: parent.width
+            width: page.width*3/4
             inputMethodHints: Qt.ImhNoPredictiveText
             EnterKey.iconSource: "image://theme/icon-m-enter-close"
             EnterKey.onClicked: {
@@ -46,19 +48,44 @@ Item {
             }
         }
 
-        TextField {
-            id: portti
-            text: ""
-            placeholderText: "12345"
-            label: qsTr("Port number")
-            width: page.width
-            inputMethodHints: Qt.ImhDigitsOnly
-            EnterKey.iconSource: "image://theme/icon-m-enter-close"
-            EnterKey.onClicked: {
-                conTcpCli.sport = text
-                focus = false;
+        IconButton {
+            visible: iipee.text != ""
+            icon.source: "image://theme/icon-m-clear?" + (pressed
+                                                          ? Theme.highlightColor
+                                                          : Theme.primaryColor)
+            onClicked: {
+                iipee.text = ""
+                Mysets.saveInstantSetting();
             }
         }
+    }
+
+        Row {
+            TextField {
+                id: portti
+                text: oppPort
+                placeholderText: qsTr("Port number")
+                label: qsTr("Port number")
+                width: page.width*3/4
+                inputMethodHints: Qt.ImhDigitsOnly
+                EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                EnterKey.onClicked: {
+                    conTcpCli.sport = text
+                    oppPort = text;
+                    Mysets.saveInstantSetting();
+                    focus = false;
+                }
+            }
+
+            IconButton {
+                visible: portti.text != ""
+                icon.source: "image://theme/icon-m-clear?" + (pressed
+                                                              ? Theme.highlightColor
+                                                              : Theme.primaryColor)
+                onClicked: portti.text = ""
+            }
+        }
+
         SectionHeader { text: qsTr("My device info") }
 
         Text {
@@ -87,7 +114,6 @@ Item {
                 conTcpCli.sipadd = iipee.text;
                 conTcpCli.sport = portti.text
                 conTcpCli.requestNewFortune();
-                //connTestTimer.start()
                 vtesttimer = true;
                 tstBtn.text = qsTr("Test in progress") + "..."
                 colBtn.visible = false;
@@ -100,20 +126,21 @@ Item {
             interval: 1000
             repeat:true
             onTriggered: {
-                if (isMyStart && conTcpCli.cmove == "black" || !isMyStart && conTcpCli.cmove == "white"){
-                    //connTestTimer.stop();
+                if ((isMyStart && conTcpCli.cmove == "black") || (!isMyStart && conTcpCli.cmove == "white")){
                     vtesttimer = false;
                     colBtn.visible = false;
                     connBtn.visible = true;
                     tstBtn.visible = false;
                 }
                 else if (isMyStart && conTcpCli.cmove == "white" || !isMyStart && conTcpCli.cmove == "black"){
-                    //connTestTimer.stop();
-                    vtesttimer = false;
                     colBtn.visible = true;
                     connBtn.visible = false;
                     tstBtn.visible = true;
                     tstBtn.text = qsTr("Retest the connection")
+                    conTcpCli.requestNewFortune();
+                }
+                else {
+                    conTcpCli.requestNewFortune();
                 }
             }
         }
@@ -126,9 +153,8 @@ Item {
             onClicked: {
                 isMyStart = !isMyStart;
                 isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
-                conTcpCli.requestNewFortune();
-                //connTestTimer.start()
-                vtesttimer = true;
+                colBtn.visible = false;
+                connBtn.visible = false;
             }
         }
 
@@ -139,7 +165,6 @@ Item {
             repeat:true
             onTriggered: {
                 if (conTcpSrv.smove == "start" && conTcpCli.cmove == "start"){
-                    //startTimer.stop();
                     vstarttimer = false;
                     //
                     hopo.stoDepth = stockfishDepth;
@@ -184,9 +209,18 @@ Item {
             onClicked: {
                 conTcpSrv.smove = "start";
                 conTcpCli.requestNewFortune();
-                //startTimer.start();
                 vstarttimer = true;
                 connBtn.text = qsTr("Waiting your opponent to start") + "..."
+            }
+        }
+
+        Button {
+            text:qsTr("Settings")
+            anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: {
+                pageStack.clear()
+                pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
+
             }
         }
 

@@ -157,6 +157,7 @@ Page {
             ComboBox {
                 id: timeCounting
                 width: parent.width
+                //contentHeight: Theme.paddingMedium
                 label: qsTr("Time counting")
                 currentIndex: countDirInt
 
@@ -184,6 +185,7 @@ Page {
             ComboBox {
                 id: setOpponent
                 width: parent.width
+                //contentHeight: Theme.paddingMedium
                 label: qsTr("Opponent")
                 currentIndex: playMode == "stockfish" ? 0 : (playMode == "human" ? 1 : 2)
 
@@ -216,32 +218,86 @@ Page {
                 }
             }
 
+            Row {
+                x: Theme.paddingLarge
+                spacing: Theme.paddingMedium
+                anchors.left: parent.left
+                visible: playMode == "othDevice" ? true : false
+                ComboBox { // for dynamic creation see Pastie: http://pastie.org/9813891
+                    id: portSettings
+                    //width: page.width*2/3
+                    width: currentIndex == 0 ? page.width : page.width*2/3
+                    label: qsTr("Port number")
+                    currentIndex: portFixed
+                    menu: ContextMenu {
+                        MenuItem {
+                            text: qsTr("Random")
+                            onClicked: {
+                                portFixed = 0;
+                                myPort = 0;
+                                //console.log(myPort);
+                            }
+                        }
+                        MenuItem {
+                            text: qsTr("Fixed")
+                            onClicked: {
+                                portFixed = 1;
+                                myPort = portValue.text;
+                            }
+                        }
+                    }
+                }
+
+                TextField {
+                    id: portValue
+                    text: myPort
+                    placeholderText: "12345"
+                    //label: qsTr("ECO code")
+                    visible: portSettings.currentIndex == 1
+                    width: page.width/4
+                    //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0-9])$/ }
+                    //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0])$/ }
+                    //validator: RegExpValidator { regExp: /^((([A-E])([0-9])([0]))|((A)([0-3])([0-9])))$/ }
+                    //validator: RegExpValidator { regExp: /^((([A-E])([0-9])([0]))|((A)([0-5])([0-9]))||((R)([0])([1-5])))$/ }
+                    color: errorHighlight? "red" : Theme.primaryColor
+                    inputMethodHints:  Qt.ImhDigitsOnly
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        focus = false
+                        myPort = text;
+                        //console.log(myPort);
+
+                    }
+                }
+            }
+
             ComboBox {
                 id: setColor
                 width: parent.width
+                //contentHeight: Theme.paddingMedium //not working properly
                 label: qsTr("My color")
                 currentIndex: isMyStart ? 0 : 1
 
                 menu: ContextMenu {
-                        MenuItem {
-                            text: qsTr("White")
-                            onClicked: {
-                                //console.log("white")
-                                setColor.currentIndex = 0
-                                isMyStart = true
-                            }
+                    MenuItem {
+                        text: qsTr("White")
+                        onClicked: {
+                            //console.log("white")
+                            setColor.currentIndex = 0
+                            isMyStart = true
                         }
-                        MenuItem {
-                            text: qsTr("Black")
-                            onClicked: {
-                                //console.log("black")
-                                setColor.currentIndex = 1
-                                isMyStart = false
-                            }
+                    }
+                    MenuItem {
+                        text: qsTr("Black")
+                        onClicked: {
+                            //console.log("black")
+                            setColor.currentIndex = 1
+                            isMyStart = false
                         }
+                    }
                 }
             }
-
 
             Row {
                 x: Theme.paddingLarge
@@ -298,6 +354,7 @@ Page {
                         openingECO = eku.text;
                     }
                 }
+           //}
 
                 TextField {
                     id: game

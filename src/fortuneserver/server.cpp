@@ -110,7 +110,7 @@ void Server::sessionOpened()
 
     tcpServer = new QTcpServer(this);
 
-    if (!tcpServer->listen()) {
+    if (!tcpServer->listen(QHostAddress::Any, myCport)) {
         qDebug() << "Unable to start the server";
         return;
     }

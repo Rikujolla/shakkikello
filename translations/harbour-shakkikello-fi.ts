@@ -135,6 +135,14 @@
         <source>Another device</source>
         <translation>Toinen laite</translation>
     </message>
+    <message>
+        <source>Port number</source>
+        <translation>Porttinumero</translation>
+    </message>
+    <message>
+        <source>Fixed</source>
+        <translation>Kiinnitetty</translation>
+    </message>
 </context>
 <context>
     <name>Boardview</name>
@@ -244,6 +252,10 @@
     <message>
         <source>Port number</source>
         <translation>Porttinumero</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Asetukset</translation>
     </message>
 </context>
 <context>

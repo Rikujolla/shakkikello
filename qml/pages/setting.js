@@ -67,7 +67,14 @@
                 rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'startPageTxt');
                 if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valte=? WHERE name=?', [startPageTxt, 'startPageTxt'])}
                 else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'startPageTxt', '', startPageTxt, '', '' ])}
-
+                // portFixed
+                rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'portFixed');
+                if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [portFixed, 'portFixed'])}
+                else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'portFixed', '', '', '', portFixed ])}
+                // myPort
+                rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'myPort');
+                if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [myPort, 'myPort'])}
+                else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'myPort', '', '', '', myPort ])}
 
             }
         )
@@ -150,6 +157,14 @@ function loadSettings() {
             rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'startPageTxt');
             if (rs.rows.length > 0) {startPageTxt = rs.rows.item(0).valte}
             else {}
+            // portFixed
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'portFixed');
+            if (rs.rows.length > 0) {portFixed = rs.rows.item(0).valint}
+            else {}
+            // myPort
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'myPort');
+            if (rs.rows.length > 0) {myPort = rs.rows.item(0).valint}
+            else {}
 
         }
 
@@ -170,6 +185,10 @@ function saveInstantSetting() {
             var rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'oppIP');
             if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valte=? WHERE name=?', [oppIP, 'oppIP'])}
             else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'oppIP', '', oppIP, '', '' ])}
+            // oppPort
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'oppPort');
+            if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [oppPort, 'oppPort'])}
+            else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'oppPort', '', '', '', oppPort ])}
         }
 
     )
@@ -185,9 +204,13 @@ function loadInstantSetting() {
             // Create the table, if not existing
             tx.executeSql('CREATE TABLE IF NOT EXISTS Settings(name TEXT, subname TEXT, valte TEXT, valre REAL, valint INTEGER)');
 
-            // valkomax
+            // oppIP
             var rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'oppIP');
             if (rs.rows.length > 0) {oppIP = rs.rows.item(0).valte}
+            else {}
+            // oppPort
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'oppPort');
+            if (rs.rows.length > 0) {oppPort = rs.rows.item(0).valint}
             else {}
         }
 

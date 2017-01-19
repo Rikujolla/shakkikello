@@ -10,6 +10,9 @@
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
 
+* Thu Jan 19 2017 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.1
+- An easier setup of a play with two devices
+
 * Thu Jan 05 2017 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.0
 - Added option to play with two devices
 

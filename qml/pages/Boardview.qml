@@ -2353,6 +2353,7 @@ Page {
                 whiteCaptured.clear()
                 blackCaptured.clear()
                 if (playMode == "othDevice") {
+                    conTcpSrv.cport = myPort;
                     conTcpCli.startClient();
                     conTcpSrv.startServer();
                     Qt.createComponent("Connbox.qml").createObject(page, {});
