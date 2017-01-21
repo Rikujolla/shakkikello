@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>Opening</source>
-        <translation>Aperturas de ajedrez</translation>
+        <translation>Abrir</translation>
     </message>
     <message>
         <source>Clock settings</source>
@@ -61,7 +61,7 @@
     </message>
     <message>
         <source>Random</source>
-        <translation>Aleatorio</translation>
+        <translation>Al azar</translation>
     </message>
     <message>
         <source>-1 min</source>
@@ -93,43 +93,43 @@
     </message>
     <message>
         <source>Play chess</source>
-        <translation type="unfinished"></translation>
+        <translation>Jugar ajedrez</translation>
     </message>
     <message>
         <source>Opponent</source>
-        <translation type="unfinished"></translation>
+        <translation>Oponente</translation>
     </message>
     <message>
         <source>Stockfish</source>
-        <translation type="unfinished"></translation>
+        <translation>Motor de ajedrez </translation>
     </message>
     <message>
         <source>Human</source>
-        <translation type="unfinished"></translation>
+        <translation>Humano</translation>
     </message>
     <message>
         <source>My color</source>
-        <translation type="unfinished"></translation>
+        <translation>Mi color</translation>
     </message>
     <message>
         <source>View settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver ajustes</translation>
     </message>
     <message>
         <source>Default view</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista predeterminada</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation type="unfinished">Reloj de ajedrez</translation>
+        <translation>Reloj de ajedrez</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished">Tablero</translation>
+        <translation>Tabla de ajedrez</translation>
     </message>
     <message>
         <source>Saved game</source>
-        <translation type="unfinished"></translation>
+        <translation>Juego guardado</translation>
     </message>
     <message>
         <source>Another device</source>
