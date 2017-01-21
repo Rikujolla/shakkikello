@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>Time counting</source>
-        <translation>Conteo Tiempo</translation>
+        <translation>Conteo de Tiempo</translation>
     </message>
     <message>
         <source>Upwards</source>
@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>Opening</source>
-        <translation>Aperturas de ajedrez</translation>
+        <translation>Abrir</translation>
     </message>
     <message>
         <source>Clock settings</source>
@@ -61,7 +61,7 @@
     </message>
     <message>
         <source>Random</source>
-        <translation>Aleatorio</translation>
+        <translation>Al azar</translation>
     </message>
     <message>
         <source>-1 min</source>
@@ -93,169 +93,169 @@
     </message>
     <message>
         <source>Play chess</source>
-        <translation type="unfinished"></translation>
+        <translation>Jugar ajedrez</translation>
     </message>
     <message>
         <source>Opponent</source>
-        <translation type="unfinished"></translation>
+        <translation>Oponente</translation>
     </message>
     <message>
         <source>Stockfish</source>
-        <translation type="unfinished"></translation>
+        <translation>Stockfish </translation>
     </message>
     <message>
         <source>Human</source>
-        <translation type="unfinished"></translation>
+        <translation>Humano</translation>
     </message>
     <message>
         <source>My color</source>
-        <translation type="unfinished"></translation>
+        <translation>Mi color</translation>
     </message>
     <message>
         <source>View settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista de ajustes</translation>
     </message>
     <message>
         <source>Default view</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista predeterminada</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation type="unfinished">Reloj de ajedrez</translation>
+        <translation>Reloj de ajedrez</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished">Tablero</translation>
+        <translation>Tabla de ajedrez</translation>
     </message>
     <message>
         <source>Saved game</source>
-        <translation type="unfinished"></translation>
+        <translation>Juego guardado</translation>
     </message>
     <message>
         <source>Another device</source>
-        <translation type="unfinished"></translation>
+        <translation>Otro dispositivo</translation>
     </message>
     <message>
         <source>Port number</source>
-        <translation type="unfinished"></translation>
+        <translation>Número de puerto</translation>
     </message>
     <message>
         <source>Fixed</source>
-        <translation type="unfinished"></translation>
+        <translation>Arreglado</translation>
     </message>
 </context>
 <context>
     <name>Boardview</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Ajustes</translation>
+        <translation>Ajustes</translation>
     </message>
     <message>
         <source>Save and manage games</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar y manejar juegos</translation>
     </message>
     <message>
         <source>Show moves</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar movimientos</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Reajustar</translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <source>Check!</source>
-        <translation type="unfinished"></translation>
+        <translation>Chequear!</translation>
     </message>
     <message>
         <source>Checkmate!</source>
-        <translation type="unfinished"></translation>
+        <translation>Mate!</translation>
     </message>
     <message>
         <source>Stalemate!</source>
-        <translation type="unfinished"></translation>
+        <translation>Estancamiento!</translation>
     </message>
     <message>
         <source>White won!</source>
-        <translation type="unfinished"></translation>
+        <translation>Blanco ganó!</translation>
     </message>
     <message>
         <source>Black won!</source>
-        <translation type="unfinished"></translation>
+        <translation>Negro ganó!</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Interrumba</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Continuar</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished">Tablero</translation>
+        <translation>Tabla de ajedrez</translation>
     </message>
     <message>
         <source>min:s</source>
-        <translation type="unfinished">min:s</translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished">Inicio</translation>
+        <translation>Iniciar</translation>
     </message>
 </context>
 <context>
     <name>Connbox</name>
     <message>
         <source>TCP connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Conexion TCP</translation>
     </message>
     <message>
         <source>My device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Info de mi dispositivo</translation>
     </message>
     <message>
         <source>Opponent&apos;s device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Oponente&apos;s Info de mi dispositivo</translation>
     </message>
     <message>
         <source>Test connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Probar conexión</translation>
     </message>
     <message>
         <source>Color mismatch, change my color</source>
-        <translation type="unfinished"></translation>
+        <translation>Color no concordado, cambiar mi color</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Reajustar</translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished">Inicio</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Test in progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Prueba en progreso</translation>
     </message>
     <message>
         <source>Waiting your opponent to start</source>
-        <translation type="unfinished"></translation>
+        <translation>Esperando su oponente para iniciar</translation>
     </message>
     <message>
         <source>Retest the connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Reprobar la conexión</translation>
     </message>
     <message>
         <source>IP address</source>
-        <translation type="unfinished"></translation>
+        <translation>Dirección IP</translation>
     </message>
     <message>
         <source>Port number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numero de puerto</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Ajustes</translation>
+        <translation>Ajustes</translation>
     </message>
 </context>
 <context>
@@ -269,68 +269,68 @@
     <name>GameInfo</name>
     <message>
         <source>Tag pairs</source>
-        <translation>Perfil del juego</translation>
+        <translation>Pares de etiquetas</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation>Se mueve, coordinar la notación</translation>
+        <translation>mover texto, coordinar notación</translation>
     </message>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Juego</translation>
     </message>
 </context>
 <context>
     <name>GameInfo2</name>
     <message>
         <source>Current game</source>
-        <translation type="unfinished">Juego actual</translation>
+        <translation>Juego actual</translation>
     </message>
     <message>
         <source>Tag pairs</source>
-        <translation type="unfinished">Perfil del juego</translation>
+        <translation>Pares de etiquetas</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation type="unfinished">Se mueve, coordinar la notación</translation>
+        <translation>mover texto, coordinar notación</translation>
     </message>
 </context>
 <context>
     <name>GameList</name>
     <message>
         <source>Save current game</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar juego actual</translation>
     </message>
     <message>
         <source>Game list</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de juego</translation>
     </message>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Juego</translation>
     </message>
     <message>
         <source>Show game</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostar juego</translation>
     </message>
     <message>
         <source>Delete game</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrar juego</translation>
     </message>
     <message>
         <source>Animate game</source>
-        <translation type="unfinished"></translation>
+        <translation>Animar juego</translation>
     </message>
 </context>
 <context>
     <name>GameSelector</name>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Juego</translation>
     </message>
     <message>
         <source>Select game</source>
-        <translation type="unfinished"></translation>
+        <translation>Elegir juego</translation>
     </message>
 </context>
 <context>
@@ -341,11 +341,11 @@
     </message>
     <message>
         <source>Black´s turn</source>
-        <translation>Turno de negro</translation>
+        <translation>Turno del negro</translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation>Turno de blanco</translation>
+        <translation>Turno del blanco</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -353,7 +353,7 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation>Reajustar</translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -365,15 +365,15 @@
     </message>
     <message>
         <source>White´s clock</source>
-        <translation>Reloj de blanco</translation>
+        <translation>Reloj del blanco</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation>Reloj de negro</translation>
+        <translation>Reloj del negro</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Interrumba</translation>
+        <translation>pausa</translation>
     </message>
     <message>
         <source>Controls</source>
@@ -384,7 +384,7 @@
     <name>Tietoja</name>
     <message>
         <source>Back to settings</source>
-        <translation>A los ajustes</translation>
+        <translation>Ir a los ajustes</translation>
     </message>
     <message>
         <source>About page</source>
@@ -400,15 +400,15 @@
     </message>
     <message>
         <source>Polish (szopin)</source>
-        <translation>Polaco (szopin)</translation>
+        <translation>Polaco: szopin</translation>
     </message>
     <message>
         <source>German (Nit)</source>
-        <translation>Alemán (Nit)</translation>
+        <translation>Alemán: Nit</translation>
     </message>
     <message>
         <source>Dutch (Heimen Stoffels)</source>
-        <translation>Holandés (Heimen Stoffels)</translation>
+        <translation>Holandés: Heimen Stoffels</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
@@ -424,7 +424,7 @@
     </message>
     <message>
         <source>Third party software</source>
-        <translation>El software de terceros</translation>
+        <translation>Programas de terceros</translation>
     </message>
     <message>
         <source>Stockfish engine, v5 (stockfishchess.org)</source>
@@ -439,7 +439,7 @@
     <name>harbour-shakkikello</name>
     <message>
         <source>Start</source>
-        <translation>Inicio</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Settings</source>
