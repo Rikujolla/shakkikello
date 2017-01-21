@@ -101,7 +101,7 @@
     </message>
     <message>
         <source>Stockfish</source>
-        <translation>Motor de ajedrez </translation>
+        <translation>Motor ajedrez </translation>
     </message>
     <message>
         <source>Human</source>
@@ -133,109 +133,109 @@
     </message>
     <message>
         <source>Another device</source>
-        <translation type="unfinished"></translation>
+        <translation>Otro dispositivo</translation>
     </message>
     <message>
         <source>Port number</source>
-        <translation type="unfinished"></translation>
+        <translation>Número de puerto</translation>
     </message>
     <message>
         <source>Fixed</source>
-        <translation type="unfinished"></translation>
+        <translation>Arreglado</translation>
     </message>
 </context>
 <context>
     <name>Boardview</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Ajustes</translation>
+        <translation>Ajustes</translation>
     </message>
     <message>
         <source>Save and manage games</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar y manejar juegos</translation>
     </message>
     <message>
         <source>Show moves</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar movimientos</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Reajustar</translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <source>Check!</source>
-        <translation type="unfinished"></translation>
+        <translation>Chequear!</translation>
     </message>
     <message>
         <source>Checkmate!</source>
-        <translation type="unfinished"></translation>
+        <translation>Mate!</translation>
     </message>
     <message>
         <source>Stalemate!</source>
-        <translation type="unfinished"></translation>
+        <translation>Estancamiento!</translation>
     </message>
     <message>
         <source>White won!</source>
-        <translation type="unfinished"></translation>
+        <translation>Blanco ganó!</translation>
     </message>
     <message>
         <source>Black won!</source>
-        <translation type="unfinished"></translation>
+        <translation>Negro ganó!</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Interrumba</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Continuar</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished">Tablero</translation>
+        <translation>Tablero de ajedrez</translation>
     </message>
     <message>
         <source>min:s</source>
-        <translation type="unfinished">min:s</translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished">Inicio</translation>
+        <translation>Iniciar</translation>
     </message>
 </context>
 <context>
     <name>Connbox</name>
     <message>
         <source>TCP connection</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP conexion</translation>
     </message>
     <message>
         <source>My device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Info de mi dispositivo</translation>
     </message>
     <message>
         <source>Opponent&apos;s device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Oponente&apos;s Info de mi dispositivo</translation>
     </message>
     <message>
         <source>Test connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Probar conexión</translation>
     </message>
     <message>
         <source>Color mismatch, change my color</source>
-        <translation type="unfinished"></translation>
+        <translation>Color no concordado, cambiar mi color</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Reajustar</translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished">Inicio</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Test in progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Prueba en progreso</translation>
     </message>
     <message>
         <source>Waiting your opponent to start</source>
