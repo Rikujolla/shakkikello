@@ -69,6 +69,8 @@ class Server : public QObject
     Q_PROPERTY(QString cipadd READ cipadd WRITE setCipadd NOTIFY cipaddChanged) // own device ip
     Q_PROPERTY(int cport READ cport WRITE setCport NOTIFY cportChanged) // own device port
     Q_PROPERTY(QString waitmove READ waitmove WRITE setWaitmove NOTIFY waitmoveChanged) // own device port
+    Q_PROPERTY(int stime READ stime WRITE setStime NOTIFY stimeChanged) // own color time value
+    Q_PROPERTY(int sincrem READ sincrem WRITE setSincrem NOTIFY sincremChanged) // own increment value
 
 public:
     explicit Server();
@@ -92,6 +94,16 @@ public:
       myWaitmove = see4;
       waitmoveChanged(myWaitmove);
     }
+    int stime(){return myTime;}
+    void setStime(int see5){
+      myTime = see5;
+      stimeChanged(myTime);
+    }
+    int sincrem(){return myIncrem;}
+    void setSincrem(int see6){
+      myIncrem = see6;
+      sincremChanged(myIncrem);
+    }
     Q_INVOKABLE void startServer();
 
 signals:
@@ -99,6 +111,8 @@ signals:
     void cipaddChanged(QString see2);
     void cportChanged(int see3);
     void waitmoveChanged(QString see4);
+    void stimeChanged(int see5);
+    void sincremChanged(int see6);
 
 private slots:
     void sessionOpened();
@@ -111,6 +125,8 @@ private:
     QString myCipadd;
     int myCport;
     QString myWaitmove;
+    int myTime;
+    int myIncrem;
 };
 
 #endif

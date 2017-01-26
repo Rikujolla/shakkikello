@@ -64,6 +64,8 @@ Page {
                     margins: Theme.paddingLarge
                 }
                 text: {qsTr("German (Nit)") + "\n"
+                       + qsTr("Spanish (Carlos Gonzalez)") + "\n"
+                       + qsTr("Finnish (Riku Lahtinen)") + "\n"
                        + qsTr("Dutch (Heimen Stoffels)") + "\n"
                        + qsTr("Polish (szopin)")
                 }

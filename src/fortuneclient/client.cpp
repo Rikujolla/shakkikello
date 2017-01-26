@@ -135,7 +135,11 @@ void Client::readFortune()
     //in.startTransaction();
 
     QString nextFortune;
-    in >> nextFortune;
+    //int oppTime;
+    in >> nextFortune >> oppTime >> oppIncrem;
+
+    qDebug() << "Opp time, increm" << oppTime << oppIncrem;
+
 
     /*if (!in.commitTransaction()) Qt 5.7
         return;

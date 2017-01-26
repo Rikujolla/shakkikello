@@ -113,6 +113,7 @@ Row {
                 isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
                 conTcpCli.sipadd = iipee.text;
                 conTcpCli.sport = portti.text
+                conTcpSrv.sincrem = increment;
                 conTcpCli.requestNewFortune();
                 vtesttimer = true;
                 tstBtn.text = qsTr("Test in progress") + "..."
@@ -131,6 +132,10 @@ Row {
                     colBtn.visible = false;
                     connBtn.visible = true;
                     tstBtn.visible = false;
+                    isMyStart ? mustamax = conTcpCli.ctime : valkomax = conTcpCli.ctime;
+                    console.log("Increment", increment, conTcpCli.cincrem)
+                    increment > conTcpCli.cincrem ? increment = conTcpCli.cincrem : increment = increment
+                    conTcpSrv.sincrem = increment;
                 }
                 else if (isMyStart && conTcpCli.cmove == "white" || !isMyStart && conTcpCli.cmove == "black"){
                     colBtn.visible = true;
@@ -153,6 +158,7 @@ Row {
             onClicked: {
                 isMyStart = !isMyStart;
                 isMyStart ? conTcpSrv.smove = "white" : conTcpSrv.smove = "black"
+                isMyStart ? conTcpSrv.stime = valkomax : conTcpSrv.stime = mustamax;
                 colBtn.visible = false;
                 connBtn.visible = false;
             }
@@ -224,6 +230,10 @@ Row {
             }
         }
 
-        Component.onCompleted: Mysets.loadInstantSetting()
+        Component.onCompleted: {
+            isMyStart ? conTcpSrv.stime = valkomax : conTcpSrv.stime = mustamax;
+            //conTcpSrv.sincrem = increment;
+            Mysets.loadInstantSetting();
+        }
     }
 }

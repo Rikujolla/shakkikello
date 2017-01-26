@@ -434,6 +434,14 @@
         <source>Licensed under GPLv3. License, source code and more information:</source>
         <translation>Licensierad enligt GPLv3. Licens, källkod och mer information:</translation>
     </message>
+    <message>
+        <source>Finnish (Riku Lahtinen)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Spanish (Carlos Gonzalez)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>harbour-shakkikello</name>

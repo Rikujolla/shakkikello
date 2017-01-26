@@ -65,6 +65,8 @@ class Client : public QObject
     Q_PROPERTY(QString sipadd READ sipadd WRITE setSipadd NOTIFY sipaddChanged)
     Q_PROPERTY(int sport READ sport WRITE setSport NOTIFY sportChanged)
     Q_PROPERTY(QString cmove READ cmove WRITE setCmove NOTIFY cmoveChanged) //opponents move
+    Q_PROPERTY(int ctime READ ctime WRITE setCtime NOTIFY ctimeChanged) // opponents color time value
+    Q_PROPERTY(int cincrem READ cincrem WRITE setCincrem NOTIFY cincremChanged) // own increment value
 
 public:
     explicit Client();
@@ -83,6 +85,16 @@ public:
       myCmove = tee3;
       cmoveChanged(myCmove);
     }
+    int ctime(){return oppTime;}
+    void setCtime(int tee4){
+      oppTime = tee4;
+      ctimeChanged(oppTime);
+    }
+    int cincrem(){return oppIncrem;}
+    void setCincrem(int tee5){
+      oppIncrem = tee5;
+      cincremChanged(oppIncrem);
+    }
     Q_INVOKABLE void requestNewFortune();
     Q_INVOKABLE void startClient();
 
@@ -90,6 +102,8 @@ signals:
     void sipaddChanged(QString tee1);
     void sportChanged(int tee2);
     void cmoveChanged(QString tee3);
+    void ctimeChanged(int tee4);
+    void cincremChanged(int tee5);
 
 private slots:
     //void requestNewFortune();
@@ -105,6 +119,8 @@ private:
     QString mySipadd;
     int mySport;
     QString myCmove;
+    int oppTime;
+    int oppIncrem;
 };
 
 #endif

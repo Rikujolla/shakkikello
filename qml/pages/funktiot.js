@@ -423,6 +423,8 @@ function doMove() {
             conTcpSrv.smove = hopo.test;
             conTcpCli.requestNewFortune();
             conTcpSrv.waitmove = conTcpCli.cmove;
+            //conTcpSrv.stime = valkokello.rogres_sekuntitv;
+            //conTcpSrv.stime = whiteTimeTotal;
         }
         vuoro.vaihdaMustalle();
         isChessPure();
@@ -455,6 +457,7 @@ function doMove() {
             conTcpSrv.smove = hopo.test;
             conTcpCli.requestNewFortune();
             conTcpSrv.waitmove = conTcpCli.cmove;
+            //conTcpSrv.stime = muttakello.rogres_sekuntitm;
         }
         vuoro.vaihdaValkealle();
         isChessPure();
@@ -510,6 +513,10 @@ function isLegalmoveB() {
 function othDeviceMoveBlack() {
     //console.log("othDevice movesBlack")
     fenToGRID()
+    blackTimeAccum0 = conTcpCli.ctime;
+    blackTimeTotal = blackTimeAccum0;
+    blackTimeAccum = 0;
+    //console.log("black", blackTimeAccum0, blackTimeTotal)
     // Saving moves for captured pieces //Possible BUG in fast play in next line, could be related to narrow timeslot where you can select piece on opponents turn. Have to follow
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
@@ -569,6 +576,10 @@ function othDeviceMoveBlack() {
 function othDeviceMoveWhite() {
     //console.log("othDevice moves White")
     Myfunks.fenToGRID()
+    whiteTimeAccum0 = conTcpCli.ctime;
+    whiteTimeTotal = whiteTimeAccum0;
+    whiteTimeAccum = 0;
+    console.log("white", whiteTimeAccum0, whiteTimeTotal, increment)
     // Saving moves for captured pieces
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured

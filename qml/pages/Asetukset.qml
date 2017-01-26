@@ -98,7 +98,8 @@ Page {
                 Button {
                     text: sets.labels[0].lab
                     width: page.width /6
-                    onClicked: {valkomax = valkomax - 60
+                    onClicked: {
+                        valkomax > 119 ? valkomax = valkomax - 60 : valkomax= valkomax
                     }
                 }
                 Button {
@@ -120,7 +121,8 @@ Page {
                 Button {
                     text: sets.labels[0].lab
                     width: page.width /6
-                    onClicked: {mustamax = mustamax - 60
+                    onClicked: {
+                        mustamax > 119 ? mustamax = mustamax - 60 : mustamax = mustamax
                     }
                 }
                 Button {

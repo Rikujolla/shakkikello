@@ -37,6 +37,15 @@ import harbour.shakkikello.server 1.0
 Page {
     id: page
 
+    property int pureMillsec0 //Absolute milliseconds when turn changes
+    property int pureMillsecs //Milliseconds after last turn
+    property int whiteTimeAccum0 // White Time Accumulated when turn changes
+    property int whiteTimeAccum // White Time Accumulated during current turn
+    property int whiteTimeTotal // White total time
+    property int blackTimeAccum0 // Black Time Accumulated when turn changes
+    property int blackTimeAccum // Black Time Accumulated during current turn
+    property int blackTimeTotal // Black total time
+
     SilicaFlickable {
         anchors.fill: parent
 
@@ -82,9 +91,9 @@ Page {
                     tilat.juoksee = !tilat.juoksee;
                     startti.timeAsetus();
                     kello.sekuntit = 0;
-                    valkokello.timeValko();
+                    //valkokello.timeValko(); //is this needed
                     valkokello.sekuntitv = 0;
-                    muttakello.timeMutta();
+                    //muttakello.timeMutta();
                     muttakello.sekuntitm=0;
                     tilat.vaihdaTila();
                     maharollisuuret = qsTr("Reset");
@@ -434,9 +443,9 @@ Page {
                         kello.sekuntit = 0;
                         valkokello.timeValko();
                         valkokello.sekuntitv = 0;
-                        muttakello.timeMutta();
+                        //muttakello.timeMutta();
                         muttakello.sekuntitm=0;
-                        valkokello.sum_incrementv = valkokello.sum_incrementv + increment;
+                        //valkokello.sum_incrementv = valkokello.sum_incrementv + increment;
                         valkokello.updateValko();
                         feni.feniWhite = false;
                         feni.feniBlack = true;
@@ -448,11 +457,11 @@ Page {
                         startti.timeAsetus();
                         tilat.musta = !tilat.musta; tilat.valko = !tilat.valko;
                         kello.sekuntit = 0;
-                        valkokello.timeValko();
+                        //valkokello.timeValko();
                         valkokello.sekuntitv = 0;
                         muttakello.timeMutta();
                         muttakello.sekuntitm=0;
-                        muttakello.sum_incrementm = muttakello.sum_incrementm + increment;
+                        //muttakello.sum_incrementm = muttakello.sum_incrementm + increment;
                         muttakello.updateMutta();
                         feni.feniWhite = true
                         feni.feniBlack = false;
@@ -504,22 +513,31 @@ Page {
                 id : muttakello
                 property int sekuntitm0: 0
                 property int sekuntitm : 0
-                property int rogres_sekuntitm : mustamax
+                //property int rogres_sekuntitm : mustamax
                 property int label_sekuntitm
                 property int label_minuutitm : mustamax/60
-                property int sum_incrementm : 0
-                function timeMutta() {sekuntitm0 = sekuntitm0 + sekuntitm}
+                //property int sum_incrementm : 0
+                function timeMutta() {
+                    sekuntitm0 = sekuntitm0 + sekuntitm
+                    blackTimeAccum0 = blackTimeAccum0 + blackTimeAccum-increment*1000;
+                    conTcpSrv.stime = blackTimeAccum0 + increment*1000;
+                }
                 function updateMutta() {
                     kello.timeChanged();
-                    if (rogres_sekuntitm <= 0) {
+                    if (blackTimeTotal/1000 > mustamax) {
                         tilat.peliloppui = true;
                         tilat.peliLoppui()
                     }
                     else {
-                        sekuntitm = kello.sekuntit;
-                        label_sekuntitm = (mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))%60;
-                        label_minuutitm = ((mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))-label_sekuntitm)/60;
-                        rogres_sekuntitm = mustamax + sum_incrementm - (sekuntitm0 + sekuntitm)
+                        blackTimeAccum = pureMillsecs;
+                        blackTimeTotal = blackTimeAccum0 + blackTimeAccum;
+                        //sekuntitm = kello.sekuntit;
+                        //label_sekuntitm = (mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))%60;
+                        //label_minuutitm = ((mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))-label_sekuntitm)/60;
+                        label_sekuntitm = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000))/1000%60;
+                        label_minuutitm = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000)-label_sekuntitm*1000)/60000;
+                        //rogres_sekuntitm = mustamax + sum_incrementm - (sekuntitm0 + sekuntitm)
+                        //console.log(whiteTimeTotal, blackTimeTotal);
                     }
                 }
             }
@@ -528,40 +546,54 @@ Page {
                 id : valkokello
                 property int sekuntitv: 0
                 property int sekuntitv0: 0
-                property int rogres_sekuntitv : valkomax
+                //property int rogres_sekuntitv : valkomax
                 property int label_sekuntitv
                 property int label_minuutitv : valkomax/60
-                property int sum_incrementv : 0
-                function timeValko() {sekuntitv0 = sekuntitv0 + sekuntitv}
+                //property int sum_incrementv : 0
+                function timeValko() {
+                    sekuntitv0 = sekuntitv0 + sekuntitv;
+                    whiteTimeAccum0 = whiteTimeAccum0 + whiteTimeAccum-increment*1000;
+                    conTcpSrv.stime = whiteTimeAccum0 + increment*1000;
+                }
                 function updateValko() {
                     kello.timeChanged();
-                    if (rogres_sekuntitv <= 0) {
+                    if (whiteTimeTotal/1000 > valkomax) {
                         tilat.peliloppui = true;
                         tilat.peliLoppui()
                     }
                     else {
-                        sekuntitv = kello.sekuntit;
-                        label_sekuntitv = (valkomax + sum_incrementv - (sekuntitv0 + sekuntitv))%60;
-                        label_minuutitv = ((valkomax + sum_incrementv - (sekuntitv0 + sekuntitv))-label_sekuntitv)/60;
-                        rogres_sekuntitv = valkomax + sum_incrementv - (sekuntitv0 + sekuntitv)
+                        whiteTimeAccum = pureMillsecs;
+                        whiteTimeTotal = whiteTimeAccum0 + whiteTimeAccum;
+                        label_sekuntitv = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000))/1000%60;
+                        label_minuutitv = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000)-label_sekuntitv*1000)/60000;
+                        sekuntitv = kello.sekuntit; //
+                        //label_sekuntitv = (valkomax + sum_incrementv - (sekuntitv0 + sekuntitv))%60;
+                        //label_minuutitv = ((valkomax + sum_incrementv - (sekuntitv0 + sekuntitv))-label_sekuntitv)/60;
+                        //rogres_sekuntitv = valkomax + sum_incrementv - (sekuntitv0 + sekuntitv)
+                                   //console.log(whiteTimeTotal, blackTimeTotal);
                     }
                 }
             }
 
             Item {
                 id : startti
+                property int days0
                 property int hours0
                 property int minutes0
                 property int sekuntit0
+                property int millsec0
                 property string dateTag: "1.9.2015"
                 function timeAsetus() {
                     var date0 = new Date;
+                    days0 = date0.getDay();
                     hours0 = date0.getHours()
                     minutes0 = date0.getMinutes()
                     sekuntit0= date0.getSeconds()
                     dateTag = date0.getFullYear() + "." + ((date0.getMonth()+1)<10 ? "0":"") +(date0.getMonth()+1)
                             + "." + ((date0.getDate())<10 ? "0":"") + date0.getDate();
-
+                    millsec0 = date0.getMilliseconds();
+                    pureMillsec0 = millsec0 + sekuntit0*1000 + minutes0*60*1000 + hours0*60*60*1000 + days0*24*60*60*1000;
+                    //console.log(days0,hours0,minutes0,sekuntit0,millsec0, pureMillsec0);
                 }
             }
 
@@ -574,14 +606,14 @@ Page {
                         tilat.asetaTilat();
                         valkomax = 300;
                         mustamax = 300;
-                        valkokello.rogres_sekuntitv = valkomax;
-                        muttakello.rogres_sekuntitm = mustamax;
+                        //valkokello.rogres_sekuntitv = valkomax;
+                        //muttakello.rogres_sekuntitm = mustamax;
                         valkokello.sekuntitv0 = 0;
                         valkokello.sekuntitv = 0;
-                        valkokello.sum_incrementv = 0;
+                        //valkokello.sum_incrementv = 0;
                         muttakello.sekuntitm0 = 0;
                         muttakello.sekuntitm = 0;
-                        muttakello.sum_incrementm = 0;
+                        //muttakello.sum_incrementm = 0;
                         kello.sekuntit = 0;
                         startti.timeAsetus();
                         valkokello.updateValko();
@@ -589,14 +621,14 @@ Page {
                         tilat.peliloppui = false
                         // Siirtyminen asetussivulle
                     } else {
-                        valkokello.rogres_sekuntitv = valkomax;
-                        muttakello.rogres_sekuntitm = mustamax;
+                        //valkokello.rogres_sekuntitv = valkomax;
+                        //muttakello.rogres_sekuntitm = mustamax;
                         valkokello.sekuntitv0 = 0;
                         valkokello.sekuntitv = 0;
-                        valkokello.sum_incrementv = 0;
+                        //valkokello.sum_incrementv = 0;
                         muttakello.sekuntitm0 = 0;
                         muttakello.sekuntitm = 0;
-                        muttakello.sum_incrementm = 0;
+                        //muttakello.sum_incrementm = 0;
                         kello.sekuntit = 0;
                         tilat.peliloppui = false;
                         pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
@@ -606,14 +638,26 @@ Page {
 
             Item {
                id : kello
+               property int days
                property int hours
+               property int hours_t //Temp property to be used during developnment phase, to replace hours
                property int minutes
+               property int minutes_t //Temp property to be used during developnment phase, to replace minutes
                property int sekuntit
+               property int seconds
+               property int millsecs
                function timeChanged() {
                    var date = new Date;
+                   days = date.getDay();
                    hours = date.getHours()-startti.hours0
+                   hours_t = date.getHours();
                    minutes = date.getMinutes()-startti.minutes0+60*hours
+                   minutes_t = date.getMinutes();
                    sekuntit= date.getSeconds()-startti.sekuntit0+60*minutes
+                   seconds= date.getSeconds();
+                   millsecs = date.getMilliseconds();
+                   pureMillsecs = millsecs + seconds*1000 + minutes_t*60*1000 + hours_t*60*60*1000 + days*24*60*60*1000 -pureMillsec0;
+                   //console.log(pureMillsecs);
                }
            }
 
@@ -1870,7 +1914,9 @@ Page {
                     //valueText: valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv
                     valueText: isMyStart ? (muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm)  : (valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv)
                     label: qsTr("min:s")
-                    value: isMyStart ? muttakello.rogres_sekuntitm : valkokello.rogres_sekuntitv
+                    //value: isMyStart ? muttakello.rogres_sekuntitm : valkokello.rogres_sekuntitv
+                    //value: isMyStart ? mustamax + increment - blackTimeTotal/1000 : valkomax + increment - whiteTimeTotal/1000
+                    value: isMyStart ? mustamax - blackTimeTotal/1000 : valkomax - whiteTimeTotal/1000
                     rotation: 180
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.verticalCenterOffset: 35
@@ -2337,7 +2383,9 @@ Page {
                     //valueText: muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm
                     valueText: isMyStart ? (valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv) : (muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm)
                     label: qsTr("min:s")
-                    value: isMyStart ? valkokello.rogres_sekuntitv : muttakello.rogres_sekuntitm
+                    //value: isMyStart ? valkokello.rogres_sekuntitv : muttakello.rogres_sekuntitm
+                    //value: isMyStart ? valkomax + increment - whiteTimeTotal/1000 : mustamax + increment - blackTimeTotal/1000
+                    value: isMyStart ? valkomax - whiteTimeTotal/1000 : mustamax - blackTimeTotal/1000
                     Timer {interval: 100
                         //running: tilat.juoksee && tilat.musta && Qt.ApplicationActive
                         running: tilat.juoksee && Qt.application.active && (isMyStart ? tilat.valko : tilat.musta)

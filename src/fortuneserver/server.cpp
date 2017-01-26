@@ -138,7 +138,7 @@ void Server::sendFortune() //later to be named sendMove
     QDataStream out(&block, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_4_0);
 
-    out << mySmove;
+    out << mySmove << myTime << myIncrem;
 
     QTcpSocket *clientConnection = tcpServer->nextPendingConnection();
     connect(clientConnection, &QAbstractSocket::disconnected,
