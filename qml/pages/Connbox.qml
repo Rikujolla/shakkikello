@@ -187,11 +187,11 @@ Row {
                     tilat.aloitaPeli();
                     tilat.juoksee = !tilat.juoksee;
                     startti.timeAsetus();
-                    kello.sekuntit = 0;
+                    //kello.sekuntit = 0;
                     valkokello.timeValko();
-                    valkokello.sekuntitv = 0;
+                    //valkokello.sekuntitv = 0;
                     muttakello.timeMutta();
-                    muttakello.sekuntitm=0;
+                    //muttakello.sekuntitm=0;
                     tilat.vaihdaTila();
                     maharollisuuret = qsTr("Reset");
                     //Mytab.clearRecent()

@@ -10,6 +10,12 @@
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
 
+* Thu Jan 19 2017 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.2
+- Spanish translation by Carlos Gonzalez
+- Increased accuracy of the clock in the boardview
+- Clock data syncronized in two device play, network delays substracted from to time accumulated
+- Clock and increment settings syncronised automatically in two device mode
+
 * Thu Jan 19 2017 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.1
 - An easier setup of a play with two devices
 

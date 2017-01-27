@@ -436,11 +436,11 @@
     </message>
     <message>
         <source>Finnish (Riku Lahtinen)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fiński (Riku Lahtinen)</translation>
     </message>
     <message>
         <source>Spanish (Carlos Gonzalez)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiszpański (Carlos Gonzalez)</translation>
     </message>
 </context>
 <context>

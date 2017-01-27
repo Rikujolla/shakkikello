@@ -90,11 +90,11 @@ Page {
                     tilat.aloitaPeli();
                     tilat.juoksee = !tilat.juoksee;
                     startti.timeAsetus();
-                    kello.sekuntit = 0;
+                    //kello.sekuntit = 0;
                     //valkokello.timeValko(); //is this needed
-                    valkokello.sekuntitv = 0;
+                    //valkokello.sekuntitv = 0;
                     //muttakello.timeMutta();
-                    muttakello.sekuntitm=0;
+                    //muttakello.sekuntitm=0;
                     tilat.vaihdaTila();
                     maharollisuuret = qsTr("Reset");
                     //Mytab.clearRecent()
@@ -116,7 +116,6 @@ Page {
             id: conTcpCli
             onCmoveChanged:{
                 if (conTcpSrv.waitmove != cmove) {
-                    //console.log("Now she moved ", cmove)
                     if (!isMyStart && tilat.pelialkoi && cmove != "white" && cmove != "start"){
                         hopo.test = cmove;
                         Myfunks.othDeviceMoveWhite()
@@ -134,7 +133,7 @@ Page {
             id: conTcpSrv
 
             onWaitmoveChanged: {
-                if (conTcpSrv.waitmove == conTcpCli.cmove){
+                if (conTcpSrv.waitmove == conTcpCli.cmove && playMode == "othDevice"){
                     conTcpCli.requestNewFortune();
                 }
             }
@@ -440,11 +439,11 @@ Page {
                     if (tilat.musta == true) {} else {
                         startti.timeAsetus();
                         tilat.musta = !tilat.musta; tilat.valko = !tilat.valko;
-                        kello.sekuntit = 0;
+                        //kello.sekuntit = 0;
                         valkokello.timeValko();
-                        valkokello.sekuntitv = 0;
+                        //valkokello.sekuntitv = 0;
                         //muttakello.timeMutta();
-                        muttakello.sekuntitm=0;
+                        //muttakello.sekuntitm=0;
                         //valkokello.sum_incrementv = valkokello.sum_incrementv + increment;
                         valkokello.updateValko();
                         feni.feniWhite = false;
@@ -456,11 +455,11 @@ Page {
                     if (tilat.valko == true) {} else {
                         startti.timeAsetus();
                         tilat.musta = !tilat.musta; tilat.valko = !tilat.valko;
-                        kello.sekuntit = 0;
+                        //kello.sekuntit = 0;
                         //valkokello.timeValko();
-                        valkokello.sekuntitv = 0;
+                        //valkokello.sekuntitv = 0;
                         muttakello.timeMutta();
-                        muttakello.sekuntitm=0;
+                        //muttakello.sekuntitm=0;
                         //muttakello.sum_incrementm = muttakello.sum_incrementm + increment;
                         muttakello.updateMutta();
                         feni.feniWhite = true
@@ -498,10 +497,10 @@ Page {
                     tilat.aloitaPeli();
                     tilat.juoksee = !tilat.juoksee;
                     startti.timeAsetus();
-                    kello.sekuntit = 0;
-                    valkokello.sekuntitv = 0;
+                    //kello.sekuntit = 0;
+                    //valkokello.sekuntitv = 0;
                     valkokello.timeValko();
-                    muttakello.sekuntitm=0;
+                    //muttakello.sekuntitm=0;
                     muttakello.timeMutta();
                     tilat.vaihdaTila();
                     maharollisuuret = qsTr("Reset")
@@ -511,14 +510,9 @@ Page {
 
             Item {
                 id : muttakello
-                property int sekuntitm0: 0
-                property int sekuntitm : 0
-                //property int rogres_sekuntitm : mustamax
                 property int label_sekuntitm
                 property int label_minuutitm : mustamax/60
-                //property int sum_incrementm : 0
                 function timeMutta() {
-                    sekuntitm0 = sekuntitm0 + sekuntitm
                     blackTimeAccum0 = blackTimeAccum0 + blackTimeAccum-increment*1000;
                     conTcpSrv.stime = blackTimeAccum0 + increment*1000;
                 }
@@ -531,27 +525,22 @@ Page {
                     else {
                         blackTimeAccum = pureMillsecs;
                         blackTimeTotal = blackTimeAccum0 + blackTimeAccum;
-                        //sekuntitm = kello.sekuntit;
-                        //label_sekuntitm = (mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))%60;
-                        //label_minuutitm = ((mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))-label_sekuntitm)/60;
                         label_sekuntitm = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000))/1000%60;
                         label_minuutitm = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000)-label_sekuntitm*1000)/60000;
-                        //rogres_sekuntitm = mustamax + sum_incrementm - (sekuntitm0 + sekuntitm)
-                        //console.log(whiteTimeTotal, blackTimeTotal);
                     }
                 }
             }
 
             Item {
                 id : valkokello
-                property int sekuntitv: 0
-                property int sekuntitv0: 0
+                //property int sekuntitv: 0
+                //property int sekuntitv0: 0
                 //property int rogres_sekuntitv : valkomax
                 property int label_sekuntitv
                 property int label_minuutitv : valkomax/60
                 //property int sum_incrementv : 0
                 function timeValko() {
-                    sekuntitv0 = sekuntitv0 + sekuntitv;
+                    //sekuntitv0 = sekuntitv0 + sekuntitv;
                     whiteTimeAccum0 = whiteTimeAccum0 + whiteTimeAccum-increment*1000;
                     conTcpSrv.stime = whiteTimeAccum0 + increment*1000;
                 }
@@ -566,11 +555,10 @@ Page {
                         whiteTimeTotal = whiteTimeAccum0 + whiteTimeAccum;
                         label_sekuntitv = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000))/1000%60;
                         label_minuutitv = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000)-label_sekuntitv*1000)/60000;
-                        sekuntitv = kello.sekuntit; //
+                        //sekuntitv = kello.sekuntit; //
                         //label_sekuntitv = (valkomax + sum_incrementv - (sekuntitv0 + sekuntitv))%60;
                         //label_minuutitv = ((valkomax + sum_incrementv - (sekuntitv0 + sekuntitv))-label_sekuntitv)/60;
                         //rogres_sekuntitv = valkomax + sum_incrementv - (sekuntitv0 + sekuntitv)
-                                   //console.log(whiteTimeTotal, blackTimeTotal);
                     }
                 }
             }
@@ -593,7 +581,6 @@ Page {
                             + "." + ((date0.getDate())<10 ? "0":"") + date0.getDate();
                     millsec0 = date0.getMilliseconds();
                     pureMillsec0 = millsec0 + sekuntit0*1000 + minutes0*60*1000 + hours0*60*60*1000 + days0*24*60*60*1000;
-                    //console.log(days0,hours0,minutes0,sekuntit0,millsec0, pureMillsec0);
                 }
             }
 
@@ -640,24 +627,23 @@ Page {
                id : kello
                property int days
                property int hours
-               property int hours_t //Temp property to be used during developnment phase, to replace hours
+               //property int hours_t //Temp property to be used during developnment phase, to replace hours
                property int minutes
-               property int minutes_t //Temp property to be used during developnment phase, to replace minutes
+               //property int minutes_t //Temp property to be used during developnment phase, to replace minutes
                property int sekuntit
                property int seconds
                property int millsecs
                function timeChanged() {
                    var date = new Date;
                    days = date.getDay();
-                   hours = date.getHours()-startti.hours0
-                   hours_t = date.getHours();
-                   minutes = date.getMinutes()-startti.minutes0+60*hours
-                   minutes_t = date.getMinutes();
-                   sekuntit= date.getSeconds()-startti.sekuntit0+60*minutes
+                   //hours = date.getHours()-startti.hours0
+                   hours = date.getHours();
+                   //minutes = date.getMinutes()-startti.minutes0+60*hours
+                   minutes = date.getMinutes();
+                   //sekuntit= date.getSeconds()-startti.sekuntit0+60*minutes
                    seconds= date.getSeconds();
                    millsecs = date.getMilliseconds();
-                   pureMillsecs = millsecs + seconds*1000 + minutes_t*60*1000 + hours_t*60*60*1000 + days*24*60*60*1000 -pureMillsec0;
-                   //console.log(pureMillsecs);
+                   pureMillsecs = millsecs + seconds*1000 + minutes*60*1000 + hours*60*60*1000 + days*24*60*60*1000 -pureMillsec0;
                }
            }
 
