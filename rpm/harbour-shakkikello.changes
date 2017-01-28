@@ -9,6 +9,9 @@
 #- Update problem correction NOT OK
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
+#- If paused in two player game I can move opponents piece?? BUG
+#- If paused, in human mode play can be continued BUG
+#- In other device mode promotion is only queen, BUG
 
 * Sat Jan 28 2017 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.2
 - Spanish translation by Carlos Gonzalez
