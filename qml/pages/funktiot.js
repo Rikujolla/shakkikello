@@ -11,7 +11,6 @@
 // this function transforms grid notation to FEN-notation
 /////////////////////////////////////////////////////////
 function gridToFEN() {
-//    console.log("Valkoisen siirto, FEN ",fromIndex, toIndex)
     opsi.recentMove = hopo.test;
     hopo.test = "";
     switch (fromIndex%8) {
@@ -59,11 +58,7 @@ function gridToFEN() {
     }
     feni.stopFeni = 8-(toIndex-toIndex%8)/8;
     hopo.test = hopo.test+feni.startFeni+feni.stopFeni;
-    //if (moveMent.currentMove == "promotion") {hopo.test = hopo.test +"q"}
     if (moveMent.currentMove == "promotion") {hopo.test = hopo.test + promotedShort}
-//    feni.feniReady = true;
-
-//    console.log(hopo.test);
 
 }
 
@@ -72,7 +67,6 @@ function gridToFEN() {
 /////////////////////////////////////////////////////////
 
 function fenToGRID() {
-    //console.log(hopo.test)
     opsi.recentMove = hopo.test;
     feni.stringHelper = hopo.test.slice(0,1);
     switch (feni.stringHelper) {
@@ -95,10 +89,8 @@ function fenToGRID() {
     default: feni.feniHelper = 8
     }
 
-//    console.log(feni.feniHelper)
 
     feni.stringHelper = hopo.test.slice(1,2);
-//    console.log(feni.stringHelper)
     switch (feni.stringHelper) {
     case "1": feni.feniHelper = feni.feniHelper+56
         break;
@@ -120,7 +112,6 @@ function fenToGRID() {
 
     }
     fromIndex=feni.feniHelper;
-//    console.log(fromIndex)
 
     feni.stringHelper = hopo.test.slice(2,3);
     switch (feni.stringHelper) {
@@ -143,10 +134,8 @@ function fenToGRID() {
     default: feni.feniHelper = 8
     }
 
-//    console.log(feni.feniHelper)
 
     feni.stringHelper = hopo.test.slice(3,4);
-//    console.log(feni.stringHelper)
     switch (feni.stringHelper) {
     case "1": feni.feniHelper = feni.feniHelper+56
         break;
@@ -168,7 +157,6 @@ function fenToGRID() {
 
     }
     toIndex=feni.feniHelper;
-//    console.log("mustan siirto ", fromIndex,toIndex)
 
 }
 
@@ -182,7 +170,6 @@ function isChess() {
     moveMent.chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
-//    console.log("Tässä kingi testissä, W,B", feni.feniWkingInd, feni.feniBkingInd);
     for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
         if (tilat.valko) {
             toIndex=feni.feniWkingInd;
@@ -192,16 +179,13 @@ function isChess() {
         }
 
         fromIndex = feni.ax;
-//        console.log(toIndex, feni.ax);
 
         if (tilat.valko && galeryModel.get(feni.ax).color == "b"
                 || tilat.musta && galeryModel.get(feni.ax).color == "w") {
             moveMent.canBemoved = true;  //palautettava falseksi joskus??
             moveMent.itemMoved=galeryModel.get(feni.ax).piece;
-            //console.log(moveMent.itemMoved);
             moveMent.sameColor();
             moveMent.isLegalmove();
-            //console.log(moveMent.moveLegal);
             if (moveMent.moveLegal){
                 feni.chessIsOn = true; //
             }
@@ -225,10 +209,8 @@ function cancelMove() {
     if (tilat.valko) {feni.feniWhite = true;}
     // Returning the moved piece to it's original position.
     galeryModel.set(movedPieces.get(0).indeksos,{"color":movedPieces.get(0).color, "piece":movedPieces.get(0).piece})
-//    console.log(movedPieces.get(0).indeksos,movedPieces.get(0).color, movedPieces.get(0).piece)
     // Returning the captured piece to it's original position
     galeryModel.set(movedPieces.get(1).indeksos,{"color":movedPieces.get(1).color, "piece":movedPieces.get(1).piece})
-//    console.log(movedPieces.get(1).indeksos,movedPieces.get(1).color, movedPieces.get(1).piece)
     moveStarted=false;
     moveMent.moveLegal=false;
     if (tilat.valko && moveMent.wenpassant > -1){
@@ -244,11 +226,9 @@ function cancelMove() {
     // king index backing
     if (movedPieces.get(0).piece == "images/K.png"){
         feni.feniWkingInd = movedPieces.get(0).indeksos;
-//        console.log("W king index backing",feni.feniWkingInd);
     }
     if (movedPieces.get(0).piece == "images/k.png"){
         feni.feniBkingInd = movedPieces.get(0).indeksos;
-//        console.log("B king index backing",feni.feniBkingInd);
     }
 
     // Backing rook in castling
@@ -279,8 +259,6 @@ function cancelMove() {
 
     // castling or wenpassant doesnt work yet (movelist.index 2)
     //also  promotion to queen may not be cancelled
-//    feni.feniReady = false;
-//    vuoro.vaihdaValkealle();
 
 }
 
@@ -294,7 +272,6 @@ function isChessPure() {
     moveMent.chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
-//    console.log("Tässä kingi testissä, W,B", feni.feniWkingInd, feni.feniBkingInd);
     for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
         if (tilat.valko) {
             toIndex=feni.feniWkingInd;
@@ -354,12 +331,9 @@ function isChessPure() {
 ///////////////////////////////////////////////////////////////////////////////////////
 
 function midSquareCheck() {
-    //    feni.feniWhiteChess = false;
-    //    feni.feniBlackChess = false;
     moveMent.chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
-    //    console.log("Tässä kingi testissä, W,B", feni.feniWkingInd, feni.feniBkingInd);
     for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
         toIndex = moveMent.midSquareInd;
 
@@ -417,14 +391,11 @@ function doMove() {
         moveMent.currentMove = "";
         if (movedPieces.get(0).piece == "images/K.png") {moveMent.wKingMoved = true;}
         moveMent.midSquareCheckki = false;
-        //console.log(hopo.test);
         Mytab.addMove();
         if (playMode == "othDevice") {
             conTcpSrv.smove = hopo.test;
             conTcpCli.requestNewFortune();
             conTcpSrv.waitmove = conTcpCli.cmove;
-            //conTcpSrv.stime = valkokello.rogres_sekuntitv;
-            //conTcpSrv.stime = whiteTimeTotal;
         }
         vuoro.vaihdaMustalle();
         isChessPure();
@@ -457,7 +428,6 @@ function doMove() {
             conTcpSrv.smove = hopo.test;
             conTcpCli.requestNewFortune();
             conTcpSrv.waitmove = conTcpCli.cmove;
-            //conTcpSrv.stime = muttakello.rogres_sekuntitm;
         }
         vuoro.vaihdaValkealle();
         isChessPure();
@@ -511,12 +481,10 @@ function isLegalmoveB() {
 }
 
 function othDeviceMoveBlack() {
-    //console.log("othDevice movesBlack")
     fenToGRID()
     blackTimeAccum0 = conTcpCli.ctime;
     blackTimeTotal = blackTimeAccum0;
     blackTimeAccum = 0;
-    //console.log("black", blackTimeAccum0, blackTimeTotal)
     // Saving moves for captured pieces //Possible BUG in fast play in next line, could be related to narrow timeslot where you can select piece on opponents turn. Have to follow
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
@@ -574,12 +542,10 @@ function othDeviceMoveBlack() {
 }
 
 function othDeviceMoveWhite() {
-    //console.log("othDevice moves White")
     Myfunks.fenToGRID()
     whiteTimeAccum0 = conTcpCli.ctime;
     whiteTimeTotal = whiteTimeAccum0;
     whiteTimeAccum = 0;
-    console.log("white", whiteTimeAccum0, whiteTimeTotal, increment)
     // Saving moves for captured pieces
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured

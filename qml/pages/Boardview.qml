@@ -52,12 +52,10 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Settings")
-                //onClicked: asetussivulle.siirrytKo()
                 onClicked: {
                     pageStack.clear()
                     pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
                 }
-                //enabled: !tilat.juoksee || tilat.peliloppui
             }
 
             MenuItem {
@@ -82,22 +80,13 @@ Page {
                         //kripti.lisaa();
                         isMyStart ? feni.stockfishFirstmove = false : feni.stockfishFirstmove = true
                         isMyStart ? feni.feniWhiteReady = false : feni.feniWhiteReady = true
-                        //isMyStart ? feni.forChessCheck = false : feni.forChessCheck = true
-
-
                     }
                     isMyStart ? feni.feniWhite = true : feni.feniWhite = false
                     tilat.aloitaPeli();
                     tilat.juoksee = !tilat.juoksee;
                     startti.timeAsetus();
-                    //kello.sekuntit = 0;
-                    //valkokello.timeValko(); //is this needed
-                    //valkokello.sekuntitv = 0;
-                    //muttakello.timeMutta();
-                    //muttakello.sekuntitm=0;
                     tilat.vaihdaTila();
                     maharollisuuret = qsTr("Reset");
-                    //Mytab.clearRecent()
                     conTcpSrv.waitmove = "";
                     conTcpCli.cmove = "";
                     conTcpSrv.smove = "";
@@ -145,7 +134,6 @@ Page {
             id: column
 
             width: page.width
-            //spacing: Theme.paddingLarge
             spacing: 0
 
             Item {
@@ -185,7 +173,6 @@ Page {
 
             Item {
                 id:opsi
-                //property string movesDone: ""; //saves done moves to single string eg. e2e4d7d5
                 property string openingCompare: "";
                 property string openingSelected: "";
                 property string recentMove: "";
@@ -439,12 +426,7 @@ Page {
                     if (tilat.musta == true) {} else {
                         startti.timeAsetus();
                         tilat.musta = !tilat.musta; tilat.valko = !tilat.valko;
-                        //kello.sekuntit = 0;
                         valkokello.timeValko();
-                        //valkokello.sekuntitv = 0;
-                        //muttakello.timeMutta();
-                        //muttakello.sekuntitm=0;
-                        //valkokello.sum_incrementv = valkokello.sum_incrementv + increment;
                         valkokello.updateValko();
                         feni.feniWhite = false;
                         feni.feniBlack = true;
@@ -455,12 +437,7 @@ Page {
                     if (tilat.valko == true) {} else {
                         startti.timeAsetus();
                         tilat.musta = !tilat.musta; tilat.valko = !tilat.valko;
-                        //kello.sekuntit = 0;
-                        //valkokello.timeValko();
-                        //valkokello.sekuntitv = 0;
                         muttakello.timeMutta();
-                        //muttakello.sekuntitm=0;
-                        //muttakello.sum_incrementm = muttakello.sum_incrementm + increment;
                         muttakello.updateMutta();
                         feni.feniWhite = true
                         feni.feniBlack = false;
@@ -497,10 +474,7 @@ Page {
                     tilat.aloitaPeli();
                     tilat.juoksee = !tilat.juoksee;
                     startti.timeAsetus();
-                    //kello.sekuntit = 0;
-                    //valkokello.sekuntitv = 0;
                     valkokello.timeValko();
-                    //muttakello.sekuntitm=0;
                     muttakello.timeMutta();
                     tilat.vaihdaTila();
                     maharollisuuret = qsTr("Reset")
@@ -533,14 +507,9 @@ Page {
 
             Item {
                 id : valkokello
-                //property int sekuntitv: 0
-                //property int sekuntitv0: 0
-                //property int rogres_sekuntitv : valkomax
                 property int label_sekuntitv
                 property int label_minuutitv : valkomax/60
-                //property int sum_incrementv : 0
                 function timeValko() {
-                    //sekuntitv0 = sekuntitv0 + sekuntitv;
                     whiteTimeAccum0 = whiteTimeAccum0 + whiteTimeAccum-increment*1000;
                     conTcpSrv.stime = whiteTimeAccum0 + increment*1000;
                 }
@@ -555,10 +524,6 @@ Page {
                         whiteTimeTotal = whiteTimeAccum0 + whiteTimeAccum;
                         label_sekuntitv = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000))/1000%60;
                         label_minuutitv = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000)-label_sekuntitv*1000)/60000;
-                        //sekuntitv = kello.sekuntit; //
-                        //label_sekuntitv = (valkomax + sum_incrementv - (sekuntitv0 + sekuntitv))%60;
-                        //label_minuutitv = ((valkomax + sum_incrementv - (sekuntitv0 + sekuntitv))-label_sekuntitv)/60;
-                        //rogres_sekuntitv = valkomax + sum_incrementv - (sekuntitv0 + sekuntitv)
                     }
                 }
             }
@@ -584,7 +549,7 @@ Page {
                 }
             }
 
-            Item {
+            /*Item {
                 id : asetussivulle
                 function siirrytKo() {
                     // Nollaus
@@ -593,14 +558,10 @@ Page {
                         tilat.asetaTilat();
                         valkomax = 300;
                         mustamax = 300;
-                        //valkokello.rogres_sekuntitv = valkomax;
-                        //muttakello.rogres_sekuntitm = mustamax;
                         valkokello.sekuntitv0 = 0;
                         valkokello.sekuntitv = 0;
-                        //valkokello.sum_incrementv = 0;
                         muttakello.sekuntitm0 = 0;
                         muttakello.sekuntitm = 0;
-                        //muttakello.sum_incrementm = 0;
                         kello.sekuntit = 0;
                         startti.timeAsetus();
                         valkokello.updateValko();
@@ -608,39 +569,30 @@ Page {
                         tilat.peliloppui = false
                         // Siirtyminen asetussivulle
                     } else {
-                        //valkokello.rogres_sekuntitv = valkomax;
-                        //muttakello.rogres_sekuntitm = mustamax;
                         valkokello.sekuntitv0 = 0;
                         valkokello.sekuntitv = 0;
-                        //valkokello.sum_incrementv = 0;
                         muttakello.sekuntitm0 = 0;
                         muttakello.sekuntitm = 0;
-                        //muttakello.sum_incrementm = 0;
                         kello.sekuntit = 0;
                         tilat.peliloppui = false;
                         pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
                     }
                 }
-            }
+            }*/
 
             Item {
                id : kello
                property int days
                property int hours
-               //property int hours_t //Temp property to be used during developnment phase, to replace hours
                property int minutes
-               //property int minutes_t //Temp property to be used during developnment phase, to replace minutes
                property int sekuntit
                property int seconds
                property int millsecs
                function timeChanged() {
                    var date = new Date;
                    days = date.getDay();
-                   //hours = date.getHours()-startti.hours0
                    hours = date.getHours();
-                   //minutes = date.getMinutes()-startti.minutes0+60*hours
                    minutes = date.getMinutes();
-                   //sekuntit= date.getSeconds()-startti.sekuntit0+60*minutes
                    seconds= date.getSeconds();
                    millsecs = date.getMilliseconds();
                    pureMillsecs = millsecs + seconds*1000 + minutes*60*1000 + hours*60*60*1000 + days*24*60*60*1000 -pureMillsec0;
