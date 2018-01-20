@@ -442,6 +442,10 @@
         <source>Spanish (Carlos Gonzalez)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>French (lutinotmalin)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>harbour-shakkikello</name>

@@ -141,6 +141,7 @@ Page {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
                     text: qsTr("Increment/move") + " " + increment + " " + sets.labels[5].lab
+                    wrapMode: Text.WordWrap
                 }
                 Button {
                     text: sets.labels[2].lab
@@ -407,6 +408,7 @@ Page {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
                     text: qsTr("Movetime") + " " + stockfishMovetime + " " + sets.labels[5].lab
+                    wrapMode: Text.WordWrap
                 }
 
                 Button {

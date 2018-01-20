@@ -66,6 +66,7 @@ Page {
                 text: {qsTr("German (Nit)") + "\n"
                        + qsTr("Spanish (Carlos Gonzalez)") + "\n"
                        + qsTr("Finnish (Riku Lahtinen)") + "\n"
+                       + qsTr("French (lutinotmalin)") + "\n"
                        + qsTr("Dutch (Heimen Stoffels)") + "\n"
                        + qsTr("Polish (szopin)")
                 }

@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.1">
 <context>
     <name>Asetukset</name>
     <message>
         <source>Settings page</source>
-        <translation>Paramètres page</translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <source>About</source>
@@ -17,7 +15,7 @@
     </message>
     <message>
         <source>min</source>
-        <translation>min</translation>
+        <translation>min.</translation>
     </message>
     <message>
         <source>Black</source>
@@ -25,27 +23,19 @@
     </message>
     <message>
         <source>Increment/move</source>
-        <translation>Augmentation/mouvement</translation>
+        <translation>Temps additionnel après un mouvement</translation>
     </message>
     <message>
         <source>s</source>
-        <translation>s</translation>
+        <translation>sec.</translation>
     </message>
     <message>
         <source>Clock view</source>
-        <translation>Vue de la pendule</translation>
+        <translation>Afficher le pendule</translation>
     </message>
     <message>
         <source>Time counting</source>
-        <translation>Comptage de temps</translation>
-    </message>
-    <message>
-        <source>Upwards</source>
-        <translation>Vers le haut</translation>
-    </message>
-    <message>
-        <source>Downwards</source>
-        <translation>Vers le bas</translation>
+        <translation>Position du décompte</translation>
     </message>
     <message>
         <source>Opening</source>
@@ -53,11 +43,19 @@
     </message>
     <message>
         <source>Clock settings</source>
-        <translation>Paramètres de l&apos;horloge</translation>
+        <translation>Paramètres du pendule</translation>
     </message>
     <message>
         <source>Chess settings</source>
-        <translation>Paramètres d&apos;échecs</translation>
+        <translation>Paramètres du jeu</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>En bas</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>En haut</translation>
     </message>
     <message>
         <source>Random</source>
@@ -65,291 +63,291 @@
     </message>
     <message>
         <source>-1 min</source>
-        <translation>-1 min</translation>
+        <translation>-1 min.</translation>
     </message>
     <message>
         <source>+1 min</source>
-        <translation>+1 min</translation>
+        <translation>+1 min.</translation>
     </message>
     <message>
         <source>-1 s</source>
-        <translation>-1 s</translation>
+        <translation>-1 sec.</translation>
     </message>
     <message>
         <source>+1 s</source>
-        <translation>+1 s</translation>
+        <translation>+1 sec.</translation>
     </message>
     <message>
         <source>Skill Level</source>
-        <translation>Niveau de compétence</translation>
+        <translation>Niveau de difficulté</translation>
     </message>
     <message>
         <source>Movetime</source>
-        <translation>Déplacer temps</translation>
+        <translation>Durée des mouvements de l&apos;I.A.</translation>
     </message>
     <message>
         <source>Save settings</source>
-        <translation>Enregistrer les paramètres</translation>
+        <translation>Sauvegarder les modifications</translation>
     </message>
     <message>
         <source>Play chess</source>
-        <translation type="unfinished"></translation>
+        <translation>Jouer aux échecs</translation>
     </message>
     <message>
         <source>Opponent</source>
-        <translation type="unfinished"></translation>
+        <translation>Adversaire</translation>
     </message>
     <message>
         <source>Stockfish</source>
-        <translation type="unfinished"></translation>
+        <translation>I.A. Stockfish</translation>
     </message>
     <message>
         <source>Human</source>
-        <translation type="unfinished"></translation>
+        <translation>Second joueur</translation>
     </message>
     <message>
         <source>My color</source>
-        <translation type="unfinished"></translation>
+        <translation>Couleur</translation>
     </message>
     <message>
         <source>View settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres d&apos;affichage</translation>
     </message>
     <message>
         <source>Default view</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir par défaut</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation type="unfinished">Pendule d&apos;échecs</translation>
+        <translation>Pendule</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished">Échiquier</translation>
+        <translation>Échiquier</translation>
     </message>
     <message>
         <source>Saved game</source>
-        <translation type="unfinished"></translation>
+        <translation>Partie sauvegardée</translation>
     </message>
     <message>
         <source>Another device</source>
-        <translation type="unfinished"></translation>
+        <translation>Second appareil sous Sailfish OS</translation>
     </message>
     <message>
         <source>Port number</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <source>Fixed</source>
-        <translation type="unfinished"></translation>
+        <translation>Fixe</translation>
     </message>
 </context>
 <context>
     <name>Boardview</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Paramètres</translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <source>Save and manage games</source>
-        <translation type="unfinished"></translation>
+        <translation>Sauvegarder / Gérer les parties</translation>
     </message>
     <message>
         <source>Show moves</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les mouvements précédents</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Réinitialiser</translation>
+        <translation>Réinitialiser</translation>
     </message>
     <message>
         <source>Check!</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec !</translation>
     </message>
     <message>
         <source>Checkmate!</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec et mat !</translation>
     </message>
     <message>
         <source>Stalemate!</source>
-        <translation type="unfinished"></translation>
+        <translation>Pat !</translation>
     </message>
     <message>
         <source>White won!</source>
-        <translation type="unfinished"></translation>
+        <translation>Les Blancs l&apos;emportent !</translation>
     </message>
     <message>
         <source>Black won!</source>
-        <translation type="unfinished"></translation>
+        <translation>Les Noirs l&apos;emportent !</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Pause</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Continuer</translation>
+        <translation>Reprendre</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished">Échiquier</translation>
+        <translation>Échiquier</translation>
     </message>
     <message>
         <source>min:s</source>
-        <translation type="unfinished">min:s</translation>
+        <translation>min. : sec.</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished">Début</translation>
+        <translation>Lancer une partie</translation>
     </message>
 </context>
 <context>
     <name>Connbox</name>
     <message>
         <source>TCP connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Connexion TCP</translation>
     </message>
     <message>
         <source>My device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Mon appareil</translation>
     </message>
     <message>
         <source>Opponent&apos;s device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Appareil de l&apos;adversaire</translation>
     </message>
     <message>
         <source>Test connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Tester la connexion</translation>
     </message>
     <message>
         <source>Color mismatch, change my color</source>
-        <translation type="unfinished"></translation>
+        <translation>Petit souci, merci de modifier votre couleur</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Réinitialiser</translation>
+        <translation>Réinitialiser</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished">Début</translation>
+        <translation>Lancer une partie</translation>
     </message>
     <message>
         <source>Test in progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Test en cours</translation>
     </message>
     <message>
         <source>Waiting your opponent to start</source>
-        <translation type="unfinished"></translation>
+        <translation>Dans l&apos;attente d&apos;une confirmation de votre adversaire</translation>
     </message>
     <message>
         <source>Retest the connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Tester à nouveau la connexion</translation>
     </message>
     <message>
         <source>IP address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresse IP</translation>
     </message>
     <message>
         <source>Port number</source>
-        <translation type="unfinished"></translation>
+        <translation>Port</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Paramètres</translation>
+        <translation>Paramètres</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Fast chess</source>
-        <translation>Blitz échecs</translation>
+        <translation>Shakkikello</translation>
     </message>
 </context>
 <context>
     <name>GameInfo</name>
     <message>
         <source>Tag pairs</source>
-        <translation>Informations sur le jeu</translation>
+        <translation>Infos</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation>Mouvements d&apos;échecs, de coordonner la notation</translation>
+        <translation>Mouvements effectués</translation>
     </message>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Partie</translation>
     </message>
 </context>
 <context>
     <name>GameInfo2</name>
     <message>
         <source>Current game</source>
-        <translation type="unfinished">Partie actuelle</translation>
+        <translation>Partie en cours</translation>
     </message>
     <message>
         <source>Tag pairs</source>
-        <translation type="unfinished">Informations sur le jeu</translation>
+        <translation>Infos</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation type="unfinished">Mouvements d&apos;échecs, de coordonner la notation</translation>
+        <translation>Mouvements effectués</translation>
     </message>
 </context>
 <context>
     <name>GameList</name>
     <message>
         <source>Save current game</source>
-        <translation type="unfinished"></translation>
+        <translation>Sauvegarder la partie</translation>
     </message>
     <message>
         <source>Game list</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste des parties</translation>
     </message>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Partie</translation>
     </message>
     <message>
         <source>Show game</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher la partie</translation>
     </message>
     <message>
         <source>Delete game</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer la partie</translation>
     </message>
     <message>
         <source>Animate game</source>
-        <translation type="unfinished"></translation>
+        <translation>Replay</translation>
     </message>
 </context>
 <context>
     <name>GameSelector</name>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Partie</translation>
     </message>
     <message>
         <source>Select game</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner une partie</translation>
     </message>
 </context>
 <context>
     <name>Pelisivu</name>
     <message>
-        <source>min:s</source>
-        <translation>min:s</translation>
-    </message>
-    <message>
         <source>Black´s turn</source>
-        <translation>Tour de Noir</translation>
+        <translation>Au tour des Noirs</translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation>Tour de Blanc</translation>
+        <translation>Au tour des Blancs</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuer</translation>
+        <translation>Reprendre</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -361,46 +359,38 @@
     </message>
     <message>
         <source>Chess clock</source>
-        <translation>Pendule d&apos;échecs</translation>
+        <translation>Pendule</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <translation>min. : sec.</translation>
     </message>
     <message>
         <source>White´s clock</source>
-        <translation>Horloge de Blanc</translation>
-    </message>
-    <message>
-        <source>Black´s clock</source>
-        <translation>Horloge de Noir</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Décompte des Blancs</translation>
     </message>
     <message>
         <source>Controls</source>
-        <translation>Contrôles</translation>
+        <translation>Tableau de bord</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation>Décompte des Noirs</translation>
     </message>
 </context>
 <context>
     <name>Tietoja</name>
     <message>
         <source>Back to settings</source>
-        <translation>Retour aux réglages</translation>
+        <translation>Retour</translation>
     </message>
     <message>
         <source>About page</source>
-        <translation>À propos de la page</translation>
+        <translation>À propos</translation>
     </message>
     <message>
         <source>Translations</source>
         <translation>Traductions</translation>
-    </message>
-    <message>
-        <source>Licence</source>
-        <translation>Licence</translation>
-    </message>
-    <message>
-        <source>Polish (szopin)</source>
-        <translation>Polonais  (szopin)</translation>
     </message>
     <message>
         <source>German (Nit)</source>
@@ -411,8 +401,8 @@
         <translation>Néerlandais (Heimen Stoffels)</translation>
     </message>
     <message>
-        <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
+        <source>Polish (szopin)</source>
+        <translation>Polonais (szopin)</translation>
     </message>
     <message>
         <source>Contributions</source>
@@ -420,34 +410,46 @@
     </message>
     <message>
         <source>The design of the pieces (Kapu)</source>
-        <translation>La conception des pièces (Kapu)</translation>
+        <translation>Design des pions (Kapu)</translation>
     </message>
     <message>
         <source>Third party software</source>
-        <translation>Logiciel tiers</translation>
+        <translation>Logiciels tiers</translation>
     </message>
     <message>
         <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Moteur Stockfish, v5 (stockfishchess.org)</translation>
+        <translation>I.A. Stockfish, v5 (stockfishchess.org)</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Licence</translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen</source>
+        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
         <source>Licensed under GPLv3. License, source code and more information:</source>
-        <translation>Sous licence GPLv3. Licence, code source et plus d&apos;informations:</translation>
+        <translation>Sous licence GNU GPLv3. Pour plus d&apos;infos :</translation>
     </message>
     <message>
         <source>Finnish (Riku Lahtinen)</source>
-        <translation type="unfinished"></translation>
+        <translation>Finlandais (Riku Lahtinen)</translation>
     </message>
     <message>
         <source>Spanish (Carlos Gonzalez)</source>
-        <translation type="unfinished"></translation>
+        <translation>Espagnol (Carlos Gonzalez)</translation>
+    </message>
+    <message>
+        <source>French (lutinotmalin)</source>
+        <translation>Français (lutinotmalin)</translation>
     </message>
 </context>
 <context>
     <name>harbour-shakkikello</name>
     <message>
         <source>Start</source>
-        <translation>Début</translation>
+        <translation>Lancer une partie</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -455,7 +457,7 @@
     </message>
     <message>
         <source>Downwards</source>
-        <translation>Vers le bas</translation>
+        <translation>En bas</translation>
     </message>
 </context>
 </TS>

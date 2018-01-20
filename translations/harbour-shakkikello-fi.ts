@@ -442,6 +442,10 @@
         <source>Spanish (Carlos Gonzalez)</source>
         <translation>Espanjaksi (Carlos Gonzalez)</translation>
     </message>
+    <message>
+        <source>French (lutinotmalin)</source>
+        <translation>Ranskaksi (lutinotmalin)</translation>
+    </message>
 </context>
 <context>
     <name>harbour-shakkikello</name>
