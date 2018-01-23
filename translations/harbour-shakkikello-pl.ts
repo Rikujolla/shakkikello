@@ -444,7 +444,7 @@
     </message>
     <message>
         <source>French (lutinotmalin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Francuski (lutinotmalin)</translation>
     </message>
 </context>
 <context>
