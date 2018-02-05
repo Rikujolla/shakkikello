@@ -300,6 +300,24 @@ Page {
                         moves:"d2d4g8f6c2c4c7c5d4d5b7b5c4b5a7a6b5a6c8a6b1c3d7d6e2e4"},
                     {name:"Modern Benoni", eco:"A60",
                         moves:"d2d4g8f6c2c4c7c5d4d5e7e6"},
+                    {name:"Modern Benoni", eco:"A61", // Not able to see difference to A60
+                        moves:"d2d4g8f6c2c4c7c5d4d5e7e6"},
+                    {name:"Benoni, Fianchetto Variation without early ...Nbd7", eco:"A62", // Not able to see all the moves
+                        moves:"d2d4g8f6c2c4c7c5d4d5e7e6b1c3e6d5c4d5d7d6g1f3g7g6g2g3f8g7f1g2e8g8e1g1"},
+                    {name:"Benoni, Fianchetto Variation, 9...Nbd7", eco:"A63", // Currently same than A62
+                        moves:"d2d4g8f6c2c4c7c5d4d5e7e6b1c3e6d5c4d5d7d6g1f3g7g6g2g3f8g7f1g2e8g8e1g1"},
+                    {name:"Benoni, Fianchetto Variation, 11...Re8", eco:"A64", // Currently same than A62
+                        moves:"d2d4g8f6c2c4c7c5d4d5e7e6b1c3e6d5c4d5d7d6g1f3g7g6g2g3f8g7f1g2e8g8e1g1"},
+                    {name:"Benoni, 6.e4", eco:"A65", //Currently same than A60
+                        moves:"d2d4g8f6c2c4c7c5d4d5e7e6"},
+                    {name:"Benoni, Pawn Storm Variation", eco:"A66", //Currently same than A60
+                        moves:"d2d4g8f6c2c4c7c5d4d5e7e6"},
+                    {name:"Benoni, Taimanov Variation", eco:"A67",
+                        moves:"d2d4g8f6c2c4c7c5d4d5e7e6b1c3e6d5c4d5d7d6e2e4g7g6f2f4f8g7f1b5"},
+                    {name:"Benoni, Four Pawns Attack", eco:"A68", //Cannot make ready
+                        moves:"d2d4g8f6c2c4c7c5d4d5e7e6b1c3e6d5c4d5d7d6e2e4g7g6f2f4f8g7"},
+                    {name:"Benoni, Four Pawns Attack, Main line", eco:"A69", //Cannot make ready
+                        moves:"d2d4g8f6c2c4c7c5d4d5e7e6b1c3e6d5c4d5d7d6e2e4g7g6f2f4f8g7"},
                     {name:"Benoni, Classical with e4 and Nf3", eco:"A70",
                         moves:"d2d4g8f6c2c4c7c5d4d5e7e6b1c3e6d5c4d5d7d6e2e4g7g6g1f3"},
                     {name:"Dutch Defence", eco:"A80",

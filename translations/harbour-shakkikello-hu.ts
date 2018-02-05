@@ -1,106 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pl">
+<TS version="2.1" language="hu">
 <context>
     <name>Asetukset</name>
     <message>
         <source>Settings page</source>
-        <translation>Ustawienia</translation>
+        <translation>Beállítások oldala</translation>
     </message>
     <message>
         <source>About</source>
-        <translation>O programie</translation>
+        <translation>Névjegy</translation>
     </message>
     <message>
         <source>White</source>
-        <translation>Białe</translation>
+        <translation>Fehér</translation>
     </message>
     <message>
         <source>min</source>
-        <translation>min</translation>
+        <translation>perc</translation>
     </message>
     <message>
         <source>Black</source>
-        <translation>Czarne</translation>
+        <translation>Fekete</translation>
     </message>
     <message>
         <source>Increment/move</source>
         <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
-        <translation>Dodany czas/ruch</translation>
+        <translation>Növekmény/lépés</translation>
     </message>
     <message>
         <source>s</source>
-        <translation>s</translation>
+        <translation>mp</translation>
     </message>
     <message>
         <source>Clock view</source>
-        <translation>Widok zegara</translation>
+        <translation>Óra nézet</translation>
     </message>
     <message>
         <source>Time counting</source>
         <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
-        <translation>Liczenie czasu</translation>
+        <translation>Időszámláló</translation>
     </message>
     <message>
         <source>Opening</source>
-        <translation>Otwarcie</translation>
+        <translation>Megnyitás</translation>
     </message>
     <message>
         <source>Clock settings</source>
-        <translation>Ustawienia zegara</translation>
+        <translation>Óra beállítások</translation>
     </message>
     <message>
         <source>Chess settings</source>
-        <translation>Ustawienia szachów</translation>
+        <translation>Sakk beállítások</translation>
     </message>
     <message>
         <source>Downwards</source>
-        <translation>W dół</translation>
+        <translation>Lefelé</translation>
     </message>
     <message>
         <source>Upwards</source>
-        <translation>W górę</translation>
+        <translation>Felfelé</translation>
     </message>
     <message>
         <source>Random</source>
-        <translation>Losowe</translation>
+        <translation>Véletlenszerű</translation>
     </message>
     <message>
         <source>-1 min</source>
-        <translation>-1 min</translation>
+        <translation>-1 perc</translation>
     </message>
     <message>
         <source>+1 min</source>
-        <translation>+1 min</translation>
+        <translation>+1 perc</translation>
     </message>
     <message>
         <source>-1 s</source>
-        <translation>-1 s</translation>
+        <translation>-1 mp</translation>
     </message>
     <message>
         <source>+1 s</source>
-        <translation>+1 s</translation>
+        <translation>+1 mp</translation>
     </message>
     <message>
         <source>Skill Level</source>
-        <translation>Poziom umiejętności</translation>
+        <translation>Képességszint</translation>
     </message>
     <message>
         <source>Movetime</source>
         <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
-        <translation>Czas ruchu</translation>
+        <translation>Időhatárolás</translation>
     </message>
     <message>
         <source>Save settings</source>
-        <translation>Zapisz ustawienia</translation>
+        <translation>Beállítások mentése</translation>
     </message>
     <message>
         <source>Play chess</source>
-        <translation>Graj w szachy</translation>
+        <translation>Sakkozz</translation>
     </message>
     <message>
         <source>Opponent</source>
-        <translation>Przeciwnik</translation>
+        <translation>Ellenfél</translation>
     </message>
     <message>
         <source>Stockfish</source>
@@ -108,165 +108,165 @@
     </message>
     <message>
         <source>Human</source>
-        <translation>Człowiek</translation>
+        <translation>Emberi</translation>
     </message>
     <message>
         <source>My color</source>
-        <translation>Mój kolor</translation>
+        <translation>Saját szín</translation>
     </message>
     <message>
         <source>View settings</source>
-        <translation>Zobacz ustawienia</translation>
+        <translation>Megjelenítési beállítások</translation>
     </message>
     <message>
         <source>Default view</source>
-        <translation>Widok standardowy</translation>
+        <translation>Alap nézet</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation>Zegar szachowy</translation>
+        <translation>Sakk óra</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation>Szachownica</translation>
+        <translation>Sakktábla</translation>
     </message>
     <message>
         <source>Saved game</source>
-        <translation>Zapisana gra</translation>
+        <translation>Mentett játék</translation>
     </message>
     <message>
         <source>Another device</source>
-        <translation>Inne urządzenie</translation>
+        <translation>Más készülék</translation>
     </message>
     <message>
         <source>Port number</source>
-        <translation>Numer portu</translation>
+        <translation>Port szám</translation>
     </message>
     <message>
         <source>Fixed</source>
-        <translation>Naprawione</translation>
+        <translation>Rögzített</translation>
     </message>
 </context>
 <context>
     <name>Boardview</name>
     <message>
         <source>Settings</source>
-        <translation>Ustawienia</translation>
+        <translation>Beállítások</translation>
     </message>
     <message>
         <source>Save and manage games</source>
-        <translation>Zapisz i zarządzaj grami</translation>
+        <translation>Játékok mentése és kezelése</translation>
     </message>
     <message>
         <source>Show moves</source>
-        <translation>Pokaż ruchy</translation>
+        <translation>Lépések megjelenítése</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Resetuj</translation>
+        <translation>Visszaállítás</translation>
     </message>
     <message>
         <source>Check!</source>
-        <translation>Szach!</translation>
+        <translation>Sakk!</translation>
     </message>
     <message>
         <source>Checkmate!</source>
-        <translation>Mat!</translation>
+        <translation>Sakk és matt!</translation>
     </message>
     <message>
         <source>Stalemate!</source>
-        <translation>Pat!</translation>
+        <translation>Patt!</translation>
     </message>
     <message>
         <source>White won!</source>
-        <translation>Białe wygrały!</translation>
+        <translation>A fehér nyert!</translation>
     </message>
     <message>
         <source>Black won!</source>
-        <translation>Czarne wygrały!</translation>
+        <translation>A fekete nyert!</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauza</translation>
+        <translation>Szünet</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Kontynuuj</translation>
+        <translation>Folytatás</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation>Szachownica</translation>
+        <translation>Sakktábla</translation>
     </message>
     <message>
         <source>min:s</source>
-        <translation>min:s</translation>
+        <translation>perc:mp</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Indítás</translation>
     </message>
 </context>
 <context>
     <name>Connbox</name>
     <message>
         <source>TCP connection</source>
-        <translation>Połączenie TCP</translation>
+        <translation>TCP kapcsolat</translation>
     </message>
     <message>
         <source>My device info</source>
-        <translation>Moje urządzenie</translation>
+        <translation>Saját készülékinfó</translation>
     </message>
     <message>
         <source>Opponent&apos;s device info</source>
-        <translation>Urządzenie przeciwnika</translation>
+        <translation>Ellenfél készülékinfó</translation>
     </message>
     <message>
         <source>Test connection</source>
-        <translation>Testuj połączenie</translation>
+        <translation>Kapcsolat tesztelése</translation>
     </message>
     <message>
         <source>Color mismatch, change my color</source>
         <extracomment>Reports the player that colors selected in games in different devices prevent the game start. Another player has to change the color the game to proceed.</extracomment>
-        <translation>Niezgrane kolory, zmień kolor</translation>
+        <translation>Színegyezés, saját szín megváltoztatása</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Resetuj</translation>
+        <translation>Visszaállítás</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Indítás</translation>
     </message>
     <message>
         <source>Test in progress</source>
-        <translation>Test w trakcie</translation>
+        <translation>Teszt folyamatban</translation>
     </message>
     <message>
         <source>Waiting your opponent to start</source>
-        <translation>Oczekiwanie na ruch przeciwnika</translation>
+        <translation>Az ellenfél kezdésére várunk</translation>
     </message>
     <message>
         <source>Retest the connection</source>
-        <translation>Powtórz test połączenia</translation>
+        <translation>Kapcsolat újratesztelése</translation>
     </message>
     <message>
         <source>IP address</source>
-        <translation>Adres IP</translation>
+        <translation>IP cím</translation>
     </message>
     <message>
         <source>Port number</source>
-        <translation>Numer portu</translation>
+        <translation>Port szám</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Ustawienia</translation>
+        <translation>Beállítások</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Fast chess</source>
-        <translation>Szybkie szachy</translation>
+        <translation>Gyors sakk</translation>
     </message>
 </context>
 <context>
@@ -274,185 +274,185 @@
     <message>
         <source>Tag pairs</source>
         <extracomment>&quot;Tag pairs&quot; could be also e.g. &quot;Game info&quot;. This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
-        <translation>Zestaw tagów</translation>
+        <translation>Címkepárok</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
         <extracomment>&quot;Movetext, Coordinate notation&quot; could be also e.g. &quot;Moves in coordinates&quot;. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
-        <translation>Tekst ruchu, zapis współrzędnych</translation>
+        <translation>Lépéslista, Koordináta jelölés</translation>
     </message>
     <message>
         <source>Game</source>
-        <translation>Gra</translation>
+        <translation>Játék</translation>
     </message>
 </context>
 <context>
     <name>GameInfo2</name>
     <message>
         <source>Current game</source>
-        <translation>Obecna gra</translation>
+        <translation>Jelenlegi játék</translation>
     </message>
     <message>
         <source>Tag pairs</source>
         <extracomment>&quot;Tag pairs&quot; could be also &quot;Game info&quot;. This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
-        <translation>Zestaw tagów</translation>
+        <translation>Címkepárok</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
         <extracomment>&quot;Movetext, Coordinate notation&quot; could be also e.g. &quot;Moves in coordinates&quot;. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
-        <translation>Tekst ruchu, zapis współrzędnych</translation>
+        <translation>Lépéslista, Koordináta jelölés</translation>
     </message>
 </context>
 <context>
     <name>GameList</name>
     <message>
         <source>Save current game</source>
-        <translation>Zapisz obecną grę</translation>
+        <translation>Jelenlegi játék mentése</translation>
     </message>
     <message>
         <source>Game list</source>
-        <translation>Lista gier</translation>
+        <translation>Játéklista</translation>
     </message>
     <message>
         <source>Game</source>
-        <translation>Gra</translation>
+        <translation>Játék</translation>
     </message>
     <message>
         <source>Show game</source>
-        <translation>Pokaż grę</translation>
+        <translation>Játék megjelenítése</translation>
     </message>
     <message>
         <source>Delete game</source>
-        <translation>Usuń grę</translation>
+        <translation>Játék törlése</translation>
     </message>
     <message>
         <source>Animate game</source>
-        <translation>Odtwórz grę</translation>
+        <translation>Játék animálása</translation>
     </message>
 </context>
 <context>
     <name>GameSelector</name>
     <message>
         <source>Game</source>
-        <translation>Gra</translation>
+        <translation>Játék</translation>
     </message>
     <message>
         <source>Select game</source>
-        <translation>Wybierz grę</translation>
+        <translation>Játék kiválasztása</translation>
     </message>
 </context>
 <context>
     <name>Pelisivu</name>
     <message>
         <source>Black´s turn</source>
-        <translation>Ruch czarnych</translation>
+        <translation>Feketén a sor</translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation>Ruch białych</translation>
+        <translation>Fehéren a sor</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauza</translation>
+        <translation>Szünet</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Kontynuacja</translation>
+        <translation>Folytatás</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Resetuj</translation>
+        <translation>Visszaállítás</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Ustawienia</translation>
+        <translation>Beállítások</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation>Zegar szachowy</translation>
+        <translation>Sakk óra</translation>
     </message>
     <message>
         <source>min:s</source>
-        <translation>min:s</translation>
+        <translation>perc:mp</translation>
     </message>
     <message>
         <source>White´s clock</source>
-        <translation>Zegar białych</translation>
+        <translation>Fehér órája</translation>
     </message>
     <message>
         <source>Controls</source>
-        <translation>Przyciski kontrolne</translation>
+        <translation>Vezérlők</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation>Zegar czarnych</translation>
+        <translation>Fekete órája</translation>
     </message>
 </context>
 <context>
     <name>Tietoja</name>
     <message>
         <source>Back to settings</source>
-        <translation>Powrót do ustawień</translation>
+        <translation>Vissza a beállításokhoz</translation>
     </message>
     <message>
         <source>About page</source>
-        <translation>O programie</translation>
+        <translation>Névjegy oldal</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Tłumaczenia</translation>
+        <translation>Fordítások</translation>
     </message>
     <message>
         <source>German (Nit)</source>
-        <translation>Niemiecki (Nit)</translation>
+        <translation>Német (Nit)</translation>
     </message>
     <message>
         <source>Dutch (Heimen Stoffels)</source>
-        <translation>Holenderski (Heimen Stoffels)</translation>
+        <translation>Holland (Heimen Stoffels)</translation>
     </message>
     <message>
         <source>Polish (szopin)</source>
-        <translation>Polski (szopin)</translation>
+        <translation>Lengyel (szopin)</translation>
     </message>
     <message>
         <source>Contributions</source>
-        <translation>Współautorzy</translation>
+        <translation>Közreműködések</translation>
     </message>
     <message>
         <source>The design of the pieces (Kapu)</source>
-        <translation>Projekt bierek (Kapu)</translation>
+        <translation>A figurák designja (Kapu)</translation>
     </message>
     <message>
         <source>Third party software</source>
-        <translation>Oprogramowanie firm trzecich</translation>
+        <translation>Harmadik féltől származó szoftver</translation>
     </message>
     <message>
         <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Silnik szachowy Stockfish, v5 (stockfishchess.org)</translation>
+        <translation>Stockfish motor, v5 (stockfishchess.org)</translation>
     </message>
     <message>
         <source>Licence</source>
-        <translation>Licencja</translation>
+        <translation>Licenc</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>Prawa autorskie (c) 2015, Riku Lahtinen</translation>
+        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
         <source>Licensed under GPLv3. License, source code and more information:</source>
-        <translation>Na licencji GPLv3. Licencja, kod źródłowy i więcej informacji:</translation>
+        <translation>Megjelent a GPLv3 licenc alatt. Licenc, forráskód, illetve több infó:</translation>
     </message>
     <message>
         <source>Finnish (Riku Lahtinen)</source>
-        <translation>Fiński (Riku Lahtinen)</translation>
+        <translation>Finn (Riku Lahtinen)</translation>
     </message>
     <message>
         <source>Spanish (Carlos Gonzalez)</source>
-        <translation>Hiszpański (Carlos Gonzalez)</translation>
+        <translation>Spanyol (Carlos Gonzalez)</translation>
     </message>
     <message>
         <source>French (lutinotmalin)</source>
-        <translation>Francuski (lutinotmalin)</translation>
+        <translation>Francia (lutinotmalin)</translation>
     </message>
     <message>
         <source>Hungarian (leoka)</source>
@@ -463,15 +463,15 @@
     <name>harbour-shakkikello</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Indítás</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Ustawienia</translation>
+        <translation>Beállítások</translation>
     </message>
     <message>
         <source>Downwards</source>
-        <translation>W dół</translation>
+        <translation>Lefelé</translation>
     </message>
 </context>
 </TS>

@@ -67,6 +67,7 @@ Page {
                        + qsTr("Spanish (Carlos Gonzalez)") + "\n"
                        + qsTr("Finnish (Riku Lahtinen)") + "\n"
                        + qsTr("French (lutinotmalin)") + "\n"
+                       + qsTr("Hungarian (leoka)") + "\n"
                        + qsTr("Dutch (Heimen Stoffels)") + "\n"
                        + qsTr("Polish (szopin)")
                 }

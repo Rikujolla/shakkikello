@@ -25,6 +25,7 @@
     </message>
     <message>
         <source>Increment/move</source>
+        <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
         <translation>Vermeerderen/verplaatsen</translation>
     </message>
     <message>
@@ -37,6 +38,7 @@
     </message>
     <message>
         <source>Time counting</source>
+        <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
         <translation>Volgorde van tijdsteller</translation>
     </message>
     <message>
@@ -45,11 +47,11 @@
     </message>
     <message>
         <source>Clock settings</source>
-        <translation>Klok-instellingen</translation>
+        <translation>Klokinstellingen</translation>
     </message>
     <message>
         <source>Chess settings</source>
-        <translation>Schaken-instellingen</translation>
+        <translation>Schaakinstellingen</translation>
     </message>
     <message>
         <source>Downwards</source>
@@ -81,10 +83,11 @@
     </message>
     <message>
         <source>Skill Level</source>
-        <translation>Niveau</translation>
+        <translation>Vaardigheidsniveau</translation>
     </message>
     <message>
         <source>Movetime</source>
+        <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
         <translation>Verplaatstijd</translation>
     </message>
     <message>
@@ -101,7 +104,7 @@
     </message>
     <message>
         <source>Stockfish</source>
-        <translation>Stokvis</translation>
+        <translation>Stockfish</translation>
     </message>
     <message>
         <source>Human</source>
@@ -117,7 +120,7 @@
     </message>
     <message>
         <source>Default view</source>
-        <translation>Standaard weergave</translation>
+        <translation>Standaardweergave</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -164,7 +167,7 @@
     </message>
     <message>
         <source>Check!</source>
-        <translation>Controleren!</translation>
+        <translation>Schaak!</translation>
     </message>
     <message>
         <source>Checkmate!</source>
@@ -172,7 +175,7 @@
     </message>
     <message>
         <source>Stalemate!</source>
-        <translation>Staalmat!</translation>
+        <translation>Patstelling!</translation>
     </message>
     <message>
         <source>White won!</source>
@@ -223,6 +226,7 @@
     </message>
     <message>
         <source>Color mismatch, change my color</source>
+        <extracomment>Reports the player that colors selected in games in different devices prevent the game start. Another player has to change the color the game to proceed.</extracomment>
         <translation>Kleur komt niet overeen; wijzig mijn kleur</translation>
     </message>
     <message>
@@ -239,7 +243,7 @@
     </message>
     <message>
         <source>Waiting your opponent to start</source>
-        <translation>Wachten op tegenstander</translation>
+        <translation>Wachten op zet van tegenstander</translation>
     </message>
     <message>
         <source>Retest the connection</source>
@@ -269,11 +273,13 @@
     <name>GameInfo</name>
     <message>
         <source>Tag pairs</source>
+        <extracomment>&quot;Tag pairs&quot; could be also e.g. &quot;Game info&quot;. This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
         <translation>Paren aantikken</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation>Verplaatstekst, coördinatennotatie</translation>
+        <extracomment>&quot;Movetext, Coordinate notation&quot; could be also e.g. &quot;Moves in coordinates&quot;. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
+        <translation>Verplaatstekst, notatie van coördinaten</translation>
     </message>
     <message>
         <source>Game</source>
@@ -288,10 +294,12 @@
     </message>
     <message>
         <source>Tag pairs</source>
-        <translation>Paren taggen</translation>
+        <extracomment>&quot;Tag pairs&quot; could be also &quot;Game info&quot;. This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
+        <translation>Paren aantikken</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
+        <extracomment>&quot;Movetext, Coordinate notation&quot; could be also e.g. &quot;Moves in coordinates&quot;. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
         <translation>Verplaatstekst, notatie van coördinaten</translation>
     </message>
 </context>
@@ -369,7 +377,7 @@
     </message>
     <message>
         <source>White´s clock</source>
-        <translation>De klok van Wit</translation>
+        <translation>Klok van Wit</translation>
     </message>
     <message>
         <source>Controls</source>
@@ -377,14 +385,14 @@
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation>De klok van Zwart</translation>
+        <translation>Klok van Zwart</translation>
     </message>
 </context>
 <context>
     <name>Tietoja</name>
     <message>
         <source>Back to settings</source>
-        <translation>Terug naar de instellingen</translation>
+        <translation>Terug naar instellingen</translation>
     </message>
     <message>
         <source>About page</source>
@@ -412,7 +420,7 @@
     </message>
     <message>
         <source>The design of the pieces (Kapu)</source>
-        <translation>Het ontwerp van de stukken (Kapu)</translation>
+        <translation>Het ontwerp van de speelstukken (Kapu)</translation>
     </message>
     <message>
         <source>Third party software</source>
@@ -420,7 +428,7 @@
     </message>
     <message>
         <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Stokvis-motor, v5 (stockfishchess.org)</translation>
+        <translation>Stockfish-aandrijving, v5 (stockfishchess.org)</translation>
     </message>
     <message>
         <source>Licence</source>
@@ -428,11 +436,11 @@
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
+        <translation>Auteursrecht © 2015, Riku Lahtinen</translation>
     </message>
     <message>
         <source>Licensed under GPLv3. License, source code and more information:</source>
-        <translation>Gelicenseerd onder de GPLv3-licentie. Licentie, broncode en meer informatie:</translation>
+        <translation>Uitgebracht onder de GPLv3-licentie. Licentie, broncode en meer informatie:</translation>
     </message>
     <message>
         <source>Finnish (Riku Lahtinen)</source>
@@ -445,6 +453,10 @@
     <message>
         <source>French (lutinotmalin)</source>
         <translation>Frans (lutinotmalin)</translation>
+    </message>
+    <message>
+        <source>Hungarian (leoka)</source>
+        <translation>Hongaars (leoka)</translation>
     </message>
 </context>
 <context>

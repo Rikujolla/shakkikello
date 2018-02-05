@@ -25,7 +25,8 @@
     </message>
     <message>
         <source>Increment/move</source>
-        <translation>Temps additionnel après un mouvement</translation>
+        <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
+        <translation>Temps additionnel après mouvement :</translation>
     </message>
     <message>
         <source>s</source>
@@ -37,7 +38,8 @@
     </message>
     <message>
         <source>Time counting</source>
-        <translation>Position du décompte</translation>
+        <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
+        <translation>Type de décompte</translation>
     </message>
     <message>
         <source>Opening</source>
@@ -49,15 +51,15 @@
     </message>
     <message>
         <source>Chess settings</source>
-        <translation>Paramètres du jeu</translation>
+        <translation>Paramètres de jeu</translation>
     </message>
     <message>
         <source>Downwards</source>
-        <translation>En bas</translation>
+        <translation>5, 4, 3, 2, 1...</translation>
     </message>
     <message>
         <source>Upwards</source>
-        <translation>En haut</translation>
+        <translation>1, 2, 3, 4, 5...</translation>
     </message>
     <message>
         <source>Random</source>
@@ -65,27 +67,28 @@
     </message>
     <message>
         <source>-1 min</source>
-        <translation>-1 min.</translation>
+        <translation>- 1 min.</translation>
     </message>
     <message>
         <source>+1 min</source>
-        <translation>+1 min.</translation>
+        <translation>+ 1 min.</translation>
     </message>
     <message>
         <source>-1 s</source>
-        <translation>-1 sec.</translation>
+        <translation>- 1 sec.</translation>
     </message>
     <message>
         <source>+1 s</source>
-        <translation>+1 sec.</translation>
+        <translation>+ 1 sec.</translation>
     </message>
     <message>
         <source>Skill Level</source>
-        <translation>Niveau de difficulté</translation>
+        <translation>Niveau de difficulté :</translation>
     </message>
     <message>
         <source>Movetime</source>
-        <translation>Durée des mouvements de l&apos;I.A.</translation>
+        <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
+        <translation>Durée des mouvements I.A. :</translation>
     </message>
     <message>
         <source>Save settings</source>
@@ -109,7 +112,7 @@
     </message>
     <message>
         <source>My color</source>
-        <translation>Couleur</translation>
+        <translation>Mon camp</translation>
     </message>
     <message>
         <source>View settings</source>
@@ -156,7 +159,7 @@
     </message>
     <message>
         <source>Show moves</source>
-        <translation>Afficher les mouvements précédents</translation>
+        <translation>Afficher les infos de la partie</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -196,7 +199,7 @@
     </message>
     <message>
         <source>min:s</source>
-        <translation>min. : sec.</translation>
+        <translation>min.:sec.</translation>
     </message>
     <message>
         <source>Start</source>
@@ -223,7 +226,8 @@
     </message>
     <message>
         <source>Color mismatch, change my color</source>
-        <translation>Petit souci, merci de modifier votre couleur</translation>
+        <extracomment>Reports the player that colors selected in games in different devices prevent the game start. Another player has to change the color the game to proceed.</extracomment>
+        <translation>Petit souci, changement de camp</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -262,18 +266,20 @@
     <name>CoverPage</name>
     <message>
         <source>Fast chess</source>
-        <translation>Shakkikello</translation>
+        <translation>Pikashakki</translation>
     </message>
 </context>
 <context>
     <name>GameInfo</name>
     <message>
         <source>Tag pairs</source>
-        <translation>Infos</translation>
+        <extracomment>&quot;Tag pairs&quot; could be also e.g. &quot;Game info&quot;. This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
+        <translation>Données</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation>Mouvements effectués</translation>
+        <extracomment>&quot;Movetext, Coordinate notation&quot; could be also e.g. &quot;Moves in coordinates&quot;. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
+        <translation>Mouvements effectués, coordonnées</translation>
     </message>
     <message>
         <source>Game</source>
@@ -288,11 +294,13 @@
     </message>
     <message>
         <source>Tag pairs</source>
-        <translation>Infos</translation>
+        <extracomment>&quot;Tag pairs&quot; could be also &quot;Game info&quot;. This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
+        <translation>Données</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
-        <translation>Mouvements effectués</translation>
+        <extracomment>&quot;Movetext, Coordinate notation&quot; could be also e.g. &quot;Moves in coordinates&quot;. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
+        <translation>Mouvements effectués, coordonnées</translation>
     </message>
 </context>
 <context>
@@ -365,7 +373,7 @@
     </message>
     <message>
         <source>min:s</source>
-        <translation>min. : sec.</translation>
+        <translation>min.:sec.</translation>
     </message>
     <message>
         <source>White´s clock</source>
@@ -384,7 +392,7 @@
     <name>Tietoja</name>
     <message>
         <source>Back to settings</source>
-        <translation>Retour</translation>
+        <translation>Menu précédent</translation>
     </message>
     <message>
         <source>About page</source>
@@ -412,11 +420,11 @@
     </message>
     <message>
         <source>The design of the pieces (Kapu)</source>
-        <translation>Design des pions (Kapu)</translation>
+        <translation>Design des pions, par Kapu (merci !)</translation>
     </message>
     <message>
         <source>Third party software</source>
-        <translation>Logiciels tiers</translation>
+        <translation>Logiciel tiers</translation>
     </message>
     <message>
         <source>Stockfish engine, v5 (stockfishchess.org)</source>
@@ -432,7 +440,7 @@
     </message>
     <message>
         <source>Licensed under GPLv3. License, source code and more information:</source>
-        <translation>Sous licence GNU GPLv3. Pour plus d&apos;infos :</translation>
+        <translation>Sous licence GNU GPLv3. Plus d&apos;infos sur :</translation>
     </message>
     <message>
         <source>Finnish (Riku Lahtinen)</source>
@@ -445,6 +453,10 @@
     <message>
         <source>French (lutinotmalin)</source>
         <translation>Français (lutinotmalin)</translation>
+    </message>
+    <message>
+        <source>Hungarian (leoka)</source>
+        <translation>Hongrois (leoka)</translation>
     </message>
 </context>
 <context>
@@ -459,7 +471,7 @@
     </message>
     <message>
         <source>Downwards</source>
-        <translation>En bas</translation>
+        <translation>5, 4, 3, 2, 1...</translation>
     </message>
 </context>
 </TS>

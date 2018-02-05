@@ -25,6 +25,7 @@
     </message>
     <message>
         <source>Increment/move</source>
+        <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
         <translation>Увеличение/ход</translation>
     </message>
     <message>
@@ -37,6 +38,7 @@
     </message>
     <message>
         <source>Time counting</source>
+        <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
         <translation>Подсчет времени</translation>
     </message>
     <message>
@@ -85,6 +87,7 @@
     </message>
     <message>
         <source>Movetime</source>
+        <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
         <translation>Двигаться время</translation>
     </message>
     <message>
@@ -223,6 +226,7 @@
     </message>
     <message>
         <source>Color mismatch, change my color</source>
+        <extracomment>Reports the player that colors selected in games in different devices prevent the game start. Another player has to change the color the game to proceed.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -269,10 +273,12 @@
     <name>GameInfo</name>
     <message>
         <source>Tag pairs</source>
+        <extracomment>&quot;Tag pairs&quot; could be also e.g. &quot;Game info&quot;. This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
         <translation>Информация об игре</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
+        <extracomment>&quot;Movetext, Coordinate notation&quot; could be also e.g. &quot;Moves in coordinates&quot;. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
         <translation>Переход, координат обозначения</translation>
     </message>
     <message>
@@ -288,10 +294,12 @@
     </message>
     <message>
         <source>Tag pairs</source>
+        <extracomment>&quot;Tag pairs&quot; could be also &quot;Game info&quot;. This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
         <translation type="unfinished">Информация об игре</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
+        <extracomment>&quot;Movetext, Coordinate notation&quot; could be also e.g. &quot;Moves in coordinates&quot;. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
         <translation type="unfinished">Переход, координат обозначения</translation>
     </message>
 </context>
@@ -444,6 +452,10 @@
     </message>
     <message>
         <source>French (lutinotmalin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hungarian (leoka)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

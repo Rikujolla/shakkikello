@@ -54,6 +54,7 @@ Page {
                 title: qsTr("Game") + " " + (selectedGame + 1)
             }
 
+            //: "Tag pairs" could be also e.g. "Game info". This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation
             SectionHeader { text: qsTr("Tag pairs") }
             Text {
                 font.pixelSize: Theme.fontSizeSmall
@@ -68,6 +69,7 @@ Page {
                 text: vars.tagpairs
             }
 
+            //: "Movetext, Coordinate notation" could be also e.g. "Moves in coordinates". See more https://en.wikipedia.org/wiki/Portable_Game_Notation
             SectionHeader { text: qsTr("Movetext, Coordinate notation") }
             Text {
                 font.pixelSize: Theme.fontSizeSmall

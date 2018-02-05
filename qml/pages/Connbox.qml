@@ -153,6 +153,7 @@ Row {
         Button {
             id: colBtn
             visible: false
+            //: Reports the player that colors selected in games in different devices prevent the game start. Another player has to change the color the game to proceed.
             text: qsTr("Color mismatch, change my color")
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {

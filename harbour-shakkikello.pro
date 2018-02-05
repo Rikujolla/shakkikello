@@ -95,7 +95,8 @@ TRANSLATIONS +=  translations/harbour-shakkikello-da.ts \
                  translations/harbour-shakkikello-ru.ts \
                  translations/harbour-shakkikello-sv.ts \
                  translations/harbour-shakkikello-zh_cn.ts \
-                 translations/harbour-shakkikello-zh_hk.ts
+                 translations/harbour-shakkikello-zh_hk.ts \
+                 translations/harbour-shakkikello-hu.ts
 
 HEADERS += \
     src/stockfish/bitboard.h \
