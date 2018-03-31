@@ -456,7 +456,7 @@
     </message>
     <message>
         <source>Hungarian (leoka)</source>
-        <translation type="unfinished"></translation>
+        <translation>Magyar (leoka)</translation>
     </message>
 </context>
 <context>

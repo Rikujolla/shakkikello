@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>White</source>
-        <translation>Blanc</translation>
+        <translation>Blancs</translation>
     </message>
     <message>
         <source>min</source>
@@ -21,12 +21,12 @@
     </message>
     <message>
         <source>Black</source>
-        <translation>Noir</translation>
+        <translation>Noirs</translation>
     </message>
     <message>
         <source>Increment/move</source>
         <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
-        <translation>Temps additionnel après mouvement :</translation>
+        <translation>Temps suppl. après mouvement :</translation>
     </message>
     <message>
         <source>s</source>
@@ -55,11 +55,11 @@
     </message>
     <message>
         <source>Downwards</source>
-        <translation>5, 4, 3, 2, 1...</translation>
+        <translation>À rebours</translation>
     </message>
     <message>
         <source>Upwards</source>
-        <translation>1, 2, 3, 4, 5...</translation>
+        <translation>Classique</translation>
     </message>
     <message>
         <source>Random</source>
@@ -67,19 +67,19 @@
     </message>
     <message>
         <source>-1 min</source>
-        <translation>- 1 min.</translation>
+        <translation>-1 min.</translation>
     </message>
     <message>
         <source>+1 min</source>
-        <translation>+ 1 min.</translation>
+        <translation>+1 min.</translation>
     </message>
     <message>
         <source>-1 s</source>
-        <translation>- 1 sec.</translation>
+        <translation>-1 sec.</translation>
     </message>
     <message>
         <source>+1 s</source>
-        <translation>+ 1 sec.</translation>
+        <translation>+1 sec.</translation>
     </message>
     <message>
         <source>Skill Level</source>
@@ -112,7 +112,7 @@
     </message>
     <message>
         <source>My color</source>
-        <translation>Mon camp</translation>
+        <translation>Mes pions</translation>
     </message>
     <message>
         <source>View settings</source>
@@ -199,7 +199,7 @@
     </message>
     <message>
         <source>min:s</source>
-        <translation>min.:sec.</translation>
+        <translation>min:sec</translation>
     </message>
     <message>
         <source>Start</source>
@@ -227,7 +227,7 @@
     <message>
         <source>Color mismatch, change my color</source>
         <extracomment>Reports the player that colors selected in games in different devices prevent the game start. Another player has to change the color the game to proceed.</extracomment>
-        <translation>Petit souci, changement de camp</translation>
+        <translation>Couleur déjà prise, merci de prendre les autres pions</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -373,7 +373,7 @@
     </message>
     <message>
         <source>min:s</source>
-        <translation>min.:sec.</translation>
+        <translation>min:sec</translation>
     </message>
     <message>
         <source>White´s clock</source>
@@ -428,7 +428,7 @@
     </message>
     <message>
         <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>I.A. Stockfish, v5 (stockfishchess.org)</translation>
+        <translation>I.A. Stockfish v5 (stockfishchess.org)</translation>
     </message>
     <message>
         <source>Licence</source>
@@ -436,7 +436,7 @@
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
+        <translation>Riku Lahtinen, © 2015</translation>
     </message>
     <message>
         <source>Licensed under GPLv3. License, source code and more information:</source>
@@ -471,7 +471,7 @@
     </message>
     <message>
         <source>Downwards</source>
-        <translation>5, 4, 3, 2, 1...</translation>
+        <translation>À rebours</translation>
     </message>
 </context>
 </TS>
