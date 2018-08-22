@@ -12,6 +12,10 @@
 #- If paused in two player game I can move opponents piece?? BUG
 #- If paused, in human mode play can be continued BUG
 #- In other device mode promotion is only queen, BUG
+
+* Wed Aug 22 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.6
+- XperiaX fonts sizes increased
+
 * Sat Mar 31 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.5
 - French translation updated
 

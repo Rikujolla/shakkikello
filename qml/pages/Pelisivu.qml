@@ -326,13 +326,17 @@ Page {
                 Text {
                     text: qsTr("White´s clock")
                     color: Theme.highlightColor
+                    font.pixelSize: Theme.fontSizeSmall
                     rotation: 180
                 }
             }
 
             Text {
                 text: "              " + qsTr("Controls")
+                // Removing text from Xperia X, not touching yet Jolla 1, Jolla C or Jolla Tablet
+                visible: Screen.height != 1920
                 color: Theme.highlightColor
+                font.pixelSize: Theme.fontSizeSmall
             }
 
             Row {
@@ -374,14 +378,15 @@ Page {
                 Text {
                     text: qsTr("Black´s clock")
                     color: Theme.highlightColor
+                    font.pixelSize: Theme.fontSizeSmall
                 }
             }
 
             BackgroundItem {
                 width: page.width
                 //height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : 275)
-                //height: JollaC ? 435 : JollaTablet ? 819 : TuringPhone&&Oysters ? xxx: Jolla1 : 275)
-                height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : (Screen.height == 1920 ? 680 : 275))
+                //height: JollaC ? 435 : JollaTablet ? 819 : XperiaX&TuringPhone&Oysters ? 720: Jolla1 : 275)
+                height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : (Screen.height == 1920 ? 780 : 275))
                 enabled: tilat.juoksee && tilat.musta
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {

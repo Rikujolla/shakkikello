@@ -92,6 +92,7 @@ Page {
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
+                    font.pixelSize: Theme.fontSizeSmall
                     text: qsTr("White") +" "+ valkomax/60 + " " + sets.labels[4].lab
                 }
 
@@ -116,6 +117,7 @@ Page {
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
+                    font.pixelSize: Theme.fontSizeSmall
                     text: qsTr("Black") +" "+ mustamax/60 + " " + sets.labels[4].lab
                 }
                 Button {
@@ -140,6 +142,7 @@ Page {
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
+                    font.pixelSize: Theme.fontSizeSmall
                     //: Sets how many seconds are added to the total remaining time of the game per move.
                     text: qsTr("Increment/move") + " " + increment + " " + sets.labels[5].lab
                     wrapMode: Text.WordWrap
@@ -386,6 +389,7 @@ Page {
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
+                    font.pixelSize: Theme.fontSizeSmall
                     text: qsTr("Skill Level") + " " + stockfishSkill
                 }
 
@@ -409,6 +413,7 @@ Page {
                 Text {
                     width: page.width /2
                     color: Theme.secondaryHighlightColor
+                    font.pixelSize: Theme.fontSizeSmall
                     //: Sets the time the Stockfish engine has per move.
                     text: qsTr("Movetime") + " " + stockfishMovetime + " " + sets.labels[5].lab
                     wrapMode: Text.WordWrap
