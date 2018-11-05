@@ -39,6 +39,7 @@ Page {
 
     property int pureMillsec0 //Absolute milliseconds when turn changes
     property int pureMillsecs //Milliseconds after last turn
+    property int pauseMillsecs //Milliseconds when game paused
     property int whiteTimeAccum0 // White Time Accumulated when turn changes
     property int whiteTimeAccum // White Time Accumulated during current turn
     property int whiteTimeTotal // White total time
@@ -72,24 +73,15 @@ Page {
                 text: aloitapause
                 enabled: !tilat.peliloppui
                 onClicked: {
-                    hopo.stoDepth = stockfishDepth;
-                    hopo.stoMovetime = stockfishMovetime;
-                    hopo.stoSkill = stockfishSkill;
                     if (!tilat.pelialkoi) {
-                        if (playMode == "stockfish") {hopo.initio();}
-                        //kripti.lisaa();
-                        isMyStart ? feni.stockfishFirstmove = false : feni.stockfishFirstmove = true
-                        isMyStart ? feni.feniWhiteReady = false : feni.feniWhiteReady = true
+                        Myfunks.startGame()
                     }
-                    isMyStart ? feni.feniWhite = true : feni.feniWhite = false
-                    tilat.aloitaPeli();
-                    tilat.juoksee = !tilat.juoksee;
-                    startti.timeAsetus();
-                    tilat.vaihdaTila();
-                    maharollisuuret = qsTr("Reset");
-                    conTcpSrv.waitmove = "";
-                    conTcpCli.cmove = "";
-                    conTcpSrv.smove = "";
+                    else if (tilat.juoksee) {
+                        Myfunks.pauseGame()
+                    }
+                    else {
+                        Myfunks.continueGame()
+                    }
                 }
             }
         }
@@ -507,6 +499,7 @@ Page {
                 function timeMutta() {
                     blackTimeAccum0 = blackTimeAccum0 + blackTimeAccum-increment*1000;
                     conTcpSrv.stime = blackTimeAccum0 + increment*1000;
+                    pauseMillsecs = 0
                 }
                 function updateMutta() {
                     kello.timeChanged();
@@ -515,7 +508,7 @@ Page {
                         tilat.peliLoppui()
                     }
                     else {
-                        blackTimeAccum = pureMillsecs;
+                        blackTimeAccum = pureMillsecs + pauseMillsecs;
                         blackTimeTotal = blackTimeAccum0 + blackTimeAccum;
                         label_sekuntitm = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000))/1000%60;
                         label_minuutitm = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000)-label_sekuntitm*1000)/60000;
@@ -530,6 +523,7 @@ Page {
                 function timeValko() {
                     whiteTimeAccum0 = whiteTimeAccum0 + whiteTimeAccum-increment*1000;
                     conTcpSrv.stime = whiteTimeAccum0 + increment*1000;
+                    pauseMillsecs = 0
                 }
                 function updateValko() {
                     kello.timeChanged();
@@ -538,7 +532,7 @@ Page {
                         tilat.peliLoppui()
                     }
                     else {
-                        whiteTimeAccum = pureMillsecs;
+                        whiteTimeAccum = pureMillsecs  + pauseMillsecs;
                         whiteTimeTotal = whiteTimeAccum0 + whiteTimeAccum;
                         label_sekuntitv = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000))/1000%60;
                         label_minuutitv = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000)-label_sekuntitv*1000)/60000;
@@ -1856,7 +1850,7 @@ Page {
             BackgroundItem {
                 id: upperBar
                 width: page.width
-                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : (Screen.height == 1920 ? 420 : 164))
+                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : (Screen.height == 1920 ? 338 : 164))
                 enabled: false //tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
@@ -1980,7 +1974,7 @@ Page {
                             anchors.fill: parent
                             height: grid.cellHeight
                             width: grid.cellWidth
-                            enabled: feni.feniWhite && isMyStart || feni.feniBlack && !isMyStart || playMode == "human"
+                            enabled: (feni.feniWhite && isMyStart || feni.feniBlack && !isMyStart || playMode == "human") && tilat.juoksee
                             onClicked: {moveMent.indeksi = index;
                                 moveMent.itemTobemoved = piece;
                                 moveMent.colorTobemoved = color;
@@ -2329,7 +2323,8 @@ Page {
             BackgroundItem {
                 id: lowerBar
                 width: page.width
-                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : (Screen.height == 1920 ? 420 : 164))
+                // height (Screen.height-Screen.width)/2-10-Screen.width/15-140
+                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : (Screen.height == 1920 ? 198 : 164))
                 enabled: false //tilat.juoksee && tilat.musta
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {
@@ -2349,6 +2344,64 @@ Page {
                         onTriggered: isMyStart ? valkokello.updateValko() : muttakello.updateMutta()}
                 }
             }
+
+            ListModel {
+                id: iconSources
+                ListElement{
+                    icons:"icon-m-previous?"
+                    visibility_: false
+                }
+                /*ListElement{
+                    icons:"icon-m-pause?"
+                    visibility_: true
+                }*/
+                ListElement{
+                    icons:"icon-m-play?"
+                    visibility_: true
+                }
+                ListElement{
+                    icons:"icon-m-next?"
+                    visibility_: false
+                }
+            }
+
+            // Controls for the play backing and continuing
+            BackgroundItem {
+                height:140
+                width: page.width
+                GridView {
+                    anchors.fill: parent
+                    cellWidth: page.width / 3
+                    visible: tilat.pelialkoi && !tilat.juoksee // not visible when playing
+                    model:iconSources
+                    delegate: Rectangle {
+                        IconButton {
+                            id: but_eon
+                            width:page.width/3
+                            visible: visibility_
+                            icon.source: "image://theme/"+icons + (pressed
+                                                                   ? Theme.highlightColor
+                                                                   : Theme.primaryColor)
+                            onClicked: {
+                                if (index==0){
+                                    console.log ("Backing")
+                                    // Under construction
+                                }
+                                else if (index==1){
+                                    //console.log ("Continue a game")
+                                    Myfunks.continueGame()
+                                }
+                                else {
+                                    console.log ("Move forward")
+                                    // Under construction
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
             Component.onCompleted: {
                 aloitapause = qsTr("Start")
                 kripti.lisaa()
@@ -2366,4 +2419,5 @@ Page {
 // loppusulkeet
         }
     }
+
 }

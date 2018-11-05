@@ -4,6 +4,7 @@ X-Nemo-Application-Type=silica-qt5
 Icon=harbour-shakkikello
 Exec=harbour-shakkikello
 Name=harbour-shakkikello
+Categories=Game
 # Tanskaksi (da)
 Name[da]=Lynskak
 # Saksaksi (de)

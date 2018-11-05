@@ -39,15 +39,14 @@ SOURCES += src/harbour-shakkikello.cpp \
     src/fortuneserver/server.cpp \
     src/fortuneclient/client.cpp
 
+
 OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/cover/CoverPage.qml \
     rpm/harbour-shakkikello.spec \
     rpm/harbour-shakkikello.yaml \
     translations/*.ts \
-    harbour-shakkikello.desktop \
     qml/pages/Asetukset.qml \
     qml/pages/Pelisivu.qml \
-    harbour-shakkikello.png \
     qml/pages/vaihtoMusta.png \
     qml/pages/vaihtoValkoinen.png \
     LICENSE \
@@ -77,6 +76,8 @@ OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/pages/GameList.qml \
     qml/pages/GameInfo2.qml \
     qml/pages/GameSelector.qml
+
+SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -124,11 +125,17 @@ HEADERS += \
     src/fortuneserver/server.h \
     src/fortuneclient/client.h
 
+
 DISTFILES += \
     rpm/harbour-shakkikello.changes \
     qml/pages/images/framemoved.png \
     qml/pages/images/frame.png \
-    qml/pages/Connbox.qml
+    qml/pages/Connbox.qml \
+    harbour-shakkikello.desktop \
+    icons/108x108/harbour-shakkikello.png \
+    icons/128x128/harbour-shakkikello.png \
+    icons/256x256/harbour-shakkikello.png \
+    icons/86x86/harbour-shakkikello.png
 
 FORMS +=
 

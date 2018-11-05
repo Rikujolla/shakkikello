@@ -6,6 +6,9 @@
 // Function midSquareCheck(), row 342
 // Function doMove(), row 402
 // Function whiteinMate(), row 461
+// Function startGame(), row 608
+// Function pauseGame(), row 637
+// Function continueGame(), row 648
 
 /////////////////////////////////////////////////////////
 // this function transforms grid notation to FEN-notation
@@ -161,7 +164,8 @@ function fenToGRID() {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-// Function checks if after move the Chess is still on. If so the movement is cancelled
+// Function checks if after move the Chess is still on. If so the movement is cancelled.
+// That is done by testing all the opponent pieces with a trial to capture the king. If success the chess state is still on.
 ///////////////////////////////////////////////////////////////////////////////////////
 
 function isChess() {
@@ -598,5 +602,57 @@ function othDeviceMoveWhite() {
     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
     feni.feniWhiteReady2 = false;
+
+}
+
+function startGame () {
+    hopo.stoDepth = stockfishDepth;
+    hopo.stoMovetime = stockfishMovetime;
+    hopo.stoSkill = stockfishSkill;
+    if (!tilat.pelialkoi) {
+        if (playMode == "stockfish") {hopo.initio();}
+        //kripti.lisaa();
+        if (isMyStart) {
+            feni.stockfishFirstmove = false
+            feni.feniWhiteReady = false
+            feni.feniWhite = true
+        }
+        else {
+            feni.stockfishFirstmove = true
+            feni.feniWhiteReady = true
+            feni.feniWhite = false
+        }
+    }
+    tilat.aloitaPeli();
+    tilat.juoksee = !tilat.juoksee;
+    startti.timeAsetus();
+    tilat.vaihdaTila();
+    maharollisuuret = qsTr("Reset");
+    conTcpSrv.waitmove = "";
+    conTcpCli.cmove = "";
+    conTcpSrv.smove = "";
+
+}
+
+function pauseGame () {
+    tilat.juoksee = !tilat.juoksee;
+    startti.timeAsetus();
+    tilat.vaihdaTila();
+    maharollisuuret = qsTr("Reset");
+    /*conTcpSrv.waitmove = "";
+    conTcpCli.cmove = "";
+    conTcpSrv.smove = "";*/
+
+}
+
+function continueGame () {
+    pauseMillsecs = pauseMillsecs + pureMillsecs
+    tilat.juoksee = !tilat.juoksee;
+    startti.timeAsetus();
+    tilat.vaihdaTila();
+    maharollisuuret = qsTr("Reset");
+    /*conTcpSrv.waitmove = "";
+    conTcpCli.cmove = "";
+    conTcpSrv.smove = "";*/
 
 }

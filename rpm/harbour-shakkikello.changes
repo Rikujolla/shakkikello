@@ -13,6 +13,10 @@
 #- If paused, in human mode play can be continued BUG
 #- In other device mode promotion is only queen, BUG
 
+* Mon Nov 05 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.7
+- App icon modified to suit better to the SailfishOS style
+- Timer bug related to board pause repaired
+
 * Wed Aug 22 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.6
 - XperiaX fonts sizes increased
 

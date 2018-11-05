@@ -227,7 +227,6 @@ Row {
             onClicked: {
                 pageStack.clear()
                 pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
-
             }
         }
 

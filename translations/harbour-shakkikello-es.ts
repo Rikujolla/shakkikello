@@ -151,59 +151,59 @@
     <name>Boardview</name>
     <message>
         <source>Settings</source>
-        <translation>Ajustes</translation>
+        <translation type="unfinished">Ajustes</translation>
     </message>
     <message>
         <source>Save and manage games</source>
-        <translation>Guardar y manejar juegos</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Show moves</source>
-        <translation>Mostrar movimientos</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Reiniciar</translation>
+        <translation type="unfinished">Reiniciar</translation>
     </message>
     <message>
         <source>Check!</source>
-        <translation>Chequear!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Checkmate!</source>
-        <translation>Mate!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Stalemate!</source>
-        <translation>Estancamiento!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>White won!</source>
-        <translation>Blanco ganó!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Black won!</source>
-        <translation>Negro ganó!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation type="unfinished">pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation type="unfinished">Continuar</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation>Tabla de ajedrez</translation>
+        <translation type="unfinished">Tabla de ajedrez</translation>
     </message>
     <message>
         <source>min:s</source>
-        <translation>min:s</translation>
+        <translation type="unfinished">min:s</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Iniciar</translation>
+        <translation type="unfinished">Iniciar</translation>
     </message>
 </context>
 <context>
@@ -457,6 +457,13 @@
     <message>
         <source>Hungarian (leoka)</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>funktiot</name>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Reiniciar</translation>
     </message>
 </context>
 <context>

@@ -460,6 +460,13 @@
     </message>
 </context>
 <context>
+    <name>funktiot</name>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">重置</translation>
+    </message>
+</context>
+<context>
     <name>harbour-shakkikello</name>
     <message>
         <source>Start</source>

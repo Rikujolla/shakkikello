@@ -456,7 +456,14 @@
     </message>
     <message>
         <source>Hungarian (leoka)</source>
-        <translation type="unfinished"></translation>
+        <translation>Węgierski (leoka)</translation>
+    </message>
+</context>
+<context>
+    <name>funktiot</name>
+    <message>
+        <source>Reset</source>
+        <translation>Resetuj</translation>
     </message>
 </context>
 <context>

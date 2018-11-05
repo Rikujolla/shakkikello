@@ -75,13 +75,14 @@ void Server::startServer()
         QNetworkConfiguration config = manager.configurationFromIdentifier(id);
         if ((config.state() & QNetworkConfiguration::Discovered) !=
             QNetworkConfiguration::Discovered) {
+            qDebug() <<"Test if this fails";
             config = manager.defaultConfiguration();
         }
-
+        qDebug() << "Conf test" << config.name();
         networkSession = new QNetworkSession(config, this);
         connect(networkSession, &QNetworkSession::opened, this, &Server::sessionOpened);
 
-        //qDebug() << "Opening network session.";
+        qDebug() << "Opening network server session.";
         networkSession->open();
     } else {
         sessionOpened();
@@ -118,8 +119,10 @@ void Server::sessionOpened()
     QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
     // use the first non-localhost IPv4 address
     for (int i = 0; i < ipAddressesList.size(); ++i) {
+            qDebug() << "IPtests: " << ipAddressesList.at(i).toString();
         if (ipAddressesList.at(i) != QHostAddress::LocalHost &&
-            ipAddressesList.at(i).toIPv4Address()) {
+            ipAddressesList.at(i).toString() != "::1" &&
+                ipAddressesList.at(i).toIPv4Address()) {
             ipAddress = ipAddressesList.at(i).toString();
             break;
         }
