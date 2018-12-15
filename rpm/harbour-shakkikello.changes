@@ -10,8 +10,11 @@
 #- Chessmate and Stalemate notifications NOT OK
 #- Buggy Chess messages in endgame situation NOT OK
 #- If paused in two player game I can move opponents piece?? BUG
-#- If paused, in human mode play can be continued BUG
 #- In other device mode promotion is only queen, BUG
+
+* Sat Dec 15 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.8
+- Added Chinese Simplified translation
+- After pause the game can be backed and restarted in the middle of game
 
 * Mon Nov 05 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.7
 - App icon modified to suit better to the SailfishOS style

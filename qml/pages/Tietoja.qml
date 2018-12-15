@@ -69,7 +69,8 @@ Page {
                        + qsTr("French (lutinotmalin)") + "\n"
                        + qsTr("Hungarian (leoka)") + "\n"
                        + qsTr("Dutch (Heimen Stoffels)") + "\n"
-                       + qsTr("Polish (szopin)")
+                       + qsTr("Polish (szopin)") + "\n"
+                       + qsTr("Chinese (China) (Historyscholar)")
                 }
             }
 
@@ -118,8 +119,7 @@ Page {
                       + qsTr("Licensed under GPLv3. License, source code and more information:") + "\n"
                       + ("https://github.com/Rikujolla/shakkikello")
             }
-
-//loppusulkeet
+            // end brackets
         }
     }
 }

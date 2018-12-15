@@ -41,11 +41,18 @@ Page {
     property int pureMillsecs //Milliseconds after last turn
     property int pauseMillsecs //Milliseconds when game paused
     property int whiteTimeAccum0 // White Time Accumulated when turn changes
+    property int whiteTimeAccum0_temp // White Time Accumulated when turn changes, temporary save
     property int whiteTimeAccum // White Time Accumulated during current turn
     property int whiteTimeTotal // White total time
     property int blackTimeAccum0 // Black Time Accumulated when turn changes
+    property int blackTimeAccum0_temp // Black Time Accumulated when turn changes, temporary save
     property int blackTimeAccum // Black Time Accumulated during current turn
     property int blackTimeTotal // Black total time
+    property string label_time_w // White time form 4:24
+    property string label_time_b // Black time form 4:23
+
+    //property int movesTotal: 0; //Records moves done, maybe to be moved from opsi
+    property int movesNoScanned: 0; //Tells the move under scannin e.g. when backing. In play same than movesTotal
 
     SilicaFlickable {
         anchors.fill: parent
@@ -436,6 +443,7 @@ Page {
                     if (tilat.musta == true) {} else {
                         startti.timeAsetus();
                         tilat.musta = !tilat.musta; tilat.valko = !tilat.valko;
+                        whiteTimeAccum0_temp = whiteTimeAccum0;
                         valkokello.timeValko();
                         valkokello.updateValko();
                         feni.feniWhite = false;
@@ -447,6 +455,7 @@ Page {
                     if (tilat.valko == true) {} else {
                         startti.timeAsetus();
                         tilat.musta = !tilat.musta; tilat.valko = !tilat.valko;
+                        blackTimeAccum0_temp = blackTimeAccum0;
                         muttakello.timeMutta();
                         muttakello.updateMutta();
                         feni.feniWhite = true
@@ -512,6 +521,7 @@ Page {
                         blackTimeTotal = blackTimeAccum0 + blackTimeAccum;
                         label_sekuntitm = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000))/1000%60;
                         label_minuutitm = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000)-label_sekuntitm*1000)/60000;
+                        label_time_b = label_minuutitm + ":" + (label_sekuntitm < 10 ? "0" : "") + label_sekuntitm
                     }
                 }
             }
@@ -536,6 +546,7 @@ Page {
                         whiteTimeTotal = whiteTimeAccum0 + whiteTimeAccum;
                         label_sekuntitv = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000))/1000%60;
                         label_minuutitv = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000)-label_sekuntitv*1000)/60000;
+                        label_time_w = label_minuutitv + ":" + (label_sekuntitv < 10 ? "0" : "") + label_sekuntitv
                     }
                 }
             }
@@ -612,7 +623,7 @@ Page {
            }
 
             Item {
-                id: kripti
+                id: kripti //Script adds the pieces to the galeryModel
                 property int koo: 0
                 property int aksa: 1
                 property int yyy: 1
@@ -699,8 +710,8 @@ Page {
                 id:moveMent
                 property int indeksi;
                 property int toHelpIndex; //for checking empty midsquares for bishop, rook and queen
-                property int wenpassant: -1;
-                property int benpassant: -1 //Black gives enpassant possibility
+                property int wenpassant: -1; //White gives enpassant possibility, board index number
+                property int benpassant: -1; //Black gives enpassant possibility, board index number
                 property string itemTobemoved;
                 property string colorTobemoved;
                 property string itemMoved;
@@ -765,7 +776,7 @@ Page {
                     switch (itemMoved) {
                     case "images/p.png":  // Black pawn
                         // Normal move
-                        if (((fromIndex-toIndex) == -8) && galeryModel.get(toIndex).color == "e") {
+                        if (((fromIndex-toIndex) == -8) && galeryModel.get(toIndex).color === "e") {
                             moveLegal = true; intLegal = 1;
                             if (toIndex > 55 && !chessTest) {
                                 waitPromo = true
@@ -774,20 +785,26 @@ Page {
                                 itemMoved = "images/p.png";
                                 currentMove = "promotion";
                                 movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":fromIndex})
+                                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                             }
                         }
                         // Move of two rows from the start position
-                        else if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).color == "e"
-                                 && galeryModel.get(toIndex-8).color == "e"
+                        else if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).color === "e"
+                                 && galeryModel.get(toIndex-8).color === "e"
                                  && (fromIndex < 16)) {
                             moveLegal = true; intLegal = 1;
                             benpassant = toIndex-8;
                             galeryModel.set(benpassant,{"color":"bp"})
+                            movedPieces.set(0,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                            movedPieces.set(1,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                            movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                            movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                            movedPieces.set(4,{"color":"bp", "piece":"images/empty.png", "indeksos":benpassant}) //Set enpassant values
                         }
                         // Capturing a piece
                         else if (((fromIndex-toIndex) == -7) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1
                                  || ((fromIndex-toIndex) == -9) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1) {
-                            if ((galeryModel.get(toIndex).color == "w")
+                            if ((galeryModel.get(toIndex).color === "w")
                                     ){
                                 moveLegal = true; intLegal = 1;
                                 if (toIndex > 55 && !chessTest) {
@@ -797,14 +814,16 @@ Page {
                                     itemMoved = "images/p.png"
                                     currentMove = "promotion";
                                     movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":fromIndex})
+                                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                                 }
                             }
                             // En passant
-                            else if (galeryModel.get(toIndex).color == "wp") {
+                            else if (galeryModel.get(toIndex).color === "wp") {
                                 moveLegal = true;
                                 galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
                                 currentMove = "enpassant";
                                 movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":toIndex-8})
+                                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                                 wenpassant = -1;
                             }
                             else {
@@ -822,7 +841,7 @@ Page {
                         break;
                     case "images/P.png":
                         // Normal move
-                        if (((fromIndex-toIndex) == 8) && galeryModel.get(toIndex).color == "e") {
+                        if (((fromIndex-toIndex) == 8) && galeryModel.get(toIndex).color === "e") {
                             moveLegal = true; intLegal = 1;
                             if (toIndex < 8 && !chessTest) {
                                 waitPromo = true
@@ -831,20 +850,26 @@ Page {
                                 itemMoved = "images/P.png"
                                 currentMove = "promotion";
                                 movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":fromIndex})
+                                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                             }
                         }
                         // Move of two rows from the start position
-                        else if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).color == "e"
-                                 && galeryModel.get(toIndex+8).color == "e"
+                        else if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).color === "e"
+                                 && galeryModel.get(toIndex+8).color === "e"
                                  && (fromIndex > 47)) {
                             moveLegal = true; intLegal = 1;
                             wenpassant = toIndex+8;
                             galeryModel.set(wenpassant,{"color":"wp"})
+                            movedPieces.set(0,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                            movedPieces.set(1,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                            movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                            movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                            movedPieces.set(4,{"color":"wp", "piece":"images/empty.png", "indeksos":wenpassant}) //Set enpassant values
                         }
                         // Capturing a piece
                         else if (((fromIndex-toIndex) == 7) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1
                                  || ((fromIndex-toIndex) == 9) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1) {
-                            if ((galeryModel.get(toIndex).color == "b")
+                            if ((galeryModel.get(toIndex).color === "b")
                                     ){
                                 moveLegal = true; intLegal = 1;
                                 if (toIndex < 8 && !chessTest) {
@@ -854,14 +879,16 @@ Page {
                                     itemMoved = "images/P.png"
                                     currentMove = "promotion";
                                     movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":fromIndex})
+                                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                                 }
                             }
                             // En passant
-                            else if (galeryModel.get(toIndex).color == "bp") {
+                            else if (galeryModel.get(toIndex).color === "bp") {
                                 moveLegal = true;
                                 galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
                                 currentMove = "enpassant";
                                 movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":toIndex+8})
+                                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                                 benpassant = -1;
                             }
 
@@ -979,8 +1006,8 @@ Page {
                                    toHelpIndex = toIndex-8;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -8;
                                        }
@@ -997,8 +1024,8 @@ Page {
                                    toHelpIndex = toIndex+8;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +8;
                                        }
@@ -1023,8 +1050,8 @@ Page {
                                 toHelpIndex = toIndex-1;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -1;
                                     }
@@ -1041,8 +1068,8 @@ Page {
                                 toHelpIndex = toIndex+1;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +1;
                                     }
@@ -1068,8 +1095,8 @@ Page {
                                    toHelpIndex = toIndex-9;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -9;
                                        }
@@ -1086,8 +1113,8 @@ Page {
                                    toHelpIndex = toIndex+9;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +9;
                                        }
@@ -1114,8 +1141,8 @@ Page {
                                 toHelpIndex = toIndex-7;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                         || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -7;
                                     }
@@ -1132,8 +1159,8 @@ Page {
                                 toHelpIndex = toIndex+7;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                         || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +7;
                                     }
@@ -1166,8 +1193,8 @@ Page {
                                    toHelpIndex = toIndex-8;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -8;
                                        }
@@ -1184,8 +1211,8 @@ Page {
                                    toHelpIndex = toIndex+8;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +8;
                                        }
@@ -1210,8 +1237,8 @@ Page {
                                 toHelpIndex = toIndex-1;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -1;
                                     }
@@ -1228,8 +1255,8 @@ Page {
                                 toHelpIndex = toIndex+1;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +1;
                                     }
@@ -1255,8 +1282,8 @@ Page {
                                    toHelpIndex = toIndex-9;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -9;
                                        }
@@ -1273,8 +1300,8 @@ Page {
                                    toHelpIndex = toIndex+9;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +9;
                                        }
@@ -1301,8 +1328,8 @@ Page {
                                 toHelpIndex = toIndex-7;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                         || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -7;
                                     }
@@ -1319,8 +1346,8 @@ Page {
                                 toHelpIndex = toIndex+7;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                         || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +7;
                                     }
@@ -1353,8 +1380,8 @@ Page {
                                    toHelpIndex = toIndex-9;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -9;
                                        }
@@ -1371,8 +1398,8 @@ Page {
                                    toHelpIndex = toIndex+9;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +9;
                                        }
@@ -1398,8 +1425,8 @@ Page {
                                 toHelpIndex = toIndex-7;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                         || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -7;
                                     }
@@ -1416,8 +1443,8 @@ Page {
                                 toHelpIndex = toIndex+7;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                         || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +7;
                                     }
@@ -1450,8 +1477,8 @@ Page {
                                    toHelpIndex = toIndex-9;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -9;
                                        }
@@ -1468,8 +1495,8 @@ Page {
                                    toHelpIndex = toIndex+9;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +9;
                                        }
@@ -1495,8 +1522,8 @@ Page {
                                 toHelpIndex = toIndex-7;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                         || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -7;
                                     }
@@ -1513,8 +1540,8 @@ Page {
                                 toHelpIndex = toIndex+7;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                         || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                         || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +7;
                                     }
@@ -1578,8 +1605,8 @@ Page {
                                    toHelpIndex = toIndex-8;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -8;
                                        }
@@ -1596,8 +1623,8 @@ Page {
                                    toHelpIndex = toIndex+8;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +8;
                                        }
@@ -1622,8 +1649,8 @@ Page {
                                 toHelpIndex = toIndex-1;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -1;
                                     }
@@ -1640,8 +1667,8 @@ Page {
                                 toHelpIndex = toIndex+1;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +1;
                                     }
@@ -1672,8 +1699,8 @@ Page {
                                    toHelpIndex = toIndex-8;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex -8;
                                        }
@@ -1690,8 +1717,8 @@ Page {
                                    toHelpIndex = toIndex+8;
                                    moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                            moveLegal = true; intLegal = 1;
                                            toHelpIndex = toHelpIndex +8;
                                        }
@@ -1716,8 +1743,8 @@ Page {
                                 toHelpIndex = toIndex-1;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex -1;
                                     }
@@ -1734,8 +1761,8 @@ Page {
                                 toHelpIndex = toIndex+1;
                                 moveLegalHelp = true;
                                 while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color == "e" || galeryModel.get(toHelpIndex).color == "wp"
-                                            || galeryModel.get(toHelpIndex).color == "bp") {
+                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
+                                            || galeryModel.get(toHelpIndex).color === "bp") {
                                         moveLegal = true; intLegal = 1;
                                         toHelpIndex = toHelpIndex +1;
                                     }
@@ -1787,15 +1814,21 @@ Page {
                             // Saving position before move to possiple cancellation of a move
                             movedPieces.set(0,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece moved
                             movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
-//                            movedPieces.set(2,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece enpassant or castling
-                            //
+                            if (moveMent.currentMove === "") {
+                                movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                            }
+                            if (wenpassant <0 && benpassant<0) {
+                                movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                            }
+
                             galeryModel.set(toIndex,{"color":colorMoved, "piece":itemMoved})
                             galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
                             moveStarted=!moveStarted;
                             moveLegal=false;
                             if (tilat.valko) {
                                 if (playMode == "stockfish") {feni.feniWhite = false;} //Check also in othDevice mode??
-                                if (benpassant > 0 && galeryModel.get(benpassant).color == "bp") {
+                                if (benpassant > 0 && galeryModel.get(benpassant).color === "bp") {
                                     galeryModel.set(benpassant,{"color":"e", "piece":"images/empty.png"});
                                     benpassant = -1
                                 }
@@ -1805,7 +1838,7 @@ Page {
                             }
                             else {
                                 // why not here the check as above feni.feniBlack = false;
-                                if (wenpassant > 0 && galeryModel.get(wenpassant).color == "wp") {
+                                if (wenpassant > 0 && galeryModel.get(wenpassant).color === "wp") {
                                     galeryModel.set(wenpassant,{"color":"e", "piece":"images/empty.png"});
                                     wenpassant = -1
                                 }
@@ -1846,6 +1879,33 @@ Page {
                     }
             }
 
+            // A model to save all the moves to be able to break and back the game
+            ListModel {
+                id:allMoves
+                ListElement {
+                    moveNo:0 // First no in game is 1
+                    movedColor:"b" // Zero move set for black to enable backing until to the first move
+                    movedPiece:"images/k.png"
+                    movedFrom:-1
+                    capturedColor:"b"
+                    capturedPiece:"images/k.png"
+                    capturedTo:-1 //Index of a piece captured
+                    pairColor:"w" // Used in enpassant and castling where more than one is moved/affected
+                    pairPiece:"images/k.png"
+                    pairFrom:-1 // Index where pair is moved from
+                    pairCapturesColor:"b"
+                    pairCaptures:"images/k.png"
+                    pairTo:-1 // Index where pair is moved to
+                    enpColor:"e" // Color of the cell giving enpassant possibility
+                    enpPiece:"images/empty.png"
+                    enpInd:-1 //Grid index
+                    whiteTimeMove: 0 // White player time in the beginning of the move
+                    blackTimeMove: 0 // Black player time in the beginning of the move
+                    whiteCapturedCount: 0 // Initial try to solve captured List
+                    blackCapturedCount: 0 // Initial try to solve captured List
+                }
+
+            }
 
             BackgroundItem {
                 id: upperBar
@@ -1861,10 +1921,9 @@ Page {
                     width: parent.width
                     height: 130
                     maximumValue: isMyStart ? mustamax : valkomax
-                    //valueText: valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv
-                    valueText: isMyStart ? (muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm)  : (valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv)
+                    //valueText: isMyStart ? (muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm)  : (valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv)
+                    valueText: isMyStart ? label_time_b  : label_time_w
                     label: qsTr("min:s")
-                    //value: isMyStart ? muttakello.rogres_sekuntitm : valkokello.rogres_sekuntitv
                     //value: isMyStart ? mustamax + increment - blackTimeTotal/1000 : valkomax + increment - whiteTimeTotal/1000
                     value: isMyStart ? mustamax - blackTimeTotal/1000 : valkomax - whiteTimeTotal/1000
                     rotation: 180
@@ -1907,6 +1966,7 @@ Page {
                     delegate: Rectangle {
                         height:upperMessageGrid.cellHeight
                         width: upperMessageGrid.cellWidth
+                        visible: isMyStart ? index < allMoves.get(movesNoScanned).whiteCapturedCount: index < allMoves.get(movesNoScanned).blackCapturedCount
                         color: "#dddea1"
                         Image {
                             source: captured
@@ -2027,7 +2087,7 @@ Page {
                 repeat: false
                 onTriggered: {
                     if (moveMent.midSquareCheckki || feni.chessIsOn) {
-                    Myfunks.cancelMove();
+                        Myfunks.cancelMove();
                     }
                     else {
                         Myfunks.doMove();
@@ -2094,7 +2154,7 @@ Page {
                         }
                         else if (openingMode == 2) {
                             for(var i = 0; i < opsi.openings.length; i++){
-                                if (opsi.openings[i].eco == openingECO) {
+                                if (opsi.openings[i].eco === openingECO) {
                                     opsi.tymp = opsi.openings[i].moves
                                     hopo.test = opsi.tymp.slice(0,4)
                                 }
@@ -2135,7 +2195,7 @@ Page {
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
                     // If castling, moving the rook also
-                    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece == "images/k.png") {
+                    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === "images/k.png") {
                         if (toIndex == 6){
                             galeryModel.set(5,{"color":"b", "piece":"images/r.png"})
                             galeryModel.set(7,{"color":"e", "piece":"images/empty.png"})
@@ -2146,12 +2206,12 @@ Page {
                         }
                     }
                     // If blacks move gives enpassant possibility to whiteTimer
-                    if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece == "images/p.png") {
+                    if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece === "images/p.png") {
                         moveMent.benpassant = toIndex-8;
                         galeryModel.set(moveMent.benpassant,{"color":"bp"})
                     }
                     // If white gives enpassant possibility and it is utilized let's print a board accordingly
-                    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece == "images/p.png") {
+                    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece === "images/p.png") {
                         galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
                         moveMent.currentMove = "enpassant";
                         moveMent.wenpassant = -1;
@@ -2161,13 +2221,13 @@ Page {
                         whiteCaptured.append({"captured":"images/P.png"});
                         moveMent.currentMove = "";
                     }
-                    if (movedPieces.get(1).piece != "images/empty.png") {
+                    if (movedPieces.get(1).piece !== "images/empty.png") {
                         whiteCaptured.append({"captured":movedPieces.get(1).piece})
                     }
 
                     // If pawn reaches the last line let's guess the promotion to be a queen. Have to correct in future some how
 
-                    if (toIndex > 55 && galeryModel.get(toIndex).piece == "images/p.png") {
+                    if (toIndex > 55 && galeryModel.get(toIndex).piece === "images/p.png") {
                         galeryModel.set(toIndex, {"piece": "images/q.png"});
                     }
                     feni.lowerMessage = "";
@@ -2180,6 +2240,8 @@ Page {
                     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     feni.feniBlackReady2 = false;
+                    // Recording move to the allMoves list
+                    allMoves.append({"moveNo":opsi.movesTotal})
                     whiteMatetimer.start();
                 }
             }
@@ -2212,7 +2274,7 @@ Page {
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
                     // If castling, moving the rook also
-                    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece == "images/K.png") {
+                    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === "images/K.png") {
                         if (toIndex == 62){
                             galeryModel.set(61,{"color":"w", "piece":"images/R.png"})
                             galeryModel.set(63,{"color":"e", "piece":"images/empty.png"})
@@ -2223,12 +2285,12 @@ Page {
                         }
                     }
                     // If whites move gives enpassant possibility to whiteTimer
-                    if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece == "images/P.png") {
+                    if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece === "images/P.png") {
                         moveMent.wenpassant = toIndex+8
                         galeryModel.set(moveMent.wenpassant,{"color":"wp"})
                     }
                     // If black gives enpassant possibility and it is utilized let's print a board accordingly
-                    if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece == "images/P.png") {
+                    if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece === "images/P.png") {
                         galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
                         moveMent.currentMove = "enpassant";
                         moveMent.benpassant = -1;
@@ -2238,13 +2300,13 @@ Page {
                         blackCaptured.append({"captured":"images/p.png"});
                         moveMent.currentMove = "";
                     }
-                    if (movedPieces.get(1).piece != "images/empty.png") {
+                    if (movedPieces.get(1).piece !== "images/empty.png") {
                         blackCaptured.append({"captured":movedPieces.get(1).piece})
                     }
 
                     // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
 
-                    if (toIndex < 8 && galeryModel.get(toIndex).piece == "images/P.png") {
+                    if (toIndex < 8 && galeryModel.get(toIndex).piece === "images/P.png") {
                         galeryModel.set(toIndex, {"piece": "images/Q.png"});
                     }
                     feni.lowerMessage = "";
@@ -2257,6 +2319,11 @@ Page {
                     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     feni.feniWhiteReady2 = false;
+                    // Recording move to the allMoves list
+                    //console.log(opsi.movesTotal)
+                    allMoves.append({"moveNo":opsi.movesTotal})
+                    console.log(allMoves.get(opsi.movesTotal).moveNo)
+
                 }
             }
 
@@ -2302,6 +2369,7 @@ Page {
                     delegate: Rectangle {
                         height:lowerMessageGrid.cellHeight
                         width: lowerMessageGrid.cellWidth
+                        visible: isMyStart ? index < allMoves.get(movesNoScanned).blackCapturedCount : index < allMoves.get(movesNoScanned).whiteCapturedCount
                         color: "#997400"
                         Image {
                             source: captured
@@ -2331,10 +2399,9 @@ Page {
                     id: progressBarm
                     width: parent.width
                     maximumValue: isMyStart ? valkomax : mustamax
-                    //valueText: muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm
-                    valueText: isMyStart ? (valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv) : (muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm)
+                    //valueText: isMyStart ? (valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv) : (muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm)
+                    valueText: isMyStart ? label_time_w : label_time_b
                     label: qsTr("min:s")
-                    //value: isMyStart ? valkokello.rogres_sekuntitv : muttakello.rogres_sekuntitm
                     //value: isMyStart ? valkomax + increment - whiteTimeTotal/1000 : mustamax + increment - blackTimeTotal/1000
                     value: isMyStart ? valkomax - whiteTimeTotal/1000 : mustamax - blackTimeTotal/1000
                     Timer {interval: 100
@@ -2349,7 +2416,8 @@ Page {
                 id: iconSources
                 ListElement{
                     icons:"icon-m-previous?"
-                    visibility_: false
+                    visibility_: true
+                    modes: "human"
                 }
                 /*ListElement{
                     icons:"icon-m-pause?"
@@ -2358,10 +2426,12 @@ Page {
                 ListElement{
                     icons:"icon-m-play?"
                     visibility_: true
+                    modes: "all"
                 }
                 ListElement{
                     icons:"icon-m-next?"
                     visibility_: false
+                    modes: "human"
                 }
             }
 
@@ -2378,17 +2448,15 @@ Page {
                         IconButton {
                             id: but_eon
                             width:page.width/3
-                            visible: visibility_
+                            visible: (visibility_ && modes === "all") || (visibility_ && modes === playMode)
                             icon.source: "image://theme/"+icons + (pressed
                                                                    ? Theme.highlightColor
                                                                    : Theme.primaryColor)
                             onClicked: {
                                 if (index==0){
-                                    console.log ("Backing")
-                                    // Under construction
+                                    movesNoScanned>0 ? Myfunks.moveBack():""
                                 }
                                 else if (index==1){
-                                    //console.log ("Continue a game")
                                     Myfunks.continueGame()
                                 }
                                 else {
@@ -2415,6 +2483,8 @@ Page {
                     conTcpSrv.startServer();
                     Qt.createComponent("Connbox.qml").createObject(page, {});
                 }
+                label_time_w = valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv;
+                label_time_b = muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm
             }
 // loppusulkeet
         }

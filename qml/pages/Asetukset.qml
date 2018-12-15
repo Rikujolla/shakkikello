@@ -65,11 +65,17 @@ Page {
         Item {
             id: sets
             property bool indexUpdater: false;
+            //: Reduce time by 1 minute
             property var labels: [{lab:qsTr("-1 min")},
+                //: Increase time by 1 minute
                 {lab:qsTr("+1 min")},
+                //: Reduce time by 1 second
                 {lab:qsTr("-1 s")},
+                //: Increase time by 1 second
                 {lab:qsTr("+1 s")},
+                //: min is an abbreviation of a minute
                 {lab:qsTr("min")},
+                //: s is an abbreviation of a second
                 {lab:qsTr("s")}
             ]
 
@@ -199,6 +205,7 @@ Page {
 
                 menu: ContextMenu {
                         MenuItem {
+                            //: Stockfish is a name of the chess engine, more info https://stockfishchess.org/
                             text: qsTr("Stockfish")
                             onClicked: {
                                 //console.log("stockfish")

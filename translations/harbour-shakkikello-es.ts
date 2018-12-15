@@ -17,6 +17,7 @@
     </message>
     <message>
         <source>min</source>
+        <extracomment>min is an abbreviation of a minute</extracomment>
         <translation>min</translation>
     </message>
     <message>
@@ -30,6 +31,7 @@
     </message>
     <message>
         <source>s</source>
+        <extracomment>s is an abbreviation of a second</extracomment>
         <translation>s</translation>
     </message>
     <message>
@@ -67,18 +69,22 @@
     </message>
     <message>
         <source>-1 min</source>
+        <extracomment>Reduce time by 1 minute</extracomment>
         <translation>-1 min</translation>
     </message>
     <message>
         <source>+1 min</source>
+        <extracomment>Increase time by 1 minute</extracomment>
         <translation>+1 min</translation>
     </message>
     <message>
         <source>-1 s</source>
+        <extracomment>Reduce time by 1 second</extracomment>
         <translation>-1 s</translation>
     </message>
     <message>
         <source>+1 s</source>
+        <extracomment>Increase time by 1 second</extracomment>
         <translation>+1 s</translation>
     </message>
     <message>
@@ -104,6 +110,7 @@
     </message>
     <message>
         <source>Stockfish</source>
+        <extracomment>Stockfish is a name of the chess engine, more info https://stockfishchess.org/</extracomment>
         <translation>Stockfish </translation>
     </message>
     <message>
@@ -345,6 +352,7 @@
     <name>Pelisivu</name>
     <message>
         <source>min:s</source>
+        <extracomment>Minutes:seconds</extracomment>
         <translation>min:s</translation>
     </message>
     <message>
@@ -456,6 +464,10 @@
     </message>
     <message>
         <source>Hungarian (leoka)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chinese (China) (Historyscholar)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -184,8 +184,8 @@ function isChess() {
 
         fromIndex = feni.ax;
 
-        if (tilat.valko && galeryModel.get(feni.ax).color == "b"
-                || tilat.musta && galeryModel.get(feni.ax).color == "w") {
+        if (tilat.valko && galeryModel.get(feni.ax).color === "b"
+                || tilat.musta && galeryModel.get(feni.ax).color === "w") {
             moveMent.canBemoved = true;  //palautettava falseksi joskus??
             moveMent.itemMoved=galeryModel.get(feni.ax).piece;
             moveMent.sameColor();
@@ -228,10 +228,10 @@ function cancelMove() {
     feni.chessIsOn = false;
 
     // king index backing
-    if (movedPieces.get(0).piece == "images/K.png"){
+    if (movedPieces.get(0).piece === "images/K.png"){
         feni.feniWkingInd = movedPieces.get(0).indeksos;
     }
-    if (movedPieces.get(0).piece == "images/k.png"){
+    if (movedPieces.get(0).piece === "images/k.png"){
         feni.feniBkingInd = movedPieces.get(0).indeksos;
     }
 
@@ -286,7 +286,7 @@ function isChessPure() {
 
         fromIndex = feni.ax;
 
-        if (tilat.valko && galeryModel.get(feni.ax).color == "b") {
+        if (tilat.valko && galeryModel.get(feni.ax).color === "b") {
             moveMent.canBemoved = true;  //
             moveMent.itemMoved=galeryModel.get(feni.ax).piece;
             moveMent.sameColor();
@@ -302,7 +302,7 @@ function isChessPure() {
             }
         }
 
-        else if (tilat.musta && galeryModel.get(feni.ax).color == "w") {
+        else if (tilat.musta && galeryModel.get(feni.ax).color === "w") {
             moveMent.canBemoved = true;  //To enable the tests
             moveMent.itemMoved=galeryModel.get(feni.ax).piece;
             moveMent.sameColor();
@@ -343,7 +343,7 @@ function midSquareCheck() {
 
         fromIndex = feni.ax;
 
-        if (tilat.valko && galeryModel.get(feni.ax).color == "b") {
+        if (tilat.valko && galeryModel.get(feni.ax).color === "b") {
             moveMent.canBemoved = true;  //
             moveMent.itemMoved=galeryModel.get(feni.ax).piece;
             moveMent.sameColor();
@@ -353,7 +353,7 @@ function midSquareCheck() {
             }
         }
 
-        else if (tilat.musta && galeryModel.get(feni.ax).color == "w") {
+        else if (tilat.musta && galeryModel.get(feni.ax).color === "w") {
             moveMent.canBemoved = true;  //To enable the tests
             moveMent.itemMoved=galeryModel.get(feni.ax).piece;
             moveMent.sameColor();
@@ -389,11 +389,11 @@ function doMove() {
 
         gridToFEN();
         if (moveMent.currentMove == "enpassant") {blackCaptured.append({"captured":"images/p.png"})}
-        if (movedPieces.get(1).piece != "images/empty.png") {
+        if (movedPieces.get(1).piece !== "images/empty.png") {
             blackCaptured.append({"captured":movedPieces.get(1).piece})
         }
         moveMent.currentMove = "";
-        if (movedPieces.get(0).piece == "images/K.png") {moveMent.wKingMoved = true;}
+        if (movedPieces.get(0).piece === "images/K.png") {moveMent.wKingMoved = true;}
         moveMent.midSquareCheckki = false;
         Mytab.addMove();
         if (playMode == "othDevice") {
@@ -402,13 +402,6 @@ function doMove() {
             conTcpSrv.waitmove = conTcpCli.cmove;
         }
         vuoro.vaihdaMustalle();
-        isChessPure();
-        opsi.recentMove = hopo.test; //only effective for stockfish game
-        movesDone = movesDone + opsi.recentMove; //only effective for stockfish game
-        opsi.movesTotal++;
-        if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
-            Myops.inOpenings();
-        }
     }
 
     else if (tilat.musta && !feni.chessIsOn) {
@@ -421,11 +414,11 @@ function doMove() {
 
         gridToFEN();
         if (moveMent.currentMove == "enpassant") {whiteCaptured.append({"captured":"images/P.png"})}
-        if (movedPieces.get(1).piece != "images/empty.png") {
+        if (movedPieces.get(1).piece !== "images/empty.png") {
             whiteCaptured.append({"captured":movedPieces.get(1).piece})
         }
         moveMent.currentMove = "";
-        if (movedPieces.get(0).piece == "images/k.png") {moveMent.bKingMoved = true;}
+        if (movedPieces.get(0).piece === "images/k.png") {moveMent.bKingMoved = true;}
         moveMent.midSquareCheckki = false;
         Mytab.addMove();
         if (playMode == "othDevice") {
@@ -434,15 +427,32 @@ function doMove() {
             conTcpSrv.waitmove = conTcpCli.cmove;
         }
         vuoro.vaihdaValkealle();
-        isChessPure();
-        opsi.recentMove = hopo.test; //only effective for stockfish game
-        movesDone = movesDone + opsi.recentMove;  // Maybe needed in future
-        opsi.movesTotal++;
-        if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
-            Myops.inOpenings();
-        }
     }
 
+    isChessPure();
+    opsi.recentMove = hopo.test; //only effective for stockfish game
+    movesDone = movesDone + opsi.recentMove;  // Maybe needed in future
+    opsi.movesTotal++;
+    if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
+        Myops.inOpenings();
+    }
+    // Recording the move to the allMoves list
+    allMoves.append({"moveNo":opsi.movesTotal, "movedColor":movedPieces.get(0).color, "movedPiece":movedPieces.get(0).piece, "movedFrom":movedPieces.get(0).indeksos})
+    allMoves.set(opsi.movesTotal, {"capturedColor":movedPieces.get(1).color, "capturedPiece":movedPieces.get(1).piece, "capturedTo":movedPieces.get(1).indeksos})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).movedColor, allMoves.get(opsi.movesTotal).movedPiece, allMoves.get(opsi.movesTotal).movedFrom)
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).capturedColor, allMoves.get(opsi.movesTotal).capturedPiece, allMoves.get(opsi.movesTotal).capturedTo)
+    allMoves.set(opsi.movesTotal, {"pairColor":movedPieces.get(2).color, "pairPiece":movedPieces.get(2).piece, "pairFrom":movedPieces.get(2).indeksos})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).pairColor, allMoves.get(opsi.movesTotal).pairPiece, allMoves.get(opsi.movesTotal).pairFrom)
+    allMoves.set(opsi.movesTotal, {"pairCapturesColor":movedPieces.get(3).color, "pairCaptures":movedPieces.get(3).piece, "pairTo":movedPieces.get(3).indeksos})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).pairCapturesColor, allMoves.get(opsi.movesTotal).pairCaptures, allMoves.get(opsi.movesTotal).pairTo)
+    allMoves.set(opsi.movesTotal, {"enpColor":movedPieces.get(4).color, "enpPiece":movedPieces.get(4).piece, "enpInd":movedPieces.get(4).indeksos})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).enpColor, allMoves.get(opsi.movesTotal).enpPiece, allMoves.get(opsi.movesTotal).enpInd)
+    //console.log(whiteTimeAccum0_temp, blackTimeAccum0_temp)
+    allMoves.set(opsi.movesTotal, {"whiteTimeMove":whiteTimeAccum0_temp, "blackTimeMove":blackTimeAccum0_temp})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteTimeMove, allMoves.get(opsi.movesTotal).blackTimeMove)
+    allMoves.set(opsi.movesTotal, {"whiteCapturedCount":whiteCaptured.count, "blackCapturedCount":blackCaptured.count})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteCapturedCount, allMoves.get(opsi.movesTotal).blackCapturedCount)
+    movesNoScanned = opsi.movesTotal;
 }
 
 ///////////////////////////////////////////////////////
@@ -496,7 +506,7 @@ function othDeviceMoveBlack() {
     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
     galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
     // If castling, moving the rook also
-    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece == "images/k.png") {
+    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === "images/k.png") {
         if (toIndex == 6){
             galeryModel.set(5,{"color":"b", "piece":"images/r.png"})
             galeryModel.set(7,{"color":"e", "piece":"images/empty.png"})
@@ -507,12 +517,12 @@ function othDeviceMoveBlack() {
         }
     }
     // If blacks move gives enpassant possibility to whiteTimer
-    if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece == "images/p.png") {
+    if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece === "images/p.png") {
         moveMent.benpassant = toIndex-8;
         galeryModel.set(moveMent.benpassant,{"color":"bp"})
     }
     // If white gives enpassant possibility and it is utilized let's print a board accordingly
-    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece == "images/p.png") {
+    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece === "images/p.png") {
         galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
         moveMent.currentMove = "enpassant";
         moveMent.wenpassant = -1;
@@ -522,13 +532,13 @@ function othDeviceMoveBlack() {
         whiteCaptured.append({"captured":"images/P.png"});
         moveMent.currentMove = "";
     }
-    if (movedPieces.get(1).piece != "images/empty.png") {
+    if (movedPieces.get(1).piece !== "images/empty.png") {
         whiteCaptured.append({"captured":movedPieces.get(1).piece})
     }
 
     // If pawn reaches the last line let's guess the promotion to be a queen. Have to correct in future some how
 
-    if (toIndex > 55 && galeryModel.get(toIndex).piece == "images/p.png") {
+    if (toIndex > 55 && galeryModel.get(toIndex).piece === "images/p.png") {
         galeryModel.set(toIndex, {"piece": "images/q.png"});
     }
     feni.lowerMessage = "";
@@ -541,6 +551,9 @@ function othDeviceMoveBlack() {
     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
     feni.feniBlackReady2 = false;
+    // Recording move to the allMoves list
+    allMoves.append({"moveNo":opsi.movesTotal})
+
     whiteMatetimer.start();
 
 }
@@ -557,7 +570,7 @@ function othDeviceMoveWhite() {
     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
     galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
     // If castling, moving the rook also
-    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece == "images/K.png") {
+    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === "images/K.png") {
         if (toIndex == 62){
             galeryModel.set(61,{"color":"w", "piece":"images/R.png"})
             galeryModel.set(63,{"color":"e", "piece":"images/empty.png"})
@@ -568,12 +581,12 @@ function othDeviceMoveWhite() {
         }
     }
     // If whites move gives enpassant possibility to whiteTimer
-    if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece == "images/P.png") {
+    if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece === "images/P.png") {
         moveMent.wenpassant = toIndex+8
         galeryModel.set(moveMent.wenpassant,{"color":"wp"})
     }
     // If black gives enpassant possibility and it is utilized let's print a board accordingly
-    if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece == "images/P.png") {
+    if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece === "images/P.png") {
         galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
         moveMent.currentMove = "enpassant";
         moveMent.benpassant = -1;
@@ -583,13 +596,13 @@ function othDeviceMoveWhite() {
         blackCaptured.append({"captured":"images/p.png"});
         moveMent.currentMove = "";
     }
-    if (movedPieces.get(1).piece != "images/empty.png") {
+    if (movedPieces.get(1).piece !== "images/empty.png") {
         blackCaptured.append({"captured":movedPieces.get(1).piece})
     }
 
     // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
 
-    if (toIndex < 8 && galeryModel.get(toIndex).piece == "images/P.png") {
+    if (toIndex < 8 && galeryModel.get(toIndex).piece === "images/P.png") {
         galeryModel.set(toIndex, {"piece": "images/Q.png"});
     }
     feni.lowerMessage = "";
@@ -602,6 +615,9 @@ function othDeviceMoveWhite() {
     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
     feni.feniWhiteReady2 = false;
+    // Recording move to the allMoves list
+    allMoves.append({"moveNo":opsi.movesTotal})
+
 
 }
 
@@ -646,6 +662,23 @@ function pauseGame () {
 }
 
 function continueGame () {
+    var limit = allMoves.count-1;
+    for (var i=limit; i>movesNoScanned; i--){
+        allMoves.remove(i)
+    }
+    // Removing extra captured whites
+    limit = whiteCaptured.count-1
+    for (i=limit;i > allMoves.get(movesNoScanned).whiteCapturedCount-1;i--) {
+        whiteCaptured.remove(i)
+    }
+    // Removing extra captured blacks
+    limit = blackCaptured.count-1
+    for (i=limit;i > allMoves.get(movesNoScanned).blackCapturedCount-1;i--) {
+        blackCaptured.remove(i)
+    }
+
+    opsi.movesTotal =movesNoScanned; //Setting new maximum movecount
+
     pauseMillsecs = pauseMillsecs + pureMillsecs
     tilat.juoksee = !tilat.juoksee;
     startti.timeAsetus();
@@ -656,3 +689,97 @@ function continueGame () {
     conTcpSrv.smove = "";*/
 
 }
+    /////////////////////////////
+    // This is modified from the function cancelMove, in future maybe evaluating if the same function can be used for backing and canceling
+    /////////////////////////////
+
+function moveBack() {
+
+    // Returning the moved piece to it's previous position.
+    galeryModel.set(allMoves.get(movesNoScanned).movedFrom,{"color":allMoves.get(movesNoScanned).movedColor, "piece":allMoves.get(movesNoScanned).movedPiece})
+
+    // Returning the captured piece to it's original position
+    galeryModel.set(allMoves.get(movesNoScanned).capturedTo,{"color":allMoves.get(movesNoScanned).capturedColor, "piece":allMoves.get(movesNoScanned).capturedPiece})
+
+    // Visual adjustments and enpassant fix
+    for (var i=0;i<64; i++){
+        galeryModel.set(i,{"frameop": 0, "recmove":-1}); // Removing last move squares
+        if (galeryModel.get(i).color ==="wp" || galeryModel.get(i).color ==="bp"){
+            galeryModel.set(i,{"color":"e", "piece":"images/empty.png"}); // Make enpassant possibilities empty, later fill values for last move
+        }
+    }
+
+    // Returning the captured piece in enpassant and the moved rook in the castling
+    if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairFrom > 0){
+        galeryModel.set(allMoves.get(movesNoScanned).pairFrom,{"color":allMoves.get(movesNoScanned).pairColor, "piece":allMoves.get(movesNoScanned).pairPiece})
+    }
+
+    // Returning the empty piece in the castling to the place the rook visited
+    if (allMoves.get(movesNoScanned).pairCapturesColor !== "x" && allMoves.get(movesNoScanned).pairTo > 0){
+        galeryModel.set(allMoves.get(movesNoScanned).pairTo,{"color":allMoves.get(movesNoScanned).pairCapturesColor, "piece":allMoves.get(movesNoScanned).pairCaptures})
+    }
+
+    // REturning time values
+    if (allMoves.get(movesNoScanned).movedColor === "w"){
+        if (movesNoScanned === opsi.movesTotal){ // First move has to be reduced separate way
+            pureMillsecs = 0;
+            pauseMillsecs = 0;
+            blackTimeTotal = blackTimeAccum0
+            blackTimeAccum = 0;
+            var label_sec_b = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000))/1000%60;
+            var label_min_b = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000)-label_sec_b*1000)/60000;
+            label_time_b = label_min_b + ":" + (label_sec_b < 10 ? "0" : "") + label_sec_b
+        }
+        whiteTimeAccum = 0;
+        whiteTimeAccum0_temp = allMoves.get(movesNoScanned).whiteTimeMove;
+        whiteTimeAccum0 = allMoves.get(movesNoScanned).whiteTimeMove;
+        whiteTimeTotal = allMoves.get(movesNoScanned).whiteTimeMove;
+        var label_sec_w = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000))/1000%60;
+        var label_min_w = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000)-label_sec_w*1000)/60000;
+        label_time_w = label_min_w + ":" + (label_sec_w < 10 ? "0" : "") + label_sec_w
+
+    }
+    else {
+        if (movesNoScanned === opsi.movesTotal){ // First move has to be reduced separate way
+            pureMillsecs = 0;
+            pauseMillsecs = 0;
+            whiteTimeTotal = whiteTimeAccum0
+            whiteTimeAccum = 0;
+            label_sec_w = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000))/1000%60;
+            label_min_w = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000)-label_sec_w*1000)/60000;
+            label_time_w = label_min_w + ":" + (label_sec_w < 10 ? "0" : "") + label_sec_w
+        }
+        blackTimeAccum = 0;
+        blackTimeAccum0_temp = allMoves.get(movesNoScanned).blackTimeMove;
+        blackTimeAccum0 = allMoves.get(movesNoScanned).blackTimeMove;
+        blackTimeTotal = allMoves.get(movesNoScanned).blackTimeMove;
+        label_sec_b = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000))/1000%60;
+        label_min_b = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000)-label_sec_b*1000)/60000;
+        label_time_b = label_min_b + ":" + (label_sec_b < 10 ? "0" : "") + label_sec_b
+    }
+
+    //feni.chessIsOn = false;// is this needed
+    //moveMent.midSquareCheckki = false;// is this needed
+    //moveMent.currentMove = "";// is this needed
+
+    movesNoScanned--; //
+    // Setting previous move values for enpassant to enable the enpassant move
+    if (allMoves.get(movesNoScanned).enpColor !== "e" && allMoves.get(movesNoScanned).enpInd > 0){
+        galeryModel.set(allMoves.get(movesNoScanned).enpInd,{"color":allMoves.get(movesNoScanned).enpColor, "piece":allMoves.get(movesNoScanned).enpPiece})
+    }
+
+    if (allMoves.get(movesNoScanned).movedColor === "w")
+    {
+        feni.feniWhite = false;
+        feni.feniBlack = true;
+        tilat.valko=false;
+        tilat.musta=true;
+    }
+    else {
+        feni.feniWhite = true;
+        feni.feniBlack = false;
+        tilat.valko=true;
+        tilat.musta=false;
+    }
+}
+

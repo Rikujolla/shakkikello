@@ -304,6 +304,7 @@ Page {
                                 + valkokello.label_minuutitv + ":"
                                 + (Math.abs(valkokello.label_sekuntitv) < 10 ? "0" : "")
                                 + Math.abs(valkokello.label_sekuntitv)}
+                    //: Minutes:seconds
                     label: qsTr("min:s")+ "     (" + (valkomax-valkomax%60)/60 + ":00)"
                     value: valkokello.rogres_sekuntitv
                     rotation: 180
@@ -397,6 +398,7 @@ Page {
                                 + muttakello.label_minuutitm + ":"
                                 + (Math.abs(muttakello.label_sekuntitm) < 10 ? "0" : "")
                                 + Math.abs(muttakello.label_sekuntitm)}
+                    //: Minutes:seconds
                     label: qsTr("min:s")+ "     (" + (mustamax-mustamax%60)/60 + ":00)"
                     value: muttakello.rogres_sekuntitm
                     anchors.verticalCenter: parent.verticalCenter
