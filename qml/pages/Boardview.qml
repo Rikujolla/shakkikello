@@ -1899,6 +1899,12 @@ Page {
                     enpColor:"e" // Color of the cell giving enpassant possibility
                     enpPiece:"images/empty.png"
                     enpInd:-1 //Grid index
+                    wKingInd: 60 // White king index
+                    bKingInd: 4 // Black king index
+                    wkingmoved: false // Record if white king is moved
+                    bkingmoved: false // Record if black king is moved
+                    wcastlingPos: true // White castling possible
+                    bcastlingPos: true // Black castling possible
                     whiteTimeMove: 0 // White player time in the beginning of the move
                     blackTimeMove: 0 // Black player time in the beginning of the move
                     whiteCapturedCount: 0 // Initial try to solve captured List
@@ -2415,6 +2421,7 @@ Page {
             ListModel {
                 id: iconSources
                 ListElement{
+                    iidee: "prev"
                     icons:"icon-m-previous?"
                     visibility_: true
                     modes: "human"
@@ -2424,13 +2431,15 @@ Page {
                     visibility_: true
                 }*/
                 ListElement{
+                    iidee: "play"
                     icons:"icon-m-play?"
                     visibility_: true
                     modes: "all"
                 }
                 ListElement{
+                    iidee:"forw"
                     icons:"icon-m-next?"
-                    visibility_: false
+                    visibility_: true
                     modes: "human"
                 }
             }
@@ -2448,7 +2457,7 @@ Page {
                         IconButton {
                             id: but_eon
                             width:page.width/3
-                            visible: (visibility_ && modes === "all") || (visibility_ && modes === playMode)
+                            visible: (visibility_ && modes === "all") || (iidee ==="prev" && modes === playMode && movesNoScanned >0) || (iidee ==="forw" && modes === playMode && movesNoScanned < opsi.movesTotal)
                             icon.source: "image://theme/"+icons + (pressed
                                                                    ? Theme.highlightColor
                                                                    : Theme.primaryColor)
@@ -2460,8 +2469,9 @@ Page {
                                     Myfunks.continueGame()
                                 }
                                 else {
-                                    console.log ("Move forward")
+                                    //console.log ("Move forward")
                                     // Under construction
+                                    Myfunks.moveForward()
                                 }
                             }
                         }

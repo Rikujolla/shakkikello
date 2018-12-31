@@ -11,6 +11,8 @@
 #- Buggy Chess messages in endgame situation NOT OK
 #- If paused in two player game I can move opponents piece?? BUG
 #- In other device mode promotion is only queen, BUG
+* Mon Dec 31 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.9
+- After pause the game can be backed/forwarded and restarted in the middle of game
 
 * Sat Dec 15 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.8
 - Added Chinese Simplified translation

@@ -447,7 +447,12 @@ function doMove() {
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).pairCapturesColor, allMoves.get(opsi.movesTotal).pairCaptures, allMoves.get(opsi.movesTotal).pairTo)
     allMoves.set(opsi.movesTotal, {"enpColor":movedPieces.get(4).color, "enpPiece":movedPieces.get(4).piece, "enpInd":movedPieces.get(4).indeksos})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).enpColor, allMoves.get(opsi.movesTotal).enpPiece, allMoves.get(opsi.movesTotal).enpInd)
-    //console.log(whiteTimeAccum0_temp, blackTimeAccum0_temp)
+    allMoves.set(opsi.movesTotal, {"wKingInd":feni.feniWkingInd, "bKingInd":feni.feniBkingInd})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wKingInd, allMoves.get(opsi.movesTotal).bKingInd)
+    allMoves.set(opsi.movesTotal, {"wkingmoved":moveMent.wKingMoved, "bkingmoved":moveMent.bKingMoved})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wkingmoved, allMoves.get(opsi.movesTotal).bkingmoved)
+    allMoves.set(opsi.movesTotal, {"wcastlingPos":moveMent.castlingWpossible, "bcastlingPos":moveMent.castlingBpossible})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wcastlingPos, allMoves.get(opsi.movesTotal).bcastlingPos)
     allMoves.set(opsi.movesTotal, {"whiteTimeMove":whiteTimeAccum0_temp, "blackTimeMove":blackTimeAccum0_temp})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteTimeMove, allMoves.get(opsi.movesTotal).blackTimeMove)
     allMoves.set(opsi.movesTotal, {"whiteCapturedCount":whiteCaptured.count, "blackCapturedCount":blackCaptured.count})
@@ -677,7 +682,7 @@ function continueGame () {
         blackCaptured.remove(i)
     }
 
-    opsi.movesTotal =movesNoScanned; //Setting new maximum movecount
+    opsi.movesTotal = movesNoScanned; //Setting new maximum movecount
 
     pauseMillsecs = pauseMillsecs + pureMillsecs
     tilat.juoksee = !tilat.juoksee;
@@ -719,7 +724,7 @@ function moveBack() {
         galeryModel.set(allMoves.get(movesNoScanned).pairTo,{"color":allMoves.get(movesNoScanned).pairCapturesColor, "piece":allMoves.get(movesNoScanned).pairCaptures})
     }
 
-    // REturning time values
+    // Returning time values
     if (allMoves.get(movesNoScanned).movedColor === "w"){
         if (movesNoScanned === opsi.movesTotal){ // First move has to be reduced separate way
             pureMillsecs = 0;
@@ -762,7 +767,24 @@ function moveBack() {
     //moveMent.midSquareCheckki = false;// is this needed
     //moveMent.currentMove = "";// is this needed
 
+
     movesNoScanned--; //
+
+    // King index setting
+    feni.feniWkingInd = allMoves.get(movesNoScanned).wKingInd
+    feni.feniBkingInd = allMoves.get(movesNoScanned).bKingInd
+    //console.log("Backing king index", movesNoScanned, feni.feniWkingInd, feni.feniBkingInd)
+
+    // Set true if king moved
+    moveMent.wKingMoved = allMoves.get(movesNoScanned).wkingmoved
+    moveMent.bKingMoved = allMoves.get(movesNoScanned).bkingmoved
+    //console.log("King moved", movesNoScanned, moveMent.wKingMoved, moveMent.bKingMoved)
+
+    // Set true if castling possible
+    moveMent.castlingWpossible = allMoves.get(movesNoScanned).wcastlingPos
+    moveMent.castlingBpossible = allMoves.get(movesNoScanned).bcastlingPos
+    //console.log("Castling possible", movesNoScanned, moveMent.castlingWpossible, moveMent.castlingBpossible)
+
     // Setting previous move values for enpassant to enable the enpassant move
     if (allMoves.get(movesNoScanned).enpColor !== "e" && allMoves.get(movesNoScanned).enpInd > 0){
         galeryModel.set(allMoves.get(movesNoScanned).enpInd,{"color":allMoves.get(movesNoScanned).enpColor, "piece":allMoves.get(movesNoScanned).enpPiece})
@@ -782,4 +804,105 @@ function moveBack() {
         tilat.musta=false;
     }
 }
+function moveForward () {
+    movesNoScanned++; //
 
+    // Forwarding the moved piece to it's next position.
+    galeryModel.set(allMoves.get(movesNoScanned).capturedTo,{"color":allMoves.get(movesNoScanned).movedColor, "piece":allMoves.get(movesNoScanned).movedPiece})
+    //console.log(allMoves.get(movesNoScanned).movedColor)
+
+    // Inserting the empty piece to the place move started
+    galeryModel.set(allMoves.get(movesNoScanned).movedFrom,{"color":"e", "piece":"images/empty.png"})
+
+    // Removing enpassant values
+    for (var i=0;i<64; i++){
+        //galeryModel.set(i,{"frameop": 0, "recmove":-1}); // Removing last move squares
+        if (galeryModel.get(i).color ==="wp" || galeryModel.get(i).color ==="bp"){
+            galeryModel.set(i,{"color":"e", "piece":"images/empty.png"}); // Make enpassant possibilities empty, later fill values for the last move
+        }
+    }
+    // Setting enpassant to enable the enpassant move if the game restarts at this point
+    if (allMoves.get(movesNoScanned).enpColor !== "e" && allMoves.get(movesNoScanned).enpInd > 0){
+        galeryModel.set(allMoves.get(movesNoScanned).enpInd,{"color":allMoves.get(movesNoScanned).enpColor, "piece":allMoves.get(movesNoScanned).enpPiece})
+    }
+
+    // Moving the captured piece in enpassant and the rook in the castling
+    if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairFrom > 0){
+        galeryModel.set(allMoves.get(movesNoScanned).pairTo,{"color":allMoves.get(movesNoScanned).pairColor, "piece":allMoves.get(movesNoScanned).pairPiece})
+    }
+
+    // Setting the empty piece in the castling to the place where rook started
+    if (allMoves.get(movesNoScanned).pairCapturesColor !== "x" && allMoves.get(movesNoScanned).pairTo > 0){
+        galeryModel.set(allMoves.get(movesNoScanned).pairFrom,{"color":"e", "piece":"images/empty.png"})
+    }
+    // King index setting for chess checks
+    feni.feniWkingInd = allMoves.get(movesNoScanned).wKingInd
+    feni.feniBkingInd = allMoves.get(movesNoScanned).bKingInd
+    //console.log(movesNoScanned, feni.feniWkingInd, feni.feniBkingInd)
+
+    // Set true if king moved
+    moveMent.wKingMoved = allMoves.get(movesNoScanned).wkingmoved
+    moveMent.bKingMoved = allMoves.get(movesNoScanned).bkingmoved
+    //console.log("King moved", movesNoScanned, moveMent.wKingMoved, moveMent.bKingMoved)
+
+    // Set true if castling possible
+    moveMent.castlingWpossible = allMoves.get(movesNoScanned).wcastlingPos
+    moveMent.castlingBpossible = allMoves.get(movesNoScanned).bcastlingPos
+    //console.log("Castling possible", movesNoScanned, moveMent.castlingWpossible, moveMent.castlingBpossible)
+
+    // Returning time values
+    if (allMoves.get(movesNoScanned).movedColor === "w"){
+        if (movesNoScanned === opsi.movesTotal){ // First move has to be reduced separate way
+            pureMillsecs = 0;
+            pauseMillsecs = 0;
+            blackTimeTotal = blackTimeAccum0
+            blackTimeAccum = 0;
+            var label_sec_b = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000))/1000%60;
+            var label_min_b = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000)-label_sec_b*1000)/60000;
+            label_time_b = label_min_b + ":" + (label_sec_b < 10 ? "0" : "") + label_sec_b
+        }
+        whiteTimeAccum = 0;
+        whiteTimeAccum0_temp = allMoves.get(movesNoScanned).whiteTimeMove;
+        whiteTimeAccum0 = allMoves.get(movesNoScanned).whiteTimeMove;
+        whiteTimeTotal = allMoves.get(movesNoScanned).whiteTimeMove;
+        var label_sec_w = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000))/1000%60;
+        var label_min_w = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000)-label_sec_w*1000)/60000;
+        label_time_w = label_min_w + ":" + (label_sec_w < 10 ? "0" : "") + label_sec_w
+
+    }
+    else {
+        if (movesNoScanned === opsi.movesTotal){ // First move has to be reduced separate way
+            pureMillsecs = 0;
+            pauseMillsecs = 0;
+            whiteTimeTotal = whiteTimeAccum0
+            whiteTimeAccum = 0;
+            label_sec_w = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000))/1000%60;
+            label_min_w = (valkomax*1000 - (whiteTimeTotal-whiteTimeTotal%1000)-label_sec_w*1000)/60000;
+            label_time_w = label_min_w + ":" + (label_sec_w < 10 ? "0" : "") + label_sec_w
+        }
+        blackTimeAccum = 0;
+        blackTimeAccum0_temp = allMoves.get(movesNoScanned).blackTimeMove;
+        blackTimeAccum0 = allMoves.get(movesNoScanned).blackTimeMove;
+        blackTimeTotal = allMoves.get(movesNoScanned).blackTimeMove;
+        label_sec_b = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000))/1000%60;
+        label_min_b = (mustamax*1000 - (blackTimeTotal-blackTimeTotal%1000)-label_sec_b*1000)/60000;
+        label_time_b = label_min_b + ":" + (label_sec_b < 10 ? "0" : "") + label_sec_b
+    }
+
+
+    if (allMoves.get(movesNoScanned).movedColor === "w")
+    {
+        feni.feniWhite = false;
+        feni.feniBlack = true;
+        tilat.valko=false;
+        tilat.musta=true;
+    }
+    else {
+        feni.feniWhite = true;
+        feni.feniBlack = false;
+        tilat.valko=true;
+        tilat.musta=false;
+    }
+
+
+}
