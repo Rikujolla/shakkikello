@@ -135,7 +135,8 @@ DISTFILES += \
     icons/108x108/harbour-shakkikello.png \
     icons/128x128/harbour-shakkikello.png \
     icons/256x256/harbour-shakkikello.png \
-    icons/86x86/harbour-shakkikello.png
+    icons/86x86/harbour-shakkikello.png \
+    README.md
 
 FORMS +=
 

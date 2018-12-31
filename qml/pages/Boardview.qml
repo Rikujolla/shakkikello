@@ -41,11 +41,11 @@ Page {
     property int pureMillsecs //Milliseconds after last turn
     property int pauseMillsecs //Milliseconds when game paused
     property int whiteTimeAccum0 // White Time Accumulated when turn changes
-    property int whiteTimeAccum0_temp // White Time Accumulated when turn changes, temporary save
+    property int whiteTimeTotal_temp // White Time Accumulated when turn changes, temporary save
     property int whiteTimeAccum // White Time Accumulated during current turn
     property int whiteTimeTotal // White total time
     property int blackTimeAccum0 // Black Time Accumulated when turn changes
-    property int blackTimeAccum0_temp // Black Time Accumulated when turn changes, temporary save
+    property int blackTimeTotal_temp // Black Time Accumulated when turn changes, temporary save
     property int blackTimeAccum // Black Time Accumulated during current turn
     property int blackTimeTotal // Black total time
     property string label_time_w // White time form 4:24
@@ -443,7 +443,7 @@ Page {
                     if (tilat.musta == true) {} else {
                         startti.timeAsetus();
                         tilat.musta = !tilat.musta; tilat.valko = !tilat.valko;
-                        whiteTimeAccum0_temp = whiteTimeAccum0;
+                        whiteTimeTotal_temp = whiteTimeTotal;
                         valkokello.timeValko();
                         valkokello.updateValko();
                         feni.feniWhite = false;
@@ -455,7 +455,7 @@ Page {
                     if (tilat.valko == true) {} else {
                         startti.timeAsetus();
                         tilat.musta = !tilat.musta; tilat.valko = !tilat.valko;
-                        blackTimeAccum0_temp = blackTimeAccum0;
+                        blackTimeTotal_temp = blackTimeTotal;
                         muttakello.timeMutta();
                         muttakello.updateMutta();
                         feni.feniWhite = true
@@ -1899,8 +1899,14 @@ Page {
                     enpColor:"e" // Color of the cell giving enpassant possibility
                     enpPiece:"images/empty.png"
                     enpInd:-1 //Grid index
-                    whiteTimeMove: 0 // White player time in the beginning of the move
-                    blackTimeMove: 0 // Black player time in the beginning of the move
+                    wKingInd: 60 // White king index
+                    bKingInd: 4 // Black king index
+                    wkingmoved: false // Record if white king is moved
+                    bkingmoved: false // Record if black king is moved
+                    wcastlingPos: true // White castling possible
+                    bcastlingPos: true // Black castling possible
+                    whiteTimeMove: 0 // White player time at the end of the move
+                    blackTimeMove: 0 // Black player time at the end of the move
                     whiteCapturedCount: 0 // Initial try to solve captured List
                     blackCapturedCount: 0 // Initial try to solve captured List
                 }
@@ -1910,7 +1916,7 @@ Page {
             BackgroundItem {
                 id: upperBar
                 width: page.width
-                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : (Screen.height == 1920 ? 338 : 164))
+                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 254 : (Screen.height == 1920 ? 338 : 164))
                 enabled: false //tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
@@ -1989,9 +1995,10 @@ Page {
 
             Rectangle {
                 id:gridBackround
-                height: parent.width
+                height: Screen.height == 2048 ? 1248 : parent.width
                 //height: Screen.sizeCategory >= Screen.Large ?
-                width:parent.width
+                width:Screen.height == 2048 ? 1248 : parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
                 //width: Screen.width
                 Image {
                     // Light color dddea1, dark color 997400
@@ -2392,7 +2399,8 @@ Page {
                 id: lowerBar
                 width: page.width
                 // height (Screen.height-Screen.width)/2-10-Screen.width/15-140
-                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 130 : (Screen.height == 1920 ? 198 : 164))
+                // Tablet height (2048-1248)/2-10-66-140
+                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 184 : (Screen.height == 1920 ? 198 : 164))
                 enabled: false //tilat.juoksee && tilat.musta
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {
@@ -2415,6 +2423,7 @@ Page {
             ListModel {
                 id: iconSources
                 ListElement{
+                    iidee: "prev"
                     icons:"icon-m-previous?"
                     visibility_: true
                     modes: "human"
@@ -2424,13 +2433,15 @@ Page {
                     visibility_: true
                 }*/
                 ListElement{
+                    iidee: "play"
                     icons:"icon-m-play?"
                     visibility_: true
                     modes: "all"
                 }
                 ListElement{
+                    iidee:"forw"
                     icons:"icon-m-next?"
-                    visibility_: false
+                    visibility_: true
                     modes: "human"
                 }
             }
@@ -2448,7 +2459,7 @@ Page {
                         IconButton {
                             id: but_eon
                             width:page.width/3
-                            visible: (visibility_ && modes === "all") || (visibility_ && modes === playMode)
+                            visible: (visibility_ && modes === "all") || (iidee ==="prev" && modes === playMode && movesNoScanned >0) || (iidee ==="forw" && modes === playMode && movesNoScanned < opsi.movesTotal)
                             icon.source: "image://theme/"+icons + (pressed
                                                                    ? Theme.highlightColor
                                                                    : Theme.primaryColor)
@@ -2460,8 +2471,7 @@ Page {
                                     Myfunks.continueGame()
                                 }
                                 else {
-                                    console.log ("Move forward")
-                                    // Under construction
+                                    Myfunks.moveForward()
                                 }
                             }
                         }

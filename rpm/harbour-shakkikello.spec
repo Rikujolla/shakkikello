@@ -13,12 +13,12 @@ Name:       harbour-shakkikello
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
-Summary:    Chess Clock application for Jolla and SailfishOS
-Version:    0.7.8
+Summary:    Chess application for Jolla and SailfishOS
+Version:    0.7.9
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
-URL:        http://example.org/
+URL:        https://github.com/Rikujolla/shakkikello
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-shakkikello.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
