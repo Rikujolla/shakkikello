@@ -169,10 +169,6 @@
         <translation>Pokaż ruchy</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Resetuj</translation>
-    </message>
-    <message>
         <source>Check!</source>
         <translation>Szach!</translation>
     </message>
@@ -199,6 +195,10 @@
     <message>
         <source>Continue</source>
         <translation>Kontynuuj</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Resetuj</translation>
     </message>
     <message>
         <source>Chess board</source>

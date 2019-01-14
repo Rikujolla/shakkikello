@@ -169,10 +169,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Check!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -198,6 +194,10 @@
     </message>
     <message>
         <source>Continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

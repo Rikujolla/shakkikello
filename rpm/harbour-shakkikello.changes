@@ -11,6 +11,9 @@
 #- Buggy Chess messages in endgame situation NOT OK
 #- If paused in two player game I can move opponents piece?? BUG
 #- In other device mode promotion is only queen, BUG
+* Mon Jan 14 2019 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.0
+- Game backing/forwarding and restarting possible also in stockfish mode
+
 * Sat Jan 05 2019 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.9
 - After pause the game can be backed/forwarded and restarted in the middle of game
 

@@ -169,10 +169,6 @@
         <translation>Lépések megjelenítése</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Visszaállítás</translation>
-    </message>
-    <message>
         <source>Check!</source>
         <translation>Sakk!</translation>
     </message>
@@ -199,6 +195,10 @@
     <message>
         <source>Continue</source>
         <translation>Folytatás</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Visszaállítás</translation>
     </message>
     <message>
         <source>Chess board</source>

@@ -169,10 +169,6 @@
         <translation>Zetten weergeven</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Herstellen</translation>
-    </message>
-    <message>
         <source>Check!</source>
         <translation>Schaak!</translation>
     </message>
@@ -199,6 +195,10 @@
     <message>
         <source>Continue</source>
         <translation>Doorgaan</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Herstellen</translation>
     </message>
     <message>
         <source>Chess board</source>

@@ -169,10 +169,6 @@
         <translation>显示移动</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>重置</translation>
-    </message>
-    <message>
         <source>Check!</source>
         <translation>将军！</translation>
     </message>
@@ -199,6 +195,10 @@
     <message>
         <source>Continue</source>
         <translation>继续</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>重置</translation>
     </message>
     <message>
         <source>Chess board</source>

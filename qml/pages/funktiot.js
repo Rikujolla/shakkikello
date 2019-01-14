@@ -13,10 +13,10 @@
 /////////////////////////////////////////////////////////
 // this function transforms grid notation to FEN-notation
 /////////////////////////////////////////////////////////
-function gridToFEN() {
+function gridToFEN(fromInd, toInd) {
     opsi.recentMove = hopo.test;
     hopo.test = "";
-    switch (fromIndex%8) {
+    switch (fromInd%8) {
     case 0: feni.startFeni= "a"
         break;
     case 1: feni.startFeni= "b"
@@ -36,10 +36,10 @@ function gridToFEN() {
 
     default: feni.startFeni = "m" //mistake
     }
-    feni.stopFeni = 8-(fromIndex-fromIndex%8)/8;
+    feni.stopFeni = 8-(fromInd-fromInd%8)/8;
     hopo.test = feni.startFeni+feni.stopFeni;
 
-    switch (toIndex%8) {
+    switch (toInd%8) {
     case 0: feni.startFeni= "a"
         break;
     case 1: feni.startFeni= "b"
@@ -59,7 +59,7 @@ function gridToFEN() {
 
     default: feni.startFeni = "m" //mistake
     }
-    feni.stopFeni = 8-(toIndex-toIndex%8)/8;
+    feni.stopFeni = 8-(toInd-toInd%8)/8;
     hopo.test = hopo.test+feni.startFeni+feni.stopFeni;
     if (moveMent.currentMove == "promotion") {hopo.test = hopo.test + promotedShort}
 
@@ -387,7 +387,7 @@ function doMove() {
             feni.upperMessage = "";
         }
 
-        gridToFEN();
+        gridToFEN(fromIndex, toIndex);
         if (moveMent.currentMove == "enpassant") {blackCaptured.append({"captured":"images/p.png"})}
         if (movedPieces.get(1).piece !== "images/empty.png") {
             blackCaptured.append({"captured":movedPieces.get(1).piece})
@@ -412,7 +412,7 @@ function doMove() {
             feni.lowerMessage = "";
         }
 
-        gridToFEN();
+        gridToFEN(fromIndex, toIndex);
         if (moveMent.currentMove == "enpassant") {whiteCaptured.append({"captured":"images/P.png"})}
         if (movedPieces.get(1).piece !== "images/empty.png") {
             whiteCaptured.append({"captured":movedPieces.get(1).piece})
@@ -436,7 +436,9 @@ function doMove() {
     if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
         Myops.inOpenings();
     }
-    // Recording the move to the allMoves list
+
+    recordMove();
+    /*// Recording the move to the allMoves list
     allMoves.append({"moveNo":opsi.movesTotal, "movedColor":movedPieces.get(0).color, "movedPiece":movedPieces.get(0).piece, "movedFrom":movedPieces.get(0).indeksos})
     allMoves.set(opsi.movesTotal, {"capturedColor":movedPieces.get(1).color, "capturedPiece":movedPieces.get(1).piece, "capturedTo":movedPieces.get(1).indeksos})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).movedColor, allMoves.get(opsi.movesTotal).movedPiece, allMoves.get(opsi.movesTotal).movedFrom)
@@ -456,8 +458,34 @@ function doMove() {
     allMoves.set(opsi.movesTotal, {"whiteTimeMove":whiteTimeTotal_temp, "blackTimeMove":blackTimeTotal_temp})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteTimeMove, allMoves.get(opsi.movesTotal).blackTimeMove)
     allMoves.set(opsi.movesTotal, {"whiteCapturedCount":whiteCaptured.count, "blackCapturedCount":blackCaptured.count})
-    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteCapturedCount, allMoves.get(opsi.movesTotal).blackCapturedCount)
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteCapturedCount, allMoves.get(opsi.movesTotal).blackCapturedCount)*/
     movesNoScanned = opsi.movesTotal;
+}
+
+function recordMove() {
+    // Recording the move to the allMoves list
+    //allMoves.append({"moveNo":opsi.movesTotal, "movedColor":movedPieces.get(0).color, "movedPiece":movedPieces.get(0).piece, "movedFrom":movedPieces.get(0).indeksos})
+    allMoves.set(opsi.movesTotal, {"moveNo":opsi.movesTotal, "movedColor":movedPieces.get(0).color, "movedPiece":movedPieces.get(0).piece, "movedFrom":movedPieces.get(0).indeksos})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).movedColor, allMoves.get(opsi.movesTotal).movedPiece, allMoves.get(opsi.movesTotal).movedFrom)
+    allMoves.set(opsi.movesTotal, {"capturedColor":movedPieces.get(1).color, "capturedPiece":movedPieces.get(1).piece, "capturedTo":movedPieces.get(1).indeksos})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).capturedColor, allMoves.get(opsi.movesTotal).capturedPiece, allMoves.get(opsi.movesTotal).capturedTo)
+    allMoves.set(opsi.movesTotal, {"pairColor":movedPieces.get(2).color, "pairPiece":movedPieces.get(2).piece, "pairFrom":movedPieces.get(2).indeksos})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).pairColor, allMoves.get(opsi.movesTotal).pairPiece, allMoves.get(opsi.movesTotal).pairFrom)
+    allMoves.set(opsi.movesTotal, {"pairCapturesColor":movedPieces.get(3).color, "pairCaptures":movedPieces.get(3).piece, "pairTo":movedPieces.get(3).indeksos})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).pairCapturesColor, allMoves.get(opsi.movesTotal).pairCaptures, allMoves.get(opsi.movesTotal).pairTo)
+    allMoves.set(opsi.movesTotal, {"enpColor":movedPieces.get(4).color, "enpPiece":movedPieces.get(4).piece, "enpInd":movedPieces.get(4).indeksos})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).enpColor, allMoves.get(opsi.movesTotal).enpPiece, allMoves.get(opsi.movesTotal).enpInd)
+    allMoves.set(opsi.movesTotal, {"wKingInd":feni.feniWkingInd, "bKingInd":feni.feniBkingInd})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wKingInd, allMoves.get(opsi.movesTotal).bKingInd)
+    allMoves.set(opsi.movesTotal, {"wkingmoved":moveMent.wKingMoved, "bkingmoved":moveMent.bKingMoved})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wkingmoved, allMoves.get(opsi.movesTotal).bkingmoved)
+    allMoves.set(opsi.movesTotal, {"wcastlingPos":moveMent.castlingWpossible, "bcastlingPos":moveMent.castlingBpossible})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wcastlingPos, allMoves.get(opsi.movesTotal).bcastlingPos)
+    allMoves.set(opsi.movesTotal, {"whiteTimeMove":whiteTimeTotal_temp, "blackTimeMove":blackTimeTotal_temp})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteTimeMove, allMoves.get(opsi.movesTotal).blackTimeMove)
+    allMoves.set(opsi.movesTotal, {"whiteCapturedCount":whiteCaptured.count, "blackCapturedCount":blackCaptured.count})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteCapturedCount, allMoves.get(opsi.movesTotal).blackCapturedCount)
+
 }
 
 ///////////////////////////////////////////////////////
@@ -683,7 +711,27 @@ function continueGame () {
     }
 
     opsi.movesTotal = movesNoScanned; //Setting new maximum movecount
-
+    if (playMode == "stockfish") {
+        hopo.initio();
+        for (i=1;i<movesNoScanned+1;i++){
+            gridToFEN(allMoves.get(i).movedFrom, allMoves.get(i).capturedTo)
+            //console.log(hopo.test)
+            if (i=== movesNoScanned && i%2 === 1 && isMyStart) {
+                hopo.inni();
+                blackTimer.start()
+                //console.log("Black continues", i)
+            }
+            else if (i=== movesNoScanned && i%2 === 0 && !isMyStart) {
+                hopo.inni();
+                whiteTimer.start()
+                //console.log("White continues", i)
+            }
+            else {
+                hopo.innio();
+                // console.log("Move to stack", i)
+            }
+        }
+    }
     pauseMillsecs = pauseMillsecs + pureMillsecs
     tilat.juoksee = !tilat.juoksee;
     startti.timeAsetus();

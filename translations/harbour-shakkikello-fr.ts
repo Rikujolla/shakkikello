@@ -169,10 +169,6 @@
         <translation>Afficher les infos de la partie</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Réinitialiser</translation>
-    </message>
-    <message>
         <source>Check!</source>
         <translation>Échec !</translation>
     </message>
@@ -199,6 +195,10 @@
     <message>
         <source>Continue</source>
         <translation>Reprendre</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Réinitialiser</translation>
     </message>
     <message>
         <source>Chess board</source>

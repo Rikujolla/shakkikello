@@ -151,7 +151,7 @@ namespace {
 /// START SFOS part
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+// This function clears the game vectors
 void A::initio() {
 //    cout << "initio alkaa" << endl;
     g_siirrot.clear();
@@ -187,6 +187,7 @@ void A::inni() {
     UCI::loopi(g_siirrot);
 }
 
+// This function only adds a move to the vector, used to initialize the game for example with openings
 void A::innio() {
     g_siirrot.push_back(myTest.toStdString());
 }

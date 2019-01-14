@@ -169,10 +169,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation type="unfinished">重置</translation>
-    </message>
-    <message>
         <source>Check!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -199,6 +195,10 @@
     <message>
         <source>Continue</source>
         <translation type="unfinished">繼續</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">重置</translation>
     </message>
     <message>
         <source>Chess board</source>

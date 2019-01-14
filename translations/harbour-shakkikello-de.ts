@@ -169,10 +169,6 @@
         <translation>Züge anzeigen</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Zurücksetzen</translation>
-    </message>
-    <message>
         <source>Check!</source>
         <translation>Schach!</translation>
     </message>
@@ -199,6 +195,10 @@
     <message>
         <source>Continue</source>
         <translation>Weiter</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Zurücksetzen</translation>
     </message>
     <message>
         <source>Chess board</source>
@@ -468,7 +468,7 @@
     </message>
     <message>
         <source>Chinese (China) (Historyscholar)</source>
-        <translation type="unfinished"></translation>
+        <translation>Chinesisch (China) (Historyscholar)</translation>
     </message>
 </context>
 <context>

@@ -169,10 +169,6 @@
         <translation>Näytä siirrot</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Nollaa</translation>
-    </message>
-    <message>
         <source>Check!</source>
         <translation>Shakki!</translation>
     </message>
@@ -199,6 +195,10 @@
     <message>
         <source>Continue</source>
         <translation>Jatka</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Nollaa</translation>
     </message>
     <message>
         <source>Chess board</source>

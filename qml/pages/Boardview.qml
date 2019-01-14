@@ -54,6 +54,10 @@ Page {
     //property int movesTotal: 0; //Records moves done, maybe to be moved from opsi
     property int movesNoScanned: 0; //Tells the move under scannin e.g. when backing. In play same than movesTotal
 
+    property int fromIndex : -1
+    property int toIndex : -1
+
+
     SilicaFlickable {
         anchors.fill: parent
 
@@ -969,7 +973,7 @@ Page {
                                     castlingWpossible =false;
                                     midSquareInd = 61;
                                     // Saving the moved pieces and positions for a possible cancel of the move
-                                    movedPieces.set(2,{"color":"b", "piece":"images/R.png", "indeksos":63})
+                                    movedPieces.set(2,{"color":"w", "piece":"images/R.png", "indeksos":63})
                                     movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":61})
                             }
                             // Castling queenside
@@ -985,7 +989,7 @@ Page {
                                     castlingWpossible = false;
                                     midSquareInd = 59;
                                     // Saving the moved pieces and positions for a possible cancel of the move
-                                    movedPieces.set(2,{"color":"b", "piece":"images/R.png", "indeksos":56})
+                                    movedPieces.set(2,{"color":"w", "piece":"images/R.png", "indeksos":56})
                                     movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":59})
                             }
                             else {
@@ -2198,6 +2202,9 @@ Page {
                     // Saving moves for captured pieces //Possible BUG in fast play in next line, could be related to narrow timeslot where you can select piece on opponents turn. Have to follow
                     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
                     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
+                    movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                    movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
 
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
@@ -2206,21 +2213,27 @@ Page {
                         if (toIndex == 6){
                             galeryModel.set(5,{"color":"b", "piece":"images/r.png"})
                             galeryModel.set(7,{"color":"e", "piece":"images/empty.png"})
+                            movedPieces.set(2,{"color":"b", "piece":"images/r.png", "indeksos":7})
+                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":5})
                         }
                         else {
                             galeryModel.set(3,{"color":"b", "piece":"images/r.png"})
                             galeryModel.set(0,{"color":"e", "piece":"images/empty.png"})
+                            movedPieces.set(2,{"color":"b", "piece":"images/r.png", "indeksos":0})
+                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":3})
                         }
                     }
                     // If blacks move gives enpassant possibility to whiteTimer
                     if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece === "images/p.png") {
                         moveMent.benpassant = toIndex-8;
                         galeryModel.set(moveMent.benpassant,{"color":"bp"})
+                        movedPieces.set(4,{"color":"bp", "piece":"images/empty.png", "indeksos":moveMent.benpassant}) //Set enpassant values
                     }
                     // If white gives enpassant possibility and it is utilized let's print a board accordingly
                     if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece === "images/p.png") {
                         galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
                         moveMent.currentMove = "enpassant";
+                        movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":toIndex-8})
                         moveMent.wenpassant = -1;
                     }
                     // Adding moves to captures list
@@ -2236,6 +2249,7 @@ Page {
 
                     if (toIndex > 55 && galeryModel.get(toIndex).piece === "images/p.png") {
                         galeryModel.set(toIndex, {"piece": "images/q.png"});
+                        movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":fromIndex})
                     }
                     feni.lowerMessage = "";
                     feni.upperMessage = "";
@@ -2249,6 +2263,8 @@ Page {
                     feni.feniBlackReady2 = false;
                     // Recording move to the allMoves list
                     allMoves.append({"moveNo":opsi.movesTotal})
+                    Myfunks.recordMove();
+                    movesNoScanned = opsi.movesTotal;
                     whiteMatetimer.start();
                 }
             }
@@ -2277,6 +2293,9 @@ Page {
                     // Saving moves for captured pieces
                     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
                     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
+                    movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                    movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
 
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
@@ -2285,21 +2304,27 @@ Page {
                         if (toIndex == 62){
                             galeryModel.set(61,{"color":"w", "piece":"images/R.png"})
                             galeryModel.set(63,{"color":"e", "piece":"images/empty.png"})
+                            movedPieces.set(2,{"color":"w", "piece":"images/R.png", "indeksos":63})
+                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":61})
                         }
                         else {
                             galeryModel.set(59,{"color":"w", "piece":"images/R.png"})
                             galeryModel.set(56,{"color":"e", "piece":"images/empty.png"})
+                            movedPieces.set(2,{"color":"w", "piece":"images/R.png", "indeksos":56})
+                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":59})
                         }
                     }
-                    // If whites move gives enpassant possibility to whiteTimer
+                    // If whites move gives enpassant possibility to blackTimer
                     if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece === "images/P.png") {
                         moveMent.wenpassant = toIndex+8
                         galeryModel.set(moveMent.wenpassant,{"color":"wp"})
+                        movedPieces.set(4,{"color":"wp", "piece":"images/empty.png", "indeksos":moveMent.wenpassant}) //Set enpassant values
                     }
                     // If black gives enpassant possibility and it is utilized let's print a board accordingly
                     if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece === "images/P.png") {
                         galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
                         moveMent.currentMove = "enpassant";
+                        movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":toIndex+8})
                         moveMent.benpassant = -1;
                     }
                     // Adding moves to captures list
@@ -2315,6 +2340,7 @@ Page {
 
                     if (toIndex < 8 && galeryModel.get(toIndex).piece === "images/P.png") {
                         galeryModel.set(toIndex, {"piece": "images/Q.png"});
+                        movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":fromIndex})
                     }
                     feni.lowerMessage = "";
                     feni.upperMessage = "";
@@ -2329,8 +2355,9 @@ Page {
                     // Recording move to the allMoves list
                     //console.log(opsi.movesTotal)
                     allMoves.append({"moveNo":opsi.movesTotal})
-                    console.log(allMoves.get(opsi.movesTotal).moveNo)
-
+                    //console.log(allMoves.get(opsi.movesTotal).moveNo)
+                    Myfunks.recordMove();
+                    movesNoScanned = opsi.movesTotal;
                 }
             }
 
@@ -2426,7 +2453,7 @@ Page {
                     iidee: "prev"
                     icons:"icon-m-previous?"
                     visibility_: true
-                    modes: "human"
+                    modes: "stockfish"
                 }
                 /*ListElement{
                     icons:"icon-m-pause?"
@@ -2459,7 +2486,7 @@ Page {
                         IconButton {
                             id: but_eon
                             width:page.width/3
-                            visible: (visibility_ && modes === "all") || (iidee ==="prev" && modes === playMode && movesNoScanned >0) || (iidee ==="forw" && modes === playMode && movesNoScanned < opsi.movesTotal)
+                            visible: (visibility_ && modes === "all") || (iidee ==="prev" && (modes === playMode || playMode === "human") && movesNoScanned >0) || (iidee ==="forw" && playMode !== "othDevice" && movesNoScanned < opsi.movesTotal)
                             icon.source: "image://theme/"+icons + (pressed
                                                                    ? Theme.highlightColor
                                                                    : Theme.primaryColor)
