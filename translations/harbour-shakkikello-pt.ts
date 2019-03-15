@@ -391,10 +391,6 @@
         <source>Pause</source>
         <translation>Pausa</translation>
     </message>
-    <message>
-        <source>Controls</source>
-        <translation>Controles</translation>
-    </message>
 </context>
 <context>
     <name>Tietoja</name>

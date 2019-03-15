@@ -391,10 +391,6 @@
         <source>Pause</source>
         <translation>暫停</translation>
     </message>
-    <message>
-        <source>Controls</source>
-        <translation>控制</translation>
-    </message>
 </context>
 <context>
     <name>Tietoja</name>

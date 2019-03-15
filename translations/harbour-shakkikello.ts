@@ -388,10 +388,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Controls</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation type="unfinished"></translation>
     </message>

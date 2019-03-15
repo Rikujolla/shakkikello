@@ -388,10 +388,6 @@
         <translation>Valkoisen kello</translation>
     </message>
     <message>
-        <source>Controls</source>
-        <translation>Ohjaukset</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Mustan kello</translation>
     </message>

@@ -388,10 +388,6 @@
         <translation>白棋时间</translation>
     </message>
     <message>
-        <source>Controls</source>
-        <translation>支配</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>黑棋时间</translation>
     </message>

@@ -388,10 +388,6 @@
         <translation>Zegar białych</translation>
     </message>
     <message>
-        <source>Controls</source>
-        <translation>Przyciski kontrolne</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Zegar czarnych</translation>
     </message>

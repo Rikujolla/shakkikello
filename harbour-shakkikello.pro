@@ -47,8 +47,6 @@ OTHER_FILES += qml/harbour-shakkikello.qml \
     translations/*.ts \
     qml/pages/Asetukset.qml \
     qml/pages/Pelisivu.qml \
-    qml/pages/vaihtoMusta.png \
-    qml/pages/vaihtoValkoinen.png \
     LICENSE \
     qml/pages/Tietoja.qml \
     qml/pages/funktiot.js \
@@ -136,7 +134,8 @@ DISTFILES += \
     icons/128x128/harbour-shakkikello.png \
     icons/256x256/harbour-shakkikello.png \
     icons/86x86/harbour-shakkikello.png \
-    README.md
+    README.md \
+    icons/172x172/harbour-shakkikello.png
 
 FORMS +=
 

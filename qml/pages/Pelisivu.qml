@@ -153,26 +153,22 @@ Page {
                     if (tilat.pelialkoi && countDirDown == true && rogres_sekuntitm <= 0) {
                         tilat.peliloppui = true;
                         tilat.peliLoppui();
-                        //console.log("if1" , mustamax)
                     }
                     else if (tilat.pelialkoi && countDirDown == false && rogres_sekuntitm >= mustamax) {
                         tilat.peliloppui = true;
                         tilat.peliLoppui()
-                        //console.log("if2" , "rogres",rogres_sekuntitm ,mustamax)
                     }
                     else if (countDirDown == false) {
                         sekuntitm = kello.sekuntit;
                         label_sekuntitm = (-sum_incrementm + (sekuntitm0 + sekuntitm))%60;
                         label_minuutitm = ((-sum_incrementm + (sekuntitm0 + sekuntitm))-label_sekuntitm)/60;
                         rogres_sekuntitm = -sum_incrementm + (sekuntitm0 + sekuntitm)
-                        //console.log("if3" , mustamax)
                     }
                     else {
                         sekuntitm = kello.sekuntit;
                         label_sekuntitm = (mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))%60;
                         label_minuutitm = ((mustamax + sum_incrementm - (sekuntitm0 + sekuntitm))-label_sekuntitm)/60;
                         rogres_sekuntitm = mustamax + sum_incrementm - (sekuntitm0 + sekuntitm)
-                        //console.log("if4" , mustamax)
                     }
                 }
             }
@@ -234,8 +230,6 @@ Page {
                     if (tilat.pelialkoi == true) {
                         maharollisuuret = qsTr("Settings");
                         tilat.asetaTilat();
-//                        valkomax = 300;
-//                        mustamax = 300;
                         valkokello.rogres_sekuntitv = valkomax;
                         muttakello.rogres_sekuntitm = mustamax;
                         valkokello.sekuntitv0 = 0;
@@ -254,8 +248,6 @@ Page {
                         // Logic to move to settings page
                         //////////////////////////
                     } else {
-//                        valkomax = 300;
-//                        mustamax = 300;
                         valkokello.rogres_sekuntitv = valkomax;
                         muttakello.rogres_sekuntitm = mustamax;
                         valkokello.sekuntitv0 = 0;
@@ -273,31 +265,32 @@ Page {
             }
 
             Item {
-               id : kello
-               property int hours
-               property int minutes
-               property int sekuntit
-               function timeChanged() {
-                   var date = new Date;
-                   hours = date.getHours()-startti.hours0
-                   minutes = date.getMinutes()-startti.minutes0+60*hours
-                   sekuntit= date.getSeconds()-startti.sekuntit0+60*minutes
-               }
-           }
+                id : kello
+                property int hours
+                property int minutes
+                property int sekuntit
+                function timeChanged() {
+                    var date = new Date;
+                    hours = date.getHours()-startti.hours0
+                    minutes = date.getMinutes()-startti.minutes0+60*hours
+                    sekuntit= date.getSeconds()-startti.sekuntit0+60*minutes
+                }
+            }
 
             BackgroundItem {
+                id: topBackground
                 width: page.width
-                //height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : 275)
-                height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : (Screen.height == 1920 ? 680 : 275))
+                height: (Screen.height-2*whiteClockLabel.height-4*column.spacing-buttonRow.height)/2
                 enabled: tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
+                    id: clockPageHeader
                     title: qsTr("Chess clock")
                 }
                 ProgressBar {
                     id: progressBar2
                     width: parent.width
-                    height: 200
+                    //height: 200
                     maximumValue: valkomax
                     //valueText: valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv
                     valueText: {(valkokello.rogres_sekuntitv < 0 && valkokello.rogres_sekuntitv > -60 ? "-":"")
@@ -309,7 +302,7 @@ Page {
                     value: valkokello.rogres_sekuntitv
                     rotation: 180
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.verticalCenterOffset: Screen.height == 960 ? 50 :0
+                    //anchors.verticalCenterOffset: Screen.height == 960 ? 50 :0
                     Timer {
                         interval: 100
                         running: tilat.juoksee && tilat.valko && Qt.application.active
@@ -317,30 +310,28 @@ Page {
                         onTriggered: valkokello.updateValko()
                     }
                 }
-            }
-
-            Row {
                 Image {
-                    source: "vaihtoValkoinen.png"
+                    // white_clock.png height 200 width 472
+                    source: "./images/white_clock.png"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
                     rotation: 180
-                }
-                Text {
-                    text: qsTr("White´s clock")
-                    color: Theme.highlightColor
-                    font.pixelSize: Theme.fontSizeSmall
-                    rotation: 180
+                    height:0.104*Screen.height
+                    width:0.246*Screen.height
                 }
             }
 
-            Text {
-                text: "              " + qsTr("Controls")
-                // Removing text from Xperia X, not touching yet Jolla 1, Jolla C or Jolla Tablet
-                visible: Screen.height != 1920
+            Label {
+                id: whiteClockLabel
+                text: qsTr("White´s clock")
+                anchors.horizontalCenter: parent.horizontalCenter
                 color: Theme.highlightColor
-                font.pixelSize: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeMedium
+                rotation: 180
             }
 
             Row {
+                id: buttonRow
                 spacing: Theme.paddingLarge
                 anchors.horizontalCenter: parent.horizontalCenter
                 Button {
@@ -356,7 +347,6 @@ Page {
                         valkokello.sekuntitv = 0;
                         muttakello.timeMutta(); // Saving accumulated time for Black
                         muttakello.sekuntitm=0;
-//                        muttakello.rogres_sekuntitm = mustamax;
                         if (!countDirDown) {
                             muttakello.rogres_sekuntitm = -muttakello.sum_incrementm + muttakello.sekuntitm0;
                             valkokello.rogres_sekuntitv = -valkokello.sum_incrementv + valkokello.sekuntitv0;
@@ -372,22 +362,16 @@ Page {
                 }
             }
 
-            Row {
-                Image {
-                    source: "vaihtoMusta.png"
-                }
-                Text {
-                    text: qsTr("Black´s clock")
-                    color: Theme.highlightColor
-                    font.pixelSize: Theme.fontSizeSmall
-                }
+            Label {
+                text: qsTr("Black´s clock")
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: Theme.highlightColor
+                font.pixelSize: Theme.fontSizeMedium
             }
 
             BackgroundItem {
                 width: page.width
-                //height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : 275)
-                //height: JollaC ? 435 : JollaTablet ? 819 : XperiaX&TuringPhone&Oysters ? 720: Jolla1 : 275)
-                height: Screen.height == 1280 ? 435 : (Screen.height == 2048 ? 819 : (Screen.height == 1920 ? 780 : 275))
+                height: (Screen.height-2*whiteClockLabel.height-4*column.spacing-buttonRow.height)/2
                 enabled: tilat.juoksee && tilat.musta
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {
@@ -407,8 +391,13 @@ Page {
                         repeat: true
                         onTriggered: muttakello.updateMutta()}
                 }
+                Image {
+                    source: "./images/black_clock.png"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    height:0.104*Screen.height
+                    width:0.246*Screen.height
+                }
             }
-            // loppusulkeet
         }
     }
 

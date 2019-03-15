@@ -391,10 +391,6 @@
         <source>Pause</source>
         <translation>Stoppa</translation>
     </message>
-    <message>
-        <source>Controls</source>
-        <translation>Kontroller</translation>
-    </message>
 </context>
 <context>
     <name>Tietoja</name>

@@ -388,10 +388,6 @@
         <translation>Uhr von Weiß</translation>
     </message>
     <message>
-        <source>Controls</source>
-        <translation>Kontrollen</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Uhr von Schwarz</translation>
     </message>

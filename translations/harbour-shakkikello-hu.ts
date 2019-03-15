@@ -388,10 +388,6 @@
         <translation>Fehér órája</translation>
     </message>
     <message>
-        <source>Controls</source>
-        <translation>Vezérlők</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Fekete órája</translation>
     </message>

@@ -388,10 +388,6 @@
         <translation>Klok van Wit</translation>
     </message>
     <message>
-        <source>Controls</source>
-        <translation>Knoppen</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Klok van Zwart</translation>
     </message>

@@ -273,7 +273,7 @@
     <name>CoverPage</name>
     <message>
         <source>Fast chess</source>
-        <translation>Pikashakki</translation>
+        <translation>Shakkikello</translation>
     </message>
 </context>
 <context>
@@ -388,10 +388,6 @@
         <translation>Décompte des Blancs</translation>
     </message>
     <message>
-        <source>Controls</source>
-        <translation>Tableau de bord</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
         <translation>Décompte des Noirs</translation>
     </message>
@@ -468,7 +464,7 @@
     </message>
     <message>
         <source>Chinese (China) (Historyscholar)</source>
-        <translation type="unfinished"></translation>
+        <translation>Chinois (Historyscholar)</translation>
     </message>
 </context>
 <context>
