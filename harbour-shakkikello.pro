@@ -45,25 +45,10 @@ OTHER_FILES += qml/harbour-shakkikello.qml \
     rpm/harbour-shakkikello.spec \
     rpm/harbour-shakkikello.yaml \
     translations/*.ts \
-    qml/pages/Asetukset.qml \
-    qml/pages/Pelisivu.qml \
     LICENSE \
-    qml/pages/Tietoja.qml \
     qml/pages/funktiot.js \
-    qml/pages/images/N.png \
-    qml/pages/images/n.png \
-    qml/pages/images/B.png \
-    qml/pages/images/b.png \
-    qml/pages/images/R.png \
-    qml/pages/images/r.png \
-    qml/pages/images/Q.png \
-    qml/pages/images/q.png \
-    qml/pages/images/P.png \
-    qml/pages/images/K.png \
-    qml/pages/images/k.png \
     qml/pages/images/grid.png \
     qml/pages/images/empty.png \
-    qml/pages/images/p.png \
     qml/pages/Promotion.qml \
     qml/pages/Boardview.qml \
     qml/pages/openings.js \
@@ -75,7 +60,7 @@ OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/pages/GameInfo2.qml \
     qml/pages/GameSelector.qml
 
-SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
+SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172 256x256
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -87,7 +72,8 @@ TRANSLATIONS +=  translations/harbour-shakkikello-da.ts \
                  translations/harbour-shakkikello-fi.ts \
                  translations/harbour-shakkikello-fr.ts \
                  translations/harbour-shakkikello-it.ts \
-                 translations/harbour-shakkikello-nl.ts \
+                 translations/harbour-shakkikello-nl_nl.ts \
+                 translations/harbour-shakkikello-nl_be.ts \
                  translations/harbour-shakkikello-nb.ts \
                  translations/harbour-shakkikello-pl.ts \
                  translations/harbour-shakkikello-pt.ts \
@@ -135,7 +121,11 @@ DISTFILES += \
     icons/256x256/harbour-shakkikello.png \
     icons/86x86/harbour-shakkikello.png \
     README.md \
-    icons/172x172/harbour-shakkikello.png
+    icons/172x172/harbour-shakkikello.png \
+    qml/pages/About.qml \
+    qml/pages/Settings.qml \
+    qml/pages/Clockview.qml \
+    qml/pages/movelegal.js
 
 FORMS +=
 

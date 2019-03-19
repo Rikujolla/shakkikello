@@ -67,6 +67,14 @@
                 rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'startPageTxt');
                 if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valte=? WHERE name=?', [startPageTxt, 'startPageTxt'])}
                 else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'startPageTxt', '', startPageTxt, '', '' ])}
+                // pieceStyle
+                rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'pieceStyle');
+                if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [pieceStyle, 'pieceStyle'])}
+                else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'pieceStyle', '', '', '', pieceStyle ])}
+                // piePat
+                rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'piePat');
+                if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valte=? WHERE name=?', [piePat, 'piePat'])}
+                else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'piePat', '', piePat, '', '' ])}
                 // portFixed
                 rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'portFixed');
                 if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [portFixed, 'portFixed'])}
@@ -156,6 +164,14 @@ function loadSettings() {
             // startPageTxt
             rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'startPageTxt');
             if (rs.rows.length > 0) {startPageTxt = rs.rows.item(0).valte}
+            else {}
+            // pieceStyle
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'pieceStyle');
+            if (rs.rows.length > 0) {pieceStyle = rs.rows.item(0).valint}
+            else {}
+            // piePat
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'piePat');
+            if (rs.rows.length > 0) {piePat = rs.rows.item(0).valte}
             else {}
             // portFixed
             rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'portFixed');

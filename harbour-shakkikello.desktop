@@ -23,8 +23,10 @@ Name[hu]=Gyors sakk
 Name[it]=Partita lampo
 # norvégien bokmål (no)
 Name[nb]=Lynsjakk
-# Hollanniksi (nl)
-Name[nl]=Snel schaken
+# Dutch(Belgium) (nl_be)
+Name[nl_NL]=Snel schaken
+# Dutch(Neatherlands) (nl_nl)
+Name[nl_BE]=Snel schaken
 # Puolaksi (pl)
 Name[pl]=Szybkie szachy
 # Portugaliksi (pt)

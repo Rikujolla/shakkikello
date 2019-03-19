@@ -2,156 +2,87 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="hu">
 <context>
-    <name>Asetukset</name>
+    <name>About</name>
     <message>
-        <source>Settings page</source>
-        <translation>Beállítások oldala</translation>
+        <source>Back to settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About</source>
-        <translation>Névjegy</translation>
+        <source>About page</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>White</source>
-        <translation>Fehér</translation>
+        <source>Fast chess, version</source>
+        <extracomment>The name of the app followed with a version number</extracomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>min</source>
-        <extracomment>min is an abbreviation of a minute</extracomment>
-        <translation>perc</translation>
+        <source>Translations</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Black</source>
-        <translation>Fekete</translation>
+        <source>German (Nit)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Increment/move</source>
-        <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
-        <translation>Növekmény/lépés</translation>
+        <source>Spanish (Carlos Gonzalez)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>s</source>
-        <extracomment>s is an abbreviation of a second</extracomment>
-        <translation>mp</translation>
+        <source>Finnish (Riku Lahtinen)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clock view</source>
-        <translation>Óra nézet</translation>
+        <source>French (lutinotmalin)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Time counting</source>
-        <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
-        <translation>Időszámláló</translation>
+        <source>Hungarian (leoka)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Opening</source>
-        <translation>Megnyitás</translation>
+        <source>Dutch (Heimen Stoffels)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clock settings</source>
-        <translation>Óra beállítások</translation>
+        <source>Polish (szopin)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Chess settings</source>
-        <translation>Sakk beállítások</translation>
+        <source>Chinese (China) (Historyscholar)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Downwards</source>
-        <translation>Lefelé</translation>
+        <source>Contributions</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Upwards</source>
-        <translation>Felfelé</translation>
+        <source>The design of the pieces (Kapu)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Random</source>
-        <translation>Véletlenszerű</translation>
+        <source>Third party software</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>-1 min</source>
-        <extracomment>Reduce time by 1 minute</extracomment>
-        <translation>-1 perc</translation>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>+1 min</source>
-        <extracomment>Increase time by 1 minute</extracomment>
-        <translation>+1 perc</translation>
+        <source>Licence</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>-1 s</source>
-        <extracomment>Reduce time by 1 second</extracomment>
-        <translation>-1 mp</translation>
+        <source>Copyright (c) 2015, Riku Lahtinen</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>+1 s</source>
-        <extracomment>Increase time by 1 second</extracomment>
-        <translation>+1 mp</translation>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Skill Level</source>
-        <translation>Képességszint</translation>
-    </message>
-    <message>
-        <source>Movetime</source>
-        <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
-        <translation>Időhatárolás</translation>
-    </message>
-    <message>
-        <source>Save settings</source>
-        <translation>Beállítások mentése</translation>
-    </message>
-    <message>
-        <source>Play chess</source>
-        <translation>Sakkozz</translation>
-    </message>
-    <message>
-        <source>Opponent</source>
-        <translation>Ellenfél</translation>
-    </message>
-    <message>
-        <source>Stockfish</source>
-        <extracomment>Stockfish is a name of the chess engine, more info https://stockfishchess.org/</extracomment>
-        <translation>Stockfish</translation>
-    </message>
-    <message>
-        <source>Human</source>
-        <translation>Emberi</translation>
-    </message>
-    <message>
-        <source>My color</source>
-        <translation>Saját szín</translation>
-    </message>
-    <message>
-        <source>View settings</source>
-        <translation>Megjelenítési beállítások</translation>
-    </message>
-    <message>
-        <source>Default view</source>
-        <translation>Alap nézet</translation>
-    </message>
-    <message>
-        <source>Chess clock</source>
-        <translation>Sakk óra</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Sakktábla</translation>
-    </message>
-    <message>
-        <source>Saved game</source>
-        <translation>Mentett játék</translation>
-    </message>
-    <message>
-        <source>Another device</source>
-        <translation>Más készülék</translation>
-    </message>
-    <message>
-        <source>Port number</source>
-        <translation>Port szám</translation>
-    </message>
-    <message>
-        <source>Fixed</source>
-        <translation>Rögzített</translation>
+        <source>Dutch (Belgium) (Nathan Follens)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -211,6 +142,50 @@
     <message>
         <source>Start</source>
         <translation>Indítás</translation>
+    </message>
+</context>
+<context>
+    <name>Clockview</name>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="unfinished">Feketén a sor</translation>
+    </message>
+    <message>
+        <source>White´s turn</source>
+        <translation type="unfinished">Fehéren a sor</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Szünet</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Folytatás</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Visszaállítás</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Beállítások</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="unfinished">Sakk óra</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <extracomment>Minutes:seconds</extracomment>
+        <translation type="unfinished">perc:mp</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation type="unfinished">Fehér órája</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation type="unfinished">Fekete órája</translation>
     </message>
 </context>
 <context>
@@ -349,121 +324,170 @@
     </message>
 </context>
 <context>
-    <name>Pelisivu</name>
+    <name>Settings</name>
     <message>
-        <source>Black´s turn</source>
-        <translation>Feketén a sor</translation>
+        <source>Save settings</source>
+        <translation type="unfinished">Beállítások mentése</translation>
     </message>
     <message>
-        <source>White´s turn</source>
-        <translation>Fehéren a sor</translation>
+        <source>Play chess</source>
+        <translation type="unfinished">Sakkozz</translation>
     </message>
     <message>
-        <source>Pause</source>
-        <translation>Szünet</translation>
+        <source>Clock view</source>
+        <translation type="unfinished">Óra nézet</translation>
     </message>
     <message>
-        <source>Continue</source>
-        <translation>Folytatás</translation>
+        <source>About</source>
+        <translation type="unfinished">Névjegy</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Visszaállítás</translation>
+        <source>-1 min</source>
+        <extracomment>Reduce time by 1 minute</extracomment>
+        <translation type="unfinished">-1 perc</translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation>Beállítások</translation>
+        <source>+1 min</source>
+        <extracomment>Increase time by 1 minute</extracomment>
+        <translation type="unfinished">+1 perc</translation>
+    </message>
+    <message>
+        <source>-1 s</source>
+        <extracomment>Reduce time by 1 second</extracomment>
+        <translation type="unfinished">-1 mp</translation>
+    </message>
+    <message>
+        <source>+1 s</source>
+        <extracomment>Increase time by 1 second</extracomment>
+        <translation type="unfinished">+1 mp</translation>
+    </message>
+    <message>
+        <source>min</source>
+        <extracomment>min is an abbreviation of a minute</extracomment>
+        <translation type="unfinished">perc</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <extracomment>s is an abbreviation of a second</extracomment>
+        <translation type="unfinished">mp</translation>
+    </message>
+    <message>
+        <source>Settings page</source>
+        <translation type="unfinished">Beállítások oldala</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation type="unfinished">Óra beállítások</translation>
+    </message>
+    <message>
+        <source>White</source>
+        <translation type="unfinished">Fehér</translation>
+    </message>
+    <message>
+        <source>Black</source>
+        <translation type="unfinished">Fekete</translation>
+    </message>
+    <message>
+        <source>Increment/move</source>
+        <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
+        <translation type="unfinished">Növekmény/lépés</translation>
+    </message>
+    <message>
+        <source>Time counting</source>
+        <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
+        <translation type="unfinished">Időszámláló</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation type="unfinished">Lefelé</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation type="unfinished">Felfelé</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation type="unfinished">Sakk beállítások</translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation type="unfinished">Ellenfél</translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <extracomment>Stockfish is a name of the chess engine, more info https://stockfishchess.org/</extracomment>
+        <translation type="unfinished">Stockfish</translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation type="unfinished">Emberi</translation>
+    </message>
+    <message>
+        <source>Another device</source>
+        <translation type="unfinished">Más készülék</translation>
+    </message>
+    <message>
+        <source>Port number</source>
+        <translation type="unfinished">Port szám</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation type="unfinished">Véletlenszerű</translation>
+    </message>
+    <message>
+        <source>Fixed</source>
+        <translation type="unfinished">Rögzített</translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation type="unfinished">Saját szín</translation>
+    </message>
+    <message>
+        <source>Opening</source>
+        <translation type="unfinished">Megnyitás</translation>
+    </message>
+    <message>
+        <source>Saved game</source>
+        <translation type="unfinished">Mentett játék</translation>
+    </message>
+    <message>
+        <source>Skill Level</source>
+        <translation type="unfinished">Képességszint</translation>
+    </message>
+    <message>
+        <source>Movetime</source>
+        <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
+        <translation type="unfinished">Időhatárolás</translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation type="unfinished">Megjelenítési beállítások</translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation type="unfinished">Alap nézet</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation>Sakk óra</translation>
+        <translation type="unfinished">Sakk óra</translation>
     </message>
     <message>
-        <source>min:s</source>
-        <extracomment>Minutes:seconds</extracomment>
-        <translation>perc:mp</translation>
+        <source>Chess board</source>
+        <translation type="unfinished">Sakktábla</translation>
     </message>
     <message>
-        <source>White´s clock</source>
-        <translation>Fehér órája</translation>
+        <source>Unlike</source>
+        <extracomment>The style of the pieces is unlike</extracomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Black´s clock</source>
-        <translation>Fekete órája</translation>
-    </message>
-</context>
-<context>
-    <name>Tietoja</name>
-    <message>
-        <source>Back to settings</source>
-        <translation>Vissza a beállításokhoz</translation>
+        <source>Classic</source>
+        <extracomment>The style of the pieces is classic</extracomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About page</source>
-        <translation>Névjegy oldal</translation>
-    </message>
-    <message>
-        <source>Translations</source>
-        <translation>Fordítások</translation>
-    </message>
-    <message>
-        <source>German (Nit)</source>
-        <translation>Német (Nit)</translation>
-    </message>
-    <message>
-        <source>Dutch (Heimen Stoffels)</source>
-        <translation>Holland (Heimen Stoffels)</translation>
-    </message>
-    <message>
-        <source>Polish (szopin)</source>
-        <translation>Lengyel (szopin)</translation>
-    </message>
-    <message>
-        <source>Contributions</source>
-        <translation>Közreműködések</translation>
-    </message>
-    <message>
-        <source>The design of the pieces (Kapu)</source>
-        <translation>A figurák designja (Kapu)</translation>
-    </message>
-    <message>
-        <source>Third party software</source>
-        <translation>Harmadik féltől származó szoftver</translation>
-    </message>
-    <message>
-        <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Stockfish motor, v5 (stockfishchess.org)</translation>
-    </message>
-    <message>
-        <source>Licence</source>
-        <translation>Licenc</translation>
-    </message>
-    <message>
-        <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
-    </message>
-    <message>
-        <source>Licensed under GPLv3. License, source code and more information:</source>
-        <translation>Megjelent a GPLv3 licenc alatt. Licenc, forráskód, illetve több infó:</translation>
-    </message>
-    <message>
-        <source>Finnish (Riku Lahtinen)</source>
-        <translation>Finn (Riku Lahtinen)</translation>
-    </message>
-    <message>
-        <source>Spanish (Carlos Gonzalez)</source>
-        <translation>Spanyol (Carlos Gonzalez)</translation>
-    </message>
-    <message>
-        <source>French (lutinotmalin)</source>
-        <translation>Francia (lutinotmalin)</translation>
-    </message>
-    <message>
-        <source>Hungarian (leoka)</source>
-        <translation>Magyar (leoka)</translation>
-    </message>
-    <message>
-        <source>Chinese (China) (Historyscholar)</source>
+        <source>Style of the pieces</source>
+        <extracomment>The style of the pieces selector</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -1,254 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="nl_BE">
 <context>
     <name>About</name>
     <message>
         <source>Back to settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Terug naar de instellingen</translation>
     </message>
     <message>
         <source>About page</source>
-        <translation type="unfinished"></translation>
+        <translation>Infopagina</translation>
     </message>
     <message>
         <source>Fast chess, version</source>
         <extracomment>The name of the app followed with a version number</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Rap schaken, versie</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertalingen</translation>
     </message>
     <message>
         <source>German (Nit)</source>
-        <translation type="unfinished"></translation>
+        <translation>Duits (Nit)</translation>
     </message>
     <message>
         <source>Spanish (Carlos Gonzalez)</source>
-        <translation type="unfinished"></translation>
+        <translation>Spaans (Carlos Gonzalez)</translation>
     </message>
     <message>
         <source>Finnish (Riku Lahtinen)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fins (Riku Lahtinen)</translation>
     </message>
     <message>
         <source>French (lutinotmalin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Frans (lutinotmalin)</translation>
     </message>
     <message>
         <source>Hungarian (leoka)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hongaars (leoka)</translation>
     </message>
     <message>
         <source>Dutch (Heimen Stoffels)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hollands (Heimen Stoffels)</translation>
     </message>
     <message>
         <source>Polish (szopin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Pools (szopin)</translation>
     </message>
     <message>
         <source>Chinese (China) (Historyscholar)</source>
-        <translation type="unfinished"></translation>
+        <translation>Chinees (China) (Historyscholar)</translation>
     </message>
     <message>
         <source>Contributions</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijdragen</translation>
     </message>
     <message>
         <source>The design of the pieces (Kapu)</source>
-        <translation type="unfinished"></translation>
+        <translation>’t Ontwerp van de speelstukken (Kapu)</translation>
     </message>
     <message>
         <source>Third party software</source>
-        <translation type="unfinished"></translation>
+        <translation>Software van derden</translation>
     </message>
     <message>
         <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation type="unfinished"></translation>
+        <translation>Stockfish-aandrijving, v5 (stockfishchess.org)</translation>
     </message>
     <message>
         <source>Licence</source>
-        <translation type="unfinished"></translation>
+        <translation>Licentie</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation type="unfinished"></translation>
+        <translation>Auteursrecht © 2015, Riku Lahtinen</translation>
     </message>
     <message>
         <source>Licensed under GPLv3. License, source code and more information:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitgebracht onder de GPLv3-licentie. Licentie, broncode en meer informatie:</translation>
     </message>
     <message>
         <source>Dutch (Belgium) (Nathan Follens)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlaams (Nathan Follens)</translation>
     </message>
 </context>
 <context>
     <name>Boardview</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Настройки</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <source>Save and manage games</source>
-        <translation type="unfinished"></translation>
+        <translation>Opslaan en spellen beheren</translation>
     </message>
     <message>
         <source>Show moves</source>
-        <translation type="unfinished"></translation>
+        <translation>Zetten weergeven</translation>
     </message>
     <message>
         <source>Check!</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaak!</translation>
     </message>
     <message>
         <source>Checkmate!</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaakmat!</translation>
     </message>
     <message>
         <source>Stalemate!</source>
-        <translation type="unfinished"></translation>
+        <translation>Patstelling!</translation>
     </message>
     <message>
         <source>White won!</source>
-        <translation type="unfinished"></translation>
+        <translation>Wit heeft gewonnen!</translation>
     </message>
     <message>
         <source>Black won!</source>
-        <translation type="unfinished"></translation>
+        <translation>Zwart heeft gewonnen!</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Пауза</translation>
+        <translation>Pauzeren</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Продолжать</translation>
+        <translation>Doorgaan</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Cброс</translation>
+        <translation>Herstellen</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished">Доска</translation>
+        <translation>Schaakbord</translation>
     </message>
     <message>
         <source>min:s</source>
-        <translation type="unfinished">мин:c</translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished">Начало</translation>
+        <translation>Starten</translation>
     </message>
 </context>
 <context>
     <name>Clockview</name>
     <message>
         <source>Black´s turn</source>
-        <translation type="unfinished">Xод чёрный</translation>
+        <translation>Zwart is aan zet</translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation type="unfinished">Xод белый</translation>
+        <translation>Wit is aan zet</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Пауза</translation>
+        <translation>Pauzeren</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Продолжать</translation>
+        <translation>Doorgaan</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Cброс</translation>
+        <translation>Herstellen</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Настройки</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation type="unfinished">Шахматные часы</translation>
+        <translation>Schaakklok</translation>
     </message>
     <message>
         <source>min:s</source>
         <extracomment>Minutes:seconds</extracomment>
-        <translation type="unfinished">мин:c</translation>
+        <translation>min:s</translation>
     </message>
     <message>
         <source>White´s clock</source>
-        <translation type="unfinished">Tаймер белый</translation>
+        <translation>Klok van Wit</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation type="unfinished">Tаймер чёрный</translation>
+        <translation>Klok van Zwart</translation>
     </message>
 </context>
 <context>
     <name>Connbox</name>
     <message>
         <source>TCP connection</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP-verbinding</translation>
     </message>
     <message>
         <source>My device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Mijn toestelinformatie</translation>
     </message>
     <message>
         <source>Opponent&apos;s device info</source>
-        <translation type="unfinished"></translation>
+        <translation>Toestelinformatie tegenstander</translation>
     </message>
     <message>
         <source>Test connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbinding testen</translation>
     </message>
     <message>
         <source>Color mismatch, change my color</source>
         <extracomment>Reports the player that colors selected in games in different devices prevent the game start. Another player has to change the color the game to proceed.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Kleur komt nie overeen; wijzigt mijn kleur</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Cброс</translation>
+        <translation>Herstellen</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished">Начало</translation>
+        <translation>Starten</translation>
     </message>
     <message>
         <source>Test in progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig me testen</translation>
     </message>
     <message>
         <source>Waiting your opponent to start</source>
-        <translation type="unfinished"></translation>
+        <translation>Wachten op zet van tegenstander</translation>
     </message>
     <message>
         <source>Retest the connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbinding opnieuw testen</translation>
     </message>
     <message>
         <source>IP address</source>
-        <translation type="unfinished"></translation>
+        <translation>IP-adres</translation>
     </message>
     <message>
         <source>Port number</source>
-        <translation type="unfinished"></translation>
+        <translation>Poortnummer</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Настройки</translation>
+        <translation>Instellingen</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Fast chess</source>
-        <translation>Блиц шахматы</translation>
+        <translation>Rap schaken</translation>
     </message>
 </context>
 <context>
@@ -256,261 +256,261 @@
     <message>
         <source>Tag pairs</source>
         <extracomment>&quot;Tag pairs&quot; could be also e.g. &quot;Game info&quot;. This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
-        <translation>Информация об игре</translation>
+        <translation>Paren aantikken</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
         <extracomment>&quot;Movetext, Coordinate notation&quot; could be also e.g. &quot;Moves in coordinates&quot;. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
-        <translation>Переход, координат обозначения</translation>
+        <translation>Verplaatstekst, notatie van coördinaten</translation>
     </message>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Spel</translation>
     </message>
 </context>
 <context>
     <name>GameInfo2</name>
     <message>
         <source>Current game</source>
-        <translation type="unfinished">Текущая игра</translation>
+        <translation>Huidig spel</translation>
     </message>
     <message>
         <source>Tag pairs</source>
         <extracomment>&quot;Tag pairs&quot; could be also &quot;Game info&quot;. This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
-        <translation type="unfinished">Информация об игре</translation>
+        <translation>Paren aantikken</translation>
     </message>
     <message>
         <source>Movetext, Coordinate notation</source>
         <extracomment>&quot;Movetext, Coordinate notation&quot; could be also e.g. &quot;Moves in coordinates&quot;. See more https://en.wikipedia.org/wiki/Portable_Game_Notation</extracomment>
-        <translation type="unfinished">Переход, координат обозначения</translation>
+        <translation>Verplaatstekst, notatie van coördinaten</translation>
     </message>
 </context>
 <context>
     <name>GameList</name>
     <message>
         <source>Save current game</source>
-        <translation type="unfinished"></translation>
+        <translation>Huidig spel opslaan</translation>
     </message>
     <message>
         <source>Game list</source>
-        <translation type="unfinished"></translation>
+        <translation>Spellijst</translation>
     </message>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Spel</translation>
     </message>
     <message>
         <source>Show game</source>
-        <translation type="unfinished"></translation>
+        <translation>Spel weergeven</translation>
     </message>
     <message>
         <source>Delete game</source>
-        <translation type="unfinished"></translation>
+        <translation>Spel verwijderen</translation>
     </message>
     <message>
         <source>Animate game</source>
-        <translation type="unfinished"></translation>
+        <translation>Spel voorzien van grafische effecten</translation>
     </message>
 </context>
 <context>
     <name>GameSelector</name>
     <message>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Spel</translation>
     </message>
     <message>
         <source>Select game</source>
-        <translation type="unfinished"></translation>
+        <translation>Spel selecteren</translation>
     </message>
 </context>
 <context>
     <name>Settings</name>
     <message>
         <source>Save settings</source>
-        <translation type="unfinished">Сохранить настройки</translation>
+        <translation>Instellingen opslaan</translation>
     </message>
     <message>
         <source>Play chess</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaken</translation>
     </message>
     <message>
         <source>Clock view</source>
-        <translation type="unfinished">Шахматные часы</translation>
+        <translation>Klokweergave</translation>
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished">О пpoгpаммe</translation>
+        <translation>Over</translation>
     </message>
     <message>
         <source>-1 min</source>
         <extracomment>Reduce time by 1 minute</extracomment>
-        <translation type="unfinished">-1 мин</translation>
+        <translation>-1 min</translation>
     </message>
     <message>
         <source>+1 min</source>
         <extracomment>Increase time by 1 minute</extracomment>
-        <translation type="unfinished">+1 мин</translation>
+        <translation>+1 min</translation>
     </message>
     <message>
         <source>-1 s</source>
         <extracomment>Reduce time by 1 second</extracomment>
-        <translation type="unfinished">-1 с</translation>
+        <translation>-1 s</translation>
     </message>
     <message>
         <source>+1 s</source>
         <extracomment>Increase time by 1 second</extracomment>
-        <translation type="unfinished">+1 с</translation>
+        <translation>+1 s</translation>
     </message>
     <message>
         <source>min</source>
         <extracomment>min is an abbreviation of a minute</extracomment>
-        <translation type="unfinished">мин</translation>
+        <translation>min</translation>
     </message>
     <message>
         <source>s</source>
         <extracomment>s is an abbreviation of a second</extracomment>
-        <translation type="unfinished">c</translation>
+        <translation>s</translation>
     </message>
     <message>
         <source>Settings page</source>
-        <translation type="unfinished">Страница настроек</translation>
+        <translation>Instellingenpagina</translation>
     </message>
     <message>
         <source>Clock settings</source>
-        <translation type="unfinished">Настройки часов</translation>
+        <translation>Klokinstellingen</translation>
     </message>
     <message>
         <source>White</source>
-        <translation type="unfinished">Белый</translation>
+        <translation>Wit</translation>
     </message>
     <message>
         <source>Black</source>
-        <translation type="unfinished">Черный</translation>
+        <translation>Zwart</translation>
     </message>
     <message>
         <source>Increment/move</source>
         <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
-        <translation type="unfinished">Увеличение/ход</translation>
+        <translation>Vermeerderen/verplaatsen</translation>
     </message>
     <message>
         <source>Time counting</source>
         <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
-        <translation type="unfinished">Подсчет времени</translation>
+        <translation>Volgorde van tijdsteller</translation>
     </message>
     <message>
         <source>Downwards</source>
-        <translation type="unfinished">Вниз</translation>
+        <translation>Neerwaarts</translation>
     </message>
     <message>
         <source>Upwards</source>
-        <translation type="unfinished">Вверх</translation>
+        <translation>Opwaarts</translation>
     </message>
     <message>
         <source>Chess settings</source>
-        <translation type="unfinished">Настройки шахматные</translation>
+        <translation>Schaakinstellingen</translation>
     </message>
     <message>
         <source>Opponent</source>
-        <translation type="unfinished"></translation>
+        <translation>Tegenstander</translation>
     </message>
     <message>
         <source>Stockfish</source>
         <extracomment>Stockfish is a name of the chess engine, more info https://stockfishchess.org/</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Stockfish</translation>
     </message>
     <message>
         <source>Human</source>
-        <translation type="unfinished"></translation>
+        <translation>Mens</translation>
     </message>
     <message>
         <source>Another device</source>
-        <translation type="unfinished"></translation>
+        <translation>Een ander toestel</translation>
     </message>
     <message>
         <source>Port number</source>
-        <translation type="unfinished"></translation>
+        <translation>Poortnummer</translation>
     </message>
     <message>
         <source>Random</source>
-        <translation type="unfinished">Случайный</translation>
+        <translation>Willekeurig</translation>
     </message>
     <message>
         <source>Fixed</source>
-        <translation type="unfinished"></translation>
+        <translation>Vastgezet</translation>
     </message>
     <message>
         <source>My color</source>
-        <translation type="unfinished"></translation>
+        <translation>Mijn kleur</translation>
     </message>
     <message>
         <source>Opening</source>
-        <translation type="unfinished">Дебют</translation>
+        <translation>Bezig me ’t openen</translation>
     </message>
     <message>
         <source>Saved game</source>
-        <translation type="unfinished"></translation>
+        <translation>Opgeslagen spel</translation>
     </message>
     <message>
         <source>Skill Level</source>
-        <translation type="unfinished">Уровень квалификации</translation>
+        <translation>Vaardigheidsniveau</translation>
     </message>
     <message>
         <source>Movetime</source>
         <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
-        <translation type="unfinished">Двигаться время</translation>
+        <translation>Verplaatstijd</translation>
     </message>
     <message>
         <source>View settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Weergave-instellingen</translation>
     </message>
     <message>
         <source>Default view</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaardweergave</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation type="unfinished">Шахматные часы</translation>
+        <translation>Schaakklok</translation>
     </message>
     <message>
         <source>Chess board</source>
-        <translation type="unfinished">Доска</translation>
+        <translation>Schaakbord</translation>
     </message>
     <message>
         <source>Unlike</source>
         <extracomment>The style of the pieces is unlike</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Unlike</translation>
     </message>
     <message>
         <source>Classic</source>
         <extracomment>The style of the pieces is classic</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Klassiek</translation>
     </message>
     <message>
         <source>Style of the pieces</source>
         <extracomment>The style of the pieces selector</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Stijl van de stukken</translation>
     </message>
 </context>
 <context>
     <name>funktiot</name>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Cброс</translation>
+        <translation>Standaardwaarden</translation>
     </message>
 </context>
 <context>
     <name>harbour-shakkikello</name>
     <message>
         <source>Start</source>
-        <translation>Начало</translation>
+        <translation>Starten</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Настройки</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <source>Downwards</source>
-        <translation>Вниз</translation>
+        <translation>Neerwaarts</translation>
     </message>
 </context>
 </TS>

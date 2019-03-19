@@ -12,6 +12,11 @@
 #- If paused in two player game I can move opponents piece?? BUG
 #- In other device mode promotion is only queen, BUG
 
+* Thu Apr 4 2019 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.2
+- Pieces style can be selected
+- Version info added to the About page
+- Promotion visualization fixes
+
 * Sat Mar 16 2019 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.1
 - New icon, pieces and other visual components
 - Translation updates
@@ -36,7 +41,7 @@
 * Sat Mar 31 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.5
 - French translation updated
 
-* Sat Feb 05 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.4
+* Mon Feb 05 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.7.4
 - French translation updated
 - Hungarian translation added
 - Openings A61-A69 added
@@ -59,10 +64,10 @@
 * Fri Oct 28 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.9
 - Minor changes and harbour release
 
-* Wed Oct 20 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.8
+* Thu Oct 20 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.8
 - Version not for release
 
-* Wed Oct 13 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.7
+* Thu Oct 13 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.7
 - Turing Phone and Oysters screen resolution supported
 - Published only in OpenRepos due to Harbour limitations for Early Access SDK (Fiskarsinjoki)
 
@@ -91,7 +96,7 @@
 - Coveractions added to start a chess clock or a chess game with presettings
 - The bug crashing the app in the Stockfish mode fixed
 
-* Mon Jan 10 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.0
+* Mon Jan 11 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.6.0
 - Save settings possible
 
 * Tue Dec 08 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.5.9

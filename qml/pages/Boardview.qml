@@ -30,6 +30,7 @@ import "./images"
 import "funktiot.js" as Myfunks
 import "openings.js" as Myops
 import "tables.js" as Mytab
+import "movelegal.js" as Mymove
 import harbour.shakkikello.stockfish 1.0
 import harbour.shakkikello.client 1.0
 import harbour.shakkikello.server 1.0
@@ -66,7 +67,7 @@ Page {
                 text: qsTr("Settings")
                 onClicked: {
                     pageStack.clear()
-                    pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
+                    pageStack.push(Qt.resolvedUrl("Settings.qml"))
                 }
             }
 
@@ -602,7 +603,7 @@ Page {
                         muttakello.sekuntitm = 0;
                         kello.sekuntit = 0;
                         tilat.peliloppui = false;
-                        pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
+                        pageStack.push(Qt.resolvedUrl("Settings.qml"))
                     }
                 }
             }*/
@@ -636,25 +637,25 @@ Page {
                         switch(koo) {
                         case 0:
                         case 7:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/r.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"b", "piece":piePat + "r.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 1:
                         case 6:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/n.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"b", "piece":piePat + "n.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 2:
                         case 5:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/b.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"b", "piece":piePat + "b.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 3:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/q.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"b", "piece":piePat + "q.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 4:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/k.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"b", "piece":piePat + "k.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 8:
@@ -665,7 +666,7 @@ Page {
                         case 13:
                         case 14:
                         case 15:
-                            galeryModel.set(koo,{"color":"b", "piece":"images/p.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"b", "piece":piePat + "p.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 48:
@@ -676,34 +677,34 @@ Page {
                         case 53:
                         case 54:
                         case 55:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/P.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"w", "piece":piePat + "P.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 56:
                         case 63:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/R.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"w", "piece":piePat + "R.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 57:
                         case 62:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/N.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"w", "piece":piePat + "N.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 58:
                         case 61:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/B.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"w", "piece":piePat + "B.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 59:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/Q.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"w", "piece":piePat + "Q.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         case 60:
-                            galeryModel.set(koo,{"color":"w", "piece":"images/K.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"w", "piece":piePat + "K.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                             break;
                         default:
-                            galeryModel.set(koo,{"color":"e", "piece":"images/empty.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,{"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2});
                             koo=koo+1;
                     }
                     }
@@ -755,11 +756,12 @@ Page {
                     toParity = (rowtoInd + coltoInd)%2;
                 }
 
-                /////////////////////////////////////////////////////////////////////
+/*                /////////////////////////////////////////////////////////////////////
                 // Function isMovable() checks whether the square has a movable piece
                 /////////////////////////////////////////////////////////////////////
 
-                function isMovable() {
+                function isMovable(_doVisual) {
+                    console.log(_doVisual)
                     if (colorTobemoved == "b" && tilat.musta) {
                         canBemoved = true;
                         galeryModel.set(fromIndex,{"frameop":100});
@@ -771,14 +773,14 @@ Page {
                     else {
                         canBemoved = false;
                     }
-                }
+                }  */
                 ////////////////////////////////////////
                 // This function determines legal moves
                 ////////////////////////////////////////
 
                 function isLegalmove() {
                     switch (itemMoved) {
-                    case "images/p.png":  // Black pawn
+                    case piePat + "p.png":  // Black pawn
                         // Normal move
                         if (((fromIndex-toIndex) == -8) && galeryModel.get(toIndex).color === "e") {
                             moveLegal = true; intLegal = 1;
@@ -786,9 +788,9 @@ Page {
                                 waitPromo = true
                                 turnWhite = false
                                 pawnPromotion();
-                                itemMoved = "images/p.png";
+                                itemMoved = piePat + "p.png";
                                 currentMove = "promotion";
-                                movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":fromIndex})
+                                movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
                                 movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                             }
                         }
@@ -803,7 +805,7 @@ Page {
                             movedPieces.set(1,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                             movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                             movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            movedPieces.set(4,{"color":"bp", "piece":"images/empty.png", "indeksos":benpassant}) //Set enpassant values
+                            movedPieces.set(4,{"color":"bp", "piece":piePat + "empty.png", "indeksos":benpassant}) //Set enpassant values
                         }
                         // Capturing a piece
                         else if (((fromIndex-toIndex) == -7) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1
@@ -815,18 +817,18 @@ Page {
                                     waitPromo = true
                                     turnWhite = false
                                     pawnPromotion()
-                                    itemMoved = "images/p.png"
+                                    itemMoved = piePat + "p.png"
                                     currentMove = "promotion";
-                                    movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":fromIndex})
+                                    movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
                                     movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                                 }
                             }
                             // En passant
                             else if (galeryModel.get(toIndex).color === "wp") {
                                 moveLegal = true;
-                                galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
+                                galeryModel.set((toIndex-8),{"color":"e", "piece":piePat + "empty.png"});
                                 currentMove = "enpassant";
-                                movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":toIndex-8})
+                                movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":toIndex-8})
                                 movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                                 wenpassant = -1;
                             }
@@ -843,7 +845,7 @@ Page {
                             toIndex=-1;
                         }
                         break;
-                    case "images/P.png":
+                    case piePat + "P.png":
                         // Normal move
                         if (((fromIndex-toIndex) == 8) && galeryModel.get(toIndex).color === "e") {
                             moveLegal = true; intLegal = 1;
@@ -851,9 +853,9 @@ Page {
                                 waitPromo = true
                                 turnWhite = true
                                 pawnPromotion()
-                                itemMoved = "images/P.png"
+                                itemMoved = piePat + "P.png"
                                 currentMove = "promotion";
-                                movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":fromIndex})
+                                movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
                                 movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                             }
                         }
@@ -868,7 +870,7 @@ Page {
                             movedPieces.set(1,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                             movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                             movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            movedPieces.set(4,{"color":"wp", "piece":"images/empty.png", "indeksos":wenpassant}) //Set enpassant values
+                            movedPieces.set(4,{"color":"wp", "piece":piePat + "empty.png", "indeksos":wenpassant}) //Set enpassant values
                         }
                         // Capturing a piece
                         else if (((fromIndex-toIndex) == 7) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1
@@ -880,18 +882,18 @@ Page {
                                     waitPromo = true
                                     turnWhite = true
                                     pawnPromotion()
-                                    itemMoved = "images/P.png"
+                                    itemMoved = piePat + "P.png"
                                     currentMove = "promotion";
-                                    movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":fromIndex})
+                                    movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
                                     movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                                 }
                             }
                             // En passant
                             else if (galeryModel.get(toIndex).color === "bp") {
                                 moveLegal = true;
-                                galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
+                                galeryModel.set((toIndex+8),{"color":"e", "piece":piePat + "empty.png"});
                                 currentMove = "enpassant";
-                                movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":toIndex+8})
+                                movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":toIndex+8})
                                 movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                                 benpassant = -1;
                             }
@@ -909,7 +911,7 @@ Page {
                             toIndex=-1;
                         }
                         break;
-                    case "images/k.png":
+                    case piePat + "k.png":
                         if (Math.abs(rowfromInd-rowtoInd) < 2
                                 && galeryModel.get(toIndex).color !== "b"
                                 && Math.abs(coltoInd-colfromInd) < 2
@@ -922,14 +924,14 @@ Page {
                                  && castlingBpossible && !feni.feniBlackChess
                                  && !bKingMoved) {
                             moveLegal = true; intLegal = 1;
-                            galeryModel.set((5),{"color":"b", "piece":"images/r.png"});
-                            galeryModel.set((7),{"color":"e", "piece":"images/empty.png"});
+                            galeryModel.set((5),{"color":"b", "piece":piePat + "r.png"});
+                            galeryModel.set((7),{"color":"e", "piece":piePat + "empty.png"});
                             currentMove = "castling";
                             castlingBpossible = false;
                             midSquareInd = 5;
                             // Saving the moved pieces and positions for a possible cancel of the move
-                            movedPieces.set(2,{"color":"b", "piece":"images/r.png", "indeksos":7})
-                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":5})
+                            movedPieces.set(2,{"color":"b", "piece":piePat + "r.png", "indeksos":7})
+                            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":5})
                         }
                             // Castling long
                         else if ((toIndex == 2) && galeryModel.get(2).color === "e"
@@ -938,14 +940,14 @@ Page {
                                  && castlingBpossible && !feni.feniBlackChess
                                  && !bKingMoved) {
                             moveLegal = true; intLegal = 1;
-                            galeryModel.set((3),{"color":"b", "piece":"images/r.png"});
-                            galeryModel.set((0),{"color":"e", "piece":"images/empty.png"});
+                            galeryModel.set((3),{"color":"b", "piece":piePat + "r.png"});
+                            galeryModel.set((0),{"color":"e", "piece":piePat + "empty.png"});
                             currentMove = "castling";
                             castlingBpossible = false;
                             midSquareInd = 3;
                             // Saving the moved pieces and positions for a possible cancel of the move
-                            movedPieces.set(2,{"color":"b", "piece":"images/r.png", "indeksos":0})
-                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":3})
+                            movedPieces.set(2,{"color":"b", "piece":piePat + "r.png", "indeksos":0})
+                            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":3})
                         }
                         else {
                                 moveStarted=false;
@@ -953,7 +955,7 @@ Page {
                                 toIndex=-1;
                         }
                         break;
-                    case "images/K.png":
+                    case piePat + "K.png":
                                 if (Math.abs(rowfromInd-rowtoInd) < 2
                                         && galeryModel.get(toIndex).color !== "w"
                                         && Math.abs(coltoInd-colfromInd) < 2
@@ -967,14 +969,14 @@ Page {
                                         && castlingWpossible && !feni.feniWhiteChess
                                         && !wKingMoved) {
                                     moveLegal = true; intLegal = 1;
-                                    galeryModel.set((61),{"color":"w", "piece":"images/R.png"});
-                                    galeryModel.set((63),{"color":"e", "piece":"images/empty.png"});
+                                    galeryModel.set((61),{"color":"w", "piece":piePat + "R.png"});
+                                    galeryModel.set((63),{"color":"e", "piece":piePat + "empty.png"});
                                     currentMove = "castling";
                                     castlingWpossible =false;
                                     midSquareInd = 61;
                                     // Saving the moved pieces and positions for a possible cancel of the move
-                                    movedPieces.set(2,{"color":"w", "piece":"images/R.png", "indeksos":63})
-                                    movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":61})
+                                    movedPieces.set(2,{"color":"w", "piece":piePat + "R.png", "indeksos":63})
+                                    movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":61})
                             }
                             // Castling queenside
                             else if ((toIndex == 58) && galeryModel.get(58).color === "e"
@@ -983,14 +985,14 @@ Page {
                                         && castlingWpossible && !feni.feniWhiteChess
                                         && !wKingMoved) {
                                     moveLegal = true; intLegal = 1;
-                                    galeryModel.set((59),{"color":"w", "piece":"images/R.png"});
-                                    galeryModel.set((56),{"color":"e", "piece":"images/empty.png"});
+                                    galeryModel.set((59),{"color":"w", "piece":piePat + "R.png"});
+                                    galeryModel.set((56),{"color":"e", "piece":piePat + "empty.png"});
                                     currentMove = "castling";
                                     castlingWpossible = false;
                                     midSquareInd = 59;
                                     // Saving the moved pieces and positions for a possible cancel of the move
-                                    movedPieces.set(2,{"color":"w", "piece":"images/R.png", "indeksos":56})
-                                    movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":59})
+                                    movedPieces.set(2,{"color":"w", "piece":piePat + "R.png", "indeksos":56})
+                                    movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":59})
                             }
                             else {
                                 moveStarted=false;
@@ -998,7 +1000,7 @@ Page {
                                 toIndex=-1;
                             }
                         break;
-                    case "images/Q.png":
+                    case piePat + "Q.png":
                         // Same column
                         if ((((fromIndex-toIndex)%8 == 0))
                                 &&   galeryModel.get(toIndex).color !== "w"
@@ -1185,7 +1187,7 @@ Page {
                                 toIndex=-1;
                         }
                         break;
-                    case "images/q.png":  // Same as Q.png but four "w"s
+                    case piePat + "q.png":  // Same as Q.png but four "w"s
                         // Same column
                         if ((((fromIndex-toIndex)%8 == 0))
                                 &&   galeryModel.get(toIndex).color !== "b"
@@ -1372,7 +1374,7 @@ Page {
                                 toIndex=-1;
                         }
                         break;
-                    case "images/B.png":
+                    case piePat + "B.png":
                         if ((((fromIndex-toIndex)%9 == 0))
                                 && galeryModel.get(toIndex).color !== "w"
                                 && fromParity == toParity
@@ -1469,7 +1471,7 @@ Page {
                                 toIndex=-1;
                         }
                         break;
-                    case "images/b.png": // Copy of white but two color checks changed from "w" to "b" ank k.png to K.png
+                    case piePat + "b.png": // Copy of white but two color checks changed from "w" to "b" ank k.png to K.png
                         if ((((fromIndex-toIndex)%9 == 0))
                                 && galeryModel.get(toIndex).color !== "b"
                                 && fromParity == toParity
@@ -1566,7 +1568,7 @@ Page {
                                 toIndex=-1;
                         }
                         break;
-                    case "images/N.png":
+                    case piePat + "N.png":
                         if ((((fromIndex-toIndex) == 10) || ((fromIndex-toIndex) == 17)
                              || ((fromIndex-toIndex) == 15) || ((fromIndex-toIndex) == 6)
                              || ((fromIndex-toIndex) == -10) || ((fromIndex-toIndex) == -17)
@@ -1582,7 +1584,7 @@ Page {
                                 toIndex=-1;
                         }
                         break;
-                    case "images/n.png":
+                    case piePat + "n.png":
                         if ((((fromIndex-toIndex) == 10) || ((fromIndex-toIndex) == 17)
                              || ((fromIndex-toIndex) == 15) || ((fromIndex-toIndex) == 6)
                              || ((fromIndex-toIndex) == -10) || ((fromIndex-toIndex) == -17)
@@ -1598,7 +1600,7 @@ Page {
                                 toIndex=-1;
                         }
                         break;
-                    case "images/R.png":
+                    case piePat + "R.png":
                         if ((((fromIndex-toIndex)%8 == 0))
                                 &&   galeryModel.get(toIndex).color !== "w"
                                 ){
@@ -1692,7 +1694,7 @@ Page {
                                 toIndex=-1;
                         }
                         break;
-                    case "images/r.png": // Same as R.png but two "w"s changed to "b"s
+                    case piePat + "r.png": // Same as R.png but two "w"s changed to "b"s
                         if ((((fromIndex-toIndex)%8 == 0))
                                 &&   galeryModel.get(toIndex).color !== "b"
                                 ){
@@ -1800,7 +1802,8 @@ Page {
                     if (!moveStarted) { //Need for global property??
                         fromIndex=indeksi;
                         toIndex=indeksi;
-                        isMovable();
+                        var doVisual = 1 //Determines that is not test to enable visual effects
+                        Mymove.isMovable(doVisual, colorTobemoved);
                         if (canBemoved){
                             itemMoved=itemTobemoved;
                             moveStarted=!moveStarted;
@@ -1827,26 +1830,26 @@ Page {
                             }
 
                             galeryModel.set(toIndex,{"color":colorMoved, "piece":itemMoved})
-                            galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
+                            galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
                             moveStarted=!moveStarted;
                             moveLegal=false;
                             if (tilat.valko) {
                                 if (playMode == "stockfish") {feni.feniWhite = false;} //Check also in othDevice mode??
                                 if (benpassant > 0 && galeryModel.get(benpassant).color === "bp") {
-                                    galeryModel.set(benpassant,{"color":"e", "piece":"images/empty.png"});
+                                    galeryModel.set(benpassant,{"color":"e", "piece":piePat + "empty.png"});
                                     benpassant = -1
                                 }
-                                if (itemMoved == "images/K.png") {
+                                if (itemMoved == piePat + "K.png") {
                                     feni.feniWkingInd = toIndex;
                                 }
                             }
                             else {
                                 // why not here the check as above feni.feniBlack = false;
                                 if (wenpassant > 0 && galeryModel.get(wenpassant).color === "wp") {
-                                    galeryModel.set(wenpassant,{"color":"e", "piece":"images/empty.png"});
+                                    galeryModel.set(wenpassant,{"color":"e", "piece":piePat + "empty.png"});
                                     wenpassant = -1
                                 }
-                                if (itemMoved == "images/k.png") {
+                                if (itemMoved == piePat + "k.png") {
                                     feni.feniBkingInd = toIndex;
                                 }
                             }
@@ -1868,7 +1871,7 @@ Page {
                     id: galeryModel
                     ListElement {
                         color: "e"
-                        piece: "images/empty.png"
+                        piece: "empty.png"
                         frameop: 0
                         recmove: -1
                     }
@@ -1878,7 +1881,7 @@ Page {
                     id: movedPieces
                     ListElement {
                         color: "e"
-                        piece: "images/empty.png"
+                        piece: "empty.png"
                         indeksos: -1
                     }
             }
@@ -1889,19 +1892,19 @@ Page {
                 ListElement {
                     moveNo:0 // First no in game is 1
                     movedColor:"b" // Zero move set for black to enable backing until to the first move
-                    movedPiece:"images/k.png"
+                    movedPiece:"k.png"
                     movedFrom:-1
                     capturedColor:"b"
-                    capturedPiece:"images/k.png"
+                    capturedPiece: "k.png"
                     capturedTo:-1 //Index of a piece captured
                     pairColor:"w" // Used in enpassant and castling where more than one is moved/affected
-                    pairPiece:"images/k.png"
+                    pairPiece: "k.png"
                     pairFrom:-1 // Index where pair is moved from
                     pairCapturesColor:"b"
-                    pairCaptures:"images/k.png"
+                    pairCaptures: "k.png"
                     pairTo:-1 // Index where pair is moved to
                     enpColor:"e" // Color of the cell giving enpassant possibility
-                    enpPiece:"images/empty.png"
+                    enpPiece: "empty.png"
                     enpInd:-1 //Grid index
                     wKingInd: 60 // White king index
                     bKingInd: 4 // Black king index
@@ -1924,12 +1927,12 @@ Page {
                 enabled: false //tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
+                    id: phead
                     title: qsTr("Chess board")
                 }
                 ProgressBar {
                     id: progressBar2
                     width: parent.width
-                    height: 130
                     maximumValue: isMyStart ? mustamax : valkomax
                     //valueText: isMyStart ? (muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm)  : (valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv)
                     valueText: isMyStart ? label_time_b  : label_time_w
@@ -1938,7 +1941,7 @@ Page {
                     value: isMyStart ? mustamax - blackTimeTotal/1000 : valkomax - whiteTimeTotal/1000
                     rotation: 180
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.verticalCenterOffset: 35
+                    anchors.verticalCenterOffset: Screen.height == 1920 ? 40 : 30
                     Timer {
                         interval: 100
                         running: tilat.juoksee && Qt.application.active && (isMyStart ? tilat.musta : tilat.valko)
@@ -1993,7 +1996,7 @@ Page {
             ListModel {
                 id:blackCaptured
                 ListElement {
-                captured: "images/q.png"
+                captured: "images/piece0/q.png"
                 }
             }
 
@@ -2007,7 +2010,7 @@ Page {
                 Image {
                     // Light color dddea1, dark color 997400
                     id: backround
-                    source: "images/grid.png"
+                    source: piePat + "grid.png"
                     width: parent.width
                     height: parent.width
                 }
@@ -2028,7 +2031,7 @@ Page {
 
                         Image {
                             asynchronous: true
-                            source: "images/framemoved.png"
+                            source: piePat + "framemoved.png"
                             visible: recmove > 0
                             opacity: (opsi.movesTotal - recmove) < 1 ? 100 : 0
                             sourceSize.width: grid.cellWidth
@@ -2036,7 +2039,7 @@ Page {
                         }
                         Image {
                             asynchronous: true
-                            source: "images/frame.png"
+                            source: piePat + "frame.png"
                             opacity: frameop
                             sourceSize.width: grid.cellWidth
                             sourceSize.height: grid.cellHeight
@@ -2067,7 +2070,7 @@ Page {
                         promotionWaiter.running = false
                         feni.forChessCheck = true
                         galeryModel.set(toIndex,{"color":moveMent.colorMoved, "piece":promotedLong})
-                        galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
+                        galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
                         chessChecker.start()
                     }
                     else { }
@@ -2207,49 +2210,49 @@ Page {
                     movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
 
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
-                    galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
+                    galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
                     // If castling, moving the rook also
-                    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === "images/k.png") {
+                    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "k.png") {
                         if (toIndex == 6){
-                            galeryModel.set(5,{"color":"b", "piece":"images/r.png"})
-                            galeryModel.set(7,{"color":"e", "piece":"images/empty.png"})
-                            movedPieces.set(2,{"color":"b", "piece":"images/r.png", "indeksos":7})
-                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":5})
+                            galeryModel.set(5,{"color":"b", "piece":piePat + "r.png"})
+                            galeryModel.set(7,{"color":"e", "piece":piePat + "empty.png"})
+                            movedPieces.set(2,{"color":"b", "piece":piePat + "r.png", "indeksos":7})
+                            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":5})
                         }
                         else {
-                            galeryModel.set(3,{"color":"b", "piece":"images/r.png"})
-                            galeryModel.set(0,{"color":"e", "piece":"images/empty.png"})
-                            movedPieces.set(2,{"color":"b", "piece":"images/r.png", "indeksos":0})
-                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":3})
+                            galeryModel.set(3,{"color":"b", "piece":piePat + "r.png"})
+                            galeryModel.set(0,{"color":"e", "piece":piePat + "empty.png"})
+                            movedPieces.set(2,{"color":"b", "piece":piePat + "r.png", "indeksos":0})
+                            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":3})
                         }
                     }
                     // If blacks move gives enpassant possibility to whiteTimer
-                    if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece === "images/p.png") {
+                    if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece === piePat + "p.png") {
                         moveMent.benpassant = toIndex-8;
                         galeryModel.set(moveMent.benpassant,{"color":"bp"})
-                        movedPieces.set(4,{"color":"bp", "piece":"images/empty.png", "indeksos":moveMent.benpassant}) //Set enpassant values
+                        movedPieces.set(4,{"color":"bp", "piece":piePat + "empty.png", "indeksos":moveMent.benpassant}) //Set enpassant values
                     }
                     // If white gives enpassant possibility and it is utilized let's print a board accordingly
-                    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece === "images/p.png") {
-                        galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
+                    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece === piePat + "p.png") {
+                        galeryModel.set((toIndex-8),{"color":"e", "piece":piePat + "empty.png"});
                         moveMent.currentMove = "enpassant";
-                        movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":toIndex-8})
+                        movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":toIndex-8})
                         moveMent.wenpassant = -1;
                     }
                     // Adding moves to captures list
                     if (moveMent.currentMove == "enpassant") {
-                        whiteCaptured.append({"captured":"images/P.png"});
+                        whiteCaptured.append({"captured":piePat + "P.png"});
                         moveMent.currentMove = "";
                     }
-                    if (movedPieces.get(1).piece !== "images/empty.png") {
+                    if (movedPieces.get(1).piece !== piePat + "empty.png") {
                         whiteCaptured.append({"captured":movedPieces.get(1).piece})
                     }
 
                     // If pawn reaches the last line let's guess the promotion to be a queen. Have to correct in future some how
 
-                    if (toIndex > 55 && galeryModel.get(toIndex).piece === "images/p.png") {
-                        galeryModel.set(toIndex, {"piece": "images/q.png"});
-                        movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":fromIndex})
+                    if (toIndex > 55 && galeryModel.get(toIndex).piece === piePat + "p.png") {
+                        galeryModel.set(toIndex, {"piece": piePat + "q.png"});
+                        movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
                     }
                     feni.lowerMessage = "";
                     feni.upperMessage = "";
@@ -2298,49 +2301,49 @@ Page {
                     movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
 
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
-                    galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
+                    galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
                     // If castling, moving the rook also
-                    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === "images/K.png") {
+                    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "K.png") {
                         if (toIndex == 62){
-                            galeryModel.set(61,{"color":"w", "piece":"images/R.png"})
-                            galeryModel.set(63,{"color":"e", "piece":"images/empty.png"})
-                            movedPieces.set(2,{"color":"w", "piece":"images/R.png", "indeksos":63})
-                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":61})
+                            galeryModel.set(61,{"color":"w", "piece":piePat + "R.png"})
+                            galeryModel.set(63,{"color":"e", "piece":piePat + "empty.png"})
+                            movedPieces.set(2,{"color":"w", "piece":piePat + "R.png", "indeksos":63})
+                            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":61})
                         }
                         else {
-                            galeryModel.set(59,{"color":"w", "piece":"images/R.png"})
-                            galeryModel.set(56,{"color":"e", "piece":"images/empty.png"})
-                            movedPieces.set(2,{"color":"w", "piece":"images/R.png", "indeksos":56})
-                            movedPieces.set(3,{"color":"e", "piece":"images/empty.png", "indeksos":59})
+                            galeryModel.set(59,{"color":"w", "piece":piePat + "R.png"})
+                            galeryModel.set(56,{"color":"e", "piece":piePat + "empty.png"})
+                            movedPieces.set(2,{"color":"w", "piece":piePat + "R.png", "indeksos":56})
+                            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":59})
                         }
                     }
                     // If whites move gives enpassant possibility to blackTimer
-                    if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece === "images/P.png") {
+                    if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece === piePat + "P.png") {
                         moveMent.wenpassant = toIndex+8
                         galeryModel.set(moveMent.wenpassant,{"color":"wp"})
-                        movedPieces.set(4,{"color":"wp", "piece":"images/empty.png", "indeksos":moveMent.wenpassant}) //Set enpassant values
+                        movedPieces.set(4,{"color":"wp", "piece":piePat + "empty.png", "indeksos":moveMent.wenpassant}) //Set enpassant values
                     }
                     // If black gives enpassant possibility and it is utilized let's print a board accordingly
-                    if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece === "images/P.png") {
-                        galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
+                    if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece === piePat + "P.png") {
+                        galeryModel.set((toIndex+8),{"color":"e", "piece":piePat + "empty.png"});
                         moveMent.currentMove = "enpassant";
-                        movedPieces.set(2,{"color":"b", "piece":"images/p.png", "indeksos":toIndex+8})
+                        movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":toIndex+8})
                         moveMent.benpassant = -1;
                     }
                     // Adding moves to captures list
                     if (moveMent.currentMove == "enpassant") {
-                        blackCaptured.append({"captured":"images/p.png"});
+                        blackCaptured.append({"captured":piePat + "p.png"});
                         moveMent.currentMove = "";
                     }
-                    if (movedPieces.get(1).piece !== "images/empty.png") {
+                    if (movedPieces.get(1).piece !== piePat + "empty.png") {
                         blackCaptured.append({"captured":movedPieces.get(1).piece})
                     }
 
                     // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
 
-                    if (toIndex < 8 && galeryModel.get(toIndex).piece === "images/P.png") {
-                        galeryModel.set(toIndex, {"piece": "images/Q.png"});
-                        movedPieces.set(2,{"color":"w", "piece":"images/P.png", "indeksos":fromIndex})
+                    if (toIndex < 8 && galeryModel.get(toIndex).piece === piePat + "P.png") {
+                        galeryModel.set(toIndex, {"piece": piePat + "Q.png"});
+                        movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
                     }
                     feni.lowerMessage = "";
                     feni.upperMessage = "";
@@ -2418,7 +2421,7 @@ Page {
             ListModel {
                 id:whiteCaptured
                 ListElement {
-                captured: "images/Q.png"
+                captured: "images/piece0/Q.png"
                 }
             }
 

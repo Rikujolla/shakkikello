@@ -2,156 +2,87 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fi">
 <context>
-    <name>Asetukset</name>
+    <name>About</name>
     <message>
-        <source>Settings page</source>
-        <translation>Asetussivu</translation>
+        <source>Back to settings</source>
+        <translation>Asetussivulle</translation>
     </message>
     <message>
-        <source>About</source>
-        <translation>Tietoja</translation>
+        <source>About page</source>
+        <translation>Tietosivu</translation>
     </message>
     <message>
-        <source>White</source>
-        <translation>Valkoinen</translation>
+        <source>Fast chess, version</source>
+        <extracomment>The name of the app followed with a version number</extracomment>
+        <translation>Pikashakki, versio</translation>
     </message>
     <message>
-        <source>min</source>
-        <extracomment>min is an abbreviation of a minute</extracomment>
-        <translation>min</translation>
+        <source>Translations</source>
+        <translation>Käännökset</translation>
     </message>
     <message>
-        <source>Black</source>
-        <translation>Musta</translation>
+        <source>German (Nit)</source>
+        <translation>Saksaksi (Nit)</translation>
     </message>
     <message>
-        <source>Increment/move</source>
-        <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
-        <translation>Lisäys/siirto</translation>
+        <source>Spanish (Carlos Gonzalez)</source>
+        <translation>Espanjaksi (Carlos Gonzalez)</translation>
     </message>
     <message>
-        <source>s</source>
-        <extracomment>s is an abbreviation of a second</extracomment>
-        <translation>s</translation>
+        <source>Finnish (Riku Lahtinen)</source>
+        <translation>Suomeksi (Riku Lahtinen)</translation>
     </message>
     <message>
-        <source>Clock view</source>
-        <translation>Shakkikello</translation>
+        <source>French (lutinotmalin)</source>
+        <translation>Ranskaksi (lutinotmalin)</translation>
     </message>
     <message>
-        <source>Time counting</source>
-        <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
-        <translation>Ajan laskenta</translation>
+        <source>Hungarian (leoka)</source>
+        <translation>Unkariksi (leoka)</translation>
     </message>
     <message>
-        <source>Opening</source>
-        <translation>Avaus</translation>
+        <source>Dutch (Heimen Stoffels)</source>
+        <translation>Hollanniksi (Heimen Stoffels)</translation>
     </message>
     <message>
-        <source>Clock settings</source>
-        <translation>Kellon asetukset</translation>
+        <source>Polish (szopin)</source>
+        <translation>Puolaksi (szopin)</translation>
     </message>
     <message>
-        <source>Chess settings</source>
-        <translation>Shakkiasetukset</translation>
+        <source>Chinese (China) (Historyscholar)</source>
+        <translation>Kiinaksi (Kiina) (Historyscholar)</translation>
     </message>
     <message>
-        <source>Downwards</source>
-        <translation>Alaspäin</translation>
+        <source>Contributions</source>
+        <translation>Avustaminen</translation>
     </message>
     <message>
-        <source>Upwards</source>
-        <translation>Ylöspäin</translation>
+        <source>The design of the pieces (Kapu)</source>
+        <translation>Nappuloiden suunnittelu (Kapu)</translation>
     </message>
     <message>
-        <source>Random</source>
-        <translation>Satunnainen</translation>
+        <source>Third party software</source>
+        <translation>Kolmannen osapuolen ohjelmistot</translation>
     </message>
     <message>
-        <source>-1 min</source>
-        <extracomment>Reduce time by 1 minute</extracomment>
-        <translation>-1 min</translation>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation>Stockfish-laskin, v5 (stockfishchess.org)</translation>
     </message>
     <message>
-        <source>+1 min</source>
-        <extracomment>Increase time by 1 minute</extracomment>
-        <translation>+1 min</translation>
+        <source>Licence</source>
+        <translation>Lisenssi</translation>
     </message>
     <message>
-        <source>-1 s</source>
-        <extracomment>Reduce time by 1 second</extracomment>
-        <translation>-1 s</translation>
+        <source>Copyright (c) 2015, Riku Lahtinen</source>
+        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
     </message>
     <message>
-        <source>+1 s</source>
-        <extracomment>Increase time by 1 second</extracomment>
-        <translation>+1 s</translation>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
+        <translation>GPLv3-lisenssi. Lisenssi, lähdekoodi ja lisätietoja:</translation>
     </message>
     <message>
-        <source>Skill Level</source>
-        <translation>Taitotaso</translation>
-    </message>
-    <message>
-        <source>Movetime</source>
-        <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
-        <translation>Siirtoaika</translation>
-    </message>
-    <message>
-        <source>Save settings</source>
-        <translation>Tallenna asetukset</translation>
-    </message>
-    <message>
-        <source>Play chess</source>
-        <translation>Pelaa shakkia</translation>
-    </message>
-    <message>
-        <source>Opponent</source>
-        <translation>Vastustaja</translation>
-    </message>
-    <message>
-        <source>Stockfish</source>
-        <extracomment>Stockfish is a name of the chess engine, more info https://stockfishchess.org/</extracomment>
-        <translation>Stockfish</translation>
-    </message>
-    <message>
-        <source>Human</source>
-        <translation>Ihminen</translation>
-    </message>
-    <message>
-        <source>My color</source>
-        <translation>Värini</translation>
-    </message>
-    <message>
-        <source>View settings</source>
-        <translation>Näyttöasetukset</translation>
-    </message>
-    <message>
-        <source>Default view</source>
-        <translation>Oletusnäyttö</translation>
-    </message>
-    <message>
-        <source>Chess clock</source>
-        <translation>Shakkikello</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation>Shakkilauta</translation>
-    </message>
-    <message>
-        <source>Saved game</source>
-        <translation>Tallennettu peli</translation>
-    </message>
-    <message>
-        <source>Another device</source>
-        <translation>Toinen laite</translation>
-    </message>
-    <message>
-        <source>Port number</source>
-        <translation>Porttinumero</translation>
-    </message>
-    <message>
-        <source>Fixed</source>
-        <translation>Kiinnitetty</translation>
+        <source>Dutch (Belgium) (Nathan Follens)</source>
+        <translation>Hollanniksi (Belgia) (Nathan Follens)</translation>
     </message>
 </context>
 <context>
@@ -211,6 +142,50 @@
     <message>
         <source>Start</source>
         <translation>Aloita</translation>
+    </message>
+</context>
+<context>
+    <name>Clockview</name>
+    <message>
+        <source>Black´s turn</source>
+        <translation>Mustan vuoro</translation>
+    </message>
+    <message>
+        <source>White´s turn</source>
+        <translation>Valkoisen vuoro</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Keskeytä</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Jatka</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Nollaa</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Asetukset</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation>Shakkikello</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <extracomment>Minutes:seconds</extracomment>
+        <translation>min:s</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation>Valkoisen kello</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation>Mustan kello</translation>
     </message>
 </context>
 <context>
@@ -349,122 +324,171 @@
     </message>
 </context>
 <context>
-    <name>Pelisivu</name>
+    <name>Settings</name>
     <message>
-        <source>Black´s turn</source>
-        <translation>Mustan vuoro</translation>
+        <source>Save settings</source>
+        <translation>Tallenna asetukset</translation>
     </message>
     <message>
-        <source>White´s turn</source>
-        <translation>Valkoisen vuoro</translation>
+        <source>Play chess</source>
+        <translation>Pelaa shakkia</translation>
     </message>
     <message>
-        <source>Pause</source>
-        <translation>Keskeytä</translation>
+        <source>Clock view</source>
+        <translation>Shakkikello</translation>
     </message>
     <message>
-        <source>Continue</source>
-        <translation>Jatka</translation>
+        <source>About</source>
+        <translation>Tietoja</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Nollaa</translation>
+        <source>-1 min</source>
+        <extracomment>Reduce time by 1 minute</extracomment>
+        <translation>-1 min</translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation>Asetukset</translation>
+        <source>+1 min</source>
+        <extracomment>Increase time by 1 minute</extracomment>
+        <translation>+1 min</translation>
+    </message>
+    <message>
+        <source>-1 s</source>
+        <extracomment>Reduce time by 1 second</extracomment>
+        <translation>-1 s</translation>
+    </message>
+    <message>
+        <source>+1 s</source>
+        <extracomment>Increase time by 1 second</extracomment>
+        <translation>+1 s</translation>
+    </message>
+    <message>
+        <source>min</source>
+        <extracomment>min is an abbreviation of a minute</extracomment>
+        <translation>min</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <extracomment>s is an abbreviation of a second</extracomment>
+        <translation>s</translation>
+    </message>
+    <message>
+        <source>Settings page</source>
+        <translation>Asetussivu</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation>Kellon asetukset</translation>
+    </message>
+    <message>
+        <source>White</source>
+        <translation>Valkoinen</translation>
+    </message>
+    <message>
+        <source>Black</source>
+        <translation>Musta</translation>
+    </message>
+    <message>
+        <source>Increment/move</source>
+        <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
+        <translation>Lisäys/siirto</translation>
+    </message>
+    <message>
+        <source>Time counting</source>
+        <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
+        <translation>Ajan laskenta</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation>Alaspäin</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation>Ylöspäin</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation>Shakkiasetukset</translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation>Vastustaja</translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <extracomment>Stockfish is a name of the chess engine, more info https://stockfishchess.org/</extracomment>
+        <translation>Stockfish</translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation>Ihminen</translation>
+    </message>
+    <message>
+        <source>Another device</source>
+        <translation>Toinen laite</translation>
+    </message>
+    <message>
+        <source>Port number</source>
+        <translation>Porttinumero</translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation>Satunnainen</translation>
+    </message>
+    <message>
+        <source>Fixed</source>
+        <translation>Kiinnitetty</translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation>Värini</translation>
+    </message>
+    <message>
+        <source>Opening</source>
+        <translation>Avaus</translation>
+    </message>
+    <message>
+        <source>Saved game</source>
+        <translation>Tallennettu peli</translation>
+    </message>
+    <message>
+        <source>Skill Level</source>
+        <translation>Taitotaso</translation>
+    </message>
+    <message>
+        <source>Movetime</source>
+        <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
+        <translation>Siirtoaika</translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation>Näyttöasetukset</translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation>Oletusnäyttö</translation>
     </message>
     <message>
         <source>Chess clock</source>
         <translation>Shakkikello</translation>
     </message>
     <message>
-        <source>min:s</source>
-        <extracomment>Minutes:seconds</extracomment>
-        <translation>min:s</translation>
+        <source>Chess board</source>
+        <translation>Shakkilauta</translation>
     </message>
     <message>
-        <source>White´s clock</source>
-        <translation>Valkoisen kello</translation>
+        <source>Unlike</source>
+        <extracomment>The style of the pieces is unlike</extracomment>
+        <translation>Erilainen</translation>
     </message>
     <message>
-        <source>Black´s clock</source>
-        <translation>Mustan kello</translation>
-    </message>
-</context>
-<context>
-    <name>Tietoja</name>
-    <message>
-        <source>Back to settings</source>
-        <translation>Asetussivulle</translation>
+        <source>Classic</source>
+        <extracomment>The style of the pieces is classic</extracomment>
+        <translation>Perinteinen</translation>
     </message>
     <message>
-        <source>About page</source>
-        <translation>Tietosivu</translation>
-    </message>
-    <message>
-        <source>Translations</source>
-        <translation>Käännökset</translation>
-    </message>
-    <message>
-        <source>German (Nit)</source>
-        <translation>Saksaksi (Nit)</translation>
-    </message>
-    <message>
-        <source>Dutch (Heimen Stoffels)</source>
-        <translation>Hollanniksi (Heimen Stoffels)</translation>
-    </message>
-    <message>
-        <source>Polish (szopin)</source>
-        <translation>Puolaksi (szopin)</translation>
-    </message>
-    <message>
-        <source>Contributions</source>
-        <translation>Avustaminen</translation>
-    </message>
-    <message>
-        <source>The design of the pieces (Kapu)</source>
-        <translation>Nappuloiden suunnittelu (Kapu)</translation>
-    </message>
-    <message>
-        <source>Third party software</source>
-        <translation>Kolmannen osapuolen ohjelmistot</translation>
-    </message>
-    <message>
-        <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Stockfish-laskin, v5 (stockfishchess.org)</translation>
-    </message>
-    <message>
-        <source>Licence</source>
-        <translation>Lisenssi</translation>
-    </message>
-    <message>
-        <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
-    </message>
-    <message>
-        <source>Licensed under GPLv3. License, source code and more information:</source>
-        <translation>GPLv3-lisenssi. Lisenssi, lähdekoodi ja lisätietoja:</translation>
-    </message>
-    <message>
-        <source>Finnish (Riku Lahtinen)</source>
-        <translation>Suomeksi (Riku Lahtinen)</translation>
-    </message>
-    <message>
-        <source>Spanish (Carlos Gonzalez)</source>
-        <translation>Espanjaksi (Carlos Gonzalez)</translation>
-    </message>
-    <message>
-        <source>French (lutinotmalin)</source>
-        <translation>Ranskaksi (lutinotmalin)</translation>
-    </message>
-    <message>
-        <source>Hungarian (leoka)</source>
-        <translation>Unkariksi (leoka)</translation>
-    </message>
-    <message>
-        <source>Chinese (China) (Historyscholar)</source>
-        <translation>Kiinaksi (Kiina) (Historyscholar)</translation>
+        <source>Style of the pieces</source>
+        <extracomment>The style of the pieces selector</extracomment>
+        <translation>Shakkinappuloiden tyyli</translation>
     </message>
 </context>
 <context>

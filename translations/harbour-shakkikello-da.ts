@@ -2,155 +2,86 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>Asetukset</name>
+    <name>About</name>
     <message>
-        <source>Settings page</source>
-        <translation>Indstillinger side</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation>Om</translation>
-    </message>
-    <message>
-        <source>White</source>
-        <translation>Hvid</translation>
-    </message>
-    <message>
-        <source>min</source>
-        <extracomment>min is an abbreviation of a minute</extracomment>
-        <translation>min</translation>
-    </message>
-    <message>
-        <source>Black</source>
-        <translation>Sort</translation>
-    </message>
-    <message>
-        <source>Increment/move</source>
-        <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
-        <translation>Tilvækst/flytte</translation>
-    </message>
-    <message>
-        <source>s</source>
-        <extracomment>s is an abbreviation of a second</extracomment>
-        <translation>s</translation>
-    </message>
-    <message>
-        <source>Clock view</source>
-        <translation>Ur visning</translation>
-    </message>
-    <message>
-        <source>Time counting</source>
-        <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
-        <translation>Time tælling</translation>
-    </message>
-    <message>
-        <source>Upwards</source>
-        <translation>Opad</translation>
-    </message>
-    <message>
-        <source>Downwards</source>
-        <translation>Nedad</translation>
-    </message>
-    <message>
-        <source>Opening</source>
-        <translation>Skakåbningen</translation>
-    </message>
-    <message>
-        <source>Clock settings</source>
-        <translation>Urindstillinger</translation>
-    </message>
-    <message>
-        <source>Chess settings</source>
-        <translation>Skak-indstillinger</translation>
-    </message>
-    <message>
-        <source>Random</source>
-        <translation>Tilfældig</translation>
-    </message>
-    <message>
-        <source>-1 min</source>
-        <extracomment>Reduce time by 1 minute</extracomment>
-        <translation>-1 min</translation>
-    </message>
-    <message>
-        <source>+1 min</source>
-        <extracomment>Increase time by 1 minute</extracomment>
-        <translation>+1 min</translation>
-    </message>
-    <message>
-        <source>-1 s</source>
-        <extracomment>Reduce time by 1 second</extracomment>
-        <translation>-1 s</translation>
-    </message>
-    <message>
-        <source>+1 s</source>
-        <extracomment>Increase time by 1 second</extracomment>
-        <translation>+1 s</translation>
-    </message>
-    <message>
-        <source>Skill Level</source>
-        <translation>Færdighedsniveau</translation>
-    </message>
-    <message>
-        <source>Movetime</source>
-        <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
-        <translation>Flytte tid</translation>
-    </message>
-    <message>
-        <source>Save settings</source>
-        <translation>Gemme indstillinger</translation>
-    </message>
-    <message>
-        <source>Play chess</source>
+        <source>Back to settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Opponent</source>
+        <source>About page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Stockfish</source>
-        <extracomment>Stockfish is a name of the chess engine, more info https://stockfishchess.org/</extracomment>
+        <source>Fast chess, version</source>
+        <extracomment>The name of the app followed with a version number</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Human</source>
+        <source>Translations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>My color</source>
+        <source>German (Nit)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>View settings</source>
+        <source>Spanish (Carlos Gonzalez)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Default view</source>
+        <source>Finnish (Riku Lahtinen)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Chess clock</source>
-        <translation type="unfinished">Chess ur</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation type="unfinished">Skakbræt</translation>
-    </message>
-    <message>
-        <source>Saved game</source>
+        <source>French (lutinotmalin)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Another device</source>
+        <source>Hungarian (leoka)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Port number</source>
+        <source>Dutch (Heimen Stoffels)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fixed</source>
+        <source>Polish (szopin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chinese (China) (Historyscholar)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contributions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dutch (Belgium) (Nathan Follens)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -211,6 +142,50 @@
     <message>
         <source>Start</source>
         <translation type="unfinished">Starte</translation>
+    </message>
+</context>
+<context>
+    <name>Clockview</name>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="unfinished">Sorts tur</translation>
+    </message>
+    <message>
+        <source>White´s turn</source>
+        <translation type="unfinished">Hvids turn</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pause</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Fortsætte</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Reset</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Indstillinger</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="unfinished">Chess ur</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <extracomment>Minutes:seconds</extracomment>
+        <translation type="unfinished">min:s</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation type="unfinished">Hvids ur</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation type="unfinished">Sorts ur</translation>
     </message>
 </context>
 <context>
@@ -349,121 +324,170 @@
     </message>
 </context>
 <context>
-    <name>Pelisivu</name>
+    <name>Settings</name>
     <message>
-        <source>min:s</source>
-        <extracomment>Minutes:seconds</extracomment>
-        <translation>min:s</translation>
+        <source>Save settings</source>
+        <translation type="unfinished">Gemme indstillinger</translation>
     </message>
     <message>
-        <source>Black´s turn</source>
-        <translation>Sorts tur</translation>
+        <source>Play chess</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>White´s turn</source>
-        <translation>Hvids turn</translation>
+        <source>Clock view</source>
+        <translation type="unfinished">Ur visning</translation>
     </message>
     <message>
-        <source>Continue</source>
-        <translation>Fortsætte</translation>
+        <source>About</source>
+        <translation type="unfinished">Om</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Reset</translation>
+        <source>-1 min</source>
+        <extracomment>Reduce time by 1 minute</extracomment>
+        <translation type="unfinished">-1 min</translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation>Indstillinger</translation>
+        <source>+1 min</source>
+        <extracomment>Increase time by 1 minute</extracomment>
+        <translation type="unfinished">+1 min</translation>
+    </message>
+    <message>
+        <source>-1 s</source>
+        <extracomment>Reduce time by 1 second</extracomment>
+        <translation type="unfinished">-1 s</translation>
+    </message>
+    <message>
+        <source>+1 s</source>
+        <extracomment>Increase time by 1 second</extracomment>
+        <translation type="unfinished">+1 s</translation>
+    </message>
+    <message>
+        <source>min</source>
+        <extracomment>min is an abbreviation of a minute</extracomment>
+        <translation type="unfinished">min</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <extracomment>s is an abbreviation of a second</extracomment>
+        <translation type="unfinished">s</translation>
+    </message>
+    <message>
+        <source>Settings page</source>
+        <translation type="unfinished">Indstillinger side</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation type="unfinished">Urindstillinger</translation>
+    </message>
+    <message>
+        <source>White</source>
+        <translation type="unfinished">Hvid</translation>
+    </message>
+    <message>
+        <source>Black</source>
+        <translation type="unfinished">Sort</translation>
+    </message>
+    <message>
+        <source>Increment/move</source>
+        <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
+        <translation type="unfinished">Tilvækst/flytte</translation>
+    </message>
+    <message>
+        <source>Time counting</source>
+        <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
+        <translation type="unfinished">Time tælling</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation type="unfinished">Nedad</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation type="unfinished">Opad</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation type="unfinished">Skak-indstillinger</translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <extracomment>Stockfish is a name of the chess engine, more info https://stockfishchess.org/</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Another device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Port number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation type="unfinished">Tilfældig</translation>
+    </message>
+    <message>
+        <source>Fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opening</source>
+        <translation type="unfinished">Skakåbningen</translation>
+    </message>
+    <message>
+        <source>Saved game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skill Level</source>
+        <translation type="unfinished">Færdighedsniveau</translation>
+    </message>
+    <message>
+        <source>Movetime</source>
+        <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
+        <translation type="unfinished">Flytte tid</translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation>Chess ur</translation>
+        <translation type="unfinished">Chess ur</translation>
     </message>
     <message>
-        <source>White´s clock</source>
-        <translation>Hvids ur</translation>
+        <source>Chess board</source>
+        <translation type="unfinished">Skakbræt</translation>
     </message>
     <message>
-        <source>Black´s clock</source>
-        <translation>Sorts ur</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pause</translation>
-    </message>
-</context>
-<context>
-    <name>Tietoja</name>
-    <message>
-        <source>Back to settings</source>
-        <translation>Tilbage til indstillinger</translation>
-    </message>
-    <message>
-        <source>About page</source>
-        <translation>Om side</translation>
-    </message>
-    <message>
-        <source>Translations</source>
-        <translation>Oversættelser</translation>
-    </message>
-    <message>
-        <source>Licence</source>
-        <translation>Licens</translation>
-    </message>
-    <message>
-        <source>Polish (szopin)</source>
-        <translation>Polsk (szopin)</translation>
-    </message>
-    <message>
-        <source>German (Nit)</source>
-        <translation>Tysk (Nit)</translation>
-    </message>
-    <message>
-        <source>Dutch (Heimen Stoffels)</source>
-        <translation>Dutch (Heimen Stoffels)</translation>
-    </message>
-    <message>
-        <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
-    </message>
-    <message>
-        <source>Contributions</source>
-        <translation>Bidrag</translation>
-    </message>
-    <message>
-        <source>The design of the pieces (Kapu)</source>
-        <translation>Udformningen af stykkerne (Kapu)</translation>
-    </message>
-    <message>
-        <source>Third party software</source>
-        <translation>Tredjeparts software</translation>
-    </message>
-    <message>
-        <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Stockfish motor, v5 (stockfishchess.org)</translation>
-    </message>
-    <message>
-        <source>Licensed under GPLv3. License, source code and more information:</source>
-        <translation>Licenseret under GPLv3. Licens, kildekode og mere information:</translation>
-    </message>
-    <message>
-        <source>Finnish (Riku Lahtinen)</source>
+        <source>Unlike</source>
+        <extracomment>The style of the pieces is unlike</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Spanish (Carlos Gonzalez)</source>
+        <source>Classic</source>
+        <extracomment>The style of the pieces is classic</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>French (lutinotmalin)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hungarian (leoka)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Chinese (China) (Historyscholar)</source>
+        <source>Style of the pieces</source>
+        <extracomment>The style of the pieces selector</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
