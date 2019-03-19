@@ -12,6 +12,11 @@
 #- If paused in two player game I can move opponents piece?? BUG
 #- In other device mode promotion is only queen, BUG
 
+* Thu Mar 21 2019 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.2
+- Pieces style can be selected
+- Version info added to the About page
+- Promotion visualization fixes
+
 * Sat Mar 16 2019 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.1
 - New icon, pieces and other visual components
 - Translation updates

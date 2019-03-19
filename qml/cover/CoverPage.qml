@@ -44,7 +44,7 @@ CoverBackground {
             iconSource: "cover_action_clock.png"
             onTriggered: {
                 pageStack.clear()
-                pageStack.push(Qt.resolvedUrl("../pages/Pelisivu.qml"))
+                pageStack.push(Qt.resolvedUrl("../pages/Clockview.qml"))
                 window.activate()
             }
         }

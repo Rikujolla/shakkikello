@@ -60,7 +60,9 @@ ApplicationWindow
     property int stockfishSkill: 1 // Skill Level default
     property bool isMyStart: true // Default me playing white
     property int startPage: 0 // 0 = Chess clock, 1 Settings page, 2 Chess board
-    property string startPageTxt : "pages/Pelisivu.qml"
+    property int pieceStyle: 0 // 0 = Unlike style, 1 = Classic style
+    property string piePat: "images/piece0/" // Piece sub path
+    property string startPageTxt : "pages/Clockview.qml"
     property bool waitPromo : false //if promotion needs to be wait
     property string promotedLong: ""
     property string promotedShort: "q"

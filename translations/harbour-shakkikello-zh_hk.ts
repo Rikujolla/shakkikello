@@ -2,155 +2,82 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>Asetukset</name>
+    <name>About</name>
     <message>
-        <source>Settings page</source>
-        <translation>設置頁面</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation>大約</translation>
-    </message>
-    <message>
-        <source>White</source>
-        <translation>White</translation>
-    </message>
-    <message>
-        <source>min</source>
-        <extracomment>min is an abbreviation of a minute</extracomment>
-        <translation>分</translation>
-    </message>
-    <message>
-        <source>Black</source>
-        <translation>黑</translation>
-    </message>
-    <message>
-        <source>Increment/move</source>
-        <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
-        <translation>增量/移動</translation>
-    </message>
-    <message>
-        <source>s</source>
-        <extracomment>s is an abbreviation of a second</extracomment>
-        <translation>秒</translation>
-    </message>
-    <message>
-        <source>Clock view</source>
-        <translation>棋鐘</translation>
-    </message>
-    <message>
-        <source>Time counting</source>
-        <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
-        <translation>計時</translation>
-    </message>
-    <message>
-        <source>Upwards</source>
-        <translation>向上</translation>
-    </message>
-    <message>
-        <source>Downwards</source>
-        <translation>向下</translation>
-    </message>
-    <message>
-        <source>Opening</source>
-        <translation>國際象棋開幕</translation>
-    </message>
-    <message>
-        <source>Clock settings</source>
-        <translation>時鐘設置</translation>
-    </message>
-    <message>
-        <source>Chess settings</source>
-        <translation>棋牌設置</translation>
-    </message>
-    <message>
-        <source>Random</source>
-        <translation>隨機</translation>
-    </message>
-    <message>
-        <source>-1 min</source>
-        <extracomment>Reduce time by 1 minute</extracomment>
-        <translation>-1 分</translation>
-    </message>
-    <message>
-        <source>+1 min</source>
-        <extracomment>Increase time by 1 minute</extracomment>
-        <translation>+1 分</translation>
-    </message>
-    <message>
-        <source>-1 s</source>
-        <extracomment>Reduce time by 1 second</extracomment>
-        <translation>-1 秒</translation>
-    </message>
-    <message>
-        <source>+1 s</source>
-        <extracomment>Increase time by 1 second</extracomment>
-        <translation>+1 秒</translation>
-    </message>
-    <message>
-        <source>Skill Level</source>
-        <translation>技能等級</translation>
-    </message>
-    <message>
-        <source>Movetime</source>
-        <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
-        <translation>移動時間</translation>
-    </message>
-    <message>
-        <source>Save settings</source>
-        <translation>保存設置</translation>
-    </message>
-    <message>
-        <source>Play chess</source>
+        <source>Back to settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Opponent</source>
+        <source>About page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Stockfish</source>
-        <extracomment>Stockfish is a name of the chess engine, more info https://stockfishchess.org/</extracomment>
+        <source>Fast chess, version</source>
+        <extracomment>The name of the app followed with a version number</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Human</source>
+        <source>Translations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>My color</source>
+        <source>German (Nit)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>View settings</source>
+        <source>Spanish (Carlos Gonzalez)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Default view</source>
+        <source>Finnish (Riku Lahtinen)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Chess clock</source>
-        <translation type="unfinished">棋鐘</translation>
-    </message>
-    <message>
-        <source>Chess board</source>
-        <translation type="unfinished">棋盤</translation>
-    </message>
-    <message>
-        <source>Saved game</source>
+        <source>French (lutinotmalin)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Another device</source>
+        <source>Hungarian (leoka)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Port number</source>
+        <source>Dutch (Heimen Stoffels)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fixed</source>
+        <source>Polish (szopin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chinese (China) (Historyscholar)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contributions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The design of the pieces (Kapu)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Third party software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v5 (stockfishchess.org)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015, Riku Lahtinen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Licensed under GPLv3. License, source code and more information:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -211,6 +138,50 @@
     <message>
         <source>Start</source>
         <translation type="unfinished">開始</translation>
+    </message>
+</context>
+<context>
+    <name>Clockview</name>
+    <message>
+        <source>Black´s turn</source>
+        <translation type="unfinished">黑轉</translation>
+    </message>
+    <message>
+        <source>White´s turn</source>
+        <translation type="unfinished">白轉</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">暫停</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">繼續</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">重置</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">設置</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="unfinished">棋鐘</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <extracomment>Minutes:seconds</extracomment>
+        <translation type="unfinished">分:秒</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation type="unfinished">白鐘</translation>
+    </message>
+    <message>
+        <source>Black´s clock</source>
+        <translation type="unfinished">黑鍾</translation>
     </message>
 </context>
 <context>
@@ -349,121 +320,170 @@
     </message>
 </context>
 <context>
-    <name>Pelisivu</name>
+    <name>Settings</name>
     <message>
-        <source>min:s</source>
-        <extracomment>Minutes:seconds</extracomment>
-        <translation>分:秒</translation>
+        <source>Save settings</source>
+        <translation type="unfinished">保存設置</translation>
     </message>
     <message>
-        <source>Black´s turn</source>
-        <translation>黑轉</translation>
+        <source>Play chess</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>White´s turn</source>
-        <translation>白轉</translation>
+        <source>Clock view</source>
+        <translation type="unfinished">棋鐘</translation>
     </message>
     <message>
-        <source>Continue</source>
-        <translation>繼續</translation>
+        <source>About</source>
+        <translation type="unfinished">大約</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>重置</translation>
+        <source>-1 min</source>
+        <extracomment>Reduce time by 1 minute</extracomment>
+        <translation type="unfinished">-1 分</translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation>設置</translation>
+        <source>+1 min</source>
+        <extracomment>Increase time by 1 minute</extracomment>
+        <translation type="unfinished">+1 分</translation>
+    </message>
+    <message>
+        <source>-1 s</source>
+        <extracomment>Reduce time by 1 second</extracomment>
+        <translation type="unfinished">-1 秒</translation>
+    </message>
+    <message>
+        <source>+1 s</source>
+        <extracomment>Increase time by 1 second</extracomment>
+        <translation type="unfinished">+1 秒</translation>
+    </message>
+    <message>
+        <source>min</source>
+        <extracomment>min is an abbreviation of a minute</extracomment>
+        <translation type="unfinished">分</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <extracomment>s is an abbreviation of a second</extracomment>
+        <translation type="unfinished">秒</translation>
+    </message>
+    <message>
+        <source>Settings page</source>
+        <translation type="unfinished">設置頁面</translation>
+    </message>
+    <message>
+        <source>Clock settings</source>
+        <translation type="unfinished">時鐘設置</translation>
+    </message>
+    <message>
+        <source>White</source>
+        <translation type="unfinished">White</translation>
+    </message>
+    <message>
+        <source>Black</source>
+        <translation type="unfinished">黑</translation>
+    </message>
+    <message>
+        <source>Increment/move</source>
+        <extracomment>Sets how many seconds are added to the total remaining time of the game per move.</extracomment>
+        <translation type="unfinished">增量/移動</translation>
+    </message>
+    <message>
+        <source>Time counting</source>
+        <extracomment>The time is counted upwards from zero to max or downwards from max to zero. This is label for that ComboBox.</extracomment>
+        <translation type="unfinished">計時</translation>
+    </message>
+    <message>
+        <source>Downwards</source>
+        <translation type="unfinished">向下</translation>
+    </message>
+    <message>
+        <source>Upwards</source>
+        <translation type="unfinished">向上</translation>
+    </message>
+    <message>
+        <source>Chess settings</source>
+        <translation type="unfinished">棋牌設置</translation>
+    </message>
+    <message>
+        <source>Opponent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish</source>
+        <extracomment>Stockfish is a name of the chess engine, more info https://stockfishchess.org/</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Human</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Another device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Port number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Random</source>
+        <translation type="unfinished">隨機</translation>
+    </message>
+    <message>
+        <source>Fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>My color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opening</source>
+        <translation type="unfinished">國際象棋開幕</translation>
+    </message>
+    <message>
+        <source>Saved game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skill Level</source>
+        <translation type="unfinished">技能等級</translation>
+    </message>
+    <message>
+        <source>Movetime</source>
+        <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
+        <translation type="unfinished">移動時間</translation>
+    </message>
+    <message>
+        <source>View settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default view</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation>棋鐘</translation>
+        <translation type="unfinished">棋鐘</translation>
     </message>
     <message>
-        <source>White´s clock</source>
-        <translation>白鐘</translation>
+        <source>Chess board</source>
+        <translation type="unfinished">棋盤</translation>
     </message>
     <message>
-        <source>Black´s clock</source>
-        <translation>黑鍾</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>暫停</translation>
-    </message>
-</context>
-<context>
-    <name>Tietoja</name>
-    <message>
-        <source>Back to settings</source>
-        <translation>設置</translation>
-    </message>
-    <message>
-        <source>About page</source>
-        <translation>大約</translation>
-    </message>
-    <message>
-        <source>Translations</source>
-        <translation>譯文</translation>
-    </message>
-    <message>
-        <source>Licence</source>
-        <translation>許可證</translation>
-    </message>
-    <message>
-        <source>Polish (szopin)</source>
-        <translation>波蘭語 (szopin)</translation>
-    </message>
-    <message>
-        <source>German (Nit)</source>
-        <translation>德國 (Nit)</translation>
-    </message>
-    <message>
-        <source>Dutch (Heimen Stoffels)</source>
-        <translation>荷蘭人 (Heimen Stoffels)</translation>
-    </message>
-    <message>
-        <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>版權 2015, Riku Lahtinen</translation>
-    </message>
-    <message>
-        <source>Contributions</source>
-        <translation>捐款</translation>
-    </message>
-    <message>
-        <source>The design of the pieces (Kapu)</source>
-        <translation>件的設計 (Kapu)</translation>
-    </message>
-    <message>
-        <source>Third party software</source>
-        <translation>第三方軟件</translation>
-    </message>
-    <message>
-        <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Stockfish 發動機，第5版 (stockfishchess.org)</translation>
-    </message>
-    <message>
-        <source>Licensed under GPLv3. License, source code and more information:</source>
-        <translation>GPLv3的下獲發牌。牌照，源代碼和詳細信息：</translation>
-    </message>
-    <message>
-        <source>Finnish (Riku Lahtinen)</source>
+        <source>Unlike</source>
+        <extracomment>The style of the pieces is unlike</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Spanish (Carlos Gonzalez)</source>
+        <source>Classic</source>
+        <extracomment>The style of the pieces is classic</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>French (lutinotmalin)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hungarian (leoka)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Chinese (China) (Historyscholar)</source>
+        <source>Style of the pieces</source>
+        <extracomment>The style of the pieces selector</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

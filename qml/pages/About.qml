@@ -25,6 +25,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "./images"
 
 
 Page {
@@ -50,6 +51,27 @@ Page {
             spacing: Theme.paddingLarge
             PageHeader {
                 title: qsTr("About page")
+            }
+
+            Image {
+                id: logo
+                source: "./images/harbour-shakkikello.png"
+                anchors.horizontalCenter: parent.horizontalCenter
+                height: Screen.width/7
+                width: Screen.width/7
+            }
+
+            Label {
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                //: The name of the app followed with a version number
+                text: {qsTr("Fast chess, version") + " 0.8.2"}
             }
 
             SectionHeader { text: qsTr("Translations") }

@@ -228,10 +228,10 @@ function cancelMove() {
     feni.chessIsOn = false;
 
     // king index backing
-    if (movedPieces.get(0).piece === "images/K.png"){
+    if (movedPieces.get(0).piece === piePat + "K.png"){
         feni.feniWkingInd = movedPieces.get(0).indeksos;
     }
-    if (movedPieces.get(0).piece === "images/k.png"){
+    if (movedPieces.get(0).piece === piePat + "k.png"){
         feni.feniBkingInd = movedPieces.get(0).indeksos;
     }
 
@@ -388,12 +388,12 @@ function doMove() {
         }
 
         gridToFEN(fromIndex, toIndex);
-        if (moveMent.currentMove == "enpassant") {blackCaptured.append({"captured":"images/p.png"})}
-        if (movedPieces.get(1).piece !== "images/empty.png") {
+        if (moveMent.currentMove == "enpassant") {blackCaptured.append({"captured":piePat + "p.png"})}
+        if (movedPieces.get(1).piece !== piePat + "empty.png") {
             blackCaptured.append({"captured":movedPieces.get(1).piece})
         }
         moveMent.currentMove = "";
-        if (movedPieces.get(0).piece === "images/K.png") {moveMent.wKingMoved = true;}
+        if (movedPieces.get(0).piece === piePat + "K.png") {moveMent.wKingMoved = true;}
         moveMent.midSquareCheckki = false;
         Mytab.addMove();
         if (playMode == "othDevice") {
@@ -413,12 +413,12 @@ function doMove() {
         }
 
         gridToFEN(fromIndex, toIndex);
-        if (moveMent.currentMove == "enpassant") {whiteCaptured.append({"captured":"images/P.png"})}
-        if (movedPieces.get(1).piece !== "images/empty.png") {
+        if (moveMent.currentMove == "enpassant") {whiteCaptured.append({"captured":piePat + "P.png"})}
+        if (movedPieces.get(1).piece !== piePat + "empty.png") {
             whiteCaptured.append({"captured":movedPieces.get(1).piece})
         }
         moveMent.currentMove = "";
-        if (movedPieces.get(0).piece === "images/k.png") {moveMent.bKingMoved = true;}
+        if (movedPieces.get(0).piece === piePat + "k.png") {moveMent.bKingMoved = true;}
         moveMent.midSquareCheckki = false;
         Mytab.addMove();
         if (playMode == "othDevice") {
@@ -537,42 +537,42 @@ function othDeviceMoveBlack() {
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
 
     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
-    galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
+    galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
     // If castling, moving the rook also
-    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === "images/k.png") {
+    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "k.png") {
         if (toIndex == 6){
-            galeryModel.set(5,{"color":"b", "piece":"images/r.png"})
-            galeryModel.set(7,{"color":"e", "piece":"images/empty.png"})
+            galeryModel.set(5,{"color":"b", "piece":piePat + "r.png"})
+            galeryModel.set(7,{"color":"e", "piece":piePat + "empty.png"})
         }
         else {
-            galeryModel.set(3,{"color":"b", "piece":"images/r.png"})
-            galeryModel.set(0,{"color":"e", "piece":"images/empty.png"})
+            galeryModel.set(3,{"color":"b", "piece":piePat + "r.png"})
+            galeryModel.set(0,{"color":"e", "piece":piePat + "empty.png"})
         }
     }
     // If blacks move gives enpassant possibility to whiteTimer
-    if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece === "images/p.png") {
+    if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece === piePat + "p.png") {
         moveMent.benpassant = toIndex-8;
         galeryModel.set(moveMent.benpassant,{"color":"bp"})
     }
     // If white gives enpassant possibility and it is utilized let's print a board accordingly
-    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece === "images/p.png") {
-        galeryModel.set((toIndex-8),{"color":"e", "piece":"images/empty.png"});
+    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece === piePat + "p.png") {
+        galeryModel.set((toIndex-8),{"color":"e", "piece":piePat + "empty.png"});
         moveMent.currentMove = "enpassant";
         moveMent.wenpassant = -1;
     }
     // Adding moves to captures list
     if (moveMent.currentMove == "enpassant") {
-        whiteCaptured.append({"captured":"images/P.png"});
+        whiteCaptured.append({"captured":piePat + "P.png"});
         moveMent.currentMove = "";
     }
-    if (movedPieces.get(1).piece !== "images/empty.png") {
+    if (movedPieces.get(1).piece !== piePat + "empty.png") {
         whiteCaptured.append({"captured":movedPieces.get(1).piece})
     }
 
     // If pawn reaches the last line let's guess the promotion to be a queen. Have to correct in future some how
 
-    if (toIndex > 55 && galeryModel.get(toIndex).piece === "images/p.png") {
-        galeryModel.set(toIndex, {"piece": "images/q.png"});
+    if (toIndex > 55 && galeryModel.get(toIndex).piece === piePat + "p.png") {
+        galeryModel.set(toIndex, {"piece": piePat + "q.png"});
     }
     feni.lowerMessage = "";
     feni.upperMessage = "";
@@ -601,42 +601,42 @@ function othDeviceMoveWhite() {
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
 
     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
-    galeryModel.set(fromIndex,{"color":"e", "piece":"images/empty.png"})
+    galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
     // If castling, moving the rook also
-    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === "images/K.png") {
+    if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "K.png") {
         if (toIndex == 62){
-            galeryModel.set(61,{"color":"w", "piece":"images/R.png"})
-            galeryModel.set(63,{"color":"e", "piece":"images/empty.png"})
+            galeryModel.set(61,{"color":"w", "piece":piePat + "R.png"})
+            galeryModel.set(63,{"color":"e", "piece":piePat + "empty.png"})
         }
         else {
-            galeryModel.set(59,{"color":"w", "piece":"images/R.png"})
-            galeryModel.set(56,{"color":"e", "piece":"images/empty.png"})
+            galeryModel.set(59,{"color":"w", "piece":piePat + "R.png"})
+            galeryModel.set(56,{"color":"e", "piece":piePat + "empty.png"})
         }
     }
     // If whites move gives enpassant possibility to whiteTimer
-    if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece === "images/P.png") {
+    if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece === piePat + "P.png") {
         moveMent.wenpassant = toIndex+8
         galeryModel.set(moveMent.wenpassant,{"color":"wp"})
     }
     // If black gives enpassant possibility and it is utilized let's print a board accordingly
-    if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece === "images/P.png") {
-        galeryModel.set((toIndex+8),{"color":"e", "piece":"images/empty.png"});
+    if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece === piePat + "P.png") {
+        galeryModel.set((toIndex+8),{"color":"e", "piece":piePat + "empty.png"});
         moveMent.currentMove = "enpassant";
         moveMent.benpassant = -1;
     }
     // Adding moves to captures list
     if (moveMent.currentMove == "enpassant") {
-        blackCaptured.append({"captured":"images/p.png"});
+        blackCaptured.append({"captured":piePat + "p.png"});
         moveMent.currentMove = "";
     }
-    if (movedPieces.get(1).piece !== "images/empty.png") {
+    if (movedPieces.get(1).piece !== piePat + "empty.png") {
         blackCaptured.append({"captured":movedPieces.get(1).piece})
     }
 
     // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
 
-    if (toIndex < 8 && galeryModel.get(toIndex).piece === "images/P.png") {
-        galeryModel.set(toIndex, {"piece": "images/Q.png"});
+    if (toIndex < 8 && galeryModel.get(toIndex).piece === piePat + "P.png") {
+        galeryModel.set(toIndex, {"piece": piePat + "Q.png"});
     }
     feni.lowerMessage = "";
     feni.upperMessage = "";
@@ -758,7 +758,7 @@ function moveBack() {
     for (var i=0;i<64; i++){
         galeryModel.set(i,{"frameop": 0, "recmove":-1}); // Removing last move squares
         if (galeryModel.get(i).color ==="wp" || galeryModel.get(i).color ==="bp"){
-            galeryModel.set(i,{"color":"e", "piece":"images/empty.png"}); // Make enpassant possibilities empty, later fill values for last move
+            galeryModel.set(i,{"color":"e", "piece":piePat + "empty.png"}); // Make enpassant possibilities empty, later fill values for last move
         }
     }
 
@@ -867,13 +867,13 @@ function moveForward () {
     galeryModel.set(allMoves.get(movesNoScanned).capturedTo,{"color":allMoves.get(movesNoScanned).movedColor, "piece":allMoves.get(movesNoScanned).movedPiece})
 
     // Inserting the empty piece to the place move started
-    galeryModel.set(allMoves.get(movesNoScanned).movedFrom,{"color":"e", "piece":"images/empty.png"})
+    galeryModel.set(allMoves.get(movesNoScanned).movedFrom,{"color":"e", "piece":piePat + "empty.png"})
 
     // Removing enpassant values
     for (var i=0;i<64; i++){
         //galeryModel.set(i,{"frameop": 0, "recmove":-1}); // Removing last move squares
         if (galeryModel.get(i).color ==="wp" || galeryModel.get(i).color ==="bp"){
-            galeryModel.set(i,{"color":"e", "piece":"images/empty.png"}); // Make enpassant possibilities empty, later fill values for the last move
+            galeryModel.set(i,{"color":"e", "piece":piePat + "empty.png"}); // Make enpassant possibilities empty, later fill values for the last move
         }
     }
     // Setting enpassant to enable the enpassant move if the game restarts at this point
@@ -888,7 +888,7 @@ function moveForward () {
 
     // Setting the empty piece in the castling to the place where rook started
     if (allMoves.get(movesNoScanned).pairCapturesColor !== "x" && allMoves.get(movesNoScanned).pairTo > 0){
-        galeryModel.set(allMoves.get(movesNoScanned).pairFrom,{"color":"e", "piece":"images/empty.png"})
+        galeryModel.set(allMoves.get(movesNoScanned).pairFrom,{"color":"e", "piece":piePat + "empty.png"})
     }
     // King index setting for chess checks
     feni.feniWkingInd = allMoves.get(movesNoScanned).wKingInd

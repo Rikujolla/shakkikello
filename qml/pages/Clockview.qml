@@ -259,7 +259,7 @@ Page {
                         kello.sekuntit = 0;
                         tilat.peliloppui = false;
                         //startButton.text = qsTr("Start")
-                        pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
+                        pageStack.push(Qt.resolvedUrl("Settings.qml"))
                     }
                 }
             }

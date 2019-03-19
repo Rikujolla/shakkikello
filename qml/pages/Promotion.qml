@@ -1,15 +1,14 @@
 import QtQuick 2.0
+import Sailfish.Silica 1.0
 
 Item {
     id: promotionBox
     anchors.fill: parent
 
-    // PropertyAnimation voi lisätä tällä tyylikkyyttä
-
     Rectangle {
         anchors.fill: parent
         id: overlay
-        color: "#000000"
+        color: "#000000" //
         opacity: 0.6
         // add a mouse area so that clicks outside
         // the dialog window will not do anything
@@ -21,30 +20,25 @@ Item {
     // This rectangle is the actual popup
     Rectangle {
         id: dialogWindow
-        width: 340
-        height: 68
+        width: 5*Screen.width/8
+        height: Screen.width/8
+        color: "#dddea1" // Grid colors dddea1 and 997400 Kapu's colors fada5e and 664228
         //    radius: 10
         anchors.centerIn: parent
         GridView {
             id: promogrid
-            cellWidth: 68
-            cellHeight: 68
+            cellWidth: Screen.width/8
+            cellHeight: Screen.width/8
             anchors.fill: parent
             layoutDirection: isMyStart && turnWhite || !isMyStart && !turnWhite ? Qt.LeftToRight : Qt.RightToLeft
             model:promotionModel
             delegate: Image {
                 id: pieceImage
                 asynchronous: true
-                source:  turnWhite ? white : black
+                source:  turnWhite ? piePat + white : piePat + black
                 rotation: isMyStart ? 180 : 0
                 sourceSize.width: promogrid.cellWidth
                 sourceSize.height: promogrid.cellHeight
-                //Text {
-                //     anchors.centerIn: parent
-                //    text: turnWhite ? "Promote Queen" : "Promote queen"
-                //}
-
-                //Canvas {id: movearrows}
 
                 // Delete popup
                 MouseArea{
@@ -53,7 +47,7 @@ Item {
                         // destroy object is needed when you dynamically create it
                         waitPromo = false
                         promotedShort = stfish
-                        turnWhite ? promotedLong = white : promotedLong = black
+                        turnWhite ? promotedLong = piePat + white : promotedLong = piePat + black
                         //console.log(waitPromo, promotedShort, promotedLong)
                         promotionBox.destroy()
                     }
@@ -64,32 +58,32 @@ Item {
 
 
     ListModel {
-            id: promotionModel
-            ListElement {
-                white: "images/Q.png"
-                black: "images/q.png"
-                stfish: "q"
-            }
-            ListElement {
-                white: "images/R.png"
-                black: "images/r.png"
-                stfish: "r"
-            }
-            ListElement {
-                white: "images/N.png"
-                black: "images/n.png"
-                stfish: "n"
-            }
-            ListElement {
-                white: "images/B.png"
-                black: "images/b.png"
-                stfish: "b"
-            }
-            ListElement {
-                white: "images/P.png"
-                black: "images/p.png"
-                stfish: "p"
-            }
+        id: promotionModel
+        ListElement {
+            white: "Q.png"
+            black: "q.png"
+            stfish: "q"
+        }
+        ListElement {
+            white: "R.png"
+            black: "r.png"
+            stfish: "r"
+        }
+        ListElement {
+            white: "N.png"
+            black: "n.png"
+            stfish: "n"
+        }
+        ListElement {
+            white: "B.png"
+            black: "b.png"
+            stfish: "b"
+        }
+        ListElement {
+            white: "P.png"
+            black: "p.png"
+            stfish: "p"
+        }
     }
 
 

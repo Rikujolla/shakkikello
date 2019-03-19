@@ -45,25 +45,10 @@ OTHER_FILES += qml/harbour-shakkikello.qml \
     rpm/harbour-shakkikello.spec \
     rpm/harbour-shakkikello.yaml \
     translations/*.ts \
-    qml/pages/Asetukset.qml \
-    qml/pages/Pelisivu.qml \
     LICENSE \
-    qml/pages/Tietoja.qml \
     qml/pages/funktiot.js \
-    qml/pages/images/N.png \
-    qml/pages/images/n.png \
-    qml/pages/images/B.png \
-    qml/pages/images/b.png \
-    qml/pages/images/R.png \
-    qml/pages/images/r.png \
-    qml/pages/images/Q.png \
-    qml/pages/images/q.png \
-    qml/pages/images/P.png \
-    qml/pages/images/K.png \
-    qml/pages/images/k.png \
     qml/pages/images/grid.png \
     qml/pages/images/empty.png \
-    qml/pages/images/p.png \
     qml/pages/Promotion.qml \
     qml/pages/Boardview.qml \
     qml/pages/openings.js \
@@ -135,7 +120,10 @@ DISTFILES += \
     icons/256x256/harbour-shakkikello.png \
     icons/86x86/harbour-shakkikello.png \
     README.md \
-    icons/172x172/harbour-shakkikello.png
+    icons/172x172/harbour-shakkikello.png \
+    qml/pages/About.qml \
+    qml/pages/Settings.qml \
+    qml/pages/Clockview.qml
 
 FORMS +=
 

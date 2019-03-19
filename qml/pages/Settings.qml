@@ -49,14 +49,14 @@ Page {
             }
             MenuItem {
                 text: qsTr("Clock view")
-                onClicked: pageStack.push(Qt.resolvedUrl("Pelisivu.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("Clockview.qml"))
             }
         }
 
         PushUpMenu {
             MenuItem {
                 text: qsTr("About")
-                onClicked: pageStack.push(Qt.resolvedUrl("Tietoja.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("About.qml"))
             }
 
         }
@@ -455,7 +455,7 @@ Page {
                             text: qsTr("Chess clock")
                             onClicked: {
                                 //console.log("Chess clock")
-                                startPageTxt = "pages/Pelisivu.qml"
+                                startPageTxt = "pages/Clockview.qml"
                                 startPage = 0
                                 setView.currentIndex = 0
                             }
@@ -474,11 +474,40 @@ Page {
                             text: qsTr("Settings page")
                             onClicked: {
                                 //console.log("Settings page")
-                                startPageTxt = "pages/Asetukset.qml"
+                                startPageTxt = "pages/Settings.qml"
                                 startPage = 2
                                 setView.currentIndex = 2
                             }
                         }
+                }
+            }
+
+            ComboBox {
+                id: setPieces
+                width: parent.width
+                //: The style of the pieces selector
+                label: qsTr("Style of the pieces")
+                currentIndex: pieceStyle
+
+                menu: ContextMenu {
+                    MenuItem {
+                        //: The style of the pieces is unlike
+                        text: qsTr("Unlike")
+                        onClicked: {
+                            pieceStyle = 0
+                            piePat = "images/piece0/"
+                            setPieces.currentIndex = 0
+                        }
+                    }
+                    MenuItem {
+                        //: The style of the pieces is classic
+                        text: qsTr("Classic")
+                        onClicked: {
+                            pieceStyle = 1
+                            piePat = "images/piece1/"
+                            setPieces.currentIndex = 1
+                        }
+                    }
                 }
             }
 
