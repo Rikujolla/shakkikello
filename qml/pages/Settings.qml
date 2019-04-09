@@ -1,4 +1,4 @@
-/*Copyright (c) 2015-2016, Riku Lahtinen
+/*Copyright (c) 2015-2019, Riku Lahtinen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
+import Sailfish.Pickers 1.0
 import "setting.js" as Mysets
 
 Page {
@@ -508,8 +509,52 @@ Page {
                             setPieces.currentIndex = 1
                         }
                     }
+
+                    MenuItem {
+                        //: Player can select the pieces of her or his choice
+                        text: qsTr("Personal art")
+                        onClicked: {
+                            var dialog = pageStack.push(Qt.resolvedUrl("Settings_dialog_personal_art.qml"),
+                                                        {"name": "test"})
+                            dialog.accepted.connect(function() {
+                                filepicker_timer.start()
+                            })
+                            dialog.rejected.connect(function() {
+                                setPieces.currentIndex = pieceStyle
+                            })
+                        }
+                    }
                 }
             }
+
+            Timer {
+                id:filepicker_timer
+                interval: 500
+                running: false
+                repeat: false
+
+                onTriggered: pageStack.push(filePickerPage)
+            }
+
+
+            property string personal_art_filename
+            property string personal_art_path
+
+            Component {
+                id: filePickerPage
+                FilePickerPage {
+                    nameFilters: ['*.png']
+                    onSelectedContentPropertiesChanged: {
+                        column.personal_art_filename = selectedContentProperties.fileName
+                        column.personal_art_path = selectedContentProperties.filePath;
+                        piePat = column.personal_art_path.slice(0,column.personal_art_path.length-column.personal_art_filename.length)
+                        pieceStyle = 2
+                        setPieces.currentIndex = 2
+                    }
+                }
+            }
+
+
 
             VerticalScrollDecorator {}
 

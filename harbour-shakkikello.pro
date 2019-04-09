@@ -125,7 +125,8 @@ DISTFILES += \
     qml/pages/About.qml \
     qml/pages/Settings.qml \
     qml/pages/Clockview.qml \
-    qml/pages/movelegal.js
+    qml/pages/movelegal.js \
+    qml/pages/Settings_dialog_personal_art.qml
 
 FORMS +=
 

@@ -490,6 +490,46 @@
         <extracomment>The style of the pieces selector</extracomment>
         <translation>Stil der Figuren</translation>
     </message>
+    <message>
+        <source>Personal art</source>
+        <extracomment>Player can select the pieces of her or his choice</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Settings_dialog_personal_art</name>
+    <message>
+        <source>Files required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Testing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current folder path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If the current folder path is already right, please cancel this operation.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your personal art folder should have all the image files as follows:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>For the start of the testing of this feature you can copy the required files from the device path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selecting only one image file from your personal art folder is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>funktiot</name>

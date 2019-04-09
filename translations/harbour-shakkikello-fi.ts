@@ -490,6 +490,46 @@
         <extracomment>The style of the pieces selector</extracomment>
         <translation>Shakkinappuloiden tyyli</translation>
     </message>
+    <message>
+        <source>Personal art</source>
+        <extracomment>Player can select the pieces of her or his choice</extracomment>
+        <translation>Oma taide</translation>
+    </message>
+</context>
+<context>
+    <name>Settings_dialog_personal_art</name>
+    <message>
+        <source>Files required</source>
+        <translation>Vaaditut tiedostot</translation>
+    </message>
+    <message>
+        <source>Testing</source>
+        <translation>Kokeileminen</translation>
+    </message>
+    <message>
+        <source>Current folder path</source>
+        <translation>Nykyinen hakemistopolku</translation>
+    </message>
+    <message>
+        <source>If the current folder path is already right, please cancel this operation.</source>
+        <translation>Jos nykyinen hakemistopolku on jo oikein, peruuta tämä toimenpide.</translation>
+    </message>
+    <message>
+        <source>File selection</source>
+        <translation>Tiedoston valitseminen</translation>
+    </message>
+    <message>
+        <source>Your personal art folder should have all the image files as follows:</source>
+        <translation>Kaikki seuraavat kuvatiedostot tulee löytyä oman taiteesi kansiosta:</translation>
+    </message>
+    <message>
+        <source>For the start of the testing of this feature you can copy the required files from the device path:</source>
+        <translation>Tämän ominaisuuden käytön aloittamiseksi voit kopioida tiedostot laitteesi kansiosta:</translation>
+    </message>
+    <message>
+        <source>Selecting only one image file from your personal art folder is required.</source>
+        <translation>Riittää, että valitset jonkun tiedoston oman taiteesi kansiosta.</translation>
+    </message>
 </context>
 <context>
     <name>funktiot</name>

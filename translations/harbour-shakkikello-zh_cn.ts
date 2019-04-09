@@ -42,7 +42,7 @@
     </message>
     <message>
         <source>Dutch (Heimen Stoffels)</source>
-        <translation>尼德兰语 (Heimen Stoffels)</translation>
+        <translation>荷语 (Heimen Stoffels)</translation>
     </message>
     <message>
         <source>Polish (szopin)</source>
@@ -82,7 +82,7 @@
     </message>
     <message>
         <source>Dutch (Belgium) (Nathan Follens)</source>
-        <translation type="unfinished"></translation>
+        <translation>荷语 (比利时) (Nathan Follens)</translation>
     </message>
 </context>
 <context>
@@ -489,6 +489,46 @@
         <source>Style of the pieces</source>
         <extracomment>The style of the pieces selector</extracomment>
         <translation>风格</translation>
+    </message>
+    <message>
+        <source>Personal art</source>
+        <extracomment>Player can select the pieces of her or his choice</extracomment>
+        <translation>个人技能</translation>
+    </message>
+</context>
+<context>
+    <name>Settings_dialog_personal_art</name>
+    <message>
+        <source>Files required</source>
+        <translation>要求文件</translation>
+    </message>
+    <message>
+        <source>Testing</source>
+        <translation>测试</translation>
+    </message>
+    <message>
+        <source>Current folder path</source>
+        <translation>当前文件夹路径</translation>
+    </message>
+    <message>
+        <source>If the current folder path is already right, please cancel this operation.</source>
+        <translation>如果当前文件夹设置正确，请取消此项操作。</translation>
+    </message>
+    <message>
+        <source>File selection</source>
+        <translation>文件选取</translation>
+    </message>
+    <message>
+        <source>Your personal art folder should have all the image files as follows:</source>
+        <translation>你的个人技巧文件夹应该包含如下镜像文件:</translation>
+    </message>
+    <message>
+        <source>For the start of the testing of this feature you can copy the required files from the device path:</source>
+        <translation>你可以从设备路径复制要求的文件以开始测试此功能。</translation>
+    </message>
+    <message>
+        <source>Selecting only one image file from your personal art folder is required.</source>
+        <translation>你只能从个人技巧文件夹选择一个要求的文件。</translation>
     </message>
 </context>
 <context>

@@ -490,6 +490,46 @@
         <extracomment>The style of the pieces selector</extracomment>
         <translation>Stijl van de stukken</translation>
     </message>
+    <message>
+        <source>Personal art</source>
+        <extracomment>Player can select the pieces of her or his choice</extracomment>
+        <translation>Eigen afbeeldingen</translation>
+    </message>
+</context>
+<context>
+    <name>Settings_dialog_personal_art</name>
+    <message>
+        <source>Files required</source>
+        <translation>Bestanden vereist</translation>
+    </message>
+    <message>
+        <source>Testing</source>
+        <translation>Bezig met testen</translation>
+    </message>
+    <message>
+        <source>Current folder path</source>
+        <translation>Huidig mappad</translation>
+    </message>
+    <message>
+        <source>If the current folder path is already right, please cancel this operation.</source>
+        <translation>Indien het huidige mappad al correct is, annuleer dan deze handeling.</translation>
+    </message>
+    <message>
+        <source>File selection</source>
+        <translation>Bestandsselectie</translation>
+    </message>
+    <message>
+        <source>Your personal art folder should have all the image files as follows:</source>
+        <translation>Je map met afbeeldingen moet de afbeeldingsbestanden als volgt bevatten:</translation>
+    </message>
+    <message>
+        <source>For the start of the testing of this feature you can copy the required files from the device path:</source>
+        <translation>Om deze functie te beginnen testen, kun je de vereiste bestanden kopiëren vanaf het apparaatpad:</translation>
+    </message>
+    <message>
+        <source>Selecting only one image file from your personal art folder is required.</source>
+        <translation>Eén afbeeldingsbestand van je map met afbeeldingen is vereist.</translation>
+    </message>
 </context>
 <context>
     <name>funktiot</name>
