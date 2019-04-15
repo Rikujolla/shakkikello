@@ -12,6 +12,10 @@
 #- If paused in two player game I can move opponents piece?? BUG
 #- In other device mode promotion is only queen, BUG
 
+* Mon Apr 15 2019 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.4
+- Personal art can be selected to be used as a piece style
+- Release version
+
 * Wed Apr 10 2019 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.3
 - Personal art can be selected to be used as a piece style
 - Tecnical, not to be released as rpm

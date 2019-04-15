@@ -57,7 +57,35 @@ Page {
 
     property int fromIndex : -1
     property int toIndex : -1
+///////TBD
+    property int indeksi;
+    //property int toHelpIndex; //for checking empty midsquares for bishop, rook and queen
+    property int wenpassant: -1; //White gives enpassant possibility, board index number
+    property int benpassant: -1; //Black gives enpassant possibility, board index number
+    property string itemTobemoved;
+    property string colorTobemoved;
+    property string itemMoved;
+    property string colorMoved;
+    property bool canBemoved: false; //True if the piece can be moved somewhere
+    property bool moveLegal: false; //True if the move to the destination is possible
+    property int intLegal: -1; //this is an unneeded variable
+    //property bool moveLegalHelp; //for checking empty midsquares for bishop, rook and queen
+    property int rowfromInd; // This ind to help diagonal moves checks
+    property int colfromInd; // This ind to help diagonal moves checks
+    property int rowtoInd; // This ind to help diagonal moves checks
+    property int coltoInd; // This ind to help diagonal moves checks
+    property int fromParity; // This ind to help diagonal moves checks
+    property int toParity; // This ind to help diagonal moves checks
+    property bool chessTest: false; // Flag if chess is tested, prevents pawn promotion
+    property bool castlingWpossible: true; // Check if White castling is possible
+    property bool castlingBpossible: true; // Check if Black castling is possible
+    property string currentMove: ""; // Values castling, wenpassant or promotion
+    property bool wKingMoved: false; // To record this for castling checks
+    property bool bKingMoved: false; // To record this for castling checks
+    property int midSquareInd  // Used for castling test
+    property bool midSquareCheckki: false; // Used for castling check
 
+///////    TBD
 
     SilicaFlickable {
         anchors.fill: parent
@@ -713,32 +741,32 @@ Page {
 
             Item {
                 id:moveMent
-                property int indeksi;
-                property int toHelpIndex; //for checking empty midsquares for bishop, rook and queen
-                property int wenpassant: -1; //White gives enpassant possibility, board index number
-                property int benpassant: -1; //Black gives enpassant possibility, board index number
-                property string itemTobemoved;
-                property string colorTobemoved;
-                property string itemMoved;
-                property string colorMoved;
-                property bool canBemoved: false; //True if the piece can be moved somewhere
-                property bool moveLegal: false; //True if the move to the destination is possible
-                property int intLegal: -1; //this is an unneeded variable
-                property bool moveLegalHelp; //for checking empty midsquares for bishop, rook and queen
-                property int rowfromInd; // This ind to help diagonal moves checks
-                property int colfromInd; // This ind to help diagonal moves checks
-                property int rowtoInd; // This ind to help diagonal moves checks
-                property int coltoInd; // This ind to help diagonal moves checks
-                property int fromParity; // This ind to help diagonal moves checks
-                property int toParity; // This ind to help diagonal moves checks
-                property bool chessTest: false; // Flag if chess is tested, prevents pawn promotion
-                property bool castlingWpossible: true; // Check if White castling is possible
-                property bool castlingBpossible: true; // Check if Black castling is possible
-                property string currentMove: ""; // Values castling, wenpassant or promotion
-                property bool wKingMoved: false; // To record this for castling checks
-                property bool bKingMoved: false; // To record this for castling checks
-                property int midSquareInd  // Used for castling test
-                property bool midSquareCheckki: false; // Used for castling check
+                //property int indeksi;
+                //property int toHelpIndex; //for checking empty midsquares for bishop, rook and queen
+                //property int wenpassant: -1; //White gives enpassant possibility, board index number
+                //property int benpassant: -1; //Black gives enpassant possibility, board index number
+                //property string itemTobemoved;
+                //property string colorTobemoved;
+                //property string itemMoved;
+                //property string colorMoved;
+                //property bool canBemoved: false; //True if the piece can be moved somewhere
+                //property bool moveLegal: false; //True if the move to the destination is possible
+                //property int intLegal: -1; //this is an unneeded variable
+                //property bool moveLegalHelp; //for checking empty midsquares for bishop, rook and queen
+                //property int rowfromInd; // This ind to help diagonal moves checks
+                //property int colfromInd; // This ind to help diagonal moves checks
+                //property int rowtoInd; // This ind to help diagonal moves checks
+                //property int coltoInd; // This ind to help diagonal moves checks
+                //property int fromParity; // This ind to help diagonal moves checks
+                //property int toParity; // This ind to help diagonal moves checks
+                //property bool chessTest: false; // Flag if chess is tested, prevents pawn promotion
+                //property bool castlingWpossible: true; // Check if White castling is possible
+                //property bool castlingBpossible: true; // Check if Black castling is possible
+                //property string currentMove: ""; // Values castling, wenpassant or promotion
+                //property bool wKingMoved: false; // To record this for castling checks
+                //property bool bKingMoved: false; // To record this for castling checks
+                //property int midSquareInd  // Used for castling test
+                //property bool midSquareCheckki: false; // Used for castling check
                 // Pawn is promoted to queen now
                 function pawnPromotion() {
                     Qt.createComponent("Promotion.qml").createObject(page, {});
@@ -778,7 +806,7 @@ Page {
                 // This function determines legal moves
                 ////////////////////////////////////////
 
-                function isLegalmove() {
+                /*function isLegalmove_old() {
                     switch (itemMoved) {
                     case piePat + "p.png":  // Black pawn
                         // Normal move
@@ -1009,8 +1037,8 @@ Page {
                                    moveLegal = true; intLegal = 1;
                                }
                                else if (toIndex > fromIndex +8) {
-                                   toHelpIndex = toIndex-8;
-                                   moveLegalHelp = true;
+                                   var toHelpIndex = toIndex-8;
+                                   var moveLegalHelp = true;
                                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                                        if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
                                             || galeryModel.get(toHelpIndex).color === "bp") {
@@ -1792,7 +1820,8 @@ Page {
                         moveLegal = false;
                     }
                 }
-// end block isMovable:
+*/
+                // end block isMovable:
 
                 ////////////////////////////////////////////
                 /// Function movePiece()
@@ -1803,7 +1832,7 @@ Page {
                         fromIndex=indeksi;
                         toIndex=indeksi;
                         var doVisual = 1 //Determines that is not test to enable visual effects
-                        Mymove.isMovable(doVisual, colorTobemoved);
+                        Mymove.isMovable(doVisual);
                         if (canBemoved){
                             itemMoved=itemTobemoved;
                             moveStarted=!moveStarted;
@@ -1816,12 +1845,12 @@ Page {
                         galeryModel.set(fromIndex,{"frameop":0}); // Better performance needed
                         // here fomParity and toParity checks
                         sameColor(); // Checks if fromIndex and toIndex are same color
-                        isLegalmove();
+                        Mymove.isLegalmove();
                         if (moveLegal){
                             // Saving position before move to possiple cancellation of a move
                             movedPieces.set(0,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece moved
                             movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
-                            if (moveMent.currentMove === "") {
+                            if (currentMove === "") {
                                 movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                                 movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                             }
@@ -2049,9 +2078,9 @@ Page {
                             height: grid.cellHeight
                             width: grid.cellWidth
                             enabled: (feni.feniWhite && isMyStart || feni.feniBlack && !isMyStart || playMode == "human") && tilat.juoksee
-                            onClicked: {moveMent.indeksi = index;
-                                moveMent.itemTobemoved = piece;
-                                moveMent.colorTobemoved = color;
+                            onClicked: {indeksi = index;
+                                itemTobemoved = piece;
+                                colorTobemoved = color;
                                 moveMent.movePiece();
                             }
                         } //end MouseArea
@@ -2069,7 +2098,7 @@ Page {
                     if (!waitPromo) {
                         promotionWaiter.running = false
                         feni.forChessCheck = true
-                        galeryModel.set(toIndex,{"color":moveMent.colorMoved, "piece":promotedLong})
+                        galeryModel.set(toIndex,{"color":colorMoved, "piece":promotedLong})
                         galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
                         chessChecker.start()
                     }
@@ -2083,7 +2112,7 @@ Page {
                 running: feni.forChessCheck && Qt.application.active && !waitPromo;
                 repeat: false
                 onTriggered: {
-                    if (moveMent.currentMove == "castling") {
+                    if (currentMove == "castling") {
                         Myfunks.midSquareCheck();
                     }
                     else {
@@ -2100,7 +2129,7 @@ Page {
                 interval: 100; running: feni.midSquareTestDone && feni.chessTestDone && Qt.application.active && !waitPromo;
                 repeat: false
                 onTriggered: {
-                    if (moveMent.midSquareCheckki || feni.chessIsOn) {
+                    if (midSquareCheckki || feni.chessIsOn) {
                         Myfunks.cancelMove();
                     }
                     else {
@@ -2228,21 +2257,21 @@ Page {
                     }
                     // If blacks move gives enpassant possibility to whiteTimer
                     if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece === piePat + "p.png") {
-                        moveMent.benpassant = toIndex-8;
-                        galeryModel.set(moveMent.benpassant,{"color":"bp"})
-                        movedPieces.set(4,{"color":"bp", "piece":piePat + "empty.png", "indeksos":moveMent.benpassant}) //Set enpassant values
+                        benpassant = toIndex-8;
+                        galeryModel.set(benpassant,{"color":"bp"})
+                        movedPieces.set(4,{"color":"bp", "piece":piePat + "empty.png", "indeksos":benpassant}) //Set enpassant values
                     }
                     // If white gives enpassant possibility and it is utilized let's print a board accordingly
-                    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece === piePat + "p.png") {
+                    if (toIndex != -1 && toIndex == wenpassant && galeryModel.get(toIndex).piece === piePat + "p.png") {
                         galeryModel.set((toIndex-8),{"color":"e", "piece":piePat + "empty.png"});
-                        moveMent.currentMove = "enpassant";
+                        currentMove = "enpassant";
                         movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":toIndex-8})
-                        moveMent.wenpassant = -1;
+                        wenpassant = -1;
                     }
                     // Adding moves to captures list
-                    if (moveMent.currentMove == "enpassant") {
+                    if (currentMove == "enpassant") {
                         whiteCaptured.append({"captured":piePat + "P.png"});
-                        moveMent.currentMove = "";
+                        currentMove = "";
                     }
                     if (movedPieces.get(1).piece !== piePat + "empty.png") {
                         whiteCaptured.append({"captured":movedPieces.get(1).piece})
@@ -2319,21 +2348,21 @@ Page {
                     }
                     // If whites move gives enpassant possibility to blackTimer
                     if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece === piePat + "P.png") {
-                        moveMent.wenpassant = toIndex+8
-                        galeryModel.set(moveMent.wenpassant,{"color":"wp"})
-                        movedPieces.set(4,{"color":"wp", "piece":piePat + "empty.png", "indeksos":moveMent.wenpassant}) //Set enpassant values
+                        wenpassant = toIndex+8
+                        galeryModel.set(wenpassant,{"color":"wp"})
+                        movedPieces.set(4,{"color":"wp", "piece":piePat + "empty.png", "indeksos":wenpassant}) //Set enpassant values
                     }
                     // If black gives enpassant possibility and it is utilized let's print a board accordingly
-                    if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece === piePat + "P.png") {
+                    if (toIndex != -1 && toIndex == benpassant && galeryModel.get(toIndex).piece === piePat + "P.png") {
                         galeryModel.set((toIndex+8),{"color":"e", "piece":piePat + "empty.png"});
-                        moveMent.currentMove = "enpassant";
+                        currentMove = "enpassant";
                         movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":toIndex+8})
-                        moveMent.benpassant = -1;
+                        benpassant = -1;
                     }
                     // Adding moves to captures list
-                    if (moveMent.currentMove == "enpassant") {
+                    if (currentMove == "enpassant") {
                         blackCaptured.append({"captured":piePat + "p.png"});
-                        moveMent.currentMove = "";
+                        currentMove = "";
                     }
                     if (movedPieces.get(1).piece !== piePat + "empty.png") {
                         blackCaptured.append({"captured":movedPieces.get(1).piece})

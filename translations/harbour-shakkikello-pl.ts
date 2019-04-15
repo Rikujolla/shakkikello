@@ -14,7 +14,7 @@
     <message>
         <source>Fast chess, version</source>
         <extracomment>The name of the app followed with a version number</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Szybkie szachy, wersja</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -82,7 +82,7 @@
     </message>
     <message>
         <source>Dutch (Belgium) (Nathan Follens)</source>
-        <translation type="unfinished"></translation>
+        <translation>Holenderski (Belgia) (Nathan Follens)</translation>
     </message>
 </context>
 <context>
@@ -160,7 +160,7 @@
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished">Kontynuuj</translation>
+        <translation>Kontynuuj</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -457,7 +457,7 @@
     <message>
         <source>Movetime</source>
         <extracomment>Sets the time the Stockfish engine has per move.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Czas ruchu</translation>
     </message>
     <message>
         <source>View settings</source>
@@ -478,57 +478,57 @@
     <message>
         <source>Unlike</source>
         <extracomment>The style of the pieces is unlike</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Niepodobny</translation>
     </message>
     <message>
         <source>Classic</source>
         <extracomment>The style of the pieces is classic</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Klasyczny</translation>
     </message>
     <message>
         <source>Style of the pieces</source>
         <extracomment>The style of the pieces selector</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Styl bierek</translation>
     </message>
     <message>
         <source>Personal art</source>
         <extracomment>Player can select the pieces of her or his choice</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Własny</translation>
     </message>
 </context>
 <context>
     <name>Settings_dialog_personal_art</name>
     <message>
         <source>Files required</source>
-        <translation type="unfinished"></translation>
+        <translation>Wymagane pliki</translation>
     </message>
     <message>
         <source>Testing</source>
-        <translation type="unfinished"></translation>
+        <translation>Testowanie</translation>
     </message>
     <message>
         <source>Current folder path</source>
-        <translation type="unfinished"></translation>
+        <translation>Obecna ścieżka</translation>
     </message>
     <message>
         <source>If the current folder path is already right, please cancel this operation.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeśli obecna ścieżka jest poprawna proszę anulować tę akcję</translation>
     </message>
     <message>
         <source>File selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybór pliku</translation>
     </message>
     <message>
         <source>Your personal art folder should have all the image files as follows:</source>
-        <translation type="unfinished"></translation>
+        <translation>Katalog ze stylem własnym powinien mieć obrazy w następujący sposób:</translation>
     </message>
     <message>
         <source>For the start of the testing of this feature you can copy the required files from the device path:</source>
-        <translation type="unfinished"></translation>
+        <translation>By rozpocząć testowanie tej funkcji należy skopiować pliki z urządzenia z tej ścieżki:</translation>
     </message>
     <message>
         <source>Selecting only one image file from your personal art folder is required.</source>
-        <translation type="unfinished"></translation>
+        <translation>Należy wybrać tylko jeden plik z własnego katalogu.</translation>
     </message>
 </context>
 <context>

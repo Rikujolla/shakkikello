@@ -61,7 +61,7 @@ function gridToFEN(fromInd, toInd) {
     }
     feni.stopFeni = 8-(toInd-toInd%8)/8;
     hopo.test = hopo.test+feni.startFeni+feni.stopFeni;
-    if (moveMent.currentMove == "promotion") {hopo.test = hopo.test + promotedShort}
+    if (currentMove == "promotion") {hopo.test = hopo.test + promotedShort}
 
 }
 
@@ -171,7 +171,7 @@ function fenToGRID() {
 function isChess() {
     feni.feniWhiteChess = false;
     feni.feniBlackChess = false;
-    moveMent.chessTest = true;
+    chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
     for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
@@ -186,11 +186,11 @@ function isChess() {
 
         if (tilat.valko && galeryModel.get(feni.ax).color === "b"
                 || tilat.musta && galeryModel.get(feni.ax).color === "w") {
-            moveMent.canBemoved = true;  //palautettava falseksi joskus??
-            moveMent.itemMoved=galeryModel.get(feni.ax).piece;
+            canBemoved = true;  //palautettava falseksi joskus??
+            itemMoved=galeryModel.get(feni.ax).piece;
             moveMent.sameColor();
-            moveMent.isLegalmove();
-            if (moveMent.moveLegal){
+            Mymove.isLegalmove();
+            if (moveLegal){
                 feni.chessIsOn = true; //
             }
         }
@@ -200,7 +200,7 @@ function isChess() {
 
     toIndex = feni.temptoIndex;
     fromIndex = feni.tempfromIndex;
-    moveMent.chessTest = false;
+    chessTest = false;
     feni.chessTestDone = true;
 }
 
@@ -216,14 +216,14 @@ function cancelMove() {
     // Returning the captured piece to it's original position
     galeryModel.set(movedPieces.get(1).indeksos,{"color":movedPieces.get(1).color, "piece":movedPieces.get(1).piece})
     moveStarted=false;
-    moveMent.moveLegal=false;
-    if (tilat.valko && moveMent.wenpassant > -1){
-        galeryModel.set(moveMent.wenpassant,{"color":"e"})
-        moveMent.wenpassant = -1;
+    moveLegal=false;
+    if (tilat.valko && wenpassant > -1){
+        galeryModel.set(wenpassant,{"color":"e"})
+        wenpassant = -1;
     }
-    if (tilat.musta && moveMent.benpassant > -1){
-        galeryModel.set(moveMent.benpassant,{"color":"e"})
-        moveMent.benpassant = -1;
+    if (tilat.musta && benpassant > -1){
+        galeryModel.set(benpassant,{"color":"e"})
+        benpassant = -1;
     }
     feni.chessIsOn = false;
 
@@ -236,30 +236,30 @@ function cancelMove() {
     }
 
     // Backing rook in castling
-    if (moveMent.currentMove == "castling") {
+    if (currentMove == "castling") {
         // Setting rook bck
         galeryModel.set(movedPieces.get(2).indeksos,{"color":movedPieces.get(2).color, "piece":movedPieces.get(2).piece})
         //Setting empty back
         galeryModel.set(movedPieces.get(3).indeksos,{"color":movedPieces.get(3).color, "piece":movedPieces.get(3).piece})
         if (tilat.valko) {
-            moveMent.castlingWpossible = true;
+            castlingWpossible = true;
         }
         else {
-            moveMent.castlingBpossible = true;
+            castlingBpossible = true;
         }
 
     }
     // Backing queen to pawn in promotion
-    if (moveMent.currentMove == "promotion") {
+    if (currentMove == "promotion") {
         galeryModel.set(movedPieces.get(2).indeksos,{"color":movedPieces.get(2).color, "piece":movedPieces.get(2).piece})
     }
     // Backing queen to pawn in enpassant
-    if (moveMent.currentMove == "enpassant") {
+    if (currentMove == "enpassant") {
         galeryModel.set(movedPieces.get(2).indeksos,{"color":movedPieces.get(2).color, "piece":movedPieces.get(2).piece})
     }
 
-    moveMent.midSquareCheckki = false;
-    moveMent.currentMove = "";
+    midSquareCheckki = false;
+    currentMove = "";
 
     // castling or wenpassant doesnt work yet (movelist.index 2)
     //also  promotion to queen may not be cancelled
@@ -273,7 +273,7 @@ function cancelMove() {
 function isChessPure() {
     feni.feniWhiteChess = false;
     feni.feniBlackChess = false;
-    moveMent.chessTest = true;
+    chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
     for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
@@ -287,11 +287,11 @@ function isChessPure() {
         fromIndex = feni.ax;
 
         if (tilat.valko && galeryModel.get(feni.ax).color === "b") {
-            moveMent.canBemoved = true;  //
-            moveMent.itemMoved=galeryModel.get(feni.ax).piece;
+            canBemoved = true;  //
+            itemMoved=galeryModel.get(feni.ax).piece;
             moveMent.sameColor();
-            moveMent.isLegalmove();
-            if (moveMent.moveLegal){
+            Mymove.isLegalmove();
+            if (moveLegal){
                 feni.feniWhiteChess = true;
                 if (isMyStart) {
                     feni.lowerMessage = feni.messages[0].msg;
@@ -303,11 +303,11 @@ function isChessPure() {
         }
 
         else if (tilat.musta && galeryModel.get(feni.ax).color === "w") {
-            moveMent.canBemoved = true;  //To enable the tests
-            moveMent.itemMoved=galeryModel.get(feni.ax).piece;
+            canBemoved = true;  //To enable the tests
+            itemMoved=galeryModel.get(feni.ax).piece;
             moveMent.sameColor();
-            moveMent.isLegalmove();
-            if (moveMent.moveLegal){
+            Mymove.isLegalmove();
+            if (moveLegal){
                 feni.feniBlackChess = true;
                 if (isMyStart) {
                     feni.upperMessage = feni.messages[0].msg;
@@ -323,9 +323,9 @@ function isChessPure() {
     toIndex = feni.temptoIndex;
     fromIndex = feni.tempfromIndex;
     // Resetting values to defaults after checks
-    moveMent.canBemoved = false;
-    moveMent.moveLegal = false;
-    moveMent.chessTest = false;
+    canBemoved = false;
+    moveLegal = false;
+    chessTest = false;
 
 }
 
@@ -335,31 +335,31 @@ function isChessPure() {
 ///////////////////////////////////////////////////////////////////////////////////////
 
 function midSquareCheck() {
-    moveMent.chessTest = true;
+    chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
     for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
-        toIndex = moveMent.midSquareInd;
+        toIndex = midSquareInd;
 
         fromIndex = feni.ax;
 
         if (tilat.valko && galeryModel.get(feni.ax).color === "b") {
-            moveMent.canBemoved = true;  //
-            moveMent.itemMoved=galeryModel.get(feni.ax).piece;
+            canBemoved = true;  //
+            itemMoved=galeryModel.get(feni.ax).piece;
             moveMent.sameColor();
-            moveMent.isLegalmove();
-            if (moveMent.moveLegal){
-                moveMent.midSquareCheckki = true;
+            Mymove.isLegalmove();
+            if (moveLegal){
+                midSquareCheckki = true;
             }
         }
 
         else if (tilat.musta && galeryModel.get(feni.ax).color === "w") {
-            moveMent.canBemoved = true;  //To enable the tests
-            moveMent.itemMoved=galeryModel.get(feni.ax).piece;
+            canBemoved = true;  //To enable the tests
+            itemMoved=galeryModel.get(feni.ax).piece;
             moveMent.sameColor();
-            moveMent.isLegalmove();
-            if (moveMent.moveLegal){
-                moveMent.midSquareCheckki = true;
+            Mymove.isLegalmove();
+            if (moveLegal){
+                midSquareCheckki = true;
             }
         }
     }
@@ -367,9 +367,9 @@ function midSquareCheck() {
     toIndex = feni.temptoIndex;
     fromIndex = feni.tempfromIndex;
     // Resetting values to defaults after checks
-    moveMent.canBemoved = false;
-    moveMent.moveLegal = false;
-    moveMent.chessTest = false;
+    canBemoved = false;
+    moveLegal = false;
+    chessTest = false;
     feni.midSquareTestDone = true;
 }
 
@@ -388,13 +388,13 @@ function doMove() {
         }
 
         gridToFEN(fromIndex, toIndex);
-        if (moveMent.currentMove == "enpassant") {blackCaptured.append({"captured":piePat + "p.png"})}
+        if (currentMove == "enpassant") {blackCaptured.append({"captured":piePat + "p.png"})}
         if (movedPieces.get(1).piece !== piePat + "empty.png") {
             blackCaptured.append({"captured":movedPieces.get(1).piece})
         }
-        moveMent.currentMove = "";
-        if (movedPieces.get(0).piece === piePat + "K.png") {moveMent.wKingMoved = true;}
-        moveMent.midSquareCheckki = false;
+        currentMove = "";
+        if (movedPieces.get(0).piece === piePat + "K.png") {wKingMoved = true;}
+        midSquareCheckki = false;
         Mytab.addMove();
         if (playMode == "othDevice") {
             conTcpSrv.smove = hopo.test;
@@ -413,13 +413,13 @@ function doMove() {
         }
 
         gridToFEN(fromIndex, toIndex);
-        if (moveMent.currentMove == "enpassant") {whiteCaptured.append({"captured":piePat + "P.png"})}
+        if (currentMove == "enpassant") {whiteCaptured.append({"captured":piePat + "P.png"})}
         if (movedPieces.get(1).piece !== piePat + "empty.png") {
             whiteCaptured.append({"captured":movedPieces.get(1).piece})
         }
-        moveMent.currentMove = "";
-        if (movedPieces.get(0).piece === piePat + "k.png") {moveMent.bKingMoved = true;}
-        moveMent.midSquareCheckki = false;
+        currentMove = "";
+        if (movedPieces.get(0).piece === piePat + "k.png") {bKingMoved = true;}
+        midSquareCheckki = false;
         Mytab.addMove();
         if (playMode == "othDevice") {
             conTcpSrv.smove = hopo.test;
@@ -451,9 +451,9 @@ function doMove() {
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).enpColor, allMoves.get(opsi.movesTotal).enpPiece, allMoves.get(opsi.movesTotal).enpInd)
     allMoves.set(opsi.movesTotal, {"wKingInd":feni.feniWkingInd, "bKingInd":feni.feniBkingInd})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wKingInd, allMoves.get(opsi.movesTotal).bKingInd)
-    allMoves.set(opsi.movesTotal, {"wkingmoved":moveMent.wKingMoved, "bkingmoved":moveMent.bKingMoved})
+    allMoves.set(opsi.movesTotal, {"wkingmoved":wKingMoved, "bkingmoved":bKingMoved})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wkingmoved, allMoves.get(opsi.movesTotal).bkingmoved)
-    allMoves.set(opsi.movesTotal, {"wcastlingPos":moveMent.castlingWpossible, "bcastlingPos":moveMent.castlingBpossible})
+    allMoves.set(opsi.movesTotal, {"wcastlingPos":castlingWpossible, "bcastlingPos":castlingBpossible})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wcastlingPos, allMoves.get(opsi.movesTotal).bcastlingPos)
     allMoves.set(opsi.movesTotal, {"whiteTimeMove":whiteTimeTotal_temp, "blackTimeMove":blackTimeTotal_temp})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteTimeMove, allMoves.get(opsi.movesTotal).blackTimeMove)
@@ -477,9 +477,9 @@ function recordMove() {
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).enpColor, allMoves.get(opsi.movesTotal).enpPiece, allMoves.get(opsi.movesTotal).enpInd)
     allMoves.set(opsi.movesTotal, {"wKingInd":feni.feniWkingInd, "bKingInd":feni.feniBkingInd})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wKingInd, allMoves.get(opsi.movesTotal).bKingInd)
-    allMoves.set(opsi.movesTotal, {"wkingmoved":moveMent.wKingMoved, "bkingmoved":moveMent.bKingMoved})
+    allMoves.set(opsi.movesTotal, {"wkingmoved":wKingMoved, "bkingmoved":bKingMoved})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wkingmoved, allMoves.get(opsi.movesTotal).bkingmoved)
-    allMoves.set(opsi.movesTotal, {"wcastlingPos":moveMent.castlingWpossible, "bcastlingPos":moveMent.castlingBpossible})
+    allMoves.set(opsi.movesTotal, {"wcastlingPos":castlingWpossible, "bcastlingPos":castlingBpossible})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wcastlingPos, allMoves.get(opsi.movesTotal).bcastlingPos)
     allMoves.set(opsi.movesTotal, {"whiteTimeMove":whiteTimeTotal_temp, "blackTimeMove":blackTimeTotal_temp})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteTimeMove, allMoves.get(opsi.movesTotal).blackTimeMove)
@@ -531,19 +531,19 @@ function othDeviceMoveBlack() {
     }
     // If blacks move gives enpassant possibility to whiteTimer
     if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece === piePat + "p.png") {
-        moveMent.benpassant = toIndex-8;
-        galeryModel.set(moveMent.benpassant,{"color":"bp"})
+        benpassant = toIndex-8;
+        galeryModel.set(benpassant,{"color":"bp"})
     }
     // If white gives enpassant possibility and it is utilized let's print a board accordingly
-    if (toIndex != -1 && toIndex == moveMent.wenpassant && galeryModel.get(toIndex).piece === piePat + "p.png") {
+    if (toIndex != -1 && toIndex == wenpassant && galeryModel.get(toIndex).piece === piePat + "p.png") {
         galeryModel.set((toIndex-8),{"color":"e", "piece":piePat + "empty.png"});
-        moveMent.currentMove = "enpassant";
-        moveMent.wenpassant = -1;
+        currentMove = "enpassant";
+        wenpassant = -1;
     }
     // Adding moves to captures list
-    if (moveMent.currentMove == "enpassant") {
+    if (currentMove == "enpassant") {
         whiteCaptured.append({"captured":piePat + "P.png"});
-        moveMent.currentMove = "";
+        currentMove = "";
     }
     if (movedPieces.get(1).piece !== piePat + "empty.png") {
         whiteCaptured.append({"captured":movedPieces.get(1).piece})
@@ -595,19 +595,19 @@ function othDeviceMoveWhite() {
     }
     // If whites move gives enpassant possibility to whiteTimer
     if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece === piePat + "P.png") {
-        moveMent.wenpassant = toIndex+8
-        galeryModel.set(moveMent.wenpassant,{"color":"wp"})
+        wenpassant = toIndex+8
+        galeryModel.set(wenpassant,{"color":"wp"})
     }
     // If black gives enpassant possibility and it is utilized let's print a board accordingly
-    if (toIndex != -1 && toIndex == moveMent.benpassant && galeryModel.get(toIndex).piece === piePat + "P.png") {
+    if (toIndex != -1 && toIndex == benpassant && galeryModel.get(toIndex).piece === piePat + "P.png") {
         galeryModel.set((toIndex+8),{"color":"e", "piece":piePat + "empty.png"});
-        moveMent.currentMove = "enpassant";
-        moveMent.benpassant = -1;
+        currentMove = "enpassant";
+        benpassant = -1;
     }
     // Adding moves to captures list
-    if (moveMent.currentMove == "enpassant") {
+    if (currentMove == "enpassant") {
         blackCaptured.append({"captured":piePat + "p.png"});
-        moveMent.currentMove = "";
+        currentMove = "";
     }
     if (movedPieces.get(1).piece !== piePat + "empty.png") {
         blackCaptured.append({"captured":movedPieces.get(1).piece})
@@ -803,8 +803,8 @@ function moveBack() {
 
 
     //feni.chessIsOn = false;// is this needed
-    //moveMent.midSquareCheckki = false;// is this needed
-    //moveMent.currentMove = "";// is this needed
+    //midSquareCheckki = false;// is this needed
+    //currentMove = "";// is this needed
 
 
     movesNoScanned--; //
@@ -814,12 +814,12 @@ function moveBack() {
     feni.feniBkingInd = allMoves.get(movesNoScanned).bKingInd
 
     // Set true if king moved
-    moveMent.wKingMoved = allMoves.get(movesNoScanned).wkingmoved
-    moveMent.bKingMoved = allMoves.get(movesNoScanned).bkingmoved
+    wKingMoved = allMoves.get(movesNoScanned).wkingmoved
+    bKingMoved = allMoves.get(movesNoScanned).bkingmoved
 
     // Set true if castling possible
-    moveMent.castlingWpossible = allMoves.get(movesNoScanned).wcastlingPos
-    moveMent.castlingBpossible = allMoves.get(movesNoScanned).bcastlingPos
+    castlingWpossible = allMoves.get(movesNoScanned).wcastlingPos
+    castlingBpossible = allMoves.get(movesNoScanned).bcastlingPos
 
     // Setting previous move values for enpassant to enable the enpassant move
     if (allMoves.get(movesNoScanned).enpColor !== "e" && allMoves.get(movesNoScanned).enpInd > 0){
@@ -875,12 +875,12 @@ function moveForward () {
     feni.feniBkingInd = allMoves.get(movesNoScanned).bKingInd
 
     // Set true if king moved
-    moveMent.wKingMoved = allMoves.get(movesNoScanned).wkingmoved
-    moveMent.bKingMoved = allMoves.get(movesNoScanned).bkingmoved
+    wKingMoved = allMoves.get(movesNoScanned).wkingmoved
+    bKingMoved = allMoves.get(movesNoScanned).bkingmoved
 
     // Set true if castling possible
-    moveMent.castlingWpossible = allMoves.get(movesNoScanned).wcastlingPos
-    moveMent.castlingBpossible = allMoves.get(movesNoScanned).bcastlingPos
+    castlingWpossible = allMoves.get(movesNoScanned).wcastlingPos
+    castlingBpossible = allMoves.get(movesNoScanned).bcastlingPos
 
     // Returning time values
     if (allMoves.get(movesNoScanned).movedColor === "w"){

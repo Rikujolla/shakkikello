@@ -3,18 +3,18 @@
 // _doVisual is used to differ real moves and various tests
 /////////////////////////////////////////////////////////////////////
 
-function isMovable(_doVisual, _colorTobemoved) {
+function isMovable(_doVisual) {
     //console.log("movelegal", _doVisual, _colorTobemoved)
-    if (_colorTobemoved === "b" && tilat.musta) {
-        moveMent.canBemoved = true;
+    if (colorTobemoved === "b" && tilat.musta) {
+        canBemoved = true;
         galeryModel.set(fromIndex,{"frameop":100});
     }
-    else if (_colorTobemoved === "w" && tilat.valko) {
-        moveMent.canBemoved = true;
+    else if (colorTobemoved === "w" && tilat.valko) {
+        canBemoved = true;
         galeryModel.set(fromIndex,{"frameop":100});
     }
     else {
-        moveMent.canBemoved = false;
+        canBemoved = false;
     }
 }
 
@@ -22,7 +22,7 @@ function isMovable(_doVisual, _colorTobemoved) {
 // This function determines legal moves
 ////////////////////////////////////////
 
-function isLegalmove_C() {
+function isLegalmove() {
     switch (itemMoved) {
     case piePat + "p.png":  // Black pawn
         // Normal move
@@ -31,7 +31,7 @@ function isLegalmove_C() {
             if (toIndex > 55 && !chessTest) {
                 waitPromo = true
                 turnWhite = false
-                pawnPromotion();
+                moveMent.pawnPromotion();
                 itemMoved = piePat + "p.png";
                 currentMove = "promotion";
                 movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
@@ -60,7 +60,7 @@ function isLegalmove_C() {
                 if (toIndex > 55 && !chessTest) {
                     waitPromo = true
                     turnWhite = false
-                    pawnPromotion()
+                    moveMent.pawnPromotion()
                     itemMoved = piePat + "p.png"
                     currentMove = "promotion";
                     movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
@@ -96,7 +96,7 @@ function isLegalmove_C() {
             if (toIndex < 8 && !chessTest) {
                 waitPromo = true
                 turnWhite = true
-                pawnPromotion()
+                moveMent.pawnPromotion()
                 itemMoved = piePat + "P.png"
                 currentMove = "promotion";
                 movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
@@ -125,7 +125,7 @@ function isLegalmove_C() {
                 if (toIndex < 8 && !chessTest) {
                     waitPromo = true
                     turnWhite = true
-                    pawnPromotion()
+                    moveMent.pawnPromotion()
                     itemMoved = piePat + "P.png"
                     currentMove = "promotion";
                     movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
@@ -253,8 +253,8 @@ function isLegalmove_C() {
                    moveLegal = true; intLegal = 1;
                }
                else if (toIndex > fromIndex +8) {
-                   toHelpIndex = toIndex-8;
-                   moveLegalHelp = true;
+                   var toHelpIndex = toIndex-8;
+                   var moveLegalHelp = true;
                    while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
                        if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
                             || galeryModel.get(toHelpIndex).color === "bp") {
