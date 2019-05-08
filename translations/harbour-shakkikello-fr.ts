@@ -164,7 +164,7 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Réinitialiser</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -535,7 +535,7 @@
     <name>funktiot</name>
     <message>
         <source>Reset</source>
-        <translation>Réinitialisation</translation>
+        <translation type="unfinished">Réinitialiser</translation>
     </message>
 </context>
 <context>

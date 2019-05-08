@@ -169,12 +169,13 @@ function fenToGRID() {
 ///////////////////////////////////////////////////////////////////////////////////////
 
 function isChess() {
+    var doVisual = false;
     feni.feniWhiteChess = false;
     feni.feniBlackChess = false;
     chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
-    for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
+    for(var i = 0; i < 64; i = i+1){
         if (tilat.valko) {
             toIndex=feni.feniWkingInd;
         }
@@ -182,14 +183,13 @@ function isChess() {
             toIndex=feni.feniBkingInd;
         }
 
-        fromIndex = feni.ax;
+        fromIndex = i;
 
-        if (tilat.valko && galeryModel.get(feni.ax).color === "b"
-                || tilat.musta && galeryModel.get(feni.ax).color === "w") {
-            canBemoved = true;  //palautettava falseksi joskus??
-            itemMoved=galeryModel.get(feni.ax).piece;
-            moveMent.sameColor();
-            Mymove.isLegalmove();
+        if (tilat.valko && galeryModel.get(i).color === "b"
+                || tilat.musta && galeryModel.get(i).color === "w") {
+            //canBemoved = true;  //palautettava falseksi joskus??
+            //itemMoved=galeryModel.get(i).piece;
+            Mymove.isLegalmove(doVisual, fromIndex, toIndex, galeryModel.get(i).piece);
             if (moveLegal){
                 feni.chessIsOn = true; //
             }
@@ -271,12 +271,13 @@ function cancelMove() {
 ///////////////////////////////////////////////////////////////////////////////////////
 
 function isChessPure() {
+    var doVisual = false;
     feni.feniWhiteChess = false;
     feni.feniBlackChess = false;
     chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
-    for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
+    for(var i = 0; i < 64; i = i+1){
         if (tilat.valko) {
             toIndex=feni.feniWkingInd;
         }
@@ -284,13 +285,13 @@ function isChessPure() {
             toIndex=feni.feniBkingInd;
         }
 
-        fromIndex = feni.ax;
+        fromIndex = i;
 
-        if (tilat.valko && galeryModel.get(feni.ax).color === "b") {
-            canBemoved = true;  //
-            itemMoved=galeryModel.get(feni.ax).piece;
-            moveMent.sameColor();
-            Mymove.isLegalmove();
+        if (tilat.valko && galeryModel.get(i).color === "b") {
+            //canBemoved = true;  //
+            //itemMoved=galeryModel.get(i).piece;
+            //Mymove.sameColor(fromIndex, toIndex);
+            Mymove.isLegalmove(doVisual, fromIndex, toIndex, galeryModel.get(i).piece);
             if (moveLegal){
                 feni.feniWhiteChess = true;
                 if (isMyStart) {
@@ -302,11 +303,11 @@ function isChessPure() {
             }
         }
 
-        else if (tilat.musta && galeryModel.get(feni.ax).color === "w") {
-            canBemoved = true;  //To enable the tests
-            itemMoved=galeryModel.get(feni.ax).piece;
-            moveMent.sameColor();
-            Mymove.isLegalmove();
+        else if (tilat.musta && galeryModel.get(i).color === "w") {
+            //canBemoved = true;  //To enable the tests
+            //itemMoved=galeryModel.get(i).piece;
+            //Mymove.sameColor(fromIndex, toIndex);
+            Mymove.isLegalmove(doVisual, fromIndex, toIndex, galeryModel.get(i).piece);
             if (moveLegal){
                 feni.feniBlackChess = true;
                 if (isMyStart) {
@@ -323,7 +324,7 @@ function isChessPure() {
     toIndex = feni.temptoIndex;
     fromIndex = feni.tempfromIndex;
     // Resetting values to defaults after checks
-    canBemoved = false;
+    //canBemoved = false;
     moveLegal = false;
     chessTest = false;
 
@@ -335,29 +336,30 @@ function isChessPure() {
 ///////////////////////////////////////////////////////////////////////////////////////
 
 function midSquareCheck() {
+    var doVisual = false;
     chessTest = true;
     feni.temptoIndex = toIndex;
     feni.tempfromIndex = fromIndex;
-    for(feni.ax = 0; feni.ax < 64; feni.ax = feni.ax+1){
+    for(var i = 0; i < 64; i = i+1){
         toIndex = midSquareInd;
 
-        fromIndex = feni.ax;
+        fromIndex = i;
 
-        if (tilat.valko && galeryModel.get(feni.ax).color === "b") {
-            canBemoved = true;  //
-            itemMoved=galeryModel.get(feni.ax).piece;
-            moveMent.sameColor();
-            Mymove.isLegalmove();
+        if (tilat.valko && galeryModel.get(i).color === "b") {
+            //canBemoved = true;  //
+            //itemMoved=galeryModel.get(i).piece;
+            //Mymove.sameColor(fromIndex, toIndex);
+            Mymove.isLegalmove(doVisual, fromIndex, toIndex, galeryModel.get(i).piece);
             if (moveLegal){
                 midSquareCheckki = true;
             }
         }
 
-        else if (tilat.musta && galeryModel.get(feni.ax).color === "w") {
-            canBemoved = true;  //To enable the tests
-            itemMoved=galeryModel.get(feni.ax).piece;
-            moveMent.sameColor();
-            Mymove.isLegalmove();
+        else if (tilat.musta && galeryModel.get(i).color === "w") {
+            //canBemoved = true;  //To enable the tests
+            //itemMoved=galeryModel.get(i).piece;
+            //Mymove.sameColor(fromIndex, toIndex);
+            Mymove.isLegalmove(doVisual, fromIndex, toIndex, galeryModel.get(i).piece);
             if (moveLegal){
                 midSquareCheckki = true;
             }
@@ -367,7 +369,7 @@ function midSquareCheck() {
     toIndex = feni.temptoIndex;
     fromIndex = feni.tempfromIndex;
     // Resetting values to defaults after checks
-    canBemoved = false;
+    //canBemoved = false;
     moveLegal = false;
     chessTest = false;
     feni.midSquareTestDone = true;
@@ -495,8 +497,26 @@ function recordMove() {
 function iswhiteInMate() {
     //console.log(opsi.movesTotal)
     var whiteInMateTest = true;
+    var doVisual = 0;
+    var isLegalmove_bool = false;
     for(var i = 0; i < 64; i++){
-
+        if (galeryModel.get(i).color === "w") {
+            for(var j = 0; j < 64; j++){
+                if (galeryModel.get(j).color === "b" || galeryModel.get(j).color === "e"){
+                    //console.log ("Check if the move is legal", moveLegal)
+                    //Mymove.isLegalmove(doVisual, isLegalmove_bool, i, j)
+                    if (Mymove.isLegalmove(doVisual, i, j, galeryModel.get(i).piece) === true && whiteInMateTest === true) {
+                        console.log ("Move is legal", i, j, galeryModel.get(i).piece);
+                        whiteInMateTest = false;
+                        i = 64;
+                        break;
+                    }
+                    else if (i===63 && j===63) {
+                        console.log("Mate");
+                    }
+                }
+            }
+        }
     }
     if (whiteInMateTest) {
         //console.log("White is in mate")

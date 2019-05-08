@@ -535,7 +535,7 @@
     <name>funktiot</name>
     <message>
         <source>Reset</source>
-        <translation>Visszaállítás</translation>
+        <translation type="unfinished">Visszaállítás</translation>
     </message>
 </context>
 <context>

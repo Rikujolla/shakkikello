@@ -57,6 +57,7 @@ Page {
 
     property int fromIndex : -1
     property int toIndex : -1
+    property bool moveStarted : false
 ///////TBD
     property int indeksi;
     //property int toHelpIndex; //for checking empty midsquares for bishop, rook and queen
@@ -66,16 +67,16 @@ Page {
     property string colorTobemoved;
     property string itemMoved;
     property string colorMoved;
-    property bool canBemoved: false; //True if the piece can be moved somewhere
+    //property bool canBemoved: false; //True if the piece can be moved somewhere
     property bool moveLegal: false; //True if the move to the destination is possible
-    property int intLegal: -1; //this is an unneeded variable
+    //property int intLegal: -1; //this is an unneeded variable
     //property bool moveLegalHelp; //for checking empty midsquares for bishop, rook and queen
-    property int rowfromInd; // This ind to help diagonal moves checks
-    property int colfromInd; // This ind to help diagonal moves checks
-    property int rowtoInd; // This ind to help diagonal moves checks
-    property int coltoInd; // This ind to help diagonal moves checks
-    property int fromParity; // This ind to help diagonal moves checks
-    property int toParity; // This ind to help diagonal moves checks
+    //property int rowfromInd; // This ind to help diagonal moves checks
+    //property int colfromInd; // This ind to help diagonal moves checks
+    //property int rowtoInd; // This ind to help diagonal moves checks
+    //property int coltoInd; // This ind to help diagonal moves checks
+    //property int fromParity; // This ind to help diagonal moves checks
+    //property int toParity; // This ind to help diagonal moves checks
     property bool chessTest: false; // Flag if chess is tested, prevents pawn promotion
     property bool castlingWpossible: true; // Check if White castling is possible
     property bool castlingBpossible: true; // Check if Black castling is possible
@@ -190,7 +191,7 @@ Page {
                 property bool feniCancelMove: false;
                 property int temptoIndex;
                 property int tempfromIndex;
-                property int ax; // for looping
+                //property int ax; // for looping
                 property string upperMessage: ""
                 property string lowerMessage: ""
                 property var messages: [{msg:qsTr("Check!")},
@@ -775,14 +776,14 @@ Page {
                 ///////////////////////////////////////////////////////////////////////////
                 // This function checks if fromIndex and toIndex are on same color
                 ///////////////////////////////////////////////////////////////////////////
-                function sameColor() {
+                /*function sameColor() {
                     rowfromInd = 8-(fromIndex-fromIndex%8)/8;
                     colfromInd = fromIndex%8+1;
                     fromParity = (rowfromInd + colfromInd)%2;
                     rowtoInd = 8-(toIndex-toIndex%8)/8;
                     coltoInd = toIndex%8+1;
                     toParity = (rowtoInd + coltoInd)%2;
-                }
+                }*/
 
 /*                /////////////////////////////////////////////////////////////////////
                 // Function isMovable() checks whether the square has a movable piece
@@ -1828,24 +1829,26 @@ Page {
                 ////////////////////////////////////////////////////
 
                 function movePiece() {
-                    if (!moveStarted) { //Need for global property??
+                    if (!moveStarted) {
                         fromIndex=indeksi;
                         toIndex=indeksi;
-                        var doVisual = 1 //Determines that is not test to enable visual effects
-                        Mymove.isMovable(doVisual);
-                        if (canBemoved){
+                        //var doVisual = true //Determines that is not test to enable visual effects
+                        //var isLegalmove_bool = false;
+                        //Mymove.isMovable(doVisual);
+                        if (Mymove.isMovable(fromIndex)){
                             itemMoved=itemTobemoved;
                             moveStarted=!moveStarted;
                             colorMoved=colorTobemoved;
-                            canBemoved=false;
+                            //canBemoved=false;
                         }
                     }
                     else {
                         toIndex=indeksi;
                         galeryModel.set(fromIndex,{"frameop":0}); // Better performance needed
                         // here fomParity and toParity checks
-                        sameColor(); // Checks if fromIndex and toIndex are same color
-                        Mymove.isLegalmove();
+                        //Mymove.sameColor(fromIndex, toIndex); // Checks if fromIndex and toIndex are same color
+                        var doVisual = true;
+                        Mymove.isLegalmove(doVisual, fromIndex, toIndex, itemMoved);
                         if (moveLegal){
                             // Saving position before move to possiple cancellation of a move
                             movedPieces.set(0,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece moved
@@ -2079,6 +2082,7 @@ Page {
                             width: grid.cellWidth
                             enabled: (feni.feniWhite && isMyStart || feni.feniBlack && !isMyStart || playMode == "human") && tilat.juoksee
                             onClicked: {indeksi = index;
+                                console.log(index);
                                 itemTobemoved = piece;
                                 colorTobemoved = color;
                                 moveMent.movePiece();

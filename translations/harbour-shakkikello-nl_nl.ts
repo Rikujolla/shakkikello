@@ -535,7 +535,7 @@
     <name>funktiot</name>
     <message>
         <source>Reset</source>
-        <translation>Standaardwaarden</translation>
+        <translation type="unfinished">Herstellen</translation>
     </message>
 </context>
 <context>
