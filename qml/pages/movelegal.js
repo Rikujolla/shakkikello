@@ -2,7 +2,7 @@
 // Function isMovable() checks whether the square has a movable piece
 /////////////////////////////////////////////////////////////////////
 
-function isMovable(_fromIndex) {
+function isMovable(_fromIndex, _state) {
     var _canBemoved = false;
     if (colorTobemoved === "b" && tilat.musta) {
         _canBemoved = true;
@@ -15,6 +15,9 @@ function isMovable(_fromIndex) {
     else {
         _canBemoved = false;
     }
+    var _state2 = _state
+    console.log("sub",_state2[_fromIndex].color, _state2[_fromIndex].piece, _state2[_fromIndex].frameop, _state2[_fromIndex].recmove)
+
     return _canBemoved;
 }
 
@@ -22,7 +25,7 @@ function isMovable(_fromIndex) {
 // This function determines legal moves
 ////////////////////////////////////////
 
-function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved) {
+function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved, _state) {
 
     var _moveLegal = false;
 
@@ -39,14 +42,16 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved) {
         // Normal move
         if (((_fromIndex-_toIndex) == -8) && galeryModel.get(_toIndex).color === "e") {
             _moveLegal = true;
-            if (_toIndex > 55 && !chessTest) {
+            if (_toIndex > 55 && doVisual) {
                 waitPromo = true
-                turnWhite = false
-                moveMent.pawnPromotion();
+                var promotionObject
+                if (promotionObject) {console.log(promotionObject)} else {console.log("Not Yet")}
+                promotionObject = Qt.createComponent("Promotion.qml").createObject(page, {pro_piece: piePat + "p.png", pro_color:"b", pro_index: _fromIndex, turn_White: false});
                 itemMoved = piePat + "p.png";
                 currentMove = "promotion";
-                movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":_fromIndex})
-                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                console.log(promotionObject)
+                //movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":_fromIndex})
+                //movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
             }
         }
         // Move of two rows from the start position
@@ -68,14 +73,13 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved) {
             if ((galeryModel.get(_toIndex).color === "w")
                     ){
                 _moveLegal = true;
-                if (_toIndex > 55 && !chessTest) {
+                if (_toIndex > 55 && doVisual) {
                     waitPromo = true
-                    turnWhite = false
-                    moveMent.pawnPromotion()
+                    Qt.createComponent("Promotion.qml").createObject(page, {pro_piece: piePat + "p.png", pro_color:"b", pro_index: _fromIndex, turn_White: false});
                     itemMoved = piePat + "p.png"
                     currentMove = "promotion";
-                    movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":_fromIndex})
-                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                    //movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":_fromIndex})
+                    //movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                 }
             }
             // En passant
@@ -104,14 +108,13 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved) {
         // Normal move
         if (((_fromIndex-_toIndex) == 8) && galeryModel.get(_toIndex).color === "e") {
             _moveLegal = true;
-            if (_toIndex < 8 && !chessTest) {
+            if (_toIndex < 8 && doVisual) {
                 waitPromo = true
-                turnWhite = true
-                moveMent.pawnPromotion()
+                Qt.createComponent("Promotion.qml").createObject(page, {pro_piece: piePat + "P.png", pro_color:"w", pro_index: _fromIndex, turn_White: true});
                 itemMoved = piePat + "P.png"
                 currentMove = "promotion";
-                movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":_fromIndex})
-                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                //movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":_fromIndex})
+                //movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
             }
         }
         // Move of two rows from the start position
@@ -133,14 +136,13 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved) {
             if ((galeryModel.get(_toIndex).color === "b")
                     ){
                 _moveLegal = true;
-                if (_toIndex < 8 && !chessTest) {
+                if (_toIndex < 8 && doVisual) {
                     waitPromo = true
-                    turnWhite = true
-                    moveMent.pawnPromotion()
+                    Qt.createComponent("Promotion.qml").createObject(page, {pro_piece: piePat + "P.png", pro_color:"w", pro_index: _fromIndex, turn_White: true});
                     itemMoved = piePat + "P.png"
                     currentMove = "promotion";
-                    movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":_fromIndex})
-                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                    //movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":_fromIndex})
+                    //movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                 }
             }
             // En passant
@@ -176,7 +178,7 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved) {
             // Castling short
         else if ((_toIndex == 6) && galeryModel.get(6).color === "e"
                  && galeryModel.get(5).color === "e" && _fromIndex == 4
-                 && castlingBpossible && !feni.feniBlackChess
+                 && castlingBpossible && !feniBlackChess
                  && !bKingMoved) {
             _moveLegal = true;
             galeryModel.set((5),{"color":"b", "piece":piePat + "r.png"});
@@ -192,7 +194,7 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved) {
         else if ((_toIndex == 2) && galeryModel.get(2).color === "e"
                  && galeryModel.get(3).color === "e" && galeryModel.get(1).color === "e"
                  && _fromIndex == 4
-                 && castlingBpossible && !feni.feniBlackChess
+                 && castlingBpossible && !feniBlackChess
                  && !bKingMoved) {
             _moveLegal = true;
             galeryModel.set((3),{"color":"b", "piece":piePat + "r.png"});
@@ -221,7 +223,7 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved) {
             else if ((_toIndex == 62) && galeryModel.get(62).color === "e"
                         && galeryModel.get(61).color === "e"
                         && _fromIndex == 60
-                        && castlingWpossible && !feni.feniWhiteChess
+                        && castlingWpossible && !feniWhiteChess
                         && !wKingMoved) {
                     _moveLegal = true;
                     galeryModel.set((61),{"color":"w", "piece":piePat + "R.png"});
@@ -237,7 +239,7 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved) {
             else if ((_toIndex == 58) && galeryModel.get(58).color === "e"
                         && galeryModel.get(59).color === "e" && galeryModel.get(57).color === "e"
                         && _fromIndex == 60
-                        && castlingWpossible && !feni.feniWhiteChess
+                        && castlingWpossible && !feniWhiteChess
                         && !wKingMoved) {
                     _moveLegal = true;
                     galeryModel.set((59),{"color":"w", "piece":piePat + "R.png"});
@@ -1046,7 +1048,6 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved) {
     default:
         _moveLegal = false;
     }
-    moveLegal = _moveLegal;
     return _moveLegal;
 
 }

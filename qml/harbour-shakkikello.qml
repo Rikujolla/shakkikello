@@ -61,10 +61,9 @@ ApplicationWindow
     property int pieceStyle: 0 // 0 = Unlike style, 1 = Classic style
     property string piePat: "images/piece0/" // Piece sub path
     property string startPageTxt : "pages/Clockview.qml"
-    property bool waitPromo : false //if promotion needs to be wait
-    property string promotedLong: ""
-    property string promotedShort: "q"
-    property bool turnWhite  // used for promotion
+    property bool waitPromo : false //if promotion needs to be wait TBlocalised?
+    property string promotedLong: "" //TBlocalised?
+    property string promotedShort: "q" // TBlocalised?
     property int selectedGame: -1 //Used for game selection
     property string movesDone: ""; //saves done moves to single string eg. e2e4d7d5
     property string movesDon: ""; //temporary length for testing
