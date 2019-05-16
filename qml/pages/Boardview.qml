@@ -58,26 +58,15 @@ Page {
     property int fromIndex : -1
     property int toIndex : -1
     property bool moveStarted : false
-///////TBD
     property int indeksi;
-    //property int toHelpIndex; //for checking empty midsquares for bishop, rook and queen
     property int wenpassant: -1; //White gives enpassant possibility, board index number
     property int benpassant: -1; //Black gives enpassant possibility, board index number
     property string itemTobemoved;
     property string colorTobemoved;
     property string itemMoved;
     property string colorMoved;
-    //property bool canBemoved: false; //True if the piece can be moved somewhere
     property bool moveLegal: false; //True if the move to the destination is possible
-    //property int intLegal: -1; //this is an unneeded variable
-    //property bool moveLegalHelp; //for checking empty midsquares for bishop, rook and queen
-    //property int rowfromInd; // This ind to help diagonal moves checks
-    //property int colfromInd; // This ind to help diagonal moves checks
-    //property int rowtoInd; // This ind to help diagonal moves checks
-    //property int coltoInd; // This ind to help diagonal moves checks
-    //property int fromParity; // This ind to help diagonal moves checks
-    //property int toParity; // This ind to help diagonal moves checks
-    property bool chessTest: false; // Flag if chess is tested, prevents pawn promotion
+    //property bool chessTest: false; // Flag if chess is tested, prevents pawn promotion
     property bool castlingWpossible: true; // Check if White castling is possible
     property bool castlingBpossible: true; // Check if Black castling is possible
     property string currentMove: ""; // Values castling, wenpassant or promotion
@@ -86,7 +75,37 @@ Page {
     property int midSquareInd  // Used for castling test
     property bool midSquareCheckki: false; // Used for castling check
 
-///////    TBD
+    property bool feniBlackReady:false;
+    property bool feniBlackReady2:false;
+    property bool feniWhiteReady:false;
+    property bool feniWhiteReady2:false;
+    property int feniHelper; // To be localised by var in the function
+    property bool feniBlack:false; //tells if it is blacks turn
+    property bool feniWhite:false; // tells if it is Whites turn
+    property bool stockfishFirstmove: false
+    property bool feniWhiteChess: false;
+    property bool feniBlackChess: false;
+    property bool chessIsOn: false;
+    property bool forChessCheck: false;
+    property int feniWkingInd: 60;
+    property int feniBkingInd: 4;
+    property string upperMessage: ""
+    property string lowerMessage: ""
+    property var messages: [{msg:qsTr("Check!")},
+        {msg:qsTr("Checkmate!")},
+        {msg:qsTr("Stalemate!")},
+        {msg:qsTr("White won!")},
+        {msg:qsTr("Black won!")}
+    ]
+
+    property var current_state: [] // current state of the board
+    property var test_state: [] // test state of the board
+
+    property bool chessTestDone: false;
+    property bool midSquareTestDone: false;
+    //property bool waitPromo : false //if promotion needs to be wait TBlocalised?
+    //property string promotedLong: "" //TBlocalised?
+    //property string promotedShort: "q" // TBlocalised?
 
     SilicaFlickable {
         anchors.fill: parent
@@ -170,41 +189,6 @@ Page {
             spacing: 0
 
             Item {
-                id: feni
-                property string startFeni;
-                property string stopFeni;
-                property bool feniBlackReady:false;
-                property bool feniBlackReady2:false;
-                property bool feniWhiteReady:false;
-                property bool feniWhiteReady2:false;
-                property int feniHelper;
-                property string stringHelper;
-                property bool feniBlack:false; //tells if it is blacks turn
-                property bool feniWhite:false; // tells if it is Whites turn
-                property bool stockfishFirstmove: false
-                property bool feniWhiteChess: false;
-                property bool feniBlackChess: false;
-                property bool chessIsOn: false;
-                property bool forChessCheck: false;
-                property int feniWkingInd: 60;
-                property int feniBkingInd: 4;
-                property bool feniCancelMove: false;
-                property int temptoIndex;
-                property int tempfromIndex;
-                //property int ax; // for looping
-                property string upperMessage: ""
-                property string lowerMessage: ""
-                property var messages: [{msg:qsTr("Check!")},
-                    {msg:qsTr("Checkmate!")},
-                    {msg:qsTr("Stalemate!")},
-                    {msg:qsTr("White won!")},
-                    {msg:qsTr("Black won!")}
-                ]
-                property bool chessTestDone: false;
-                property bool midSquareTestDone: false;
-            }
-
-            Item {
                 id:opsi
                 property string openingCompare: "";
                 property string openingSelected: "";
@@ -212,7 +196,6 @@ Page {
                 property string tymp: "" //temporary
                 property int movesTotal: 0; //Records moves done
                 property bool openingPossible: false; // Tells if opening possible
-                property int yx //index for for, maybe not needed in future, replace by var i
                 property int rantomi; //random number for opening selection
                 property var selOpenings: []; //array for sel openings
                 // Openings collected from various web pages. Main source is https://en.wikipedia.org/wiki/List_of_chess_openings
@@ -474,40 +457,38 @@ Page {
             Item {
                 id : vuoro
                 function vaihdaMustalle() {
-                    if (tilat.musta == true) {} else {
+                    if (tilat.valko == false) {} else {
                         startti.timeAsetus();
-                        tilat.musta = !tilat.musta; tilat.valko = !tilat.valko;
+                        tilat.valko = false;
                         whiteTimeTotal_temp = whiteTimeTotal;
                         valkokello.timeValko();
                         valkokello.updateValko();
-                        feni.feniWhite = false;
-                        feni.feniBlack = true;
-                        feni.feniBlackReady = true;
+                        feniWhite = false;
+                        feniBlack = true;
+                        feniBlackReady = true;
                     }
                 }
                 function vaihdaValkealle() {
                     if (tilat.valko == true) {} else {
                         startti.timeAsetus();
-                        tilat.musta = !tilat.musta; tilat.valko = !tilat.valko;
+                        tilat.valko = true;
                         blackTimeTotal_temp = blackTimeTotal;
                         muttakello.timeMutta();
                         muttakello.updateMutta();
-                        feni.feniWhite = true
-                        feni.feniBlack = false;
-                        feni.feniWhiteReady = true;
+                        feniWhite = true
+                        feniBlack = false;
+                        feniWhiteReady = true;
                     }
                 }
             }
 
             Item {
                 id : tilat
-                property bool musta
-                property bool valko
+                property bool valko //Checks if white turn or not
                 property bool juoksee
                 property bool pelialkoi : false
                 property bool peliloppui : false
                 function asetaTilat() {
-                    musta = false
                     valko = true
                     juoksee = false
                     pelialkoi = false
@@ -606,37 +587,6 @@ Page {
                 }
             }
 
-            /*Item {
-                id : asetussivulle
-                function siirrytKo() {
-                    // Nollaus
-                    if (tilat.pelialkoi == true) {
-                        maharollisuuret = qsTr("Settings");
-                        tilat.asetaTilat();
-                        valkomax = 300;
-                        mustamax = 300;
-                        valkokello.sekuntitv0 = 0;
-                        valkokello.sekuntitv = 0;
-                        muttakello.sekuntitm0 = 0;
-                        muttakello.sekuntitm = 0;
-                        kello.sekuntit = 0;
-                        startti.timeAsetus();
-                        valkokello.updateValko();
-                        muttakello.updateMutta();
-                        tilat.peliloppui = false
-                        // Siirtyminen asetussivulle
-                    } else {
-                        valkokello.sekuntitv0 = 0;
-                        valkokello.sekuntitv = 0;
-                        muttakello.sekuntitm0 = 0;
-                        muttakello.sekuntitm = 0;
-                        kello.sekuntit = 0;
-                        tilat.peliloppui = false;
-                        pageStack.push(Qt.resolvedUrl("Settings.qml"))
-                    }
-                }
-            }*/
-
             Item {
                id : kello
                property int days
@@ -666,25 +616,36 @@ Page {
                         switch(koo) {
                         case 0:
                         case 7:
-                            galeryModel.set(koo,{"color":"b", "piece":piePat + "r.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"b", "piece":piePat + "r.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "r.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
+                            //console.log(current_state[koo].color)
                             koo=koo+1;
                             break;
                         case 1:
                         case 6:
-                            galeryModel.set(koo,{"color":"b", "piece":piePat + "n.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"b", "piece":piePat + "n.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "n.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 2:
                         case 5:
-                            galeryModel.set(koo,{"color":"b", "piece":piePat + "b.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"b", "piece":piePat + "b.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "b.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 3:
-                            galeryModel.set(koo,{"color":"b", "piece":piePat + "q.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"b", "piece":piePat + "q.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "q.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 4:
-                            galeryModel.set(koo,{"color":"b", "piece":piePat + "k.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"b", "piece":piePat + "k.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "k.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 8:
@@ -695,7 +656,9 @@ Page {
                         case 13:
                         case 14:
                         case 15:
-                            galeryModel.set(koo,{"color":"b", "piece":piePat + "p.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"b", "piece":piePat + "p.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "p.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 48:
@@ -706,1151 +669,87 @@ Page {
                         case 53:
                         case 54:
                         case 55:
-                            galeryModel.set(koo,{"color":"w", "piece":piePat + "P.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"w", "piece":piePat + "P.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "P.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 56:
                         case 63:
-                            galeryModel.set(koo,{"color":"w", "piece":piePat + "R.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"w", "piece":piePat + "R.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "R.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 57:
                         case 62:
-                            galeryModel.set(koo,{"color":"w", "piece":piePat + "N.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"w", "piece":piePat + "N.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "N.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 58:
                         case 61:
-                            galeryModel.set(koo,{"color":"w", "piece":piePat + "B.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"w", "piece":piePat + "B.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "B.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 59:
-                            galeryModel.set(koo,{"color":"w", "piece":piePat + "Q.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"w", "piece":piePat + "Q.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "Q.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 60:
-                            galeryModel.set(koo,{"color":"w", "piece":piePat + "K.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"w", "piece":piePat + "K.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "K.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         default:
-                            galeryModel.set(koo,{"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2});
+                            //galeryModel.set(koo,{"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2});
+                            galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                     }
                     }
+                    //https://stackoverflow.com/questions/7486085/copy-array-by-value
+                    test_state = JSON.parse(JSON.stringify(current_state)); //Make a deep copy of object array, normal copy will make a shallow copy
                 }
             }
 
+
             Item {
                 id:moveMent
-                //property int indeksi;
-                //property int toHelpIndex; //for checking empty midsquares for bishop, rook and queen
-                //property int wenpassant: -1; //White gives enpassant possibility, board index number
-                //property int benpassant: -1; //Black gives enpassant possibility, board index number
-                //property string itemTobemoved;
-                //property string colorTobemoved;
-                //property string itemMoved;
-                //property string colorMoved;
-                //property bool canBemoved: false; //True if the piece can be moved somewhere
-                //property bool moveLegal: false; //True if the move to the destination is possible
-                //property int intLegal: -1; //this is an unneeded variable
-                //property bool moveLegalHelp; //for checking empty midsquares for bishop, rook and queen
-                //property int rowfromInd; // This ind to help diagonal moves checks
-                //property int colfromInd; // This ind to help diagonal moves checks
-                //property int rowtoInd; // This ind to help diagonal moves checks
-                //property int coltoInd; // This ind to help diagonal moves checks
-                //property int fromParity; // This ind to help diagonal moves checks
-                //property int toParity; // This ind to help diagonal moves checks
-                //property bool chessTest: false; // Flag if chess is tested, prevents pawn promotion
-                //property bool castlingWpossible: true; // Check if White castling is possible
-                //property bool castlingBpossible: true; // Check if Black castling is possible
-                //property string currentMove: ""; // Values castling, wenpassant or promotion
-                //property bool wKingMoved: false; // To record this for castling checks
-                //property bool bKingMoved: false; // To record this for castling checks
-                //property int midSquareInd  // Used for castling test
-                //property bool midSquareCheckki: false; // Used for castling check
-                // Pawn is promoted to queen now
-                function pawnPromotion() {
-                    Qt.createComponent("Promotion.qml").createObject(page, {});
-                    // one possibility to have the pawnpromotion dialog
-                }
-                ///////////////////////////////////////////////////////////////////////////
-                // This function checks if fromIndex and toIndex are on same color
-                ///////////////////////////////////////////////////////////////////////////
-                /*function sameColor() {
-                    rowfromInd = 8-(fromIndex-fromIndex%8)/8;
-                    colfromInd = fromIndex%8+1;
-                    fromParity = (rowfromInd + colfromInd)%2;
-                    rowtoInd = 8-(toIndex-toIndex%8)/8;
-                    coltoInd = toIndex%8+1;
-                    toParity = (rowtoInd + coltoInd)%2;
-                }*/
-
-/*                /////////////////////////////////////////////////////////////////////
-                // Function isMovable() checks whether the square has a movable piece
-                /////////////////////////////////////////////////////////////////////
-
-                function isMovable(_doVisual) {
-                    console.log(_doVisual)
-                    if (colorTobemoved == "b" && tilat.musta) {
-                        canBemoved = true;
-                        galeryModel.set(fromIndex,{"frameop":100});
-                    }
-                    else if (colorTobemoved == "w" && tilat.valko) {
-                        canBemoved = true;
-                        galeryModel.set(fromIndex,{"frameop":100});
-                    }
-                    else {
-                        canBemoved = false;
-                    }
-                }  */
-                ////////////////////////////////////////
-                // This function determines legal moves
-                ////////////////////////////////////////
-
-                /*function isLegalmove_old() {
-                    switch (itemMoved) {
-                    case piePat + "p.png":  // Black pawn
-                        // Normal move
-                        if (((fromIndex-toIndex) == -8) && galeryModel.get(toIndex).color === "e") {
-                            moveLegal = true; intLegal = 1;
-                            if (toIndex > 55 && !chessTest) {
-                                waitPromo = true
-                                turnWhite = false
-                                pawnPromotion();
-                                itemMoved = piePat + "p.png";
-                                currentMove = "promotion";
-                                movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
-                                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            }
-                        }
-                        // Move of two rows from the start position
-                        else if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).color === "e"
-                                 && galeryModel.get(toIndex-8).color === "e"
-                                 && (fromIndex < 16)) {
-                            moveLegal = true; intLegal = 1;
-                            benpassant = toIndex-8;
-                            galeryModel.set(benpassant,{"color":"bp"})
-                            movedPieces.set(0,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            movedPieces.set(1,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            movedPieces.set(4,{"color":"bp", "piece":piePat + "empty.png", "indeksos":benpassant}) //Set enpassant values
-                        }
-                        // Capturing a piece
-                        else if (((fromIndex-toIndex) == -7) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1
-                                 || ((fromIndex-toIndex) == -9) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1) {
-                            if ((galeryModel.get(toIndex).color === "w")
-                                    ){
-                                moveLegal = true; intLegal = 1;
-                                if (toIndex > 55 && !chessTest) {
-                                    waitPromo = true
-                                    turnWhite = false
-                                    pawnPromotion()
-                                    itemMoved = piePat + "p.png"
-                                    currentMove = "promotion";
-                                    movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
-                                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                                }
-                            }
-                            // En passant
-                            else if (galeryModel.get(toIndex).color === "wp") {
-                                moveLegal = true;
-                                galeryModel.set((toIndex-8),{"color":"e", "piece":piePat + "empty.png"});
-                                currentMove = "enpassant";
-                                movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":toIndex-8})
-                                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                                wenpassant = -1;
-                            }
-                            else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                            }
-                        }
-
-                        else {
-                            moveStarted=false;
-                            fromIndex=-1;
-                            toIndex=-1;
-                        }
-                        break;
-                    case piePat + "P.png":
-                        // Normal move
-                        if (((fromIndex-toIndex) == 8) && galeryModel.get(toIndex).color === "e") {
-                            moveLegal = true; intLegal = 1;
-                            if (toIndex < 8 && !chessTest) {
-                                waitPromo = true
-                                turnWhite = true
-                                pawnPromotion()
-                                itemMoved = piePat + "P.png"
-                                currentMove = "promotion";
-                                movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
-                                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            }
-                        }
-                        // Move of two rows from the start position
-                        else if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).color === "e"
-                                 && galeryModel.get(toIndex+8).color === "e"
-                                 && (fromIndex > 47)) {
-                            moveLegal = true; intLegal = 1;
-                            wenpassant = toIndex+8;
-                            galeryModel.set(wenpassant,{"color":"wp"})
-                            movedPieces.set(0,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            movedPieces.set(1,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                            movedPieces.set(4,{"color":"wp", "piece":piePat + "empty.png", "indeksos":wenpassant}) //Set enpassant values
-                        }
-                        // Capturing a piece
-                        else if (((fromIndex-toIndex) == 7) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1
-                                 || ((fromIndex-toIndex) == 9) && Math.abs((toIndex+1-toIndex%8)/8-(fromIndex+1-fromIndex%8)/8) == 1) {
-                            if ((galeryModel.get(toIndex).color === "b")
-                                    ){
-                                moveLegal = true; intLegal = 1;
-                                if (toIndex < 8 && !chessTest) {
-                                    waitPromo = true
-                                    turnWhite = true
-                                    pawnPromotion()
-                                    itemMoved = piePat + "P.png"
-                                    currentMove = "promotion";
-                                    movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
-                                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                                }
-                            }
-                            // En passant
-                            else if (galeryModel.get(toIndex).color === "bp") {
-                                moveLegal = true;
-                                galeryModel.set((toIndex+8),{"color":"e", "piece":piePat + "empty.png"});
-                                currentMove = "enpassant";
-                                movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":toIndex+8})
-                                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                                benpassant = -1;
-                            }
-
-                            else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                            }
-                        }
-
-                        else {
-                            moveStarted=false;
-                            fromIndex=-1;
-                            toIndex=-1;
-                        }
-                        break;
-                    case piePat + "k.png":
-                        if (Math.abs(rowfromInd-rowtoInd) < 2
-                                && galeryModel.get(toIndex).color !== "b"
-                                && Math.abs(coltoInd-colfromInd) < 2
-                                ) {
-                                moveLegal = true; intLegal = 1; //intLegal not needed any more to be removed from code
-                        }
-                            // Castling short
-                        else if ((toIndex == 6) && galeryModel.get(6).color === "e"
-                                 && galeryModel.get(5).color === "e" && fromIndex == 4
-                                 && castlingBpossible && !feni.feniBlackChess
-                                 && !bKingMoved) {
-                            moveLegal = true; intLegal = 1;
-                            galeryModel.set((5),{"color":"b", "piece":piePat + "r.png"});
-                            galeryModel.set((7),{"color":"e", "piece":piePat + "empty.png"});
-                            currentMove = "castling";
-                            castlingBpossible = false;
-                            midSquareInd = 5;
-                            // Saving the moved pieces and positions for a possible cancel of the move
-                            movedPieces.set(2,{"color":"b", "piece":piePat + "r.png", "indeksos":7})
-                            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":5})
-                        }
-                            // Castling long
-                        else if ((toIndex == 2) && galeryModel.get(2).color === "e"
-                                 && galeryModel.get(3).color === "e" && galeryModel.get(1).color === "e"
-                                 && fromIndex == 4
-                                 && castlingBpossible && !feni.feniBlackChess
-                                 && !bKingMoved) {
-                            moveLegal = true; intLegal = 1;
-                            galeryModel.set((3),{"color":"b", "piece":piePat + "r.png"});
-                            galeryModel.set((0),{"color":"e", "piece":piePat + "empty.png"});
-                            currentMove = "castling";
-                            castlingBpossible = false;
-                            midSquareInd = 3;
-                            // Saving the moved pieces and positions for a possible cancel of the move
-                            movedPieces.set(2,{"color":"b", "piece":piePat + "r.png", "indeksos":0})
-                            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":3})
-                        }
-                        else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                        }
-                        break;
-                    case piePat + "K.png":
-                                if (Math.abs(rowfromInd-rowtoInd) < 2
-                                        && galeryModel.get(toIndex).color !== "w"
-                                        && Math.abs(coltoInd-colfromInd) < 2
-                                        ) {
-                                moveLegal = true;
-                            }
-                            // Castling kingside
-                            else if ((toIndex == 62) && galeryModel.get(62).color === "e"
-                                        && galeryModel.get(61).color === "e"
-                                        && fromIndex == 60
-                                        && castlingWpossible && !feni.feniWhiteChess
-                                        && !wKingMoved) {
-                                    moveLegal = true; intLegal = 1;
-                                    galeryModel.set((61),{"color":"w", "piece":piePat + "R.png"});
-                                    galeryModel.set((63),{"color":"e", "piece":piePat + "empty.png"});
-                                    currentMove = "castling";
-                                    castlingWpossible =false;
-                                    midSquareInd = 61;
-                                    // Saving the moved pieces and positions for a possible cancel of the move
-                                    movedPieces.set(2,{"color":"w", "piece":piePat + "R.png", "indeksos":63})
-                                    movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":61})
-                            }
-                            // Castling queenside
-                            else if ((toIndex == 58) && galeryModel.get(58).color === "e"
-                                        && galeryModel.get(59).color === "e" && galeryModel.get(57).color === "e"
-                                        && fromIndex == 60
-                                        && castlingWpossible && !feni.feniWhiteChess
-                                        && !wKingMoved) {
-                                    moveLegal = true; intLegal = 1;
-                                    galeryModel.set((59),{"color":"w", "piece":piePat + "R.png"});
-                                    galeryModel.set((56),{"color":"e", "piece":piePat + "empty.png"});
-                                    currentMove = "castling";
-                                    castlingWpossible = false;
-                                    midSquareInd = 59;
-                                    // Saving the moved pieces and positions for a possible cancel of the move
-                                    movedPieces.set(2,{"color":"w", "piece":piePat + "R.png", "indeksos":56})
-                                    movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":59})
-                            }
-                            else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                            }
-                        break;
-                    case piePat + "Q.png":
-                        // Same column
-                        if ((((fromIndex-toIndex)%8 == 0))
-                                &&   galeryModel.get(toIndex).color !== "w"
-                                ){
-                               if (Math.abs(toIndex-fromIndex) == 8) {
-                                   moveLegal = true; intLegal = 1;
-                               }
-                               else if (toIndex > fromIndex +8) {
-                                   var toHelpIndex = toIndex-8;
-                                   var moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex -8;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-                               }
-                               else if (toIndex < fromIndex-8) {
-                                   toHelpIndex = toIndex+8;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex +8;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-
-                               }
-                           }
-                        // Same row
-                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "w"
-                                 ){
-                            if (Math.abs(toIndex-fromIndex) == 1) {
-                                moveLegal = true; intLegal = 1;
-                            }
-                            else if (toIndex > fromIndex +1) {
-                                toHelpIndex = toIndex-1;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex -1;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                            else if (toIndex < fromIndex -1) {
-                                toHelpIndex = toIndex+1;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex +1;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                        }
-                        // Same diagonal 9
-                        else if ((((fromIndex-toIndex)%9 == 0))
-                                &&   galeryModel.get(toIndex).color !== "w"
-                                 && fromParity == toParity
-                                 ){
-                               if (Math.abs(toIndex-fromIndex) == 9) {
-                                   moveLegal = true; intLegal = 1;
-                               }
-                               else if (toIndex > fromIndex +9) {
-                                   toHelpIndex = toIndex-9;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex -9;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-                               }
-                               else if (toIndex < fromIndex-9) {
-                                   toHelpIndex = toIndex+9;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex +9;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-
-                               }
-                           }
-                        // Same diagonal 7
-                        else if ((((fromIndex-toIndex)%7 == 0))
-                             &&   galeryModel.get(toIndex).color !== "w"
-                                 && fromParity == toParity
-                                 ){
-                            if (Math.abs(toIndex-fromIndex) == 7) {
-                                moveLegal = true; intLegal = 1;
-                            }
-                            else if (toIndex > fromIndex +7) {
-                                toHelpIndex = toIndex-7;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                         || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex -7;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                            else if (toIndex < fromIndex-7) {
-                                toHelpIndex = toIndex+7;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                         || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex +7;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-
-                            }
-                        }
-                        else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                        }
-                        break;
-                    case piePat + "q.png":  // Same as Q.png but four "w"s
-                        // Same column
-                        if ((((fromIndex-toIndex)%8 == 0))
-                                &&   galeryModel.get(toIndex).color !== "b"
-                    ){
-                               if (Math.abs(toIndex-fromIndex) == 8) {
-                                   moveLegal = true; intLegal = 1;
-                               }
-                               else if (toIndex > fromIndex +8) {
-                                   toHelpIndex = toIndex-8;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex -8;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-                               }
-                               else if (toIndex < fromIndex-8) {
-                                   toHelpIndex = toIndex+8;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex +8;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-
-                               }
-                           }
-                        // Same row
-                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "b"
-                                 ){
-                            if (Math.abs(toIndex-fromIndex) == 1) {
-                                moveLegal = true; intLegal = 1;
-                            }
-                            else if (toIndex > fromIndex +1) {
-                                toHelpIndex = toIndex-1;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex -1;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                            else if (toIndex < fromIndex -1) {
-                                toHelpIndex = toIndex+1;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex +1;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                        }
-                        // Same diagonal 9
-                        else if ((((fromIndex-toIndex)%9 == 0))
-                                &&   galeryModel.get(toIndex).color !== "b"
-                                 && fromParity == toParity
-                                 ){
-                               if (Math.abs(toIndex-fromIndex) == 9) {
-                                   moveLegal = true; intLegal = 1;
-                               }
-                               else if (toIndex > fromIndex +9) {
-                                   toHelpIndex = toIndex-9;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex -9;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-                               }
-                               else if (toIndex < fromIndex-9) {
-                                   toHelpIndex = toIndex+9;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex +9;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-
-                               }
-                           }
-                        // Same diagonal 7
-                        else if ((((fromIndex-toIndex)%7 == 0))
-                             &&   galeryModel.get(toIndex).color !== "b"
-                                 && fromParity == toParity
-                                 ){
-                            if (Math.abs(toIndex-fromIndex) == 7) {
-                                moveLegal = true; intLegal = 1;
-                            }
-                            else if (toIndex > fromIndex +7) {
-                                toHelpIndex = toIndex-7;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                         || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex -7;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                            else if (toIndex < fromIndex-7) {
-                                toHelpIndex = toIndex+7;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                         || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex +7;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-
-                            }
-                        }
-                        else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                        }
-                        break;
-                    case piePat + "B.png":
-                        if ((((fromIndex-toIndex)%9 == 0))
-                                && galeryModel.get(toIndex).color !== "w"
-                                && fromParity == toParity
-                                ){
-                               if (Math.abs(toIndex-fromIndex) == 9) {
-                                   moveLegal = true; intLegal = 1;
-                               }
-                               else if (toIndex > fromIndex +9) {
-                                   toHelpIndex = toIndex-9;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex -9;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-                               }
-                               else if (toIndex < fromIndex-9) {
-                                   toHelpIndex = toIndex+9;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex +9;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-
-                               }
-                           }
-                        else if ((((fromIndex-toIndex)%7 == 0))
-                                 && galeryModel.get(toIndex).color !== "w"
-                                 && fromParity == toParity
-                                 ){
-                            if (Math.abs(toIndex-fromIndex) == 7) {
-                                moveLegal = true; intLegal = 1;
-                            }
-                            else if (toIndex > fromIndex +7) {
-                                toHelpIndex = toIndex-7;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                         || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex -7;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                            else if (toIndex < fromIndex-7) {
-                                toHelpIndex = toIndex+7;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                         || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex +7;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-
-                            }
-                        }
-                        else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                        }
-                        break;
-                    case piePat + "b.png": // Copy of white but two color checks changed from "w" to "b" ank k.png to K.png
-                        if ((((fromIndex-toIndex)%9 == 0))
-                                && galeryModel.get(toIndex).color !== "b"
-                                && fromParity == toParity
-                                ){
-                               if (Math.abs(toIndex-fromIndex) == 9) {
-                                   moveLegal = true; intLegal = 1;
-                               }
-                               else if (toIndex > fromIndex +9) {
-                                   toHelpIndex = toIndex-9;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex -9;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-                               }
-                               else if (toIndex < fromIndex-9) {
-                                   toHelpIndex = toIndex+9;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex +9;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-
-                               }
-                           }
-                        else if ((((fromIndex-toIndex)%7 == 0))
-                                 && galeryModel.get(toIndex).color !== "b"
-                                 && fromParity == toParity
-                                 ){
-                            if (Math.abs(toIndex-fromIndex) == 7) {
-                                moveLegal = true; intLegal = 1;
-                            }
-                            else if (toIndex > fromIndex +7) {
-                                toHelpIndex = toIndex-7;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                         || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex -7;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                            else if (toIndex < fromIndex-7) {
-                                toHelpIndex = toIndex+7;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                         || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex +7;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-
-                            }
-                        }
-                        else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                        }
-                        break;
-                    case piePat + "N.png":
-                        if ((((fromIndex-toIndex) == 10) || ((fromIndex-toIndex) == 17)
-                             || ((fromIndex-toIndex) == 15) || ((fromIndex-toIndex) == 6)
-                             || ((fromIndex-toIndex) == -10) || ((fromIndex-toIndex) == -17)
-                             || ((fromIndex-toIndex) == -15) || ((fromIndex-toIndex) == -6))
-                                && galeryModel.get(toIndex).color !== "w"
-                                && fromParity != toParity
-                                ){
-                            moveLegal = true; intLegal = 1;
-                        }
-                        else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                        }
-                        break;
-                    case piePat + "n.png":
-                        if ((((fromIndex-toIndex) == 10) || ((fromIndex-toIndex) == 17)
-                             || ((fromIndex-toIndex) == 15) || ((fromIndex-toIndex) == 6)
-                             || ((fromIndex-toIndex) == -10) || ((fromIndex-toIndex) == -17)
-                             || ((fromIndex-toIndex) == -15) || ((fromIndex-toIndex) == -6))
-                                && galeryModel.get(toIndex).color !== "b"
-                                && fromParity != toParity
-                                ){
-                            moveLegal = true; intLegal = 1;
-                        }
-                        else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                        }
-                        break;
-                    case piePat + "R.png":
-                        if ((((fromIndex-toIndex)%8 == 0))
-                                &&   galeryModel.get(toIndex).color !== "w"
-                                ){
-                               if (Math.abs(toIndex-fromIndex) == 8) {
-                                   moveLegal = true; intLegal = 1;
-                               }
-                               else if (toIndex > fromIndex +8) {
-                                   toHelpIndex = toIndex-8;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex -8;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-                               }
-                               else if (toIndex < fromIndex-8) {
-                                   toHelpIndex = toIndex+8;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex +8;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-
-                               }
-                           }
-                        // Same row
-                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "w"
-                                 ){
-                            if (Math.abs(toIndex-fromIndex) == 1) {
-                                moveLegal = true; intLegal = 1;
-                            }
-                            else if (toIndex > fromIndex +1) {
-                                toHelpIndex = toIndex-1;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex -1;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                            else if (toIndex < fromIndex -1) {
-                                toHelpIndex = toIndex+1;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex +1;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                        }
-                        else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                        }
-                        break;
-                    case piePat + "r.png": // Same as R.png but two "w"s changed to "b"s
-                        if ((((fromIndex-toIndex)%8 == 0))
-                                &&   galeryModel.get(toIndex).color !== "b"
-                                ){
-                               if (Math.abs(toIndex-fromIndex) == 8) {
-                                   moveLegal = true; intLegal = 1;
-                               }
-                               else if (toIndex > fromIndex +8) {
-                                   toHelpIndex = toIndex-8;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex -8;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-                               }
-                               else if (toIndex < fromIndex-8) {
-                                   toHelpIndex = toIndex+8;
-                                   moveLegalHelp = true;
-                                   while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                       if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                           moveLegal = true; intLegal = 1;
-                                           toHelpIndex = toHelpIndex +8;
-                                       }
-                                       else {
-                                           moveLegal = false; intLegal = -1;
-                                           moveLegalHelp = false;
-                                           moveStarted=false;
-                                           fromIndex=-1;
-                                           toIndex=-1;
-                                       }
-                                   }
-
-                               }
-                           }
-                        // Same row
-                        else if ((((toIndex-toIndex%8)/8) == ((fromIndex-fromIndex%8)/8)) && galeryModel.get(toIndex).color !== "b"
-                                 ){
-                            if (Math.abs(toIndex-fromIndex) == 1) {
-                                moveLegal = true; intLegal = 1;
-                            }
-                            else if (toIndex > fromIndex +1) {
-                                toHelpIndex = toIndex-1;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) > 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex -1;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                            else if (toIndex < fromIndex -1) {
-                                toHelpIndex = toIndex+1;
-                                moveLegalHelp = true;
-                                while (((toHelpIndex-fromIndex) < 0) && moveLegalHelp) {
-                                    if (galeryModel.get(toHelpIndex).color === "e" || galeryModel.get(toHelpIndex).color === "wp"
-                                            || galeryModel.get(toHelpIndex).color === "bp") {
-                                        moveLegal = true; intLegal = 1;
-                                        toHelpIndex = toHelpIndex +1;
-                                    }
-                                    else {
-                                        moveLegal = false; intLegal = -1;
-                                        moveLegalHelp = false;
-                                        moveStarted=false;
-                                        fromIndex=-1;
-                                        toIndex=-1;
-                                    }
-                                }
-                            }
-                        }
-                        else {
-                                moveStarted=false;
-                                fromIndex=-1;
-                                toIndex=-1;
-                        }
-                        break;
-                    default:
-                        moveLegal = false;
-                    }
-                }
-*/
-                // end block isMovable:
 
                 ////////////////////////////////////////////
                 /// Function movePiece()
                 ////////////////////////////////////////////////////
 
-                function movePiece() {
+                function movePiece() { //TBD index could pe passed to the function as a parameter removing indeksi variable
+
                     if (!moveStarted) {
                         fromIndex=indeksi;
                         toIndex=indeksi;
-                        //var doVisual = true //Determines that is not test to enable visual effects
-                        //var isLegalmove_bool = false;
-                        //Mymove.isMovable(doVisual);
                         if (Mymove.isMovable(fromIndex)){
                             itemMoved=itemTobemoved;
-                            moveStarted=!moveStarted;
+                            moveStarted = true;
                             colorMoved=colorTobemoved;
-                            //canBemoved=false;
                         }
                     }
                     else {
+                        //https://stackoverflow.com/questions/7486085/copy-array-by-value
+                        test_state = JSON.parse(JSON.stringify(current_state)); //Make a deep copy of object array, normal copy will make a shallow copy
                         toIndex=indeksi;
-                        galeryModel.set(fromIndex,{"frameop":0}); // Better performance needed
-                        // here fomParity and toParity checks
-                        //Mymove.sameColor(fromIndex, toIndex); // Checks if fromIndex and toIndex are same color
+                        //console.log(fromIndex, toIndex, "main",current_state[toIndex].piece, test_state[toIndex].piece,current_state[fromIndex].piece, test_state[fromIndex].piece)
+                        test_state[toIndex] = {"color":colorMoved, "piece":itemMoved, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+                        test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+                        //console.log(fromIndex, toIndex, "main",current_state[toIndex].piece, test_state[toIndex].piece,current_state[fromIndex].piece, test_state[fromIndex].piece)
+                        galeryModel.set(fromIndex,{"frameop":0}); // Better performance needed, TBD is this afficting test_state?
                         var doVisual = true;
-                        Mymove.isLegalmove(doVisual, fromIndex, toIndex, itemMoved);
-                        if (moveLegal){
-                            // Saving position before move to possiple cancellation of a move
+                        if (Mymove.isLegalmove(doVisual, fromIndex, toIndex, itemMoved, current_state)){
+                            // Saving position before a move to possiple cancellation of a move
                             movedPieces.set(0,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece moved
                             movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
                             if (currentMove === "") {
@@ -1861,37 +760,49 @@ Page {
                                 movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                             }
 
+                            test_state[toIndex].color = colorMoved;
+                            test_state[toIndex].piece = itemMoved;
+                            test_state[fromIndex].color = "e";
+                            test_state[fromIndex].piece = piePat + "empty.png";
                             galeryModel.set(toIndex,{"color":colorMoved, "piece":itemMoved})
                             galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
                             moveStarted=!moveStarted;
                             moveLegal=false;
                             if (tilat.valko) {
-                                if (playMode == "stockfish") {feni.feniWhite = false;} //Check also in othDevice mode??
-                                if (benpassant > 0 && galeryModel.get(benpassant).color === "bp") {
+                                if (playMode == "stockfish") {feniWhite = false;} //Check also in othDevice mode??
+                                if (benpassant > 0 && galeryModel.get(benpassant).color === "bp") { // TBD test_state?
+                                    test_state[benpassant].color = "e";
+                                    test_state[benpassant].piece = piePat + "empty.png";
                                     galeryModel.set(benpassant,{"color":"e", "piece":piePat + "empty.png"});
                                     benpassant = -1
                                 }
                                 if (itemMoved == piePat + "K.png") {
-                                    feni.feniWkingInd = toIndex;
+                                    feniWkingInd = toIndex;
                                 }
                             }
                             else {
                                 // why not here the check as above feni.feniBlack = false;
-                                if (wenpassant > 0 && galeryModel.get(wenpassant).color === "wp") {
+                                if (wenpassant > 0 && galeryModel.get(wenpassant).color === "wp") { //TBD test_state?
+                                    test_state[wenpassant].color = "e";
+                                    test_state[wenpassant].piece = piePat + "empty.png";
                                     galeryModel.set(wenpassant,{"color":"e", "piece":piePat + "empty.png"});
                                     wenpassant = -1
                                 }
                                 if (itemMoved == piePat + "k.png") {
-                                    feni.feniBkingInd = toIndex;
+                                    feniBkingInd = toIndex;
                                 }
                             }
                             if (currentMove == "promotion"){
                                 promotionWaiter.start()
                             }
                             else {
-                            feni.forChessCheck = true; //starts the chess check timer
+                            forChessCheck = true; //starts the chess check timer
                             chessChecker.start()
                             }
+                        }
+                        else {
+                            test_state = JSON.parse(JSON.stringify(current_state)); //TBD If test_state is not legal, lets go back
+                            console.log("Backkking")
                         }
                     }
                 }
@@ -1976,7 +887,7 @@ Page {
                     anchors.verticalCenterOffset: Screen.height == 1920 ? 40 : 30
                     Timer {
                         interval: 100
-                        running: tilat.juoksee && Qt.application.active && (isMyStart ? tilat.musta : tilat.valko)
+                        running: tilat.juoksee && Qt.application.active && (isMyStart ? !tilat.valko : tilat.valko)
                         repeat: true
                         onTriggered: isMyStart ? muttakello.updateMutta() : valkokello.updateValko()
                     }
@@ -1990,8 +901,8 @@ Page {
 
                 Text {
                     id: upperNotes
-                    text: feni.upperMessage
-                    visible:feni.upperMessage != ""
+                    text: upperMessage
+                    visible:upperMessage != ""
                     color: Theme.primaryColor
                     font.pixelSize: Theme.fontSizeSmall
                     verticalAlignment: Text.AlignTop
@@ -2006,7 +917,7 @@ Page {
                     cellWidth: Screen.height == 2048 ? 66 : page.width/15
                     cellHeight: Screen.height == 2048 ? 66 : page.width/15
                     anchors.fill: parent
-                    visible:feni.upperMessage == ""
+                    visible:upperMessage == ""
                     model:isMyStart ? whiteCaptured : blackCaptured
                     delegate: Rectangle {
                         height:upperMessageGrid.cellHeight
@@ -2080,7 +991,7 @@ Page {
                             anchors.fill: parent
                             height: grid.cellHeight
                             width: grid.cellWidth
-                            enabled: (feni.feniWhite && isMyStart || feni.feniBlack && !isMyStart || playMode == "human") && tilat.juoksee
+                            enabled: (feniWhite && isMyStart || feniBlack && !isMyStart || playMode == "human") && tilat.juoksee
                             onClicked: {indeksi = index;
                                 console.log(index);
                                 itemTobemoved = piece;
@@ -2101,7 +1012,11 @@ Page {
                 onTriggered: {
                     if (!waitPromo) {
                         promotionWaiter.running = false
-                        feni.forChessCheck = true
+                        forChessCheck = true
+                        test_state[toIndex].color = colorMoved;
+                        test_state[toIndex].piece = promotedLong;
+                        test_state[fromIndex].color = "e";
+                        test_state[fromIndex].piece = piePat + "empty.png";
                         galeryModel.set(toIndex,{"color":colorMoved, "piece":promotedLong})
                         galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
                         chessChecker.start()
@@ -2113,38 +1028,38 @@ Page {
             Timer {
                 id:chessChecker
                 interval: 100;
-                running: feni.forChessCheck && Qt.application.active && !waitPromo;
+                running: forChessCheck && Qt.application.active && !waitPromo;
                 repeat: false
                 onTriggered: {
                     if (currentMove == "castling") {
                         Myfunks.midSquareCheck();
                     }
                     else {
-                        feni.midSquareTestDone = true;
+                        midSquareTestDone = true;
                     }
-
-                    Myfunks.isChess();
-                    feni.forChessCheck = false;
+                    Myfunks.isChess(tilat.valko, feniWkingInd, feniBkingInd, test_state);
+                    forChessCheck = false;
                     itemMover.start()
                 }
             }
             Timer {
                 id:itemMover
-                interval: 100; running: feni.midSquareTestDone && feni.chessTestDone && Qt.application.active && !waitPromo;
+                interval: 100; running: midSquareTestDone && chessTestDone && Qt.application.active && !waitPromo;
                 repeat: false
                 onTriggered: {
-                    if (midSquareCheckki || feni.chessIsOn) {
+                    if (midSquareCheckki || chessIsOn) {
                         Myfunks.cancelMove();
                     }
                     else {
                         Myfunks.doMove();
+                        test_state[fromIndex].recmove = opsi.movesTotal;
+                        test_state[toIndex].recmove = opsi.movesTotal;
                         galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                         galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     }
-                    feni.midSquareTestDone = false;
-                    feni.chessTestDone = false;
+                    midSquareTestDone = false;
+                    chessTestDone = false;
 
-                    //                    feni.chessIsOn = false;
                 }
             }
 
@@ -2153,7 +1068,7 @@ Page {
 
             Timer {
                 interval: 500;
-                running: playMode == "stockfish" && feni.feniBlackReady && Qt.application.active && isMyStart;
+                running: playMode == "stockfish" && feniBlackReady && Qt.application.active && isMyStart;
                 repeat: false
                 onTriggered: {
                     if (opsi.openingPossible) {
@@ -2164,8 +1079,8 @@ Page {
                     else {
                         hopo.inni();
                     }
-                    feni.feniBlackReady = false;
-                    feni.feniBlackReady2 = true;
+                    feniBlackReady = false;
+                    feniBlackReady2 = true;
                     blackTimer.start()
                 }
             }
@@ -2173,7 +1088,7 @@ Page {
             /// Timer stockfish plays White
             Timer {
                 interval: 500;
-                running: playMode == "stockfish" && feni.feniWhiteReady && Qt.application.active && tilat.pelialkoi && !isMyStart;
+                running: playMode == "stockfish" && feniWhiteReady && Qt.application.active && tilat.pelialkoi && !isMyStart;
                 repeat: false
                 onTriggered: {
                     if (opsi.openingPossible) {
@@ -2181,7 +1096,7 @@ Page {
                         hopo.test = opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+4);
                         hopo.innio();
                     }
-                    else if (feni.stockfishFirstmove == true) {
+                    else if (stockfishFirstmove == true) {
                         if (openingMode == 0 ){
                             // Random winning openings from Finnish game statistics december 2014, www.shakki.net
                             var rand = Math.random()
@@ -2217,8 +1132,8 @@ Page {
                     else {
                         hopo.inni();
                     }
-                    feni.feniWhiteReady = false;
-                    feni.feniWhiteReady2 = true;
+                    feniWhiteReady = false;
+                    feniWhiteReady2 = true;
                     whiteTimer.start()
                 }
             }
@@ -2228,7 +1143,7 @@ Page {
             Timer {
                 id:blackTimer
                 interval: (stockfishMovetime*1000 + 120);
-                running: playMode == "stockfish"&& feni.feniBlackReady2 && isMyStart && Qt.application.active;
+                running: playMode == "stockfish"&& feniBlackReady2 && isMyStart && Qt.application.active;
                 repeat: false
                 onTriggered: {
                     if (!opsi.openingPossible) {
@@ -2241,7 +1156,10 @@ Page {
                     movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                     movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                     movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-
+                    test_state[toIndex].color = galeryModel.get(fromIndex).color;
+                    test_state[toIndex].piece = galeryModel.get(fromIndex).piece;
+                    test_state[fromIndex].color = "e";
+                    test_state[fromIndex].piece = piePat + "empty.png"
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
                     // If castling, moving the rook also
@@ -2287,21 +1205,22 @@ Page {
                         galeryModel.set(toIndex, {"piece": piePat + "q.png"});
                         movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
                     }
-                    feni.lowerMessage = "";
-                    feni.upperMessage = "";
+                    lowerMessage = "";
+                    upperMessage = "";
                     Mytab.addMove();
+                    current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
                     vuoro.vaihdaValkealle();
-                    Myfunks.isChessPure();
+                    Myfunks.isChessPure(current_state);
                     movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
                     opsi.movesTotal++;
                     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
-                    feni.feniBlackReady2 = false;
+                    feniBlackReady2 = false;
                     // Recording move to the allMoves list
                     allMoves.append({"moveNo":opsi.movesTotal})
                     Myfunks.recordMove();
                     movesNoScanned = opsi.movesTotal;
-                    whiteMatetimer.start();
+                    mateTimer.start();
                 }
             }
 
@@ -2313,11 +1232,11 @@ Page {
             Timer {
                 id: whiteTimer
                 interval: (stockfishMovetime*1000 + 120);
-                running: playMode == "stockfish"&& feni.feniWhiteReady2 && !isMyStart && Qt.application.active && tilat.pelialkoi;
+                running: playMode == "stockfish"&& feniWhiteReady2 && !isMyStart && Qt.application.active && tilat.pelialkoi;
                 repeat: false
                 onTriggered: {
-                    if (feni.stockfishFirstmove == true) {
-                        feni.stockfishFirstmove = false
+                    if (stockfishFirstmove == true) {
+                        stockfishFirstmove = false
                     }
 
                     else if (!opsi.openingPossible) {
@@ -2332,7 +1251,10 @@ Page {
                     movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                     movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                     movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-
+                    test_state[toIndex].color = galeryModel.get(fromIndex).color;
+                    test_state[toIndex].piece = galeryModel.get(fromIndex).piece;
+                    test_state[fromIndex].color = "e";
+                    test_state[fromIndex].piece = piePat + "empty.png"
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
                     // If castling, moving the rook also
@@ -2378,34 +1300,35 @@ Page {
                         galeryModel.set(toIndex, {"piece": piePat + "Q.png"});
                         movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
                     }
-                    feni.lowerMessage = "";
-                    feni.upperMessage = "";
+                    lowerMessage = "";
+                    upperMessage = "";
                     Mytab.addMove();
+                    current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
                     vuoro.vaihdaMustalle();
-                    Myfunks.isChessPure();
+                    Myfunks.isChessPure(current_state);
                     movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
                     opsi.movesTotal++;
                     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
-                    feni.feniWhiteReady2 = false;
+                    feniWhiteReady2 = false;
                     // Recording move to the allMoves list
                     //console.log(opsi.movesTotal)
                     allMoves.append({"moveNo":opsi.movesTotal})
                     //console.log(allMoves.get(opsi.movesTotal).moveNo)
                     Myfunks.recordMove();
                     movesNoScanned = opsi.movesTotal;
+                    mateTimer.start();
                 }
             }
 
             Timer {
-                id: whiteMatetimer
+                id: mateTimer
                 running: false
                 repeat: false
-                interval: 3000
+                interval: 100
                 onTriggered: {
-                    //console.log("WhiteMatetimer started")
-                    tilat.valko ? Myfunks.iswhiteInMate():
-                    whiteMatetimer.stop()
+                    Myfunks.isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
+                    mateTimer.stop()
                 }
             }
 
@@ -2418,8 +1341,8 @@ Page {
 
                 Text {
                     id: lowerNotes
-                    text: feni.lowerMessage
-                    visible:feni.lowerMessage != ""
+                    text: lowerMessage
+                    visible:lowerMessage != ""
                     color: Theme.primaryColor
                     font.pixelSize: Theme.fontSizeSmall
                     verticalAlignment: Text.AlignBottom
@@ -2433,7 +1356,7 @@ Page {
                     cellWidth: Screen.height == 2048 ? 66 : page.width/15
                     cellHeight: Screen.height == 2048 ? 66 : page.width/15
                     anchors.fill: parent
-                    visible: feni.lowerMessage == ""
+                    visible: lowerMessage == ""
                     verticalLayoutDirection: GridView.BottomToTop
                     model:isMyStart ? blackCaptured: whiteCaptured
                     delegate: Rectangle {
@@ -2464,7 +1387,7 @@ Page {
                 // height (Screen.height-Screen.width)/2-10-Screen.width/15-140
                 // Tablet height (2048-1248)/2-10-66-140
                 height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 184 : (Screen.height == 1920 ? 198 : 164))
-                enabled: false //tilat.juoksee && tilat.musta
+                enabled: false //tilat.juoksee && !tilat.valko
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {
                     id: progressBarm
@@ -2476,8 +1399,8 @@ Page {
                     //value: isMyStart ? valkomax + increment - whiteTimeTotal/1000 : mustamax + increment - blackTimeTotal/1000
                     value: isMyStart ? valkomax - whiteTimeTotal/1000 : mustamax - blackTimeTotal/1000
                     Timer {interval: 100
-                        //running: tilat.juoksee && tilat.musta && Qt.ApplicationActive
-                        running: tilat.juoksee && Qt.application.active && (isMyStart ? tilat.valko : tilat.musta)
+                        //running: tilat.juoksee && !tilat.valko && Qt.ApplicationActive
+                        running: tilat.juoksee && Qt.application.active && (isMyStart ? tilat.valko : !tilat.valko)
                         repeat: true
                         onTriggered: isMyStart ? valkokello.updateValko() : muttakello.updateMutta()}
                 }

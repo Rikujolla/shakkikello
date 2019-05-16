@@ -5,7 +5,7 @@
 // Function isChessPure(), row 286
 // Function midSquareCheck(), row 342
 // Function doMove(), row 402
-// Function whiteinMate(), row 461
+// Function isInMate(), row 454
 // Function startGame(), row 608
 // Function pauseGame(), row 637
 // Function continueGame(), row 648
@@ -16,51 +16,53 @@
 function gridToFEN(fromInd, toInd) {
     opsi.recentMove = hopo.test;
     hopo.test = "";
+    var startFeni = "";
+    var stopFeni = "";
     switch (fromInd%8) {
-    case 0: feni.startFeni= "a"
+    case 0: startFeni= "a"
         break;
-    case 1: feni.startFeni= "b"
+    case 1: startFeni= "b"
         break;
-    case 2: feni.startFeni= "c"
+    case 2: startFeni= "c"
         break;
-    case 3: feni.startFeni= "d"
+    case 3: startFeni= "d"
         break;
-    case 4: feni.startFeni= "e"
+    case 4: startFeni= "e"
         break;
-    case 5: feni.startFeni= "f"
+    case 5: startFeni= "f"
         break;
-    case 6: feni.startFeni= "g"
+    case 6: startFeni= "g"
         break;
-    case 7: feni.startFeni= "h"
+    case 7: startFeni= "h"
         break;
 
-    default: feni.startFeni = "m" //mistake
+    default: startFeni = "m" //mistake
     }
-    feni.stopFeni = 8-(fromInd-fromInd%8)/8;
-    hopo.test = feni.startFeni+feni.stopFeni;
+    stopFeni = 8-(fromInd-fromInd%8)/8;
+    hopo.test = startFeni+stopFeni;
 
     switch (toInd%8) {
-    case 0: feni.startFeni= "a"
+    case 0: startFeni= "a"
         break;
-    case 1: feni.startFeni= "b"
+    case 1: startFeni= "b"
         break;
-    case 2: feni.startFeni= "c"
+    case 2: startFeni= "c"
         break;
-    case 3: feni.startFeni= "d"
+    case 3: startFeni= "d"
         break;
-    case 4: feni.startFeni= "e"
+    case 4: startFeni= "e"
         break;
-    case 5: feni.startFeni= "f"
+    case 5: startFeni= "f"
         break;
-    case 6: feni.startFeni= "g"
+    case 6: startFeni= "g"
         break;
-    case 7: feni.startFeni= "h"
+    case 7: startFeni= "h"
         break;
 
-    default: feni.startFeni = "m" //mistake
+    default: startFeni = "m" //mistake
     }
-    feni.stopFeni = 8-(toInd-toInd%8)/8;
-    hopo.test = hopo.test+feni.startFeni+feni.stopFeni;
+    stopFeni = 8-(toInd-toInd%8)/8;
+    hopo.test = hopo.test+startFeni+stopFeni;
     if (currentMove == "promotion") {hopo.test = hopo.test + promotedShort}
 
 }
@@ -71,95 +73,95 @@ function gridToFEN(fromInd, toInd) {
 
 function fenToGRID() {
     opsi.recentMove = hopo.test;
-    feni.stringHelper = hopo.test.slice(0,1);
-    switch (feni.stringHelper) {
-    case "a": feni.feniHelper = 0
+    var stringHelper = hopo.test.slice(0,1);
+    switch (stringHelper) {
+    case "a": feniHelper = 0
         break;
-    case "b": feni.feniHelper = 1
+    case "b": feniHelper = 1
         break;
-    case "c": feni.feniHelper = 2
+    case "c": feniHelper = 2
         break;
-    case "d": feni.feniHelper = 3
+    case "d": feniHelper = 3
         break;
-    case "e": feni.feniHelper = 4
+    case "e": feniHelper = 4
         break;
-    case "f": feni.feniHelper = 5
+    case "f": feniHelper = 5
         break;
-    case "g": feni.feniHelper = 6
+    case "g": feniHelper = 6
         break;
-    case "h": feni.feniHelper = 7
+    case "h": feniHelper = 7
         break;
-    default: feni.feniHelper = 8
+    default: feniHelper = 8
     }
 
 
-    feni.stringHelper = hopo.test.slice(1,2);
-    switch (feni.stringHelper) {
-    case "1": feni.feniHelper = feni.feniHelper+56
+    stringHelper = hopo.test.slice(1,2);
+    switch (stringHelper) {
+    case "1": feniHelper = feniHelper+56
         break;
-    case "2": feni.feniHelper = feni.feniHelper+48
+    case "2": feniHelper = feniHelper+48
         break;
-    case "3": feni.feniHelper = feni.feniHelper+40
+    case "3": feniHelper = feniHelper+40
         break;
-    case "4": feni.feniHelper = feni.feniHelper+32
+    case "4": feniHelper = feniHelper+32
         break;
-    case "5": feni.feniHelper = feni.feniHelper+24
+    case "5": feniHelper = feniHelper+24
         break;
-    case "6": feni.feniHelper = feni.feniHelper+16
+    case "6": feniHelper = feniHelper+16
         break;
-    case "7": feni.feniHelper = feni.feniHelper+8
+    case "7": feniHelper = feniHelper+8
         break;
-    case "8": feni.feniHelper = feni.feniHelper
+    case "8": feniHelper = feniHelper
         break;
-    default: feni.feniHelper = 88
+    default: feniHelper = 88
 
     }
-    fromIndex=feni.feniHelper;
+    fromIndex=feniHelper;
 
-    feni.stringHelper = hopo.test.slice(2,3);
-    switch (feni.stringHelper) {
-    case "a": feni.feniHelper = 0
+    stringHelper = hopo.test.slice(2,3);
+    switch (stringHelper) {
+    case "a": feniHelper = 0
         break;
-    case "b": feni.feniHelper = 1
+    case "b": feniHelper = 1
         break;
-    case "c": feni.feniHelper = 2
+    case "c": feniHelper = 2
         break;
-    case "d": feni.feniHelper = 3
+    case "d": feniHelper = 3
         break;
-    case "e": feni.feniHelper = 4
+    case "e": feniHelper = 4
         break;
-    case "f": feni.feniHelper = 5
+    case "f": feniHelper = 5
         break;
-    case "g": feni.feniHelper = 6
+    case "g": feniHelper = 6
         break;
-    case "h": feni.feniHelper = 7
+    case "h": feniHelper = 7
         break;
-    default: feni.feniHelper = 8
+    default: feniHelper = 8
     }
 
 
-    feni.stringHelper = hopo.test.slice(3,4);
-    switch (feni.stringHelper) {
-    case "1": feni.feniHelper = feni.feniHelper+56
+    stringHelper = hopo.test.slice(3,4);
+    switch (stringHelper) {
+    case "1": feniHelper = feniHelper+56
         break;
-    case "2": feni.feniHelper = feni.feniHelper+48
+    case "2": feniHelper = feniHelper+48
         break;
-    case "3": feni.feniHelper = feni.feniHelper+40
+    case "3": feniHelper = feniHelper+40
         break;
-    case "4": feni.feniHelper = feni.feniHelper+32
+    case "4": feniHelper = feniHelper+32
         break;
-    case "5": feni.feniHelper = feni.feniHelper+24
+    case "5": feniHelper = feniHelper+24
         break;
-    case "6": feni.feniHelper = feni.feniHelper+16
+    case "6": feniHelper = feniHelper+16
         break;
-    case "7": feni.feniHelper = feni.feniHelper+8
+    case "7": feniHelper = feniHelper+8
         break;
-    case "8": feni.feniHelper = feni.feniHelper
+    case "8": feniHelper = feniHelper
         break;
-    default: feni.feniHelper = 88
+    default: feniHelper = 88
 
     }
-    toIndex=feni.feniHelper;
+    toIndex=feniHelper;
 
 }
 
@@ -167,41 +169,45 @@ function fenToGRID() {
 // Function checks if after move the Chess is still on. If so the movement is cancelled.
 // That is done by testing all the opponent pieces with a trial to capture the king. If success the chess state is still on.
 ///////////////////////////////////////////////////////////////////////////////////////
-
-function isChess() {
+function isChess_new(_turn_white, _w_king_ind_chess, _b_king_ind_chess, _state) {
+    var _chessIsStillOn = false;
     var doVisual = false;
-    feni.feniWhiteChess = false;
-    feni.feniBlackChess = false;
-    chessTest = true;
-    feni.temptoIndex = toIndex;
-    feni.tempfromIndex = fromIndex;
-    for(var i = 0; i < 64; i = i+1){
-        if (tilat.valko) {
-            toIndex=feni.feniWkingInd;
-        }
-        else {
-            toIndex=feni.feniBkingInd;
-        }
-
-        fromIndex = i;
-
-        if (tilat.valko && galeryModel.get(i).color === "b"
-                || tilat.musta && galeryModel.get(i).color === "w") {
-            //canBemoved = true;  //palautettava falseksi joskus??
-            //itemMoved=galeryModel.get(i).piece;
-            Mymove.isLegalmove(doVisual, fromIndex, toIndex, galeryModel.get(i).piece);
-            if (moveLegal){
-                feni.chessIsOn = true; //
+    for(var i = 0; i < 64; i = i+1){ // i is virtual fromIndex
+        if (_turn_white && _state[i].color === "b") {
+            if (Mymove.isLegalmove(doVisual, i, _w_king_ind_chess, _state[i].piece, _state)){
+                _chessIsStillOn = true; //
             }
         }
-
-
+        else if (!_turn_white && _state[i].color === "w") {
+            if (Mymove.isLegalmove(doVisual, i, _b_king_ind_chess, _state[i].piece, _state)){
+                _chessIsStillOn = true; //
+            }
+        }
     }
+    return _chessIsStillOn;
+}
+///////////////////////////////////////////////////////////////////////////////////////
+// Function checks if after move the Chess is still on. If so the movement is cancelled.
+// That is done by testing all the opponent pieces with a trial to capture the king. If success the chess state is still on.
+///////////////////////////////////////////////////////////////////////////////////////
 
-    toIndex = feni.temptoIndex;
-    fromIndex = feni.tempfromIndex;
-    chessTest = false;
-    feni.chessTestDone = true;
+function isChess(_white_turn, _w_king_ind_chess, _b_king_ind_chess, _state) {
+    var doVisual = false;
+    feniWhiteChess = false; // Check if this can be removed
+    feniBlackChess = false; // Check if this can be removed
+    for(var i = 0; i < 64; i = i+1){ // i is virtual fromIndex
+        if (_white_turn && _state[i].color === "b") {
+            if (Mymove.isLegalmove(doVisual, i, _w_king_ind_chess, _state[i].piece, _state)){
+                chessIsOn = true; //
+            }
+        }
+        else if (!_white_turn && _state[i].color === "w") {
+            if (Mymove.isLegalmove(doVisual, i, _b_king_ind_chess, _state[i].piece, _state)){
+                chessIsOn = true; //
+            }
+        }
+    }
+    chessTestDone = true;
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -210,7 +216,7 @@ function isChess() {
 
 function cancelMove() {
     // Enabling the grid for white inputs
-    if (tilat.valko) {feni.feniWhite = true;}
+    if (tilat.valko) {feniWhite = true;}
     // Returning the moved piece to it's original position.
     galeryModel.set(movedPieces.get(0).indeksos,{"color":movedPieces.get(0).color, "piece":movedPieces.get(0).piece})
     // Returning the captured piece to it's original position
@@ -221,18 +227,18 @@ function cancelMove() {
         galeryModel.set(wenpassant,{"color":"e"})
         wenpassant = -1;
     }
-    if (tilat.musta && benpassant > -1){
+    if (!tilat.valko && benpassant > -1){
         galeryModel.set(benpassant,{"color":"e"})
         benpassant = -1;
     }
-    feni.chessIsOn = false;
+    chessIsOn = false;
 
     // king index backing
     if (movedPieces.get(0).piece === piePat + "K.png"){
-        feni.feniWkingInd = movedPieces.get(0).indeksos;
+        feniWkingInd = movedPieces.get(0).indeksos;
     }
     if (movedPieces.get(0).piece === piePat + "k.png"){
-        feni.feniBkingInd = movedPieces.get(0).indeksos;
+        feniBkingInd = movedPieces.get(0).indeksos;
     }
 
     // Backing rook in castling
@@ -270,63 +276,38 @@ function cancelMove() {
 // Function checks if Chess is  on. Used for notifications and castling checks
 ///////////////////////////////////////////////////////////////////////////////////////
 
-function isChessPure() {
+function isChessPure(_current_state) { // TBD could this be replaced with is in mate?
+    var _current_state_tmp = JSON.parse(JSON.stringify(_current_state))
     var doVisual = false;
-    feni.feniWhiteChess = false;
-    feni.feniBlackChess = false;
-    chessTest = true;
-    feni.temptoIndex = toIndex;
-    feni.tempfromIndex = fromIndex;
+    feniWhiteChess = false;
+    feniBlackChess = false;
     for(var i = 0; i < 64; i = i+1){
-        if (tilat.valko) {
-            toIndex=feni.feniWkingInd;
-        }
-        else {
-            toIndex=feni.feniBkingInd;
-        }
-
-        fromIndex = i;
-
         if (tilat.valko && galeryModel.get(i).color === "b") {
-            //canBemoved = true;  //
-            //itemMoved=galeryModel.get(i).piece;
-            //Mymove.sameColor(fromIndex, toIndex);
-            Mymove.isLegalmove(doVisual, fromIndex, toIndex, galeryModel.get(i).piece);
-            if (moveLegal){
-                feni.feniWhiteChess = true;
+            if (Mymove.isLegalmove(doVisual, i, feniWkingInd, galeryModel.get(i).piece, _current_state_tmp)){
+                feniWhiteChess = true;
                 if (isMyStart) {
-                    feni.lowerMessage = feni.messages[0].msg;
+                    lowerMessage = messages[0].msg;
                 }
                 else {
-                    feni.upperMessage = feni.messages[0].msg;
+                    upperMessage = messages[0].msg;
                 }
             }
         }
 
-        else if (tilat.musta && galeryModel.get(i).color === "w") {
-            //canBemoved = true;  //To enable the tests
-            //itemMoved=galeryModel.get(i).piece;
-            //Mymove.sameColor(fromIndex, toIndex);
-            Mymove.isLegalmove(doVisual, fromIndex, toIndex, galeryModel.get(i).piece);
-            if (moveLegal){
-                feni.feniBlackChess = true;
+        else if (!tilat.valko && galeryModel.get(i).color === "w") {
+            if (Mymove.isLegalmove(doVisual, i, feniBkingInd, galeryModel.get(i).piece, _current_state_tmp)){
+                feniBlackChess = true;
                 if (isMyStart) {
-                    feni.upperMessage = feni.messages[0].msg;
+                    upperMessage = messages[0].msg;
                 }
                 else {
-                    feni.lowerMessage = feni.messages[0].msg;
+                    lowerMessage = messages[0].msg;
                 }
             }
 
         }
     }
 
-    toIndex = feni.temptoIndex;
-    fromIndex = feni.tempfromIndex;
-    // Resetting values to defaults after checks
-    //canBemoved = false;
-    moveLegal = false;
-    chessTest = false;
 
 }
 
@@ -337,42 +318,23 @@ function isChessPure() {
 
 function midSquareCheck() {
     var doVisual = false;
-    chessTest = true;
-    feni.temptoIndex = toIndex;
-    feni.tempfromIndex = fromIndex;
     for(var i = 0; i < 64; i = i+1){
-        toIndex = midSquareInd;
-
-        fromIndex = i;
+        var j = midSquareInd; // Virtual toIndex
 
         if (tilat.valko && galeryModel.get(i).color === "b") {
-            //canBemoved = true;  //
-            //itemMoved=galeryModel.get(i).piece;
-            //Mymove.sameColor(fromIndex, toIndex);
-            Mymove.isLegalmove(doVisual, fromIndex, toIndex, galeryModel.get(i).piece);
-            if (moveLegal){
+            if (Mymove.isLegalmove(doVisual, i, j, galeryModel.get(i).piece, test_state)){
                 midSquareCheckki = true;
             }
         }
 
-        else if (tilat.musta && galeryModel.get(i).color === "w") {
-            //canBemoved = true;  //To enable the tests
-            //itemMoved=galeryModel.get(i).piece;
-            //Mymove.sameColor(fromIndex, toIndex);
-            Mymove.isLegalmove(doVisual, fromIndex, toIndex, galeryModel.get(i).piece);
-            if (moveLegal){
+        else if (!tilat.valko && galeryModel.get(i).color === "w") {
+            if (Mymove.isLegalmove(doVisual, i, j, galeryModel.get(i).piece, test_state)){
                 midSquareCheckki = true;
             }
         }
     }
 
-    toIndex = feni.temptoIndex;
-    fromIndex = feni.tempfromIndex;
-    // Resetting values to defaults after checks
-    //canBemoved = false;
-    moveLegal = false;
-    chessTest = false;
-    feni.midSquareTestDone = true;
+    midSquareTestDone = true;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -381,12 +343,12 @@ function midSquareCheck() {
 
 function doMove() {
 
-    if (tilat.valko && !feni.chessIsOn){
+    if (tilat.valko && !chessIsOn){
         if (isMyStart) {
-            feni.lowerMessage = "";
+            lowerMessage = "";
         }
         else {
-            feni.upperMessage = "";
+            upperMessage = "";
         }
 
         gridToFEN(fromIndex, toIndex);
@@ -406,12 +368,12 @@ function doMove() {
         vuoro.vaihdaMustalle();
     }
 
-    else if (tilat.musta && !feni.chessIsOn) {
+    else if (!tilat.valko && !chessIsOn) {
         if (isMyStart) {
-            feni.upperMessage = "";
+            upperMessage = "";
         }
         else {
-            feni.lowerMessage = "";
+            lowerMessage = "";
         }
 
         gridToFEN(fromIndex, toIndex);
@@ -431,36 +393,15 @@ function doMove() {
         vuoro.vaihdaValkealle();
     }
 
-    isChessPure();
+    isChessPure(current_state);
     opsi.recentMove = hopo.test; //only effective for stockfish game
     movesDone = movesDone + opsi.recentMove;  // Maybe needed in future
     opsi.movesTotal++;
     if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
         Myops.inOpenings();
     }
-
+    current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
     recordMove();
-    /*// Recording the move to the allMoves list
-    allMoves.append({"moveNo":opsi.movesTotal, "movedColor":movedPieces.get(0).color, "movedPiece":movedPieces.get(0).piece, "movedFrom":movedPieces.get(0).indeksos})
-    allMoves.set(opsi.movesTotal, {"capturedColor":movedPieces.get(1).color, "capturedPiece":movedPieces.get(1).piece, "capturedTo":movedPieces.get(1).indeksos})
-    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).movedColor, allMoves.get(opsi.movesTotal).movedPiece, allMoves.get(opsi.movesTotal).movedFrom)
-    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).capturedColor, allMoves.get(opsi.movesTotal).capturedPiece, allMoves.get(opsi.movesTotal).capturedTo)
-    allMoves.set(opsi.movesTotal, {"pairColor":movedPieces.get(2).color, "pairPiece":movedPieces.get(2).piece, "pairFrom":movedPieces.get(2).indeksos})
-    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).pairColor, allMoves.get(opsi.movesTotal).pairPiece, allMoves.get(opsi.movesTotal).pairFrom)
-    allMoves.set(opsi.movesTotal, {"pairCapturesColor":movedPieces.get(3).color, "pairCaptures":movedPieces.get(3).piece, "pairTo":movedPieces.get(3).indeksos})
-    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).pairCapturesColor, allMoves.get(opsi.movesTotal).pairCaptures, allMoves.get(opsi.movesTotal).pairTo)
-    allMoves.set(opsi.movesTotal, {"enpColor":movedPieces.get(4).color, "enpPiece":movedPieces.get(4).piece, "enpInd":movedPieces.get(4).indeksos})
-    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).enpColor, allMoves.get(opsi.movesTotal).enpPiece, allMoves.get(opsi.movesTotal).enpInd)
-    allMoves.set(opsi.movesTotal, {"wKingInd":feni.feniWkingInd, "bKingInd":feni.feniBkingInd})
-    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wKingInd, allMoves.get(opsi.movesTotal).bKingInd)
-    allMoves.set(opsi.movesTotal, {"wkingmoved":wKingMoved, "bkingmoved":bKingMoved})
-    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wkingmoved, allMoves.get(opsi.movesTotal).bkingmoved)
-    allMoves.set(opsi.movesTotal, {"wcastlingPos":castlingWpossible, "bcastlingPos":castlingBpossible})
-    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wcastlingPos, allMoves.get(opsi.movesTotal).bcastlingPos)
-    allMoves.set(opsi.movesTotal, {"whiteTimeMove":whiteTimeTotal_temp, "blackTimeMove":blackTimeTotal_temp})
-    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteTimeMove, allMoves.get(opsi.movesTotal).blackTimeMove)
-    allMoves.set(opsi.movesTotal, {"whiteCapturedCount":whiteCaptured.count, "blackCapturedCount":blackCaptured.count})
-    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteCapturedCount, allMoves.get(opsi.movesTotal).blackCapturedCount)*/
     movesNoScanned = opsi.movesTotal;
 }
 
@@ -477,7 +418,7 @@ function recordMove() {
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).pairCapturesColor, allMoves.get(opsi.movesTotal).pairCaptures, allMoves.get(opsi.movesTotal).pairTo)
     allMoves.set(opsi.movesTotal, {"enpColor":movedPieces.get(4).color, "enpPiece":movedPieces.get(4).piece, "enpInd":movedPieces.get(4).indeksos})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).enpColor, allMoves.get(opsi.movesTotal).enpPiece, allMoves.get(opsi.movesTotal).enpInd)
-    allMoves.set(opsi.movesTotal, {"wKingInd":feni.feniWkingInd, "bKingInd":feni.feniBkingInd})
+    allMoves.set(opsi.movesTotal, {"wKingInd":feniWkingInd, "bKingInd":feniBkingInd})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wKingInd, allMoves.get(opsi.movesTotal).bKingInd)
     allMoves.set(opsi.movesTotal, {"wkingmoved":wKingMoved, "bkingmoved":bKingMoved})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wkingmoved, allMoves.get(opsi.movesTotal).bkingmoved)
@@ -491,38 +432,70 @@ function recordMove() {
 }
 
 ///////////////////////////////////////////////////////
-// Function checks if white is in mate condition
+// Function checks if white is in mate condition. First we test that are there legal moves, if yes we check if chess is still on. If so, mate or stalemate
 ////////////////////////////////////////////
 
-function iswhiteInMate() {
-    //console.log(opsi.movesTotal)
-    var whiteInMateTest = true;
-    var doVisual = 0;
-    var isLegalmove_bool = false;
+function isInMate(_turn_white, _w_king_index, _b_king_index, _current_state) {
+    var _mate_state = JSON.parse(JSON.stringify(_current_state))
+    var doVisual = false;
+    var _w_king_index_tmp = _w_king_index;
+    var _b_king_index_tmp = _b_king_index;
     for(var i = 0; i < 64; i++){
-        if (galeryModel.get(i).color === "w") {
-            for(var j = 0; j < 64; j++){
-                if (galeryModel.get(j).color === "b" || galeryModel.get(j).color === "e"){
-                    //console.log ("Check if the move is legal", moveLegal)
-                    //Mymove.isLegalmove(doVisual, isLegalmove_bool, i, j)
-                    if (Mymove.isLegalmove(doVisual, i, j, galeryModel.get(i).piece) === true && whiteInMateTest === true) {
-                        console.log ("Move is legal", i, j, galeryModel.get(i).piece);
-                        whiteInMateTest = false;
-                        i = 64;
-                        break;
-                    }
-                    else if (i===63 && j===63) {
-                        console.log("Mate");
+        for(var j = 0; j < 64; j++){
+            if (_turn_white && _mate_state[i].color === "w") {
+                if (_mate_state[j].color === "b" || _mate_state[j].color === "e"){
+                    if (Mymove.isLegalmove(doVisual, i, j, _mate_state[i].piece, _mate_state)) {
+                        var _mate_chess_state = JSON.parse(JSON.stringify(_mate_state))
+                        _mate_chess_state[j].color = _mate_state[i].color;
+                        _mate_chess_state[j].piece = _mate_state[i].piece;
+                        _mate_chess_state[i].color = "e";
+                        _mate_chess_state[i].piece = piePat + "empty.png";
+                        console.log ("Move is legal", i, j, _mate_state[i].piece,  _mate_chess_state[i].piece);
+                        if (i === _w_king_index) {_w_king_index_tmp = j} else {_w_king_index_tmp = _w_king_index};
+                        if (i === _b_king_index) {_b_king_index_tmp = j} else {_b_king_index_tmp = _b_king_index};
+                        if (!isChess_new(_turn_white, _w_king_index_tmp, _b_king_index_tmp, _mate_chess_state)){
+                            console.log("Some white piece can be moved", _turn_white, _w_king_index_tmp,_b_king_index_tmp);
+                            i = 64;
+                            break;
+                        }
                     }
                 }
+                else if (_turn_white && i===63 && j === 63) {
+                    console.log("It is white mate");
+                    lowerMessage = messages[1].msg;
+                    break;
+                }
+            }
+            else if (!_turn_white && _mate_state[i].color === "b") {
+                if (_mate_state[j].color === "w" || _mate_state[j].color === "e"){
+                    if (Mymove.isLegalmove(doVisual, i, j, _mate_state[i].piece, _mate_state)) {
+                        _mate_chess_state = JSON.parse(JSON.stringify(_mate_state))
+                        _mate_chess_state[j].color = _mate_state[i].color;
+                        _mate_chess_state[j].piece = _mate_state[i].piece;
+                        _mate_chess_state[i].color = "e";
+                        _mate_chess_state[i].piece = piePat + "empty.png";
+                        console.log ("Move is legal", i, j, _mate_chess_state[j].piece,  _mate_chess_state[i].piece);
+                        if (i === _w_king_index) {_w_king_index_tmp = j} else {_w_king_index_tmp = _w_king_index};
+                        if (i === _b_king_index) {_b_king_index_tmp = j} else {_b_king_index_tmp = _b_king_index};
+                        if (!isChess_new(_turn_white, _w_king_index_tmp, _b_king_index_tmp, _mate_chess_state)){
+                            console.log("Some black piece can be moved", _turn_white, _w_king_index_tmp,_b_king_index_tmp);
+                            i = 64;
+                            break;
+                        }
+                    }
+                }
+                else if (!_turn_white && i===63 && j === 63) {
+                    console.log("It is black mate");
+                    lowerMessage = messages[1].msg;
+                    break;
+                }
+            }
+            else if (i===63 && j === 63) {
+                console.log("It is real mate");
+                lowerMessage = messages[1].msg;
+                break;
             }
         }
-    }
-    if (whiteInMateTest) {
-        //console.log("White is in mate")
-    }
-    else {
-        //console.log("White is not in mate")
     }
 }
 
@@ -574,20 +547,20 @@ function othDeviceMoveBlack() {
     if (toIndex > 55 && galeryModel.get(toIndex).piece === piePat + "p.png") {
         galeryModel.set(toIndex, {"piece": piePat + "q.png"});
     }
-    feni.lowerMessage = "";
-    feni.upperMessage = "";
+    lowerMessage = "";
+    upperMessage = "";
     Mytab.addMove();
     vuoro.vaihdaValkealle();
-    isChessPure();
+    isChessPure(current_state);
     movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
     opsi.movesTotal++;
     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
-    feni.feniBlackReady2 = false;
+    feniBlackReady2 = false;
     // Recording move to the allMoves list
     allMoves.append({"moveNo":opsi.movesTotal})
 
-    whiteMatetimer.start();
+    mateTimer.start();
 
 }
 
@@ -638,8 +611,8 @@ function othDeviceMoveWhite() {
     if (toIndex < 8 && galeryModel.get(toIndex).piece === piePat + "P.png") {
         galeryModel.set(toIndex, {"piece": piePat + "Q.png"});
     }
-    feni.lowerMessage = "";
-    feni.upperMessage = "";
+    lowerMessage = "";
+    upperMessage = "";
     Mytab.addMove();
     vuoro.vaihdaMustalle();
     Myfunks.isChessPure();
@@ -647,7 +620,7 @@ function othDeviceMoveWhite() {
     opsi.movesTotal++;
     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
-    feni.feniWhiteReady2 = false;
+    feniWhiteReady2 = false;
     // Recording move to the allMoves list
     allMoves.append({"moveNo":opsi.movesTotal})
 
@@ -662,14 +635,14 @@ function startGame () {
         if (playMode == "stockfish") {hopo.initio();}
         //kripti.lisaa();
         if (isMyStart) {
-            feni.stockfishFirstmove = false
-            feni.feniWhiteReady = false
-            feni.feniWhite = true
+            stockfishFirstmove = false
+            feniWhiteReady = false
+            feniWhite = true
         }
         else {
-            feni.stockfishFirstmove = true
-            feni.feniWhiteReady = true
-            feni.feniWhite = false
+            stockfishFirstmove = true
+            feniWhiteReady = true
+            feniWhite = false
         }
     }
     tilat.aloitaPeli();
@@ -830,8 +803,8 @@ function moveBack() {
     movesNoScanned--; //
 
     // King index setting
-    feni.feniWkingInd = allMoves.get(movesNoScanned).wKingInd
-    feni.feniBkingInd = allMoves.get(movesNoScanned).bKingInd
+    feniWkingInd = allMoves.get(movesNoScanned).wKingInd
+    feniBkingInd = allMoves.get(movesNoScanned).bKingInd
 
     // Set true if king moved
     wKingMoved = allMoves.get(movesNoScanned).wkingmoved
@@ -848,16 +821,14 @@ function moveBack() {
 
     if (allMoves.get(movesNoScanned).movedColor === "w")
     {
-        feni.feniWhite = false;
-        feni.feniBlack = true;
+        feniWhite = false;
+        feniBlack = true;
         tilat.valko=false;
-        tilat.musta=true;
-    }
+     }
     else {
-        feni.feniWhite = true;
-        feni.feniBlack = false;
+        feniWhite = true;
+        feniBlack = false;
         tilat.valko=true;
-        tilat.musta=false;
     }
 }
 function moveForward () {
@@ -891,8 +862,8 @@ function moveForward () {
         galeryModel.set(allMoves.get(movesNoScanned).pairFrom,{"color":"e", "piece":piePat + "empty.png"})
     }
     // King index setting for chess checks
-    feni.feniWkingInd = allMoves.get(movesNoScanned).wKingInd
-    feni.feniBkingInd = allMoves.get(movesNoScanned).bKingInd
+    feniWkingInd = allMoves.get(movesNoScanned).wKingInd
+    feniBkingInd = allMoves.get(movesNoScanned).bKingInd
 
     // Set true if king moved
     wKingMoved = allMoves.get(movesNoScanned).wkingmoved
@@ -925,16 +896,14 @@ function moveForward () {
 
     if (allMoves.get(movesNoScanned).movedColor === "w")
     {
-        feni.feniWhite = false;
-        feni.feniBlack = true;
+        feniWhite = false;
+        feniBlack = true;
         tilat.valko=false;
-        tilat.musta=true;
     }
     else {
-        feni.feniWhite = true;
-        feni.feniBlack = false;
+        feniWhite = true;
+        feniBlack = false;
         tilat.valko=true;
-        tilat.musta=false;
     }
 
 
