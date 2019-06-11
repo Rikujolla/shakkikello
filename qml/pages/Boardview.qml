@@ -85,8 +85,6 @@ Page {
     property bool stockfishFirstmove: false
     property bool feniWhiteChess: false;
     property bool feniBlackChess: false;
-    property bool chessIsOn: false;
-    property bool forChessCheck: false;
     property int feniWkingInd: 60;
     property int feniBkingInd: 4;
     property string upperMessage: ""
@@ -101,9 +99,6 @@ Page {
     property var current_state: [] // current state of the board
     property var test_state: [] // test state of the board
 
-    property bool chessTestDone: false;
-    property bool midSquareTestDone: false;
-    //property bool waitPromo : false //if promotion needs to be wait TBlocalised?
     //property string promotedLong: "" //TBlocalised?
     //property string promotedShort: "q" // TBlocalised?
 
@@ -619,7 +614,6 @@ Page {
                             //galeryModel.set(koo,{"color":"b", "piece":piePat + "r.png", "frameop": 0, "recmove": -2});
                             current_state.push({"color":"b", "piece":piePat + "r.png", "frameop": 0, "recmove": -2});
                             galeryModel.set(koo,current_state[koo]);
-                            //console.log(current_state[koo].color)
                             koo=koo+1;
                             break;
                         case 1:
@@ -742,10 +736,8 @@ Page {
                         //https://stackoverflow.com/questions/7486085/copy-array-by-value
                         test_state = JSON.parse(JSON.stringify(current_state)); //Make a deep copy of object array, normal copy will make a shallow copy
                         toIndex=indeksi;
-                        //console.log(fromIndex, toIndex, "main",current_state[toIndex].piece, test_state[toIndex].piece,current_state[fromIndex].piece, test_state[fromIndex].piece)
                         test_state[toIndex] = {"color":colorMoved, "piece":itemMoved, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
                         test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
-                        //console.log(fromIndex, toIndex, "main",current_state[toIndex].piece, test_state[toIndex].piece,current_state[fromIndex].piece, test_state[fromIndex].piece)
                         galeryModel.set(fromIndex,{"frameop":0}); // Better performance needed, TBD is this afficting test_state?
                         var doVisual = true;
                         if (Mymove.isLegalmove(doVisual, fromIndex, toIndex, itemMoved, current_state)){
@@ -781,7 +773,7 @@ Page {
                                 }
                             }
                             else {
-                                // why not here the check as above feni.feniBlack = false;
+                                // why not here the check as above feniBlack = false;
                                 if (wenpassant > 0 && galeryModel.get(wenpassant).color === "wp") { //TBD test_state?
                                     test_state[wenpassant].color = "e";
                                     test_state[wenpassant].piece = piePat + "empty.png";
@@ -792,17 +784,11 @@ Page {
                                     feniBkingInd = toIndex;
                                 }
                             }
-                            if (currentMove == "promotion"){
-                                promotionWaiter.start()
-                            }
-                            else {
-                            forChessCheck = true; //starts the chess check timer
-                            chessChecker.start()
-                            }
+                            if (currentMove == "promotion"){ } else {chessChecker.start()}
                         }
                         else {
                             test_state = JSON.parse(JSON.stringify(current_state)); //TBD If test_state is not legal, lets go back
-                            console.log("Backkking")
+                            //console.log("Backkking")
                         }
                     }
                 }
@@ -993,7 +979,7 @@ Page {
                             width: grid.cellWidth
                             enabled: (feniWhite && isMyStart || feniBlack && !isMyStart || playMode == "human") && tilat.juoksee
                             onClicked: {indeksi = index;
-                                console.log(index);
+                                //console.log(index);
                                 itemTobemoved = piece;
                                 colorTobemoved = color;
                                 moveMent.movePiece();
@@ -1003,48 +989,28 @@ Page {
                 } // end GridView
             } //end Rectangle
 
-
-            Timer{
-                id: promotionWaiter
-                running: false
-                repeat:true
-                interval:100
-                onTriggered: {
-                    if (!waitPromo) {
-                        promotionWaiter.running = false
-                        forChessCheck = true
-                        test_state[toIndex].color = colorMoved;
-                        test_state[toIndex].piece = promotedLong;
-                        test_state[fromIndex].color = "e";
-                        test_state[fromIndex].piece = piePat + "empty.png";
-                        galeryModel.set(toIndex,{"color":colorMoved, "piece":promotedLong})
-                        galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
-                        chessChecker.start()
-                    }
-                    else { }
-                }
-            }
-
             Timer {
                 id:chessChecker
                 interval: 100;
-                running: forChessCheck && Qt.application.active && !waitPromo;
+                running: false
                 repeat: false
                 onTriggered: {
-                    if (currentMove == "castling") {
-                        Myfunks.midSquareCheck();
+                    if (currentMove == "castling" && Myfunks.midSquareCheck() || Myfunks.isChess(tilat.valko, feniWkingInd, feniBkingInd, test_state)) {
+                        Myfunks.cancelMove();
                     }
                     else {
-                        midSquareTestDone = true;
+                        Myfunks.doMove();
+                        test_state[fromIndex].recmove = opsi.movesTotal;
+                        test_state[toIndex].recmove = opsi.movesTotal;
+                        galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
+                        galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     }
-                    Myfunks.isChess(tilat.valko, feniWkingInd, feniBkingInd, test_state);
-                    forChessCheck = false;
-                    itemMover.start()
                 }
             }
-            Timer {
+            /*Timer {
                 id:itemMover
-                interval: 100; running: midSquareTestDone && chessTestDone && Qt.application.active && !waitPromo;
+                interval: 100;
+                running: false;
                 repeat: false
                 onTriggered: {
                     if (midSquareCheckki || chessIsOn) {
@@ -1057,11 +1023,9 @@ Page {
                         galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                         galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     }
-                    midSquareTestDone = false;
-                    chessTestDone = false;
 
                 }
-            }
+            }*/
 
             /// Timer stockfish plays black
             /// Either sends the move for stockfish analysis or only pushes it to the end of the vector if in opening
@@ -1210,7 +1174,7 @@ Page {
                     Mytab.addMove();
                     current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
                     vuoro.vaihdaValkealle();
-                    Myfunks.isChessPure(current_state);
+                    //Myfunks.isChessPure(tilat.valko, feniWkingInd, feniBkingInd, current_state);
                     movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
                     opsi.movesTotal++;
                     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
@@ -1220,7 +1184,8 @@ Page {
                     allMoves.append({"moveNo":opsi.movesTotal})
                     Myfunks.recordMove();
                     movesNoScanned = opsi.movesTotal;
-                    mateTimer.start();
+                    Myfunks.isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
+                    //mateTimer.start();
                 }
             }
 
@@ -1305,23 +1270,21 @@ Page {
                     Mytab.addMove();
                     current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
                     vuoro.vaihdaMustalle();
-                    Myfunks.isChessPure(current_state);
+                    //Myfunks.isChessPure(tilat.valko, feniWkingInd, feniBkingInd, current_state);
                     movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
                     opsi.movesTotal++;
                     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     feniWhiteReady2 = false;
                     // Recording move to the allMoves list
-                    //console.log(opsi.movesTotal)
                     allMoves.append({"moveNo":opsi.movesTotal})
-                    //console.log(allMoves.get(opsi.movesTotal).moveNo)
                     Myfunks.recordMove();
                     movesNoScanned = opsi.movesTotal;
-                    mateTimer.start();
+                    Myfunks.isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
                 }
             }
 
-            Timer {
+            /*Timer {
                 id: mateTimer
                 running: false
                 repeat: false
@@ -1330,7 +1293,7 @@ Page {
                     Myfunks.isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
                     mateTimer.stop()
                 }
-            }
+            }*/
 
             BackgroundItem {height:10}
 

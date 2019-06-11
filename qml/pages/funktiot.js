@@ -193,21 +193,22 @@ function isChess_new(_turn_white, _w_king_ind_chess, _b_king_ind_chess, _state) 
 
 function isChess(_white_turn, _w_king_ind_chess, _b_king_ind_chess, _state) {
     var doVisual = false;
+    var _chessIsOn = false;
     feniWhiteChess = false; // Check if this can be removed
     feniBlackChess = false; // Check if this can be removed
     for(var i = 0; i < 64; i = i+1){ // i is virtual fromIndex
         if (_white_turn && _state[i].color === "b") {
             if (Mymove.isLegalmove(doVisual, i, _w_king_ind_chess, _state[i].piece, _state)){
-                chessIsOn = true; //
+                _chessIsOn = true; //
             }
         }
         else if (!_white_turn && _state[i].color === "w") {
             if (Mymove.isLegalmove(doVisual, i, _b_king_ind_chess, _state[i].piece, _state)){
-                chessIsOn = true; //
+                _chessIsOn = true; //
             }
         }
     }
-    chessTestDone = true;
+    return _chessIsOn;
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -231,7 +232,6 @@ function cancelMove() {
         galeryModel.set(benpassant,{"color":"e"})
         benpassant = -1;
     }
-    chessIsOn = false;
 
     // king index backing
     if (movedPieces.get(0).piece === piePat + "K.png"){
@@ -273,42 +273,30 @@ function cancelMove() {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-// Function checks if Chess is  on. Used for notifications and castling checks
+// Function checks if Chess is  on. Used for notifications
 ///////////////////////////////////////////////////////////////////////////////////////
 
-function isChessPure(_current_state) { // TBD could this be replaced with is in mate?
+function isChessPure(_turn_white, _w_king_index, _b_king_index, _current_state) { // TBD could this be replaced with is in mate?
     var _current_state_tmp = JSON.parse(JSON.stringify(_current_state))
     var doVisual = false;
+    var _chessPure = false;
     feniWhiteChess = false;
     feniBlackChess = false;
     for(var i = 0; i < 64; i = i+1){
-        if (tilat.valko && galeryModel.get(i).color === "b") {
-            if (Mymove.isLegalmove(doVisual, i, feniWkingInd, galeryModel.get(i).piece, _current_state_tmp)){
+        if (_turn_white && _current_state_tmp[i].color === "b") {
+            if (Mymove.isLegalmove(doVisual, i, _w_king_index, _current_state_tmp[i].piece, _current_state_tmp)){
                 feniWhiteChess = true;
-                if (isMyStart) {
-                    lowerMessage = messages[0].msg;
-                }
-                else {
-                    upperMessage = messages[0].msg;
-                }
+                _chessPure = true;
             }
         }
-
-        else if (!tilat.valko && galeryModel.get(i).color === "w") {
-            if (Mymove.isLegalmove(doVisual, i, feniBkingInd, galeryModel.get(i).piece, _current_state_tmp)){
+        else if (!_turn_white && _current_state_tmp[i].color === "w") {
+            if (Mymove.isLegalmove(doVisual, i, _b_king_index, _current_state_tmp[i].piece, _current_state_tmp)){
                 feniBlackChess = true;
-                if (isMyStart) {
-                    upperMessage = messages[0].msg;
-                }
-                else {
-                    lowerMessage = messages[0].msg;
-                }
+                _chessPure = true;
             }
-
         }
     }
-
-
+    return _chessPure;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -318,23 +306,23 @@ function isChessPure(_current_state) { // TBD could this be replaced with is in 
 
 function midSquareCheck() {
     var doVisual = false;
+    var _midSquareCheckki = false;
     for(var i = 0; i < 64; i = i+1){
         var j = midSquareInd; // Virtual toIndex
 
         if (tilat.valko && galeryModel.get(i).color === "b") {
             if (Mymove.isLegalmove(doVisual, i, j, galeryModel.get(i).piece, test_state)){
-                midSquareCheckki = true;
+                _midSquareCheckki = true;
             }
         }
 
         else if (!tilat.valko && galeryModel.get(i).color === "w") {
             if (Mymove.isLegalmove(doVisual, i, j, galeryModel.get(i).piece, test_state)){
-                midSquareCheckki = true;
+                _midSquareCheckki = true;
             }
         }
     }
-
-    midSquareTestDone = true;
+    return _midSquareCheckki;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -343,13 +331,13 @@ function midSquareCheck() {
 
 function doMove() {
 
-    if (tilat.valko && !chessIsOn){
-        if (isMyStart) {
+    if (tilat.valko){
+        /*if (isMyStart) {
             lowerMessage = "";
         }
         else {
             upperMessage = "";
-        }
+        }*/
 
         gridToFEN(fromIndex, toIndex);
         if (currentMove == "enpassant") {blackCaptured.append({"captured":piePat + "p.png"})}
@@ -368,13 +356,13 @@ function doMove() {
         vuoro.vaihdaMustalle();
     }
 
-    else if (!tilat.valko && !chessIsOn) {
-        if (isMyStart) {
+    else if (!tilat.valko) {
+        /*if (isMyStart) {
             upperMessage = "";
         }
         else {
             lowerMessage = "";
-        }
+        }*/
 
         gridToFEN(fromIndex, toIndex);
         if (currentMove == "enpassant") {whiteCaptured.append({"captured":piePat + "P.png"})}
@@ -393,7 +381,6 @@ function doMove() {
         vuoro.vaihdaValkealle();
     }
 
-    isChessPure(current_state);
     opsi.recentMove = hopo.test; //only effective for stockfish game
     movesDone = movesDone + opsi.recentMove;  // Maybe needed in future
     opsi.movesTotal++;
@@ -403,6 +390,9 @@ function doMove() {
     current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
     recordMove();
     movesNoScanned = opsi.movesTotal;
+    //isChessPure(tilat.valko, feniWkingInd, feniBkingInd, current_state);
+    //mateTimer.start();
+    isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
 }
 
 function recordMove() {
@@ -436,6 +426,13 @@ function recordMove() {
 ////////////////////////////////////////////
 
 function isInMate(_turn_white, _w_king_index, _b_king_index, _current_state) {
+    var chess_state = "" // stateses "", wChess, bChess, staleMate, wMate, bMate
+    // First testing if chess is on
+    if (isChessPure(_turn_white, _w_king_index, _b_king_index, _current_state)) {
+        if (_turn_white) {chess_state = "wChess"} else {chess_state = "bChess"}
+        //console.log("is chess");
+    }
+    // Second testing if legal moves can be done
     var _mate_state = JSON.parse(JSON.stringify(_current_state))
     var doVisual = false;
     var _w_king_index_tmp = _w_king_index;
@@ -450,19 +447,17 @@ function isInMate(_turn_white, _w_king_index, _b_king_index, _current_state) {
                         _mate_chess_state[j].piece = _mate_state[i].piece;
                         _mate_chess_state[i].color = "e";
                         _mate_chess_state[i].piece = piePat + "empty.png";
-                        console.log ("Move is legal", i, j, _mate_state[i].piece,  _mate_chess_state[i].piece);
                         if (i === _w_king_index) {_w_king_index_tmp = j} else {_w_king_index_tmp = _w_king_index};
                         if (i === _b_king_index) {_b_king_index_tmp = j} else {_b_king_index_tmp = _b_king_index};
                         if (!isChess_new(_turn_white, _w_king_index_tmp, _b_king_index_tmp, _mate_chess_state)){
-                            console.log("Some white piece can be moved", _turn_white, _w_king_index_tmp,_b_king_index_tmp);
                             i = 64;
                             break;
                         }
                     }
                 }
                 else if (_turn_white && i===63 && j === 63) {
-                    console.log("It is white mate");
-                    lowerMessage = messages[1].msg;
+                    //console.log("It is white mate");
+                    if(chess_state === "wChess") {chess_state = "wMate"} else {chess_state = "staleMate"};
                     break;
                 }
             }
@@ -474,28 +469,64 @@ function isInMate(_turn_white, _w_king_index, _b_king_index, _current_state) {
                         _mate_chess_state[j].piece = _mate_state[i].piece;
                         _mate_chess_state[i].color = "e";
                         _mate_chess_state[i].piece = piePat + "empty.png";
-                        console.log ("Move is legal", i, j, _mate_chess_state[j].piece,  _mate_chess_state[i].piece);
                         if (i === _w_king_index) {_w_king_index_tmp = j} else {_w_king_index_tmp = _w_king_index};
                         if (i === _b_king_index) {_b_king_index_tmp = j} else {_b_king_index_tmp = _b_king_index};
                         if (!isChess_new(_turn_white, _w_king_index_tmp, _b_king_index_tmp, _mate_chess_state)){
-                            console.log("Some black piece can be moved", _turn_white, _w_king_index_tmp,_b_king_index_tmp);
                             i = 64;
                             break;
                         }
                     }
                 }
                 else if (!_turn_white && i===63 && j === 63) {
-                    console.log("It is black mate");
-                    lowerMessage = messages[1].msg;
+                    //console.log("It is black mate");
+                    if(chess_state === "bChess") {chess_state = "bMate"} else {chess_state = "staleMate"};
                     break;
                 }
             }
             else if (i===63 && j === 63) {
-                console.log("It is real mate");
-                lowerMessage = messages[1].msg;
+                //console.log("It is real mate");
+                if (_turn_white && chess_state === "wChess") {chess_state = "wMate"}
+                else if (!_turn_white && chess_state === "bChess"){chess_state = "bMate"}
+                else {chess_state = "staleMate"};
                 break;
             }
         }
+    }
+    // Printing chess, stalemate and mate messages
+    switch (chess_state){
+    case "wChess":
+        if (isMyStart) {lowerMessage = messages[0].msg;} else {upperMessage = messages[0].msg;}
+        break;
+    case "bChess":
+        if (isMyStart) {upperMessage = messages[0].msg;} else {lowerMessage = messages[0].msg;}
+        break;
+    case "wMate":
+        if (isMyStart) {
+            lowerMessage = messages[1].msg;
+            upperMessage = messages[4].msg;
+        }
+        else {
+            upperMessage = messages[1].msg;
+            lowerMessage = messages[4].msg;
+        }
+        break;
+    case "bMate":
+        if (isMyStart) {
+            upperMessage = messages[1].msg;
+            lowerMessage = messages[3].msg;
+        }
+        else {
+            lowerMessage = messages[1].msg;
+            upperMessage = messages[3].msg;
+        }
+        break;
+    case "staleMate":
+        lowerMessage = messages[2].msg;
+        upperMessage = messages[2].msg;
+        break;
+    default:
+        lowerMessage = "";
+        upperMessage = "";
     }
 }
 
@@ -551,7 +582,6 @@ function othDeviceMoveBlack() {
     upperMessage = "";
     Mytab.addMove();
     vuoro.vaihdaValkealle();
-    isChessPure(current_state);
     movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
     opsi.movesTotal++;
     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
@@ -559,8 +589,9 @@ function othDeviceMoveBlack() {
     feniBlackReady2 = false;
     // Recording move to the allMoves list
     allMoves.append({"moveNo":opsi.movesTotal})
-
-    mateTimer.start();
+    //isChessPure(tilat.valko, feniWkingInd, feniBkingInd, current_state);
+    isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
+    //mateTimer.start();
 
 }
 
@@ -688,20 +719,16 @@ function continueGame () {
         hopo.initio();
         for (i=1;i<movesNoScanned+1;i++){
             gridToFEN(allMoves.get(i).movedFrom, allMoves.get(i).capturedTo)
-            //console.log(hopo.test)
             if (i=== movesNoScanned && i%2 === 1 && isMyStart) {
                 hopo.inni();
                 blackTimer.start()
-                //console.log("Black continues", i)
             }
             else if (i=== movesNoScanned && i%2 === 0 && !isMyStart) {
                 hopo.inni();
                 whiteTimer.start()
-                //console.log("White continues", i)
             }
             else {
                 hopo.innio();
-                // console.log("Move to stack", i)
             }
         }
     }
@@ -713,7 +740,7 @@ function continueGame () {
     /*conTcpSrv.waitmove = "";
     conTcpCli.cmove = "";
     conTcpSrv.smove = "";*/
-
+    test_state = JSON.parse(JSON.stringify(current_state));
 }
 /////////////////////////////
 // This is modified from the function cancelMove, in future maybe evaluating if the same function can be used for backing and canceling
@@ -830,6 +857,12 @@ function moveBack() {
         feniBlack = false;
         tilat.valko=true;
     }
+    for (i = 0; i<64; i++ ){
+        current_state[i].color = galeryModel.get(i).color
+        current_state[i].piece = galeryModel.get(i).piece
+        current_state[i].frameop = galeryModel.get(i).frameop
+        current_state[i].recmove = galeryModel.get(i).recmove
+    }
 }
 function moveForward () {
     movesNoScanned++; //
@@ -905,6 +938,10 @@ function moveForward () {
         feniBlack = false;
         tilat.valko=true;
     }
-
-
+    for (i = 0; i<64; i++ ){
+        current_state[i].color = galeryModel.get(i).color
+        current_state[i].piece = galeryModel.get(i).piece
+        current_state[i].frameop = galeryModel.get(i).frameop
+        current_state[i].recmove = galeryModel.get(i).recmove
+    }
 }

@@ -53,22 +53,24 @@ Item {
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        // destroy object is needed when you dynamically create it
-                        //console.log(movedPieces.get(2).piece, movedPieces.get(2).color, movedPieces.get(2).indeksos)
-                        waitPromo = false
                         promotedShort = stfish
                         turn_White ? promotedLong = piePat + white : promotedLong = piePat + black
                         movedPieces.set(2,{"color":pro_color, "piece":pro_piece, "indeksos":pro_index})
                         movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                        //console.log(movedPieces.get(2).piece, movedPieces.get(2).color, movedPieces.get(2).indeksos)
+                        test_state[toIndex].color = colorMoved;
+                        test_state[toIndex].piece = promotedLong;
+                        test_state[fromIndex].color = "e";
+                        test_state[fromIndex].piece = piePat + "empty.png";
+                        galeryModel.set(toIndex,{"color":colorMoved, "piece":promotedLong})
+                        galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
+
+                        chessChecker.start()
                         promotionBox.destroy()
                     }
                 } //end MouseArea
             } //end Image
         } // end GridView
     } // end Rectangle
-
-    //Component.onCompleted: {waitPromo = false;}
 
     ListModel {
         id: promotionModel

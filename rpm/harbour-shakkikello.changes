@@ -12,6 +12,9 @@
 #- If paused in two player game I can move opponents piece?? BUG
 #- In other device mode promotion is only queen, BUG
 
+* Wed Jun 19 2019 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.7
+- Game ending logic is now working
+
 * Fri Jun 07 2019 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.6
 - Preliminary game ending is working
 - Tecnical release, not to be released as rpm

@@ -127,7 +127,7 @@ Row {
             interval: 1000
             repeat:true
             onTriggered: {
-                if ((isMyStart && conTcpCli.cmove == "black") || (!isMyStart && conTcpCli.cmove == "white")){
+                if ((isMyStart && conTcpCli.cmove === "black") || (!isMyStart && conTcpCli.cmove === "white")){
                     vtesttimer = false;
                     colBtn.visible = false;
                     connBtn.visible = true;
@@ -137,7 +137,7 @@ Row {
                     increment > conTcpCli.cincrem ? increment = conTcpCli.cincrem : increment = increment
                     conTcpSrv.sincrem = increment;
                 }
-                else if (isMyStart && conTcpCli.cmove == "white" || !isMyStart && conTcpCli.cmove == "black"){
+                else if (isMyStart && conTcpCli.cmove === "white" || !isMyStart && conTcpCli.cmove === "black"){
                     colBtn.visible = true;
                     connBtn.visible = false;
                     tstBtn.visible = true;
@@ -171,7 +171,7 @@ Row {
             interval: 1000
             repeat:true
             onTriggered: {
-                if (conTcpSrv.smove == "start" && conTcpCli.cmove == "start"){
+                if (conTcpSrv.smove === "start" && conTcpCli.cmove === "start"){
                     vstarttimer = false;
                     //
                     hopo.stoDepth = stockfishDepth;
@@ -179,23 +179,17 @@ Row {
                     hopo.stoSkill = stockfishSkill;
                     if (!tilat.pelialkoi) {
                         if (playMode == "stockfish") {hopo.initio();}
-                        //kripti.lisaa();
-                        isMyStart ? feni.stockfishFirstmove = false : feni.stockfishFirstmove = true
-                        isMyStart ? feni.feniWhiteReady = false : feni.feniWhiteReady = true
-                        //isMyStart ? feni.forChessCheck = false : feni.forChessCheck = true
+                        isMyStart ? stockfishFirstmove = false : stockfishFirstmove = true
+                        isMyStart ? feniWhiteReady = false : feniWhiteReady = true
                     }
-                    isMyStart ? feni.feniWhite = true : feni.feniWhite = false
+                    isMyStart ? feniWhite = true : feniWhite = false
                     tilat.aloitaPeli();
                     tilat.juoksee = !tilat.juoksee;
                     startti.timeAsetus();
-                    //kello.sekuntit = 0;
                     valkokello.timeValko();
-                    //valkokello.sekuntitv = 0;
                     muttakello.timeMutta();
-                    //muttakello.sekuntitm=0;
                     tilat.vaihdaTila();
                     maharollisuuret = qsTr("Reset");
-                    //Mytab.clearRecent()
                     conTcpSrv.waitmove = "";
                     conTcpCli.cmove = "";
                     conTcpSrv.smove = "";

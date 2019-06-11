@@ -33,8 +33,6 @@ import "pages"
 ApplicationWindow
 {
     id: shakkikelloWindow
-    //initialPage: Component { Pelisivu { } }
-    //initialPage: Qt.resolvedUrl(startPageTxt)
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: Orientation.Portrait
     _defaultPageOrientations: Orientation.Portrait
@@ -44,7 +42,6 @@ ApplicationWindow
     property int valkomax : 300
     property int mustamax : 300
     property int increment : 0
-    //property bool moveStarted : false
     property bool countDirDown: true //Default is Downwards
     property int countDirInt: 0 // For combo box index, related to countDirDown, 0 Downwards
     property string countDirName: qsTr("Downwards")
@@ -61,18 +58,14 @@ ApplicationWindow
     property int pieceStyle: 0 // 0 = Unlike style, 1 = Classic style
     property string piePat: "images/piece0/" // Piece sub path
     property string startPageTxt : "pages/Clockview.qml"
-    property bool waitPromo : false //if promotion needs to be wait TBlocalised?
     property string promotedLong: "" //TBlocalised?
     property string promotedShort: "q" // TBlocalised?
     property int selectedGame: -1 //Used for game selection
-    property string movesDone: ""; //saves done moves to single string eg. e2e4d7d5
-    property string movesDon: ""; //temporary length for testing
+    property string movesDone: ""; //saves done moves to single string eg. e2e4d7d5, used in Gamelist also TBLocalized
     property string oppIP:"192.168.1.70" // Opponent's IP
     property int portFixed:0 // Selects if port is random or fixed, default is random
     property int myPort // myIPport
     property int oppPort // Opponent's IPport
-    property bool whiteInMate: false // Tells if white is in mate
-
 
     ListModel {
         id: listix
@@ -83,11 +76,9 @@ ApplicationWindow
         }
     }
 
-
     Component.onCompleted: {
         Mysets.loadSettings()
         pageStack.push(Qt.resolvedUrl(startPageTxt))
         //console.log("width, height", Screen.width, Screen.height)
     }
-
 }

@@ -535,7 +535,7 @@
     <name>funktiot</name>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Nollaa</translation>
+        <translation>Nollaa</translation>
     </message>
 </context>
 <context>
