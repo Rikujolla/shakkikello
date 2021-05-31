@@ -66,6 +66,7 @@ ApplicationWindow
     property int portFixed:0 // Selects if port is random or fixed, default is random
     property int myPort // myIPport
     property int oppPort // Opponent's IPport
+    property bool printlogs : true //During testing the app
 
     ListModel {
         id: listix

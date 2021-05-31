@@ -66,7 +66,6 @@ Page {
     property string itemMoved;
     property string colorMoved;
     property bool moveLegal: false; //True if the move to the destination is possible
-    //property bool chessTest: false; // Flag if chess is tested, prevents pawn promotion
     property bool castlingWpossible: true; // Check if White castling is possible
     property bool castlingBpossible: true; // Check if Black castling is possible
     property string currentMove: ""; // Values castling, wenpassant or promotion
@@ -852,7 +851,8 @@ Page {
             BackgroundItem {
                 id: upperBar
                 width: page.width
-                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 254 : (Screen.height == 1920 ? 338 : 164))
+                //Default ((Screen.height-Screen.width)/2-10-Screen.width/15)
+                height: Screen.height == 960 ? 164 : (Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 254 : (Screen.height == 1920 ? 338 : ((Screen.height-Screen.width)/2-10-Screen.width/15))))
                 enabled: false //tilat.juoksee && tilat.valko
                 onClicked: vuoro.vaihdaMustalle()
                 PageHeader {
@@ -863,10 +863,8 @@ Page {
                     id: progressBar2
                     width: parent.width
                     maximumValue: isMyStart ? mustamax : valkomax
-                    //valueText: isMyStart ? (muttakello.label_minuutitm + ":" + (muttakello.label_sekuntitm < 10 ? "0" : "") + muttakello.label_sekuntitm)  : (valkokello.label_minuutitv + ":" + (valkokello.label_sekuntitv < 10 ? "0" : "") + valkokello.label_sekuntitv)
                     valueText: isMyStart ? label_time_b  : label_time_w
                     label: qsTr("min:s")
-                    //value: isMyStart ? mustamax + increment - blackTimeTotal/1000 : valkomax + increment - whiteTimeTotal/1000
                     value: isMyStart ? mustamax - blackTimeTotal/1000 : valkomax - whiteTimeTotal/1000
                     rotation: 180
                     anchors.verticalCenter: parent.verticalCenter
@@ -1007,25 +1005,6 @@ Page {
                     }
                 }
             }
-            /*Timer {
-                id:itemMover
-                interval: 100;
-                running: false;
-                repeat: false
-                onTriggered: {
-                    if (midSquareCheckki || chessIsOn) {
-                        Myfunks.cancelMove();
-                    }
-                    else {
-                        Myfunks.doMove();
-                        test_state[fromIndex].recmove = opsi.movesTotal;
-                        test_state[toIndex].recmove = opsi.movesTotal;
-                        galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
-                        galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
-                    }
-
-                }
-            }*/
 
             /// Timer stockfish plays black
             /// Either sends the move for stockfish analysis or only pushes it to the end of the vector if in opening
@@ -1185,7 +1164,6 @@ Page {
                     Myfunks.recordMove();
                     movesNoScanned = opsi.movesTotal;
                     Myfunks.isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
-                    //mateTimer.start();
                 }
             }
 
@@ -1348,8 +1326,8 @@ Page {
                 id: lowerBar
                 width: page.width
                 // height (Screen.height-Screen.width)/2-10-Screen.width/15-140
-                // Tablet height (2048-1248)/2-10-66-140
-                height: Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 184 : (Screen.height == 1920 ? 198 : 164))
+                // Tablet height (2048-1248)/2-10-66-140 = 184
+                height: Screen.height == 960 ? 164 : (Screen.height == 1280 ? 222 : (Screen.height == 2048 ? 184 : (Screen.height == 1920 ? 198 : ((Screen.height-Screen.width)/2-10-Screen.width/15-140))))
                 enabled: false //tilat.juoksee && !tilat.valko
                 onClicked: vuoro.vaihdaValkealle()
                 ProgressBar {

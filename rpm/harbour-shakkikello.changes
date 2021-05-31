@@ -12,6 +12,10 @@
 #- If paused in two player game I can move opponents piece?? BUG
 #- In other device mode promotion is only queen, BUG
 
+* Mon May 31 2021 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.8
+- Screen settings enhanced for newer phones (XA Ultra Plus and Xperia 10)
+- 64 bit version delivered
+
 * Wed Jun 19 2019 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.7
 - Game ending logic is now working
 
