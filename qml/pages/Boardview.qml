@@ -1085,7 +1085,7 @@ Page {
 
             Timer {
                 id:blackTimer
-                interval: (stockfishMovetime*1000 + 120);
+                interval: (stockfishMovetime*1000 + 130);
                 running: playMode == "stockfish"&& feniBlackReady2 && isMyStart && Qt.application.active;
                 repeat: false
                 onTriggered: {
@@ -1105,6 +1105,10 @@ Page {
                     test_state[fromIndex].piece = piePat + "empty.png"
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
+                    // If moving king set new value for feniBkingInd
+                    if (galeryModel.get(toIndex).piece === piePat + "k.png") {
+                        feniBkingInd = toIndex
+                    }
                     // If castling, moving the rook also
                     if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "k.png") {
                         if (toIndex == 6){
@@ -1174,7 +1178,7 @@ Page {
 
             Timer {
                 id: whiteTimer
-                interval: (stockfishMovetime*1000 + 120);
+                interval: (stockfishMovetime*1000 + 130);
                 running: playMode == "stockfish"&& feniWhiteReady2 && !isMyStart && Qt.application.active && tilat.pelialkoi;
                 repeat: false
                 onTriggered: {
@@ -1200,6 +1204,10 @@ Page {
                     test_state[fromIndex].piece = piePat + "empty.png"
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
+                    // If moving king set new value for feniWkingInd
+                    if (galeryModel.get(toIndex).piece === piePat + "K.png") {
+                        feniWkingInd = toIndex
+                    }
                     // If castling, moving the rook also
                     if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "K.png") {
                         if (toIndex == 62){

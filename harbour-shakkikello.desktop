@@ -39,3 +39,9 @@ Name[sv]=Blixtschack
 Name[zh_CN]=快速棋牌
 # Kiinaksi (zh_hk)
 Name[zh_HK]=快速棋牌
+
+[X-Sailjail]
+Permissions=Documents;Internet
+#Permissions=Documents;Internet;PublicDir;UserDirs
+OrganizationName=fi.rikujolla
+ApplicationName=harbour-shakkikello

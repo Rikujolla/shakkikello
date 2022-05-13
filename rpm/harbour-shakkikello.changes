@@ -12,6 +12,10 @@
 #- If paused in two player game I can move opponents piece?? BUG
 #- In other device mode promotion is only queen, BUG
 
+* Fri May 13 2022 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.9
+- Sandboxing introduced
+- Messages bug fixed in Stockfish mode
+
 * Mon May 31 2021 Riku Lahtinen <rikul.lajolla@kiu.as> 0.8.8
 - Screen settings enhanced for newer phones (XA Ultra Plus and Xperia 10)
 - 64 bit version delivered

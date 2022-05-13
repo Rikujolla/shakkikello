@@ -180,7 +180,8 @@ void A::inni() {
     string ransu;
     g_depth = myStoDepth.toInt();
     g_skill = myStoSkill.toInt();
-    g_movetime = myStoMovetime.toInt() * 1000 - 120;
+    //Reducing stockfish time from nominal time to help app not freezing
+    g_movetime = myStoMovetime.toInt() * 1000 - 130;
     //cout << g_depth << " " << g_movetime << " " << g_skill << endl;
     ransu=myTest.toStdString();//    Move m;
     g_siirrot.push_back(ransu);

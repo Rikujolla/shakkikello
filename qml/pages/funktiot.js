@@ -276,7 +276,7 @@ function cancelMove() {
 // Function checks if Chess is  on. Used for notifications
 ///////////////////////////////////////////////////////////////////////////////////////
 
-function isChessPure(_turn_white, _w_king_index, _b_king_index, _current_state) { // TBD could this be replaced with is in mate?
+function isChessPure(_turn_white, _w_king_index, _b_king_index, _current_state) {
     var _current_state_tmp = JSON.parse(JSON.stringify(_current_state))
     var doVisual = false;
     var _chessPure = false;
@@ -422,7 +422,7 @@ function recordMove() {
 }
 
 ///////////////////////////////////////////////////////
-// Function checks if white is in mate condition. First we test that are there legal moves, if yes we check if chess is still on. If so, mate or stalemate
+// Function checks if white or black is in mate condition. First we test that are there legal moves, if yes we check if chess is still on. If so, mate or stalemate
 ////////////////////////////////////////////
 
 function isInMate(_turn_white, _w_king_index, _b_king_index, _current_state) {
@@ -431,7 +431,7 @@ function isInMate(_turn_white, _w_king_index, _b_king_index, _current_state) {
     if (isChessPure(_turn_white, _w_king_index, _b_king_index, _current_state)) {
         if (_turn_white) {chess_state = "wChess"} else {chess_state = "bChess"}
         //console.log("is chess");
-    }
+    //}
     // Second testing if legal moves can be done
     var _mate_state = JSON.parse(JSON.stringify(_current_state))
     var doVisual = false;
@@ -492,13 +492,28 @@ function isInMate(_turn_white, _w_king_index, _b_king_index, _current_state) {
             }
         }
     }
+}
     // Printing chess, stalemate and mate messages
     switch (chess_state){
     case "wChess":
-        if (isMyStart) {lowerMessage = messages[0].msg;} else {upperMessage = messages[0].msg;}
+        if (isMyStart) {
+            lowerMessage = messages[0].msg;
+            upperMessage = "";
+        }
+        else {
+            lowerMessage = "";
+            upperMessage = messages[0].msg;
+        }
         break;
     case "bChess":
-        if (isMyStart) {upperMessage = messages[0].msg;} else {lowerMessage = messages[0].msg;}
+        if (isMyStart) {
+            lowerMessage = "";
+            upperMessage = messages[0].msg;
+        }
+        else {
+            lowerMessage = messages[0].msg;
+            upperMessage = "";
+        }
         break;
     case "wMate":
         if (isMyStart) {
@@ -542,6 +557,10 @@ function othDeviceMoveBlack() {
 
     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
+    // If moving king set new value for feniBkingInd
+    if (galeryModel.get(toIndex).piece === piePat + "k.png") {
+        feniBkingInd = toIndex
+    }
     // If castling, moving the rook also
     if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "k.png") {
         if (toIndex == 6){
@@ -606,6 +625,10 @@ function othDeviceMoveWhite() {
 
     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
+    // If moving king set new value for feniWkingInd
+    if (galeryModel.get(toIndex).piece === piePat + "K.png") {
+        feniWkingInd = toIndex
+    }
     // If castling, moving the rook also
     if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "K.png") {
         if (toIndex == 62){
@@ -646,7 +669,7 @@ function othDeviceMoveWhite() {
     upperMessage = "";
     Mytab.addMove();
     vuoro.vaihdaMustalle();
-    Myfunks.isChessPure();
+    //Myfunks.isChessPure(); Testing if this is needed?
     movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
     opsi.movesTotal++;
     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
@@ -654,8 +677,7 @@ function othDeviceMoveWhite() {
     feniWhiteReady2 = false;
     // Recording move to the allMoves list
     allMoves.append({"moveNo":opsi.movesTotal})
-
-
+    isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
 }
 
 function startGame () {
