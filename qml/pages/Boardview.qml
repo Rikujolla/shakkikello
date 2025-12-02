@@ -73,6 +73,10 @@ Page {
     property bool bKingMoved: false; // To record this for castling checks
     property int midSquareInd  // Used for castling test
     property bool midSquareCheckki: false; // Used for castling check
+    property bool wRookKingsideMoved: false // Used for castling check
+    property bool wRookQueensideMoved: false // Used for castling check
+    property bool bRookKingsideMoved: false // Used for castling check
+    property bool bRookQueensideMoved: false // Used for castling check
 
     property bool feniBlackReady:false;
     property bool feniBlackReady2:false;
@@ -124,14 +128,20 @@ Page {
             }
 
             MenuItem { //Start/Pause
+                id:start_pause_menu
                 text: aloitapause
-                enabled: !tilat.peliloppui
+                enabled: true //!tilat.peliloppui
                 onClicked: {
-                    if (!tilat.pelialkoi) {
+                    if (tilat.peliloppui){
+                        pageStack.replace(Qt.resolvedUrl("Boardview.qml"))
+                    }
+                    else if (!tilat.pelialkoi) {
                         Myfunks.startGame()
                     }
                     else if (tilat.juoksee) {
                         Myfunks.pauseGame()
+                        iconSources.set(0,{"visibility_":true})
+                        iconSources.set(1,{"visibility_":true})
                     }
                     else {
                         Myfunks.continueGame()
@@ -488,7 +498,14 @@ Page {
                     pelialkoi = false
                 }
                 function vaihdaTila() {
-                    if (pelialkoi == true && juoksee == true)  { aloitapause = qsTr("Pause")} else {aloitapause = qsTr("Continue")
+                    if (pelialkoi == true && juoksee == true)  {
+                        aloitapause = qsTr("Pause")
+                    }
+                    else if (peliloppui){
+                        aloitapause = qsTr("New game")
+                    }
+                    else {
+                        aloitapause = qsTr("Continue")
                     }
                 }
                 function aloitaPeli() {
@@ -506,7 +523,8 @@ Page {
                     muttakello.timeMutta();
                     tilat.vaihdaTila();
                     maharollisuuret = qsTr("Reset")
-
+                    aloitapause = qsTr("New game");
+                    iconSources.set(0,{"visibility_":true})
                 }
             }
 
@@ -721,7 +739,7 @@ Page {
                 ////////////////////////////////////////////////////
 
                 function movePiece() { //TBD index could pe passed to the function as a parameter removing indeksi variable
-
+                    // 1. Testing if the item can be moved, function ismovable is utilized to print the frame around the square where the move starts.
                     if (!moveStarted) {
                         fromIndex=indeksi;
                         toIndex=indeksi;
@@ -732,15 +750,20 @@ Page {
                         }
                     }
                     else {
+                        // 2. Creating a copy of the current state of the board to test_state
                         //https://stackoverflow.com/questions/7486085/copy-array-by-value
                         test_state = JSON.parse(JSON.stringify(current_state)); //Make a deep copy of object array, normal copy will make a shallow copy
                         toIndex=indeksi;
+                        // 3. Recording the move to test_state
                         test_state[toIndex] = {"color":colorMoved, "piece":itemMoved, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
                         test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+                        // 4. Removing the frame from the square where move started
                         galeryModel.set(fromIndex,{"frameop":0}); // Better performance needed, TBD is this afficting test_state?
+                        // ??
                         var doVisual = true;
+                        // Testing if the move is legal
                         if (Mymove.isLegalmove(doVisual, fromIndex, toIndex, itemMoved, current_state)){
-                            // Saving position before a move to possiple cancellation of a move
+                            // Saving position before a move to possible cancellation of a move
                             movedPieces.set(0,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece moved
                             movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
                             if (currentMove === "") {
@@ -750,44 +773,51 @@ Page {
                             if (wenpassant <0 && benpassant<0) {
                                 movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
                             }
-
+                            // 5. Am I doing the recording twice??
                             test_state[toIndex].color = colorMoved;
                             test_state[toIndex].piece = itemMoved;
                             test_state[fromIndex].color = "e";
                             test_state[fromIndex].piece = piePat + "empty.png";
+                            // 6. Recording the move to galeryModel to be visualized
                             galeryModel.set(toIndex,{"color":colorMoved, "piece":itemMoved})
                             galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
+                            // 7. End the move
                             moveStarted=!moveStarted;
                             moveLegal=false;
                             if (tilat.valko) {
+                                // 8.w ??
                                 if (playMode == "stockfish") {feniWhite = false;} //Check also in othDevice mode??
+                                // 9.w Removing the possibility of white to utilize enpassant possibility later
                                 if (benpassant > 0 && galeryModel.get(benpassant).color === "bp") { // TBD test_state?
                                     test_state[benpassant].color = "e";
                                     test_state[benpassant].piece = piePat + "empty.png";
                                     galeryModel.set(benpassant,{"color":"e", "piece":piePat + "empty.png"});
                                     benpassant = -1
                                 }
+                                // 10.w Changing a white king position on the board
                                 if (itemMoved == piePat + "K.png") {
                                     feniWkingInd = toIndex;
                                 }
                             }
                             else {
-                                // why not here the check as above feniBlack = false;
+                                // 8.b ?? why not here the check as above feniBlack = false;
+                                // 9.b Removing the possibility of black to utilize enpassant possibility later
                                 if (wenpassant > 0 && galeryModel.get(wenpassant).color === "wp") { //TBD test_state?
                                     test_state[wenpassant].color = "e";
                                     test_state[wenpassant].piece = piePat + "empty.png";
                                     galeryModel.set(wenpassant,{"color":"e", "piece":piePat + "empty.png"});
                                     wenpassant = -1
                                 }
+                                // 10.b Changing a white king position on the board
                                 if (itemMoved == piePat + "k.png") {
                                     feniBkingInd = toIndex;
                                 }
                             }
+                            // 11. ??
                             if (currentMove == "promotion"){ } else {chessChecker.start()}
                         }
                         else {
                             test_state = JSON.parse(JSON.stringify(current_state)); //TBD If test_state is not legal, lets go back
-                            //console.log("Backkking")
                         }
                     }
                 }
@@ -844,6 +874,12 @@ Page {
                     blackTimeMove: 0 // Black player time at the end of the move
                     whiteCapturedCount: 0 // Initial try to solve captured List
                     blackCapturedCount: 0 // Initial try to solve captured List
+                    upperMessage:"" // To record an upper message of the move
+                    lowerMessage: "" // To record a lower message of the move
+                    wRookKingsideMoved: false // Used for castling check
+                    wRookQueensideMoved: false // Used for castling check
+                    bRookKingsideMoved: false // Used for castling check
+                    bRookQueensideMoved: false // Used for castling check
                 }
 
             }
@@ -882,7 +918,7 @@ Page {
                 id: uppMessageArea
                 width: page.width
                 height: page.width/15
-
+                // upperNotes Text box displays messages like Chess, Mate, Stalemate etc. When messages displayed upperMessageGrid is hidden
                 Text {
                     id: upperNotes
                     text: upperMessage
@@ -906,7 +942,11 @@ Page {
                     delegate: Rectangle {
                         height:upperMessageGrid.cellHeight
                         width: upperMessageGrid.cellWidth
-                        visible: isMyStart ? index < allMoves.get(movesNoScanned).whiteCapturedCount: index < allMoves.get(movesNoScanned).blackCapturedCount
+                        //visible: isMyStart ? index < allMoves.get(movesNoScanned).whiteCapturedCount: index < allMoves.get(movesNoScanned).blackCapturedCount
+                        visible: {
+                            var move_u = allMoves && movesNoScanned < allMoves.count ? allMoves.get(movesNoScanned) : null;
+                            move_u ? (isMyStart ? index < move_u.whiteCapturedCount : index < move_u.blackCapturedCount) : false;
+                        }
                         color: "#dddea1"
                         Image {
                             source: captured
@@ -977,7 +1017,6 @@ Page {
                             width: grid.cellWidth
                             enabled: (feniWhite && isMyStart || feniBlack && !isMyStart || playMode == "human") && tilat.juoksee
                             onClicked: {indeksi = index;
-                                //console.log(index);
                                 itemTobemoved = piece;
                                 colorTobemoved = color;
                                 moveMent.movePiece();
@@ -1090,43 +1129,59 @@ Page {
                 repeat: false
                 onTriggered: {
                     if (!opsi.openingPossible) {
+                        // Getting move from Stockfish
                         hopo.outti();
                     }
+                    // Getting fromIndex and toIndex of a Stockfish move
                     Myfunks.fenToGRID()
-                    // Saving moves for captured pieces //Possible BUG in fast play in next line, could be related to narrow timeslot where you can select piece on opponents turn. Have to follow
-                    movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
-                    movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
-                    movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                    movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+
+                    movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex})
+                    movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex})
+                    movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1})
+                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1})
+                    movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1})
+                    // Recording the move to test_state
                     test_state[toIndex].color = galeryModel.get(fromIndex).color;
                     test_state[toIndex].piece = galeryModel.get(fromIndex).piece;
                     test_state[fromIndex].color = "e";
                     test_state[fromIndex].piece = piePat + "empty.png"
+                    // Moving the piece
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
-                    // If moving king set new value for feniBkingInd
+
+                    // King move tracking
                     if (galeryModel.get(toIndex).piece === piePat + "k.png") {
                         feniBkingInd = toIndex
                     }
-                    // If castling, moving the rook also
+
+                    // Castling
                     if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "k.png") {
                         if (toIndex == 6){
+                            test_state[5].color = "b"
+                            test_state[5].piece = piePat + "r.png"
+                            test_state[7].color = "e"
+                            test_state[7].piece = piePat + "empty.png"
                             galeryModel.set(5,{"color":"b", "piece":piePat + "r.png"})
                             galeryModel.set(7,{"color":"e", "piece":piePat + "empty.png"})
                             movedPieces.set(2,{"color":"b", "piece":piePat + "r.png", "indeksos":7})
                             movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":5})
                         }
                         else {
+                            test_state[3].color = "b"
+                            test_state[3].piece = piePat + "r.png"
+                            test_state[0].color = "e"
+                            test_state[0].piece = piePat + "empty.png"
                             galeryModel.set(3,{"color":"b", "piece":piePat + "r.png"})
                             galeryModel.set(0,{"color":"e", "piece":piePat + "empty.png"})
                             movedPieces.set(2,{"color":"b", "piece":piePat + "r.png", "indeksos":0})
                             movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":3})
                         }
                     }
+
                     // If blacks move gives enpassant possibility to whiteTimer
                     if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece === piePat + "p.png") {
                         benpassant = toIndex-8;
+                        test_state[benpassant].color = "bp";
                         galeryModel.set(benpassant,{"color":"bp"})
                         movedPieces.set(4,{"color":"bp", "piece":piePat + "empty.png", "indeksos":benpassant}) //Set enpassant values
                     }
@@ -1137,37 +1192,44 @@ Page {
                         movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":toIndex-8})
                         wenpassant = -1;
                     }
+                    // 9.b Removing the possibility of black to utilize enpassant possibility later
+                    if (wenpassant > 0 && galeryModel.get(wenpassant).color === "wp") { //TBD test_state?
+                        test_state[wenpassant].color = "e";
+                        test_state[wenpassant].piece = piePat + "empty.png";
+                        galeryModel.set(wenpassant,{"color":"e", "piece":piePat + "empty.png"});
+                        wenpassant = -1
+                    }
                     // Adding moves to captures list
                     if (currentMove == "enpassant") {
                         whiteCaptured.append({"captured":piePat + "P.png"});
                         currentMove = "";
                     }
+
                     if (movedPieces.get(1).piece !== piePat + "empty.png") {
                         whiteCaptured.append({"captured":movedPieces.get(1).piece})
                     }
 
-                    // If pawn reaches the last line let's guess the promotion to be a queen. Have to correct in future some how
-
+                    // Promotion
                     if (toIndex > 55 && galeryModel.get(toIndex).piece === piePat + "p.png") {
                         galeryModel.set(toIndex, {"piece": piePat + "q.png"});
                         movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
                     }
+
                     lowerMessage = "";
                     upperMessage = "";
                     Mytab.addMove();
-                    current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
+                    current_state = JSON.parse(JSON.stringify(test_state));
                     vuoro.vaihdaValkealle();
-                    //Myfunks.isChessPure(tilat.valko, feniWkingInd, feniBkingInd, current_state);
-                    movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
+                    movesDone = movesDone + opsi.recentMove;
                     opsi.movesTotal++;
                     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     feniBlackReady2 = false;
-                    // Recording move to the allMoves list
+
                     allMoves.append({"moveNo":opsi.movesTotal})
-                    Myfunks.recordMove();
-                    movesNoScanned = opsi.movesTotal;
+
                     Myfunks.isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
+                    Myfunks.recordMove();
                 }
             }
 
@@ -1185,38 +1247,48 @@ Page {
                     if (stockfishFirstmove == true) {
                         stockfishFirstmove = false
                     }
-
                     else if (!opsi.openingPossible) {
+                        // Getting move from Stockfish
                         hopo.outti();
                     }
-                    else {}
-
+                    // Getting fromIndex and toIndex of a Stockfish move
                     Myfunks.fenToGRID()
-                    // Saving moves for captured pieces
-                    movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
-                    movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
-                    movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                    movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+
+
+                    movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex})
+                    movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex})
+                    movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1})
+                    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1})
+                    movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1})
+
                     test_state[toIndex].color = galeryModel.get(fromIndex).color;
                     test_state[toIndex].piece = galeryModel.get(fromIndex).piece;
                     test_state[fromIndex].color = "e";
                     test_state[fromIndex].piece = piePat + "empty.png"
+
                     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
                     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
-                    // If moving king set new value for feniWkingInd
+
                     if (galeryModel.get(toIndex).piece === piePat + "K.png") {
                         feniWkingInd = toIndex
                     }
-                    // If castling, moving the rook also
+                    // Castling
                     if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "K.png") {
                         if (toIndex == 62){
+                            test_state[61].color = "w"
+                            test_state[61].piece = piePat + "R.png"
+                            test_state[63].color = "e"
+                            test_state[63].piece = piePat + "empty.png"
                             galeryModel.set(61,{"color":"w", "piece":piePat + "R.png"})
                             galeryModel.set(63,{"color":"e", "piece":piePat + "empty.png"})
                             movedPieces.set(2,{"color":"w", "piece":piePat + "R.png", "indeksos":63})
                             movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":61})
                         }
                         else {
+                            test_state[59].color = "w"
+                            test_state[59].piece = piePat + "R.png"
+                            test_state[56].color = "e"
+                            test_state[56].piece = piePat + "empty.png"
                             galeryModel.set(59,{"color":"w", "piece":piePat + "R.png"})
                             galeryModel.set(56,{"color":"e", "piece":piePat + "empty.png"})
                             movedPieces.set(2,{"color":"w", "piece":piePat + "R.png", "indeksos":56})
@@ -1226,6 +1298,7 @@ Page {
                     // If whites move gives enpassant possibility to blackTimer
                     if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece === piePat + "P.png") {
                         wenpassant = toIndex+8
+                        test_state[wenpassant].color = "wp"
                         galeryModel.set(wenpassant,{"color":"wp"})
                         movedPieces.set(4,{"color":"wp", "piece":piePat + "empty.png", "indeksos":wenpassant}) //Set enpassant values
                     }
@@ -1236,37 +1309,44 @@ Page {
                         movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":toIndex+8})
                         benpassant = -1;
                     }
+
+                    // 9.w Removing the possibility of white to utilize enpassant possibility later
+                    if (benpassant > 0 && galeryModel.get(benpassant).color === "bp") { // TBD test_state?
+                        test_state[benpassant].color = "e";
+                        test_state[benpassant].piece = piePat + "empty.png";
+                        galeryModel.set(benpassant,{"color":"e", "piece":piePat + "empty.png"});
+                        benpassant = -1
+                    }
                     // Adding moves to captures list
+
                     if (currentMove == "enpassant") {
                         blackCaptured.append({"captured":piePat + "p.png"});
                         currentMove = "";
                     }
+
                     if (movedPieces.get(1).piece !== piePat + "empty.png") {
                         blackCaptured.append({"captured":movedPieces.get(1).piece})
                     }
-
-                    // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
-
+                    // If the white pawn reaches the last line the promotion to Queen is assumed (TBD other possibilities)
                     if (toIndex < 8 && galeryModel.get(toIndex).piece === piePat + "P.png") {
                         galeryModel.set(toIndex, {"piece": piePat + "Q.png"});
                         movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
                     }
+
                     lowerMessage = "";
                     upperMessage = "";
                     Mytab.addMove();
-                    current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
+                    current_state = JSON.parse(JSON.stringify(test_state));
                     vuoro.vaihdaMustalle();
-                    //Myfunks.isChessPure(tilat.valko, feniWkingInd, feniBkingInd, current_state);
-                    movesDone = movesDone + opsi.recentMove; // Adding the move for openings comparison
+                    movesDone = movesDone + opsi.recentMove;
                     opsi.movesTotal++;
                     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     feniWhiteReady2 = false;
-                    // Recording move to the allMoves list
+
                     allMoves.append({"moveNo":opsi.movesTotal})
-                    Myfunks.recordMove();
-                    movesNoScanned = opsi.movesTotal;
                     Myfunks.isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
+                    Myfunks.recordMove();
                 }
             }
 
@@ -1287,7 +1367,7 @@ Page {
                 id: lowMessageArea
                 width: page.width
                 height: Screen.height == 2048 ? 66 : page.width/15
-
+                // upperNotes Text box displays messages like Chess, Mate, Stalemate etc. When messages displayed upperMessageGrid is hidden
                 Text {
                     id: lowerNotes
                     text: lowerMessage
@@ -1311,7 +1391,11 @@ Page {
                     delegate: Rectangle {
                         height:lowerMessageGrid.cellHeight
                         width: lowerMessageGrid.cellWidth
-                        visible: isMyStart ? index < allMoves.get(movesNoScanned).blackCapturedCount : index < allMoves.get(movesNoScanned).whiteCapturedCount
+                        //visible: isMyStart ? index < allMoves.get(movesNoScanned).blackCapturedCount : index < allMoves.get(movesNoScanned).whiteCapturedCount
+                        visible: {
+                            var move_l = allMoves && movesNoScanned < allMoves.count ? allMoves.get(movesNoScanned) : null;
+                            move_l ? (isMyStart ? index < move_l.blackCapturedCount : index < move_l.whiteCapturedCount) : false;
+                        }
                         color: "#997400"
                         Image {
                             source: captured
@@ -1360,7 +1444,7 @@ Page {
                 ListElement{
                     iidee: "prev"
                     icons:"icon-m-previous?"
-                    visibility_: true
+                    visibility_: false
                     modes: "stockfish"
                 }
                 /*ListElement{
@@ -1370,13 +1454,13 @@ Page {
                 ListElement{
                     iidee: "play"
                     icons:"icon-m-play?"
-                    visibility_: true
+                    visibility_: false
                     modes: "all"
                 }
                 ListElement{
                     iidee:"forw"
                     icons:"icon-m-next?"
-                    visibility_: true
+                    visibility_: false
                     modes: "human"
                 }
             }
@@ -1394,19 +1478,36 @@ Page {
                         IconButton {
                             id: but_eon
                             width:page.width/3
-                            visible: (visibility_ && modes === "all") || (iidee ==="prev" && (modes === playMode || playMode === "human") && movesNoScanned >0) || (iidee ==="forw" && playMode !== "othDevice" && movesNoScanned < opsi.movesTotal)
+                            //visible: (visibility_ && modes === "all") || (iidee ==="prev" && (modes === playMode || playMode === "human") && movesNoScanned >0) || (iidee ==="forw" && playMode !== "othDevice" && movesNoScanned < opsi.movesTotal) || (iidee ==="play" && playMode !== "othDevice" && movesNoScanned < opsi.movesTotal)
+                            visible: visibility_
                             icon.source: "image://theme/"+icons + (pressed
                                                                    ? Theme.highlightColor
                                                                    : Theme.primaryColor)
                             onClicked: {
                                 if (index==0){
-                                    movesNoScanned>0 ? Myfunks.moveBack():""
+                                    if (movesNoScanned>0) {
+                                        Myfunks.moveBack()
+                                        iconSources.set(2,{"visibility_":true})
+                                    }
                                 }
                                 else if (index==1){
-                                    Myfunks.continueGame()
+                                    // This is enoug e.g. if lower message is "Mate", upper message is "White won" which is neither "" nor messages[0].msg
+                                    if (upperMessage == messages[0].msg || upperMessage == ""){
+                                        Myfunks.continueGame()
+                                    }
+                                    else {
+                                        iconSources.set(1,{"visibility_":false})
+                                        aloitapause.visible = false;
+                                    }
                                 }
                                 else {
-                                    Myfunks.moveForward()
+                                    if (movesNoScanned < opsi.movesTotal-1){
+                                        Myfunks.moveForward()
+                                    }
+                                    else {
+                                        iconSources.set(2,{"visibility_":false})
+                                        Myfunks.moveForward()
+                                    }
                                 }
                             }
                         }

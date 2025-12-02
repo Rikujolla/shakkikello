@@ -143,6 +143,10 @@
         <source>Start</source>
         <translation>Aloita</translation>
     </message>
+    <message>
+        <source>New game</source>
+        <translation>Uusi peli</translation>
+    </message>
 </context>
 <context>
     <name>Clockview</name>
@@ -536,6 +540,10 @@
     <message>
         <source>Reset</source>
         <translation>Nollaa</translation>
+    </message>
+    <message>
+        <source>New game</source>
+        <translation>Uusi peli</translation>
     </message>
 </context>
 <context>

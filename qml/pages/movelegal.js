@@ -38,6 +38,7 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved, _state) {
         // Normal move
         if (((_fromIndex-_toIndex) == -8) && _state[_toIndex].color === "e") {
             _moveLegal = true;
+            // Promotion move
             if (_toIndex > 55 && doVisual) {
                 //waitPromo = true
                 var promotionObject
@@ -106,6 +107,7 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved, _state) {
             _fromIndex=-1;
             _toIndex=-1;
         }
+        //if(moveStarted == false) {console.log("Black pawn move not possible")}
         break;
     case piePat + "P.png":
         // Normal move
@@ -186,11 +188,11 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved, _state) {
                 ) {
             _moveLegal = true; //intLegal not needed any more to be removed from code
         }
-        // Castling short
+        // Castling kingside 0-0
         else if ((_toIndex === 6) && galeryModel.get(6).color === "e"
                  && galeryModel.get(5).color === "e" && _fromIndex === 4
                  && castlingBpossible && !feniBlackChess
-                 && !bKingMoved) {
+                 && !bKingMoved && !bRookKingsideMoved) {
             _moveLegal = true;
             if (doVisual){
                 test_state[5].color = "b"
@@ -207,12 +209,12 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved, _state) {
                 movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":5})
             }
         }
-        // Castling long
+        // Castling queenside 0-0-0
         else if ((_toIndex === 2) && galeryModel.get(2).color === "e"
                  && galeryModel.get(3).color === "e" && galeryModel.get(1).color === "e"
                  && _fromIndex === 4
                  && castlingBpossible && !feniBlackChess
-                 && !bKingMoved) {
+                 && !bKingMoved && !bRookQueensideMoved) {
             _moveLegal = true;
             if (doVisual) {
                 test_state[3].color = "b"
@@ -242,12 +244,12 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved, _state) {
                 ) {
             _moveLegal = true;
         }
-        // Castling kingside
+        // Castling kingside 0-0
         else if ((_toIndex === 62) && galeryModel.get(62).color === "e"
                  && galeryModel.get(61).color === "e"
                  && _fromIndex === 60
                  && castlingWpossible && !feniWhiteChess
-                 && !wKingMoved) {
+                 && !wKingMoved && !wRookKingsideMoved) {
             _moveLegal = true;
             if(doVisual) {
                 test_state[61].color = "w"
@@ -264,12 +266,12 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved, _state) {
                 movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":61})
             }
         }
-        // Castling queenside
+        // Castling queenside 0-0-0
         else if ((_toIndex === 58) && galeryModel.get(58).color === "e"
                  && galeryModel.get(59).color === "e" && galeryModel.get(57).color === "e"
                  && _fromIndex === 60
                  && castlingWpossible && !feniWhiteChess
-                 && !wKingMoved) {
+                 && !wKingMoved && !wRookQueensideMoved) {
             _moveLegal = true;
             if (doVisual) {
                 test_state[59].color = "w"
@@ -1083,6 +1085,7 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved, _state) {
     default:
         _moveLegal = false;
     }
+    //console.log("Move legality", _moveLegal )
     return _moveLegal;
 
 }

@@ -143,6 +143,10 @@
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>New game</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Clockview</name>
@@ -535,6 +539,10 @@
     <name>funktiot</name>
     <message>
         <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New game</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

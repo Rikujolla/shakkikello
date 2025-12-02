@@ -14,11 +14,19 @@ There will be master branch which is a code for the releases in Jolla Harbour, O
 4. Remove extra console.logs from the code
 5. Finalize harbour-shakkikello.changes file
 6. Test the app
-7. Do Jolla Harbour tests for the rpms
+7. Do Jolla Harbour tests for the rpms (https://forum.sailfishos.org/t/missing-harbour-validator/2583/3):
+    alias sfdk=~/SailfishOS/bin/sfdk
+    sfdk config target=SailfishOS-5.0.0.62-aarch64
+    sfdk check harbour-shakkikello-0.9.0.aarch64.rpm
+    sfdk config target=SailfishOS-5.0.0.62-armv7hl
+    sfdk check harbour-shakkikello-0.9.0.armv7hl.rpm
 8. Commit changes for the version, amend commits if changes are needed in the test process
 9. Merge dev branch to the master
 10. Move the source to GitHub
-11. Create package from GitHub master to the Mer OBS (tar -czvf harbour-shakkikello-0.8.0.tar.bz2 ...)
-12. Load the local rpms to Jolla Harbour and edit release info
-13. Load the local rpms to OpenRepos and edit release info
+11. Create package from GitHub master to the Mer OBS (tar -czvf harbour-shakkikello-0.9.0.tar.bz2 harbour-shakkikello-0.9.0)
+12. Load bz2 file and spec file to chum:testing
+13. Test package with different devices
+14. Submit package to chum
+15. Load the local rpms to Jolla Harbour and edit release info
+16. Load the local rpms to OpenRepos and edit release info
 

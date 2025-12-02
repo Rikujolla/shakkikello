@@ -143,6 +143,10 @@
         <source>Start</source>
         <translation type="unfinished">Começo</translation>
     </message>
+    <message>
+        <source>New game</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Clockview</name>
@@ -536,6 +540,10 @@
     <message>
         <source>Reset</source>
         <translation type="unfinished">Restabelecer</translation>
+    </message>
+    <message>
+        <source>New game</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

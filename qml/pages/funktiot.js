@@ -330,7 +330,6 @@ function midSquareCheck() {
 ///////////////////////////////////////////////////////////////////////////////////////
 
 function doMove() {
-
     if (tilat.valko){
         /*if (isMyStart) {
             lowerMessage = "";
@@ -340,12 +339,16 @@ function doMove() {
         }*/
 
         gridToFEN(fromIndex, toIndex);
-        if (currentMove == "enpassant") {blackCaptured.append({"captured":piePat + "p.png"})}
+        if (currentMove == "enpassant") {
+            blackCaptured.append({"captured":piePat + "p.png"})
+        }
         if (movedPieces.get(1).piece !== piePat + "empty.png") {
             blackCaptured.append({"captured":movedPieces.get(1).piece})
         }
         currentMove = "";
         if (movedPieces.get(0).piece === piePat + "K.png") {wKingMoved = true;}
+        if (movedPieces.get(0).piece === piePat + "R.png" && fromIndex == 63) {wRookKingsideMoved = true;}
+        if (movedPieces.get(0).piece === piePat + "R.png" && fromIndex == 56) {wRookQueensideMoved = true;}
         midSquareCheckki = false;
         Mytab.addMove();
         if (playMode == "othDevice") {
@@ -365,12 +368,16 @@ function doMove() {
         }*/
 
         gridToFEN(fromIndex, toIndex);
-        if (currentMove == "enpassant") {whiteCaptured.append({"captured":piePat + "P.png"})}
+        if (currentMove == "enpassant") {
+            whiteCaptured.append({"captured":piePat + "P.png"})
+        }
         if (movedPieces.get(1).piece !== piePat + "empty.png") {
             whiteCaptured.append({"captured":movedPieces.get(1).piece})
         }
         currentMove = "";
         if (movedPieces.get(0).piece === piePat + "k.png") {bKingMoved = true;}
+        if (movedPieces.get(0).piece === piePat + "r.png" && fromIndex == 7) {bRookKingsideMoved = true;}
+        if (movedPieces.get(0).piece === piePat + "r.png" && fromIndex == 0) {bRookQueensideMoved = true;}
         midSquareCheckki = false;
         Mytab.addMove();
         if (playMode == "othDevice") {
@@ -388,11 +395,11 @@ function doMove() {
         Myops.inOpenings();
     }
     current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
-    recordMove();
     movesNoScanned = opsi.movesTotal;
     //isChessPure(tilat.valko, feniWkingInd, feniBkingInd, current_state);
     //mateTimer.start();
     isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
+    recordMove();
 }
 
 function recordMove() {
@@ -418,6 +425,15 @@ function recordMove() {
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteTimeMove, allMoves.get(opsi.movesTotal).blackTimeMove)
     allMoves.set(opsi.movesTotal, {"whiteCapturedCount":whiteCaptured.count, "blackCapturedCount":blackCaptured.count})
     //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).whiteCapturedCount, allMoves.get(opsi.movesTotal).blackCapturedCount)
+    allMoves.set(opsi.movesTotal, {"wRookKingsideMoved":wRookKingsideMoved, "wRookQueensideMoved":wRookQueensideMoved})
+    //console.log("White rook kingside,queenside", allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wRookKingsideMoved, allMoves.get(opsi.movesTotal).wRookQueensideMoved)
+    allMoves.set(opsi.movesTotal, {"bRookKingsideMoved":bRookKingsideMoved, "bRookQueensideMoved":bRookQueensideMoved})
+    //console.log("Black rook kingside,queenside", allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).bRookKingsideMoved, allMoves.get(opsi.movesTotal).bRookQueensideMoved)
+    // Record messages
+    allMoves.set(opsi.movesTotal, {"upperMessage":upperMessage, "lowerMessage":lowerMessage})
+    //console.log("Record move", upperMessage, lowerMessage, opsi.movesTotal, movesNoScanned)
+    movesNoScanned = opsi.movesTotal;
+    //console.log("White", allMoves.get(movesNoScanned).whiteCapturedCount, "Black", allMoves.get(movesNoScanned).blackCapturedCount)
 
 }
 
@@ -504,6 +520,8 @@ function isInMate(_turn_white, _w_king_index, _b_king_index, _current_state) {
             lowerMessage = "";
             upperMessage = messages[0].msg;
         }
+        lowerNotes.text = lowerMessage;
+        upperNotes.text = upperMessage;
         break;
     case "bChess":
         if (isMyStart) {
@@ -514,6 +532,8 @@ function isInMate(_turn_white, _w_king_index, _b_king_index, _current_state) {
             lowerMessage = messages[0].msg;
             upperMessage = "";
         }
+        lowerNotes.text = lowerMessage;
+        upperNotes.text = upperMessage;
         break;
     case "wMate":
         if (isMyStart) {
@@ -524,6 +544,13 @@ function isInMate(_turn_white, _w_king_index, _b_king_index, _current_state) {
             upperMessage = messages[1].msg;
             lowerMessage = messages[4].msg;
         }
+        lowerNotes.text = lowerMessage;
+        upperNotes.text = upperMessage;
+        pauseGame();
+        iconSources.set(0,{"visibility_":true})
+        //start_pause_menu.visible = false;
+        tilat.peliloppui = true;
+        aloitapause = qsTr("New game");
         break;
     case "bMate":
         if (isMyStart) {
@@ -534,10 +561,24 @@ function isInMate(_turn_white, _w_king_index, _b_king_index, _current_state) {
             lowerMessage = messages[1].msg;
             upperMessage = messages[3].msg;
         }
+        lowerNotes.text = lowerMessage;
+        upperNotes.text = upperMessage;
+        pauseGame();
+        iconSources.set(0,{"visibility_":true})
+        //start_pause_menu.visible = false;
+        tilat.peliloppui = true;
+        aloitapause = qsTr("New game");
         break;
     case "staleMate":
         lowerMessage = messages[2].msg;
         upperMessage = messages[2].msg;
+        lowerNotes.text = lowerMessage;
+        upperNotes.text = upperMessage;
+        pauseGame();
+        iconSources.set(0,{"visibility_":true})
+        //start_pause_menu.visible = false;
+        tilat.peliloppui = true;
+        aloitapause = qsTr("New game");
         break;
     default:
         lowerMessage = "";
@@ -770,6 +811,8 @@ function continueGame () {
 
 function moveBack() {
 
+    //movesNoScanned--; //
+
     // Returning the moved piece to it's previous position.
     galeryModel.set(allMoves.get(movesNoScanned).movedFrom,{"color":allMoves.get(movesNoScanned).movedColor, "piece":allMoves.get(movesNoScanned).movedPiece})
 
@@ -848,8 +891,13 @@ function moveBack() {
     //midSquareCheckki = false;// is this needed
     //currentMove = "";// is this needed
 
-
     movesNoScanned--; //
+
+    // Setting messages
+    upperMessage = allMoves.get(movesNoScanned).upperMessage
+    upperNotes.text = upperMessage
+    lowerMessage = allMoves.get(movesNoScanned).lowerMessage
+    lowerNotes.text = lowerMessage
 
     // King index setting
     feniWkingInd = allMoves.get(movesNoScanned).wKingInd
@@ -887,7 +935,14 @@ function moveBack() {
     }
 }
 function moveForward () {
+
     movesNoScanned++; //
+
+    // Setting messages
+    upperMessage = allMoves.get(movesNoScanned).upperMessage
+    upperNotes.text = upperMessage
+    lowerMessage = allMoves.get(movesNoScanned).lowerMessage
+    lowerNotes.text = lowerMessage
 
     // Forwarding the moved piece to it's next position.
     galeryModel.set(allMoves.get(movesNoScanned).capturedTo,{"color":allMoves.get(movesNoScanned).movedColor, "piece":allMoves.get(movesNoScanned).movedPiece})
@@ -927,6 +982,7 @@ function moveForward () {
     // Set true if castling possible
     castlingWpossible = allMoves.get(movesNoScanned).wcastlingPos
     castlingBpossible = allMoves.get(movesNoScanned).bcastlingPos
+
 
     // Returning time values
     if (allMoves.get(movesNoScanned).movedColor === "w"){
