@@ -595,7 +595,9 @@ function othDeviceMoveBlack() {
     // Saving moves for captured pieces //Possible BUG in fast play in next line, could be related to narrow timeslot where you can select piece on opponents turn. Have to follow
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
-
+    // Always record move to test_state to enable testing
+    test_state[toIndex] = {"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+    test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
     // If moving king set new value for feniBkingInd
@@ -629,6 +631,8 @@ function othDeviceMoveBlack() {
     }
     // If white gives enpassant possibility and it is utilized let's print a board accordingly
     if (toIndex != -1 && toIndex == wenpassant && galeryModel.get(toIndex).piece === piePat + "p.png") {
+        test_state[toIndex-8].color = "e";
+        test_state[toIndex-8].piece = piePat + "empty.png";
         galeryModel.set((toIndex-8),{"color":"e", "piece":piePat + "empty.png"});
         currentMove = "enpassant";
         wenpassant = -1;
@@ -645,12 +649,11 @@ function othDeviceMoveBlack() {
     // If pawn reaches the last line let's guess the promotion to be a queen. Have to correct in future some how
 
     if (toIndex > 55 && galeryModel.get(toIndex).piece === piePat + "p.png") {
+        test_state[toIndex].piece = piePat + "q.png";
         galeryModel.set(toIndex, {"piece": piePat + "q.png"});
     }
 
-    // 3. Recording the move to test_state
-    test_state[toIndex] = {"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
-    test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+    // Copying test_state to current state
     current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
 
 
@@ -679,7 +682,8 @@ function othDeviceMoveWhite() {
     // Saving moves for captured pieces
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
-
+    test_state[toIndex] = {"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+    test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
     // If moving king set new value for feniWkingInd
@@ -713,6 +717,8 @@ function othDeviceMoveWhite() {
     }
     // If black gives enpassant possibility and it is utilized let's print a board accordingly
     if (toIndex != -1 && toIndex == benpassant && galeryModel.get(toIndex).piece === piePat + "P.png") {
+        test_state[toIndex+8].color = "e";
+        test_state[toIndex+8].piece = piePat + "empty.png";
         galeryModel.set((toIndex+8),{"color":"e", "piece":piePat + "empty.png"});
         currentMove = "enpassant";
         benpassant = -1;
@@ -729,12 +735,11 @@ function othDeviceMoveWhite() {
     // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
 
     if (toIndex < 8 && galeryModel.get(toIndex).piece === piePat + "P.png") {
+        test_state[toIndex].piece = piePat + "Q.png";
         galeryModel.set(toIndex, {"piece": piePat + "Q.png"});
     }
 
-    // 3. Recording the move to test_state
-    test_state[toIndex] = {"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
-    test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+    // Copying test_state to current state
     current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
 
     lowerMessage = "";

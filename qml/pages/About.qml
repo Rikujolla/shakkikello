@@ -71,7 +71,7 @@ Page {
                     margins: Theme.paddingLarge
                 }
                 //: The name of the app followed with a version number
-                text: {qsTr("Fast chess, version") + " 0.9.1"}
+                text: {qsTr("Fast chess, version") + " 0.9.2"}
             }
 
             SectionHeader { text: qsTr("Translations") }

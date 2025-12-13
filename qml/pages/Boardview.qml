@@ -1188,6 +1188,8 @@ Page {
                     }
                     // If white gives enpassant possibility and it is utilized let's print a board accordingly
                     if (toIndex != -1 && toIndex == wenpassant && galeryModel.get(toIndex).piece === piePat + "p.png") {
+                        test_state[toIndex-8].color = "e";
+                        test_state[toIndex-8].piece = piePat + "empty.png";
                         galeryModel.set((toIndex-8),{"color":"e", "piece":piePat + "empty.png"});
                         currentMove = "enpassant";
                         movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":toIndex-8})
@@ -1212,6 +1214,7 @@ Page {
 
                     // Promotion
                     if (toIndex > 55 && galeryModel.get(toIndex).piece === piePat + "p.png") {
+                        test_state[toIndex].piece = piePat + "q.png";
                         galeryModel.set(toIndex, {"piece": piePat + "q.png"});
                         movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
                     }
@@ -1305,6 +1308,8 @@ Page {
                     }
                     // If black gives enpassant possibility and it is utilized let's print a board accordingly
                     if (toIndex != -1 && toIndex == benpassant && galeryModel.get(toIndex).piece === piePat + "P.png") {
+                        test_state[toIndex+8].color = "e";
+                        test_state[toIndex+8].piece = piePat + "empty.png";
                         galeryModel.set((toIndex+8),{"color":"e", "piece":piePat + "empty.png"});
                         currentMove = "enpassant";
                         movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":toIndex+8})
@@ -1330,6 +1335,7 @@ Page {
                     }
                     // If the white pawn reaches the last line the promotion to Queen is assumed (TBD other possibilities)
                     if (toIndex < 8 && galeryModel.get(toIndex).piece === piePat + "P.png") {
+                        test_state[toIndex].piece = piePat + "Q.png";
                         galeryModel.set(toIndex, {"piece": piePat + "Q.png"});
                         movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
                     }

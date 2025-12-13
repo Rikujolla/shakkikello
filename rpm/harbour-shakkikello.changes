@@ -10,6 +10,9 @@
 #- If paused in two player game I can move opponents piece?? BUG
 #- In other device mode promotion is only queen, BUG
 
+* Sat Dec 13 2025 Riku Lahtinen <rikul.lajolla@kiu.as> 0.9.2
+- Fixed enpassant issue 16, https://github.com/Rikujolla/shakkikello/issues/16
+
 * Fri Dec 12 2025 Riku Lahtinen <rikul.lajolla@kiu.as> 0.9.1
 - Fixed multiple undocumented bugs in the previous versions specially related the other device mode
 - Fixed settings issue 14, https://github.com/Rikujolla/shakkikello/issues/14
