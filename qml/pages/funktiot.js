@@ -605,10 +605,18 @@ function othDeviceMoveBlack() {
     // If castling, moving the rook also
     if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "k.png") {
         if (toIndex == 6){
+            test_state[5].color = "b"
+            test_state[5].piece = piePat + "r.png"
+            test_state[7].color = "e"
+            test_state[7].piece = piePat + "empty.png"
             galeryModel.set(5,{"color":"b", "piece":piePat + "r.png"})
             galeryModel.set(7,{"color":"e", "piece":piePat + "empty.png"})
         }
         else {
+            test_state[3].color = "b"
+            test_state[3].piece = piePat + "r.png"
+            test_state[0].color = "e"
+            test_state[0].piece = piePat + "empty.png"
             galeryModel.set(3,{"color":"b", "piece":piePat + "r.png"})
             galeryModel.set(0,{"color":"e", "piece":piePat + "empty.png"})
         }
@@ -616,6 +624,7 @@ function othDeviceMoveBlack() {
     // If blacks move gives enpassant possibility to whiteTimer
     if (((fromIndex-toIndex) == -16) && galeryModel.get(toIndex).piece === piePat + "p.png") {
         benpassant = toIndex-8;
+        test_state[benpassant].color = "bp";
         galeryModel.set(benpassant,{"color":"bp"})
     }
     // If white gives enpassant possibility and it is utilized let's print a board accordingly
@@ -638,6 +647,13 @@ function othDeviceMoveBlack() {
     if (toIndex > 55 && galeryModel.get(toIndex).piece === piePat + "p.png") {
         galeryModel.set(toIndex, {"piece": piePat + "q.png"});
     }
+
+    // 3. Recording the move to test_state
+    test_state[toIndex] = {"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+    test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+    current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
+
+
     lowerMessage = "";
     upperMessage = "";
     Mytab.addMove();
@@ -673,10 +689,18 @@ function othDeviceMoveWhite() {
     // If castling, moving the rook also
     if (Math.abs(toIndex-fromIndex)==2 && galeryModel.get(toIndex).piece === piePat + "K.png") {
         if (toIndex == 62){
+            test_state[61].color = "w"
+            test_state[61].piece = piePat + "R.png"
+            test_state[63].color = "e"
+            test_state[63].piece = piePat + "empty.png"
             galeryModel.set(61,{"color":"w", "piece":piePat + "R.png"})
             galeryModel.set(63,{"color":"e", "piece":piePat + "empty.png"})
         }
         else {
+            test_state[59].color = "w"
+            test_state[59].piece = piePat + "R.png"
+            test_state[56].color = "e"
+            test_state[56].piece = piePat + "empty.png"
             galeryModel.set(59,{"color":"w", "piece":piePat + "R.png"})
             galeryModel.set(56,{"color":"e", "piece":piePat + "empty.png"})
         }
@@ -684,6 +708,7 @@ function othDeviceMoveWhite() {
     // If whites move gives enpassant possibility to whiteTimer
     if (((fromIndex-toIndex) == 16) && galeryModel.get(toIndex).piece === piePat + "P.png") {
         wenpassant = toIndex+8
+        test_state[wenpassant].color = "wp"
         galeryModel.set(wenpassant,{"color":"wp"})
     }
     // If black gives enpassant possibility and it is utilized let's print a board accordingly
@@ -706,6 +731,12 @@ function othDeviceMoveWhite() {
     if (toIndex < 8 && galeryModel.get(toIndex).piece === piePat + "P.png") {
         galeryModel.set(toIndex, {"piece": piePat + "Q.png"});
     }
+
+    // 3. Recording the move to test_state
+    test_state[toIndex] = {"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+    test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+    current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
+
     lowerMessage = "";
     upperMessage = "";
     Mytab.addMove();

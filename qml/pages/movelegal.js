@@ -70,8 +70,10 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved, _state) {
         // Capturing a piece
         else if (((_fromIndex-_toIndex) == -7) && Math.abs((_toIndex+1-_toIndex%8)/8-(_fromIndex+1-_fromIndex%8)/8) == 1
                  || ((_fromIndex-_toIndex) == -9) && Math.abs((_toIndex+1-_toIndex%8)/8-(_fromIndex+1-_fromIndex%8)/8) == 1) {
+            //console.log("Toindexcolor",_state[_toIndex].color)
             if ((_state[_toIndex].color === "w")
                     ){
+                //console.log("True")
                 _moveLegal = true;
                 if (_toIndex > 55 && doVisual) {
                     //waitPromo = true

@@ -220,7 +220,7 @@ Row {
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 pageStack.clear()
-                pageStack.push(Qt.resolvedUrl("Asetukset.qml"))
+                pageStack.push(Qt.resolvedUrl("Settings.qml"))
             }
         }
 

@@ -43,7 +43,6 @@ SOURCES += src/harbour-shakkikello.cpp \
 OTHER_FILES += qml/harbour-shakkikello.qml \
     qml/cover/CoverPage.qml \
     rpm/harbour-shakkikello.spec \
-    rpm/harbour-shakkikello.yaml \
     translations/*.ts \
     LICENSE \
     qml/pages/funktiot.js \

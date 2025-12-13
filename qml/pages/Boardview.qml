@@ -1020,6 +1020,7 @@ Page {
                                 itemTobemoved = piece;
                                 colorTobemoved = color;
                                 moveMent.movePiece();
+                                //console.log(indeksi, itemTobemoved, colorTobemoved)
                             }
                         } //end MouseArea
                     } // end Image

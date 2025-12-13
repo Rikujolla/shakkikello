@@ -77,8 +77,10 @@ void Client::startClient()
     QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
     // add non-localhost addresses
     for (int i = 0; i < ipAddressesList.size(); ++i) {
-       if (!ipAddressesList.at(i).isLoopback())
-           qDebug() << "Name " << i << " ff " << ipAddressesList.at(i).toString();
+       if (!ipAddressesList.at(i).isLoopback() && ipAddressesList.at(i).protocol() == QAbstractSocket::IPv4Protocol){
+           qDebug() << "Name_nonlocal IPv4 " << i << " ff " << ipAddressesList.at(i).toString();
+
+       }
     }
     // add localhost addresses
     for (int i = 0; i < ipAddressesList.size(); ++i) {
@@ -88,7 +90,7 @@ void Client::startClient()
 
     //portLineEdit->setValidator(new QIntValidator(1, 65535, this));
 
-    qDebug() << "This examples requires that you Fortune Server example as well.";
+    //qDebug() << "This examples requires that you Fortune Server example as well.";
 
     in.setDevice(tcpSocket);
     in.setVersion(QDataStream::Qt_4_0);
