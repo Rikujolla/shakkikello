@@ -163,6 +163,8 @@ function fenToGRID() {
     }
     toIndex=feniHelper;
 
+
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -596,7 +598,7 @@ function othDeviceMoveBlack() {
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
     // Always record move to test_state to enable testing
-    test_state[toIndex] = {"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+    test_state[toIndex] = {"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
     test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
@@ -649,8 +651,17 @@ function othDeviceMoveBlack() {
     // If pawn reaches the last line let's guess the promotion to be a queen. Have to correct in future some how
 
     if (toIndex > 55 && galeryModel.get(toIndex).piece === piePat + "p.png") {
-        test_state[toIndex].piece = piePat + "q.png";
-        galeryModel.set(toIndex, {"piece": piePat + "q.png"});
+        var prom_piece;
+        if (hopo.test.length == 5) {
+            //console.log("Length of the message", hopo.test.length, hopo.test.slice(4,5))
+            prom_piece = piePat + hopo.test.slice(4,5) + ".png"
+        }
+        else {
+            prom_piece = piePat + "q.png"
+        }
+
+        test_state[toIndex].piece = prom_piece;
+        galeryModel.set(toIndex, {"piece": prom_piece});
     }
 
     // Copying test_state to current state
@@ -682,7 +693,7 @@ function othDeviceMoveWhite() {
     // Saving moves for captured pieces
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
-    test_state[toIndex] = {"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
+    test_state[toIndex] = {"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
     test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
     galeryModel.set(fromIndex,{"color":"e", "piece":piePat + "empty.png"})
@@ -735,8 +746,17 @@ function othDeviceMoveWhite() {
     // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
 
     if (toIndex < 8 && galeryModel.get(toIndex).piece === piePat + "P.png") {
-        test_state[toIndex].piece = piePat + "Q.png";
-        galeryModel.set(toIndex, {"piece": piePat + "Q.png"});
+        var prom_piece;
+        if (hopo.test.length == 5) {
+            //console.log("Length of the message", hopo.test.length, hopo.test.slice(4,5))
+            prom_piece = piePat + hopo.test.slice(4,5).toUpperCase() + ".png"
+        }
+        else {
+            prom_piece = piePat + "Q.png"
+        }
+
+        test_state[toIndex].piece = prom_piece;
+        galeryModel.set(toIndex, {"piece": prom_piece});
     }
 
     // Copying test_state to current state

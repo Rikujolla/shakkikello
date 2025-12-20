@@ -1019,8 +1019,8 @@ Page {
                             onClicked: {indeksi = index;
                                 itemTobemoved = piece;
                                 colorTobemoved = color;
+                                //console.log(indeksi, itemTobemoved, colorTobemoved, test_state[indeksi].color, test_state[indeksi].piece)
                                 moveMent.movePiece();
-                                //console.log(indeksi, itemTobemoved, colorTobemoved)
                             }
                         } //end MouseArea
                     } // end Image
