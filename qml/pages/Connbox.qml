@@ -133,7 +133,7 @@ Row {
                     connBtn.visible = true;
                     tstBtn.visible = false;
                     isMyStart ? mustamax = conTcpCli.ctime : valkomax = conTcpCli.ctime;
-                    console.log("Increment", increment, conTcpCli.cincrem)
+                    //console.log("Increment", increment, conTcpCli.cincrem)
                     increment > conTcpCli.cincrem ? increment = conTcpCli.cincrem : increment = increment
                     conTcpSrv.sincrem = increment;
                 }

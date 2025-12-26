@@ -454,7 +454,9 @@ Page {
                     {name:"Riku test 4", eco:"R04", //To help white to win, testing
                         moves:"d2d4c7c6c1f4d8c7f4c7g8f6c7b8"},
                     {name:"Riku test 5", eco:"R05", //to help black to win, testing
-                        moves:"e2e3b7b5d1f3c8b7b1c3b7f3d2d4"}
+                        moves:"e2e3b7b5d1f3c8b7b1c3b7f3d2d4"},
+                    {name:"Riku test 6", eco:"R06", //White promotion
+                        moves:"h2h4a7a5h4h5a5a4h5h6a4a3h6g7a3b2"}
                 ]
             }
 
@@ -767,11 +769,11 @@ Page {
                             movedPieces.set(0,{"color":colorMoved, "piece":itemMoved, "indeksos":fromIndex}) //Piece moved
                             movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
                             if (currentMove === "") {
-                                movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
-                                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                                movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values for rook and enpassant captured
+                                movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values for rook capturing and promotion
                             }
                             if (wenpassant <0 && benpassant<0) {
-                                movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                                movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values for enpassant target square
                             }
                             // 5. Am I doing the recording twice??
                             test_state[toIndex].color = colorMoved;
@@ -880,6 +882,9 @@ Page {
                     wRookQueensideMoved: false // Used for castling check
                     bRookKingsideMoved: false // Used for castling check
                     bRookQueensideMoved: false // Used for castling check
+                    promotionColor:"" // Promotion piece color
+                    promotionPiece:"" // Promotion piece
+                    promIndex:-1 // Promotion index
                 }
 
             }
@@ -1196,7 +1201,7 @@ Page {
                         wenpassant = -1;
                     }
                     // 9.b Removing the possibility of black to utilize enpassant possibility later
-                    if (wenpassant > 0 && galeryModel.get(wenpassant).color === "wp") { //TBD test_state?
+                    if (wenpassant > 0 && galeryModel.get(wenpassant).color === "wp") {
                         test_state[wenpassant].color = "e";
                         test_state[wenpassant].piece = piePat + "empty.png";
                         galeryModel.set(wenpassant,{"color":"e", "piece":piePat + "empty.png"});
@@ -1217,6 +1222,7 @@ Page {
                         test_state[toIndex].piece = piePat + "q.png";
                         galeryModel.set(toIndex, {"piece": piePat + "q.png"});
                         movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
+                        movedPieces.set(3,{"color":colorMoved, "piece":piePat + "q.png", "indeksos":toIndex}) //Set values for promotion
                     }
 
                     lowerMessage = "";
@@ -1338,6 +1344,7 @@ Page {
                         test_state[toIndex].piece = piePat + "Q.png";
                         galeryModel.set(toIndex, {"piece": piePat + "Q.png"});
                         movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
+                        movedPieces.set(3,{"color":colorMoved, "piece":piePat + "Q.png", "indeksos":toIndex}) //Set values for promotion
                     }
 
                     lowerMessage = "";

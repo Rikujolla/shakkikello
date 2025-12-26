@@ -85,7 +85,7 @@ Page {
             }
 
             Component.onCompleted: {Myinfo.populateGameInfoView(selectedGame)
-            console.log(selectedGame)
+            //console.log(selectedGame)
             }
 //loppusulkeet
         }

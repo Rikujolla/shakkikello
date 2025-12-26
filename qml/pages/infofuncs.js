@@ -130,7 +130,7 @@ function updateName(ido, titlo) {
 
 
 function deleteGame(indo) { //Filling the listView in GameList.qml
-    console.log("delete Game", indo +1)
+    //console.log("delete Game", indo +1)
     var db = LocalStorage.openDatabaseSync("ChessDB", "1.0", "Chess database", 1000000);
 
     db.transaction(

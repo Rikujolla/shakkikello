@@ -1,14 +1,20 @@
-// Function gridToFEN(), row 12
-// Function fenToGRID(), row 70
-// Function isChess(), row 174
-// Function cancelMove(), row 218
-// Function isChessPure(), row 286
-// Function midSquareCheck(), row 342
-// Function doMove(), row 402
-// Function isInMate(), row 454
-// Function startGame(), row 608
-// Function pauseGame(), row 637
-// Function continueGame(), row 648
+// Function gridToFEN(), row 17
+// Function fenToGRID(), row 75
+// Function isChess_new(), row 176
+// Function isChess(), row 198
+// Function cancelMove(), row 222
+// Function isChessPure(), row 283
+// Function midSquareCheck(), row 311
+// Function doMove(), row 336
+// Function recordMove(), row 410
+// Function isInMate(), row 449
+// Function othDeviceMoveBlack() row 595
+// Function othDeviceMoveWhite() row 693
+// Function startGame(), row 786
+// Function pauseGame(), row 815
+// Function continueGame(), row 826
+// Function moveBack(), row 874
+// Function moveForward(), row 1000
 
 /////////////////////////////////////////////////////////
 // this function transforms grid notation to FEN-notation
@@ -431,6 +437,9 @@ function recordMove() {
     //console.log("White rook kingside,queenside", allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).wRookKingsideMoved, allMoves.get(opsi.movesTotal).wRookQueensideMoved)
     allMoves.set(opsi.movesTotal, {"bRookKingsideMoved":bRookKingsideMoved, "bRookQueensideMoved":bRookQueensideMoved})
     //console.log("Black rook kingside,queenside", allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).bRookKingsideMoved, allMoves.get(opsi.movesTotal).bRookQueensideMoved)
+    // Record promoted piece
+    allMoves.set(opsi.movesTotal, {"promotionColor":movedPieces.get(3).color, "promotionPiece":movedPieces.get(3).piece, "promIndex":movedPieces.get(3).indeksos})
+    //console.log(allMoves.get(opsi.movesTotal).moveNo, allMoves.get(opsi.movesTotal).promotionColor, allMoves.get(opsi.movesTotal).promotionPiece, allMoves.get(opsi.movesTotal).promIndex)
     // Record messages
     allMoves.set(opsi.movesTotal, {"upperMessage":upperMessage, "lowerMessage":lowerMessage})
     //console.log("Record move", upperMessage, lowerMessage, opsi.movesTotal, movesNoScanned)
@@ -597,6 +606,9 @@ function othDeviceMoveBlack() {
     // Saving moves for captured pieces //Possible BUG in fast play in next line, could be related to narrow timeslot where you can select piece on opponents turn. Have to follow
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
+    movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1})
+    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1})
+    movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1})
     // Always record move to test_state to enable testing
     test_state[toIndex] = {"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
     test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
@@ -615,6 +627,8 @@ function othDeviceMoveBlack() {
             test_state[7].piece = piePat + "empty.png"
             galeryModel.set(5,{"color":"b", "piece":piePat + "r.png"})
             galeryModel.set(7,{"color":"e", "piece":piePat + "empty.png"})
+            movedPieces.set(2,{"color":"b", "piece":piePat + "r.png", "indeksos":7})
+            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":5})
         }
         else {
             test_state[3].color = "b"
@@ -623,6 +637,8 @@ function othDeviceMoveBlack() {
             test_state[0].piece = piePat + "empty.png"
             galeryModel.set(3,{"color":"b", "piece":piePat + "r.png"})
             galeryModel.set(0,{"color":"e", "piece":piePat + "empty.png"})
+            movedPieces.set(2,{"color":"b", "piece":piePat + "r.png", "indeksos":0})
+            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":3})
         }
     }
     // If blacks move gives enpassant possibility to whiteTimer
@@ -630,6 +646,7 @@ function othDeviceMoveBlack() {
         benpassant = toIndex-8;
         test_state[benpassant].color = "bp";
         galeryModel.set(benpassant,{"color":"bp"})
+        movedPieces.set(4,{"color":"bp", "piece":piePat + "empty.png", "indeksos":benpassant}) //Set enpassant values
     }
     // If white gives enpassant possibility and it is utilized let's print a board accordingly
     if (toIndex != -1 && toIndex == wenpassant && galeryModel.get(toIndex).piece === piePat + "p.png") {
@@ -637,6 +654,7 @@ function othDeviceMoveBlack() {
         test_state[toIndex-8].piece = piePat + "empty.png";
         galeryModel.set((toIndex-8),{"color":"e", "piece":piePat + "empty.png"});
         currentMove = "enpassant";
+        movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":toIndex-8})
         wenpassant = -1;
     }
     // Adding moves to captures list
@@ -648,16 +666,18 @@ function othDeviceMoveBlack() {
         whiteCaptured.append({"captured":movedPieces.get(1).piece})
     }
 
-    // If pawn reaches the last line let's guess the promotion to be a queen. Have to correct in future some how
+    // If pawn reaches the last line let's promote!
 
     if (toIndex > 55 && galeryModel.get(toIndex).piece === piePat + "p.png") {
         var prom_piece;
         if (hopo.test.length == 5) {
             //console.log("Length of the message", hopo.test.length, hopo.test.slice(4,5))
             prom_piece = piePat + hopo.test.slice(4,5) + ".png"
+            movedPieces.set(3,{"color":colorMoved, "piece":prom_piece, "indeksos":toIndex}) //Set values for promotion
+            //console.log(opsi.movesTotal, colorMoved, prom_piece)
         }
         else {
-            prom_piece = piePat + "q.png"
+            prom_piece = piePat + "q.png" // Error handling, may be not needed
         }
 
         test_state[toIndex].piece = prom_piece;
@@ -682,6 +702,7 @@ function othDeviceMoveBlack() {
     //isChessPure(tilat.valko, feniWkingInd, feniBkingInd, current_state);
     isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
     //mateTimer.start();
+    recordMove();
 
 }
 
@@ -693,6 +714,9 @@ function othDeviceMoveWhite() {
     // Saving moves for captured pieces
     movedPieces.set(0,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "indeksos":fromIndex}) //Piece moved
     movedPieces.set(1,{"color":galeryModel.get(toIndex).color, "piece":galeryModel.get(toIndex).piece, "indeksos":toIndex}) //Piece captured
+    movedPieces.set(2,{"color":"x", "piece":"x", "indeksos":-1})
+    movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1})
+    movedPieces.set(4,{"color":"x", "piece":"x", "indeksos":-1})
     test_state[toIndex] = {"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece, "frameop": 0, "recmove": -2}; //TBD frameop and recmove
     test_state[fromIndex] = {"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2}; //TBD frameop and recmove
     galeryModel.set(toIndex,{"color":galeryModel.get(fromIndex).color, "piece":galeryModel.get(fromIndex).piece})
@@ -710,6 +734,8 @@ function othDeviceMoveWhite() {
             test_state[63].piece = piePat + "empty.png"
             galeryModel.set(61,{"color":"w", "piece":piePat + "R.png"})
             galeryModel.set(63,{"color":"e", "piece":piePat + "empty.png"})
+            movedPieces.set(2,{"color":"w", "piece":piePat + "R.png", "indeksos":63})
+            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":61})
         }
         else {
             test_state[59].color = "w"
@@ -718,6 +744,8 @@ function othDeviceMoveWhite() {
             test_state[56].piece = piePat + "empty.png"
             galeryModel.set(59,{"color":"w", "piece":piePat + "R.png"})
             galeryModel.set(56,{"color":"e", "piece":piePat + "empty.png"})
+            movedPieces.set(2,{"color":"w", "piece":piePat + "R.png", "indeksos":56})
+            movedPieces.set(3,{"color":"e", "piece":piePat + "empty.png", "indeksos":59})
         }
     }
     // If whites move gives enpassant possibility to whiteTimer
@@ -725,6 +753,7 @@ function othDeviceMoveWhite() {
         wenpassant = toIndex+8
         test_state[wenpassant].color = "wp"
         galeryModel.set(wenpassant,{"color":"wp"})
+        movedPieces.set(4,{"color":"wp", "piece":piePat + "empty.png", "indeksos":wenpassant}) //Set enpassant values
     }
     // If black gives enpassant possibility and it is utilized let's print a board accordingly
     if (toIndex != -1 && toIndex == benpassant && galeryModel.get(toIndex).piece === piePat + "P.png") {
@@ -732,6 +761,7 @@ function othDeviceMoveWhite() {
         test_state[toIndex+8].piece = piePat + "empty.png";
         galeryModel.set((toIndex+8),{"color":"e", "piece":piePat + "empty.png"});
         currentMove = "enpassant";
+        movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":toIndex+8})
         benpassant = -1;
     }
     // Adding moves to captures list
@@ -743,13 +773,14 @@ function othDeviceMoveWhite() {
         blackCaptured.append({"captured":movedPieces.get(1).piece})
     }
 
-    // If pawn reaches the last line let's gues the promotion to be a queen. Have to correct in future some how
+    // If pawn reaches the last line let's promote
 
     if (toIndex < 8 && galeryModel.get(toIndex).piece === piePat + "P.png") {
         var prom_piece;
         if (hopo.test.length == 5) {
-            //console.log("Length of the message", hopo.test.length, hopo.test.slice(4,5))
             prom_piece = piePat + hopo.test.slice(4,5).toUpperCase() + ".png"
+            movedPieces.set(3,{"color":colorMoved, "piece":prom_piece, "indeksos":toIndex}) //Set values for promotion
+            //console.log(opsi.movesTotal, colorMoved, prom_piece)
         }
         else {
             prom_piece = piePat + "Q.png"
@@ -775,6 +806,7 @@ function othDeviceMoveWhite() {
     // Recording move to the allMoves list
     allMoves.append({"moveNo":opsi.movesTotal})
     isInMate(tilat.valko, feniWkingInd, feniBkingInd, current_state)
+    recordMove();
 }
 
 function startGame () {
@@ -886,11 +918,18 @@ function moveBack() {
     // Returning the captured piece in enpassant and the moved rook in the castling
     if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairFrom > 0){
         galeryModel.set(allMoves.get(movesNoScanned).pairFrom,{"color":allMoves.get(movesNoScanned).pairColor, "piece":allMoves.get(movesNoScanned).pairPiece})
+        //console.log(allMoves.get(movesNoScanned).pairFrom)
     }
 
     // Returning the empty piece in the castling to the place the rook visited
     if (allMoves.get(movesNoScanned).pairCapturesColor !== "x" && allMoves.get(movesNoScanned).pairTo > 0){
         galeryModel.set(allMoves.get(movesNoScanned).pairTo,{"color":allMoves.get(movesNoScanned).pairCapturesColor, "piece":allMoves.get(movesNoScanned).pairCaptures})
+        //console.log(allMoves.get(movesNoScanned).pairTo)
+    }
+    // Undoing the promotion, maybe possible also with captured to
+    if (allMoves.get(movesNoScanned).promotionColor !== "x" && allMoves.get(movesNoScanned).promIndex > 0){
+        galeryModel.set(allMoves.get(movesNoScanned).promIndex,{"color":allMoves.get(movesNoScanned).capturedColor, "piece":allMoves.get(movesNoScanned).capturedPiece})
+        //console.log(allMoves.get(movesNoScanned).promIndex)
     }
 
     // Removing first extra seconds after move
@@ -1019,13 +1058,20 @@ function moveForward () {
     }
 
     // Moving the captured piece in enpassant and the rook in the castling
-    if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairFrom > 0){
+    if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairTo > 0){
         galeryModel.set(allMoves.get(movesNoScanned).pairTo,{"color":allMoves.get(movesNoScanned).pairColor, "piece":allMoves.get(movesNoScanned).pairPiece})
+        //console.log(allMoves.get(movesNoScanned).pairTo, allMoves.get(movesNoScanned).pairColor,allMoves.get(movesNoScanned).pairPiece)
     }
 
     // Setting the empty piece in the castling to the place where rook started
-    if (allMoves.get(movesNoScanned).pairCapturesColor !== "x" && allMoves.get(movesNoScanned).pairTo > 0){
+    //console.log(allMoves.get(movesNoScanned).pairColor, allMoves.get(movesNoScanned).pairFrom)
+    if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairFrom > 0){
         galeryModel.set(allMoves.get(movesNoScanned).pairFrom,{"color":"e", "piece":piePat + "empty.png"})
+        //console.log(allMoves.get(movesNoScanned).pairColor, allMoves.get(movesNoScanned).pairFrom)
+    }
+    // Setting promoted piece to board
+    if (allMoves.get(movesNoScanned).promotionColor !== "x" && allMoves.get(movesNoScanned).promIndex > 0){
+        galeryModel.set(allMoves.get(movesNoScanned).promIndex,{"color":allMoves.get(movesNoScanned).promotionColor, "piece":allMoves.get(movesNoScanned).promotionPiece})
     }
     // King index setting for chess checks
     feniWkingInd = allMoves.get(movesNoScanned).wKingInd

@@ -56,7 +56,7 @@ Item {
                         promotedShort = stfish
                         turn_White ? promotedLong = piePat + white : promotedLong = piePat + black
                         movedPieces.set(2,{"color":pro_color, "piece":pro_piece, "indeksos":pro_index})
-                        movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
+                        movedPieces.set(3,{"color":colorMoved, "piece":promotedLong, "indeksos":toIndex}) //Set values for promotion
                         test_state[toIndex].color = colorMoved;
                         test_state[toIndex].piece = promotedLong;
                         test_state[fromIndex].color = "e";

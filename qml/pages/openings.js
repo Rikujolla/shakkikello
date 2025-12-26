@@ -17,7 +17,7 @@ function inOpenings() {
                 && openingGameMoves.slice(4*opsi.movesTotal,4*opsi.movesTotal+1) !== "") {
             opsi.openingSelected = openingGameMoves;
             opsi.openingPossible = true;
-            console.log("Opening 3 ", openingGameMoves)
+            //console.log("Opening 3 ", openingGameMoves)
         }
         else  {
             opsi.openingSelected = "";
@@ -32,18 +32,18 @@ function inOpenings() {
                     && opsi.openingCompare.slice(4*opsi.movesTotal,4*opsi.movesTotal+1) !== "") {
                 if (openingMode == 1) {
                     opsi.selOpenings.push(opsi.openings[i].moves);
-                    console.log("Possible opening", opsi.openings[i].eco);
+                    //console.log("Possible opening", opsi.openings[i].eco);
                 }
                 else if (openingMode == 2 && opsi.openings[i].eco == openingECO) {
                     opsi.selOpenings.push(opsi.openings[i].moves);
-                    console.log("ECO opening", opsi.openings[i].eco);
+                    //console.log("ECO opening", opsi.openings[i].eco);
                 }
             }
             else {
                 // Nothing
             }
         }
-        console.log("selected moves",opsi.selOpenings);
+        //console.log("selected moves",opsi.selOpenings);
         // Selecting random opening
         if (opsi.selOpenings.length>0) {
             opsi.rantomi = Math.random()*opsi.selOpenings.length;
@@ -55,6 +55,6 @@ function inOpenings() {
             opsi.openingSelected = "";
             opsi.openingPossible = false;
         }
-        console.log("Selected opening", opsi.openingSelected)
+        //console.log("Selected opening", opsi.openingSelected)
     }
 }

@@ -46,7 +46,7 @@ function isLegalmove(doVisual, _fromIndex, _toIndex, _itemMoved, _state) {
                 promotionObject = Qt.createComponent("Promotion.qml").createObject(page, {pro_piece: piePat + "p.png", pro_color:"b", pro_index: _fromIndex, turn_White: false});
                 itemMoved = piePat + "p.png";
                 currentMove = "promotion";
-                console.log(promotionObject)
+                //console.log(promotionObject)
                 //movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":_fromIndex})
                 //movedPieces.set(3,{"color":"x", "piece":"x", "indeksos":-1}) //Set dummy values
             }
