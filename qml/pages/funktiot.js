@@ -916,20 +916,20 @@ function moveBack() {
     }
 
     // Returning the captured piece in enpassant and the moved rook in the castling
-    if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairFrom > 0){
+    if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairFrom > -1){
         galeryModel.set(allMoves.get(movesNoScanned).pairFrom,{"color":allMoves.get(movesNoScanned).pairColor, "piece":allMoves.get(movesNoScanned).pairPiece})
-        //console.log(allMoves.get(movesNoScanned).pairFrom)
+        //console.log("PairFrom", allMoves.get(movesNoScanned).pairFrom)
     }
 
     // Returning the empty piece in the castling to the place the rook visited
-    if (allMoves.get(movesNoScanned).pairCapturesColor !== "x" && allMoves.get(movesNoScanned).pairTo > 0){
+    if (allMoves.get(movesNoScanned).pairCapturesColor !== "x" && allMoves.get(movesNoScanned).pairTo > -1){
         galeryModel.set(allMoves.get(movesNoScanned).pairTo,{"color":allMoves.get(movesNoScanned).pairCapturesColor, "piece":allMoves.get(movesNoScanned).pairCaptures})
-        //console.log(allMoves.get(movesNoScanned).pairTo)
+        //console.log("PairTo", allMoves.get(movesNoScanned).pairTo)
     }
     // Undoing the promotion, maybe possible also with captured to
-    if (allMoves.get(movesNoScanned).promotionColor !== "x" && allMoves.get(movesNoScanned).promIndex > 0){
+    if (allMoves.get(movesNoScanned).promotionColor !== "x" && allMoves.get(movesNoScanned).promIndex > -1){
         galeryModel.set(allMoves.get(movesNoScanned).promIndex,{"color":allMoves.get(movesNoScanned).capturedColor, "piece":allMoves.get(movesNoScanned).capturedPiece})
-        //console.log(allMoves.get(movesNoScanned).promIndex)
+        //console.log("PromIndex", allMoves.get(movesNoScanned).promIndex)
     }
 
     // Removing first extra seconds after move
@@ -1053,25 +1053,28 @@ function moveForward () {
         }
     }
     // Setting enpassant to enable the enpassant move if the game restarts at this point
-    if (allMoves.get(movesNoScanned).enpColor !== "e" && allMoves.get(movesNoScanned).enpInd > 0){
+    if (allMoves.get(movesNoScanned).enpColor !== "e" && allMoves.get(movesNoScanned).enpInd > -1){
         galeryModel.set(allMoves.get(movesNoScanned).enpInd,{"color":allMoves.get(movesNoScanned).enpColor, "piece":allMoves.get(movesNoScanned).enpPiece})
     }
 
     // Moving the captured piece in enpassant and the rook in the castling
-    if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairTo > 0){
+    if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairTo > -1){
         galeryModel.set(allMoves.get(movesNoScanned).pairTo,{"color":allMoves.get(movesNoScanned).pairColor, "piece":allMoves.get(movesNoScanned).pairPiece})
         //console.log(allMoves.get(movesNoScanned).pairTo, allMoves.get(movesNoScanned).pairColor,allMoves.get(movesNoScanned).pairPiece)
     }
 
     // Setting the empty piece in the castling to the place where rook started
     //console.log(allMoves.get(movesNoScanned).pairColor, allMoves.get(movesNoScanned).pairFrom)
-    if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairFrom > 0){
+    if (allMoves.get(movesNoScanned).pairColor !== "x" && allMoves.get(movesNoScanned).pairFrom > -1){
         galeryModel.set(allMoves.get(movesNoScanned).pairFrom,{"color":"e", "piece":piePat + "empty.png"})
         //console.log(allMoves.get(movesNoScanned).pairColor, allMoves.get(movesNoScanned).pairFrom)
     }
     // Setting promoted piece to board
-    if (allMoves.get(movesNoScanned).promotionColor !== "x" && allMoves.get(movesNoScanned).promIndex > 0){
+    var slice = allMoves.get(movesNoScanned).pairPiece.slice(14,15).toUpperCase() // ensuring the rook to stay in promotion
+    if (allMoves.get(movesNoScanned).promotionColor !== "x" && allMoves.get(movesNoScanned).promIndex > -1 && slice == "P"){
         galeryModel.set(allMoves.get(movesNoScanned).promIndex,{"color":allMoves.get(movesNoScanned).promotionColor, "piece":allMoves.get(movesNoScanned).promotionPiece})
+        //console.log(allMoves.get(movesNoScanned).promIndex, allMoves.get(movesNoScanned).promotionPiece, slice)
+
     }
     // King index setting for chess checks
     feniWkingInd = allMoves.get(movesNoScanned).wKingInd

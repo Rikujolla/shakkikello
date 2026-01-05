@@ -5,7 +5,9 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
-#- Update problem correction NOT OK
+* Mon Jan 05 2026 Riku Lahtinen <rikul.lajolla@kiu.as> 0.9.5
+- Bugfixes
+
 * Fri Dec 26 2025 Riku Lahtinen <rikul.lajolla@kiu.as> 0.9.4
 - Fixed issue 19, https://github.com/Rikujolla/shakkikello/issues/19
 

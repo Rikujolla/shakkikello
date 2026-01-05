@@ -25,9 +25,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-//import QtQuick.LocalStorage 2.0
-//import "setting.js" as Mysets
-
 
 Page {
     id: page
