@@ -2,7 +2,6 @@
   Stockfish, a UCI chess playing engine derived from Glaurung 2.1
   Copyright (C) 2004-2008 Tord Romstad (Glaurung author)
   Copyright (C) 2008-2014 Marco Costalba, Joona Kiiski, Tord Romstad
-  Modifications for Shakkikello made by Riku Lahtinen, 2015
 
   Stockfish is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,7 +21,6 @@
 #include <cassert>
 #include <cstring>
 #include <iomanip>
-#include <iostream>
 #include <sstream>
 
 #include "bitcount.h"
@@ -35,7 +33,6 @@
 #include "tt.h"
 
 using std::string;
-int g_peru; //SFOS
 
 static const string PieceToChar(" PNBRQK  pnbrqk");
 
@@ -170,7 +167,6 @@ Position& Position::operator=(const Position& pos) {
   nodes = 0;
 
   assert(pos_is_ok());
-  //g_peru = ((pos_is_ok() == true) && (g_peru != 99) ? 88 : 99); //SFOS
 
   return *this;
 }
@@ -634,20 +630,12 @@ bool Position::pseudo_legal(const Move m) const {
 
 bool Position::gives_check(Move m, const CheckInfo& ci) const {
 
-    //sync_cout << "testi" << m << sync_endl;
-  assert(is_ok(m)); //SFOS
-//    if (is_ok(m)) {g_peru = 88; // SFOS
-//    }
-//    else {g_peru = 99; // SFOS
-//    }
-
+  assert(is_ok(m));
   assert(ci.dcCandidates == discovered_check_candidates());
   assert(color_of(moved_piece(m)) == sideToMove);
 
   Square from = from_sq(m);
   Square to = to_sq(m);
-  //sync_cout << from << ", " << to << sync_endl;
-
   PieceType pt = type_of(piece_on(from));
 
   // Is there a direct check?
@@ -710,7 +698,6 @@ void Position::do_move(Move m, StateInfo& newSt) {
 void Position::do_move(Move m, StateInfo& newSt, const CheckInfo& ci, bool moveIsCheck) {
 
   assert(is_ok(m));
-//  g_peru = ((is_ok(m) == true) && (g_peru != 99) ? 88 : 99); //SFOS
   assert(&newSt != st);
 
   ++nodes;
@@ -742,16 +729,8 @@ void Position::do_move(Move m, StateInfo& newSt, const CheckInfo& ci, bool moveI
   PieceType captured = type_of(m) == ENPASSANT ? PAWN : type_of(piece_on(to));
 
   assert(color_of(pc) == us);
-// SFOS
   assert(piece_on(to) == NO_PIECE || color_of(piece_on(to)) == them || type_of(m) == CASTLING);
-//   if ((piece_on(to) == NO_PIECE || color_of(piece_on(to)) == them || type_of(m) == CASTLING)
-//           && g_peru !=99) { g_peru = 88;}
-//   else {g_peru = 99;}
-
   assert(captured != KING);
- //  if (captured != KING && g_peru !=99) { g_peru = 88;}
- //  else {g_peru = 99;}
-
 
   if (type_of(m) == CASTLING)
   {
@@ -910,8 +889,6 @@ void Position::do_move(Move m, StateInfo& newSt, const CheckInfo& ci, bool moveI
   sideToMove = ~sideToMove;
 
   assert(pos_is_ok());
- // g_peru = ((pos_is_ok() == true) && (g_peru != 99) ? 88 : 99); //SFOS
-
 }
 
 
@@ -931,7 +908,6 @@ void Position::undo_move(Move m) {
 
   assert(empty(from) || type_of(m) == CASTLING);
   assert(st->capturedType != KING);
-//  g_peru = ((st->capturedType != KING) && (g_peru != 99) ? 88 : 99); //SFOS
 
   if (type_of(m) == PROMOTION)
   {
@@ -1025,8 +1001,6 @@ void Position::do_null_move(StateInfo& newSt) {
   sideToMove = ~sideToMove;
 
   assert(pos_is_ok());
-//  g_peru = ((pos_is_ok() == true) && (g_peru != 99) ? 88 : 99); //SFOS
-
 }
 
 void Position::undo_null_move() {

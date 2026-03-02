@@ -23,8 +23,8 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef UCI_H
-#define UCI_H
+#ifndef SFOS_UCI_H
+#define SFOS_UCI_H
 
 #include <QObject>
 #include <QVariantList>
@@ -32,7 +32,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 class Position;
 
-class A : public QObject
+class SFOS : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString test READ test WRITE setTest NOTIFY testChanged)
@@ -40,7 +40,7 @@ class A : public QObject
     Q_PROPERTY(QString stoMovetime READ stoMovetime WRITE setStoMovetime NOTIFY stoMovetimeChanged)
     Q_PROPERTY(QString stoSkill READ stoSkill WRITE setStoSkill NOTIFY stoSkillChanged)
 public:
-    explicit A(QObject *parent = 0) : QObject(parent){}
+    explicit SFOS(QObject *parent = 0) : QObject(parent){}
     QString reksi;
 
   QString test(){return myTest;}
@@ -83,4 +83,4 @@ private:
   QString myStoSkill;
 };
 
-#endif // UCI_H
+#endif // SFOS_UCI_H

@@ -31,6 +31,7 @@ SOURCES += src/harbour-shakkikello.cpp \
     src/stockfish/pawns.cpp \
     src/stockfish/position.cpp \
     src/stockfish/search.cpp \
+    src/stockfish/sfos_uci.cpp \
     src/stockfish/thread.cpp \
     src/stockfish/timeman.cpp \
     src/stockfish/tt.cpp \
@@ -99,11 +100,11 @@ HEADERS += \
     src/stockfish/psqtab.h \
     src/stockfish/rkiss.h \
     src/stockfish/search.h \
+    src/stockfish/sfos_uci.h \
     src/stockfish/thread.h \
     src/stockfish/timeman.h \
     src/stockfish/tt.h \
     src/stockfish/types.h \
-    src/stockfish/uci.h \
     src/stockfish/ucioption.h \
     src/fortuneserver/server.h \
     src/fortuneclient/client.h

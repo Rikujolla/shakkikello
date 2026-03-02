@@ -5,6 +5,10 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
+* Mon Mar 02 2026 Riku Lahtinen <rikul.lajolla@kiu.as> 0.9.6
+- Cleaning code for Stockfish upgrade v5->v6
+- Fixing stockfish Skill Level bug
+
 * Mon Jan 05 2026 Riku Lahtinen <rikul.lajolla@kiu.as> 0.9.5
 - Bugfixes
 

@@ -23,7 +23,6 @@
 #include <sstream>
 #include <string>
 
-#include "bitboard.h"
 #include "evaluate.h"
 #include "notation.h"
 #include "position.h"
@@ -31,17 +30,10 @@
 #include "thread.h"
 #include "tt.h"
 #include "ucioption.h"
-#include "uci.h"
 
 using namespace std;
 
 extern void benchmark(const Position& pos, istream& is);
-
-std::vector<std::string> g_siirrot; // SFOS
-extern int g_peru;
-int g_depth;
-int g_skill;
-int g_movetime;
 
 namespace {
 
@@ -144,93 +136,9 @@ namespace {
     Threads.start_thinking(pos, limits, SetupStates);
   }
 
-
 } // namespace
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// START SFOS part
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// This function clears the game vectors
-void A::initio() {
-//    cout << "initio alkaa" << endl;
-    g_siirrot.clear();
-    UCI::init(Options);
-    Bitboards::init();
-    Position::init();
-    Bitbases::init_kpk();
-    Search::init();
-    Pawns::init();
-    Eval::init();
-    Threads.init();
-    TT.resize(Options["Hash"]);
-
-
-//    Threads.exit();
-
-}
-
-void A::deletio() {
-    Threads.exit();
-//    cout << "Threadit pois" << endl;
-
-}
-
-void A::inni() {
-    string ransu;
-    g_depth = myStoDepth.toInt();
-    g_skill = myStoSkill.toInt();
-    //Reducing stockfish time from nominal time to help app not freezing
-    g_movetime = myStoMovetime.toInt() * 1000 - 130;
-    //cout << g_depth << " " << g_movetime << " " << g_skill << endl;
-    ransu=myTest.toStdString();//    Move m;
-    g_siirrot.push_back(ransu);
-    UCI::loopi(g_siirrot);
-}
-
-// This function only adds a move to the vector, used to initialize the game for example with openings
-void A::innio() {
-    g_siirrot.push_back(myTest.toStdString());
-}
-
-void A::outti() {
-    extern std::string g_koruksi;
-//    sync_cout << g_koruksi <<sync_endl;
-    myTest = QString::fromStdString(g_koruksi);
-    g_siirrot.push_back(g_koruksi);
-//    for (int ii = 0; ii < g_siirrot.size(); ii++) {
-//        cout << g_siirrot[ii] << " i" << ii << endl;
-//    }
-}
-
-void UCI::loopi(const std::vector<std::string> &fransu) {
-    Position pos(StartFEN, false, Threads.main()); // The root position
-    Move m;
-    string token, fen;
-    fen=StartFEN;
-    pos.set(fen, Options["UCI_Chess960"], Threads.main());
-    SetupStates = Search::StateStackPtr(new std::stack<StateInfo>());
-    int ind = 0;
-    int koko;
-    koko= fransu.size();
-    while (ind < koko) {
-        token = fransu[ind];
-//        cout << token; //Konsoliin
-        m = move_from_uci(pos, token);
-        SetupStates->push(StateInfo());
-
-        pos.do_move(m, SetupStates->top());
-        ind++;
-    }
-    Search::LimitsType limits;
-    //limits.depth = g_depth; // Has to be parametrisized
-    limits.movetime = g_movetime; //
-    //cout << limits.depth << endl;
-    Threads.start_thinking(pos, limits, SetupStates);
-
-}
-
-/// END SFOS part
 
 void UCI::loop(int argc, char* argv[]) {
 

@@ -36,7 +36,7 @@
 #include "thread.h"
 #include "tt.h"
 #include "ucioption.h"
-#include "uci.h"
+#include "sfos_uci.h"
 
 std::string g_koruksi; //SFOS
 
