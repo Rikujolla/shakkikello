@@ -65,10 +65,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Licence</source>
         <translation type="unfinished"></translation>
     </message>
@@ -82,6 +78,10 @@
     </message>
     <message>
         <source>Dutch (Belgium) (Nathan Follens)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v6 (stockfishchess.org)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

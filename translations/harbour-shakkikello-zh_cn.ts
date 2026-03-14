@@ -65,10 +65,6 @@
         <translation>第三方软件</translation>
     </message>
     <message>
-        <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Stockfish 引擎, v5 (stockfishchess.org)</translation>
-    </message>
-    <message>
         <source>Licence</source>
         <translation>许可协议</translation>
     </message>
@@ -83,6 +79,10 @@
     <message>
         <source>Dutch (Belgium) (Nathan Follens)</source>
         <translation>荷语 (比利时) (Nathan Follens)</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v6 (stockfishchess.org)</source>
+        <translation type="unfinished">Stockfish 引擎, v5 (stockfishchess.org) {6 ?}</translation>
     </message>
 </context>
 <context>

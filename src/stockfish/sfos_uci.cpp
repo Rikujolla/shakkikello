@@ -23,12 +23,12 @@
 
 #include "bitboard.h"
 #include "evaluate.h"
-#include "notation.h"
+#include "movegen.h"
 #include "position.h"
 #include "search.h"
-#include "ucioption.h"
 #include "thread.h"
 #include "tt.h"
+#include "uci.h"
 
 #include "sfos_uci.h"
 
@@ -54,7 +54,7 @@ void SFOS::initio() {
     UCI::init(Options);
     Bitboards::init();
     Position::init();
-    Bitbases::init_kpk();
+    Bitbases::init();
     Search::init();
     Pawns::init();
     Eval::init();
@@ -84,7 +84,7 @@ void SFOS::inni() {
     //cout << g_depth << " " << g_movetime << " " << g_skill << endl;
     ransu=myTest.toStdString();//    Move m;
     g_siirrot.push_back(ransu);
-    UCI::loopi(g_siirrot);
+    loopi(g_siirrot);
 }
 
 // This function only adds a move to the vector, used to initialize the game for example with openings
@@ -102,7 +102,7 @@ void SFOS::outti() {
 //    }
 }
 
-void UCI::loopi(const std::vector<std::string> &fransu) {
+void loopi(const std::vector<std::string> &fransu) {
     Position pos(StartFEN, false, Threads.main()); // The root position
     Move m;
     string token, fen;
@@ -115,7 +115,7 @@ void UCI::loopi(const std::vector<std::string> &fransu) {
     while (ind < koko) {
         token = fransu[ind];
 //        cout << token; //Konsoliin
-        m = move_from_uci(pos, token);
+        m = UCI::to_move(pos, token);
         SetupStates->push(StateInfo());
 
         pos.do_move(m, SetupStates->top());

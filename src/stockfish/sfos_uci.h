@@ -28,9 +28,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <QObject>
 #include <QVariantList>
-#include "notation.h"
+#include "types.h"
 
 class Position;
+
+void loopi(const std::vector<std::string> &);
 
 class SFOS : public QObject
 {

@@ -871,11 +871,13 @@ function continueGame () {
         for (i=1;i<movesNoScanned+1;i++){
             gridToFEN(allMoves.get(i).movedFrom, allMoves.get(i).capturedTo)
             if (i=== movesNoScanned && i%2 === 1 && isMyStart) {
-                hopo.inni();
+                //if (upperMessage == messages[0].msg || upperMessage == "") {hopo.inni()} else {hopo.deletio()};
+                if (tilat.peliloppui) {hopo.deletio()} else {hopo.inni()};
                 blackTimer.start()
             }
             else if (i=== movesNoScanned && i%2 === 0 && !isMyStart) {
-                hopo.inni();
+                //if (upperMessage == messages[0].msg || upperMessage == "") {hopo.inni()} else {hopo.deletio()};
+                if (tilat.peliloppui) {hopo.deletio()} else {hopo.inni()};
                 whiteTimer.start()
             }
             else {

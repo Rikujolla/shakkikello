@@ -1065,7 +1065,8 @@ Page {
                         hopo.innio();
                     }
                     else {
-                        hopo.inni();
+                        //if (upperMessage == messages[0].msg || upperMessage == "") {hopo.inni()} else {hopo.deletio()};
+                        if (tilat.peliloppui) {hopo.deletio()} else {hopo.inni()};
                     }
                     feniBlackReady = false;
                     feniBlackReady2 = true;
@@ -1118,7 +1119,8 @@ Page {
                     }
 
                     else {
-                        hopo.inni();
+                        //if (upperMessage == messages[0].msg || upperMessage == "") {hopo.inni()} else {hopo.deletio()};
+                        if (tilat.peliloppui) {hopo.deletio()} else {hopo.inni()};
                     }
                     feniWhiteReady = false;
                     feniWhiteReady2 = true;

@@ -65,10 +65,6 @@
         <translation>Logiciel tiers</translation>
     </message>
     <message>
-        <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>I.A. Stockfish v5 (stockfishchess.org)</translation>
-    </message>
-    <message>
         <source>Licence</source>
         <translation>Licence</translation>
     </message>
@@ -83,6 +79,10 @@
     <message>
         <source>Dutch (Belgium) (Nathan Follens)</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v6 (stockfishchess.org)</source>
+        <translation type="unfinished">I.A. Stockfish v5 (stockfishchess.org) {6 ?}</translation>
     </message>
 </context>
 <context>

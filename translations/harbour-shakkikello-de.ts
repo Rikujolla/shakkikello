@@ -65,10 +65,6 @@
         <translation>Software von Drittanbietern</translation>
     </message>
     <message>
-        <source>Stockfish engine, v5 (stockfishchess.org)</source>
-        <translation>Stockfish engine, v5 (stockfishchess.org)</translation>
-    </message>
-    <message>
         <source>Licence</source>
         <translation>Lizenz</translation>
     </message>
@@ -83,6 +79,10 @@
     <message>
         <source>Dutch (Belgium) (Nathan Follens)</source>
         <translation>Nederlands (België) (Nathan Follens)</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v6 (stockfishchess.org)</source>
+        <translation type="unfinished">Stockfish engine, v5 (stockfishchess.org) {6 ?}</translation>
     </message>
 </context>
 <context>
