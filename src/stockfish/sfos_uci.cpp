@@ -92,9 +92,10 @@ void SFOS::innio() {
     g_siirrot.push_back(myTest.toStdString());
 }
 
+// This function returns the move from Stockfish to Fastchess
 void SFOS::outti() {
     extern std::string g_koruksi;
-//    sync_cout << g_koruksi <<sync_endl;
+    //sync_cout << g_koruksi <<sync_endl;
     myTest = QString::fromStdString(g_koruksi);
     g_siirrot.push_back(g_koruksi);
 //    for (int ii = 0; ii < g_siirrot.size(); ii++) {

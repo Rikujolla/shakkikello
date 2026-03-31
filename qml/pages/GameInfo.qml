@@ -51,7 +51,7 @@ Page {
             width: page.width
             spacing: Theme.paddingLarge
             PageHeader {
-                title: qsTr("Game") + " " + (selectedGame + 1)
+                title: qsTr("Game") + " " + (selectedGame)
             }
 
             //: "Tag pairs" could be also e.g. "Game info". This section of the page has the general information of the game. See more https://en.wikipedia.org/wiki/Portable_Game_Notation

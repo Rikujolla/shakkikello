@@ -456,7 +456,9 @@ Page {
                     {name:"Riku test 5", eco:"R05", //to help black to win, testing
                         moves:"e2e3b7b5d1f3c8b7b1c3b7f3d2d4"},
                     {name:"Riku test 6", eco:"R06", //White promotion
-                        moves:"h2h4a7a5h4h5a5a4h5h6a4a3h6g7a3b2"}
+                        moves:"h2h4a7a5h4h5a5a4h5h6a4a3h6g7a3b2"},
+                    {name:"Riku test 7", eco:"R07", //White promotion, to test Stockfish to promote Knight
+                        moves:"h2h3e7e6h3h4d7d6h4h5e8e7h5h6c8d7g2g3d7e8f2f3e7d7e2e3g8e7d2d3b8c6c2c3a8c8h6g7h7h6b2b3h8h7"}
                 ]
             }
 
@@ -1219,12 +1221,20 @@ Page {
                         whiteCaptured.append({"captured":movedPieces.get(1).piece})
                     }
 
-                    // Promotion
+                    // Promotion, Stockfish may promote another than queen
                     if (toIndex > 55 && galeryModel.get(toIndex).piece === piePat + "p.png") {
-                        test_state[toIndex].piece = piePat + "q.png";
-                        galeryModel.set(toIndex, {"piece": piePat + "q.png"});
+                        var prom_piece;
+                        if (hopo.test.length == 5) {
+                            prom_piece = piePat + hopo.test.slice(4,5) + ".png"
+                        }
+                        else {
+                            prom_piece = piePat + "q.png" // Error handling, may be not needed
+                            console.log("Error, should not enter here")
+                        }
+                        test_state[toIndex].piece = prom_piece;
+                        galeryModel.set(toIndex, {"piece": prom_piece});
                         movedPieces.set(2,{"color":"b", "piece":piePat + "p.png", "indeksos":fromIndex})
-                        movedPieces.set(3,{"color":colorMoved, "piece":piePat + "q.png", "indeksos":toIndex}) //Set values for promotion
+                        movedPieces.set(3,{"color":colorMoved, "piece":prom_piece, "indeksos":toIndex}) //Set values for promotion
                     }
 
                     lowerMessage = "";
@@ -1341,12 +1351,20 @@ Page {
                     if (movedPieces.get(1).piece !== piePat + "empty.png") {
                         blackCaptured.append({"captured":movedPieces.get(1).piece})
                     }
-                    // If the white pawn reaches the last line the promotion to Queen is assumed (TBD other possibilities)
+                    // If the white pawn reaches the last line, promoted piece got from Stockfish or if error assumed to be Queen
                     if (toIndex < 8 && galeryModel.get(toIndex).piece === piePat + "P.png") {
-                        test_state[toIndex].piece = piePat + "Q.png";
-                        galeryModel.set(toIndex, {"piece": piePat + "Q.png"});
+                        var prom_piece;
+                        if (hopo.test.length == 5) {
+                            prom_piece = piePat + hopo.test.slice(4,5).toUpperCase() + ".png"
+                        }
+                        else {
+                            prom_piece = piePat + "Q.png" // Error handling
+                            console.log("Error, should not enter here")
+                        }
+                        test_state[toIndex].piece = prom_piece;
+                        galeryModel.set(toIndex, {"piece": prom_piece});
                         movedPieces.set(2,{"color":"w", "piece":piePat + "P.png", "indeksos":fromIndex})
-                        movedPieces.set(3,{"color":colorMoved, "piece":piePat + "Q.png", "indeksos":toIndex}) //Set values for promotion
+                        movedPieces.set(3,{"color":colorMoved, "piece":prom_piece, "indeksos":toIndex}) //Set values for promotion
                     }
 
                     lowerMessage = "";

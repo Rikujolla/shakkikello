@@ -62,7 +62,7 @@ Page {
             Row {
                 Label {
                     id: listos
-                    text: qsTr("Game") + " " + (iidee + 1) + ": "
+                    text: qsTr("Game") + " " + (iidee) + ": "
                 }
                 TextInput {
                     id:texti

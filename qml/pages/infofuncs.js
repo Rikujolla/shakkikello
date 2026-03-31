@@ -91,7 +91,13 @@ function saveGameDB() {
                     var rs = tx.executeSql('SELECT * FROM Recentmoves');
                     var rt = tx.executeSql('SELECT * FROM Gameinfo');
                     var tagPairs = ""
-                    var indX = rt.rows.length //Finding the index where to save the game
+                    if (rt.rows.length>0) {
+                        var indX = rt.rows.item(rt.rows.length-1).gameid + 1;
+                        console.log(rt.rows.item(rt.rows.length-1).gameid, rt.rows.item(0).tagpairs, rt.rows.length-1, rt.rows.length)
+                    }
+                    else {
+                        indX = 1
+                    }
                     var moveChain = ""
 
                     if (rs.rows.length >6) { //Testing that recent game has moves
@@ -106,7 +112,7 @@ function saveGameDB() {
                             moveChain += rs.rows.item(i).stockwhite + rs.rows.item(i).stockblack
                             tx.executeSql('INSERT INTO Moves VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [ indX, i-6, rs.rows.item(i).stockwhite, rs.rows.item(i).stockblack, '', '', '', '' ]);
                         }
-                        tx.executeSql('INSERT INTO Gameinfo VALUES(?, ?, ?, ?)', [ indX, 'Noname ' + (indX + 1), tagPairs, moveChain ]);
+                        tx.executeSql('INSERT INTO Gameinfo VALUES(?, ?, ?, ?)', [ indX, 'Noname ' + (indX), tagPairs, moveChain ]);
                         //console.log(moveChain)
                     }
                 }
