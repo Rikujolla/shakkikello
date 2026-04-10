@@ -390,6 +390,30 @@ Page {
                 }
             }
 
+            TextSwitch {
+                id:helpOpeningSwitch
+                text:qsTr("Show opening moves")
+                visible:openingMode == 0 || openingMode == 2 || openingMode == 3
+                checked:assistOpeningMode
+                automaticCheck:false
+                onClicked:{
+                    checked ? checked = false : checked = true
+                    assistOpeningMode = ! assistOpeningMode;
+                }
+            }
+            TextSwitch {
+                id:helpStockfishSwitch
+                text:qsTr("Show move hints in Stockfish game")
+                //visible:playMode == "stockfish"
+                visible:false
+                checked:assistStockfishMode
+                automaticCheck:false
+                onClicked:{
+                    checked ? checked = false : checked = true
+                    assistStockfishMode = ! assistStockfishMode;
+                }
+            }
+
             Row {
                 x: Theme.paddingLarge
                 spacing: Theme.paddingLarge

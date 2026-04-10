@@ -26,6 +26,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef SFOS_UCI_H
 #define SFOS_UCI_H
 
+#include <map>
+#include <string>
+
 #include <QObject>
 #include <QVariantList>
 #include "types.h"

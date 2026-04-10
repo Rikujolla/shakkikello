@@ -17,29 +17,32 @@ There will be master branch which is a code for the releases in Jolla Harbour, O
 7. Do Jolla Harbour tests for the rpms (https://forum.sailfishos.org/t/missing-harbour-validator/2583/3):
     alias sfdk=~/SailfishOS/bin/sfdk
     sfdk config target=SailfishOS-5.0.0.62-aarch64
-    sfdk check harbour-shakkikello-0.9.8-1.aarch64.rpm
+    sfdk check harbour-shakkikello-0.9.9-1.aarch64.rpm
     alias sfdk=~/SailfishOS/bin/sfdk
     sfdk config target=SailfishOS-5.0.0.62-armv7hl
-    sfdk check harbour-shakkikello-0.9.8-1.armv7hl.rpm
+    sfdk check harbour-shakkikello-0.9.9-1.armv7hl.rpm
     alias sfdk=~/SailfishOS/bin/sfdk
     sfdk config target=SailfishOS-5.0.0.62-i486
-    sfdk check harbour-shakkikello-0.9.8-1.i486.rpm
+    sfdk check harbour-shakkikello-0.9.9-1.i486.rpm
 8. Commit changes for the version, amend commits if changes are needed in the test process
 9. Merge dev branch to the master 
     git checkout master
-    git merge dev_0.9.8
+    git merge dev_0.9.9
 10. Move the source to GitHub
     git push origin master
 11. Create package from GitHub master to the https://build.sailfishos.org 
-    tar -czvf harbour-shakkikello-0.9.8.tar.bz2 harbour-shakkikello-0.9.8
+    tar -czvf harbour-shakkikello-0.9.9.tar.bz2 harbour-shakkikello-0.9.9
 12. Load bz2 file and spec file to chum:testing
 13. Test package with different devices
 14. Submit package to chum
 15. Load the local rpms to Jolla Harbour and edit release info
 16. Load the local rpms to OpenRepos and edit release info
 
-# Stockfish v6 integration
+# Stockfish v7 integration
 
 1. Take all files but main.cpp and Makefile
-2. Modify sfos_uci.h, sfos_uci.cpp, search.cpp
-3. Remove sync_cout commands from search.cpp, to be rethinked?
+2. Add new files to git
+3. Modify sfos_uci.h to align with uci.h
+4. Modify sfos_uci.cpp by adding proper header files and fixing the changes in functions
+5. Add g_koruksi parameter to search.cpp file
+6. Potentially remove sync_cout commands from search.cpp, to be rethinked?

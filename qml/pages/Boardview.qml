@@ -137,6 +137,9 @@ Page {
                     }
                     else if (!tilat.pelialkoi) {
                         Myfunks.startGame()
+                        if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
+                            Myops.inOpenings("No moves yet");
+                        }
                     }
                     else if (tilat.juoksee) {
                         Myfunks.pauseGame()
@@ -202,6 +205,7 @@ Page {
                 property bool openingPossible: false; // Tells if opening possible
                 property int rantomi; //random number for opening selection
                 property var selOpenings: []; //array for sel openings
+                property int promotionsIncluded: 0 // Counts promotions included since beginning
                 // Openings collected from various web pages. Main source is https://en.wikipedia.org/wiki/List_of_chess_openings
                 property var openings: [
                     // A
@@ -633,33 +637,33 @@ Page {
                         case 0:
                         case 7:
                             //galeryModel.set(koo,{"color":"b", "piece":piePat + "r.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"b", "piece":piePat + "r.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "r.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 1:
                         case 6:
                             //galeryModel.set(koo,{"color":"b", "piece":piePat + "n.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"b", "piece":piePat + "n.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "n.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 2:
                         case 5:
                             //galeryModel.set(koo,{"color":"b", "piece":piePat + "b.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"b", "piece":piePat + "b.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "b.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 3:
                             //galeryModel.set(koo,{"color":"b", "piece":piePat + "q.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"b", "piece":piePat + "q.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "q.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 4:
                             //galeryModel.set(koo,{"color":"b", "piece":piePat + "k.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"b", "piece":piePat + "k.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "k.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
@@ -672,7 +676,7 @@ Page {
                         case 14:
                         case 15:
                             //galeryModel.set(koo,{"color":"b", "piece":piePat + "p.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"b", "piece":piePat + "p.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"b", "piece":piePat + "p.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
@@ -685,46 +689,46 @@ Page {
                         case 54:
                         case 55:
                             //galeryModel.set(koo,{"color":"w", "piece":piePat + "P.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"w", "piece":piePat + "P.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "P.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 56:
                         case 63:
                             //galeryModel.set(koo,{"color":"w", "piece":piePat + "R.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"w", "piece":piePat + "R.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "R.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 57:
                         case 62:
                             //galeryModel.set(koo,{"color":"w", "piece":piePat + "N.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"w", "piece":piePat + "N.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "N.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 58:
                         case 61:
                             //galeryModel.set(koo,{"color":"w", "piece":piePat + "B.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"w", "piece":piePat + "B.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "B.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 59:
                             //galeryModel.set(koo,{"color":"w", "piece":piePat + "Q.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"w", "piece":piePat + "Q.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "Q.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         case 60:
                             //galeryModel.set(koo,{"color":"w", "piece":piePat + "K.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"w", "piece":piePat + "K.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"w", "piece":piePat + "K.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                             break;
                         default:
                             //galeryModel.set(koo,{"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2});
-                            current_state.push({"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2});
+                            current_state.push({"color":"e", "piece":piePat + "empty.png", "frameop": 0, "recmove": -2, "openingop": 0});
                             galeryModel.set(koo,current_state[koo]);
                             koo=koo+1;
                     }
@@ -836,6 +840,7 @@ Page {
                         piece: "empty.png"
                         frameop: 0
                         recmove: -1
+                        openingop: 0
                     }
             }
 
@@ -1018,6 +1023,13 @@ Page {
                             sourceSize.width: grid.cellWidth
                             sourceSize.height: grid.cellHeight
                         }
+                        Image {
+                            asynchronous: true
+                            source: piePat + "frameopening.png"
+                            opacity: (assistOpeningMode || assistStockfishMode) ? openingop:0
+                            sourceSize.width: grid.cellWidth
+                            sourceSize.height: grid.cellHeight
+                        }
                         MouseArea {
                             anchors.fill: parent
                             height: grid.cellHeight
@@ -1026,7 +1038,6 @@ Page {
                             onClicked: {indeksi = index;
                                 itemTobemoved = piece;
                                 colorTobemoved = color;
-                                //console.log(indeksi, itemTobemoved, colorTobemoved, test_state[indeksi].color, test_state[indeksi].piece)
                                 moveMent.movePiece();
                             }
                         } //end MouseArea
@@ -1062,8 +1073,16 @@ Page {
                 repeat: false
                 onTriggered: {
                     if (opsi.openingPossible) {
+                        // To send previous move to stockfish bedore new one
                         hopo.innio();
-                        hopo.test = opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+4);
+                        var _moreThanFour = opsi.openingSelected.slice(4*opsi.movesTotal + opsi.promotionsIncluded +4,4*opsi.movesTotal + opsi.promotionsIncluded+5)
+                        var _sixthLetter = opsi.openingSelected.slice(4*opsi.movesTotal + opsi.promotionsIncluded +5,4*opsi.movesTotal + opsi.promotionsIncluded+6)
+                        if(_moreThanFour !="" && isNaN(_sixthLetter)) {
+                            hopo.test = opsi.openingSelected.slice(4*opsi.movesTotal + opsi.promotionsIncluded,4*opsi.movesTotal + opsi.promotionsIncluded+5);
+                        }
+                        else {
+                            hopo.test = opsi.openingSelected.slice(4*opsi.movesTotal + opsi.promotionsIncluded,4*opsi.movesTotal + opsi.promotionsIncluded+4);
+                        }
                         hopo.innio();
                     }
                     else {
@@ -1083,8 +1102,16 @@ Page {
                 repeat: false
                 onTriggered: {
                     if (opsi.openingPossible) {
-                        hopo.innio();
-                        hopo.test = opsi.openingSelected.slice(4*opsi.movesTotal,4*opsi.movesTotal+4);
+                        // To send previous move to stockfish bedore new one
+                        if (opsi.movesTotal > 0) {hopo.innio();} //Not to send a zero move when white plays first move
+                        var _moreThanFour = opsi.openingSelected.slice(4*opsi.movesTotal + opsi.promotionsIncluded +4,4*opsi.movesTotal + opsi.promotionsIncluded+5)
+                        var _sixthLetter = opsi.openingSelected.slice(4*opsi.movesTotal + opsi.promotionsIncluded +5,4*opsi.movesTotal + opsi.promotionsIncluded+6)
+                        if(_moreThanFour !="" && isNaN(_sixthLetter)) {
+                            hopo.test = opsi.openingSelected.slice(4*opsi.movesTotal + opsi.promotionsIncluded,4*opsi.movesTotal + opsi.promotionsIncluded+5);
+                        }
+                        else {
+                            hopo.test = opsi.openingSelected.slice(4*opsi.movesTotal + opsi.promotionsIncluded,4*opsi.movesTotal + opsi.promotionsIncluded+4);
+                        }
                         hopo.innio();
                     }
                     else if (stockfishFirstmove == true) {
@@ -1244,6 +1271,9 @@ Page {
                     vuoro.vaihdaValkealle();
                     movesDone = movesDone + opsi.recentMove;
                     opsi.movesTotal++;
+                    if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
+                        Myops.inOpenings(opsi.recentMove);
+                    }
                     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     feniBlackReady2 = false;
@@ -1374,6 +1404,9 @@ Page {
                     vuoro.vaihdaMustalle();
                     movesDone = movesDone + opsi.recentMove;
                     opsi.movesTotal++;
+                    if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
+                        Myops.inOpenings(opsi.recentMove);
+                    }
                     galeryModel.set(fromIndex,{"recmove":opsi.movesTotal});
                     galeryModel.set(toIndex,{"recmove":opsi.movesTotal});
                     feniWhiteReady2 = false;

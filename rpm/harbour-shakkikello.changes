@@ -5,6 +5,12 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
+* Tue Apr 21 2026 Riku Lahtinen <rikul.lajolla@kiu.as> 0.9.9
+- Stockfish upgrade v6->v7
+- New feature to be able to see opening hints on board
+- Italian translation by 247
+- Norwegian bokmål translation by Frank Paul Silye
+
 * Tue Mar 31 2026 Riku Lahtinen <rikul.lajolla@kiu.as> 0.9.8
 - Stockfish upgrade v5->v6
 - Fixed issue 18, https://github.com/Rikujolla/shakkikello/issues/18

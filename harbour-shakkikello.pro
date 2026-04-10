@@ -28,6 +28,7 @@ SOURCES += src/harbour-shakkikello.cpp \
     src/stockfish/movepick.cpp \
     src/stockfish/pawns.cpp \
     src/stockfish/position.cpp \
+    src/stockfish/psqt.cpp \
     src/stockfish/search.cpp \
     src/stockfish/sfos_uci.cpp \
     src/stockfish/syzygy/tbcore.cpp \
@@ -93,14 +94,13 @@ HEADERS += \
     src/stockfish/movegen.h \
     src/stockfish/movepick.h \
     src/stockfish/pawns.h \
-    src/stockfish/platform.h \
     src/stockfish/position.h \
-    src/stockfish/psqtab.h \
     src/stockfish/search.h \
     src/stockfish/sfos_uci.h \
     src/stockfish/syzygy/tbcore.h \
     src/stockfish/syzygy/tbprobe.h \
     src/stockfish/thread.h \
+    src/stockfish/thread_win32.h \
     src/stockfish/timeman.h \
     src/stockfish/tt.h \
     src/stockfish/types.h \

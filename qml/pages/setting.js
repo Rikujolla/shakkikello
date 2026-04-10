@@ -51,6 +51,10 @@
                 rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'openingGameMoves');
                 if (rs.rows.length > 0 && openingGameMoves != "") {tx.executeSql('UPDATE Settings SET valte=? WHERE name=?', [openingGameMoves, 'openingGameMoves'])}
                 else if (openingGameMoves != ""){tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'openingGameMoves', '', openingGameMoves, '', '' ])}
+                // assistOpeningMode
+                rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'assistOpeningMode');
+                if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [assistOpeningMode, 'assistOpeningMode'])}
+                else {tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?)', [ 'assistOpeningMode', '', '', '', assistOpeningMode ])}
                 // stockfishSkill
                 rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'stockfishSkill');
                 if (rs.rows.length > 0) {tx.executeSql('UPDATE Settings SET valint=? WHERE name=?', [stockfishSkill, 'stockfishSkill'])}
@@ -114,7 +118,7 @@ function loadSettings() {
             rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'countDirInt');
             if (rs.rows.length > 0) {countDirInt = rs.rows.item(0).valint}
             else {}
-            // countDirInt
+            // countDirDown
             rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'countDirDown');
             if (rs.rows.length > 0) {
                 var temp = rs.rows.item(0).valint;
@@ -149,6 +153,17 @@ function loadSettings() {
             rs = tx.executeSql('SELECT * FROM Settings WHERE name = ? AND valte IS NOT NULL' , 'openingGameMoves');
             if (rs.rows.length > 0) {openingGameMoves = rs.rows.item(0).valte}
             else {}
+            // assistOpeningMode
+            rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'assistOpeningMode');
+            if (rs.rows.length > 0) {
+                temp = rs.rows.item(0).valint;
+                if (temp == 1) {
+                    assistOpeningMode = true;
+                }
+                else {
+                    assistOpeningMode = false;
+                }
+            }
             // stockfishSkill
             rs = tx.executeSql('SELECT * FROM Settings WHERE name = ?', 'stockfishSkill');
             if (rs.rows.length > 0) {stockfishSkill = rs.rows.item(0).valint}

@@ -69,10 +69,6 @@
         <translation>Licentie</translation>
     </message>
     <message>
-        <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>Auteursrecht © 2015, Riku Lahtinen</translation>
-    </message>
-    <message>
         <source>Licensed under GPLv3. License, source code and more information:</source>
         <translation>Uitgebracht onder de GPLv3-licentie. Licentie, broncode en meer informatie:</translation>
     </message>
@@ -81,8 +77,20 @@
         <translation>Vlaams (Nathan Follens)</translation>
     </message>
     <message>
-        <source>Stockfish engine, v6 (stockfishchess.org)</source>
-        <translation type="unfinished">Stockfish-aandrijving, v5 (stockfishchess.org) {6 ?}</translation>
+        <source>Italian (247)</source>
+        <translation>Italiaans (247)</translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015-2026, Riku Lahtinen</source>
+        <translation>Auteursrecht (c) 2015–2026, Riku Lahtinen</translation>
+    </message>
+    <message>
+        <source>Norwegian bokmål (Frank Paul Silye)</source>
+        <translation>Noors bokmål (Frank Paul Silye)</translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v7 (stockfishchess.org)</source>
+        <translation>Stockfish-aandrijving, v7 (stockfishchess.org)</translation>
     </message>
 </context>
 <context>
@@ -498,6 +506,14 @@
         <source>Personal art</source>
         <extracomment>Player can select the pieces of her or his choice</extracomment>
         <translation>Eigen afbeeldingen</translation>
+    </message>
+    <message>
+        <source>Show opening moves</source>
+        <translation>Openingszetten tonen</translation>
+    </message>
+    <message>
+        <source>Show move hints in Stockfish game</source>
+        <translation>Suggesties omtrent zetten tonen in Stockfish-spellen</translation>
     </message>
 </context>
 <context>

@@ -48,10 +48,10 @@ Page {
 
             Label {
                 id: listos
-                text: qsTr("Game") + " " + (iidee + 1) + ": " + title
+                text: qsTr("Game") + " " + iidee + ": " + title
             }
             onClicked: {
-                openingGame = iidee+1;
+                openingGame = iidee;
                 openingGameMoves = moves
                 pageStack.pop();
             }

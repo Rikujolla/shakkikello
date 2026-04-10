@@ -19,6 +19,7 @@
 */
 
 #include <iostream> // For cout debugging
+#include <sstream>
 #include <string>
 
 #include "bitboard.h"
@@ -28,6 +29,7 @@
 #include "search.h"
 #include "thread.h"
 #include "tt.h"
+#include "timeman.h"
 #include "uci.h"
 
 #include "sfos_uci.h"
@@ -84,12 +86,19 @@ void SFOS::inni() {
     //cout << g_depth << " " << g_movetime << " " << g_skill << endl;
     ransu=myTest.toStdString();//    Move m;
     g_siirrot.push_back(ransu);
+    /*for (int ii = 0; ii < g_siirrot.size(); ii++) {
+        cout << g_siirrot[ii] << " inni" << ii << endl;
+    }*/
+
     loopi(g_siirrot);
 }
 
 // This function only adds a move to the vector, used to initialize the game for example with openings
 void SFOS::innio() {
     g_siirrot.push_back(myTest.toStdString());
+        /*for (int ii = 0; ii < g_siirrot.size(); ii++) {
+            cout << g_siirrot[ii] << " innio" << ii << endl;
+        }*/
 }
 
 // This function returns the move from Stockfish to Fastchess
@@ -113,13 +122,15 @@ void loopi(const std::vector<std::string> &fransu) {
     int ind = 0;
     int koko;
     koko= fransu.size();
+    //cout << "loopi" << koko << endl;
     while (ind < koko) {
         token = fransu[ind];
-//        cout << token; //Konsoliin
+        // cout << "token" << token; //Konsoliin
         m = UCI::to_move(pos, token);
         SetupStates->push(StateInfo());
 
-        pos.do_move(m, SetupStates->top());
+        pos.do_move(m, SetupStates->top(), pos.gives_check(m, CheckInfo(pos)));
+
         ind++;
     }
     Search::LimitsType limits;

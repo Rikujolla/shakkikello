@@ -71,7 +71,7 @@ Page {
                     margins: Theme.paddingLarge
                 }
                 //: The name of the app followed with a version number
-                text: {qsTr("Fast chess, version") + " 0.9.8"}
+                text: {qsTr("Fast chess, version") + " 0.9.9"}
             }
 
             SectionHeader { text: qsTr("Translations") }
@@ -90,6 +90,8 @@ Page {
                        + qsTr("Finnish (Riku Lahtinen)") + "\n"
                        + qsTr("French (lutinotmalin)") + "\n"
                        + qsTr("Hungarian (leoka)") + "\n"
+                       + qsTr("Italian (247)") + "\n"
+                       + qsTr("Norwegian bokmål (Frank Paul Silye)") + "\n"
                        + qsTr("Dutch (Heimen Stoffels)") + "\n"
                        + qsTr("Dutch (Belgium) (Nathan Follens)") + "\n"
                        + qsTr("Polish (szopin)") + "\n"
@@ -123,7 +125,7 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("Stockfish engine, v6 (stockfishchess.org)")
+                text: {qsTr("Stockfish engine, v7 (stockfishchess.org)")
                 }
             }
 
@@ -138,7 +140,7 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: qsTr("Copyright (c) 2015, Riku Lahtinen") + "\n"
+                text: qsTr("Copyright (c) 2015-2026, Riku Lahtinen") + "\n"
                       + qsTr("Licensed under GPLv3. License, source code and more information:") + "\n"
                       + ("https://github.com/Rikujolla/shakkikello")
             }

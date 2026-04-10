@@ -50,6 +50,8 @@ ApplicationWindow
     property string openingECO: "E00" // Used for fixed opening
     property string openingGame  //Selected gameid
     property string openingGameMoves: "e2e4" //Contains the moves of the selected game
+    property bool assistOpeningMode:false // App shows opening moves
+    property bool assistStockfishMode:false // If not in opening, App shows Stockfish hints
     property int stockfishDepth: 4 //depth of stockfish engine
     property int stockfishMovetime: 2 //Movetime in seconds
     property int stockfishSkill: 1 // Skill Level default

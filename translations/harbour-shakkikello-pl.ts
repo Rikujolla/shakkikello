@@ -69,10 +69,6 @@
         <translation>Licencja</translation>
     </message>
     <message>
-        <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>Prawa autorskie (c) 2015, Riku Lahtinen</translation>
-    </message>
-    <message>
         <source>Licensed under GPLv3. License, source code and more information:</source>
         <translation>Na licencji GPLv3. Licencja, kod źródłowy i więcej informacji:</translation>
     </message>
@@ -81,8 +77,20 @@
         <translation>Holenderski (Belgia) (Nathan Follens)</translation>
     </message>
     <message>
-        <source>Stockfish engine, v6 (stockfishchess.org)</source>
-        <translation type="unfinished">Silnik szachowy Stockfish, v5 (stockfishchess.org) {6 ?}</translation>
+        <source>Italian (247)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2015-2026, Riku Lahtinen</source>
+        <translation type="unfinished">Prawa autorskie (c) 2015, Riku Lahtinen {2015-2026,?}</translation>
+    </message>
+    <message>
+        <source>Norwegian bokmål (Frank Paul Silye)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stockfish engine, v7 (stockfishchess.org)</source>
+        <translation type="unfinished">Silnik szachowy Stockfish, v5 (stockfishchess.org) {6 ?} {7 ?}</translation>
     </message>
 </context>
 <context>
@@ -498,6 +506,14 @@
         <source>Personal art</source>
         <extracomment>Player can select the pieces of her or his choice</extracomment>
         <translation>Własny</translation>
+    </message>
+    <message>
+        <source>Show opening moves</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show move hints in Stockfish game</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

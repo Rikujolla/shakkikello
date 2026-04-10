@@ -21,7 +21,7 @@
 /////////////////////////////////////////////////////////
 function gridToFEN(fromInd, toInd) {
     opsi.recentMove = hopo.test;
-    hopo.test = "";
+    var _moveFEN = "";
     var startFeni = "";
     var stopFeni = "";
     switch (fromInd%8) {
@@ -45,7 +45,7 @@ function gridToFEN(fromInd, toInd) {
     default: startFeni = "m" //mistake
     }
     stopFeni = 8-(fromInd-fromInd%8)/8;
-    hopo.test = startFeni+stopFeni;
+    _moveFEN = startFeni+stopFeni;
 
     switch (toInd%8) {
     case 0: startFeni= "a"
@@ -68,9 +68,12 @@ function gridToFEN(fromInd, toInd) {
     default: startFeni = "m" //mistake
     }
     stopFeni = 8-(toInd-toInd%8)/8;
-    hopo.test = hopo.test+startFeni+stopFeni;
-    if (currentMove == "promotion") {hopo.test = hopo.test + promotedShort}
-
+    _moveFEN = _moveFEN+startFeni+stopFeni;
+    if (currentMove == "promotion") {
+        hopo.test = _moveFEN + promotedShort}
+    else {
+        hopo.test = _moveFEN
+    }
 }
 
 /////////////////////////////////////////////////////////
@@ -168,9 +171,6 @@ function fenToGRID() {
 
     }
     toIndex=feniHelper;
-
-
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -400,7 +400,7 @@ function doMove() {
     movesDone = movesDone + opsi.recentMove;  // Maybe needed in future
     opsi.movesTotal++;
     if (openingMode == 1 || openingMode == 2 || openingMode == 3) {
-        Myops.inOpenings();
+        Myops.inOpenings(opsi.recentMove);
     }
     current_state = JSON.parse(JSON.stringify(test_state)); //Record next state to vector
     movesNoScanned = opsi.movesTotal;
