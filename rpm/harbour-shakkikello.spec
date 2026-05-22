@@ -13,7 +13,7 @@ Name:       harbour-shakkikello
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Chess application for Jolla and SailfishOS
-Version:    0.9.9
+Version:    1.0.0
 Release:    1
 Group:      Qt/Qt
 License:    GPLv3

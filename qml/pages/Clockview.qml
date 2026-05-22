@@ -1,4 +1,4 @@
-/*Copyright (c) 2015, Riku Lahtinen
+/*Copyright (c) 2015-2026, Riku Lahtinen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -111,7 +111,7 @@ Page {
                     pelialkoi = false
                 }
                 function vaihdaTila() {
-                    if (pelialkoi == true && juoksee == true)  { aloitapause = qsTr("Pause")} else {aloitapause = qsTr("Continue")
+                    if (pelialkoi == true && juoksee == true)  { startButton.text = qsTr("Pause")} else {startButton.text = qsTr("Continue")
                     }
                 }
                 function aloitaPeli() {
@@ -131,7 +131,6 @@ Page {
                     muttakello.sekuntitm=0;
                     muttakello.timeMutta();
                     tilat.vaihdaTila();
-                    maharollisuuret = qsTr("Reset")
 
                 }
             }
@@ -219,49 +218,6 @@ Page {
             }
 
             Item {
-                id : asetussivulle
-                function siirrytKo() {
-                    //////////////////////////////////////////////////////////////////////////////////////
-                    // Logic to reset the timer and changing the button to enable a move to settings page
-                    /////////////////////////////////////////////////////////////////////////////////////
-                    if (tilat.pelialkoi == true) {
-                        maharollisuuret = qsTr("Settings");
-                        tilat.asetaTilat();
-                        valkokello.rogres_sekuntitv = valkomax;
-                        muttakello.rogres_sekuntitm = mustamax;
-                        valkokello.sekuntitv0 = 0;
-                        valkokello.sekuntitv = 0;
-                        valkokello.sum_incrementv = 0;
-                        muttakello.sekuntitm0 = 0;
-                        muttakello.sekuntitm = 0;
-                        muttakello.sum_incrementm = 0;
-                        kello.sekuntit = 0;
-                        startti.timeAsetus();
-                        valkokello.updateValko();
-                        muttakello.updateMutta();
-                        tilat.peliloppui = false
-                        //startButton.text = qsTr("Start")
-                        //////////////////////////////
-                        // Logic to move to settings page
-                        //////////////////////////
-                    } else {
-                        valkokello.rogres_sekuntitv = valkomax;
-                        muttakello.rogres_sekuntitm = mustamax;
-                        valkokello.sekuntitv0 = 0;
-                        valkokello.sekuntitv = 0;
-                        valkokello.sum_incrementv = 0;
-                        muttakello.sekuntitm0 = 0;
-                        muttakello.sekuntitm = 0;
-                        muttakello.sum_incrementm = 0;
-                        kello.sekuntit = 0;
-                        tilat.peliloppui = false;
-                        //startButton.text = qsTr("Start")
-                        pageStack.push(Qt.resolvedUrl("Settings.qml"))
-                    }
-                }
-            }
-
-            Item {
                 id : kello
                 property int hours
                 property int minutes
@@ -333,6 +289,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Button {
                     id: startButton
+                    width: (Screen.width - 3*Theme.paddingLarge - settingsIcon.width)/2
                     text: aloitapause
                     enabled: !tilat.peliloppui
                     onClicked: {
@@ -349,14 +306,45 @@ Page {
                             valkokello.rogres_sekuntitv = -valkokello.sum_incrementv + valkokello.sekuntitv0;
                         }
                         tilat.vaihdaTila();
-                        maharollisuuret = qsTr("Reset")
                     }
                 }
+
+                IconButton {
+                    id: settingsIcon
+                    icon.source: "image://theme/icon-m-setting?" + (pressed
+                                                                    ? Theme.highlightColor
+                                                                    : Theme.secondaryHighlightColor)
+                    onClicked: {
+                        buttonRow.resetGame()
+                        pageStack.push(Qt.resolvedUrl("Settings.qml"))
+                    }
+                }
+
                 Button {
-                    text: maharollisuuret
-                    onClicked: asetussivulle.siirrytKo()
+                    text: qsTr("Reset")
+                    width: (Screen.width - 3*Theme.paddingLarge - settingsIcon.width)/2
+                    onClicked: buttonRow.resetGame()
                     enabled: !tilat.juoksee || tilat.peliloppui
                 }
+                // Game reset function.
+                function resetGame() {
+                    tilat.asetaTilat();
+                    valkokello.rogres_sekuntitv = valkomax;
+                    muttakello.rogres_sekuntitm = mustamax;
+                    valkokello.sekuntitv0 = 0;
+                    valkokello.sekuntitv = 0;
+                    valkokello.sum_incrementv = 0;
+                    muttakello.sekuntitm0 = 0;
+                    muttakello.sekuntitm = 0;
+                    muttakello.sum_incrementm = 0;
+                    kello.sekuntit = 0;
+                    startti.timeAsetus();
+                    valkokello.updateValko();
+                    muttakello.updateMutta();
+                    tilat.peliloppui = false
+                    startButton.text = qsTr("Start")
+                }
+
             }
 
             Label {

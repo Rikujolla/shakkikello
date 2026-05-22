@@ -160,11 +160,11 @@
     <name>Clockview</name>
     <message>
         <source>Black´s turn</source>
-        <translation>Svart sin tur</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation>Hvit sin tur</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pause</source>
@@ -173,14 +173,6 @@
     <message>
         <source>Continue</source>
         <translation>Fortsett</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Nullstill</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Innstillinger</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -193,11 +185,19 @@
     </message>
     <message>
         <source>White´s clock</source>
-        <translation>Hvits klokke</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Nullstill</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation>Svarts klokke</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Start</translation>
     </message>
 </context>
 <context>

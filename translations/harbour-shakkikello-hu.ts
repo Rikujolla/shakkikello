@@ -160,11 +160,11 @@
     <name>Clockview</name>
     <message>
         <source>Black´s turn</source>
-        <translation type="unfinished">Feketén a sor</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation type="unfinished">Fehéren a sor</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pause</source>
@@ -173,14 +173,6 @@
     <message>
         <source>Continue</source>
         <translation type="unfinished">Folytatás</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="unfinished">Visszaállítás</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished">Beállítások</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -193,11 +185,19 @@
     </message>
     <message>
         <source>White´s clock</source>
-        <translation type="unfinished">Fehér órája</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Visszaállítás</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation type="unfinished">Fekete órája</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">Indítás</translation>
     </message>
 </context>
 <context>

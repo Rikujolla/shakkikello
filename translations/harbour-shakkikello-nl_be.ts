@@ -160,44 +160,44 @@
     <name>Clockview</name>
     <message>
         <source>Black´s turn</source>
-        <translation>Zwart is aan zet</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation>Wit is aan zet</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauzeren</translation>
+        <translation type="unfinished">Pauzeren</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Doorgaan</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Herstellen</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Instellingen</translation>
+        <translation type="unfinished">Doorgaan</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation>Schaakklok</translation>
+        <translation type="unfinished">Schaakklok</translation>
     </message>
     <message>
         <source>min:s</source>
         <extracomment>Minutes:seconds</extracomment>
-        <translation>min:s</translation>
+        <translation type="unfinished">min:s</translation>
     </message>
     <message>
         <source>White´s clock</source>
-        <translation>Klok van Wit</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation>Klok van Zwart</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">Starten</translation>
     </message>
 </context>
 <context>

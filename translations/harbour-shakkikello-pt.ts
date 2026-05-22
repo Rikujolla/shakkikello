@@ -160,11 +160,11 @@
     <name>Clockview</name>
     <message>
         <source>Black´s turn</source>
-        <translation type="unfinished">Turno preto</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation type="unfinished">Turno branco</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pause</source>
@@ -173,14 +173,6 @@
     <message>
         <source>Continue</source>
         <translation type="unfinished">Continuar</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="unfinished">Restabelecer</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished">Configurações</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -193,11 +185,19 @@
     </message>
     <message>
         <source>White´s clock</source>
-        <translation type="unfinished">Timer branco</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Restabelecer</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation type="unfinished">Timer preto</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">Começo</translation>
     </message>
 </context>
 <context>

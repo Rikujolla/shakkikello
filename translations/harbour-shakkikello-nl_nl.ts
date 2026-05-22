@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl_NL">
 <context>
     <name>About</name>
     <message>
@@ -175,14 +173,6 @@
         <translation>Doorgaan</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Herstellen</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Instellingen</translation>
-    </message>
-    <message>
         <source>Chess clock</source>
         <translation>Schaakklok</translation>
     </message>
@@ -196,8 +186,16 @@
         <translation>Klok van Wit</translation>
     </message>
     <message>
+        <source>Reset</source>
+        <translation>Herstellen</translation>
+    </message>
+    <message>
         <source>Black´s clock</source>
         <translation>Klok van Zwart</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

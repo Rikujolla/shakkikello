@@ -160,11 +160,11 @@
     <name>Clockview</name>
     <message>
         <source>Black´s turn</source>
-        <translation type="unfinished">Svarts tur</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation type="unfinished">Vits tur</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pause</source>
@@ -173,14 +173,6 @@
     <message>
         <source>Continue</source>
         <translation type="unfinished">Fortsätta</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="unfinished">Återställ</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished">Inställningar</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -193,11 +185,19 @@
     </message>
     <message>
         <source>White´s clock</source>
-        <translation type="unfinished">Vits klocka</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Återställ</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation type="unfinished">Svarts klocka</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">Starta</translation>
     </message>
 </context>
 <context>

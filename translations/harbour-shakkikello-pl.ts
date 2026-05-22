@@ -160,44 +160,44 @@
     <name>Clockview</name>
     <message>
         <source>Black´s turn</source>
-        <translation>Ruch czarnych</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation>Ruch białych</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauza</translation>
+        <translation type="unfinished">Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Kontynuuj</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Resetuj</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Ustawienia</translation>
+        <translation type="unfinished">Kontynuuj</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation>Zegar szachowy</translation>
+        <translation type="unfinished">Zegar szachowy</translation>
     </message>
     <message>
         <source>min:s</source>
         <extracomment>Minutes:seconds</extracomment>
-        <translation>min:s</translation>
+        <translation type="unfinished">min:s</translation>
     </message>
     <message>
         <source>White´s clock</source>
-        <translation>Zegar białych</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Resetuj</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation>Zegar czarnych</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">Start</translation>
     </message>
 </context>
 <context>

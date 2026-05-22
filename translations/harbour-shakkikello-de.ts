@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="de">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="de">
 <context>
     <name>About</name>
     <message>
@@ -78,19 +76,19 @@
     </message>
     <message>
         <source>Italian (247)</source>
-        <translation type="unfinished"></translation>
+        <translation>Italiano (247)</translation>
     </message>
     <message>
         <source>Copyright (c) 2015-2026, Riku Lahtinen</source>
-        <translation type="unfinished">Copyright (c) 2015, Riku Lahtinen {2015-2026,?}</translation>
+        <translation>Copyright (c) 2015-2026, Riku Lahtinen</translation>
     </message>
     <message>
         <source>Norwegian bokmål (Frank Paul Silye)</source>
-        <translation type="unfinished"></translation>
+        <translation>Norsk bokmål (Frank Paul Silye)</translation>
     </message>
     <message>
         <source>Stockfish engine, v7 (stockfishchess.org)</source>
-        <translation type="unfinished">Stockfish engine, v5 (stockfishchess.org) {6 ?} {7 ?}</translation>
+        <translation>Stockfish engine, v7 (stockfishchess.org)</translation>
     </message>
 </context>
 <context>
@@ -175,14 +173,6 @@
         <translation>Weiter</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Neu stellen</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Einstellungen</translation>
-    </message>
-    <message>
         <source>Chess clock</source>
         <translation>Schachuhr</translation>
     </message>
@@ -196,8 +186,16 @@
         <translation>Uhr von Weiß</translation>
     </message>
     <message>
+        <source>Reset</source>
+        <translation>Neu stellen</translation>
+    </message>
+    <message>
         <source>Black´s clock</source>
         <translation>Uhr von Schwarz</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -509,11 +507,11 @@
     </message>
     <message>
         <source>Show opening moves</source>
-        <translation type="unfinished"></translation>
+        <translation>Eröffnungszüge anzeigen</translation>
     </message>
     <message>
         <source>Show move hints in Stockfish game</source>
-        <translation type="unfinished"></translation>
+        <translation>Zugvorschläge in der Stockfish-Partie anzeigen</translation>
     </message>
 </context>
 <context>

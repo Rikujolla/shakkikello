@@ -160,44 +160,44 @@
     <name>Clockview</name>
     <message>
         <source>Black´s turn</source>
-        <translation>Au tour des Noirs</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation>Au tour des Blancs</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation type="unfinished">Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Reprendre</translation>
+        <translation type="unfinished">Reprendre</translation>
+    </message>
+    <message>
+        <source>Chess clock</source>
+        <translation type="unfinished">Pendule</translation>
+    </message>
+    <message>
+        <source>min:s</source>
+        <extracomment>Minutes:seconds</extracomment>
+        <translation type="unfinished">min:sec</translation>
+    </message>
+    <message>
+        <source>White´s clock</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation>Paramètres</translation>
-    </message>
-    <message>
-        <source>Chess clock</source>
-        <translation>Pendule</translation>
-    </message>
-    <message>
-        <source>min:s</source>
-        <extracomment>Minutes:seconds</extracomment>
-        <translation>min:sec</translation>
-    </message>
-    <message>
-        <source>White´s clock</source>
-        <translation>Décompte des Blancs</translation>
-    </message>
-    <message>
         <source>Black´s clock</source>
-        <translation>Décompte des Noirs</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">Lancer une partie</translation>
     </message>
 </context>
 <context>

@@ -160,44 +160,44 @@
     <name>Clockview</name>
     <message>
         <source>Black´s turn</source>
-        <translation>轮到黑棋</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation>轮到白棋</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>暂停</translation>
+        <translation type="unfinished">停止</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>继续</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>重置</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>设置</translation>
+        <translation type="unfinished">继续</translation>
     </message>
     <message>
         <source>Chess clock</source>
-        <translation>棋钟</translation>
+        <translation type="unfinished">棋钟</translation>
     </message>
     <message>
         <source>min:s</source>
         <extracomment>Minutes:seconds</extracomment>
-        <translation>分钟:秒</translation>
+        <translation type="unfinished">min:s</translation>
     </message>
     <message>
         <source>White´s clock</source>
-        <translation>白棋时间</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">重置</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation>黑棋时间</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">开始</translation>
     </message>
 </context>
 <context>

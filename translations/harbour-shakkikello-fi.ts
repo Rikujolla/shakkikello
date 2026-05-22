@@ -175,14 +175,6 @@
         <translation>Jatka</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Nollaa</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Asetukset</translation>
-    </message>
-    <message>
         <source>Chess clock</source>
         <translation>Shakkikello</translation>
     </message>
@@ -196,8 +188,16 @@
         <translation>Valkoisen kello</translation>
     </message>
     <message>
+        <source>Reset</source>
+        <translation>Nollaa</translation>
+    </message>
+    <message>
         <source>Black´s clock</source>
         <translation>Mustan kello</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Aloita</translation>
     </message>
 </context>
 <context>

@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="it">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="it">
 <context>
     <name>About</name>
     <message>
@@ -82,15 +80,15 @@
     </message>
     <message>
         <source>Copyright (c) 2015-2026, Riku Lahtinen</source>
-        <translation type="unfinished">Copyright (c) 2015, Riku Lahtinen {2015-2026,?}</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Norwegian bokmål (Frank Paul Silye)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stockfish engine, v7 (stockfishchess.org)</source>
-        <translation type="unfinished">Motore Stockfish, v6 (stockfishchess.org) {7 ?}</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -175,14 +173,6 @@
         <translation>Continua</translation>
     </message>
     <message>
-        <source>Reset</source>
-        <translation>Ricomincia</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Impostazioni</translation>
-    </message>
-    <message>
         <source>Chess clock</source>
         <translation>Orologio scacchi</translation>
     </message>
@@ -196,8 +186,16 @@
         <translation>Orologio dei bianchi</translation>
     </message>
     <message>
+        <source>Reset</source>
+        <translation>Ricomincia</translation>
+    </message>
+    <message>
         <source>Black´s clock</source>
         <translation>Orologio dei neri</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

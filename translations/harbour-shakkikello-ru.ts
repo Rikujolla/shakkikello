@@ -160,11 +160,11 @@
     <name>Clockview</name>
     <message>
         <source>Black´s turn</source>
-        <translation type="unfinished">Xод чёрный</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>White´s turn</source>
-        <translation type="unfinished">Xод белый</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Pause</source>
@@ -173,14 +173,6 @@
     <message>
         <source>Continue</source>
         <translation type="unfinished">Продолжать</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation type="unfinished">Cброс</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished">Настройки</translation>
     </message>
     <message>
         <source>Chess clock</source>
@@ -193,11 +185,19 @@
     </message>
     <message>
         <source>White´s clock</source>
-        <translation type="unfinished">Tаймер белый</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished">Cброс</translation>
     </message>
     <message>
         <source>Black´s clock</source>
-        <translation type="unfinished">Tаймер чёрный</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished">Начало</translation>
     </message>
 </context>
 <context>
